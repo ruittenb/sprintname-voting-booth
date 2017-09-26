@@ -1,0 +1,1412 @@
+[
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Aipom_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/aipom.jpg",
+    "name": "Aipom"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ampharos_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ampharos.jpg",
+    "name": "Ampharos"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ariados_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ariados.jpg",
+    "name": "Ariados"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Azumarill_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/azumarill.jpg",
+    "name": "Azumarill"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Bayleef_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/bayleef.jpg",
+    "name": "Bayleef"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Bellossom_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/bellossom.jpg",
+    "name": "Bellossom"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Blissey_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/blissey.jpg",
+    "name": "Blissey"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Celebi_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/celebi.jpg",
+    "name": "Celebi"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Chikorita_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/chikorita.jpg",
+    "name": "Chikorita"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Chinchou_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/chinchou.jpg",
+    "name": "Chinchou"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cleffa_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/cleffa.jpg",
+    "name": "Cleffa"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Corsola_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/corsola.jpg",
+    "name": "Corsola"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Crobat_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/crobat.jpg",
+    "name": "Crobat"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Croconaw_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/croconaw.jpg",
+    "name": "Croconaw"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cyndaquil_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/cyndaquil.jpg",
+    "name": "Cyndaquil"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Delibird_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/delibird.jpg",
+    "name": "Delibird"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Donphan_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/donphan.jpg",
+    "name": "Donphan"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dunsparce_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/dunsparce.jpg",
+    "name": "Dunsparce"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Elekid_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/elekid.jpg",
+    "name": "Elekid"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Entei_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/entei.jpg",
+    "name": "Entei"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Espeon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/espeon.jpg",
+    "name": "Espeon"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Feraligatr_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/feraligatr.jpg",
+    "name": "Feraligatr"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Flaaffy_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/flaaffy.jpg",
+    "name": "Flaaffy"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Forretress_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/forretress.jpg",
+    "name": "Forretress"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Furret_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/furret.jpg",
+    "name": "Furret"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Girafarig_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/girafarig.jpg",
+    "name": "Girafarig"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Gligar_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/gligar.jpg",
+    "name": "Gligar"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Granbull_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/granbull.jpg",
+    "name": "Granbull"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Heracross_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/heracross.jpg",
+    "name": "Heracross"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Hitmontop_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/hitmontop.jpg",
+    "name": "Hitmontop"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ho-Oh_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ho-oh.jpg",
+    "name": "Ho-Oh"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Hoothoot_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/hoothoot.jpg",
+    "name": "Hoothoot"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Hoppip_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/hoppip.jpg",
+    "name": "Hoppip"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Houndoom_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/houndoom.jpg",
+    "name": "Houndoom"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Houndour_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/houndour.jpg",
+    "name": "Houndour"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Igglybuff_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/igglybuff.jpg",
+    "name": "Igglybuff"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Jumpluff_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/jumpluff.jpg",
+    "name": "Jumpluff"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Kingdra_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/kingdra.jpg",
+    "name": "Kingdra"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Lanturn_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/lanturn.jpg",
+    "name": "Lanturn"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Larvitar_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/larvitar.jpg",
+    "name": "Larvitar"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ledian_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ledian.jpg",
+    "name": "Ledian"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ledyba_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ledyba.jpg",
+    "name": "Ledyba"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Lugia_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/lugia.jpg",
+    "name": "Lugia"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Magby_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/magby.jpg",
+    "name": "Magby"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Magcargo_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/magcargo.jpg",
+    "name": "Magcargo"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Mantine_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/mantine.jpg",
+    "name": "Mantine"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Mareep_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/mareep.jpg",
+    "name": "Mareep"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Marill_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/marill.jpg",
+    "name": "Marill"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Meganium_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/meganium.jpg",
+    "name": "Meganium"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Miltank_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/miltank.jpg",
+    "name": "Miltank"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Misdreavus_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/misdreavus.jpg",
+    "name": "Misdreavus"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Murkrow_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/murkrow.jpg",
+    "name": "Murkrow"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Natu_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/natu.jpg",
+    "name": "Natu"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Noctowl_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/noctowl.jpg",
+    "name": "Noctowl"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Octillery_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/octillery.jpg",
+    "name": "Octillery"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Phanpy_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/phanpy.jpg",
+    "name": "Phanpy"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Pichu_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/pichu.jpg",
+    "name": "Pichu"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Piloswine_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/piloswine.jpg",
+    "name": "Piloswine"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Pineco_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/pineco.jpg",
+    "name": "Pineco"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Politoed_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/politoed.jpg",
+    "name": "Politoed"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Porygon2_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/porygon2.jpg",
+    "name": "Porygon2"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Pupitar_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/pupitar.jpg",
+    "name": "Pupitar"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Quagsire_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/quagsire.jpg",
+    "name": "Quagsire"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Quilava_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/quilava.jpg",
+    "name": "Quilava"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Qwilfish_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/qwilfish.jpg",
+    "name": "Qwilfish"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Raikou_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/raikou.jpg",
+    "name": "Raikou"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Remoraid_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/remoraid.jpg",
+    "name": "Remoraid"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Scizor_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/scizor.jpg",
+    "name": "Scizor"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sentret_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sentret.jpg",
+    "name": "Sentret"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Shuckle_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/shuckle.jpg",
+    "name": "Shuckle"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Skarmory_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/skarmory.jpg",
+    "name": "Skarmory"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Skiploom_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/skiploom.jpg",
+    "name": "Skiploom"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Slowking_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/slowking.jpg",
+    "name": "Slowking"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Slugma_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/slugma.jpg",
+    "name": "Slugma"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Smeargle_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/smeargle.jpg",
+    "name": "Smeargle"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Smoochum_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/smoochum.jpg",
+    "name": "Smoochum"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sneasel_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sneasel.jpg",
+    "name": "Sneasel"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Snubbull_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/snubbull.jpg",
+    "name": "Snubbull"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Spinarak_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/spinarak.jpg",
+    "name": "Spinarak"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Stantler_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/stantler.jpg",
+    "name": "Stantler"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Steelix_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/steelix.jpg",
+    "name": "Steelix"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sudowoodo_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sudowoodo.jpg",
+    "name": "Sudowoodo"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Suicune_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/suicune.jpg",
+    "name": "Suicune"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sunflora_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sunflora.jpg",
+    "name": "Sunflora"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sunkern_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sunkern.jpg",
+    "name": "Sunkern"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Swinub_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/swinub.jpg",
+    "name": "Swinub"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Teddiursa_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/teddiursa.jpg",
+    "name": "Teddiursa"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Togepi_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/togepi.jpg",
+    "name": "Togepi"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Togetic_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/togetic.jpg",
+    "name": "Togetic"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Totodile_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/totodile.jpg",
+    "name": "Totodile"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Typhlosion_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/typhlosion.jpg",
+    "name": "Typhlosion"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Tyranitar_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/tyranitar.jpg",
+    "name": "Tyranitar"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Tyrogue_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/tyrogue.jpg",
+    "name": "Tyrogue"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Umbreon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/umbreon.jpg",
+    "name": "Umbreon"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Unown_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/unown.jpg",
+    "name": "Unown"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ursaring_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ursaring.jpg",
+    "name": "Ursaring"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wobbuffet_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/wobbuffet.jpg",
+    "name": "Wobbuffet"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wooper_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/wooper.jpg",
+    "name": "Wooper"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Xatu_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/xatu.jpg",
+    "name": "Xatu"
+  },
+  {
+    "generation": 2,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Yanma_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/yanma.jpg",
+    "name": "Yanma"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Absol_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/absol.jpg",
+    "name": "Absol"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Aggron_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/aggron.jpg",
+    "name": "Aggron"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Altaria_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/altaria.jpg",
+    "name": "Altaria"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Anorith_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/anorith.jpg",
+    "name": "Anorith"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Armaldo_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/armaldo.jpg",
+    "name": "Armaldo"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Aron_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/aron.jpg",
+    "name": "Aron"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Azurill_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/azurill.jpg",
+    "name": "Azurill"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Bagon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/bagon.jpg",
+    "name": "Bagon"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Baltoy_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/baltoy.jpg",
+    "name": "Baltoy"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Banette_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/banette.jpg",
+    "name": "Banette"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Barboach_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/barboach.jpg",
+    "name": "Barboach"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Beautifly_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/beautifly.jpg",
+    "name": "Beautifly"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Beldum_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/beldum.jpg",
+    "name": "Beldum"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Blaziken_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/blaziken.jpg",
+    "name": "Blaziken"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Breloom_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/breloom.jpg",
+    "name": "Breloom"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cacnea_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/cacnea.jpg",
+    "name": "Cacnea"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cacturne_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/cacturne.jpg",
+    "name": "Cacturne"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Camerupt_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/camerupt.jpg",
+    "name": "Camerupt"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Carvanha_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/carvanha.jpg",
+    "name": "Carvanha"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cascoon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/cascoon.jpg",
+    "name": "Cascoon"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Castform_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/castform.jpg",
+    "name": "Castform"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Chimecho_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/chimecho.jpg",
+    "name": "Chimecho"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Clamperl_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/clamperl.jpg",
+    "name": "Clamperl"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Claydol_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/claydol.jpg",
+    "name": "Claydol"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Combusken_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/combusken.jpg",
+    "name": "Combusken"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Corphish_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/corphish.jpg",
+    "name": "Corphish"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cradily_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/cradily.jpg",
+    "name": "Cradily"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Crawdaunt_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/crawdaunt.jpg",
+    "name": "Crawdaunt"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Delcatty_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/delcatty.jpg",
+    "name": "Delcatty"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Deoxys_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/deoxys-normal.jpg",
+    "name": "Deoxys"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dusclops_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/dusclops.jpg",
+    "name": "Dusclops"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Duskull_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/duskull.jpg",
+    "name": "Duskull"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dustox_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/dustox.jpg",
+    "name": "Dustox"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Electrike_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/electrike.jpg",
+    "name": "Electrike"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Exploud_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/exploud.jpg",
+    "name": "Exploud"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Feebas_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/feebas.jpg",
+    "name": "Feebas"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Flygon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/flygon.jpg",
+    "name": "Flygon"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Gardevoir_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/gardevoir.jpg",
+    "name": "Gardevoir"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Glalie_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/glalie.jpg",
+    "name": "Glalie"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Gorebyss_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/gorebyss.jpg",
+    "name": "Gorebyss"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Groudon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/groudon.jpg",
+    "name": "Groudon"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Grovyle_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/grovyle.jpg",
+    "name": "Grovyle"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Grumpig_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/grumpig.jpg",
+    "name": "Grumpig"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Gulpin_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/gulpin.jpg",
+    "name": "Gulpin"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Hariyama_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/hariyama.jpg",
+    "name": "Hariyama"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Huntail_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/huntail.jpg",
+    "name": "Huntail"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Illumise_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/illumise.jpg",
+    "name": "Illumise"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Jirachi_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/jirachi.jpg",
+    "name": "Jirachi"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Kecleon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/kecleon.jpg",
+    "name": "Kecleon"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Kirlia_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/kirlia.jpg",
+    "name": "Kirlia"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Kyogre_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/kyogre.jpg",
+    "name": "Kyogre"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Lairon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/lairon.jpg",
+    "name": "Lairon"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Latias_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/latias.jpg",
+    "name": "Latias"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Latios_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/latios.jpg",
+    "name": "Latios"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Lileep_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/lileep.jpg",
+    "name": "Lileep"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Linoone_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/linoone.jpg",
+    "name": "Linoone"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Lombre_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/lombre.jpg",
+    "name": "Lombre"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Lotad_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/lotad.jpg",
+    "name": "Lotad"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Loudred_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/loudred.jpg",
+    "name": "Loudred"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ludicolo_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ludicolo.jpg",
+    "name": "Ludicolo"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Lunatone_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/lunatone.jpg",
+    "name": "Lunatone"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Luvdisc_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/luvdisc.jpg",
+    "name": "Luvdisc"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Makuhita_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/makuhita.jpg",
+    "name": "Makuhita"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Manectric_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/manectric.jpg",
+    "name": "Manectric"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Marshtomp_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/marshtomp.jpg",
+    "name": "Marshtomp"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Masquerain_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/masquerain.jpg",
+    "name": "Masquerain"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Mawile_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/mawile.jpg",
+    "name": "Mawile"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Medicham_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/medicham.jpg",
+    "name": "Medicham"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Meditite_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/meditite.jpg",
+    "name": "Meditite"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Metagross_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/metagross.jpg",
+    "name": "Metagross"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Metang_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/metang.jpg",
+    "name": "Metang"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Mightyena_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/mightyena.jpg",
+    "name": "Mightyena"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Milotic_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/milotic.jpg",
+    "name": "Milotic"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Minun_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/minun.jpg",
+    "name": "Minun"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Mudkip_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/mudkip.jpg",
+    "name": "Mudkip"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Nincada_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/nincada.jpg",
+    "name": "Nincada"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ninjask_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ninjask.jpg",
+    "name": "Ninjask"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Nosepass_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/nosepass.jpg",
+    "name": "Nosepass"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Numel_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/numel.jpg",
+    "name": "Numel"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Nuzleaf_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/nuzleaf.jpg",
+    "name": "Nuzleaf"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Pelipper_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/pelipper.jpg",
+    "name": "Pelipper"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Plusle_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/plusle.jpg",
+    "name": "Plusle"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Poochyena_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/poochyena.jpg",
+    "name": "Poochyena"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ralts_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/ralts.jpg",
+    "name": "Ralts"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Rayquaza_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/rayquaza.jpg",
+    "name": "Rayquaza"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Regice_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/regice.jpg",
+    "name": "Regice"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Regirock_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/regirock.jpg",
+    "name": "Regirock"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Registeel_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/registeel.jpg",
+    "name": "Registeel"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Relicanth_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/relicanth.jpg",
+    "name": "Relicanth"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Roselia_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/roselia.jpg",
+    "name": "Roselia"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sableye_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sableye.jpg",
+    "name": "Sableye"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Salamence_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/salamence.jpg",
+    "name": "Salamence"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sceptile_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sceptile.jpg",
+    "name": "Sceptile"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sealeo_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sealeo.jpg",
+    "name": "Sealeo"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Seedot_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/seedot.jpg",
+    "name": "Seedot"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Seviper_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/seviper.jpg",
+    "name": "Seviper"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sharpedo_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/sharpedo.jpg",
+    "name": "Sharpedo"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Shedinja_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/shedinja.jpg",
+    "name": "Shedinja"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Shelgon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/shelgon.jpg",
+    "name": "Shelgon"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Shiftry_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/shiftry.jpg",
+    "name": "Shiftry"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Shroomish_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/shroomish.jpg",
+    "name": "Shroomish"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Shuppet_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/shuppet.jpg",
+    "name": "Shuppet"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Silcoon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/silcoon.jpg",
+    "name": "Silcoon"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Skitty_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/skitty.jpg",
+    "name": "Skitty"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Slaking_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/slaking.jpg",
+    "name": "Slaking"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Slakoth_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/slakoth.jpg",
+    "name": "Slakoth"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Snorunt_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/snorunt.jpg",
+    "name": "Snorunt"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Solrock_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/solrock.jpg",
+    "name": "Solrock"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Spheal_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/spheal.jpg",
+    "name": "Spheal"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Spinda_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/spinda.jpg",
+    "name": "Spinda"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Spoink_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/spoink.jpg",
+    "name": "Spoink"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Surskit_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/surskit.jpg",
+    "name": "Surskit"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Swablu_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/swablu.jpg",
+    "name": "Swablu"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Swalot_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/swalot.jpg",
+    "name": "Swalot"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Swampert_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/swampert.jpg",
+    "name": "Swampert"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Swellow_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/swellow.jpg",
+    "name": "Swellow"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Taillow_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/taillow.jpg",
+    "name": "Taillow"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Torchic_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/torchic.jpg",
+    "name": "Torchic"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Torkoal_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/torkoal.jpg",
+    "name": "Torkoal"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Trapinch_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/trapinch.jpg",
+    "name": "Trapinch"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Treecko_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/treecko.jpg",
+    "name": "Treecko"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Tropius_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/tropius.jpg",
+    "name": "Tropius"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Vibrava_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/vibrava.jpg",
+    "name": "Vibrava"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Vigoroth_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/vigoroth.jpg",
+    "name": "Vigoroth"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Volbeat_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/volbeat.jpg",
+    "name": "Volbeat"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wailmer_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/wailmer.jpg",
+    "name": "Wailmer"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wailord_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/wailord.jpg",
+    "name": "Wailord"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Walrein_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/walrein.jpg",
+    "name": "Walrein"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Whiscash_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/whiscash.jpg",
+    "name": "Whiscash"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Whismur_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/whismur.jpg",
+    "name": "Whismur"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wingull_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/wingull.jpg",
+    "name": "Wingull"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wurmple_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/wurmple.jpg",
+    "name": "Wurmple"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wynaut_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/wynaut.jpg",
+    "name": "Wynaut"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Zangoose_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/zangoose.jpg",
+    "name": "Zangoose"
+  },
+  {
+    "generation": 3,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Zigzagoon_(Pok%C3%A9mon)",
+    "image": "https://img.pokemondb.net/artwork/zigzagoon.jpg",
+    "name": "Zigzagoon"
+  }
+]

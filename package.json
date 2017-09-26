@@ -1,0 +1,31 @@
+{
+  "name": "elm-pokemon-voting-booth",
+  "version": "1.0.0",
+  "description": "Pokémon Voting Booth",
+  "author": "René Uittenbogaard <rene.uittenbogaard@proforto.nl>",
+  "dependencies": {
+    "ace-css": "1.1",
+    "css-loader": "^0.26.1",
+    "elm-webpack-loader": "^4.2.0",
+    "file-loader": "^0.10.0",
+    "font-awesome": "4",
+    "foreman": "^2.0.0",
+    "json-server": "0.9.5",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "webpack",
+    "client": "webpack-dev-server --port 4201",
+    "api": "node api.js",
+    "start": "nf start"
+  },
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruittenb/elm-pokemon-voting-booth.git"
+  }
+}
