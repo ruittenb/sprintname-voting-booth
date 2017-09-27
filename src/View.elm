@@ -9,9 +9,11 @@ import Material.Button as Button
 import Material.Options as Options exposing (css)
 import Material.Typography as Typo
 import Material.Elevation as Elevation
+import Model exposing (..)
+import Msgs exposing (Msg)
 
 
-view : Model -> Html Msg
+view : model -> Html Msg
 view model =
     h1 []
         [ h1 [] [ text "Generation III" ]
@@ -21,7 +23,3 @@ view model =
             , img [ src "http://elm-in-action.com/3.jpeg" ] []
             ]
         ]
-
-
-main =
-    view "no model yet"
