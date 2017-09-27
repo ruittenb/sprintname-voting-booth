@@ -4,16 +4,21 @@
         <meta charset="utf-8" />
         <title>Pokémon Sprint Name Voting Booth</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500|Roboto+Mono|Roboto+Condensed:400,700&subset=latin,latin-ext" type="text/css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css" />
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="dist/fontawesome-stars.css" />
+        <link rel="stylesheet" type="text/css"
+            href="https://fonts.googleapis.com/css?family=Roboto:400,300,500|Roboto+Mono|Roboto+Condensed:400,700&subset=latin,latin-ext">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <link rel="stylesheet" href="dist/fontawesome-stars.css">
+        <link rel="stylesheet" href="dist/pokemon-voting.css">
+        <link rel="icon" type="image/png" sizes="32x32" href="dist/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="dist/favicon-16x16.png">
+        <link rel="shortcut icon" href="dist/favicon.ico">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="dist/jquery.barrating.min.js"></script>
         <script type="text/javascript">
-            $(function() {
-                $('#example').barrating({
+            $(function () {
+                $('.rating').barrating({
                     theme: 'fontawesome-stars',
                     deselectable: true
                 });
@@ -21,13 +26,16 @@
         </script>
     </head>
     <body>
-        <div id="main"></div>
-        <select id="example">
-            <option value="" selected=selected>0</option>
+        <div id="main">
+        </div>
+        <!--
+        <select name="rating" class="rating">
+            <option value="" selected="selected">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
         </select>
+        -->
         <script src="/app.js"></script>
     </body>
 </html>

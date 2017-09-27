@@ -1,0 +1,18 @@
+body {
+    padding: 5px;
+}
+
+.poketable {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.poketable td {
+    padding: 10px 5px;
+}
+
+.pokemon-image {
+    max-width: 120px;
+    max-height: 120px;
+}
