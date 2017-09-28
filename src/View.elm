@@ -30,18 +30,22 @@ pokemonImg imageUrl =
 
 pokemonVotes : List UserVote -> Html Msg
 pokemonVotes userVotes =
-    span [] (List.map voteNode userVotes)
+    div [ class "vote-nodes" ] <| List.map voteNode userVotes
 
 
 pokemonRow : Pokemon -> Html Msg
 pokemonRow pokemon =
-    tr []
-        [ td [] [ text <| toString pokemon.number ]
-        , td [] [ linkTo pokemon.url <| text pokemon.name ]
-        , td [] [ linkTo pokemon.url <| pokemonImg pokemon.image ]
-        , td [] [ pokemonVotes pokemon.votes ]
-        , td [] [ rateWidget ]
-        ]
+    let
+        lighthouseData =
+            { name = "pokemon", title = pokemon.name }
+    in
+        tr []
+            [ td [] [ text <| toString pokemon.number ]
+            , td [] [ linkTo pokemon.url <| text pokemon.name ]
+            , td [] [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image ]
+            , td [] [ pokemonVotes pokemon.votes ]
+            , td [] [ rateWidget ]
+            ]
 
 
 pokemonRows : List Pokemon -> List (Html Msg)

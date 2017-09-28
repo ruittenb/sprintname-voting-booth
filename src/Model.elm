@@ -1,6 +1,12 @@
 module Model exposing (..)
 
 
+type alias LighthouseData =
+    { name : String
+    , title : String
+    }
+
+
 type alias Pokedex =
     { pokemon : List Pokemon
     }
