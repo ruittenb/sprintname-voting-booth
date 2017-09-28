@@ -16,3 +16,22 @@ body {
     max-width: 120px;
     max-height: 120px;
 }
+
+.vote-nodes {
+    height: 28px;
+    white-space: nowrap;
+}
+
+.vote-nodes span.star {
+    font: normal normal normal 20px/1 FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    margin-right: 2px;
+}
+
+.vote-nodes span.star::after {
+    content: '\f005';
+    color: #78b8e8;
+}
+
