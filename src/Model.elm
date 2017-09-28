@@ -7,6 +7,14 @@ type alias LighthouseData =
     }
 
 
+type alias ApplicationState =
+    { user : String
+    , loggedIn : Bool
+    , generation : Int
+    , letter : Char
+    }
+
+
 type alias Pokedex =
     { pokemon : List Pokemon
     }
