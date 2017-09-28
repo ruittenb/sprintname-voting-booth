@@ -12,6 +12,15 @@ body {
     padding: 10px 5px;
 }
 
+.poketable .br-theme-fontawesome-stars .br-widget a:after {
+    color: #ddd;
+}
+
+.poketable .br-theme-fontawesome-stars .br-widget a.br-selected:after,
+.poketable .br-theme-fontawesome-stars .br-widget a.br-active:after {
+    color: #EDB867;
+}
+
 .pokemon-image {
     max-width: 120px;
     max-height: 120px;

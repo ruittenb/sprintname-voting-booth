@@ -149,8 +149,11 @@ voteNode userVote =
     let
         star =
             span [ class "star" ] []
+
+        userTitle =
+            userVote.user ++ ": " ++ toString userVote.rating
     in
-        span [ title userVote.user ] <| List.repeat userVote.rating star
+        span [ title userTitle ] <| List.repeat userVote.rating star
 
 
 rateWidget : Html Msg
