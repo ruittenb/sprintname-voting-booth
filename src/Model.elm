@@ -12,7 +12,7 @@ type alias Pokemon =
     , name : String
     , image : String
     , url : String
-    , votes : Maybe (List UserVote)
+    , votes : List UserVote
     }
 
 

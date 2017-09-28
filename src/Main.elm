@@ -12,14 +12,25 @@ initialData =
           , image = "https://img.pokemondb.net/artwork/absol.jpg"
           , name = "Absol"
           , number = 359
-          , votes = Just []
+          , votes =
+                [ { user = "brian"
+                  , rating = 2
+                  }
+                ]
           }
         , { generation = 3
           , url = "https://bulbapedia.bulbagarden.net/wiki/Aggron_(Pok%C3%A9mon)"
           , image = "https://img.pokemondb.net/artwork/aggron.jpg"
           , name = "Aggron"
           , number = 306
-          , votes = Just []
+          , votes =
+                [ { user = "ruitje"
+                  , rating = 3
+                  }
+                , { user = "brian"
+                  , rating = 2
+                  }
+                ]
           }
         ]
     }
@@ -36,4 +47,4 @@ currentLetter =
 
 
 main =
-    viewPokemonTable initialData currentGeneration currentLetter
+    viewPokemonTable currentGeneration currentLetter initialData

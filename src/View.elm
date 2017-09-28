@@ -28,13 +28,18 @@ pokemonImg imageUrl =
         []
 
 
+pokemonVotes : List UserVote -> Html Msg
+pokemonVotes userVotes =
+    span [] (List.map voteNode userVotes)
+
+
 pokemonRow : Pokemon -> Html Msg
 pokemonRow pokemon =
     tr []
         [ td [] [ text <| toString pokemon.number ]
         , td [] [ linkTo pokemon.url <| text pokemon.name ]
         , td [] [ linkTo pokemon.url <| pokemonImg pokemon.image ]
-        , td [] [] -- something with votes
+        , td [] [ pokemonVotes pokemon.votes ]
         , td [] [ rateWidget ]
         ]
 
@@ -44,8 +49,8 @@ pokemonRows pokelist =
     List.map pokemonRow pokelist
 
 
-viewPokemonTable : Pokedex -> Int -> Char -> Html Msg
-viewPokemonTable pokedex currentgen currentletter =
+viewPokemonTable : Int -> Char -> Pokedex -> Html Msg
+viewPokemonTable currentgen currentletter pokedex =
     div []
         [ heading currentgen
         , table [ class "poketable" ] (pokemonRows pokedex.pokemon) -- TODO filter by currentletter

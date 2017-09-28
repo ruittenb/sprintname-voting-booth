@@ -14,6 +14,7 @@ import Html.Attributes exposing (..)
    import Material.Elevation as Elevation
 -}
 
+import Model exposing (..)
 import Msgs exposing (Msg)
 
 
@@ -60,6 +61,15 @@ heading gen =
 linkTo : String -> Html Msg -> Html Msg
 linkTo url content =
     a [ href url ] [ content ]
+
+
+
+-- data-lightbox="image-1" data-title="My caption"
+
+
+voteNode : UserVote -> Html Msg
+voteNode userVote =
+    text <| String.repeat userVote.rating "*"
 
 
 rateWidget : Html Msg
