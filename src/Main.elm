@@ -36,15 +36,14 @@ initialData =
     }
 
 
-currentGeneration : Int
-currentGeneration =
-    3
-
-
-currentLetter : Char
-currentLetter =
-    'A'
+initialState : ApplicationState
+initialState =
+    { user = Nothing
+    , loggedIn = False
+    , generation = 3
+    , letter = 'A'
+    }
 
 
 main =
-    viewPokemonTable currentGeneration currentLetter initialData
+    viewPokemonTable initialState initialData

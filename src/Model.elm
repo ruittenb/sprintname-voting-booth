@@ -8,7 +8,7 @@ type alias LighthouseData =
 
 
 type alias ApplicationState =
-    { user : String
+    { user : Maybe String
     , loggedIn : Bool
     , generation : Int
     , letter : Char

@@ -118,15 +118,6 @@ pokeImageUrl pokemonName =
     "https://img.pokemondb.net/artwork/" ++ (pokeImageName pokemonName) ++ ".jpg"
 
 
-heading : Int -> Html Msg
-heading gen =
-    let
-        headingText =
-            "Generatie " ++ (romanNumeral gen)
-    in
-        h1 [] [ text headingText ]
-
-
 linkTo : String -> Html Msg -> Html Msg
 linkTo url content =
     a [ href url ] [ content ]

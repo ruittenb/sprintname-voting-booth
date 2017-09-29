@@ -14,6 +14,7 @@ import Html.Attributes exposing (..)
    import Material.Elevation as Elevation
 -}
 
+import ViewApplication exposing (..)
 import ViewHelper exposing (..)
 import Model exposing (..)
 import Msgs exposing (Msg)
@@ -53,9 +54,9 @@ pokemonRows pokelist =
     List.map pokemonRow pokelist
 
 
-viewPokemonTable : Int -> Char -> Pokedex -> Html Msg
-viewPokemonTable currentgen currentletter pokedex =
+viewPokemonTable : ApplicationState -> Pokedex -> Html Msg
+viewPokemonTable state pokedex =
     div []
-        [ heading currentgen
+        [ heading state
         , table [ class "poketable" ] (pokemonRows pokedex.pokemon) -- TODO filter by currentletter
         ]
