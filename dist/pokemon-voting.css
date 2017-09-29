@@ -22,6 +22,10 @@ button.generation-button.current {
     background-color: #e6c6e6;
 }
 
+button.letter-button:disabled {
+    background-color: #eee;
+}
+
 .poketable {
     width: 50%;
     margin: 0 auto;

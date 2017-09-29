@@ -4,7 +4,7 @@ module Msgs exposing (..)
 --import Material
 --import RemoteData exposing (WebData)
 
-import Model exposing (..)
+import Models exposing (..)
 
 
 type Msg
@@ -15,9 +15,7 @@ type Msg
 
 
 {-
-   | IncrementItemInCart LineItem
-   | DecrementItemInCart LineItem
-   | OnFetchCart (WebData Cart)
-   | OnSaveCart (Result Http.Error Cart)
+   | OnLoadPokemon (WebData Cart)
+   | OnSaveVotes (Result Http.Error Cart)
    | Mdl (Material.Msg Msg)
 -}

@@ -16,7 +16,7 @@ import Html.Attributes exposing (..)
 
 import ViewApplication exposing (..)
 import ViewHelper exposing (..)
-import Model exposing (..)
+import Models exposing (..)
 import Msgs exposing (Msg)
 
 
@@ -29,9 +29,12 @@ pokemonImg imageUrl =
         []
 
 
-pokemonVotes : List UserVote -> Html Msg
-pokemonVotes userVotes =
-    div [ class "vote-nodes" ] <| List.map voteNode userVotes
+
+{-
+   pokemonVotes : List UserVote -> Html Msg
+   pokemonVotes userVotes =
+       div [ class "vote-nodes" ] <| List.map voteNode userVotes
+-}
 
 
 pokemonRow : Pokemon -> Html Msg
@@ -57,14 +60,52 @@ pokemonRows pokelist =
     List.map pokemonRow pokelist
 
 
+firstLetterIs : Char -> String -> Bool
+firstLetterIs letter word =
+    let
+        firstLetter =
+            String.uncons word
+    in
+        case firstLetter of
+            Nothing ->
+                False
+
+            Just ( chopped, _ ) ->
+                (==) chopped letter
+
+
+filterPokedex : Int -> Char -> Pokedex -> List Pokemon
+filterPokedex generation letter pokedex =
+    let
+        currentGeneration =
+            List.head <|
+                List.filter
+                    (\d -> d.generation == generation)
+                    pokedex
+
+        currentGenerationAndLetter =
+            case currentGeneration of
+                Nothing ->
+                    []
+
+                Just pokeGeneration ->
+                    List.filter (\d -> firstLetterIs letter d.name) pokeGeneration.pokemon
+    in
+        currentGenerationAndLetter
+
+
+pokemonTable : ApplicationState -> Html Msg
+pokemonTable state =
+    let
+        currentSubPokedex =
+            filterPokedex state.generation state.letter state.pokedex
+    in
+        table [ class "poketable" ] <| pokemonRows currentSubPokedex
+
+
 view : ApplicationState -> Html Msg
 view state =
     div []
         [ heading state
+        , pokemonTable state
         ]
-
-
-
-{-
-   , table [ class "poketable" ] (pokemonRows pokedex.pokemon) -- TODO filter by currentletter
--}

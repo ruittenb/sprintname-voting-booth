@@ -1,25 +1,34 @@
 module Update exposing (..)
 
+import Commands exposing (..)
 import Msgs exposing (Msg)
-import Model exposing (..)
+import Models exposing (..)
 import UpdateHelper exposing (..)
 import Constants exposing (..)
 
 
-update : Msg -> ApplicationState -> ApplicationState
+update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
         Msgs.ChangeGeneration newGen ->
-            if List.member newGen allGenerations then
-                { oldState | generation = newGen }
-            else
-                oldState
+            let
+                newState =
+                    { oldState | generation = newGen }
+            in
+                if List.member newGen allGenerations then
+                    ( newState, Cmd.none )
+                else
+                    ( oldState, Cmd.none )
 
         Msgs.ChangeLetter newLetter ->
-            if List.member newLetter allLetters then
-                { oldState | letter = newLetter }
-            else
-                oldState
+            let
+                newState =
+                    { oldState | letter = newLetter }
+            in
+                if List.member newLetter allLetters then
+                    ( newState, Cmd.none )
+                else
+                    ( oldState, Cmd.none )
 
         Msgs.VoteForPokemon userVote ->
             {-
@@ -34,7 +43,7 @@ update msg oldState =
                        (List.length allVotes) == (List.length validVotes)
                in
             -}
-            if True then
-                oldState
+            if False then
+                ( oldState, Cmd.none )
             else
-                oldState
+                ( oldState, Cmd.none )

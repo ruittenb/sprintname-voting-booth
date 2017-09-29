@@ -14,7 +14,7 @@ import Html.Attributes exposing (..)
    import Material.Elevation as Elevation
 -}
 
-import Model exposing (..)
+import Models exposing (..)
 import Msgs exposing (Msg)
 
 
@@ -135,16 +135,19 @@ linkToLighthouse url lighthouseData content =
         [ content ]
 
 
-voteNode : UserVote -> Html Msg
-voteNode userVote =
-    let
-        star =
-            span [ class "star" ] []
 
-        userTitle =
-            userVote.user ++ ": " ++ toString userVote.rating
-    in
-        span [ title userTitle ] <| List.repeat userVote.rating star
+{-
+   voteNode : UserVote -> Html Msg
+   voteNode userVote =
+       let
+           star =
+               span [ class "star" ] []
+
+           userTitle =
+               userVote.userName ++ ": " ++ toString userVote.rating
+       in
+           span [ title userTitle ] <| List.repeat userVote.rating star
+-}
 
 
 rateWidget : Html Msg

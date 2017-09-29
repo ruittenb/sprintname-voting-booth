@@ -5,7 +5,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import ViewHelper exposing (..)
 import Msgs exposing (Msg)
-import Model exposing (..)
+import Models exposing (..)
 import Constants exposing (..)
 
 
