@@ -1,24 +1,23 @@
 module Msgs exposing (..)
 
-import Http
-import Material
-
-
---import Models exposing (..)
+--import Http
+--import Material
 --import RemoteData exposing (WebData)
+
+import Model exposing (..)
 
 
 type Msg
-    = None
+    = VoteForPokemon Pokemon
+    | ChangeGeneration Int
+    | ChangeLetter Char
 
 
 
 {-
-   type Msg
-       = VoteForPokemon LineItem
-       | IncrementItemInCart LineItem
-       | DecrementItemInCart LineItem
-       | OnFetchCart (WebData Cart)
-       | OnSaveCart (Result Http.Error Cart)
-       | Mdl (Material.Msg Msg)
+   | IncrementItemInCart LineItem
+   | DecrementItemInCart LineItem
+   | OnFetchCart (WebData Cart)
+   | OnSaveCart (Result Http.Error Cart)
+   | Mdl (Material.Msg Msg)
 -}
