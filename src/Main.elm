@@ -59,7 +59,3 @@ main =
         , view = view
         , update = update
         }
-
-
-
--- main = viewPokemonTable initialState initialData

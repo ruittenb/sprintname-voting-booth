@@ -53,6 +53,5 @@ heading : ApplicationState -> Html Msg
 heading state =
     div []
         [ romanNumeralButtons state.generation
-        , p [] []
         , letterButtons state.letter
         ]
