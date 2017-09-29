@@ -83,9 +83,19 @@ initialPokedex =
     , { generation = 1
       , pokemon =
             [ { url = "https://bulbapedia.bulbagarden.net/wiki/Alakazam_(Pok%C3%A9mon)"
-              , image = "https://omg.pokemondb.net/artwork/alakazam.jpg"
+              , image = "https://img.pokemondb.net/artwork/alakazam.jpg"
               , name = "Alakazam"
               , number = 65
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Squirtle_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/squirtle.jpg"
+              , name = "Squirtle"
+              , number = 7
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Snorlax_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/snorlax.jpg"
+              , name = "Snorlax"
+              , number = 143
               }
             ]
       }
@@ -95,17 +105,17 @@ initialPokedex =
     , { generation = 3
       , pokemon =
             [ { url = "https://bulbapedia.bulbagarden.net/wiki/Absol_(Pok%C3%A9mon)"
-              , image = "https://omg.pokemondb.net/artwork/absol.jpg"
+              , image = "https://img.pokemondb.net/artwork/absol.jpg"
               , name = "Absol"
               , number = 359
               }
             , { url = "https://bulbapedia.bulbagarden.net/wiki/Aggron_(Pok%C3%A9mon)"
-              , image = "https://omg.pokemondb.net/artwork/aggron.jpg"
+              , image = "https://img.pokemondb.net/artwork/aggron.jpg"
               , name = "Aggron"
               , number = 306
               }
             , { url = "https://bulbapedia.bulbagarden.net/wiki/Blaziken_(Pok%C3%A9mon)"
-              , image = "https://omg.pokemondb.net/artwork/blaziken.jpg"
+              , image = "https://img.pokemondb.net/artwork/blaziken.jpg"
               , name = "Blaziken"
               , number = 257
               }
@@ -119,7 +129,7 @@ initialState =
     { user = Nothing
     , loggedIn = False
     , generation = 3
-    , letter = 'C'
+    , letter = 'B'
     , pokedex = initialPokedex
     , votes = initialVotes
     }
