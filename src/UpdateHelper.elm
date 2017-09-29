@@ -1,7 +1,7 @@
 module UpdateHelper exposing (..)
 
 
-numberBetween : Number -> Number -> Number -> Bool
+numberBetween : Int -> Int -> Int -> Bool
 numberBetween min max value =
     if min <= value && value <= max then
         True

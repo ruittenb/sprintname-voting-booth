@@ -44,9 +44,12 @@ pokemonRow pokemon =
             [ td [] [ text <| toString pokemon.number ]
             , td [] [ linkTo pokemon.url <| text pokemon.name ]
             , td [] [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image ]
-            , td [] [ pokemonVotes pokemon.votes ]
             , td [] [ rateWidget ]
             ]
+
+
+
+--            , td [] [ pokemonVotes pokemon.votes ]
 
 
 pokemonRows : List Pokemon -> List (Html Msg)
@@ -54,9 +57,14 @@ pokemonRows pokelist =
     List.map pokemonRow pokelist
 
 
-viewPokemonTable : ApplicationState -> Pokedex -> Html Msg
-viewPokemonTable state pokedex =
+view : ApplicationState -> Html Msg
+view state =
     div []
         [ heading state
-        , table [ class "poketable" ] (pokemonRows pokedex.pokemon) -- TODO filter by currentletter
         ]
+
+
+
+{-
+   , table [ class "poketable" ] (pokemonRows pokedex.pokemon) -- TODO filter by currentletter
+-}

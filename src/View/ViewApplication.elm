@@ -1,34 +1,24 @@
 module ViewApplication exposing (..)
 
-import Char
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (onClick)
 import ViewHelper exposing (..)
 import Msgs exposing (Msg)
 import Model exposing (..)
-
-
-generaties : List Int
-generaties =
-    List.range 1 7
-
-
-letters : List Char
-letters =
-    List.map Char.fromCode <|
-        List.range (Char.toCode 'A') (Char.toCode 'Z')
+import Constants exposing (..)
 
 
 letterButton : Char -> Char -> Html Msg
 letterButton currentLetter letter =
-    let
-        currentClass =
-            if letter == currentLetter then
-                "letter-button current"
-            else
-                "letter-button"
-    in
-        button [ class currentClass ] [ text <| String.fromChar letter ]
+    button
+        [ classList
+            [ ( "letter-button", True )
+            , ( "current", letter == currentLetter )
+            ]
+        , onClick (Msgs.ChangeLetter letter)
+        ]
+        [ text <| String.fromChar letter ]
 
 
 letterButtons : Char -> Html Msg
@@ -36,19 +26,19 @@ letterButtons currentLetter =
     div [] <|
         List.map
             (letterButton currentLetter)
-            letters
+            allLetters
 
 
 romanNumeralButton : Int -> Int -> Html Msg
 romanNumeralButton currentGen gen =
-    let
-        currentClass =
-            if gen == currentGen then
-                "generation-button current"
-            else
-                "generation-button"
-    in
-        button [ class currentClass ] [ text <| romanNumeral gen ]
+    button
+        [ classList
+            [ ( "generation-button", True )
+            , ( "current", gen == currentGen )
+            ]
+        , onClick (Msgs.ChangeGeneration gen)
+        ]
+        [ text <| romanNumeral gen ]
 
 
 romanNumeralButtons : Int -> Html Msg
@@ -56,7 +46,7 @@ romanNumeralButtons currentGen =
     div [] <|
         List.map
             (romanNumeralButton currentGen)
-            generaties
+            allGenerations
 
 
 heading : ApplicationState -> Html Msg

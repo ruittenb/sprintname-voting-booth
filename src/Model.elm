@@ -12,11 +12,20 @@ type alias ApplicationState =
     , loggedIn : Bool
     , generation : Int
     , letter : Char
+    , votes : List UserVote
+    }
+
+
+type alias UserVote =
+    { user : String
+    , pokemonNr : Int
+    , rating : Int
     }
 
 
 type alias Pokedex =
     { pokemon : List Pokemon
+    , cachedGenerations : List Int
     }
 
 
@@ -26,11 +35,4 @@ type alias Pokemon =
     , name : String
     , image : String
     , url : String
-    , votes : List UserVote
-    }
-
-
-type alias UserVote =
-    { user : String
-    , rating : Int
     }

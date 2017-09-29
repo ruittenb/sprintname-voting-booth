@@ -8,7 +8,7 @@ import Model exposing (..)
 
 
 type Msg
-    = VoteForPokemon Pokemon
+    = VoteForPokemon UserVote
     | ChangeGeneration Int
     | ChangeLetter Char
 

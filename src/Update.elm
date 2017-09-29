@@ -1,30 +1,40 @@
 module Update exposing (..)
 
-import Html exposing (..)
-import Html.Attributes exposing (..)
 import Msgs exposing (Msg)
 import Model exposing (..)
 import UpdateHelper exposing (..)
+import Constants exposing (..)
 
 
-updateVote : Msg msg -> Pokemon -> Pokemon
-updateVote msg oldPokemon =
+update : Msg -> ApplicationState -> ApplicationState
+update msg oldState =
     case msg of
-        Msg.VoteForPokemon newPokemon ->
-            let
-                allVotes =
-                    newPokemon.votes
+        Msgs.ChangeGeneration newGen ->
+            if List.member newGen allGenerations then
+                { oldState | generation = newGen }
+            else
+                oldState
 
-                validVotes =
-                    List.filter (numberBetween 0 3) allVotes
+        Msgs.ChangeLetter newLetter ->
+            if List.member newLetter allLetters then
+                { oldState | letter = newLetter }
+            else
+                oldState
 
-                allVotesValid =
-                    (List.length allVotes) == (List.length validVotes)
-            in
-                if allVotesValid then
-                    newPokemon
-                else
-                    oldPokemon
+        Msgs.VoteForPokemon userVote ->
+            {-
+               let
+                   allVotes =
+                       newPokemon.votes
 
-        _ ->
-            oldPokemon
+                   validVotes =
+                       List.filter (numberBetween 0 3) allVotes
+
+                   allVotesValid =
+                       (List.length allVotes) == (List.length validVotes)
+               in
+            -}
+            if True then
+                oldState
+            else
+                oldState
