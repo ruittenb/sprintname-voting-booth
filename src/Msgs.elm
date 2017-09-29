@@ -11,11 +11,11 @@ type Msg
     = VoteForPokemon UserVote
     | ChangeGeneration Int
     | ChangeLetter Char
+    | OnLoadPokemon Pokemon
 
 
 
 {-
-   | OnLoadPokemon (WebData Cart)
    | OnSaveVotes (Result Http.Error Cart)
    | Mdl (Material.Msg Msg)
 -}

@@ -1,6 +1,6 @@
 module Update exposing (..)
 
-import Commands exposing (..)
+import CommandsVote exposing (..)
 import Msgs exposing (Msg)
 import Models exposing (..)
 import UpdateHelper exposing (..)
@@ -29,6 +29,10 @@ update msg oldState =
                     ( newState, Cmd.none )
                 else
                     ( oldState, Cmd.none )
+
+        -- TODO
+        Msgs.OnLoadPokemon pokemon ->
+            ( oldState, Cmd.none )
 
         Msgs.VoteForPokemon userVote ->
             {-
