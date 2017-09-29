@@ -16,6 +16,7 @@ import Html.Attributes exposing (..)
 
 import ViewApplication exposing (..)
 import ViewHelper exposing (..)
+import Helpers exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
 
@@ -60,47 +61,13 @@ pokemonRows pokelist =
     List.map pokemonRow pokelist
 
 
-firstLetterIs : Char -> String -> Bool
-firstLetterIs letter word =
-    let
-        firstLetter =
-            String.uncons word
-    in
-        case firstLetter of
-            Nothing ->
-                False
-
-            Just ( chopped, _ ) ->
-                (==) chopped letter
-
-
-filterPokedex : Int -> Char -> Pokedex -> List Pokemon
-filterPokedex generation letter pokedex =
-    let
-        currentGeneration =
-            List.head <|
-                List.filter
-                    (\d -> d.generation == generation)
-                    pokedex
-
-        currentGenerationAndLetter =
-            case currentGeneration of
-                Nothing ->
-                    []
-
-                Just pokeGeneration ->
-                    List.filter (\d -> firstLetterIs letter d.name) pokeGeneration.pokemon
-    in
-        currentGenerationAndLetter
-
-
 pokemonTable : ApplicationState -> Html Msg
 pokemonTable state =
     let
-        currentSubPokedex =
-            filterPokedex state.generation state.letter state.pokedex
+        pokeList =
+            filterPokedex state.pokedex state.generation state.letter
     in
-        table [ class "poketable" ] <| pokemonRows currentSubPokedex
+        table [ class "poketable" ] <| pokemonRows pokeList
 
 
 view : ApplicationState -> Html Msg

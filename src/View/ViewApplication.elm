@@ -4,28 +4,34 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import ViewHelper exposing (..)
+import Helpers exposing (..)
 import Msgs exposing (Msg)
 import Models exposing (..)
 import Constants exposing (..)
 
 
-letterButton : Char -> Char -> Html Msg
-letterButton currentLetter letter =
-    button
-        [ classList
-            [ ( "letter-button", True )
-            , ( "current", letter == currentLetter )
+letterButton : Pokedex -> Int -> Char -> Char -> Html Msg
+letterButton pokedex currentGen currentLetter letter =
+    let
+        pokeList =
+            filterPokedex pokedex currentGen letter
+    in
+        button
+            [ classList
+                [ ( "letter-button", True )
+                , ( "current", letter == currentLetter )
+                ]
+            , onClick (Msgs.ChangeLetter letter)
+            , disabled (List.isEmpty pokeList)
             ]
-        , onClick (Msgs.ChangeLetter letter)
-        ]
-        [ text <| String.fromChar letter ]
+            [ text <| String.fromChar letter ]
 
 
-letterButtons : Char -> Html Msg
-letterButtons currentLetter =
+letterButtons : Pokedex -> Int -> Char -> Html Msg
+letterButtons pokedex currentGen currentLetter =
     div [] <|
         List.map
-            (letterButton currentLetter)
+            (letterButton pokedex currentGen currentLetter)
             allLetters
 
 
@@ -53,5 +59,5 @@ heading : ApplicationState -> Html Msg
 heading state =
     div []
         [ romanNumeralButtons state.generation
-        , letterButtons state.letter
+        , letterButtons state.pokedex state.generation state.letter
         ]
