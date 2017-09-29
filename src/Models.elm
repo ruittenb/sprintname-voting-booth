@@ -81,7 +81,13 @@ initialPokedex =
       , pokemon = [ missingNo ]
       }
     , { generation = 1
-      , pokemon = []
+      , pokemon =
+            [ { url = "https://bulbapedia.bulbagarden.net/wiki/Alakazam_(Pok%C3%A9mon)"
+              , image = "https://omg.pokemondb.net/artwork/alakazam.jpg"
+              , name = "Alakazam"
+              , number = 65
+              }
+            ]
       }
     , { generation = 2
       , pokemon = []
