@@ -18,34 +18,6 @@ import Models exposing (..)
 import Msgs exposing (Msg)
 
 
-romanNumeral : Int -> String
-romanNumeral i =
-    case i of
-        1 ->
-            "I"
-
-        2 ->
-            "II"
-
-        3 ->
-            "III"
-
-        4 ->
-            "IV"
-
-        5 ->
-            "V"
-
-        6 ->
-            "VI"
-
-        7 ->
-            "VII"
-
-        _ ->
-            "?"
-
-
 {-| returns the number range for a generation.
 -}
 numberRangeOf : Int -> List Int
@@ -133,21 +105,6 @@ linkToLighthouse url lighthouseData content =
         , Html.Attributes.attribute "data-title" lighthouseData.title
         ]
         [ content ]
-
-
-
-{-
-   voteNode : UserVote -> Html Msg
-   voteNode userVote =
-       let
-           star =
-               span [ class "star" ] []
-
-           userTitle =
-               userVote.userName ++ ": " ++ toString userVote.rating
-       in
-           span [ title userTitle ] <| List.repeat userVote.rating star
--}
 
 
 rateWidget : Html Msg

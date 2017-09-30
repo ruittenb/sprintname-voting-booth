@@ -51,12 +51,12 @@ button.letter-button:disabled {
     max-height: 120px;
 }
 
-.vote-nodes {
+.rating-nodes {
     height: 28px;
     white-space: nowrap;
 }
 
-.vote-nodes span.star {
+.rating-nodes span.star {
     font: normal normal normal 20px/1 FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -64,7 +64,7 @@ button.letter-button:disabled {
     margin-right: 2px;
 }
 
-.vote-nodes span.star::after {
+.rating-nodes span.star::after {
     content: '\f005';
     color: #78b8e8;
 }
