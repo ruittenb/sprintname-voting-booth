@@ -23,6 +23,9 @@ import Msgs exposing (Msg)
 numberRangeOf : Int -> List Int
 numberRangeOf gen =
     case gen of
+        0 ->
+            []
+
         1 ->
             List.range 1 151
 
