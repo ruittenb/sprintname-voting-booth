@@ -1,3 +1,8 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 body {
     padding: 8px;
     background-color: #f0f0f0 !important;
@@ -17,9 +22,15 @@ button.letter-button {
     margin-top: 4px;
 }
 
+button.generation-button.transparent {
+    opacity: 0.01;
+}
+
 button.letter-button.current,
-button.generation-button.current {
+button.generation-button.current,
+button.generation-button.current.transparent {
     background-color: #e6c6e6;
+    opacity: 1;
 }
 
 button.letter-button:disabled {
@@ -72,7 +83,8 @@ button.letter-button:disabled {
     white-space: nowrap;
 }
 
-.rating-nodes span.star {
+.rating-nodes > span.star,
+.voting-node > span.star {
     font: normal normal normal 20px/1 FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -80,8 +92,26 @@ button.letter-button:disabled {
     margin-right: 2px;
 }
 
-.rating-nodes span.star::after {
+.rating-nodes > span.star::after {
     content: '\f005';
-    color: #78b8e8;
+    color: #78b8e8; /* light blue */
+}
+
+.voting-node > span.star::after {
+    content: '\f005';
+    color: #eee; /* light grey */
+}
+
+.voting-node > span.star.selected::after {
+    color: #edb867; /* warm yellow */
+}
+
+.voting-node:hover > span.star::after,
+.voting-node:hover > span.star.selected::after {
+    color: #edb867; /* warm yellow */
+}
+
+.voting-node > span.star:hover ~ span.star::after {
+    color: #eee; /* light grey */
 }
 

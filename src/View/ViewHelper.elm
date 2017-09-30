@@ -88,34 +88,3 @@ pokeImageName pokemonName =
 pokeImageUrl : String -> String
 pokeImageUrl pokemonName =
     "https://img.pokemondb.net/artwork/" ++ (pokeImageName pokemonName) ++ ".jpg"
-
-
-linkTo : String -> Html Msg -> Html Msg
-linkTo url content =
-    a [ href url ] [ content ]
-
-
-{-| data-lightbox="image-1" data-title="My caption"
--}
-linkToLighthouse : String -> LighthouseData -> Html Msg -> Html Msg
-linkToLighthouse url lighthouseData content =
-    a
-        [ href url
-        , Html.Attributes.attribute "data-lightbox" lighthouseData.name
-        , Html.Attributes.attribute "data-title" lighthouseData.title
-        ]
-        [ content ]
-
-
-rateWidget : Html Msg
-rateWidget =
-    select
-        [ name "rating"
-        , class "rating"
-        ]
-        -- workaround for value=""; see https://github.com/elm-lang/html/issues/91
-        [ option [ Html.Attributes.attribute "value" "", selected True ] [ text "0" ]
-        , option [ value "1" ] [ text "1" ]
-        , option [ value "2" ] [ text "2" ]
-        , option [ value "3" ] [ text "3" ]
-        ]

@@ -1,11 +1,9 @@
 module Models exposing (..)
 
-import Array exposing (..)
-
 
 type alias LighthouseData =
     { name : String
-    , title : String
+    , caption : String
     }
 
 
@@ -65,7 +63,9 @@ missingNo : Pokemon
 missingNo =
     { number = 0
     , name = "MissingNo."
-    , image = "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png"
+
+    --, image = "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png"
+    , image = "https://wiki.p-insurgence.com/images/0/09/722.png"
     , url = "https://bulbapedia.bulbagarden.net/wiki/MissingNo."
     }
 
@@ -86,7 +86,7 @@ initialRatings =
       }
     , { userName = "René"
       , color = "#619c61"
-      , ratings = "00000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+      , ratings = "01000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
       }
     ]
 
@@ -102,6 +102,26 @@ initialPokedex =
               , image = "https://img.pokemondb.net/artwork/alakazam.jpg"
               , name = "Alakazam"
               , number = 65
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Aerodactyl_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/aerodactyl.jpg"
+              , name = "Aerodactyl"
+              , number = 142
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Articuno_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/articuno.jpg"
+              , name = "Articuno"
+              , number = 144
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Blastoise_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/blastoise.jpg"
+              , name = "Blastoise"
+              , number = 9
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Bulbasaur_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/bulbasaur.jpg"
+              , name = "Bulbasaur"
+              , number = 1
               }
             , { url = "https://bulbapedia.bulbagarden.net/wiki/Squirtle_(Pok%C3%A9mon)"
               , image = "https://img.pokemondb.net/artwork/squirtle.jpg"
@@ -142,7 +162,7 @@ initialPokedex =
 
 initialState : ApplicationState
 initialState =
-    { user = Nothing
+    { user = Just "René"
     , loggedIn = False
     , generation = 1
     , letter = 'S'

@@ -22,6 +22,21 @@ import Models exposing (..)
 import Msgs exposing (Msg)
 
 
+linkTo : String -> Html Msg -> Html Msg
+linkTo url content =
+    a [ href url ] [ content ]
+
+
+linkToLighthouse : String -> LighthouseData -> Html Msg -> Html Msg
+linkToLighthouse url lighthouseData content =
+    a
+        [ href url
+        , Html.Attributes.attribute "data-lightbox" lighthouseData.name
+        , Html.Attributes.attribute "data-title" lighthouseData.caption
+        ]
+        [ content ]
+
+
 pokemonImg : String -> Html Msg
 pokemonImg imageUrl =
     img
@@ -29,6 +44,57 @@ pokemonImg imageUrl =
         , class "pokemon-image"
         ]
         []
+
+
+voteWidget : List UserRating -> Html Msg
+voteWidget ownRatings =
+    let
+        rating =
+            case List.head ownRatings of
+                Nothing ->
+                    0
+
+                Just ratingRecord ->
+                    ratingRecord.rating
+    in
+        span [ class "voting-node" ]
+            [ span
+                [ classList
+                    [ ( "star", True )
+                    , ( "selected", rating > 0 )
+                    ]
+                ]
+                []
+            , span
+                [ classList
+                    [ ( "star", True )
+                    , ( "selected", rating > 1 )
+                    ]
+                ]
+                []
+            , span
+                [ classList
+                    [ ( "star", True )
+                    , ( "selected", rating > 2 )
+                    ]
+                ]
+                []
+            ]
+
+
+
+{-
+       [ name "rating"
+       , class "rating"
+       ]
+       -- workaround for value=""; see https://github.com/elm-lang/html/issues/91
+       [ option [ selected (rating == 0), Html.Attributes.attribute "value" "" ] [ text "0" ]
+       , option [ selected (rating == 1), value "1" ] [ text "1" ]
+       , option [ selected (rating == 2), value "2" ] [ text "2" ]
+       , option [ selected (rating == 3), value "3" ] [ text "3" ]
+       ]
+   ]
+-}
 
 
 ratingNode : UserRating -> Html Msg
@@ -44,8 +110,8 @@ ratingNode rating =
             List.repeat rating.rating star
 
 
-pokemonRatings : List UserRating -> Html Msg
-pokemonRatings ratings =
+ratingWidget : List UserRating -> Html Msg
+ratingWidget ratings =
     div [ class "rating-nodes" ] <| List.map ratingNode ratings
 
 
@@ -68,9 +134,9 @@ pokemonTile : List UserRatings -> CurrentUserName -> Pokemon -> Html Msg
 pokemonTile ratings currentUser pokemon =
     let
         lighthouseData =
-            { name = "pokemon", title = pokemon.name }
+            { name = "pokemon", caption = pokemon.name }
 
-        onePokemonRatings =
+        allUserRatings =
             extractOnePokemonFromRatings ratings pokemon
 
         ownRatings =
@@ -79,15 +145,15 @@ pokemonTile ratings currentUser pokemon =
                     []
 
                 Just simpleUserName ->
-                    List.filter (\p -> (==) simpleUserName p.userName) onePokemonRatings
+                    List.filter (\p -> (==) simpleUserName p.userName) allUserRatings
 
         otherRatings =
             case currentUser of
                 Nothing ->
-                    onePokemonRatings
+                    allUserRatings
 
                 Just simpleUserName ->
-                    List.filter (\p -> (/=) simpleUserName p.userName) onePokemonRatings
+                    List.filter (\p -> (/=) simpleUserName p.userName) allUserRatings
     in
         div [ class "poketile" ]
             [ p []
@@ -97,8 +163,8 @@ pokemonTile ratings currentUser pokemon =
             , div [ class "pokemon-image-square" ]
                 [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image
                 ]
-            , pokemonRatings onePokemonRatings
-            , rateWidget
+            , ratingWidget otherRatings
+            , voteWidget ownRatings
             ]
 
 

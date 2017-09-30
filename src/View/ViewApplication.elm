@@ -12,6 +12,9 @@ import Constants exposing (..)
 romanNumeral : Int -> String
 romanNumeral i =
     case i of
+        0 ->
+            "O"
+
         1 ->
             "I"
 
@@ -43,6 +46,7 @@ romanNumeralButton currentGen gen =
         [ classList
             [ ( "generation-button", True )
             , ( "current", gen == currentGen )
+            , ( "transparent", gen == 0 )
             ]
         , onClick (Msgs.ChangeGeneration gen)
         ]
