@@ -13,5 +13,5 @@ view : ApplicationState -> Html Msg
 view state =
     div []
         [ heading state
-        , pokemonTable state
+        , pokemonCanvas state
         ]

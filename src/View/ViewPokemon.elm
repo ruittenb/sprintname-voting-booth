@@ -64,8 +64,8 @@ extractOnePokemonFromRatings ratings pokemon =
         ratings
 
 
-pokemonRow : List UserRatings -> CurrentUserName -> Pokemon -> Html Msg
-pokemonRow ratings currentUser pokemon =
+pokemonTile : List UserRatings -> CurrentUserName -> Pokemon -> Html Msg
+pokemonTile ratings currentUser pokemon =
     let
         lighthouseData =
             { name = "pokemon", title = pokemon.name }
@@ -89,24 +89,28 @@ pokemonRow ratings currentUser pokemon =
                 Just simpleUserName ->
                     List.filter (\p -> (/=) simpleUserName p.userName) onePokemonRatings
     in
-        tr []
-            [ td [] [ text <| toString pokemon.number ]
-            , td [] [ linkTo pokemon.url <| text pokemon.name ]
-            , td [] [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image ]
-            , td [] [ pokemonRatings onePokemonRatings ]
-            , td [] [ rateWidget ]
+        div [ class "poketile" ]
+            [ p []
+                [ text <| toString pokemon.number
+                , linkTo pokemon.url <| text pokemon.name
+                ]
+            , div [ class "pokemon-image-square" ]
+                [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image
+                ]
+            , pokemonRatings onePokemonRatings
+            , rateWidget
             ]
 
 
-pokemonRows : List Pokemon -> List UserRatings -> CurrentUserName -> List (Html Msg)
-pokemonRows pokelist ratings currentUser =
-    List.map (pokemonRow ratings currentUser) pokelist
+pokemonTiles : List Pokemon -> List UserRatings -> CurrentUserName -> List (Html Msg)
+pokemonTiles pokelist ratings currentUser =
+    List.map (pokemonTile ratings currentUser) pokelist
 
 
-pokemonTable : ApplicationState -> Html Msg
-pokemonTable state =
+pokemonCanvas : ApplicationState -> Html Msg
+pokemonCanvas state =
     let
         pokeList =
             filterPokedex state.pokedex state.generation state.letter
     in
-        table [ class "poketable" ] <| pokemonRows pokeList state.ratings state.user
+        div [ class "pokecanvas" ] <| pokemonTiles pokeList state.ratings state.user

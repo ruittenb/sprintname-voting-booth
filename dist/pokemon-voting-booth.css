@@ -27,23 +27,38 @@ button.letter-button:disabled {
     background-color: #eee;
 }
 
-.poketable {
-    width: 50%;
-    margin: 0 auto;
+.pokecanvas {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.poketile {
+    height: 220px;
+    width: 220px;
+    background-color: white;
+    border: 1px solid black;
     text-align: center;
+    margin: 10px 10px 0 0;
 }
 
-.poketable td {
-    padding: 10px 5px;
+.poketile p {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 14px;
 }
 
-.poketable .br-theme-fontawesome-stars .br-widget a:after {
+.poketile .br-theme-fontawesome-stars .br-widget a:after {
     color: #ddd;
 }
 
-.poketable .br-theme-fontawesome-stars .br-widget a.br-selected:after,
-.poketable .br-theme-fontawesome-stars .br-widget a.br-active:after {
+.poketile .br-theme-fontawesome-stars .br-widget a.br-selected:after,
+.poketile .br-theme-fontawesome-stars .br-widget a.br-active:after {
     color: #EDB867;
+}
+
+.pokemon-image-square {
+    height: 120px;
 }
 
 .pokemon-image {
@@ -52,6 +67,7 @@ button.letter-button:disabled {
 }
 
 .rating-nodes {
+    margin-top: 5px;
     height: 28px;
     white-space: nowrap;
 }
