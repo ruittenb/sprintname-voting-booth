@@ -20,6 +20,8 @@ type alias CurrentUserName =
 type alias ApplicationState =
     { user : CurrentUserName
     , loggedIn : Bool
+    , statusMessage : String
+    , statusLevel : String
     , generation : Int
     , letter : Char
     , pokedex : Pokedex
@@ -164,6 +166,8 @@ initialState : ApplicationState
 initialState =
     { user = Just "Rene"
     , loggedIn = False
+    , statusMessage = ""
+    , statusLevel = "notify"
     , generation = 1
     , letter = 'S'
     , pokedex = initialPokedex

@@ -9,13 +9,14 @@ import Models exposing (..)
 import Constants exposing (..)
 
 
-messageBox : String -> Html Msg
-messageBox message =
+messageBox : String -> String -> Html Msg
+messageBox message level =
     span [ id "msgBoxContainer" ]
         [ span
             [ id "messageBox"
             , classList
                 [ ( "autohide", String.length message > 0 )
+                , ( level, String.length level > 0 )
                 ]
             ]
             [ text message ]
@@ -66,14 +67,14 @@ romanNumeralButton currentGen gen =
         [ text <| romanNumeral gen ]
 
 
-romanNumeralButtons : Int -> Html Msg
-romanNumeralButtons currentGen =
+romanNumeralButtons : Int -> String -> String -> Html Msg
+romanNumeralButtons currentGen message level =
     div [ id "generationButtons" ] <|
         (List.map
             (romanNumeralButton currentGen)
             allGenerations
         )
-            ++ [ messageBox "Lorem Ipsum" ]
+            ++ [ messageBox message level ]
 
 
 letterButton : Pokedex -> Int -> Char -> Char -> Html Msg
@@ -104,6 +105,6 @@ letterButtons pokedex currentGen currentLetter =
 heading : ApplicationState -> Html Msg
 heading state =
     div [ id "filterButtons" ]
-        [ romanNumeralButtons state.generation
+        [ romanNumeralButtons state.generation state.statusMessage state.statusLevel
         , letterButtons state.pokedex state.generation state.letter
         ]

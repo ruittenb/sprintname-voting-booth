@@ -44,7 +44,7 @@ button.letter-button:disabled {
 }
 
 #generationButtons {
-    overflow: hidden;
+    height: 36px;
     white-space: nowrap;
     display: block;
 }
@@ -59,11 +59,20 @@ button.letter-button:disabled {
     white-space: nowrap;
     display: block;
     height: 30px;
-    border: 1px solid #d00; /* red */
-    color: #d00;
-    background-color: #ffc3c3; /* light red / pink */
     padding: 2px 6px;
     visibility: hidden;
+}
+
+#messageBox.notify {
+    border: 1px solid #090; /* green */
+    color: #090;
+    background-color: #dfd; /* light greeo */
+}
+
+#messageBox.error {
+    border: 1px solid #c00; /* red */
+    color: #c00;
+    background-color: #fdd; /* light red / pink */
 }
 
 #messageBox.autohide {
