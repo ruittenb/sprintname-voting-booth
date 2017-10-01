@@ -90,21 +90,6 @@ voteWidget ownRatings pokemonNumber =
             ]
 
 
-
-{-
-       [ name "rating"
-       , class "rating"
-       ]
-       -- workaround for value=""; see https://github.com/elm-lang/html/issues/91
-       [ option [ selected (rating == 0), Html.Attributes.attribute "value" "" ] [ text "0" ]
-       , option [ selected (rating == 1), value "1" ] [ text "1" ]
-       , option [ selected (rating == 2), value "2" ] [ text "2" ]
-       , option [ selected (rating == 3), value "3" ] [ text "3" ]
-       ]
-   ]
--}
-
-
 ratingNode : UserRating -> Html Msg
 ratingNode rating =
     let
@@ -171,7 +156,7 @@ pokemonTile ratings currentUser pokemon =
             extractOneUserFromRatings allUserRatings currentUser
 
         otherRatings =
-            extractOneUserFromRatings allUserRatings currentUser
+            extractOtherUsersFromRatings allUserRatings currentUser
     in
         div [ class "poketile" ]
             [ p []

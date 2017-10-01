@@ -63,7 +63,7 @@ button.letter-button:disabled {
     visibility: hidden;
 }
 
-#messageBox.notify {
+#messageBox.notice {
     border: 1px solid #090; /* green */
     color: #090;
     background-color: #dfd; /* light greeo */
@@ -129,8 +129,8 @@ button.letter-button:disabled {
     white-space: nowrap;
 }
 
-.rating-nodes > span.star,
-.voting-node > span.star {
+.rating-nodes span.star,
+.voting-node span.star {
     font: normal normal normal 20px/1 FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
@@ -138,26 +138,26 @@ button.letter-button:disabled {
     margin-right: 2px;
 }
 
-.rating-nodes > span.star::after {
+.rating-nodes span.star::after {
     content: '\f005';
     color: #78b8e8; /* light blue */
 }
 
-.voting-node > span.star::after {
+.voting-node span.star::after {
     content: '\f005';
     color: #eee; /* light grey */
 }
 
-.voting-node > span.star.selected::after {
+.voting-node span.star.selected::after {
     color: #edb867; /* warm yellow */
 }
 
-.voting-node:hover > span.star::after,
-.voting-node:hover > span.star.selected::after {
+.voting-node:hover span.star::after,
+.voting-node:hover span.star.selected::after {
     color: #edb867; /* warm yellow */
 }
 
-.voting-node > span.star:hover ~ span.star::after {
+.voting-node span.star:hover ~ span.star::after {
     color: #eee; /* light grey */
 }
 
