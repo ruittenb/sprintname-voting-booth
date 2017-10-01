@@ -9,14 +9,15 @@ import Models exposing (..)
 import Constants exposing (..)
 
 
-messageBox : String -> String -> Html Msg
+messageBox : String -> StatusLevel -> Html Msg
 messageBox message level =
     span [ id "msgBoxContainer" ]
         [ span
             [ id "messageBox"
             , classList
                 [ ( "autohide", String.length message > 0 )
-                , ( level, String.length level > 0 )
+                , ( "notice", level == Notice )
+                , ( "error", level == Error )
                 ]
             ]
             [ text message ]
@@ -67,7 +68,7 @@ romanNumeralButton currentGen gen =
         [ text <| romanNumeral gen ]
 
 
-romanNumeralButtons : Int -> String -> String -> Html Msg
+romanNumeralButtons : Int -> String -> StatusLevel -> Html Msg
 romanNumeralButtons currentGen message level =
     div [ id "generationButtons" ] <|
         (List.map

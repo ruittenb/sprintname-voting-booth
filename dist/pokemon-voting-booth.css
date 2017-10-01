@@ -77,8 +77,8 @@ button.letter-button:disabled {
 
 #messageBox.autohide {
     visibility: visible;
-    -webkit-animation: autoHide 8s forwards; 
-    animation: autoHide 8s forwards;
+    -webkit-animation: autoHide 6s forwards; 
+    animation: autoHide 6s forwards;
 }
 @keyframes autoHide {
     0%   { opacity: 0; }
