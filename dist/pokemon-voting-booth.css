@@ -16,6 +16,11 @@ button.generation-button {
     margin-bottom: 4px;
     background-color: white;
     border: 1px solid black;
+    color: black;
+}
+
+button.letter-button {
+    margin-top: 4px;
 }
 
 button.generation-button {
@@ -23,12 +28,13 @@ button.generation-button {
     float: left;
 }
 
-button.letter-button {
-    margin-top: 4px;
-}
-
 button.generation-button.transparent {
     opacity: 0.01;
+}
+
+button.letter-button:hover,
+button.generation-button:hover {
+    background-color: #f8f0f8; /* light purple */
 }
 
 button.letter-button.current,
