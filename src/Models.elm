@@ -70,8 +70,6 @@ missingNo : Pokemon
 missingNo =
     { number = 0
     , name = "MissingNo."
-
-    --, image = "https://cdn.bulbagarden.net/upload/9/98/Missingno_RB.png"
     , image = "https://wiki.p-insurgence.com/images/0/09/722.png"
     , url = "https://bulbapedia.bulbagarden.net/wiki/MissingNo."
     }
@@ -176,5 +174,7 @@ initialState =
     , generation = 1
     , letter = 'S'
     , pokedex = initialPokedex
+
+    --, cachedGenerations = List Int
     , ratings = initialRatings
     }

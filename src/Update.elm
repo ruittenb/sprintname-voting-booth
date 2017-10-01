@@ -1,9 +1,9 @@
 module Update exposing (..)
 
-import CommandsVote exposing (..)
-import Msgs exposing (Msg)
-import Models exposing (..)
 import Constants exposing (..)
+import Models exposing (..)
+import Msgs exposing (Msg)
+import CommandsRatings exposing (saveVotes)
 
 
 extractOneUserFromRatings : List UserRatings -> CurrentUserName -> List UserRatings
@@ -106,10 +106,14 @@ update msg oldState =
                                     newCurrentUserRatings :: otherUserRatings
                             in
                                 { oldState | ratings = newStateRatings, statusMessage = "" }
-
-                -- make save Cmd
             in
-                ( newState, Cmd.none )
+                ( newState, saveRatings newStateRatings )
+
+        Msgs.OnLoadRatings (Ok ratings) ->
+            ( { oldState | ratings = ratings, statusMessage = "" }, Cmd.none )
+
+        Msgs.OnLoadRatings (Err httpError) ->
+            ( { oldState | statusMessage = toString httpError, statusLevel = Error }, Cmd.none )
 
         -- TODO
         Msgs.OnLoadPokemon pokemon ->

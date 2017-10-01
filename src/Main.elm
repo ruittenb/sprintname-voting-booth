@@ -5,11 +5,12 @@ import View exposing (..)
 import Models exposing (..)
 import Update exposing (..)
 import Msgs exposing (Msg)
+import CommandsRatings exposing (Msg)
 
 
 init : ( ApplicationState, Cmd Msg )
 init =
-    ( initialState, Cmd.none )
+    ( initialState, loadRatings )
 
 
 subscriptions : ApplicationState -> Sub Msg

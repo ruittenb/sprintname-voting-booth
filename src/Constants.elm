@@ -3,6 +3,16 @@ module Constants exposing (..)
 import Char
 
 
+ratingsUrl : String
+ratingsUrl =
+    "http://localhost:4202"
+
+
+pokemonApiUrl : String
+pokemonApiUrl =
+    "http://pokeapi.co/api/v2/pokemon/"
+
+
 maxStars : Int
 maxStars =
     -- TODO not yet implemented. see ViewPokemon.voteWidget
