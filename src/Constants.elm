@@ -11,7 +11,7 @@ maxStars =
 
 triangularNumber : Int -> Int
 triangularNumber n =
-    List.foldl (+) 0 <| List.range 1 n
+    List.sum <| List.range 1 n
 
 
 totalVotes : Int
