@@ -13,7 +13,7 @@ messageBox : String -> StatusLevel -> Html Msg
 messageBox message level =
     span [ id "msgBoxContainer" ]
         [ span
-            [ id "messageBox"
+            [ id "message-box"
             , classList
                 [ ( "autohide", String.length message > 0 )
                 , ( "notice", level == Notice )
@@ -70,7 +70,7 @@ romanNumeralButton currentGen gen =
 
 romanNumeralButtons : Int -> String -> StatusLevel -> Html Msg
 romanNumeralButtons currentGen message level =
-    div [ id "generationButtons" ] <|
+    div [ id "generation-buttons" ] <|
         (List.map
             (romanNumeralButton currentGen)
             allGenerations
@@ -97,7 +97,7 @@ letterButton pokedex currentGen currentLetter letter =
 
 letterButtons : Pokedex -> Int -> Char -> Html Msg
 letterButtons pokedex currentGen currentLetter =
-    div [ id "letterButtons" ] <|
+    div [ id "letter-buttons" ] <|
         List.map
             (letterButton pokedex currentGen currentLetter)
             allLetters
@@ -105,7 +105,7 @@ letterButtons pokedex currentGen currentLetter =
 
 heading : ApplicationState -> Html Msg
 heading state =
-    div [ id "filterButtons" ]
+    div [ id "filter-buttons" ]
         [ romanNumeralButtons state.generation state.statusMessage state.statusLevel
         , letterButtons state.pokedex state.generation state.letter
         ]

@@ -43,7 +43,7 @@ button.letter-button:disabled {
     background-color: #eee;
 }
 
-#generationButtons {
+#generation-buttons {
     height: 36px;
     white-space: nowrap;
     display: block;
@@ -53,7 +53,7 @@ button.letter-button:disabled {
     display: block;
 }
 
-#messageBox {
+#message-box {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -63,29 +63,31 @@ button.letter-button:disabled {
     visibility: hidden;
 }
 
-#messageBox.notice {
+#message-box.notice {
     border: 1px solid #090; /* green */
     color: #090;
     background-color: #dfd; /* light greeo */
 }
 
-#messageBox.error {
+#message-box.error {
     border: 1px solid #c00; /* red */
     color: #c00;
     background-color: #fdd; /* light red / pink */
 }
 
-#messageBox.autohide {
+#message-box.autohide {
     visibility: visible;
     -webkit-animation: autoHide 6s forwards; 
     animation: autoHide 6s forwards;
 }
+
 @keyframes autoHide {
     0%   { opacity: 0; }
     10%  { opacity: 1; }
     75%  { opacity: 1; }
     100% { opacity: 0; }
 }
+
 @-webkit-keyframes autoHide {
     0%   { opacity: 0; }
     10%  { opacity: 1; }
