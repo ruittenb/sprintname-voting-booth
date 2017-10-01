@@ -61,7 +61,7 @@ update msg oldState =
 
                 -- the list of the other users
                 otherUserRatings =
-                    extractOneUserFromRatings oldState.ratings oldState.user
+                    extractOtherUsersFromRatings oldState.ratings oldState.user
 
                 -- extract user rating string, or create one
                 oldUserRatingString =
