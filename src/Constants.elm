@@ -3,6 +3,22 @@ module Constants exposing (..)
 import Char
 
 
+maxStars : Int
+maxStars =
+    -- TODO not yet implemented. see ViewPokemon.voteWidget
+    3
+
+
+triangularNumber : Int -> Int
+triangularNumber n =
+    List.foldl (+) 0 <| List.range 1 n
+
+
+totalVotes : Int
+totalVotes =
+    triangularNumber maxStars
+
+
 totalPokemon : Int
 totalPokemon =
     -- zero included

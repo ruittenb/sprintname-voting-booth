@@ -87,7 +87,7 @@ update msg oldState =
 
                 -- store new vote in rating string
                 newUserRatingString =
-                    (String.slice 1 pokemonNumber oldUserRatingString)
+                    (String.slice 0 pokemonNumber oldUserRatingString)
                         ++ (toString newPokeRating)
                         ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
 
@@ -105,24 +105,8 @@ update msg oldState =
                                 newStateRatings =
                                     newCurrentUserRatings :: otherUserRatings
                             in
-                                { oldState | ratings = newStateRatings }
+                                { oldState | ratings = newStateRatings, statusMessage = "" }
 
-                {-
-                   -- insert into new state
-                   newcurrentuserratings =
-                       case oldcurrentuserratings of
-                           nothing ->
-                               []
-
-                           just actualuserratings ->
-                               { actualuserratings | ratings = newuserratingstring }
-
-                   newstateratings =
-                       newcurrentuserratings :: otheruserratings
-
-                   newstate =
-                       { oldstate | ratings = newstateratings }
-                -}
                 -- make save Cmd
             in
                 ( newState, Cmd.none )
