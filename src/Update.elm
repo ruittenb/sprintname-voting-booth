@@ -3,8 +3,27 @@ module Update exposing (..)
 import CommandsVote exposing (..)
 import Msgs exposing (Msg)
 import Models exposing (..)
-import UpdateHelper exposing (..)
 import Constants exposing (..)
+
+
+extractOneUserFromRatings : List UserRatings -> CurrentUserName -> List UserRatings
+extractOneUserFromRatings ratings currentUser =
+    case currentUser of
+        Nothing ->
+            []
+
+        Just simpleUserName ->
+            List.filter (\p -> (==) simpleUserName p.userName) ratings
+
+
+extractOtherUsersFromRatings : List UserRatings -> CurrentUserName -> List UserRatings
+extractOtherUsersFromRatings ratings currentUser =
+    case currentUser of
+        Nothing ->
+            ratings
+
+        Just simpleUserName ->
+            List.filter (\p -> (/=) simpleUserName p.userName) ratings
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -30,24 +49,84 @@ update msg oldState =
                 else
                     ( oldState, Cmd.none )
 
+        Msgs.VoteForPokemon userVote ->
+            let
+                pokemonNumber =
+                    userVote.pokemonNumber
+
+                -- extract one user
+                oldCurrentUserRatings =
+                    extractOneUserFromRatings oldState.ratings oldState.user
+                        |> List.head
+
+                -- the list of the other users
+                otherUserRatings =
+                    extractOneUserFromRatings oldState.ratings oldState.user
+
+                -- extract user rating string, or create one
+                oldUserRatingString =
+                    case oldCurrentUserRatings of
+                        Nothing ->
+                            String.repeat totalPokemon "0"
+
+                        Just actualUserRatings ->
+                            actualUserRatings.ratings
+
+                -- extract one pokemon rating
+                oldPokeRating =
+                    String.slice pokemonNumber (pokemonNumber + 1) oldUserRatingString
+                        |> String.toInt
+                        |> Result.withDefault 0
+
+                -- find new vote. If the same as old vote, clear it
+                newPokeRating =
+                    if oldPokeRating == userVote.vote then
+                        0
+                    else
+                        userVote.vote
+
+                -- store new vote in rating string
+                newUserRatingString =
+                    (String.slice 1 pokemonNumber oldUserRatingString)
+                        ++ (toString newPokeRating)
+                        ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
+
+                -- insert into new state
+                newState =
+                    case oldCurrentUserRatings of
+                        Nothing ->
+                            oldState
+
+                        Just actualUserRatings ->
+                            let
+                                newCurrentUserRatings =
+                                    { actualUserRatings | ratings = newUserRatingString }
+
+                                newStateRatings =
+                                    newCurrentUserRatings :: otherUserRatings
+                            in
+                                { oldState | ratings = newStateRatings }
+
+                {-
+                   -- insert into new state
+                   newcurrentuserratings =
+                       case oldcurrentuserratings of
+                           nothing ->
+                               []
+
+                           just actualuserratings ->
+                               { actualuserratings | ratings = newuserratingstring }
+
+                   newstateratings =
+                       newcurrentuserratings :: otheruserratings
+
+                   newstate =
+                       { oldstate | ratings = newstateratings }
+                -}
+                -- make save Cmd
+            in
+                ( newState, Cmd.none )
+
         -- TODO
         Msgs.OnLoadPokemon pokemon ->
             ( oldState, Cmd.none )
-
-        Msgs.VoteForPokemon userVote ->
-            {-
-               let
-                   allVotes =
-                       newPokemon.votes
-
-                   validVotes =
-                       List.filter (numberBetween 0 3) allVotes
-
-                   allVotesValid =
-                       (List.length allVotes) == (List.length validVotes)
-               in
-            -}
-            if False then
-                ( oldState, Cmd.none )
-            else
-                ( oldState, Cmd.none )

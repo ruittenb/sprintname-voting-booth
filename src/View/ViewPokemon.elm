@@ -4,6 +4,7 @@ import List exposing (..)
 import Maybe exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Html.Events exposing (..)
 
 
 {-
@@ -16,7 +17,6 @@ import Html.Attributes exposing (..)
    import Material.Elevation as Elevation
 -}
 
-import ViewHelper exposing (..)
 import Helpers exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
@@ -46,9 +46,14 @@ pokemonImg imageUrl =
         []
 
 
-voteWidget : List UserRating -> Html Msg
-voteWidget ownRatings =
+voteWidget : List UserRating -> Int -> Html Msg
+voteWidget ownRatings pokemonNumber =
     let
+        userVote =
+            { pokemonNumber = pokemonNumber
+            , vote = 0
+            }
+
         rating =
             case List.head ownRatings of
                 Nothing ->
@@ -63,6 +68,7 @@ voteWidget ownRatings =
                     [ ( "star", True )
                     , ( "selected", rating > 0 )
                     ]
+                , onClick (Msgs.VoteForPokemon { userVote | vote = 1 })
                 ]
                 []
             , span
@@ -70,6 +76,7 @@ voteWidget ownRatings =
                     [ ( "star", True )
                     , ( "selected", rating > 1 )
                     ]
+                , onClick (Msgs.VoteForPokemon { userVote | vote = 2 })
                 ]
                 []
             , span
@@ -77,6 +84,7 @@ voteWidget ownRatings =
                     [ ( "star", True )
                     , ( "selected", rating > 2 )
                     ]
+                , onClick (Msgs.VoteForPokemon { userVote | vote = 3 })
                 ]
                 []
             ]
@@ -130,6 +138,26 @@ extractOnePokemonFromRatings ratings pokemon =
         ratings
 
 
+extractOneUserFromRatings : List UserRating -> CurrentUserName -> List UserRating
+extractOneUserFromRatings ratings currentUser =
+    case currentUser of
+        Nothing ->
+            []
+
+        Just simpleUserName ->
+            List.filter (\p -> (==) simpleUserName p.userName) ratings
+
+
+extractOtherUsersFromRatings : List UserRating -> CurrentUserName -> List UserRating
+extractOtherUsersFromRatings ratings currentUser =
+    case currentUser of
+        Nothing ->
+            ratings
+
+        Just simpleUserName ->
+            List.filter (\p -> (/=) simpleUserName p.userName) ratings
+
+
 pokemonTile : List UserRatings -> CurrentUserName -> Pokemon -> Html Msg
 pokemonTile ratings currentUser pokemon =
     let
@@ -140,20 +168,10 @@ pokemonTile ratings currentUser pokemon =
             extractOnePokemonFromRatings ratings pokemon
 
         ownRatings =
-            case currentUser of
-                Nothing ->
-                    []
-
-                Just simpleUserName ->
-                    List.filter (\p -> (==) simpleUserName p.userName) allUserRatings
+            extractOneUserFromRatings allUserRatings currentUser
 
         otherRatings =
-            case currentUser of
-                Nothing ->
-                    allUserRatings
-
-                Just simpleUserName ->
-                    List.filter (\p -> (/=) simpleUserName p.userName) allUserRatings
+            extractOneUserFromRatings allUserRatings currentUser
     in
         div [ class "poketile" ]
             [ p []
@@ -164,7 +182,7 @@ pokemonTile ratings currentUser pokemon =
                 [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image
                 ]
             , ratingWidget otherRatings
-            , voteWidget ownRatings
+            , voteWidget ownRatings pokemon.number
             ]
 
 

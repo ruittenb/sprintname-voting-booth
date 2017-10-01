@@ -3,6 +3,14 @@ module Helpers exposing (..)
 import Models exposing (..)
 
 
+numberBetween : Int -> Int -> Int -> Bool
+numberBetween min max value =
+    if min <= value && value <= max then
+        True
+    else
+        False
+
+
 firstLetterIs : Char -> String -> Bool
 firstLetterIs letter word =
     let
