@@ -3,8 +3,8 @@ module Constants exposing (..)
 import Char
 
 
-ratingsUrl : String
-ratingsUrl =
+ratingsApiUrl : String
+ratingsApiUrl =
     "http://localhost:4202"
 
 
