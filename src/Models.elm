@@ -249,9 +249,34 @@ initialPokedex =
               , number = 346
               }
             , { url = "https://bulbapedia.bulbagarden.net/wiki/Crawdaunt_(Pok%C3%A9mon)"
-              , image = "https://img.pokemondb.net/artwork/Crawdaunt.jpg"
+              , image = "https://img.pokemondb.net/artwork/crawdaunt.jpg"
               , name = "Crawdaunt"
               , number = 342
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Delcatty_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/delcatty.jpg"
+              , name = "Delcatty"
+              , number = 301
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Deoxys_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/deoxys-normal.jpg"
+              , name = "Deoxys"
+              , number = 386
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Dusclops_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/dusclops.jpg"
+              , name = "Dusclops"
+              , number = 356
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Duskull_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/duskull.jpg"
+              , name = "Duskull"
+              , number = 355
+              }
+            , { url = "https://bulbapedia.bulbagarden.net/wiki/Dustox_(Pok%C3%A9mon)"
+              , image = "https://img.pokemondb.net/artwork/dustox.jpg"
+              , name = "Dustox"
+              , number = 269
               }
             ]
       }
