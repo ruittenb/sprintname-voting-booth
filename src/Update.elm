@@ -36,16 +36,19 @@ update msg oldState =
             let
                 ( statusMessage, statusLevel ) =
                     case ratings of
+                        NotAsked ->
+                            ( "Preparing...", Notice )
+
+                        Loading ->
+                            ( "Loading...", Notice )
+
                         Success _ ->
                             ( "", None )
 
                         Failure mess ->
                             ( toString mess, Error )
-
-                        _ ->
-                            ( "", None )
             in
-                ( { oldState | statusMessage = statusMessage, statusLevel = statusLevel }, Cmd.none )
+                ( { oldState | ratings = ratings, statusMessage = statusMessage, statusLevel = statusLevel }, Cmd.none )
 
         Msgs.ChangeGeneration newGen ->
             let

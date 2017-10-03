@@ -10,22 +10,6 @@ import Models exposing (..)
 import Msgs exposing (Msg)
 
 
-exampleTeamRatings : Encode.Value
-exampleTeamRatings =
-    Encode.list
-        [ Encode.object
-            [ ( "userName", Encode.string "Brian" )
-            , ( "color", Encode.string "blue" )
-            , ( "ratings", Encode.string "1020010012" )
-            ]
-        , Encode.object
-            [ ( "userName", Encode.string "René" )
-            , ( "color", Encode.string "green" )
-            , ( "ratings", Encode.string "0101020010" )
-            ]
-        ]
-
-
 loadRatings : Cmd Msg
 loadRatings =
     Http.get ratingsApiUrl decodeTeamRatings
