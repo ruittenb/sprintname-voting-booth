@@ -188,9 +188,17 @@ button.letter-button:disabled {
     margin: 32px auto 0 auto;
     background: transparent url(icons/cross.png) top left no-repeat;
 }
+
 .loading-busy {
     height: 10px;
     width: 32px;
     margin: 36px auto 0 auto;
     background: transparent url(icons/loading.gif) top left no-repeat;
+}
+
+.unknown-user {
+    height: 16px;
+    width: 16px;
+    margin: 0 auto 0 auto;
+    background: transparent url(icons/user-unknown.png) top left no-repeat;
 }

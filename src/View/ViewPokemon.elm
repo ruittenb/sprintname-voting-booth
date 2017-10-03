@@ -27,14 +27,17 @@ import Msgs exposing (Msg)
 
 loadingBusyIcon : Html Msg
 loadingBusyIcon =
-    div [ class "loading-busy" ]
-        []
+    div [ class "loading-busy" ] []
 
 
 loadingErrorIcon : Html Msg
 loadingErrorIcon =
-    div [ class "loading-error" ]
-        []
+    div [ class "loading-error" ] []
+
+
+unknownUserIcon : Html Msg
+unknownUserIcon =
+    div [ class "unknown-user" ] []
 
 
 linkTo : String -> Html Msg -> Html Msg
@@ -198,7 +201,7 @@ pokemonTile ratings currentUser pokemon =
         actualVoteWidget =
             case currentUser of
                 Nothing ->
-                    text ""
+                    unknownUserIcon
 
                 Just actualUserName ->
                     voteWidget ownRatings pokemon.number actualUserName
