@@ -48,7 +48,13 @@ update msg oldState =
                         Failure mess ->
                             ( toString mess, Error )
             in
-                ( { oldState | ratings = ratings, statusMessage = statusMessage, statusLevel = statusLevel }, Cmd.none )
+                ( { oldState
+                    | ratings = ratings
+                    , statusMessage = statusMessage
+                    , statusLevel = statusLevel
+                  }
+                , Cmd.none
+                )
 
         Msgs.ChangeGeneration newGen ->
             let

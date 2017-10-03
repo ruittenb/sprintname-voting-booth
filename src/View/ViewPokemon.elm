@@ -38,6 +38,12 @@ linkToLighthouse url lighthouseData content =
         [ content ]
 
 
+loadingBusyIcon : Html Msg
+loadingBusyIcon =
+    div [ class "loading-busy" ]
+        []
+
+
 loadingErrorIcon : Html Msg
 loadingErrorIcon =
     div [ class "loading-error" ]
@@ -185,8 +191,11 @@ pokemonTile ratings currentUser pokemon =
                         , voteWidget ownRatings pokemon.number
                         ]
 
-                    _ ->
+                    RemoteData.Failure _ ->
                         [ loadingErrorIcon ]
+
+                    _ ->
+                        [ loadingBusyIcon ]
 
 
 pokemonTiles : List Pokemon -> WebData TeamRatings -> CurrentUserName -> List (Html Msg)
