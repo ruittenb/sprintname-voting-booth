@@ -167,5 +167,5 @@ button.letter-button:disabled {
     height: 16px;
     width: 16px;
     margin: 16px auto 0 auto;
-    background: transparent url(cross.png) top left no-repeat;
+    background: transparent url(icons/cross.png) top left no-repeat;
 }
