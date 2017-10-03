@@ -1,11 +1,11 @@
 module Main exposing (..)
 
 import Html exposing (..)
-import View exposing (..)
 import Models exposing (..)
-import Update exposing (..)
+import View exposing (view)
+import Update exposing (update)
 import Msgs exposing (Msg)
-import CommandsRatings exposing (Msg)
+import CommandsRatings exposing (loadRatings)
 
 
 init : ( ApplicationState, Cmd Msg )

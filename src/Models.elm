@@ -22,21 +22,6 @@ type alias CurrentUserName =
     Maybe String
 
 
-type alias TeamRatings =
-    List UserRatings
-
-
-type alias ApplicationState =
-    { user : CurrentUserName
-    , statusMessage : String
-    , statusLevel : StatusLevel
-    , generation : Int
-    , letter : Char
-    , pokedex : Pokedex
-    , ratings : TeamRatings
-    }
-
-
 type alias UserRating =
     { userName : String
     , color : String
@@ -48,6 +33,27 @@ type alias UserRatings =
     { userName : String
     , color : String
     , ratings : String
+    }
+
+
+type alias TeamRatings =
+    List UserRatings
+
+
+type alias TeamRatingsJson =
+    { users : TeamRatings
+    }
+
+
+type alias ApplicationState =
+    { user : CurrentUserName
+    , statusMessage : String
+    , statusLevel : StatusLevel
+    , generation : Int
+    , letter : Char
+    , cachedGenerations : List Int
+    , pokedex : Pokedex
+    , ratings : TeamRatings
     }
 
 
@@ -290,8 +296,7 @@ initialState =
     , statusLevel = Notice
     , generation = 1
     , letter = 'S'
+    , cachedGenerations = [ 0 ]
     , pokedex = initialPokedex
-
-    --, cachedGenerations = List Int
     , ratings = []
     }

@@ -5,7 +5,7 @@ import Char
 
 ratingsApiUrl : String
 ratingsApiUrl =
-    "http://localhost:4202"
+    "http://localhost:4202/db"
 
 
 pokemonApiUrl : String

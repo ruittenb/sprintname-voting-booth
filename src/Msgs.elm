@@ -1,6 +1,8 @@
 module Msgs exposing (..)
 
---import Http
+import Http
+
+
 --import Material
 --import RemoteData exposing (WebData)
 
@@ -9,7 +11,7 @@ import Models exposing (..)
 
 type Msg
     = VoteForPokemon UserVote
-    | OnLoadVotes List UserRatings
+    | OnLoadRatings (Result String TeamRatingsJson)
     | ChangeGeneration Int
     | ChangeLetter Char
     | OnLoadPokemon Pokemon

@@ -3,7 +3,7 @@ var jsonServer = require('json-server');
 var server = jsonServer.create();
 server.use(jsonServer.defaults());
 
-var router = jsonServer.router('data/pokedex.json');
+var router = jsonServer.router('data/ratings.json');
 server.use(router);
 
 var serverPort = 4202;

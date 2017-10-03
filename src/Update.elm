@@ -29,6 +29,12 @@ extractOtherUsersFromRatings ratings currentUser =
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
+        Msgs.OnLoadRatings (Ok ratings) ->
+            ( { oldState | ratings = ratings, statusMessage = "" }, Cmd.none )
+
+        Msgs.OnLoadRatings (Err httpError) ->
+            ( { oldState | statusMessage = toString httpError, statusLevel = Error }, Cmd.none )
+
         Msgs.ChangeGeneration newGen ->
             let
                 newState =
@@ -108,12 +114,6 @@ update msg oldState =
                                 { oldState | ratings = newStateRatings, statusMessage = "" }
             in
                 ( newState, saveRatings newStateRatings )
-
-        Msgs.OnLoadRatings (Ok ratings) ->
-            ( { oldState | ratings = ratings, statusMessage = "" }, Cmd.none )
-
-        Msgs.OnLoadRatings (Err httpError) ->
-            ( { oldState | statusMessage = toString httpError, statusLevel = Error }, Cmd.none )
 
         -- TODO
         Msgs.OnLoadPokemon pokemon ->
