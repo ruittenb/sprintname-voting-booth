@@ -21,7 +21,7 @@ type alias UserVote =
     }
 
 
-type alias CurrentUserName =
+type alias CurrentUser =
     Maybe String
 
 
@@ -48,7 +48,7 @@ type alias TeamRatings =
 
 
 type alias ApplicationState =
-    { user : CurrentUserName
+    { user : CurrentUser
     , statusMessage : String
     , statusLevel : StatusLevel
     , generation : Int
@@ -277,7 +277,7 @@ initialPokedex =
 
 initialState : ApplicationState
 initialState =
-    { user = Just "René"
+    { user = Nothing
     , statusMessage = ""
     , statusLevel = None
     , generation = 3

@@ -9,7 +9,7 @@ import RemoteData exposing (..)
 -- import CommandsRatings exposing (..)
 
 
-extractOneUserFromRatings : TeamRatings -> CurrentUserName -> List UserRatings
+extractOneUserFromRatings : TeamRatings -> CurrentUser -> List UserRatings
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -19,7 +19,7 @@ extractOneUserFromRatings ratings currentUser =
             List.filter (\p -> (==) simpleUserName p.userName) ratings
 
 
-extractOtherUsersFromRatings : TeamRatings -> CurrentUserName -> List UserRatings
+extractOtherUsersFromRatings : TeamRatings -> CurrentUser -> List UserRatings
 extractOtherUsersFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -55,6 +55,24 @@ update msg oldState =
                   }
                 , Cmd.none
                 )
+
+        Msgs.ChangeUser newUser ->
+            let
+                newState =
+                    case oldState.ratings of
+                        RemoteData.Success actualRatings ->
+                            if
+                                List.map .userName actualRatings
+                                    |> List.member newUser
+                            then
+                                { oldState | user = Just newUser }
+                            else
+                                oldState
+
+                        _ ->
+                            oldState
+            in
+                ( newState, Cmd.none )
 
         Msgs.ChangeGeneration newGen ->
             let

@@ -3,6 +3,7 @@ module ViewApplication exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
+import RemoteData exposing (..)
 import Helpers exposing (..)
 import Msgs exposing (Msg)
 import Models exposing (..)
@@ -11,7 +12,7 @@ import Constants exposing (..)
 
 messageBox : String -> StatusLevel -> Html Msg
 messageBox message level =
-    span [ id "msgBoxContainer" ]
+    span [ id "message-box-container" ]
         [ span
             [ id "message-box"
             , classList
@@ -103,9 +104,39 @@ letterButtons pokedex currentGen currentLetter =
             allLetters
 
 
+userButton : String -> String -> Html Msg
+userButton currentUserName userName =
+    button
+        [ classList
+            [ ( "user-button", True )
+            , ( "current", userName == currentUserName )
+            ]
+        , onClick (Msgs.ChangeUser userName)
+        ]
+        [ text userName ]
+
+
+userButtons : WebData TeamRatings -> CurrentUser -> Html Msg
+userButtons ratings currentUser =
+    case ratings of
+        RemoteData.Success actualRatings ->
+            let
+                currentUserName =
+                    Maybe.withDefault "" currentUser
+            in
+                div [ id "user-buttons" ] <|
+                    List.map
+                        (.userName >> userButton currentUserName)
+                        actualRatings
+
+        _ ->
+            div [ id "user-button-placeholder" ] []
+
+
 heading : ApplicationState -> Html Msg
 heading state =
     div [ id "filter-buttons" ]
-        [ romanNumeralButtons state.generation state.statusMessage state.statusLevel
+        [ userButtons state.ratings state.user
+        , romanNumeralButtons state.generation state.statusMessage state.statusLevel
         , letterButtons state.pokedex state.generation state.letter
         ]

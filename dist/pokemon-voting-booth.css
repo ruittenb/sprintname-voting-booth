@@ -8,9 +8,9 @@ body {
     background-color: #f0f0f0 !important;
 }
 
+button.user-button,
 button.letter-button,
 button.generation-button {
-    width: 40px;
     height: 30px;
     margin-right: 4px;
     margin-bottom: 4px;
@@ -19,11 +19,16 @@ button.generation-button {
     color: black;
 }
 
+button.user-button {
+    width: 84px;
+}
+
 button.letter-button {
-    margin-top: 4px;
+    width: 40px;
 }
 
 button.generation-button {
+    width: 40px;
     display: block;
     float: left;
 }
@@ -32,11 +37,13 @@ button.generation-button.transparent {
     opacity: 0.01;
 }
 
+button.user-button:hover,
 button.letter-button:hover,
 button.generation-button:hover {
     background-color: #f8f0f8; /* light purple */
 }
 
+button.user-button.current,
 button.letter-button.current,
 button.generation-button.current,
 button.generation-button.current.transparent {
@@ -49,13 +56,19 @@ button.letter-button:disabled {
     background-color: #eee;
 }
 
+
+#user-buttons,
+#generation-buttons,
+#letter-buttons {
+    height: 38px;
+}
+
 #generation-buttons {
-    height: 36px;
     white-space: nowrap;
     display: block;
 }
 
-#msgBoxContainer {
+#message-box-container {
     display: block;
 }
 
