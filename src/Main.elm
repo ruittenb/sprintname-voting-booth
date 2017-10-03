@@ -20,6 +20,11 @@ subscriptions state =
 
 main : Program Never ApplicationState Msg
 main =
+    {-
+       decodeTeamRatings exampleTeamRatings
+           |> toString
+           |> Html.text
+    -}
     Html.program
         { init = init
         , view = view

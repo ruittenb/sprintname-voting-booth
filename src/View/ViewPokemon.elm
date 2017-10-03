@@ -5,6 +5,7 @@ import Maybe exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import RemoteData exposing (WebData)
 
 
 {-
@@ -37,6 +38,12 @@ linkToLighthouse url lighthouseData content =
         [ content ]
 
 
+loadingErrorIcon : Html Msg
+loadingErrorIcon =
+    div [ class "loading-error" ]
+        []
+
+
 pokemonImg : String -> Html Msg
 pokemonImg imageUrl =
     img
@@ -46,7 +53,7 @@ pokemonImg imageUrl =
         []
 
 
-voteWidget : List UserRating -> Int -> Html Msg
+voteWidget : TeamRating -> Int -> Html Msg
 voteWidget ownRatings pokemonNumber =
     let
         userVote =
@@ -103,27 +110,32 @@ ratingNode rating =
             List.repeat rating.rating star
 
 
-ratingWidget : List UserRating -> Html Msg
+ratingWidget : TeamRating -> Html Msg
 ratingWidget ratings =
     div [ class "rating-nodes" ] <| List.map ratingNode ratings
 
 
-extractOnePokemonFromRatings : List UserRatings -> Pokemon -> List UserRating
+extractOnePokemonFromRatings : WebData TeamRatings -> Pokemon -> TeamRating
 extractOnePokemonFromRatings ratings pokemon =
-    List.map
-        (\r ->
-            { userName = r.userName
-            , color = r.color
-            , rating =
-                String.slice pokemon.number (pokemon.number + 1) r.ratings
-                    |> String.toInt
-                    |> Result.withDefault 0
-            }
-        )
-        ratings
+    case ratings of
+        RemoteData.Success actualRatings ->
+            List.map
+                (\r ->
+                    { userName = r.userName
+                    , color = r.color
+                    , rating =
+                        String.slice pokemon.number (pokemon.number + 1) r.ratings
+                            |> String.toInt
+                            |> Result.withDefault 0
+                    }
+                )
+                actualRatings
+
+        _ ->
+            []
 
 
-extractOneUserFromRatings : List UserRating -> CurrentUserName -> List UserRating
+extractOneUserFromRatings : TeamRating -> CurrentUserName -> TeamRating
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -133,7 +145,7 @@ extractOneUserFromRatings ratings currentUser =
             List.filter (\p -> (==) simpleUserName p.userName) ratings
 
 
-extractOtherUsersFromRatings : List UserRating -> CurrentUserName -> List UserRating
+extractOtherUsersFromRatings : TeamRating -> CurrentUserName -> TeamRating
 extractOtherUsersFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -143,7 +155,7 @@ extractOtherUsersFromRatings ratings currentUser =
             List.filter (\p -> (/=) simpleUserName p.userName) ratings
 
 
-pokemonTile : List UserRatings -> CurrentUserName -> Pokemon -> Html Msg
+pokemonTile : WebData TeamRatings -> CurrentUserName -> Pokemon -> Html Msg
 pokemonTile ratings currentUser pokemon =
     let
         lighthouseData =
@@ -158,7 +170,7 @@ pokemonTile ratings currentUser pokemon =
         otherRatings =
             extractOtherUsersFromRatings allUserRatings currentUser
     in
-        div [ class "poketile" ]
+        div [ class "poketile" ] <|
             [ p []
                 [ text <| toString pokemon.number
                 , linkTo pokemon.url <| text pokemon.name
@@ -166,12 +178,18 @@ pokemonTile ratings currentUser pokemon =
             , div [ class "pokemon-image-square" ]
                 [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image
                 ]
-            , ratingWidget otherRatings
-            , voteWidget ownRatings pokemon.number
             ]
+                ++ case ratings of
+                    RemoteData.Success _ ->
+                        [ ratingWidget otherRatings
+                        , voteWidget ownRatings pokemon.number
+                        ]
+
+                    _ ->
+                        [ loadingErrorIcon ]
 
 
-pokemonTiles : List Pokemon -> List UserRatings -> CurrentUserName -> List (Html Msg)
+pokemonTiles : List Pokemon -> WebData TeamRatings -> CurrentUserName -> List (Html Msg)
 pokemonTiles pokelist ratings currentUser =
     List.map (pokemonTile ratings currentUser) pokelist
 

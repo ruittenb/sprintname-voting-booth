@@ -1,9 +1,12 @@
 module Models exposing (..)
 
+import RemoteData exposing (WebData)
+
 
 type StatusLevel
     = Error
     | Notice
+    | None
 
 
 type alias LighthouseData =
@@ -36,13 +39,12 @@ type alias UserRatings =
     }
 
 
+type alias TeamRating =
+    List UserRating
+
+
 type alias TeamRatings =
     List UserRatings
-
-
-type alias TeamRatingsJson =
-    { users : TeamRatings
-    }
 
 
 type alias ApplicationState =
@@ -53,7 +55,7 @@ type alias ApplicationState =
     , letter : Char
     , cachedGenerations : List Int
     , pokedex : Pokedex
-    , ratings : TeamRatings
+    , ratings : WebData TeamRatings
     }
 
 
@@ -293,10 +295,10 @@ initialState : ApplicationState
 initialState =
     { user = Just "René"
     , statusMessage = ""
-    , statusLevel = Notice
+    , statusLevel = None
     , generation = 1
     , letter = 'S'
     , cachedGenerations = [ 0 ]
     , pokedex = initialPokedex
-    , ratings = []
+    , ratings = RemoteData.NotAsked
     }

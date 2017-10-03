@@ -163,3 +163,9 @@ button.letter-button:disabled {
     color: #eee; /* light grey */
 }
 
+.loading-error {
+    height: 16px;
+    width: 16px;
+    margin: 16px auto 0 auto;
+    background: transparent url(cross.png) top left no-repeat;
+}
