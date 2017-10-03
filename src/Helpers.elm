@@ -104,4 +104,4 @@ filterPokedex pokedex generation letter =
                 Just pokeGeneration ->
                     List.filter (\d -> firstLetterIs letter d.name) pokeGeneration.pokemon
     in
-        currentGenerationAndLetter
+        List.sortBy .name currentGenerationAndLetter
