@@ -1,15 +1,16 @@
 module Main exposing (..)
 
 import Html exposing (..)
-import View exposing (..)
 import Models exposing (..)
-import Update exposing (..)
+import View exposing (view)
+import Update exposing (update)
 import Msgs exposing (Msg)
+import CommandsRatings exposing (loadRatings)
 
 
 init : ( ApplicationState, Cmd Msg )
 init =
-    ( initialState, Cmd.none )
+    ( initialState, loadRatings )
 
 
 subscriptions : ApplicationState -> Sub Msg
@@ -19,6 +20,11 @@ subscriptions state =
 
 main : Program Never ApplicationState Msg
 main =
+    {-
+       decodeTeamRatings exampleTeamRatings
+           |> toString
+           |> Html.text
+    -}
     Html.program
         { init = init
         , view = view

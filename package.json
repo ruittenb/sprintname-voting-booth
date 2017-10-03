@@ -1,7 +1,7 @@
 {
   "name": "elm-pokemon-voting-booth",
   "version": "1.0.0",
-  "description": "Pokémon Voting Booth",
+  "description": "Pokémon Sprint Name Voting Booth",
   "author": "René Uittenbogaard <rene.uittenbogaard@proforto.nl>",
   "dependencies": {
     "ace-css": "1.1",
