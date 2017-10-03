@@ -81,7 +81,7 @@ missingNo : Pokemon
 missingNo =
     { number = 0
     , name = "MissingNo."
-    , image = ""
+    , image = missingNoImgUrl
     , url = "https://bulbapedia.bulbagarden.net/wiki/MissingNo."
     }
 

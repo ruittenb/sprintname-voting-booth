@@ -1,6 +1,18 @@
 module Helpers exposing (..)
 
+import Char exposing (toUpper)
+import String exposing (cons, uncons)
 import Models exposing (..)
+
+
+capitalized : String -> String
+capitalized name =
+    case String.uncons name of
+        Nothing ->
+            name
+
+        Just ( initial, rest ) ->
+            String.cons (Char.toUpper initial) rest
 
 
 {-| returns the generation number for the pokemon number

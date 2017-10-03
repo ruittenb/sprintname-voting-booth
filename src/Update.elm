@@ -47,14 +47,39 @@ update msg oldState =
 
                         Failure mess ->
                             ( toString mess, Error )
+
+                newState =
+                    { oldState
+                        | statusMessage = statusMessage
+                        , statusLevel = statusLevel
+                        , ratings = ratings
+                    }
             in
-                ( { oldState
-                    | ratings = ratings
-                    , statusMessage = statusMessage
-                    , statusLevel = statusLevel
-                  }
-                , Cmd.none
-                )
+                ( newState, Cmd.none )
+
+        Msgs.OnLoadPokemon pokemon ->
+            let
+                ( statusMessage, statusLevel ) =
+                    case pokemon of
+                        NotAsked ->
+                            ( "Preparing...", Notice )
+
+                        Loading ->
+                            ( "Loading...", Notice )
+
+                        Success p ->
+                            ( toString p.name, Notice )
+
+                        Failure mess ->
+                            ( toString mess, Error )
+
+                newState =
+                    { oldState
+                        | statusMessage = statusMessage
+                        , statusLevel = statusLevel
+                    }
+            in
+                ( newState, Cmd.none )
 
         Msgs.ChangeUser newUser ->
             let
@@ -165,9 +190,8 @@ update msg oldState =
                     in
                         ( newState, Cmd.none )
 
-        {-
-           ( newState, saveRatings newStateRatings )
-        -}
-        -- TODO
-        Msgs.OnLoadPokemon pokemon ->
-            ( oldState, Cmd.none )
+
+
+{-
+   ( newState, saveRatings newStateRatings )
+-}

@@ -10,12 +10,17 @@ ratingsApiUrl =
 
 pokemonApiUrl : String
 pokemonApiUrl =
-    "http://pokeapi.co/api/v2/pokemon/"
+    "https://pokeapi.co/api/v2/pokemon/"
 
 
 pokemonImageBaseUrl : String
 pokemonImageBaseUrl =
     "https://assets.pokemon.com/assets/cms2/img/pokedex/full/"
+
+
+wikiUrl : String -> String
+wikiUrl name =
+    "https://bulbapedia.bulbagarden.net/wiki/" ++ name ++ "_(Pok%C3%A9mon)"
 
 
 maxStars : Int

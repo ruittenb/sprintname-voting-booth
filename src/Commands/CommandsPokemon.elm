@@ -1,11 +1,50 @@
 module CommandsPokemon exposing (..)
 
+import Http exposing (get)
+import RemoteData exposing (WebData, sendRequest)
+import Json.Encode as Encode
+import Json.Decode as Decode exposing (Decoder, decodeValue)
+import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Constants exposing (..)
+import Helpers exposing (capitalized)
 import Models exposing (..)
-import Msgs exposing (..)
+import Msgs exposing (Msg)
+import Numeral exposing (format)
 
 
-loadPokemon : number -> Pokemon
+loadPokemon : Int -> Cmd Msg
 loadPokemon num =
-    -- Msgs.OnLoadPokemon
-    missingNo
+    let
+        pokemonNumApiUrl =
+            pokemonApiUrl ++ toString num
+    in
+        Http.get pokemonNumApiUrl (decodePokemon num)
+            |> RemoteData.sendRequest
+            |> Cmd.map Msgs.OnLoadPokemon
+
+
+decodePokemon : Int -> Decoder Pokemon
+decodePokemon num =
+    let
+        imageUrl =
+            case num of
+                0 ->
+                    missingNoImgUrl
+
+                _ ->
+                    pokemonImageBaseUrl ++ format "000" (toFloat num) ++ ".png"
+
+        toDecoder id name =
+            let
+                capName =
+                    capitalized name
+
+                pokemonWikiUrl =
+                    wikiUrl capName
+            in
+                Decode.succeed (Pokemon id capName imageUrl pokemonWikiUrl)
+    in
+        decode toDecoder
+            |> required "id" Decode.int
+            |> required "name" Decode.string
+            |> resolve

@@ -5,7 +5,6 @@ import Maybe exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Numeral exposing (format)
 import Constants exposing (pokemonImageBaseUrl, maxStars)
 import RemoteData exposing (WebData)
 
@@ -66,16 +65,6 @@ pokemonImg imageUrl =
         , class "pokemon-image"
         ]
         []
-
-
-getPokemonImgUrl : Int -> String
-getPokemonImgUrl pokemonNumber =
-    case pokemonNumber of
-        0 ->
-            missingNoImgUrl
-
-        _ ->
-            pokemonImageBaseUrl ++ format "000" (toFloat pokemonNumber) ++ ".png"
 
 
 voteWidgetStar : Int -> String -> Int -> Int -> Html Msg
@@ -193,9 +182,6 @@ pokemonTile ratings currentUser pokemon =
 
                 Just actualUserName ->
                     voteWidget ownRatings pokemon.number actualUserName
-
-        pokemonImgUrl =
-            getPokemonImgUrl pokemon.number
     in
         div [ class "poketile" ] <|
             [ p []
@@ -203,7 +189,7 @@ pokemonTile ratings currentUser pokemon =
                 , linkTo pokemon.url <| text pokemon.name
                 ]
             , div [ class "pokemon-image-square" ]
-                [ linkToLighthouse pokemonImgUrl lighthouseData <| pokemonImg pokemonImgUrl
+                [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image
                 ]
             ]
                 ++ case ratings of
