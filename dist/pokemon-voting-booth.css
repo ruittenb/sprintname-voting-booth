@@ -166,12 +166,12 @@ button.letter-button:disabled {
 .loading-error {
     height: 16px;
     width: 16px;
-    margin: 16px auto 0 auto;
+    margin: 32px auto 0 auto;
     background: transparent url(icons/cross.png) top left no-repeat;
 }
 .loading-busy {
     height: 10px;
     width: 32px;
-    margin: 16px auto 0 auto;
+    margin: 36px auto 0 auto;
     background: transparent url(icons/loading.gif) top left no-repeat;
 }
