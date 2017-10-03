@@ -160,7 +160,7 @@ extractOnePokemonFromRatings ratings pokemon =
             []
 
 
-extractOneUserFromRatings : TeamRating -> CurrentUserName -> TeamRating
+extractOneUserFromRatings : TeamRating -> CurrentUser -> TeamRating
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -170,7 +170,7 @@ extractOneUserFromRatings ratings currentUser =
             List.filter (\p -> (==) simpleUserName p.userName) ratings
 
 
-extractOtherUsersFromRatings : TeamRating -> CurrentUserName -> TeamRating
+extractOtherUsersFromRatings : TeamRating -> CurrentUser -> TeamRating
 extractOtherUsersFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -180,7 +180,7 @@ extractOtherUsersFromRatings ratings currentUser =
             List.filter (\p -> (/=) simpleUserName p.userName) ratings
 
 
-pokemonTile : WebData TeamRatings -> CurrentUserName -> Pokemon -> Html Msg
+pokemonTile : WebData TeamRatings -> CurrentUser -> Pokemon -> Html Msg
 pokemonTile ratings currentUser pokemon =
     let
         lighthouseData =
@@ -228,7 +228,7 @@ pokemonTile ratings currentUser pokemon =
                         [ loadingBusyIcon ]
 
 
-pokemonTiles : List Pokemon -> WebData TeamRatings -> CurrentUserName -> List (Html Msg)
+pokemonTiles : List Pokemon -> WebData TeamRatings -> CurrentUser -> List (Html Msg)
 pokemonTiles pokelist ratings currentUser =
     List.map (pokemonTile ratings currentUser) pokelist
 

@@ -9,6 +9,7 @@ import Models exposing (..)
 type Msg
     = VoteForPokemon UserVote
     | OnLoadRatings (WebData TeamRatings)
+    | ChangeUser String
     | ChangeGeneration Int
     | ChangeLetter Char
     | OnLoadPokemon Pokemon
