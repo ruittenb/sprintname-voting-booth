@@ -127,7 +127,7 @@ userButtons ratings currentUser =
                 div [ id "user-buttons" ] <|
                     List.map
                         (.userName >> userButton currentUserName)
-                        actualRatings
+                        (List.sortBy .userName actualRatings)
 
         _ ->
             div [ id "user-button-placeholder" ] []
