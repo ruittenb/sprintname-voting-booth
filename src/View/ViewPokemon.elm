@@ -5,6 +5,8 @@ import Maybe exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
+import Numeral exposing (format)
+import Constants exposing (pokemonImageBaseUrl)
 import RemoteData exposing (WebData)
 
 
@@ -23,21 +25,6 @@ import Models exposing (..)
 import Msgs exposing (Msg)
 
 
-linkTo : String -> Html Msg -> Html Msg
-linkTo url content =
-    a [ href url ] [ content ]
-
-
-linkToLighthouse : String -> LighthouseData -> Html Msg -> Html Msg
-linkToLighthouse url lighthouseData content =
-    a
-        [ href url
-        , Html.Attributes.attribute "data-lightbox" lighthouseData.name
-        , Html.Attributes.attribute "data-title" lighthouseData.caption
-        ]
-        [ content ]
-
-
 loadingBusyIcon : Html Msg
 loadingBusyIcon =
     div [ class "loading-busy" ]
@@ -50,6 +37,25 @@ loadingErrorIcon =
         []
 
 
+linkTo : String -> Html Msg -> Html Msg
+linkTo url content =
+    a
+        [ href url
+        , target "_blank"
+        ]
+        [ content ]
+
+
+linkToLighthouse : String -> LighthouseData -> Html Msg -> Html Msg
+linkToLighthouse imageUrl lighthouseData content =
+    a
+        [ href imageUrl
+        , Html.Attributes.attribute "data-lightbox" lighthouseData.name
+        , Html.Attributes.attribute "data-title" lighthouseData.caption
+        ]
+        [ content ]
+
+
 pokemonImg : String -> Html Msg
 pokemonImg imageUrl =
     img
@@ -59,8 +65,18 @@ pokemonImg imageUrl =
         []
 
 
-voteWidget : TeamRating -> Int -> Html Msg
-voteWidget ownRatings pokemonNumber =
+getPokemonImgUrl : Int -> String
+getPokemonImgUrl pokemonNumber =
+    case pokemonNumber of
+        0 ->
+            missingNoImgUrl
+
+        _ ->
+            pokemonImageBaseUrl ++ format "000" (toFloat pokemonNumber) ++ ".png"
+
+
+voteWidget : TeamRating -> Int -> String -> Html Msg
+voteWidget ownRatings pokemonNumber currentUser =
     let
         userVote =
             { pokemonNumber = pokemonNumber
@@ -82,6 +98,7 @@ voteWidget ownRatings pokemonNumber =
                     , ( "selected", rating > 0 )
                     ]
                 , onClick (Msgs.VoteForPokemon { userVote | vote = 1 })
+                , title <| currentUser ++ ": 1"
                 ]
                 []
             , span
@@ -90,6 +107,7 @@ voteWidget ownRatings pokemonNumber =
                     , ( "selected", rating > 1 )
                     ]
                 , onClick (Msgs.VoteForPokemon { userVote | vote = 2 })
+                , title <| currentUser ++ ": 2"
                 ]
                 []
             , span
@@ -98,6 +116,7 @@ voteWidget ownRatings pokemonNumber =
                     , ( "selected", rating > 2 )
                     ]
                 , onClick (Msgs.VoteForPokemon { userVote | vote = 3 })
+                , title <| currentUser ++ ": 3"
                 ]
                 []
             ]
@@ -175,6 +194,17 @@ pokemonTile ratings currentUser pokemon =
 
         otherRatings =
             extractOtherUsersFromRatings allUserRatings currentUser
+
+        actualVoteWidget =
+            case currentUser of
+                Nothing ->
+                    text ""
+
+                Just actualUserName ->
+                    voteWidget ownRatings pokemon.number actualUserName
+
+        pokemonImgUrl =
+            getPokemonImgUrl pokemon.number
     in
         div [ class "poketile" ] <|
             [ p []
@@ -182,13 +212,13 @@ pokemonTile ratings currentUser pokemon =
                 , linkTo pokemon.url <| text pokemon.name
                 ]
             , div [ class "pokemon-image-square" ]
-                [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image
+                [ linkToLighthouse pokemonImgUrl lighthouseData <| pokemonImg pokemonImgUrl
                 ]
             ]
                 ++ case ratings of
                     RemoteData.Success _ ->
                         [ ratingWidget otherRatings
-                        , voteWidget ownRatings pokemon.number
+                        , actualVoteWidget
                         ]
 
                     RemoteData.Failure _ ->

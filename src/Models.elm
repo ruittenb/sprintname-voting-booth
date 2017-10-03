@@ -81,9 +81,14 @@ missingNo : Pokemon
 missingNo =
     { number = 0
     , name = "MissingNo."
-    , image = "https://wiki.p-insurgence.com/images/0/09/722.png"
+    , image = ""
     , url = "https://bulbapedia.bulbagarden.net/wiki/MissingNo."
     }
+
+
+missingNoImgUrl : String
+missingNoImgUrl =
+    "https://wiki.p-insurgence.com/images/0/09/722.png"
 
 
 initialRatings : TeamRatings

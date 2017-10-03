@@ -13,6 +13,11 @@ pokemonApiUrl =
     "http://pokeapi.co/api/v2/pokemon/"
 
 
+pokemonImageBaseUrl : String
+pokemonImageBaseUrl =
+    "https://assets.pokemon.com/assets/cms2/img/pokedex/full/"
+
+
 maxStars : Int
 maxStars =
     -- TODO not yet implemented. see ViewPokemon.voteWidget
