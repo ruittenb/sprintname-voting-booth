@@ -200,5 +200,5 @@ button.letter-button:disabled {
     height: 16px;
     width: 16px;
     margin: 0 auto 0 auto;
-    background: transparent url(icons/user-unknown.png) top left no-repeat;
+    background: transparent url(icons/lock.png) top left no-repeat;
 }

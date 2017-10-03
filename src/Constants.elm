@@ -20,7 +20,6 @@ pokemonImageBaseUrl =
 
 maxStars : Int
 maxStars =
-    -- TODO not yet implemented. see ViewPokemon.voteWidget
     3
 
 

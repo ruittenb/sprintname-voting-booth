@@ -6,7 +6,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
 import Numeral exposing (format)
-import Constants exposing (pokemonImageBaseUrl)
+import Constants exposing (pokemonImageBaseUrl, maxStars)
 import RemoteData exposing (WebData)
 
 
@@ -78,8 +78,21 @@ getPokemonImgUrl pokemonNumber =
             pokemonImageBaseUrl ++ format "000" (toFloat pokemonNumber) ++ ".png"
 
 
+voteWidgetStar : Int -> String -> Int -> Int -> Html Msg
+voteWidgetStar pokemonNumber currentUserName rating stars =
+    span
+        [ classList
+            [ ( "star", True )
+            , ( "selected", rating >= stars )
+            ]
+        , onClick (Msgs.VoteForPokemon { pokemonNumber = pokemonNumber, vote = stars })
+        , title <| currentUserName ++ ": " ++ (toString stars)
+        ]
+        []
+
+
 voteWidget : TeamRating -> Int -> String -> Html Msg
-voteWidget ownRatings pokemonNumber currentUser =
+voteWidget ownRatings pokemonNumber currentUserName =
     let
         userVote =
             { pokemonNumber = pokemonNumber
@@ -94,35 +107,10 @@ voteWidget ownRatings pokemonNumber currentUser =
                 Just ratingRecord ->
                     ratingRecord.rating
     in
-        span [ class "voting-node" ]
-            [ span
-                [ classList
-                    [ ( "star", True )
-                    , ( "selected", rating > 0 )
-                    ]
-                , onClick (Msgs.VoteForPokemon { userVote | vote = 1 })
-                , title <| currentUser ++ ": 1"
-                ]
-                []
-            , span
-                [ classList
-                    [ ( "star", True )
-                    , ( "selected", rating > 1 )
-                    ]
-                , onClick (Msgs.VoteForPokemon { userVote | vote = 2 })
-                , title <| currentUser ++ ": 2"
-                ]
-                []
-            , span
-                [ classList
-                    [ ( "star", True )
-                    , ( "selected", rating > 2 )
-                    ]
-                , onClick (Msgs.VoteForPokemon { userVote | vote = 3 })
-                , title <| currentUser ++ ": 3"
-                ]
-                []
-            ]
+        span [ class "voting-node" ] <|
+            List.map
+                (voteWidgetStar pokemonNumber currentUserName rating)
+                (List.range 1 maxStars)
 
 
 ratingNode : UserRating -> Html Msg
