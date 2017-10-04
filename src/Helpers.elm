@@ -2,6 +2,7 @@ module Helpers exposing (capitalized, filterPokedex)
 
 import Char exposing (toUpper)
 import String exposing (cons, uncons)
+import RemoteData exposing (WebData)
 import Models exposing (..)
 
 
@@ -88,7 +89,7 @@ firstLetterIs letter word =
         Just ( firstLetter, rest ) ->
             firstLetter == letter
 
-        _ ->
+        Nothing ->
             False
 
 
@@ -107,6 +108,8 @@ filterPokedex pokedex generation letter =
                     []
 
                 Just pokeGeneration ->
-                    List.filter (.name >> firstLetterIs letter) pokeGeneration.pokemon
+                    List.filter RemoteData.isSuccess pokeGeneration.pokemon
+                        |> List.map (RemoteData.withDefault missingNo)
+                        |> List.filter (.name >> firstLetterIs letter)
     in
         List.sortBy .name currentGenerationAndLetter
