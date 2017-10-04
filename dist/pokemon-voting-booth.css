@@ -46,16 +46,36 @@ button.generation-button:hover {
 button.user-button.current,
 button.letter-button.current,
 button.generation-button.current,
+button.generation-button.current.loading,
 button.generation-button.current.transparent {
     background-color: #e6c6e6; /* purple */
     opacity: 1;
+}
+
+button.generation-button.loading {
+    background: url(icons/loading-shade.png) 0 0 repeat;
+    -webkit-animation: loading 2s linear 0s infinite;
+    animation: loading 2s linear 0s infinite;
+}
+
+@keyframes loading {
+    0%   { background-position-x: 0; }
+    100% { background-position-x: 20px; }
+}
+
+@-webkit-keyframes loading {
+    0%   { background-position-x: 0; }
+    100% { background-position-x: 20px; }
+}
+
+button.generation-button.error {
+    background: #e6c6e6 url(icons/loading-error.png) 0 0 repeat;
 }
 
 button.letter-button:disabled {
     border-color: #777;
     background-color: #eee;
 }
-
 
 #user-buttons,
 #generation-buttons,
@@ -101,17 +121,19 @@ button.letter-button:disabled {
 }
 
 @keyframes autoHide {
-    0%   { opacity: 0; }
-    10%  { opacity: 1; }
-    75%  { opacity: 1; }
-    100% { opacity: 0; }
+    0%   { opacity: 0;  }
+    4%   { opacity: .7; }
+    10%  { opacity: 1;  }
+    75%  { opacity: 1;  }
+    100% { opacity: 0;  }
 }
 
 @-webkit-keyframes autoHide {
-    0%   { opacity: 0; }
-    10%  { opacity: 1; }
-    75%  { opacity: 1; }
-    100% { opacity: 0; }
+    0%   { opacity: 0;  }
+    4%   { opacity: .7; }
+    10%  { opacity: 1;  }
+    75%  { opacity: 1;  }
+    100% { opacity: 0;  }
 }
 
 .pokecanvas {
@@ -200,5 +222,7 @@ button.letter-button:disabled {
     height: 16px;
     width: 16px;
     margin: 0 auto 0 auto;
-    background: transparent url(icons/lock.png) top left no-repeat;
+    /*
+    background: transparent url(icons/user-unknown.png) top left no-repeat;
+    */
 }
