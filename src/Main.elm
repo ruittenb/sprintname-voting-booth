@@ -11,7 +11,7 @@ import CommandsPokemon exposing (loadPokemon)
 
 init : ( ApplicationState, Cmd Msg )
 init =
-    ( initialState, loadPokemon 1 )
+    ( initialState, loadPokemon 50 )
 
 
 subscriptions : ApplicationState -> Sub Msg

@@ -1,4 +1,4 @@
-module Helpers exposing (..)
+module Helpers exposing (capitalized, filterPokedex)
 
 import Char exposing (toUpper)
 import String exposing (cons, uncons)
@@ -79,24 +79,17 @@ numberRangeOf gen =
 
 numberBetween : Int -> Int -> Int -> Bool
 numberBetween min max value =
-    if min <= value && value <= max then
-        True
-    else
-        False
+    (min <= value && value <= max)
 
 
 firstLetterIs : Char -> String -> Bool
 firstLetterIs letter word =
-    let
-        firstLetter =
-            String.uncons word
-    in
-        case firstLetter of
-            Nothing ->
-                False
+    case String.uncons word of
+        Just ( firstLetter, rest ) ->
+            firstLetter == letter
 
-            Just ( chopped, _ ) ->
-                (==) chopped letter
+        _ ->
+            False
 
 
 filterPokedex : Pokedex -> Int -> Char -> List Pokemon
@@ -105,7 +98,7 @@ filterPokedex pokedex generation letter =
         currentGeneration =
             List.head <|
                 List.filter
-                    (\d -> d.generation == generation)
+                    (.generation >> (==) generation)
                     pokedex
 
         currentGenerationAndLetter =
@@ -114,6 +107,6 @@ filterPokedex pokedex generation letter =
                     []
 
                 Just pokeGeneration ->
-                    List.filter (\d -> firstLetterIs letter d.name) pokeGeneration.pokemon
+                    List.filter (.name >> firstLetterIs letter) pokeGeneration.pokemon
     in
         List.sortBy .name currentGenerationAndLetter
