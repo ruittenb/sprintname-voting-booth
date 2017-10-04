@@ -1,12 +1,12 @@
-module ViewPokemon exposing (..)
+module ViewPokemon exposing (pokemonCanvas)
 
-import List exposing (..)
-import Maybe exposing (..)
+import List
+import Maybe
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (..)
-import Constants exposing (pokemonImageBaseUrl, maxStars)
+import Html.Events exposing (onClick)
 import RemoteData exposing (WebData)
+import Constants exposing (pokemonImageBaseUrl, maxStars)
 
 
 {-
@@ -19,7 +19,7 @@ import RemoteData exposing (WebData)
    import Material.Elevation as Elevation
 -}
 
-import Helpers exposing (..)
+import Helpers exposing (filterPokedex)
 import Models exposing (..)
 import Msgs exposing (Msg)
 

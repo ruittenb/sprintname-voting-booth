@@ -1,7 +1,7 @@
-module Main exposing (..)
+module Main exposing (main)
 
-import Html exposing (..)
-import Models exposing (..)
+import Html
+import Models exposing (ApplicationState, initialState)
 import View exposing (view)
 import Update exposing (update)
 import Msgs exposing (Msg)
@@ -11,7 +11,8 @@ import CommandsPokemon exposing (loadPokemon)
 
 init : ( ApplicationState, Cmd Msg )
 init =
-    ( initialState, loadPokemon 50 )
+    --    ( initialState, loadAllPokemon initialState.generation initialState.letter )
+    ( initialState, loadRatings )
 
 
 subscriptions : ApplicationState -> Sub Msg
