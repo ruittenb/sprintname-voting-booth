@@ -6,7 +6,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData)
-import Constants exposing (pokemonImageBaseUrl, maxStars)
+import Constants exposing (maxStars)
 
 
 {-

@@ -153,17 +153,13 @@ button.letter-button:disabled {
 }
 
 @keyframes autoHide {
-    0%   { opacity: 0;  }
-    4%   { opacity: .7; }
-    10%  { opacity: 1;  }
+    0%  { opacity: 1;  }
     75%  { opacity: 1;  }
     100% { opacity: 0;  }
 }
 
 @-webkit-keyframes autoHide {
-    0%   { opacity: 0;  }
-    4%   { opacity: .7; }
-    10%  { opacity: 1;  }
+    0%  { opacity: 1;  }
     75%  { opacity: 1;  }
     100% { opacity: 0;  }
 }

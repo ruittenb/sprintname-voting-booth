@@ -18,13 +18,41 @@ loadGeneration gen =
 
 
 {-
-   let
-       numberRange =
-           generationRange gen
-   in
-       List.map (
-           loadOnePokemon
-           ) numberRange
+      let
+          numberRange =
+              generationRange gen
+      in
+          List.map (
+              loadOnePokemon
+              ) numberRange
+
+
+   RemoteData.andThen
+
+
+
+-}
+{-
+   loadTwoPokemon : Int -> Cmd ( Int, WebData Pokemon )
+   loadTwoPokemon =
+       List.map
+       -- returns a Cmd (WebData Pokemon)
+       (\num ->
+       let
+           pokemonNumApiUrl =
+               pokemonApiUrl ++ toString num
+       in
+           Http.get pokemonNumApiUrl (decodePokemon num)
+               |> RemoteData.sendRequest
+       )
+       List.range 25 26
+
+
+
+
+               |> Cmd.map ((,) num)
+       RemoteData.andThen
+
 -}
 
 
