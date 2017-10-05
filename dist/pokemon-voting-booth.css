@@ -21,6 +21,26 @@ button.generation-button {
 
 button.user-button {
     width: 84px;
+    /*
+    -webkit-animation: flashBriefly 1s forwards 1s; 
+    animation: flashBriefly 1s forwards 1s;
+    */
+}
+
+@keyframes flashBriefly {
+    0%   { background-color: white; }
+    25%  { background-color: #e6c6e6; /* purple */ }
+    50%  { background-color: white; }
+    75%  { background-color: #e6c6e6; /* purple */ }
+    100% { background-color: white; }
+}
+
+@-webkit-keyframes flashBriefly {
+    0%   { background-color: white; }
+    25%  { background-color: #e6c6e6; /* purple */ }
+    50%  { background-color: white; }
+    75%  { background-color: #e6c6e6; /* purple */ }
+    100% { background-color: white; }
 }
 
 button.letter-button {
@@ -75,6 +95,18 @@ button.generation-button.error {
 button.letter-button:disabled {
     border-color: #777;
     background-color: #eee;
+}
+
+
+#user-button-placeholder {
+    height: 38px;
+}
+#user-button-placeholder div {
+    width: 304px;
+    height: 30px;
+    border: 1px solid #777;
+    background-color: #eee;
+    margin-bottom: 4px;
 }
 
 #user-buttons,

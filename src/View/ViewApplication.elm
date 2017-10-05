@@ -119,7 +119,9 @@ userButtons ratings currentUser =
                         (List.sortBy .userName actualRatings)
 
         _ ->
-            div [ id "user-button-placeholder" ] []
+            div [ id "user-button-placeholder" ]
+                [ div [] []
+                ]
 
 
 heading : ApplicationState -> Html Msg
