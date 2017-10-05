@@ -1,4 +1,4 @@
-module Msgs exposing (..)
+module Msgs exposing (Msg(..))
 
 --import Material
 
@@ -7,12 +7,12 @@ import Models exposing (..)
 
 
 type Msg
-    = VoteForPokemon UserVote
-    | OnLoadRatings (WebData TeamRatings)
-    | OnLoadPokemon ( Int, WebData Pokemon )
-    | ChangeUser String
+    = ChangeUser String
     | ChangeGeneration Int
     | ChangeLetter Char
+    | OnLoadRatings (WebData TeamRatings)
+    | OnLoadPokemon ( Int, WebData Pokemon )
+    | VoteForPokemon UserVote
 
 
 
