@@ -20,6 +20,7 @@ loadPokemon num =
     in
         Http.get pokemonNumApiUrl (decodePokemon num)
             |> RemoteData.sendRequest
+            |> Cmd.map ((,) num)
             |> Cmd.map Msgs.OnLoadPokemon
 
 

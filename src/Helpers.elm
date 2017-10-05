@@ -1,4 +1,4 @@
-module Helpers exposing (capitalized, filterPokedex)
+module Helpers exposing (capitalized, filterPokedex, generationOf)
 
 import Char exposing (toUpper)
 import String exposing (cons, uncons)

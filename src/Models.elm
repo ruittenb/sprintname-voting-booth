@@ -77,6 +77,11 @@ type alias Pokedex =
     List PokeGeneration
 
 
+missingNoImgUrl : String
+missingNoImgUrl =
+    "https://wiki.p-insurgence.com/images/0/09/722.png"
+
+
 missingNo : Pokemon
 missingNo =
     { number = 0
@@ -84,11 +89,6 @@ missingNo =
     , image = missingNoImgUrl
     , url = "https://bulbapedia.bulbagarden.net/wiki/MissingNo."
     }
-
-
-missingNoImgUrl : String
-missingNoImgUrl =
-    "https://wiki.p-insurgence.com/images/0/09/722.png"
 
 
 initialPokedex : Pokedex
