@@ -2,10 +2,6 @@ module CommandsPokemon exposing (loadPokemon)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
-
-
---import Json.Encode as Encode
-
 import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Constants exposing (..)

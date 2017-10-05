@@ -1,10 +1,12 @@
 module Helpers exposing (capitalized, filterPokedex, generationOf)
 
+import Maybe
 import Array exposing (Array)
 import Char exposing (toUpper)
 import String exposing (cons, uncons)
 import RemoteData exposing (WebData)
 import Models exposing (..)
+import Constants exposing (..)
 
 
 capitalized : String -> String
@@ -15,20 +17,6 @@ capitalized name =
 
         Just ( initial, rest ) ->
             String.cons (Char.toUpper initial) rest
-
-
-generations : Array GenerationTuple
-generations =
-    Array.fromList
-        [ ( 0, 0 )
-        , ( 1, 151 )
-        , ( 152, 251 )
-        , ( 252, 386 )
-        , ( 387, 493 )
-        , ( 494, 649 )
-        , ( 650, 721 )
-        , ( 722, 802 )
-        ]
 
 
 generationRange : Int -> List Int
@@ -43,22 +31,29 @@ generationRange gen =
 
 generationOf : Int -> Int
 generationOf number =
-    if number == 0 then
-        0
-    else if number < 152 then
-        1
-    else if number < 252 then
-        2
-    else if number < 387 then
-        3
-    else if number < 494 then
-        4
-    else if number < 650 then
-        5
-    else if number < 722 then
-        6
-    else
-        7
+    let
+        indexedGenerations : List ( Int, GenerationTuple )
+        indexedGenerations =
+            Array.toIndexedList generations
+
+        getIndexIfBetween : ( Int, GenerationTuple ) -> Maybe Int
+        getIndexIfBetween indexedGenerationTuple =
+            let
+                ( index, generationTuple ) =
+                    indexedGenerationTuple
+
+                ( min, max ) =
+                    generationTuple
+            in
+                if min <= number && number <= max then
+                    Just index
+                else
+                    Nothing
+    in
+        List.filterMap getIndexIfBetween
+            indexedGenerations
+            |> List.head
+            |> Maybe.withDefault 0
 
 
 firstLetterIs : Char -> String -> Bool
