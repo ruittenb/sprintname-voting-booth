@@ -72,7 +72,7 @@ filterPokedex pokedex generation letter =
         currentGeneration =
             case Array.get generation generations of
                 Just ( min, max ) ->
-                    Array.toList <| Array.slice min max pokedex
+                    Array.toList <| Array.slice min (max + 1) pokedex
 
                 _ ->
                     []
