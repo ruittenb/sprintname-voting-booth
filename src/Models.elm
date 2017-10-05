@@ -2,7 +2,6 @@ module Models exposing (..)
 
 import Array exposing (Array)
 import RemoteData exposing (WebData, succeed)
-import Constants exposing (totalPokemon)
 
 
 type StatusLevel
@@ -17,10 +16,6 @@ type alias LighthouseData =
     }
 
 
-type alias GenerationTuple =
-    ( Int, Int )
-
-
 type alias UserVote =
     { pokemonNumber : Int
     , vote : Int
@@ -32,14 +27,16 @@ type alias CurrentUser =
 
 
 type alias UserRating =
-    { userName : String
+    { id : Int
+    , userName : String
     , color : String
     , rating : Int
     }
 
 
 type alias UserRatings =
-    { userName : String
+    { id : Int
+    , userName : String
     , color : String
     , ratings : String
     }
@@ -60,13 +57,16 @@ type alias ApplicationState =
     , generation : Int
     , letter : Char
     , cachedGenerations : List Int
-    , pokedex : Pokedex
+    , pokedex : WebData Pokedex
     , ratings : WebData TeamRatings
     }
 
 
 type alias Pokemon =
-    { number : Int
+    { id : Int
+    , number : Int
+    , generation : Int
+    , letter : Char
     , name : String
     , image : String
     , url : String
@@ -74,30 +74,19 @@ type alias Pokemon =
 
 
 type alias Pokedex =
-    Array (WebData Pokemon)
-
-
-missingNoImgUrl : String
-missingNoImgUrl =
-    "https://wiki.p-insurgence.com/images/0/09/722.png"
+    List Pokemon
 
 
 missingNo : Pokemon
 missingNo =
-    { number = 0
+    { id = 0
+    , number = 0
+    , generation = 0
+    , letter = 'M'
     , name = "MissingNo."
-    , image = missingNoImgUrl
+    , image = "https://wiki.p-insurgence.com/images/0/09/722.png"
     , url = "https://bulbapedia.bulbagarden.net/wiki/MissingNo."
     }
-
-
-initialPokedex : Pokedex
-initialPokedex =
-    Array.fromList <|
-        RemoteData.succeed missingNo
-            :: List.repeat
-                (totalPokemon - 1)
-                RemoteData.NotAsked
 
 
 initialState : ApplicationState
@@ -108,6 +97,6 @@ initialState =
     , generation = 3
     , letter = 'B'
     , cachedGenerations = [ 0 ]
-    , pokedex = initialPokedex
+    , pokedex = RemoteData.NotAsked
     , ratings = RemoteData.NotAsked
     }

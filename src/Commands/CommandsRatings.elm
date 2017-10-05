@@ -37,6 +37,7 @@ decodeTeamRatings =
 decodeUserRatings : Decoder UserRatings
 decodeUserRatings =
     decode UserRatings
+        |> required "id" Decode.int
         |> required "userName" Decode.string
         |> required "color" Decode.string
         |> required "ratings" Decode.string

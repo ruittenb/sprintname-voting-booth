@@ -126,7 +126,8 @@ extractOnePokemonFromRatings ratings pokemon =
         RemoteData.Success actualRatings ->
             List.map
                 (\r ->
-                    { userName = r.userName
+                    { id = r.id
+                    , userName = r.userName
                     , color = r.color
                     , rating =
                         String.slice pokemon.number (pokemon.number + 1) r.ratings

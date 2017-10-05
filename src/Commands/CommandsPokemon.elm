@@ -1,4 +1,4 @@
-module CommandsPokemon exposing (loadPokemon, loadGeneration)
+module CommandsPokemon exposing (loadPokedex)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
@@ -6,96 +6,42 @@ import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Constants exposing (..)
 import Models exposing (..)
-import Helpers exposing (capitalized, generationRange)
 import Msgs exposing (Msg)
-import Numeral exposing (format)
 
 
-loadGeneration : Int -> Cmd Msg
-loadGeneration gen =
-    Cmd.none
+loadPokedex : Cmd Msg
+loadPokedex =
+    Http.get pokedexApiUrl decodePokedex
+        |> RemoteData.sendRequest
+        |> Cmd.map Msgs.OnLoadPokedex
 
 
-
-{-
-      let
-          numberRange =
-              generationRange gen
-      in
-          List.map (
-              loadOnePokemon
-              ) numberRange
+decodePokedex : Decoder (List Pokemon)
+decodePokedex =
+    Decode.list decodePokemon
 
 
-   RemoteData.andThen
-
-
-
--}
-{-
-   loadTwoPokemon : Int -> Cmd ( Int, WebData Pokemon )
-   loadTwoPokemon =
-       List.map
-       -- returns a Cmd (WebData Pokemon)
-       (\num ->
-       let
-           pokemonNumApiUrl =
-               pokemonApiUrl ++ toString num
-       in
-           Http.get pokemonNumApiUrl (decodePokemon num)
-               |> RemoteData.sendRequest
-       )
-       List.range 25 26
-
-
-
-
-               |> Cmd.map ((,) num)
-       RemoteData.andThen
-
--}
-
-
-loadPokemon : Int -> Cmd Msg
-loadPokemon num =
-    -- Int -> Cmd (Msgs.OnLoadPokemon (num (WebData Pokemon)))
-    loadOnePokemon num
-        |> Cmd.map Msgs.OnLoadPokemon
-
-
-loadOnePokemon : Int -> Cmd ( Int, WebData Pokemon )
-loadOnePokemon num =
+decodePokemon : Decoder Pokemon
+decodePokemon =
     let
-        pokemonNumApiUrl =
-            pokemonApiUrl ++ toString num
-    in
-        Http.get pokemonNumApiUrl (decodePokemon num)
-            |> RemoteData.sendRequest
-            |> Cmd.map ((,) num)
-
-
-decodePokemon : Int -> Decoder Pokemon
-decodePokemon num =
-    let
-        imageUrl =
-            case num of
-                0 ->
-                    missingNoImgUrl
-
-                _ ->
-                    pokemonImageBaseUrl ++ format "000" (toFloat num) ++ ".png"
-
-        toDecoder id name =
+        toDecoder id number generation letterString name image url =
             let
-                capName =
-                    capitalized name
+                letterChar =
+                    case String.uncons letterString of
+                        Just ( first, _ ) ->
+                            first
 
-                pokemonWikiUrl =
-                    wikiUrl capName
+                        _ ->
+                            '?'
             in
-                Decode.succeed (Pokemon id capName imageUrl pokemonWikiUrl)
+                Decode.succeed (Pokemon id number generation letterChar name image url)
     in
         decode toDecoder
             |> required "id" Decode.int
+            |> required "number" Decode.int
+            |> required "generation" Decode.int
+            |> required "letter" Decode.string
             |> required "name" Decode.string
+            |> required "image" Decode.string
+            |> required "url" Decode.string
             |> resolve

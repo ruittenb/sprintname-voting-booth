@@ -4,9 +4,8 @@ import Array
 import RemoteData exposing (..)
 import Constants exposing (..)
 import Models exposing (..)
-import Helpers exposing (generationOf)
 import Msgs exposing (Msg)
-import CommandsPokemon exposing (loadPokemon, loadGeneration)
+import CommandsPokemon exposing (loadPokedex)
 
 
 -- import CommandsRatings exposing (..)
@@ -32,18 +31,6 @@ extractOtherUsersFromRatings ratings currentUser =
             List.filter (\p -> (/=) simpleUserName p.userName) ratings
 
 
-getGenerationStart : Int -> Maybe Int
-getGenerationStart gen =
-    Array.get gen generations
-        |> Maybe.map Tuple.first
-
-
-getGenerationEnd : Int -> Maybe Int
-getGenerationEnd gen =
-    Array.get gen generations
-        |> Maybe.map Tuple.second
-
-
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
@@ -63,14 +50,6 @@ update msg oldState =
                         Failure mess ->
                             ( toString mess, Error )
 
-                firstPokemonLoadCmd =
-                    case getGenerationStart oldState.generation of
-                        Just nextNumber ->
-                            loadPokemon nextNumber
-
-                        Nothing ->
-                            Cmd.none
-
                 newState =
                     { oldState
                         | statusMessage = statusMessage
@@ -78,22 +57,12 @@ update msg oldState =
                         , ratings = ratings
                     }
             in
-                ( newState, firstPokemonLoadCmd )
+                ( newState, loadPokedex )
 
-        Msgs.OnLoadPokemon ( num, loadedPokemon ) ->
+        Msgs.OnLoadPokedex pokedex ->
             let
-                gen : Int
-                gen =
-                    generationOf num
-
-                oldPokedex =
-                    oldState.pokedex
-
-                newPokedex =
-                    Array.set num loadedPokemon oldState.pokedex
-
                 ( statusMessage, statusLevel ) =
-                    case loadedPokemon of
+                    case pokedex of
                         NotAsked ->
                             ( "Preparing...", Notice )
 
@@ -106,25 +75,14 @@ update msg oldState =
                         _ ->
                             ( "", None )
 
-                nextPokemonLoadCmd =
-                    case getGenerationEnd (generationOf num) of
-                        Just endNumber ->
-                            if num <= endNumber then
-                                loadPokemon (num + 1)
-                            else
-                                Cmd.none
-
-                        Nothing ->
-                            Cmd.none
-
                 newState =
                     { oldState
-                        | pokedex = newPokedex
+                        | pokedex = pokedex
                         , statusMessage = statusMessage
                         , statusLevel = statusLevel
                     }
             in
-                ( newState, nextPokemonLoadCmd )
+                ( newState, Cmd.none )
 
         Msgs.ChangeUser newUser ->
             let
@@ -146,25 +104,13 @@ update msg oldState =
 
         Msgs.ChangeGeneration newGen ->
             let
-                ( newState, cmd ) =
-                    if List.member newGen allGenerations then
-                        let
-                            newState =
-                                { oldState | generation = newGen }
-
-                            firstPokemonLoadCmd =
-                                case getGenerationStart newGen of
-                                    Just nextNumber ->
-                                        loadPokemon nextNumber
-
-                                    Nothing ->
-                                        Cmd.none
-                        in
-                            ( newState, firstPokemonLoadCmd )
-                    else
-                        ( oldState, Cmd.none )
+                newState =
+                    { oldState | generation = newGen }
             in
-                ( newState, cmd )
+                if List.member newGen allGenerations then
+                    ( newState, Cmd.none )
+                else
+                    ( oldState, Cmd.none )
 
         Msgs.ChangeLetter newLetter ->
             let

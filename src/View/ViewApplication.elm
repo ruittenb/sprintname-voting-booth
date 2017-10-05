@@ -68,7 +68,7 @@ romanNumeralButtons currentGen message level =
             ++ [ messageBox message level ]
 
 
-letterButton : Pokedex -> Int -> Char -> Char -> Html Msg
+letterButton : WebData Pokedex -> Int -> Char -> Char -> Html Msg
 letterButton pokedex currentGen currentLetter letter =
     let
         pokeList =
@@ -85,12 +85,20 @@ letterButton pokedex currentGen currentLetter letter =
             [ text <| String.fromChar letter ]
 
 
-letterButtons : Pokedex -> Int -> Char -> Html Msg
+letterButtons : WebData Pokedex -> Int -> Char -> Html Msg
 letterButtons pokedex currentGen currentLetter =
-    div [ id "letter-buttons" ] <|
-        List.map
-            (letterButton pokedex currentGen currentLetter)
-            allLetters
+    let
+        buttonList =
+            case pokedex of
+                RemoteData.Success pokeList ->
+                    List.map
+                        (letterButton pokedex currentGen currentLetter)
+                        allLetters
+
+                _ ->
+                    []
+    in
+        div [ id "letter-buttons" ] buttonList
 
 
 userButton : String -> String -> Html Msg

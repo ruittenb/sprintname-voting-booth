@@ -11,7 +11,7 @@ type Msg
     | ChangeGeneration Int
     | ChangeLetter Char
     | OnLoadRatings (WebData TeamRatings)
-    | OnLoadPokemon ( Int, WebData Pokemon )
+    | OnLoadPokedex (WebData Pokedex)
     | VoteForPokemon UserVote
 
 
