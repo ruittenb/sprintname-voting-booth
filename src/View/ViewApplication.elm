@@ -4,7 +4,7 @@ import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
-import RemoteData exposing (..)
+import RemoteData exposing (WebData, RemoteData(..))
 import Helpers exposing (filterPokedex)
 import Msgs exposing (Msg)
 import Models exposing (..)
@@ -18,7 +18,9 @@ messageBox message level =
             [ id "message-box"
             , classList
                 [ ( "autohide", String.length message > 0 )
+                , ( "debug", level == Debug )
                 , ( "notice", level == Notice )
+                , ( "warning", level == Warning )
                 , ( "error", level == Error )
                 ]
             ]
@@ -90,7 +92,7 @@ letterButtons pokedex currentGen currentLetter =
     let
         buttonList =
             case pokedex of
-                RemoteData.Success pokeList ->
+                Success pokeList ->
                     List.map
                         (letterButton pokedex currentGen currentLetter)
                         allLetters
@@ -116,7 +118,7 @@ userButton currentUserName userName =
 userButtons : WebData TeamRatings -> CurrentUser -> Html Msg
 userButtons ratings currentUser =
     case ratings of
-        RemoteData.Success actualRatings ->
+        Success actualRatings ->
             let
                 currentUserName =
                     Maybe.withDefault "" currentUser

@@ -1,12 +1,13 @@
 module Models exposing (..)
 
-import Array exposing (Array)
-import RemoteData exposing (WebData, succeed)
+import RemoteData exposing (WebData, RemoteData(..))
 
 
 type StatusLevel
     = Error
+    | Warning
     | Notice
+    | Debug
     | None
 
 
@@ -56,7 +57,6 @@ type alias ApplicationState =
     , statusLevel : StatusLevel
     , generation : Int
     , letter : Char
-    , cachedGenerations : List Int
     , pokedex : WebData Pokedex
     , ratings : WebData TeamRatings
     }
@@ -77,18 +77,6 @@ type alias Pokedex =
     List Pokemon
 
 
-missingNo : Pokemon
-missingNo =
-    { id = 0
-    , number = 0
-    , generation = 0
-    , letter = 'M'
-    , name = "MissingNo."
-    , image = "https://wiki.p-insurgence.com/images/0/09/722.png"
-    , url = "https://bulbapedia.bulbagarden.net/wiki/MissingNo."
-    }
-
-
 initialState : ApplicationState
 initialState =
     { user = Nothing
@@ -96,7 +84,6 @@ initialState =
     , statusLevel = None
     , generation = 3
     , letter = 'B'
-    , cachedGenerations = [ 0 ]
-    , pokedex = RemoteData.NotAsked
-    , ratings = RemoteData.NotAsked
+    , pokedex = NotAsked
+    , ratings = NotAsked
     }

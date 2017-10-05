@@ -1,7 +1,6 @@
 module Constants exposing (..)
 
 import Char
-import Array exposing (Array)
 
 
 ratingsApiUrl : String

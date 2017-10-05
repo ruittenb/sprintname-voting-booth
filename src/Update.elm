@@ -1,14 +1,13 @@
 module Update exposing (update)
 
-import Array
-import RemoteData exposing (..)
+import RemoteData exposing (RemoteData(..))
 import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
 import CommandsPokemon exposing (loadPokedex)
 
 
--- import CommandsRatings exposing (..)
+-- import CommandsRatings exposing (saveRatings)
 
 
 extractOneUserFromRatings : TeamRatings -> CurrentUser -> List UserRatings
@@ -18,7 +17,7 @@ extractOneUserFromRatings ratings currentUser =
             []
 
         Just simpleUserName ->
-            List.filter (\p -> (==) simpleUserName p.userName) ratings
+            List.filter (.userName >> (==) simpleUserName) ratings
 
 
 extractOtherUsersFromRatings : TeamRatings -> CurrentUser -> List UserRatings
@@ -28,7 +27,7 @@ extractOtherUsersFromRatings ratings currentUser =
             ratings
 
         Just simpleUserName ->
-            List.filter (\p -> (/=) simpleUserName p.userName) ratings
+            List.filter (.userName >> (/=) simpleUserName) ratings
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -72,7 +71,7 @@ update msg oldState =
                         Failure mess ->
                             ( toString mess, Error )
 
-                        _ ->
+                        Success _ ->
                             ( "", None )
 
                 newState =
@@ -88,7 +87,7 @@ update msg oldState =
             let
                 newState =
                     case oldState.ratings of
-                        RemoteData.Success actualRatings ->
+                        Success actualRatings ->
                             if
                                 List.map .userName actualRatings
                                     |> List.member newUser
@@ -124,15 +123,6 @@ update msg oldState =
 
         Msgs.VoteForPokemon userVote ->
             case oldState.ratings of
-                NotAsked ->
-                    ( oldState, Cmd.none )
-
-                Loading ->
-                    ( oldState, Cmd.none )
-
-                Failure _ ->
-                    ( oldState, Cmd.none )
-
                 Success oldRatings ->
                     let
                         pokemonNumber =
@@ -189,9 +179,13 @@ update msg oldState =
                                         newStateRatings =
                                             newCurrentUserRatings :: otherUserRatings
                                     in
-                                        { oldState | ratings = RemoteData.Success newStateRatings, statusMessage = "" }
+                                        { oldState | ratings = Success newStateRatings, statusMessage = "" }
                     in
                         ( newState, Cmd.none )
+
+                -- .. or oldState.ratings not successfully loaded
+                _ ->
+                    ( oldState, Cmd.none )
 
 
 

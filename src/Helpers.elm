@@ -1,6 +1,6 @@
 module Helpers exposing (filterPokedex)
 
-import RemoteData exposing (WebData)
+import RemoteData exposing (WebData, RemoteData(..))
 import Models exposing (..)
 
 
@@ -9,7 +9,7 @@ filterPokedex pokedex generation letter =
     let
         selection =
             case pokedex of
-                RemoteData.Success pokeList ->
+                Success pokeList ->
                     List.filter (.letter >> (==) letter) <|
                         List.filter (.generation >> (==) generation) pokeList
 
