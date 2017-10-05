@@ -1,10 +1,11 @@
-module ViewApplication exposing (..)
+module ViewApplication exposing (heading)
 
+import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (..)
-import Helpers exposing (..)
+import Helpers exposing (filterPokedex)
 import Msgs exposing (Msg)
 import Models exposing (..)
 import Constants exposing (..)
@@ -25,35 +26,23 @@ messageBox message level =
         ]
 
 
+romanNumerals : Array String
+romanNumerals =
+    Array.fromList [ "O", "I", "II", "III", "IV", "V", "VI", "VII" ]
+
+
 romanNumeral : Int -> String
 romanNumeral i =
-    case i of
-        0 ->
-            "O"
+    let
+        roman =
+            Array.get i romanNumerals
+    in
+        case roman of
+            Just actualRoman ->
+                actualRoman
 
-        1 ->
-            "I"
-
-        2 ->
-            "II"
-
-        3 ->
-            "III"
-
-        4 ->
-            "IV"
-
-        5 ->
-            "V"
-
-        6 ->
-            "VI"
-
-        7 ->
-            "VII"
-
-        _ ->
-            "?"
+            Nothing ->
+                "?"
 
 
 romanNumeralButton : Int -> Int -> Html Msg

@@ -2,6 +2,7 @@ module Update exposing (..)
 
 import Constants exposing (..)
 import Models exposing (..)
+import Helpers exposing (generationOf)
 import Msgs exposing (Msg)
 import RemoteData exposing (..)
 
@@ -47,14 +48,91 @@ update msg oldState =
 
                         Failure mess ->
                             ( toString mess, Error )
+
+                newState =
+                    { oldState
+                        | statusMessage = statusMessage
+                        , statusLevel = statusLevel
+                        , ratings = ratings
+                    }
             in
-                ( { oldState
-                    | ratings = ratings
-                    , statusMessage = statusMessage
-                    , statusLevel = statusLevel
-                  }
-                , Cmd.none
-                )
+                ( newState, Cmd.none )
+
+        Msgs.OnLoadPokemon ( num, loadedPokemon ) ->
+            let
+                gen : Int
+                gen =
+                    generationOf num
+
+                oldGeneration : Maybe PokeGeneration
+                oldGeneration =
+                    List.filter (\g -> g.generation == gen) oldState.pokedex
+                        |> List.head
+
+                oldListPokemon : List (WebData Pokemon)
+                oldListPokemon =
+                    Maybe.map .pokemon oldGeneration
+                        |> Maybe.withDefault []
+
+                -- there is a fundamental problem here: if Pokemon was not successfully loaded, it has no 'number' property.
+                -- Therefore, it is not found; therefore, it is never replaced, even if subsequent loads load it correctly.
+                -- This in turn never gets rid of the error state on the generation.
+                -- The solution lies probably in storing pokemon in an array, using ranges to filter generations and indexes to store them by number.
+                ( matches, strippedListPokemon ) =
+                    List.partition
+                        (\p ->
+                            case p of
+                                Success pokemon ->
+                                    pokemon.number == num
+
+                                _ ->
+                                    False
+                        )
+                        oldListPokemon
+
+                newListPokemon =
+                    loadedPokemon :: strippedListPokemon
+
+                newGeneration =
+                    case oldGeneration of
+                        Nothing ->
+                            { generation = gen, pokemon = newListPokemon }
+
+                        Just actualOldGeneration ->
+                            { actualOldGeneration | pokemon = newListPokemon }
+
+                newPokedex =
+                    List.map
+                        (\p ->
+                            if p.generation == gen then
+                                newGeneration
+                            else
+                                p
+                        )
+                        oldState.pokedex
+
+                ( statusMessage, statusLevel ) =
+                    case loadedPokemon of
+                        NotAsked ->
+                            ( "Preparing...", Notice )
+
+                        Loading ->
+                            ( "Loading...", Notice )
+
+                        Failure mess ->
+                            ( toString mess, Error )
+
+                        _ ->
+                            ( "", None )
+
+                newState =
+                    { oldState
+                        | pokedex = newPokedex
+                        , statusMessage = statusMessage
+                        , statusLevel = statusLevel
+                    }
+            in
+                ( newState, Cmd.none )
 
         Msgs.ChangeUser newUser ->
             let
@@ -165,9 +243,8 @@ update msg oldState =
                     in
                         ( newState, Cmd.none )
 
-        {-
-           ( newState, saveRatings newStateRatings )
-        -}
-        -- TODO
-        Msgs.OnLoadPokemon pokemon ->
-            ( oldState, Cmd.none )
+
+
+{-
+   ( newState, saveRatings newStateRatings )
+-}

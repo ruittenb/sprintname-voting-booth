@@ -9,14 +9,13 @@ import Models exposing (..)
 type Msg
     = VoteForPokemon UserVote
     | OnLoadRatings (WebData TeamRatings)
+    | OnLoadPokemon ( Int, WebData Pokemon )
     | ChangeUser String
     | ChangeGeneration Int
     | ChangeLetter Char
-    | OnLoadPokemon Pokemon
 
 
 
 {-
-   | OnSaveVotes (Result Http.Error Cart)
-   | Mdl (Material.Msg Msg)
+   | OnSaveVote (WebData TeamRatings)
 -}

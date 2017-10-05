@@ -1,6 +1,19 @@
-module Helpers exposing (..)
+module Helpers exposing (capitalized, filterPokedex, generationOf)
 
+import Char exposing (toUpper)
+import String exposing (cons, uncons)
+import RemoteData exposing (WebData)
 import Models exposing (..)
+
+
+capitalized : String -> String
+capitalized name =
+    case String.uncons name of
+        Nothing ->
+            name
+
+        Just ( initial, rest ) ->
+            String.cons (Char.toUpper initial) rest
 
 
 {-| returns the generation number for the pokemon number
@@ -67,24 +80,17 @@ numberRangeOf gen =
 
 numberBetween : Int -> Int -> Int -> Bool
 numberBetween min max value =
-    if min <= value && value <= max then
-        True
-    else
-        False
+    (min <= value && value <= max)
 
 
 firstLetterIs : Char -> String -> Bool
 firstLetterIs letter word =
-    let
-        firstLetter =
-            String.uncons word
-    in
-        case firstLetter of
-            Nothing ->
-                False
+    case String.uncons word of
+        Just ( firstLetter, rest ) ->
+            firstLetter == letter
 
-            Just ( chopped, _ ) ->
-                (==) chopped letter
+        Nothing ->
+            False
 
 
 filterPokedex : Pokedex -> Int -> Char -> List Pokemon
@@ -93,7 +99,7 @@ filterPokedex pokedex generation letter =
         currentGeneration =
             List.head <|
                 List.filter
-                    (\d -> d.generation == generation)
+                    (.generation >> (==) generation)
                     pokedex
 
         currentGenerationAndLetter =
@@ -102,6 +108,8 @@ filterPokedex pokedex generation letter =
                     []
 
                 Just pokeGeneration ->
-                    List.filter (\d -> firstLetterIs letter d.name) pokeGeneration.pokemon
+                    List.filter RemoteData.isSuccess pokeGeneration.pokemon
+                        |> List.map (RemoteData.withDefault missingNo)
+                        |> List.filter (.name >> firstLetterIs letter)
     in
         List.sortBy .name currentGenerationAndLetter

@@ -1,4 +1,4 @@
-module CommandsRatings exposing (..)
+module CommandsRatings exposing (loadRatings)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
