@@ -1,11 +1,12 @@
 module Update exposing (update)
 
 import Array
+import RemoteData exposing (..)
 import Constants exposing (..)
 import Models exposing (..)
 import Helpers exposing (generationOf)
 import Msgs exposing (Msg)
-import RemoteData exposing (..)
+import CommandsPokemon exposing (loadPokemon, loadGeneration)
 
 
 -- import CommandsRatings exposing (..)
@@ -57,7 +58,8 @@ update msg oldState =
                         , ratings = ratings
                     }
             in
-                ( newState, Cmd.none )
+                --( newState, loadGeneration oldState.generation )
+                ( newState, loadPokemon 306 )
 
         Msgs.OnLoadPokemon ( num, loadedPokemon ) ->
             let

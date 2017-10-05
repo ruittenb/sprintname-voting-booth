@@ -1,4 +1,4 @@
-module CommandsPokemon exposing (loadPokemon)
+module CommandsPokemon exposing (loadPokemon, loadGeneration)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
@@ -11,19 +11,32 @@ import Msgs exposing (Msg)
 import Numeral exposing (format)
 
 
+loadGeneration : Int -> Cmd Msg
+loadGeneration gen =
+    Cmd.none
+
+
+
 {-
-   loadPokemonRange : Int -> Char -> Cmg Msg
-   loadPokemonRange gen letter =
-       let
-           numberRange =
-               generationRange gen
-       in
-           List.map () numberRange
+   let
+       numberRange =
+           generationRange gen
+   in
+       List.map (
+           loadOnePokemon
+           ) numberRange
 -}
 
 
 loadPokemon : Int -> Cmd Msg
 loadPokemon num =
+    -- Int -> Cmd (Msgs.OnLoadPokemon (num (WebData Pokemon)))
+    loadOnePokemon num
+        |> Cmd.map Msgs.OnLoadPokemon
+
+
+loadOnePokemon : Int -> Cmd ( Int, WebData Pokemon )
+loadOnePokemon num =
     let
         pokemonNumApiUrl =
             pokemonApiUrl ++ toString num
@@ -31,7 +44,6 @@ loadPokemon num =
         Http.get pokemonNumApiUrl (decodePokemon num)
             |> RemoteData.sendRequest
             |> Cmd.map ((,) num)
-            |> Cmd.map Msgs.OnLoadPokemon
 
 
 decodePokemon : Int -> Decoder Pokemon

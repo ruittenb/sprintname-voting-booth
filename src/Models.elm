@@ -94,9 +94,10 @@ missingNo =
 initialPokedex : Pokedex
 initialPokedex =
     Array.fromList <|
-        List.repeat
-            totalPokemon
-            RemoteData.NotAsked
+        RemoteData.succeed missingNo
+            :: List.repeat
+                (totalPokemon - 1)
+                RemoteData.NotAsked
 
 
 initialState : ApplicationState
