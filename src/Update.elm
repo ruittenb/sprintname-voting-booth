@@ -1,5 +1,6 @@
-module Update exposing (..)
+module Update exposing (update)
 
+import Array
 import Constants exposing (..)
 import Models exposing (..)
 import Helpers exposing (generationOf)
@@ -64,52 +65,11 @@ update msg oldState =
                 gen =
                     generationOf num
 
-                oldGeneration : Maybe PokeGeneration
-                oldGeneration =
-                    List.filter (\g -> g.generation == gen) oldState.pokedex
-                        |> List.head
-
-                oldListPokemon : List (WebData Pokemon)
-                oldListPokemon =
-                    Maybe.map .pokemon oldGeneration
-                        |> Maybe.withDefault []
-
-                -- there is a fundamental problem here: if Pokemon was not successfully loaded, it has no 'number' property.
-                -- Therefore, it is not found; therefore, it is never replaced, even if subsequent loads load it correctly.
-                -- This in turn never gets rid of the error state on the generation.
-                -- The solution lies probably in storing pokemon in an array, using ranges to filter generations and indexes to store them by number.
-                ( matches, strippedListPokemon ) =
-                    List.partition
-                        (\p ->
-                            case p of
-                                Success pokemon ->
-                                    pokemon.number == num
-
-                                _ ->
-                                    False
-                        )
-                        oldListPokemon
-
-                newListPokemon =
-                    loadedPokemon :: strippedListPokemon
-
-                newGeneration =
-                    case oldGeneration of
-                        Nothing ->
-                            { generation = gen, pokemon = newListPokemon }
-
-                        Just actualOldGeneration ->
-                            { actualOldGeneration | pokemon = newListPokemon }
+                oldPokedex =
+                    oldState.pokedex
 
                 newPokedex =
-                    List.map
-                        (\p ->
-                            if p.generation == gen then
-                                newGeneration
-                            else
-                                p
-                        )
-                        oldState.pokedex
+                    Array.set num loadedPokemon oldState.pokedex
 
                 ( statusMessage, statusLevel ) =
                     case loadedPokemon of

@@ -5,15 +5,12 @@ import Models exposing (ApplicationState, initialState)
 import View exposing (view)
 import Update exposing (update)
 import Msgs exposing (Msg)
-import CommandsRatings exposing (loadRatings)
-import CommandsPokemon exposing (loadPokemon)
+import Commands exposing (loadAll)
 
 
 init : ( ApplicationState, Cmd Msg )
 init =
-    --    ( initialState, loadAllPokemon initialState.generation initialState.letter )
-    -- ( initialState, loadRatings )
-    ( initialState, loadPokemon 142 )
+    ( initialState, loadAll )
 
 
 subscriptions : ApplicationState -> Sub Msg

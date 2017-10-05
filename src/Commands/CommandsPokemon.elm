@@ -6,9 +6,20 @@ import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Constants exposing (..)
 import Models exposing (..)
-import Helpers exposing (capitalized)
+import Helpers exposing (capitalized, generationRange)
 import Msgs exposing (Msg)
 import Numeral exposing (format)
+
+
+{-
+   loadPokemonRange : Int -> Char -> Cmg Msg
+   loadPokemonRange gen letter =
+       let
+           numberRange =
+               generationRange gen
+       in
+           List.map () numberRange
+-}
 
 
 loadPokemon : Int -> Cmd Msg

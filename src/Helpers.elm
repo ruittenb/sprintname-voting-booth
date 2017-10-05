@@ -1,4 +1,4 @@
-module Helpers exposing (capitalized, filterPokedex, generationOf)
+module Helpers exposing (capitalized, generationRange, generationOf, filterPokedex)
 
 import Maybe
 import Array exposing (Array)
