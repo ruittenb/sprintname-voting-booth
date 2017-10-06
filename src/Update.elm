@@ -5,9 +5,7 @@ import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
 import CommandsPokemon exposing (loadPokedex)
-
-
--- import CommandsRatings exposing (saveRatings)
+import CommandsRatings exposing (saveRatings)
 
 
 extractOneUserFromRatings : TeamRatings -> CurrentUser -> List UserRatings
