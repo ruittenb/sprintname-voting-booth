@@ -4,7 +4,7 @@ import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
-import RemoteData exposing (..)
+import RemoteData exposing (WebData, RemoteData(..))
 import Helpers exposing (filterPokedex)
 import Msgs exposing (Msg)
 import Models exposing (..)
@@ -18,7 +18,9 @@ messageBox message level =
             [ id "message-box"
             , classList
                 [ ( "autohide", String.length message > 0 )
+                , ( "debug", level == Debug )
                 , ( "notice", level == Notice )
+                , ( "warning", level == Warning )
                 , ( "error", level == Error )
                 ]
             ]
@@ -68,7 +70,7 @@ romanNumeralButtons currentGen message level =
             ++ [ messageBox message level ]
 
 
-letterButton : Pokedex -> Int -> Char -> Char -> Html Msg
+letterButton : WebData Pokedex -> Int -> Char -> Char -> Html Msg
 letterButton pokedex currentGen currentLetter letter =
     let
         pokeList =
@@ -85,12 +87,20 @@ letterButton pokedex currentGen currentLetter letter =
             [ text <| String.fromChar letter ]
 
 
-letterButtons : Pokedex -> Int -> Char -> Html Msg
+letterButtons : WebData Pokedex -> Int -> Char -> Html Msg
 letterButtons pokedex currentGen currentLetter =
-    div [ id "letter-buttons" ] <|
-        List.map
-            (letterButton pokedex currentGen currentLetter)
-            allLetters
+    let
+        buttonList =
+            case pokedex of
+                Success pokeList ->
+                    List.map
+                        (letterButton pokedex currentGen currentLetter)
+                        allLetters
+
+                _ ->
+                    []
+    in
+        div [ id "letter-buttons" ] buttonList
 
 
 userButton : String -> String -> Html Msg
@@ -108,7 +118,7 @@ userButton currentUserName userName =
 userButtons : WebData TeamRatings -> CurrentUser -> Html Msg
 userButtons ratings currentUser =
     case ratings of
-        RemoteData.Success actualRatings ->
+        Success actualRatings ->
             let
                 currentUserName =
                     Maybe.withDefault "" currentUser

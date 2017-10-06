@@ -2,10 +2,7 @@ module CommandsRatings exposing (loadRatings)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
-
-
---import Json.Encode as Encode
-
+import Json.Encode as Encode
 import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional)
 import Constants exposing (..)
@@ -37,6 +34,7 @@ decodeTeamRatings =
 decodeUserRatings : Decoder UserRatings
 decodeUserRatings =
     decode UserRatings
+        |> required "id" Decode.int
         |> required "userName" Decode.string
         |> required "color" Decode.string
         |> required "ratings" Decode.string

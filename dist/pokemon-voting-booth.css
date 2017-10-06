@@ -134,10 +134,16 @@ button.letter-button:disabled {
     visibility: hidden;
 }
 
+#message-box.warning {
+    border: 1px solid #990; /* yellow */
+    color: #990;
+    background-color: #ff0; /* light yellow */
+}
+
 #message-box.notice {
     border: 1px solid #090; /* green */
     color: #090;
-    background-color: #dfd; /* light greeo */
+    background-color: #dfd; /* light green */
 }
 
 #message-box.error {
@@ -181,6 +187,7 @@ button.letter-button:disabled {
 
 .poketile p {
     display: flex;
+    font-face: Helvetica, Arial, Sans;
     justify-content: space-between;
     margin: 8px 14px;
 }

@@ -5,20 +5,8 @@ import Maybe
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
-import RemoteData exposing (WebData)
+import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (maxStars)
-
-
-{-
-   import Material
-   import Material.Scheme
-   import Material.Table as Table
-   import Material.Button as Button
-   import Material.Options as Options exposing (css)
-   import Material.Typography as Typo
-   import Material.Elevation as Elevation
--}
-
 import Helpers exposing (filterPokedex)
 import Models exposing (..)
 import Msgs exposing (Msg)
@@ -123,10 +111,11 @@ ratingWidget ratings =
 extractOnePokemonFromRatings : WebData TeamRatings -> Pokemon -> TeamRating
 extractOnePokemonFromRatings ratings pokemon =
     case ratings of
-        RemoteData.Success actualRatings ->
+        Success actualRatings ->
             List.map
                 (\r ->
-                    { userName = r.userName
+                    { id = r.id
+                    , userName = r.userName
                     , color = r.color
                     , rating =
                         String.slice pokemon.number (pokemon.number + 1) r.ratings
@@ -193,12 +182,12 @@ pokemonTile ratings currentUser pokemon =
                 ]
             ]
                 ++ case ratings of
-                    RemoteData.Success _ ->
+                    Success _ ->
                         [ ratingWidget otherRatings
                         , actualVoteWidget
                         ]
 
-                    RemoteData.Failure _ ->
+                    Failure _ ->
                         [ loadingErrorIcon ]
 
                     _ ->
