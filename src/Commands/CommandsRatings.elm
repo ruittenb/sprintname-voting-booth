@@ -17,13 +17,24 @@ loadRatings =
         |> Cmd.map Msgs.OnLoadRatings
 
 
+saveRatings : UserRatings -> Cmd Msg
+saveRatings userRatings =
+    saveUserRatingsRequest userRatings
+        |> RemoteData.sendRequest
+        |> Cmd.map Msgs.OnSaveRatings
 
-{-
-   saveRatings : TeamRatings -> Cmd Msg
-   saveRatings teamRatings =
-       saveRatingsRequest teamRatings
-           |> Http.send Msgs.OnSaveRatings
--}
+
+saveUserRatingsRequest : UserRatings -> Http.Request UserRatings
+saveUserRatingsRequest userRatings =
+    Http.request
+        { body = encodeUserRatings userRatings |> Http.jsonBody
+        , expect = Http.expectJson decodeUserRatings
+        , headers = []
+        , method = "PATCH"
+        , timeout = Nothing
+        , url = saveUserRatingsUrl userRatings.id
+        , withCredentials = False
+        }
 
 
 decodeTeamRatings : Decoder TeamRatings
@@ -38,3 +49,16 @@ decodeUserRatings =
         |> required "userName" Decode.string
         |> required "color" Decode.string
         |> required "ratings" Decode.string
+
+
+encodeUserRatings : UserRatings -> Encode.Value
+encodeUserRatings userRatings =
+    let
+        attributes =
+            [ ( "id", Encode.int userRatings.id )
+            , ( "userName", Encode.string userRatings.userName )
+            , ( "color", Encode.string userRatings.color )
+            , ( "ratings", Encode.string userRatings.ratings )
+            ]
+    in
+        Encode.object attributes

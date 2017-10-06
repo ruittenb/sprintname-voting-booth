@@ -3,14 +3,19 @@ module Constants exposing (..)
 import Char
 
 
+pokedexApiUrl : String
+pokedexApiUrl =
+    "http://localhost:4202/pokedex"
+
+
 ratingsApiUrl : String
 ratingsApiUrl =
     "http://localhost:4202/users"
 
 
-pokedexApiUrl : String
-pokedexApiUrl =
-    "http://localhost:4202/pokedex"
+saveUserRatingsUrl : Int -> String
+saveUserRatingsUrl userId =
+    ratingsApiUrl ++ "/" ++ toString userId
 
 
 maxStars : Int

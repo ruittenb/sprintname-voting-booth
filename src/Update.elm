@@ -1,6 +1,6 @@
 module Update exposing (update)
 
-import RemoteData exposing (RemoteData(..))
+import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
@@ -33,27 +33,26 @@ extractOtherUsersFromRatings ratings currentUser =
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
-        Msgs.OnLoadRatings ratings ->
+        Msgs.OnLoadRatings NotAsked ->
+            ( oldState, Cmd.none )
+
+        Msgs.OnLoadRatings Loading ->
+            ( oldState, Cmd.none )
+
+        Msgs.OnLoadRatings (Success ratings) ->
             let
-                ( statusMessage, statusLevel ) =
-                    case ratings of
-                        NotAsked ->
-                            ( "Preparing...", Notice )
+                newState =
+                    { oldState | ratings = RemoteData.succeed ratings }
+            in
+                ( newState, loadPokedex )
 
-                        Loading ->
-                            ( "Loading...", Notice )
-
-                        Success _ ->
-                            ( "", None )
-
-                        Failure mess ->
-                            ( toString mess, Error )
-
+        Msgs.OnLoadRatings (Failure message) ->
+            let
                 newState =
                     { oldState
-                        | statusMessage = statusMessage
-                        , statusLevel = statusLevel
-                        , ratings = ratings
+                        | statusMessage = toString message
+                        , statusLevel = Error
+                        , ratings = RemoteData.Failure message
                     }
             in
                 ( newState, loadPokedex )
@@ -183,12 +182,21 @@ update msg oldState =
                     in
                         ( newState, Cmd.none )
 
-                -- .. or oldState.ratings not successfully loaded
                 _ ->
                     ( oldState, Cmd.none )
 
+        Msgs.OnSaveRatings NotAsked ->
+            ( oldState, Cmd.none )
 
+        Msgs.OnSaveRatings Loading ->
+            ( oldState, Cmd.none )
 
-{-
-   ( newState, saveRatings newStateRatings )
--}
+        Msgs.OnSaveRatings (Success ratings) ->
+            ( oldState, Cmd.none )
+
+        Msgs.OnSaveRatings (Failure message) ->
+            let
+                newState =
+                    { oldState | statusMessage = toString message, statusLevel = Error }
+            in
+                ( newState, Cmd.none )
