@@ -1,0 +1,15 @@
+
+missing:
+
+ - gebruikers moeten kunnen authenticeren met google
+ - when a generations button is pressed, check if the generation needs to be loaded
+
+improvements:
+
+ - gebruikers moeten niet meer dan 6 sterren per letter kunnen uitbrengen
+ - replace star-ratings font with icons?
+ - briefly flash user buttons
+ - sort generations with zero last
+ - split lists into oneUser and otherUsers using List.partition:
+   (a -> Bool) -> List a -> (List a, List a)
+   List.partition (\x -> x < 3) [0,1,2,3,4,5] == ([0,1,2], [3,4,5])

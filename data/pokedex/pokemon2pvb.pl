@@ -39,24 +39,31 @@ sub gen
 
 sub main
 {
-	my ($apiJsonText, $pvbJsonText, $apiData, $pvbData, $pokemonNum, $pokemonName);
+	my ($apiJsonText, $pvbJsonText, $apiData, $pvbData,
+		$number, $name, $generation, $letter, $url, $image);
 	print qq'{ "pokedex": [\n';
 	foreach (<*.json>) {
 		$apiJsonText = read_file($_);
 		$apiData = decode_json $apiJsonText;
-		$pokemonName = ucfirst $apiData->{name};
-		$pokemonNum = $apiData->{id};
+		$number= $apiData->{id};
+		$name = ucfirst $apiData->{name};
+		$generation = gen($number);
+		$letter = substr($name, 0, 1),
+		$url = "https://bulbapedia.bulbagarden.net/wiki/${name}_(Pok%C3%A9mon)";
+		$image = sprintf($imgBaseUrl, $number);
 		$pvbData = {
-			id => $pokemonNum,
-			generation => gen($pokemonNum),
-			letter => substr($pokemonName, 0, 1),
-			number => $pokemonNum,
-			name => $pokemonName,
-			url => "https://bulbapedia.bulbagarden.net/wiki/${pokemonName}_(Pok%C3%A9mon)",
-			image => sprintf($imgBaseUrl, $pokemonNum),
+			id => $number,
+			number => $number,
+			generation => $generation,
+			letter => $letter,
+			name => $name,
+			url => $url,
+			image => $image,
 		};
 		$pvbJsonText = encode_json $pvbData;
-		print STDERR "Processed $pokemonNum...\n";
+		$pvbJsonText = qq'  {"id":$number,"number":$number,"generation":$generation,"letter":"$letter",'
+			. qq'"name":"$name","url":"$url","image":"$image"}\n';
+		print STDERR "Processed $number...\n";
 		print "$pvbJsonText,\n";
 	}
 	print  "]\n}\n";
