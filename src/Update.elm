@@ -163,10 +163,10 @@ update msg oldState =
                                 ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
 
                         -- insert into new state
-                        newState =
+                        ( newState, newCmd ) =
                             case oldCurrentUserRatings of
                                 Nothing ->
-                                    oldState
+                                    ( oldState, Cmd.none )
 
                                 Just actualUserRatings ->
                                     let
@@ -176,9 +176,11 @@ update msg oldState =
                                         newStateRatings =
                                             newCurrentUserRatings :: otherUserRatings
                                     in
-                                        { oldState | ratings = Success newStateRatings, statusMessage = "" }
+                                        ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
+                                        , saveRatings newCurrentUserRatings
+                                        )
                     in
-                        ( newState, Cmd.none )
+                        ( newState, newCmd )
 
                 _ ->
                     ( oldState, Cmd.none )

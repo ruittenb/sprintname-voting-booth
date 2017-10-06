@@ -2,7 +2,6 @@
 missing:
 
  - gebruikers moeten kunnen authenticeren met google
- - when a generations button is pressed, check if the generation needs to be loaded
 
 improvements:
 
