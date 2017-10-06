@@ -99,13 +99,21 @@ ratingNode rating =
         userTitle =
             rating.userName ++ ": " ++ toString rating.rating
     in
-        span [ title userTitle ] <|
+        span
+            [ title userTitle
+            , style [ ( "color", rating.color ) ]
+            ]
+        <|
             List.repeat rating.rating star
 
 
 ratingWidget : TeamRating -> Html Msg
 ratingWidget ratings =
-    div [ class "rating-nodes" ] <| List.map ratingNode ratings
+    div
+        [ class "rating-nodes"
+        ]
+    <|
+        List.map ratingNode ratings
 
 
 extractOnePokemonFromRatings : WebData TeamRatings -> Pokemon -> TeamRating

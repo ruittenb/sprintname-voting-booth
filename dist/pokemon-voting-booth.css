@@ -218,7 +218,6 @@ button.letter-button:disabled {
 
 .rating-nodes span.star::after {
     content: '\f005';
-    color: #78b8e8; /* light blue */
 }
 
 .voting-node span.star::after {
