@@ -1,11 +1,13 @@
 
 missing:
  - gebruikers moeten kunnen authenticeren met google
+ - add variants
 
 improvements:
  - add search field?
- - replace star-ratings font with icons?
  - briefly flash user buttons
+ - add Mega variants like https://www.pokemon.com/us/pokedex/manectric
 
 consider:
  - save vote first, then display
+ - replace star-ratings font with icons?

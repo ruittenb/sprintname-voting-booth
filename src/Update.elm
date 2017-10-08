@@ -10,7 +10,7 @@ import CommandsPokemon exposing (loadPokedex)
 import CommandsRatings exposing (saveRatings)
 
 
-extractOneUserFromRatings : TeamRatings -> CurrentUser -> ( List UserRatings, List UserRatings )
+extractOneUserFromRatings : TeamRatings -> CurrentUser -> ( TeamRatings, TeamRatings )
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->

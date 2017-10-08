@@ -46,11 +46,13 @@ linkToLighthouse imageUrl lighthouseData content =
         [ content ]
 
 
-pokemonImg : String -> Html Msg
-pokemonImg imageUrl =
+pokemonImg : String -> String -> Html Msg
+pokemonImg imageUrl altText =
     img
         [ src imageUrl
         , class "pokemon-image"
+        , alt altText
+        , title altText
         ]
         []
 
@@ -147,12 +149,24 @@ extractOneUserFromRatings ratings currentUser =
             List.partition (.userName >> (==) simpleUserName) ratings
 
 
-pokemonTile : WebData TeamRatings -> CurrentUser -> Pokemon -> Html Msg
-pokemonTile ratings currentUser pokemon =
+variantLinks : String -> List PokemonVariant -> List (Html Msg)
+variantLinks pokemonName variants =
     let
         lighthouseData =
             { name = "pokemon", caption = pokemon.name }
 
+        variantLink =
+            (\v ->
+                pokemonImg v.image v.vname
+                    |> linkToLighthouse v.image lighthouseData
+            )
+    in
+        List.map variantLink variants
+
+
+pokemonTile : WebData TeamRatings -> CurrentUser -> Pokemon -> Html Msg
+pokemonTile ratings currentUser pokemon =
+    let
         allUserRatings =
             extractOnePokemonFromRatings ratings pokemon
 
@@ -173,9 +187,22 @@ pokemonTile ratings currentUser pokemon =
                 , linkTo pokemon.url <| text pokemon.name
                 ]
             , div [ class "pokemon-image-strip-box" ]
-                [ div [] []
-                , (linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image)
-                , div [] []
+                [ div
+                    [ classList
+                        [ ( "left-arrow", List.length pokemon.variants > 1 )
+                        ]
+                    ]
+                    []
+                , div [ class "pokemon-image-box" ]
+                    [ span [ class "pokemon-image-strip" ] <|
+                        variantLinks pokemon.name pokemon.variants
+                    ]
+                , div
+                    [ classList
+                        [ ( "right-arrow", List.length pokemon.variants > 1 )
+                        ]
+                    ]
+                    []
                 ]
             ]
                 ++ case ratings of

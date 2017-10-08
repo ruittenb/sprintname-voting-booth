@@ -42,6 +42,18 @@ decodePokemon =
             |> required "generation" Decode.int
             |> required "letter" Decode.string
             |> required "name" Decode.string
-            |> required "image" Decode.string
             |> required "url" Decode.string
+            |> required "variants" decodePokemonVariants
             |> resolve
+
+
+decodePokemonVariants : Decoder (List PokemonVariant)
+decodePokemonVariants =
+    Decode.list decodePokemonVariant
+
+
+decodePokemonVariant : Decoder PokemonVariant
+decodePokemonVariant =
+    decode PokemonVariant
+        |> required "image" Decode.string
+        |> required "vname" Decode.string

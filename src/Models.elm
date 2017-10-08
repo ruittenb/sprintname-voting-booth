@@ -68,8 +68,14 @@ type alias Pokemon =
     , generation : Int
     , letter : Char
     , name : String
-    , image : String
     , url : String
+    , variants : List PokemonVariant
+    }
+
+
+type alias PokemonVariant =
+    { image : String
+    , vname : String
     }
 
 

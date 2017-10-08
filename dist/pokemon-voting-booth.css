@@ -201,8 +201,33 @@ button.generation-button.error {
     margin: 8px 14px;
 }
 
-.pokemon-image-square {
+.poketile .left-arrow,
+.poketile .right-arrow {
+    width: 50px;
     height: 120px;
+}
+
+.poketile .left-arrow {
+    background: url(images/prev.png) -10px center no-repeat;
+}
+.poketile .right-arrow {
+    background: url(images/next.png) 10px center no-repeat;
+}
+
+.pokemon-image-strip-box {
+    display: flex;
+    justify-content: space-between;
+    height: 120px;
+}
+
+.pokemon-image-strip {
+    white-space: nowrap;
+}
+
+.pokemon-image-box {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
 }
 
 .pokemon-image {
