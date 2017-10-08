@@ -21,6 +21,8 @@ button.generation-button {
 
 button.user-button {
     width: 84px;
+    display: block;
+    float: left;
     /*
     -webkit-animation: flashBriefly 1s forwards 1s; 
     animation: flashBriefly 1s forwards 1s;
@@ -53,10 +55,6 @@ button.generation-button {
     float: left;
 }
 
-button.generation-button.transparent {
-    opacity: 0.01;
-}
-
 button.user-button:hover,
 button.letter-button:hover,
 button.generation-button:hover {
@@ -70,6 +68,15 @@ button.generation-button.current.loading,
 button.generation-button.current.transparent {
     background-color: #e6c6e6; /* purple */
     opacity: 1;
+}
+
+button.letter-button:disabled {
+    border-color: #777;
+    background-color: #eee;
+}
+
+button.generation-button.transparent {
+    opacity: 0.01;
 }
 
 button.generation-button.loading {
@@ -92,15 +99,10 @@ button.generation-button.error {
     background: #e6c6e6 url(icons/loading-error.png) 0 0 repeat;
 }
 
-button.letter-button:disabled {
-    border-color: #777;
-    background-color: #eee;
-}
-
-
 #user-button-placeholder {
     height: 38px;
 }
+
 #user-button-placeholder div {
     width: 304px;
     height: 30px;
@@ -115,6 +117,7 @@ button.letter-button:disabled {
     height: 38px;
 }
 
+#user-buttons,
 #generation-buttons {
     white-space: nowrap;
     display: block;

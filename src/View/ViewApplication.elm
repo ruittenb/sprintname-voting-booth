@@ -60,14 +60,13 @@ romanNumeralButton currentGen gen =
         [ text <| romanNumeral gen ]
 
 
-romanNumeralButtons : Int -> String -> StatusLevel -> Html Msg
-romanNumeralButtons currentGen message level =
+romanNumeralButtons : Int -> Html Msg
+romanNumeralButtons currentGen =
     div [ id "generation-buttons" ] <|
         (List.map
             (romanNumeralButton currentGen)
             allGenerations
         )
-            ++ [ messageBox message level ]
 
 
 letterButton : WebData Pokedex -> Int -> Char -> Char -> Html Msg
@@ -115,8 +114,8 @@ userButton currentUserName userName =
         [ text userName ]
 
 
-userButtons : WebData TeamRatings -> CurrentUser -> Html Msg
-userButtons ratings currentUser =
+userButtons : WebData TeamRatings -> CurrentUser -> String -> StatusLevel -> Html Msg
+userButtons ratings currentUser message level =
     case ratings of
         Success actualRatings ->
             let
@@ -127,17 +126,18 @@ userButtons ratings currentUser =
                     List.map
                         (.userName >> userButton currentUserName)
                         (List.sortBy .userName actualRatings)
+                        ++ [ messageBox message level ]
 
         _ ->
             div [ id "user-button-placeholder" ]
-                [ div [] []
+                [ messageBox message level
                 ]
 
 
 heading : ApplicationState -> Html Msg
 heading state =
     div [ id "filter-buttons" ]
-        [ userButtons state.ratings state.user
-        , romanNumeralButtons state.generation state.statusMessage state.statusLevel
+        [ userButtons state.ratings state.user state.statusMessage state.statusLevel
+        , romanNumeralButtons state.generation
         , letterButtons state.pokedex state.generation state.letter
         ]
