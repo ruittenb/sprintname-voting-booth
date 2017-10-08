@@ -1,9 +1,11 @@
 module Update exposing (update)
 
+import Set
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
+import Helpers exposing (filterPokedex)
 import CommandsPokemon exposing (loadPokedex)
 import CommandsRatings exposing (saveRatings)
 
@@ -18,17 +20,11 @@ extractOneUserFromRatings ratings currentUser =
             List.partition (.userName >> (==) simpleUserName) ratings
 
 
-
-{-
-   extractOtherUsersFromRatings : TeamRatings -> CurrentUser -> List UserRatings
-   extractOtherUsersFromRatings ratings currentUser =
-       case currentUser of
-           Nothing ->
-               ratings
-
-           Just simpleUserName ->
-               List.filter (.userName >> (/=) simpleUserName) ratings
--}
+extractOnePokemonFromRatingString : String -> Int -> Int
+extractOnePokemonFromRatingString ratingString pokemonNumber =
+    String.slice pokemonNumber (pokemonNumber + 1) ratingString
+        |> String.toInt
+        |> Result.withDefault 0
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -125,6 +121,7 @@ update msg oldState =
             case oldState.ratings of
                 Success oldRatings ->
                     let
+                        -- GET THE REQUIRED DATA
                         pokemonNumber =
                             userVote.pokemonNumber
 
@@ -141,12 +138,6 @@ update msg oldState =
                                 Just actualUserRatings ->
                                     actualUserRatings.ratings
 
-                        -- extract one pokemon rating
-                        oldPokeRating =
-                            String.slice pokemonNumber (pokemonNumber + 1) oldUserRatingString
-                                |> String.toInt
-                                |> Result.withDefault 0
-
                         -- find new vote. If the same as old vote, clear it
                         newPokeRating =
                             if oldPokeRating == userVote.vote then
@@ -154,29 +145,50 @@ update msg oldState =
                             else
                                 userVote.vote
 
-                        -- store new vote in rating string
-                        newUserRatingString =
-                            (String.slice 0 pokemonNumber oldUserRatingString)
-                                ++ (toString newPokeRating)
-                                ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
+                        -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
+                        pokeList =
+                            filterPokedex oldState.pokedex oldState.generation oldState.letter
 
-                        -- insert into new state
+                        -- extract one pokemon rating
+                        oldPokeRating =
+                            extractOnePokemonFromRatingString oldUserRatingString pokemonNumber
+
+                        otherPokemonRatings =
+                            Set.fromList <|
+                                List.map (.number >> extractOnePokemonFromRatingString oldUserRatingString) pokeList
+
+                        -- REGISTER NEW VOTE
                         ( newState, newCmd ) =
-                            case List.head oldCurrentUserRatings of
-                                Nothing ->
-                                    ( oldState, Cmd.none )
+                            if newPokeRating == 0 || not (Set.member newPokeRating otherPokemonRatings) then
+                                case List.head oldCurrentUserRatings of
+                                    Nothing ->
+                                        ( oldState, Cmd.none )
 
-                                Just actualUserRatings ->
-                                    let
-                                        newCurrentUserRatings =
-                                            { actualUserRatings | ratings = newUserRatingString }
+                                    Just actualUserRatings ->
+                                        let
+                                            -- store new vote in rating string
+                                            newUserRatingString =
+                                                (String.slice 0 pokemonNumber oldUserRatingString)
+                                                    ++ (toString newPokeRating)
+                                                    ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
 
-                                        newStateRatings =
-                                            newCurrentUserRatings :: otherUserRatings
-                                    in
-                                        ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
-                                        , saveRatings newCurrentUserRatings
-                                        )
+                                            -- insert into new state
+                                            newCurrentUserRatings =
+                                                { actualUserRatings | ratings = newUserRatingString }
+
+                                            newStateRatings =
+                                                newCurrentUserRatings :: otherUserRatings
+                                        in
+                                            ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
+                                            , saveRatings newCurrentUserRatings
+                                            )
+                            else
+                                ( { oldState
+                                    | statusMessage = "You already voted " ++ toString newPokeRating ++ " in this category"
+                                    , statusLevel = Warning
+                                  }
+                                , Cmd.none
+                                )
                     in
                         ( newState, newCmd )
 

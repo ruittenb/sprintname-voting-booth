@@ -23,16 +23,6 @@ maxStars =
     3
 
 
-triangularNumber : Int -> Int
-triangularNumber n =
-    List.sum <| List.range 1 n
-
-
-totalVotes : Int
-totalVotes =
-    triangularNumber maxStars
-
-
 totalPokemon : Int
 totalPokemon =
     -- zero included
