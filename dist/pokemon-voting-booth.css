@@ -134,22 +134,28 @@ button.letter-button:disabled {
     visibility: hidden;
 }
 
-#message-box.warning {
-    border: 1px solid #990; /* yellow */
-    color: #990;
-    background-color: #ff0; /* light yellow */
+#message-box.debug {
+    border: 1px solid #345485; /* dark blue */
+    color: #345485;
+    background-color: #bee4f7; /* light blue */
 }
 
 #message-box.notice {
-    border: 1px solid #090; /* green */
-    color: #090;
-    background-color: #dfd; /* light green */
+    border: 1px solid #617f1d; /* green */
+    color: #617f1d;
+    background-color: #dff3c0; /* light green */
+}
+
+#message-box.warning {
+    border: 1px solid #a97722; /* brownish yellow */
+    color: #a97722;
+    background-color: #fef0b3; /* light yellow */
 }
 
 #message-box.error {
-    border: 1px solid #c00; /* red */
-    color: #c00;
-    background-color: #fdd; /* light red / pink */
+    border: 1px solid #a90f1b; /* red */
+    color: #a90f1b;
+    background-color: #ffbabc; /* light red / pink */
 }
 
 #message-box.autohide {
