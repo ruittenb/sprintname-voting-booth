@@ -23,6 +23,11 @@ maxStars =
     3
 
 
+maxGeneration : Int
+maxGeneration =
+    7
+
+
 totalPokemon : Int
 totalPokemon =
     -- zero included
@@ -31,7 +36,8 @@ totalPokemon =
 
 allGenerations : List Int
 allGenerations =
-    [ 1, 2, 3, 4, 5, 6, 7, 0 ]
+    List.range 1 maxGeneration
+        ++ [ 0 ]
 
 
 allLetters : List Char
