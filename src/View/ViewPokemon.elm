@@ -137,24 +137,14 @@ extractOnePokemonFromRatings ratings pokemon =
             []
 
 
-extractOneUserFromRatings : TeamRating -> CurrentUser -> TeamRating
+extractOneUserFromRatings : TeamRatings -> CurrentUser -> ( TeamRating, TeamRating )
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
-            []
+            ( [], ratings )
 
         Just simpleUserName ->
-            List.filter (\p -> (==) simpleUserName p.userName) ratings
-
-
-extractOtherUsersFromRatings : TeamRating -> CurrentUser -> TeamRating
-extractOtherUsersFromRatings ratings currentUser =
-    case currentUser of
-        Nothing ->
-            ratings
-
-        Just simpleUserName ->
-            List.filter (\p -> (/=) simpleUserName p.userName) ratings
+            List.partition (.userName >> (==) simpleUserName) ratings
 
 
 pokemonTile : WebData TeamRatings -> CurrentUser -> Pokemon -> Html Msg
@@ -166,11 +156,8 @@ pokemonTile ratings currentUser pokemon =
         allUserRatings =
             extractOnePokemonFromRatings ratings pokemon
 
-        ownRatings =
+        ( ownRatings, otherRatings ) =
             extractOneUserFromRatings allUserRatings currentUser
-
-        otherRatings =
-            extractOtherUsersFromRatings allUserRatings currentUser
 
         actualVoteWidget =
             case currentUser of
@@ -185,8 +172,10 @@ pokemonTile ratings currentUser pokemon =
                 [ text <| toString pokemon.number
                 , linkTo pokemon.url <| text pokemon.name
                 ]
-            , div [ class "pokemon-image-square" ]
-                [ linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image
+            , div [ class "pokemon-image-strip-box" ]
+                [ div [] []
+                , (linkToLighthouse pokemon.image lighthouseData <| pokemonImg pokemon.image)
+                , div [] []
                 ]
             ]
                 ++ case ratings of
