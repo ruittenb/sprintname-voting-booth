@@ -8,24 +8,27 @@ import CommandsPokemon exposing (loadPokedex)
 import CommandsRatings exposing (saveRatings)
 
 
-extractOneUserFromRatings : TeamRatings -> CurrentUser -> List UserRatings
+extractOneUserFromRatings : TeamRatings -> CurrentUser -> ( List UserRatings, List UserRatings )
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
-            []
+            ( [], ratings )
 
         Just simpleUserName ->
-            List.filter (.userName >> (==) simpleUserName) ratings
+            List.partition (.userName >> (==) simpleUserName) ratings
 
 
-extractOtherUsersFromRatings : TeamRatings -> CurrentUser -> List UserRatings
-extractOtherUsersFromRatings ratings currentUser =
-    case currentUser of
-        Nothing ->
-            ratings
 
-        Just simpleUserName ->
-            List.filter (.userName >> (/=) simpleUserName) ratings
+{-
+   extractOtherUsersFromRatings : TeamRatings -> CurrentUser -> List UserRatings
+   extractOtherUsersFromRatings ratings currentUser =
+       case currentUser of
+           Nothing ->
+               ratings
+
+           Just simpleUserName ->
+               List.filter (.userName >> (/=) simpleUserName) ratings
+-}
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -126,17 +129,12 @@ update msg oldState =
                             userVote.pokemonNumber
 
                         -- extract one user
-                        oldCurrentUserRatings =
+                        ( oldCurrentUserRatings, otherUserRatings ) =
                             extractOneUserFromRatings oldRatings oldState.user
-                                |> List.head
-
-                        -- the list of the other users
-                        otherUserRatings =
-                            extractOtherUsersFromRatings oldRatings oldState.user
 
                         -- extract user rating string, or create one
                         oldUserRatingString =
-                            case oldCurrentUserRatings of
+                            case List.head oldCurrentUserRatings of
                                 Nothing ->
                                     String.repeat totalPokemon "0"
 
@@ -164,7 +162,7 @@ update msg oldState =
 
                         -- insert into new state
                         ( newState, newCmd ) =
-                            case oldCurrentUserRatings of
+                            case List.head oldCurrentUserRatings of
                                 Nothing ->
                                     ( oldState, Cmd.none )
 
