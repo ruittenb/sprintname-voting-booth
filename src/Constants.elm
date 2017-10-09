@@ -3,14 +3,19 @@ module Constants exposing (..)
 import Char
 
 
+dbHostname : String
+dbHostname =
+    "sprintname-voting-booth.ruittenbook.local"
+
+
 pokedexApiUrl : String
 pokedexApiUrl =
-    "http://localhost:4202/pokedex"
+    "http://" ++ dbHostname ++ ":4202/pokedex"
 
 
 ratingsApiUrl : String
 ratingsApiUrl =
-    "http://localhost:4202/users"
+    "http://" ++ dbHostname ++ ":4202/users"
 
 
 saveUserRatingsUrl : Int -> String

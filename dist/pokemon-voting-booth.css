@@ -298,6 +298,12 @@ button.generation-button.error {
     background: transparent url(icons/loading.gif) top left no-repeat;
 }
 
+/*
+.loading-circle {
+    background: transparent url(/dist/icons/loading-circle.png) center center no-repeat;
+}
+*/
+
 .unknown-user {
     height: 16px;
     width: 16px;
