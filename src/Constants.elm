@@ -18,6 +18,16 @@ saveUserRatingsUrl userId =
     ratingsApiUrl ++ "/" ++ toString userId
 
 
+initialGeneration : Int
+initialGeneration =
+    3
+
+
+initialLetter : Char
+initialLetter =
+    'C'
+
+
 maxStars : Int
 maxStars =
     3

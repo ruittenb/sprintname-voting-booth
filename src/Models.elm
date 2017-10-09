@@ -1,6 +1,7 @@
 module Models exposing (..)
 
 import RemoteData exposing (WebData, RemoteData(..))
+import Constants exposing (..)
 
 
 type StatusLevel
@@ -88,8 +89,8 @@ initialState =
     { user = Nothing
     , statusMessage = ""
     , statusLevel = None
-    , generation = 3
-    , letter = 'B'
+    , generation = initialGeneration
+    , letter = initialLetter
     , pokedex = NotAsked
     , ratings = NotAsked
     }

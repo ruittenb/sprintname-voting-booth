@@ -36,12 +36,12 @@ linkTo url content =
         [ content ]
 
 
-linkToLighthouse : String -> LighthouseData -> Html Msg -> Html Msg
-linkToLighthouse imageUrl lighthouseData content =
+linkToLighthouse : String -> String -> Html Msg -> Html Msg
+linkToLighthouse imageUrl caption content =
     a
         [ href imageUrl
-        , Html.Attributes.attribute "data-lightbox" lighthouseData.name
-        , Html.Attributes.attribute "data-title" lighthouseData.caption
+        , Html.Attributes.attribute "data-lightbox" "pokemon"
+        , Html.Attributes.attribute "data-title" caption
         ]
         [ content ]
 
@@ -139,7 +139,7 @@ extractOnePokemonFromRatings ratings pokemon =
             []
 
 
-extractOneUserFromRatings : TeamRatings -> CurrentUser -> ( TeamRating, TeamRating )
+extractOneUserFromRatings : TeamRating -> CurrentUser -> ( TeamRating, TeamRating )
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -149,19 +149,22 @@ extractOneUserFromRatings ratings currentUser =
             List.partition (.userName >> (==) simpleUserName) ratings
 
 
+variantLink : String -> PokemonVariant -> Html Msg
+variantLink pokemonName variant =
+    let
+        caption =
+            if String.length variant.vname > 0 then
+                pokemonName ++ " (" ++ variant.vname ++ ") "
+            else
+                pokemonName
+    in
+        pokemonImg variant.image variant.vname
+            |> linkToLighthouse variant.image caption
+
+
 variantLinks : String -> List PokemonVariant -> List (Html Msg)
 variantLinks pokemonName variants =
-    let
-        lighthouseData =
-            { name = "pokemon", caption = pokemon.name }
-
-        variantLink =
-            (\v ->
-                pokemonImg v.image v.vname
-                    |> linkToLighthouse v.image lighthouseData
-            )
-    in
-        List.map variantLink variants
+    List.map (variantLink pokemonName) variants
 
 
 pokemonTile : WebData TeamRatings -> CurrentUser -> Pokemon -> Html Msg
@@ -194,7 +197,14 @@ pokemonTile ratings currentUser pokemon =
                     ]
                     []
                 , div [ class "pokemon-image-box" ]
-                    [ span [ class "pokemon-image-strip" ] <|
+                    [ span
+                        [ class "pokemon-image-strip"
+                        , Html.Attributes.attribute "data-variant" "1"
+                        , List.length pokemon.variants
+                            |> toString
+                            |> Html.Attributes.attribute "data-variants"
+                        ]
+                      <|
                         variantLinks pokemon.name pokemon.variants
                     ]
                 , div
