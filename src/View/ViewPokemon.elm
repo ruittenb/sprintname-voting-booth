@@ -199,7 +199,7 @@ pokemonTile ratings currentUser pokemon =
                 , div [ class "pokemon-image-box" ]
                     [ span
                         [ class "pokemon-image-strip"
-                        , Html.Attributes.attribute "data-variant" "1"
+                        , Html.Attributes.attribute "data-variant" (toString pokemon.currentVariant)
                         , List.length pokemon.variants
                             |> toString
                             |> Html.Attributes.attribute "data-variants"

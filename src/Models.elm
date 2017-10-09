@@ -70,6 +70,7 @@ type alias Pokemon =
     , letter : Char
     , name : String
     , url : String
+    , currentVariant : Int
     , variants : List PokemonVariant
     }
 

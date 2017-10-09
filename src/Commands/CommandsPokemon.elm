@@ -24,7 +24,7 @@ decodePokedex =
 decodePokemon : Decoder Pokemon
 decodePokemon =
     let
-        toDecoder id number generation letterString name image url =
+        toDecoder id number generation letterString name url currentVariant variants =
             let
                 letterChar =
                     case String.uncons letterString of
@@ -34,7 +34,7 @@ decodePokemon =
                         _ ->
                             '?'
             in
-                Decode.succeed (Pokemon id number generation letterChar name image url)
+                Decode.succeed (Pokemon id number generation letterChar name url currentVariant variants)
     in
         decode toDecoder
             |> required "id" Decode.int
@@ -43,6 +43,7 @@ decodePokemon =
             |> required "letter" Decode.string
             |> required "name" Decode.string
             |> required "url" Decode.string
+            |> required "currentVariant" Decode.int
             |> required "variants" decodePokemonVariants
             |> resolve
 
