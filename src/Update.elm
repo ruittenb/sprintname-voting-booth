@@ -1,6 +1,7 @@
 module Update exposing (update)
 
 import Set
+import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
 import Models exposing (..)
@@ -164,6 +165,37 @@ update msg oldState =
 
                         _ ->
                             oldState
+            in
+                ( newState, Cmd.none )
+
+        Msgs.SearchPokemon pattern ->
+            let
+                newState =
+                    if pattern == "" then
+                        oldState
+                    else
+                        case oldState.pokedex of
+                            Success pokedex ->
+                                let
+                                    patRegex =
+                                        caseInsensitive (regex pattern)
+
+                                    maybePokemon =
+                                        List.filter (.name >> Regex.contains patRegex) pokedex
+                                            |> List.head
+
+                                    newState =
+                                        case maybePokemon of
+                                            Just pokemon ->
+                                                { oldState | letter = pokemon.letter, generation = pokemon.generation }
+
+                                            Nothing ->
+                                                oldState
+                                in
+                                    newState
+
+                            _ ->
+                                oldState
             in
                 ( newState, Cmd.none )
 
