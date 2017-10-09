@@ -10,5 +10,6 @@ type Msg
     | ChangeUser String
     | ChangeGeneration Int
     | ChangeLetter Char
+    | ChangeVariant Int BrowseDirection
     | VoteForPokemon UserVote
     | OnSaveRatings (WebData UserRatings)

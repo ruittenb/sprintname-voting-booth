@@ -24,8 +24,11 @@ decodePokedex =
 decodePokemon : Decoder Pokemon
 decodePokemon =
     let
-        toDecoder id number generation letterString name url currentVariant variants =
+        toDecoder id number generation letterString name url variants =
             let
+                currentVariant =
+                    1
+
                 letterChar =
                     case String.uncons letterString of
                         Just ( first, _ ) ->
@@ -43,7 +46,6 @@ decodePokemon =
             |> required "letter" Decode.string
             |> required "name" Decode.string
             |> required "url" Decode.string
-            |> required "currentVariant" Decode.int
             |> required "variants" decodePokemonVariants
             |> resolve
 

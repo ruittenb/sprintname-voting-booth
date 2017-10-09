@@ -4,6 +4,11 @@ import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
 
 
+type BrowseDirection
+    = Next
+    | Prev
+
+
 type StatusLevel
     = Error
     | Warning
