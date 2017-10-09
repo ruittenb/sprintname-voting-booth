@@ -2821,12 +2821,91 @@
       "letter": "U",
       "name": "Unown",
       "url": "https://bulbapedia.bulbagarden.net/wiki/Unown_(Pok%C3%A9mon)",
-      "variants": [
-        {
-          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/201.png",
-          "vname": ""
-        }
-      ]
+      "variants": [{
+        "image": "/dist/unown/unown-A.png",
+        "vname": "A"
+      }, {
+        "image": "/dist/unown/unown-B.png",
+        "vname": "B"
+      }, {
+        "image": "/dist/unown/unown-C.png",
+        "vname": "C"
+      }, {
+        "image": "/dist/unown/unown-D.png",
+        "vname": "D"
+      }, {
+        "image": "/dist/unown/unown-E.png",
+        "vname": "E"
+      }, {
+        "image": "/dist/unown/unown-F.png",
+        "vname": "F"
+      }, {
+        "image": "/dist/unown/unown-G.png",
+        "vname": "G"
+      }, {
+        "image": "/dist/unown/unown-H.png",
+        "vname": "H"
+      }, {
+        "image": "/dist/unown/unown-I.png",
+        "vname": "I"
+      }, {
+        "image": "/dist/unown/unown-J.png",
+        "vname": "J"
+      }, {
+        "image": "/dist/unown/unown-K.png",
+        "vname": "K"
+      }, {
+        "image": "/dist/unown/unown-L.png",
+        "vname": "L"
+      }, {
+        "image": "/dist/unown/unown-M.png",
+        "vname": "M"
+      }, {
+        "image": "/dist/unown/unown-N.png",
+        "vname": "N"
+      }, {
+        "image": "/dist/unown/unown-O.png",
+        "vname": "O"
+      }, {
+        "image": "/dist/unown/unown-P.png",
+        "vname": "P"
+      }, {
+        "image": "/dist/unown/unown-Q.png",
+        "vname": "Q"
+      }, {
+        "image": "/dist/unown/unown-R.png",
+        "vname": "R"
+      }, {
+        "image": "/dist/unown/unown-S.png",
+        "vname": "S"
+      }, {
+        "image": "/dist/unown/unown-T.png",
+        "vname": "T"
+      }, {
+        "image": "/dist/unown/unown-U.png",
+        "vname": "U"
+      }, {
+        "image": "/dist/unown/unown-V.png",
+        "vname": "V"
+      }, {
+        "image": "/dist/unown/unown-W.png",
+        "vname": "W"
+      }, {
+        "image": "/dist/unown/unown-X.png",
+        "vname": "X"
+      }, {
+        "image": "/dist/unown/unown-Y.png",
+        "vname": "Y"
+      }, {
+        "image": "/dist/unown/unown-Z.png",
+        "vname": "Z"
+      }, {
+        "image": "/dist/unown/unown-em.png",
+        "vname": "!"
+      }, {
+        "image": "/dist/unown/unown-qm.png",
+        "vname": "?"
+      }]
     },
     {
       "id": 202,

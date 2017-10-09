@@ -224,18 +224,6 @@ button.generation-button.error {
     white-space: nowrap;
 }
 
-.pokemon-image-strip[data-variant="2"] {
-    margin-left: -120px;
-}
-
-.pokemon-image-strip[data-variant="3"] {
-    margin-left: -240px;
-}
-
-.pokemon-image-strip[data-variant="4"] {
-    margin-left: -360px;
-}
-
 .pokemon-image-box {
     width: 120px;
     height: 120px;

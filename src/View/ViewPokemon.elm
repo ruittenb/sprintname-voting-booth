@@ -176,6 +176,9 @@ pokemonTile ratings currentUser pokemon =
         ( ownRatings, otherRatings ) =
             extractOneUserFromRatings allUserRatings currentUser
 
+        leftMargin =
+            toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
+
         actualVoteWidget =
             case currentUser of
                 Nothing ->
@@ -200,7 +203,7 @@ pokemonTile ratings currentUser pokemon =
                 , div [ class "pokemon-image-box" ]
                     [ span
                         [ class "pokemon-image-strip"
-                        , Html.Attributes.attribute "data-variant" (toString pokemon.currentVariant)
+                        , style [ ( "margin-left", leftMargin ) ]
                         , List.length pokemon.variants
                             |> toString
                             |> Html.Attributes.attribute "data-variants"
