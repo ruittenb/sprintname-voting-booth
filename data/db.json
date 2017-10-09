@@ -6479,6 +6479,10 @@
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/460.png",
           "vname": ""
+        },
+        {
+          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/460_f2.png",
+          "vname": "Mega"
         }
       ]
     },
