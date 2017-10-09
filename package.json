@@ -20,7 +20,7 @@
   "devDependencies": {},
   "scripts": {
     "build": "webpack",
-    "client": "webpack-dev-server --port 4201",
+    "client": "webpack-dev-server",
     "api": "node api.js",
     "start": "nf start"
   },

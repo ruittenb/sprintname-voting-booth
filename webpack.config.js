@@ -42,5 +42,8 @@ module.exports = {
   devServer: {
     inline: true,
     stats: { colors: true },
+    host: '0.0.0.0',
+    port: 4201,
+    disableHostCheck: true
   },
 };
