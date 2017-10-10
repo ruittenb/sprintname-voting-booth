@@ -3,8 +3,8 @@ missing:
  - gebruikers moeten kunnen authenticeren met google
 
 improvements:
- - add search field?
  - briefly flash user buttons
+ - listen to database changes (subscriptions?)
  - add Mega variants like https://www.pokemon.com/us/pokedex/manectric
 
 consider:
