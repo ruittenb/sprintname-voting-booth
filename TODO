@@ -1,11 +1,11 @@
 
 missing:
  - gebruikers moeten kunnen authenticeren met google
+ - introduce search results view
+ - let op missing img replace by https://cdn.bulbagarden.net/upload/7/71/320Wailmer.png 
 
 improvements:
- - briefly flash user buttons
+ - move update functionality to separate functions
  - listen to database changes (subscriptions?)
  - add Mega variants like https://www.pokemon.com/us/pokedex/manectric
 
-consider:
- - replace star-ratings font with icons?
