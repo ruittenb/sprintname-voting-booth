@@ -25,26 +25,6 @@ button.user-button {
     width: 84px;
     display: block;
     float: left;
-    /*
-    -webkit-animation: flashBriefly 1s forwards 1s;
-    animation: flashBriefly 1s forwards 1s;
-    */
-}
-
-@keyframes flashBriefly {
-    0%   { background-color: white; }
-    25%  { background-color: #e6c6e6; /* purple */ }
-    50%  { background-color: white; }
-    75%  { background-color: #e6c6e6; /* purple */ }
-    100% { background-color: white; }
-}
-
-@-webkit-keyframes flashBriefly {
-    0%   { background-color: white; }
-    25%  { background-color: #e6c6e6; /* purple */ }
-    50%  { background-color: white; }
-    75%  { background-color: #e6c6e6; /* purple */ }
-    100% { background-color: white; }
 }
 
 button.letter-button {
