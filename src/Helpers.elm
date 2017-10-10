@@ -1,5 +1,6 @@
-module Helpers exposing (filterPokedex)
+module Helpers exposing (filterPokedex, searchPokedex)
 
+import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
 import Models exposing (..)
 
@@ -17,3 +18,28 @@ filterPokedex pokedex generation letter =
                     []
     in
         List.sortBy .name selection
+
+
+searchPokedex : WebData Pokedex -> String -> List Pokemon
+searchPokedex pokedex query =
+    case pokedex of
+        Success pokedex ->
+            let
+                justNumber =
+                    regex "^[0-9]+$"
+
+                pattern =
+                    caseInsensitive (regex query)
+
+                pokeList =
+                    if Regex.contains justNumber query then
+                        -- query by number
+                        List.filter (.number >> toString >> (==) query) pokedex
+                    else
+                        -- query by regex
+                        List.filter (.name >> Regex.contains pattern) pokedex
+            in
+                pokeList
+
+        _ ->
+            []

@@ -6,6 +6,7 @@ import Models exposing (..)
 
 type Msg
     = OnLoadRatings (WebData TeamRatings)
+    | OnSaveRatings (WebData UserRatings)
     | OnLoadPokedex (WebData Pokedex)
     | ChangeUser String
     | ChangeGeneration Int
@@ -13,4 +14,3 @@ type Msg
     | ChangeVariant Int BrowseDirection
     | SearchPokemon String
     | VoteForPokemon UserVote
-    | OnSaveRatings (WebData UserRatings)

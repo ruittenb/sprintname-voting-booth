@@ -1,14 +1,16 @@
 module Update exposing (update)
 
 import Set
-import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
-import Helpers exposing (filterPokedex)
+import Helpers exposing (filterPokedex, searchPokedex)
 import CommandsPokemon exposing (loadPokedex)
 import CommandsRatings exposing (saveRatings)
+
+
+-- helper functions specific to Update
 
 
 extractOneUserFromRatings : TeamRatings -> CurrentUser -> ( TeamRatings, TeamRatings )
@@ -28,21 +30,22 @@ extractOnePokemonFromRatingString ratingString pokemonNumber =
         |> Result.withDefault 0
 
 
+
+-- some update functions
+
+
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
-updateSearchPokemon oldState patString =
+updateSearchPokemon oldState query =
     let
         newState =
-            if patString == "" then
+            if query == "" then
                 oldState
             else
                 case oldState.pokedex of
                     Success pokedex ->
                         let
-                            patRegex =
-                                caseInsensitive (regex patString)
-
                             maybePokemon =
-                                List.filter (.name >> Regex.contains patRegex) pokedex
+                                searchPokedex oldState.pokedex query
                                     |> List.head
 
                             newState =
@@ -59,6 +62,142 @@ updateSearchPokemon oldState patString =
                         oldState
     in
         ( newState, Cmd.none )
+
+
+updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )
+updateChangeVariant oldState pokemonNumber direction =
+    let
+        newState =
+            case oldState.pokedex of
+                Success pokedex ->
+                    let
+                        maybePokemon =
+                            List.filter (.number >> (==) pokemonNumber) pokedex
+                                |> List.head
+                    in
+                        case maybePokemon of
+                            Nothing ->
+                                oldState
+
+                            Just pokemon ->
+                                let
+                                    proposedNewVariant =
+                                        if direction == Next then
+                                            pokemon.currentVariant + 1
+                                        else
+                                            pokemon.currentVariant - 1
+
+                                    newVariant =
+                                        if proposedNewVariant < 1 then
+                                            List.length pokemon.variants
+                                        else if proposedNewVariant > List.length pokemon.variants then
+                                            1
+                                        else
+                                            proposedNewVariant
+
+                                    newPokemon =
+                                        { pokemon | currentVariant = newVariant }
+
+                                    newPokedex =
+                                        List.map
+                                            (\p ->
+                                                if p.number == pokemonNumber then
+                                                    newPokemon
+                                                else
+                                                    p
+                                            )
+                                            pokedex
+                                in
+                                    { oldState | pokedex = RemoteData.succeed newPokedex }
+
+                _ ->
+                    oldState
+    in
+        ( newState, Cmd.none )
+
+
+updateVoteForPokemon : ApplicationState -> UserVote -> ( ApplicationState, Cmd Msg )
+updateVoteForPokemon oldState userVote =
+    case oldState.ratings of
+        Success oldRatings ->
+            let
+                -- GET THE REQUIRED DATA
+                pokemonNumber =
+                    userVote.pokemonNumber
+
+                -- extract one user
+                ( oldCurrentUserRatings, otherUserRatings ) =
+                    extractOneUserFromRatings oldRatings oldState.user
+
+                -- extract user rating string, or create one
+                oldUserRatingString =
+                    case List.head oldCurrentUserRatings of
+                        Nothing ->
+                            String.repeat totalPokemon "0"
+
+                        Just actualUserRatings ->
+                            actualUserRatings.ratings
+
+                -- find new vote. If the same as old vote, clear it
+                newPokeRating =
+                    if oldPokeRating == userVote.vote then
+                        0
+                    else
+                        userVote.vote
+
+                -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
+                pokeList =
+                    filterPokedex oldState.pokedex oldState.generation oldState.letter
+
+                -- extract one pokemon rating
+                oldPokeRating =
+                    extractOnePokemonFromRatingString oldUserRatingString pokemonNumber
+
+                otherPokemonRatings =
+                    Set.fromList <|
+                        List.map (.number >> extractOnePokemonFromRatingString oldUserRatingString) pokeList
+
+                -- REGISTER NEW VOTE
+                ( newState, newCmd ) =
+                    if newPokeRating == 0 || not (Set.member newPokeRating otherPokemonRatings) then
+                        case List.head oldCurrentUserRatings of
+                            Nothing ->
+                                ( oldState, Cmd.none )
+
+                            Just actualUserRatings ->
+                                let
+                                    -- store new vote in rating string
+                                    newUserRatingString =
+                                        (String.slice 0 pokemonNumber oldUserRatingString)
+                                            ++ (toString newPokeRating)
+                                            ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
+
+                                    -- insert into new state
+                                    newCurrentUserRatings =
+                                        { actualUserRatings | ratings = newUserRatingString }
+
+                                    newStateRatings =
+                                        newCurrentUserRatings :: otherUserRatings
+                                in
+                                    ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
+                                    , saveRatings newCurrentUserRatings
+                                    )
+                    else
+                        ( { oldState
+                            | statusMessage = "You already voted " ++ toString newPokeRating ++ " in this category"
+                            , statusLevel = Warning
+                          }
+                        , Cmd.none
+                        )
+            in
+                ( newState, newCmd )
+
+        _ ->
+            ( oldState, Cmd.none )
+
+
+
+-- central update function
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -87,6 +226,22 @@ update msg oldState =
                     }
             in
                 ( newState, loadPokedex )
+
+        Msgs.OnSaveRatings NotAsked ->
+            ( oldState, Cmd.none )
+
+        Msgs.OnSaveRatings Loading ->
+            ( oldState, Cmd.none )
+
+        Msgs.OnSaveRatings (Success ratings) ->
+            ( oldState, Cmd.none )
+
+        Msgs.OnSaveRatings (Failure message) ->
+            let
+                newState =
+                    { oldState | statusMessage = toString message, statusLevel = Error }
+            in
+                ( newState, Cmd.none )
 
         Msgs.OnLoadPokedex pokedex ->
             let
@@ -154,148 +309,10 @@ update msg oldState =
                 ( newState, Cmd.none )
 
         Msgs.ChangeVariant pokemonNumber direction ->
-            let
-                newState =
-                    case oldState.pokedex of
-                        Success pokedex ->
-                            let
-                                maybePokemon =
-                                    List.filter (.number >> (==) pokemonNumber) pokedex
-                                        |> List.head
-                            in
-                                case maybePokemon of
-                                    Just pokemon ->
-                                        let
-                                            proposedNewVariant =
-                                                if direction == Next then
-                                                    pokemon.currentVariant + 1
-                                                else
-                                                    pokemon.currentVariant - 1
-
-                                            newVariant =
-                                                if proposedNewVariant < 1 then
-                                                    List.length pokemon.variants
-                                                else if proposedNewVariant > List.length pokemon.variants then
-                                                    1
-                                                else
-                                                    proposedNewVariant
-
-                                            newPokemon =
-                                                { pokemon | currentVariant = newVariant }
-
-                                            newPokedex =
-                                                List.map
-                                                    (\p ->
-                                                        if p.number == pokemonNumber then
-                                                            newPokemon
-                                                        else
-                                                            p
-                                                    )
-                                                    pokedex
-                                        in
-                                            { oldState | pokedex = RemoteData.succeed newPokedex }
-
-                                    Nothing ->
-                                        oldState
-
-                        _ ->
-                            oldState
-            in
-                ( newState, Cmd.none )
+            updateChangeVariant oldState pokemonNumber direction
 
         Msgs.SearchPokemon pattern ->
             updateSearchPokemon oldState pattern
 
         Msgs.VoteForPokemon userVote ->
-            case oldState.ratings of
-                Success oldRatings ->
-                    let
-                        -- GET THE REQUIRED DATA
-                        pokemonNumber =
-                            userVote.pokemonNumber
-
-                        -- extract one user
-                        ( oldCurrentUserRatings, otherUserRatings ) =
-                            extractOneUserFromRatings oldRatings oldState.user
-
-                        -- extract user rating string, or create one
-                        oldUserRatingString =
-                            case List.head oldCurrentUserRatings of
-                                Nothing ->
-                                    String.repeat totalPokemon "0"
-
-                                Just actualUserRatings ->
-                                    actualUserRatings.ratings
-
-                        -- find new vote. If the same as old vote, clear it
-                        newPokeRating =
-                            if oldPokeRating == userVote.vote then
-                                0
-                            else
-                                userVote.vote
-
-                        -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
-                        pokeList =
-                            filterPokedex oldState.pokedex oldState.generation oldState.letter
-
-                        -- extract one pokemon rating
-                        oldPokeRating =
-                            extractOnePokemonFromRatingString oldUserRatingString pokemonNumber
-
-                        otherPokemonRatings =
-                            Set.fromList <|
-                                List.map (.number >> extractOnePokemonFromRatingString oldUserRatingString) pokeList
-
-                        -- REGISTER NEW VOTE
-                        ( newState, newCmd ) =
-                            if newPokeRating == 0 || not (Set.member newPokeRating otherPokemonRatings) then
-                                case List.head oldCurrentUserRatings of
-                                    Nothing ->
-                                        ( oldState, Cmd.none )
-
-                                    Just actualUserRatings ->
-                                        let
-                                            -- store new vote in rating string
-                                            newUserRatingString =
-                                                (String.slice 0 pokemonNumber oldUserRatingString)
-                                                    ++ (toString newPokeRating)
-                                                    ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
-
-                                            -- insert into new state
-                                            newCurrentUserRatings =
-                                                { actualUserRatings | ratings = newUserRatingString }
-
-                                            newStateRatings =
-                                                newCurrentUserRatings :: otherUserRatings
-                                        in
-                                            ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
-                                            , saveRatings newCurrentUserRatings
-                                            )
-                            else
-                                ( { oldState
-                                    | statusMessage = "You already voted " ++ toString newPokeRating ++ " in this category"
-                                    , statusLevel = Warning
-                                  }
-                                , Cmd.none
-                                )
-                    in
-                        ( newState, newCmd )
-
-                _ ->
-                    ( oldState, Cmd.none )
-
-        Msgs.OnSaveRatings NotAsked ->
-            ( oldState, Cmd.none )
-
-        Msgs.OnSaveRatings Loading ->
-            ( oldState, Cmd.none )
-
-        Msgs.OnSaveRatings (Success ratings) ->
-            ( oldState, Cmd.none )
-
-        Msgs.OnSaveRatings (Failure message) ->
-            let
-                newState =
-                    { oldState | statusMessage = toString message, statusLevel = Error }
-            in
-                ( newState, Cmd.none )
+            updateVoteForPokemon oldState userVote
