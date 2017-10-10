@@ -111,14 +111,21 @@ letterButtons pokedex currentGen currentLetter =
 
 userButton : String -> String -> Html Msg
 userButton currentUserName userName =
-    button
-        [ classList
-            [ ( "user-button", True )
-            , ( "current", userName == currentUserName )
+    let
+        loginAs =
+            if userName == currentUserName then
+                ""
+            else
+                userName
+    in
+        button
+            [ classList
+                [ ( "user-button", True )
+                , ( "current", userName == currentUserName )
+                ]
+            , onClick (Msgs.ChangeUser loginAs)
             ]
-        , onClick (Msgs.ChangeUser userName)
-        ]
-        [ text userName ]
+            [ text userName ]
 
 
 userButtons : WebData TeamRatings -> CurrentUser -> String -> StatusLevel -> Html Msg

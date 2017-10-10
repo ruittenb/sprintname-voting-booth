@@ -28,6 +28,39 @@ extractOnePokemonFromRatingString ratingString pokemonNumber =
         |> Result.withDefault 0
 
 
+updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
+updateSearchPokemon oldState patString =
+    let
+        newState =
+            if patString == "" then
+                oldState
+            else
+                case oldState.pokedex of
+                    Success pokedex ->
+                        let
+                            patRegex =
+                                caseInsensitive (regex patString)
+
+                            maybePokemon =
+                                List.filter (.name >> Regex.contains patRegex) pokedex
+                                    |> List.head
+
+                            newState =
+                                case maybePokemon of
+                                    Just pokemon ->
+                                        { oldState | letter = pokemon.letter, generation = pokemon.generation }
+
+                                    Nothing ->
+                                        oldState
+                        in
+                            newState
+
+                    _ ->
+                        oldState
+    in
+        ( newState, Cmd.none )
+
+
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
@@ -90,6 +123,8 @@ update msg oldState =
                                     |> List.member newUser
                             then
                                 { oldState | user = Just newUser, statusMessage = "", statusLevel = None }
+                            else if newUser == "" then
+                                { oldState | user = Nothing, statusMessage = "", statusLevel = None }
                             else
                                 { oldState | statusMessage = "Unknown user", statusLevel = Error }
 
@@ -169,35 +204,7 @@ update msg oldState =
                 ( newState, Cmd.none )
 
         Msgs.SearchPokemon pattern ->
-            let
-                newState =
-                    if pattern == "" then
-                        oldState
-                    else
-                        case oldState.pokedex of
-                            Success pokedex ->
-                                let
-                                    patRegex =
-                                        caseInsensitive (regex pattern)
-
-                                    maybePokemon =
-                                        List.filter (.name >> Regex.contains patRegex) pokedex
-                                            |> List.head
-
-                                    newState =
-                                        case maybePokemon of
-                                            Just pokemon ->
-                                                { oldState | letter = pokemon.letter, generation = pokemon.generation }
-
-                                            Nothing ->
-                                                oldState
-                                in
-                                    newState
-
-                            _ ->
-                                oldState
-            in
-                ( newState, Cmd.none )
+            updateSearchPokemon oldState pattern
 
         Msgs.VoteForPokemon userVote ->
             case oldState.ratings of
