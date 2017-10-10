@@ -82,9 +82,14 @@ button.generation-button.transparent {
 }
 
 button.generation-button.loading {
+    /*
     background: url(icons/loading-shade.png) 0 0 repeat;
     -webkit-animation: loading 2s linear 0s infinite;
     animation: loading 2s linear 0s infinite;
+    */
+    background-image: url(icons/loading-circle.svg);
+    background=position: center center;
+    background-repeat: no-repeat;
 }
 
 @keyframes loading {
@@ -194,15 +199,19 @@ button.generation-button.error {
 
 ::-webkit-input-placeholder {
    font-style: italic;
-}
-:-moz-placeholder {
-   font-style: italic;
+   color: #aaa;
 }
 ::-moz-placeholder {
    font-style: italic;
+   color: #aaa;
+}
+:-moz-placeholder {
+   font-style: italic;
+   color: #aaa;
 }
 :-ms-input-placeholder {
    font-style: italic;
+   color: #aaa;
 }
 
 .pokecanvas {
@@ -311,12 +320,6 @@ button.generation-button.error {
     margin: 36px auto 0 auto;
     background: transparent url(icons/loading.gif) top left no-repeat;
 }
-
-/*
-.loading-circle {
-    background: transparent url(/dist/icons/loading-circle.png) center center no-repeat;
-}
-*/
 
 .unknown-user {
     height: 16px;
