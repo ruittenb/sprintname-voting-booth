@@ -3,7 +3,7 @@ module ViewApplication exposing (heading)
 import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
+import Html.Events exposing (onClick, onInput)
 import RemoteData exposing (WebData, RemoteData(..))
 import Helpers exposing (filterPokedex)
 import Msgs exposing (Msg)
@@ -67,6 +67,13 @@ romanNumeralButtons currentGen =
             (romanNumeralButton currentGen)
             allGenerations
         )
+            ++ [ input
+                    [ placeholder "Search pokémon"
+                    , id "search-box"
+                    , onInput Msgs.SearchPokemon
+                    ]
+                    []
+               ]
 
 
 letterButton : WebData Pokedex -> Int -> Char -> Char -> Html Msg

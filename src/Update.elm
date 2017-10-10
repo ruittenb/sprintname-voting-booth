@@ -1,6 +1,7 @@
 module Update exposing (update)
 
 import Set
+import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
 import Models exposing (..)
@@ -88,9 +89,9 @@ update msg oldState =
                                 List.map .userName actualRatings
                                     |> List.member newUser
                             then
-                                { oldState | user = Just newUser }
+                                { oldState | user = Just newUser, statusMessage = "", statusLevel = None }
                             else
-                                oldState
+                                { oldState | statusMessage = "Unknown user", statusLevel = Error }
 
                         _ ->
                             oldState
@@ -100,22 +101,22 @@ update msg oldState =
         Msgs.ChangeGeneration newGen ->
             let
                 newState =
-                    { oldState | generation = newGen }
+                    if List.member newGen allGenerations then
+                        { oldState | generation = newGen, statusMessage = "", statusLevel = None }
+                    else
+                        oldState
             in
-                if List.member newGen allGenerations then
-                    ( newState, Cmd.none )
-                else
-                    ( oldState, Cmd.none )
+                ( newState, Cmd.none )
 
         Msgs.ChangeLetter newLetter ->
             let
                 newState =
-                    { oldState | letter = newLetter }
+                    if List.member newLetter allLetters then
+                        { oldState | letter = newLetter, statusMessage = "", statusLevel = None }
+                    else
+                        oldState
             in
-                if List.member newLetter allLetters then
-                    ( newState, Cmd.none )
-                else
-                    ( oldState, Cmd.none )
+                ( newState, Cmd.none )
 
         Msgs.ChangeVariant pokemonNumber direction ->
             let
@@ -164,6 +165,37 @@ update msg oldState =
 
                         _ ->
                             oldState
+            in
+                ( newState, Cmd.none )
+
+        Msgs.SearchPokemon pattern ->
+            let
+                newState =
+                    if pattern == "" then
+                        oldState
+                    else
+                        case oldState.pokedex of
+                            Success pokedex ->
+                                let
+                                    patRegex =
+                                        caseInsensitive (regex pattern)
+
+                                    maybePokemon =
+                                        List.filter (.name >> Regex.contains patRegex) pokedex
+                                            |> List.head
+
+                                    newState =
+                                        case maybePokemon of
+                                            Just pokemon ->
+                                                { oldState | letter = pokemon.letter, generation = pokemon.generation }
+
+                                            Nothing ->
+                                                oldState
+                                in
+                                    newState
+
+                            _ ->
+                                oldState
             in
                 ( newState, Cmd.none )
 

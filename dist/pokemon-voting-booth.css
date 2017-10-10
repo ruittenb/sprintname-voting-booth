@@ -24,7 +24,7 @@ button.user-button {
     display: block;
     float: left;
     /*
-    -webkit-animation: flashBriefly 1s forwards 1s; 
+    -webkit-animation: flashBriefly 1s forwards 1s;
     animation: flashBriefly 1s forwards 1s;
     */
 }
@@ -125,9 +125,11 @@ button.generation-button.error {
 
 #message-box-container {
     display: block;
+    padding-left: 396px;
 }
 
 #message-box {
+    font-size: 14px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -163,7 +165,7 @@ button.generation-button.error {
 
 #message-box.autohide {
     visibility: visible;
-    -webkit-animation: autoHide 6s forwards; 
+    -webkit-animation: autoHide 6s forwards;
     animation: autoHide 6s forwards;
 }
 
@@ -177,6 +179,28 @@ button.generation-button.error {
     0%  { opacity: 1;  }
     75%  { opacity: 1;  }
     100% { opacity: 0;  }
+}
+
+#search-box {
+    height: 30px;
+    width: 304px;
+    padding: 0 0 0 6px;
+    border: 1px solid black;
+    margin: 0 0 0 44px;
+    font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+   font-style: italic;
+}
+:-moz-placeholder {
+   font-style: italic;
+}
+::-moz-placeholder {
+   font-style: italic;
+}
+:-ms-input-placeholder {
+   font-style: italic;
 }
 
 .pokecanvas {
