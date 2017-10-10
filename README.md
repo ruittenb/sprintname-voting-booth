@@ -1,4 +1,4 @@
-# Pokémon Voting Booth App in Elm
+# Pokémon Sprint Name Voting Booth App in Elm
 
 This example shows embedding an Elm app into an ordinary HTML-page. It consists
 of a simple Node.js web server and an Elm SPA.
@@ -9,7 +9,7 @@ of a simple Node.js web server and an Elm SPA.
 - [Install Node](https://nodejs.org/en/download/)
 - [Install Yarn](https://yarnpkg.com/)
 
-Now, install the server dependencies, by running
+Next, install the server dependencies, by running
 
 ```
 yarn
