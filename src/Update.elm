@@ -89,9 +89,9 @@ update msg oldState =
                                 List.map .userName actualRatings
                                     |> List.member newUser
                             then
-                                { oldState | user = Just newUser }
+                                { oldState | user = Just newUser, statusMessage = "", statusLevel = None }
                             else
-                                oldState
+                                { oldState | statusMessage = "Unknown user", statusLevel = Error }
 
                         _ ->
                             oldState
@@ -101,22 +101,22 @@ update msg oldState =
         Msgs.ChangeGeneration newGen ->
             let
                 newState =
-                    { oldState | generation = newGen }
+                    if List.member newGen allGenerations then
+                        { oldState | generation = newGen, statusMessage = "", statusLevel = None }
+                    else
+                        oldState
             in
-                if List.member newGen allGenerations then
-                    ( newState, Cmd.none )
-                else
-                    ( oldState, Cmd.none )
+                ( newState, Cmd.none )
 
         Msgs.ChangeLetter newLetter ->
             let
                 newState =
-                    { oldState | letter = newLetter }
+                    if List.member newLetter allLetters then
+                        { oldState | letter = newLetter, statusMessage = "", statusLevel = None }
+                    else
+                        oldState
             in
-                if List.member newLetter allLetters then
-                    ( newState, Cmd.none )
-                else
-                    ( oldState, Cmd.none )
+                ( newState, Cmd.none )
 
         Msgs.ChangeVariant pokemonNumber direction ->
             let
