@@ -68,7 +68,7 @@ romanNumeralButtons currentGen =
             allGenerations
         )
             ++ [ input
-                    [ placeholder "Search pokémon"
+                    [ placeholder "Search in pokédex"
                     , id "search-box"
                     , onInput Msgs.SearchPokemon
                     ]
