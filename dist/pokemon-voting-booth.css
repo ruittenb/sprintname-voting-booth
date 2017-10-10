@@ -82,24 +82,24 @@ button.generation-button.transparent {
 }
 
 button.generation-button.loading {
-    /*
     background: url(icons/loading-shade.png) 0 0 repeat;
     -webkit-animation: loading 2s linear 0s infinite;
     animation: loading 2s linear 0s infinite;
-    */
+    /*
     background-image: url(icons/loading-circle.svg);
     background=position: center center;
     background-repeat: no-repeat;
+    */
 }
 
 @keyframes loading {
-    0%   { background-position-x: 0; }
-    100% { background-position-x: 20px; }
+    0%   { background-position-x: 20px; }
+    100% { background-position-x: 0; }
 }
 
 @-webkit-keyframes loading {
-    0%   { background-position-x: 0; }
-    100% { background-position-x: 20px; }
+    0%   { background-position-x: 20px; }
+    100% { background-position-x: 0; }
 }
 
 button.generation-button.error {
