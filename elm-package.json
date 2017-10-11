@@ -4,9 +4,7 @@
     "repository": "https://github.com/ruittenb/elm-pokemon-voting-booth.git",
     "license": "BSD3",
     "source-directories": [
-        "src",
-        "src/View",
-        "src/Commands"
+        "src"
     ],
     "exposed-modules": [],
     "dependencies": {

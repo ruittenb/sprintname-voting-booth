@@ -1,4 +1,4 @@
-module ViewApplication exposing (heading)
+module View.Application exposing (heading)
 
 import Array exposing (Array)
 import Html exposing (..)

@@ -1,4 +1,4 @@
-module ViewPokemon exposing (pokemonCanvas)
+module View.Pokemon exposing (pokemonCanvas)
 
 import List
 import Maybe

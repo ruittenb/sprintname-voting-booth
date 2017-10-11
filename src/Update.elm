@@ -6,8 +6,8 @@ import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
 import Helpers exposing (filterPokedex, searchPokedex)
-import CommandsPokemon exposing (loadPokedex)
-import CommandsRatings exposing (saveRatings)
+import Commands.Pokemon exposing (loadPokedex)
+import Commands.Ratings exposing (saveRatings)
 
 
 -- helper functions specific to Update

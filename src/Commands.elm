@@ -1,7 +1,7 @@
 module Commands exposing (loadAll)
 
 import Msgs exposing (Msg)
-import CommandsRatings exposing (loadRatings)
+import Commands.Ratings exposing (loadRatings)
 
 
 loadAll : Cmd Msg

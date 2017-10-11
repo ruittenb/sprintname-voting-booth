@@ -1,4 +1,4 @@
-module CommandsPokemon exposing (loadPokedex)
+module Commands.Pokemon exposing (loadPokedex)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)

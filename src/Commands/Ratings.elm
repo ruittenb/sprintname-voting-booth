@@ -1,4 +1,4 @@
-module CommandsRatings exposing (loadRatings, saveRatings)
+module Commands.Ratings exposing (loadRatings, saveRatings)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)

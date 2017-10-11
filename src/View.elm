@@ -1,8 +1,8 @@
 module View exposing (view)
 
 import Html exposing (Html, div)
-import ViewApplication exposing (heading)
-import ViewPokemon exposing (pokemonCanvas)
+import View.Application exposing (heading)
+import View.Pokemon exposing (pokemonCanvas)
 import Models exposing (ApplicationState)
 import Msgs exposing (Msg)
 
