@@ -5,9 +5,8 @@ require('font-awesome/css/font-awesome.css');
 
 require('./index.html'); // ensure index.html gets copied during build
 
-var Elm = require('./Main.elm');
-var mountNode = document.getElementById('main');
+let Elm = require('./Main.elm');
+let votingApp = Elm.Main.fullscreen();
 
-var app = Elm.Main.embed(mountNode);
+votingApp.ports.preloadImages.subscribe(preloadImages);
 
-app.ports.preloadImages.subscribe(preloadImages);
