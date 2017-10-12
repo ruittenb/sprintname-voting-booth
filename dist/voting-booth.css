@@ -181,6 +181,15 @@ button.generation-button.error {
     font-size: 14px;
 }
 
+#search-box:hover,
+#search-box:focus {
+    background-color: #f8f0f8; /* light purple */
+}
+
+#search-box.current {
+    background-color: #e6c6e6; /* purple */
+}
+
 ::-webkit-input-placeholder {
    font-style: italic;
    color: #aaa;
