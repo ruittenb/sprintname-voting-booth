@@ -148,6 +148,7 @@ button.generation-button.error {
     border: 1px solid #a90f1b; /* red */
     color: #a90f1b;
     background-color: #ffbabc; /* light red / pink */
+    animation: none;
 }
 
 #message-box.autohide {
