@@ -1241,9 +1241,13 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Muk_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/089.png",
+          "image": "https://cdn.bulbagarden.net/upload/7/7c/089Muk.png",
           "vname": ""
-        }
+        },
+        {
+          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/089_f2.png",
+          "vname": "Alola Form"
+	}
       ]
     },
     {
@@ -3057,7 +3061,7 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Granbull_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/210.png",
+          "image": "https://cdn.bulbagarden.net/upload/thumb/b/b1/210Granbull.png/600px-210Granbull.png",
           "vname": ""
         }
       ]

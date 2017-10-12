@@ -7,5 +7,8 @@ missing:
 improvements:
  - move update functionality to separate functions
  - listen to database changes (subscriptions?)
- - add Mega variants like https://www.pokemon.com/us/pokedex/manectric
+
+consider:
+ - add Mega variants like https://www.pokemon.com/us/pokedex/manectric ?
+ - add Alola variants like https://www.pokemon.com/us/pokedex/muk ?
 
