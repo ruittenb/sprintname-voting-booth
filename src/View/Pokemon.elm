@@ -126,6 +126,7 @@ extractOnePokemonFromRatings ratings pokemon =
                 (\r ->
                     { id = r.id
                     , userName = r.userName
+                    , email = r.email
                     , color = r.color
                     , rating =
                         String.slice pokemon.number (pokemon.number + 1) r.ratings

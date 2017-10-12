@@ -5,6 +5,7 @@
   "author": "René Uittenbogaard <rene.uittenbogaard@proforto.nl>",
   "dependencies": {
     "ace-css": "1.1",
+    "auth0-js": "^8.10.1",
     "css-loader": "^0.26.1",
     "elm-webpack-loader": "^4.2.0",
     "file-loader": "^0.10.0",

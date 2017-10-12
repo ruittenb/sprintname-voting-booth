@@ -36,6 +36,7 @@ type alias CurrentUser =
 type alias UserRating =
     { id : Int
     , userName : String
+    , email : String
     , color : String
     , rating : Int
     }
@@ -44,6 +45,7 @@ type alias UserRating =
 type alias UserRatings =
     { id : Int
     , userName : String
+    , email : String
     , color : String
     , ratings : String
     }

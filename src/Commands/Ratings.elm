@@ -47,6 +47,7 @@ decodeUserRatings =
     decode UserRatings
         |> required "id" Decode.int
         |> required "userName" Decode.string
+        |> required "email" Decode.string
         |> required "color" Decode.string
         |> required "ratings" Decode.string
 
@@ -57,6 +58,7 @@ encodeUserRatings userRatings =
         attributes =
             [ ( "id", Encode.int userRatings.id )
             , ( "userName", Encode.string userRatings.userName )
+            , ( "email", Encode.string userRatings.email )
             , ( "color", Encode.string userRatings.color )
             , ( "ratings", Encode.string userRatings.ratings )
             ]
