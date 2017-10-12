@@ -62,11 +62,11 @@ button.generation-button.transparent {
 }
 
 button.generation-button.loading {
-    background: url(icons/loading-shade.png) 0 0 repeat;
+    background: url(images/loading-shade.png) 0 0 repeat;
     -webkit-animation: loading 2s linear 0s infinite;
     animation: loading 2s linear 0s infinite;
     /*
-    background-image: url(icons/loading-circle.svg);
+    background-image: url(images/loading-circle.svg);
     background=position: center center;
     background-repeat: no-repeat;
     */
@@ -83,7 +83,7 @@ button.generation-button.loading {
 }
 
 button.generation-button.error {
-    background: #e6c6e6 url(icons/loading-error.png) 0 0 repeat;
+    background: #e6c6e6 url(images/loading-error.png) 0 0 repeat;
 }
 
 #user-button-placeholder {
@@ -299,7 +299,7 @@ button.generation-button.error {
     height: 10px;
     width: 32px;
     margin: 36px auto 0 auto;
-    background: transparent url(icons/loading.gif) top left no-repeat;
+    background: transparent url(images/loading-busy.gif) top left no-repeat;
 }
 
 .unknown-user {
