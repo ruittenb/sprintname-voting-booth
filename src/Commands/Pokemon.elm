@@ -1,4 +1,4 @@
-module Commands.Pokemon exposing (loadPokedex)
+port module Commands.Pokemon exposing (loadPokedex, preloadImages)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
@@ -7,6 +7,9 @@ import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
+
+
+port preloadImages : List { generation : Int, imageUrl : String } -> Cmd msg
 
 
 loadPokedex : Cmd Msg

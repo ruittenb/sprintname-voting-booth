@@ -6,7 +6,7 @@ import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
 import Helpers exposing (filterPokedex, searchPokedex)
-import Commands.Pokemon exposing (loadPokedex)
+import Commands.Pokemon exposing (loadPokedex, preloadImages)
 import Commands.Ratings exposing (saveRatings)
 
 
@@ -265,8 +265,32 @@ update msg oldState =
                         , statusMessage = statusMessage
                         , statusLevel = statusLevel
                     }
+
+                generationAndImageUrl p =
+                    let
+                        generation =
+                            p.generation
+                    in
+                        List.map
+                            (\v ->
+                                { generation = generation
+                                , imageUrl = v.image
+                                }
+                            )
+                            p.variants
+
+                command =
+                    case pokedex of
+                        Success actualPokedex ->
+                            actualPokedex
+                                |> List.map generationAndImageUrl
+                                |> List.concat
+                                |> preloadImages
+
+                        _ ->
+                            Cmd.none
             in
-                ( newState, Cmd.none )
+                ( newState, command )
 
         Msgs.ChangeUser newUser ->
             let
