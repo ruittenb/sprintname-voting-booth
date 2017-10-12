@@ -2827,115 +2827,115 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Unown_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/unown/unown-A.png",
+          "image": "/dist/pokeart/unown-A.png",
           "vname": "A"
         },
         {
-          "image": "/dist/unown/unown-B.png",
+          "image": "/dist/pokeart/unown-B.png",
           "vname": "B"
         },
         {
-          "image": "/dist/unown/unown-C.png",
+          "image": "/dist/pokeart/unown-C.png",
           "vname": "C"
         },
         {
-          "image": "/dist/unown/unown-D.png",
+          "image": "/dist/pokeart/unown-D.png",
           "vname": "D"
         },
         {
-          "image": "/dist/unown/unown-E.png",
+          "image": "/dist/pokeart/unown-E.png",
           "vname": "E"
         },
         {
-          "image": "/dist/unown/unown-F.png",
+          "image": "/dist/pokeart/unown-F.png",
           "vname": "F"
         },
         {
-          "image": "/dist/unown/unown-G.png",
+          "image": "/dist/pokeart/unown-G.png",
           "vname": "G"
         },
         {
-          "image": "/dist/unown/unown-H.png",
+          "image": "/dist/pokeart/unown-H.png",
           "vname": "H"
         },
         {
-          "image": "/dist/unown/unown-I.png",
+          "image": "/dist/pokeart/unown-I.png",
           "vname": "I"
         },
         {
-          "image": "/dist/unown/unown-J.png",
+          "image": "/dist/pokeart/unown-J.png",
           "vname": "J"
         },
         {
-          "image": "/dist/unown/unown-K.png",
+          "image": "/dist/pokeart/unown-K.png",
           "vname": "K"
         },
         {
-          "image": "/dist/unown/unown-L.png",
+          "image": "/dist/pokeart/unown-L.png",
           "vname": "L"
         },
         {
-          "image": "/dist/unown/unown-M.png",
+          "image": "/dist/pokeart/unown-M.png",
           "vname": "M"
         },
         {
-          "image": "/dist/unown/unown-N.png",
+          "image": "/dist/pokeart/unown-N.png",
           "vname": "N"
         },
         {
-          "image": "/dist/unown/unown-O.png",
+          "image": "/dist/pokeart/unown-O.png",
           "vname": "O"
         },
         {
-          "image": "/dist/unown/unown-P.png",
+          "image": "/dist/pokeart/unown-P.png",
           "vname": "P"
         },
         {
-          "image": "/dist/unown/unown-Q.png",
+          "image": "/dist/pokeart/unown-Q.png",
           "vname": "Q"
         },
         {
-          "image": "/dist/unown/unown-R.png",
+          "image": "/dist/pokeart/unown-R.png",
           "vname": "R"
         },
         {
-          "image": "/dist/unown/unown-S.png",
+          "image": "/dist/pokeart/unown-S.png",
           "vname": "S"
         },
         {
-          "image": "/dist/unown/unown-T.png",
+          "image": "/dist/pokeart/unown-T.png",
           "vname": "T"
         },
         {
-          "image": "/dist/unown/unown-U.png",
+          "image": "/dist/pokeart/unown-U.png",
           "vname": "U"
         },
         {
-          "image": "/dist/unown/unown-V.png",
+          "image": "/dist/pokeart/unown-V.png",
           "vname": "V"
         },
         {
-          "image": "/dist/unown/unown-W.png",
+          "image": "/dist/pokeart/unown-W.png",
           "vname": "W"
         },
         {
-          "image": "/dist/unown/unown-X.png",
+          "image": "/dist/pokeart/unown-X.png",
           "vname": "X"
         },
         {
-          "image": "/dist/unown/unown-Y.png",
+          "image": "/dist/pokeart/unown-Y.png",
           "vname": "Y"
         },
         {
-          "image": "/dist/unown/unown-Z.png",
+          "image": "/dist/pokeart/unown-Z.png",
           "vname": "Z"
         },
         {
-          "image": "/dist/unown/unown-em.png",
+          "image": "/dist/pokeart/unown-em.png",
           "vname": "!"
         },
         {
-          "image": "/dist/unown/unown-qm.png",
+          "image": "/dist/pokeart/unown-qm.png",
           "vname": "?"
         }
       ]
@@ -7939,7 +7939,7 @@
           "vname": "Normal Mode"
         },
         {
-          "image": "http://orig04.deviantart.net/33a4/f/2011/067/f/2/darmanitan_zen_mode_by_tails19950-d30xkn2.png",
+          "image": "/dist/pokeart/darmanitan-zen.png",
           "vname": "Zen Mode"
         }
       ]
