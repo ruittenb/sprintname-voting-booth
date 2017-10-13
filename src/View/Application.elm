@@ -116,9 +116,13 @@ loginLogoutButton authModel user message level =
         loggedIn =
             isLoggedIn authModel
 
+        userName =
+            Maybe.map ((++) "Logged in as ") user
+                |> Maybe.withDefault "Not logged in"
+
         buttonText =
             if loggedIn then
-                "Logout " ++ Maybe.withDefault "" user
+                "Logout"
             else
                 "Login"
 
@@ -137,8 +141,10 @@ loginLogoutButton authModel user message level =
                 , onClick (Msgs.AuthenticationMsg buttonMsg)
                 ]
                 [ text buttonText ]
+            , div [ id "user-name" ]
+                [ text userName ]
+            , messageBox message level
             ]
-                ++ [ messageBox message level ]
 
 
 heading : ApplicationState -> Html Msg
