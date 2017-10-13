@@ -115,6 +115,14 @@ loginLogoutButton authModel =
     let
         isLoggedIn =
             Authentication.isLoggedIn authModel
+
+        userName =
+            case Authentication.tryGetUserProfile authModel of
+                Nothing ->
+                    ""
+
+                Just user ->
+                    user.email
     in
         button
             [ classList
@@ -132,7 +140,7 @@ loginLogoutButton authModel =
             ]
             [ text
                 (if isLoggedIn then
-                    "Logout"
+                    "Logout " ++ userName
                  else
                     "Login"
                 )
