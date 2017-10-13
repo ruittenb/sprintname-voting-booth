@@ -224,10 +224,10 @@ button.generation-button.error {
 }
 
 .poketile:hover .left-arrow {
-    background: url(images/prev.png) -10px center no-repeat;
+    background: url(images/lb-prev.png) -10px center no-repeat;
 }
 .poketile:hover .right-arrow {
-    background: url(images/next.png) 10px center no-repeat;
+    background: url(images/lb-next.png) 10px center no-repeat;
 }
 
 .pokemon-image-strip-box {
