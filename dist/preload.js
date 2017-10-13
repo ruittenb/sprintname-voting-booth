@@ -6,19 +6,23 @@ const Preloader = (function (jQuery) {
 
     let Preloader = function (list)
     {
+        this.timer = null;
+        this.list = list;
         this.images = [];
         this.generation = 1;
-        this.queue(list);
-    };
-
-    Preloader.prototype.queue = function (list)
-    {
-        this.list = list;
         this.schedule();
     };
 
     Preloader.prototype.schedule = function () {
-        setTimeout(this.preloadImages.bind(this), batchTime);
+        this.timer = setTimeout(this.preloadImages.bind(this), batchTime);
+    };
+
+    Preloader.prototype.stop = function ()
+    {
+        if (this.timer) {
+            clearTimeout(this.timer);
+            this.timer = null;
+        }
     };
 
     Preloader.prototype.toggleGenerationButton = function (state, gen)

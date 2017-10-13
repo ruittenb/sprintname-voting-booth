@@ -113,7 +113,7 @@ button.generation-button.error {
 
 #message-box-container {
     display: block;
-    padding-left: 396px;
+    padding-left: 352px;
 }
 
 #message-box {
@@ -177,7 +177,6 @@ button.generation-button.error {
     width: 304px;
     padding: 0 0 0 6px;
     border: 1px solid black;
-    margin: 0 0 0 44px;
     font-size: 14px;
 }
 
