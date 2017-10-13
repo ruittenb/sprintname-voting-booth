@@ -39,10 +39,6 @@
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png",
           "vname": ""
-        },
-        {
-          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/003_f2.png",
-          "vname": "Mega Form"
         }
       ]
     },
@@ -85,14 +81,6 @@
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png",
           "vname": ""
-        },
-        {
-          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006_f2.png",
-          "vname": "Mega X"
-        },
-        {
-          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006_f3.png",
-          "vname": "Mega Y"
         }
       ]
     },
@@ -135,10 +123,6 @@
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/009.png",
           "vname": ""
-        },
-        {
-          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/009_f2.png",
-          "vname": "Mega Form"
         }
       ]
     },
@@ -223,10 +207,6 @@
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/015.png",
           "vname": ""
-        },
-        {
-          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/015_f2.png",
-          "vname": "Mega Form"
         }
       ]
     },
