@@ -2,50 +2,54 @@
 
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
-
 require('./index.html'); // ensure index.html gets copied during build
 
+// instantiate the main voting app
 let Elm = require('./Main.elm');
+let votingApp = (function () {
+    const storedProfile = localStorage.getItem('profile');
+    const storedToken = localStorage.getItem('token');
+    const authData = storedProfile && storedToken ? { profile: JSON.parse(storedProfile), token: storedToken } : null;
+    return Elm.Main.fullscreen(authData);
+})();
 
-const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
-const clientDomain = 'proforto.eu.auth0.com';
-const options = {
-    allowedConnections: ['google-oauth2'], // 'Username-Password-Authentication'
-    autoclose: true,
-    auth: {
-        redirect: false,
-        responseType: 'id_token',
-        params: {
-            // Learn about scopes: https://auth0.com/docs/scopes
-            scope: 'openid email profile'
+// instantiate the lock (login) widget
+let lock = (function () {
+    const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
+    const clientDomain = 'proforto.eu.auth0.com';
+    const options = {
+        allowedConnections: ['google-oauth2'], // 'Username-Password-Authentication'
+        autoclose: true,
+        auth: {
+            redirect: false,
+            responseType: 'id_token',
+            params: {
+                // Learn about scopes: https://auth0.com/docs/scopes
+                scope: 'openid email profile'
+            }
         }
-    }
-};
-let lock = new Auth0Lock(clientId, clientDomain, options);
-let storedProfile = localStorage.getItem('profile');
-let storedToken = localStorage.getItem('token');
-let authData = storedProfile && storedToken ? { profile: JSON.parse(storedProfile), token: storedToken } : null;
-let votingApp = Elm.Main.fullscreen(authData);
+    };
+    return new Auth0Lock(clientId, clientDomain, options);
+})();
 
-// Listen to image preload requests
+// preload images as requested by elm
 votingApp.ports.preloadImages.subscribe(function (list) {
     let preloader = new Preloader(list);
 });
 
-// Show Auth0 lock subscription
+// show lock (login) widget if the elm app requests it
 votingApp.ports.auth0showLock.subscribe(function (opts) {
-    lock.show();
+    lock.show(opts);
 });
 
-// Log out of Auth0 subscription
+// logout if the elm app requests it
 votingApp.ports.auth0logout.subscribe(function (opts) {
     localStorage.removeItem('profile');
     localStorage.removeItem('token');
 });
 
-// Listening for the authenticated event
+// on succesful authentication, pass the credentials to elm
 lock.on("authenticated", function (authResult) {
-
     // Use the token in authResult to getProfile() and save it to localStorage
     lock.getProfile(authResult.idToken, function (err, profile) {
         let result = { err: null, ok: null };
