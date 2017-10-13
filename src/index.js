@@ -28,7 +28,9 @@ let authData = storedProfile && storedToken ? { profile: JSON.parse(storedProfil
 let votingApp = Elm.Main.fullscreen(authData);
 
 // Listen to image preload requests
-votingApp.ports.preloadImages.subscribe(preloadImages);
+votingApp.ports.preloadImages.subscribe(function (list) {
+    let preloader = new Preloader(list);
+});
 
 // Show Auth0 lock subscription
 votingApp.ports.auth0showLock.subscribe(function (opts) {
