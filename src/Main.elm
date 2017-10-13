@@ -1,4 +1,4 @@
-port module Main exposing (main)
+module Main exposing (main)
 
 import Html
 import Auth0
@@ -6,19 +6,11 @@ import Authentication
 import RemoteData exposing (RemoteData(..))
 import Constants exposing (initialGeneration, initialLetter)
 import Models exposing (ApplicationState, StatusLevel(None))
+import Ports exposing (auth0showLock, auth0logout, auth0authResult)
 import View exposing (view)
 import Update exposing (update)
 import Msgs exposing (Msg)
 import Commands exposing (loadAll)
-
-
-port auth0showLock : Auth0.Options -> Cmd msg
-
-
-port auth0authResult : (Auth0.RawAuthenticationResult -> msg) -> Sub msg
-
-
-port auth0logout : () -> Cmd msg
 
 
 init : Maybe Auth0.LoggedInUser -> ( ApplicationState, Cmd Msg )

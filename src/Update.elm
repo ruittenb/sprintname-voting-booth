@@ -7,7 +7,8 @@ import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
 import Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
-import Commands.Pokemon exposing (loadPokedex, preloadImages)
+import Ports exposing (preloadImages)
+import Commands.Pokemon exposing (loadPokedex)
 import Commands.Ratings exposing (saveRatings)
 
 
