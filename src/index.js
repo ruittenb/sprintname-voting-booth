@@ -11,6 +11,7 @@ const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
 const clientDomain = 'proforto.eu.auth0.com';
 const options = {
     allowedConnections: ['google-oauth2'], // 'Username-Password-Authentication'
+    autoclose: true,
     auth: {
         redirect: false,
         responseType: 'id_token',

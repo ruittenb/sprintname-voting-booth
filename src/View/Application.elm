@@ -4,6 +4,7 @@ import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
+import Authentication
 import RemoteData exposing (WebData, RemoteData(..))
 import Helpers exposing (filterPokedex)
 import Msgs exposing (Msg)
@@ -109,6 +110,35 @@ letterButtons pokedex currentGen currentLetter =
         div [ id "letter-buttons" ] buttonList
 
 
+loginLogoutButton : Authentication.Model -> Html Msg
+loginLogoutButton authModel =
+    let
+        isLoggedIn =
+            Authentication.isLoggedIn authModel
+    in
+        button
+            [ classList
+                [ ( "user-button", True )
+                , ( "current", isLoggedIn )
+                ]
+            , onClick
+                (Msgs.AuthenticationMsg
+                    (if isLoggedIn then
+                        Authentication.LogOut
+                     else
+                        Authentication.ShowLogIn
+                    )
+                )
+            ]
+            [ text
+                (if isLoggedIn then
+                    "Logout"
+                 else
+                    "Login"
+                )
+            ]
+
+
 userButton : String -> String -> Html Msg
 userButton currentUserName userName =
     let
@@ -151,7 +181,8 @@ userButtons ratings currentUser message level =
 heading : ApplicationState -> Html Msg
 heading state =
     div [ id "filter-buttons" ]
-        [ userButtons state.ratings state.user state.statusMessage state.statusLevel
+        [ loginLogoutButton state.authModel
+        , userButtons state.ratings state.user state.statusMessage state.statusLevel
         , romanNumeralButtons state.generation
         , letterButtons state.pokedex state.generation state.letter
         ]
