@@ -24,9 +24,12 @@ port auth0logout : () -> Cmd msg
 init : Maybe Auth0.LoggedInUser -> ( ApplicationState, Cmd Msg )
 init initialUser =
     let
+        authModel =
+            Authentication.init auth0showLock auth0logout initialUser
+
         initialState : ApplicationState
         initialState =
-            { authModel = Authentication.init auth0showLock auth0logout initialUser
+            { authModel = authModel
             , user = Nothing
             , statusMessage = ""
             , statusLevel = None
