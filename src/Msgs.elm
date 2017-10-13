@@ -10,7 +10,6 @@ type Msg
     | OnSaveRatings (WebData UserRatings)
     | OnLoadPokedex (WebData Pokedex)
     | AuthenticationMsg Authentication.Msg
-    | ChangeUser String -- TODO probably remove this
     | ChangeGeneration Int
     | ChangeLetter Char
     | ChangeVariant Int BrowseDirection

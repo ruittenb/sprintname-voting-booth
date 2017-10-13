@@ -317,26 +317,6 @@ update msg oldState =
             in
                 ( newState, Cmd.map Msgs.AuthenticationMsg cmd )
 
-        Msgs.ChangeUser newUser ->
-            let
-                newState =
-                    case oldState.ratings of
-                        Success actualRatings ->
-                            if
-                                List.map .userName actualRatings
-                                    |> List.member newUser
-                            then
-                                { oldState | user = Just newUser, statusMessage = "", statusLevel = None }
-                            else if newUser == "" then
-                                { oldState | user = Nothing, statusMessage = "", statusLevel = None }
-                            else
-                                { oldState | statusMessage = "Unknown user", statusLevel = Error }
-
-                        _ ->
-                            oldState
-            in
-                ( newState, Cmd.none )
-
         Msgs.ChangeGeneration newGen ->
             let
                 newState =
