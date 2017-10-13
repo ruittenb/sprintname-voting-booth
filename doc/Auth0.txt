@@ -1,0 +1,5 @@
+https://auth0.com/blog/creating-your-first-elm-app-part-1/
+
+https://github.com/auth0-blog/elm-with-auth0
+
+https://github.com/auth0-blog/elm-with-jwt-api

@@ -4,6 +4,7 @@ import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
+import Authentication exposing (tryGetUserProfile, isLoggedIn)
 import RemoteData exposing (WebData, RemoteData(..))
 import Helpers exposing (filterPokedex)
 import Msgs exposing (Msg)
@@ -109,49 +110,49 @@ letterButtons pokedex currentGen currentLetter =
         div [ id "letter-buttons" ] buttonList
 
 
-userButton : String -> String -> Html Msg
-userButton currentUserName userName =
+loginLogoutButton : Authentication.Model -> CurrentUser -> String -> StatusLevel -> Html Msg
+loginLogoutButton authModel user message level =
     let
-        loginAs =
-            if userName == currentUserName then
-                ""
+        loggedIn =
+            isLoggedIn authModel
+
+        buttonText =
+            if loggedIn then
+                "Logout " ++ Maybe.withDefault "" user
             else
-                userName
+                "Login"
+
+        buttonMsg =
+            if loggedIn then
+                Authentication.LogOut
+            else
+                Authentication.ShowLogIn
     in
-        button
-            [ classList
-                [ ( "user-button", True )
-                , ( "current", userName == currentUserName )
+        div [ id "user-buttons" ] <|
+            [ button
+                [ classList
+                    [ ( "user-button", True )
+                    , ( "current", loggedIn )
+                    ]
+                , onClick (Msgs.AuthenticationMsg buttonMsg)
                 ]
-            , onClick (Msgs.ChangeUser loginAs)
+                [ text buttonText ]
             ]
-            [ text userName ]
-
-
-userButtons : WebData TeamRatings -> CurrentUser -> String -> StatusLevel -> Html Msg
-userButtons ratings currentUser message level =
-    case ratings of
-        Success actualRatings ->
-            let
-                currentUserName =
-                    Maybe.withDefault "" currentUser
-            in
-                div [ id "user-buttons" ] <|
-                    List.map
-                        (.userName >> userButton currentUserName)
-                        (List.sortBy .userName actualRatings)
-                        ++ [ messageBox message level ]
-
-        _ ->
-            div [ id "user-button-placeholder" ]
-                [ messageBox message level
-                ]
+                ++ [ messageBox message level ]
 
 
 heading : ApplicationState -> Html Msg
 heading state =
     div [ id "filter-buttons" ]
-        [ userButtons state.ratings state.user state.statusMessage state.statusLevel
-        , romanNumeralButtons state.generation
-        , letterButtons state.pokedex state.generation state.letter
+        [ loginLogoutButton
+            state.authModel
+            state.user
+            state.statusMessage
+            state.statusLevel
+        , romanNumeralButtons
+            state.generation
+        , letterButtons
+            state.pokedex
+            state.generation
+            state.letter
         ]

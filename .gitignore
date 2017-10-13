@@ -3,7 +3,6 @@
 elm-stuff
 repl-temp-*
 
-
 ### Node ###
 # Logs
 logs
@@ -65,3 +64,5 @@ Icon
 
 # ruittenb scratchpad
 _fabriek
+# ruittenb sensitive data
+dist/keys.js

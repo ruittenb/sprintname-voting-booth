@@ -7,8 +7,16 @@ missing:
 improvements:
  - move update functionality to separate functions
  - listen to database changes (subscriptions?)
+ - rename Msgs to Messages
+ - move port auth functions to Commands/Authentication
+ - have error message box take its message from state, not from errormessage
+ - can List.head be replaced with this?
+	 case list of
+	    []      -> []
+	    x::xs   -> ..
 
 consider:
  - add Mega variants like https://www.pokemon.com/us/pokedex/manectric ?
  - add Alola variants like https://www.pokemon.com/us/pokedex/muk ?
+
 

@@ -2,10 +2,11 @@ module Update exposing (update)
 
 import Set
 import RemoteData exposing (WebData, RemoteData(..))
+import Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
-import Helpers exposing (filterPokedex, searchPokedex)
+import Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
 import Commands.Pokemon exposing (loadPokedex, preloadImages)
 import Commands.Ratings exposing (saveRatings)
 
@@ -32,6 +33,57 @@ extractOnePokemonFromRatingString ratingString pokemonNumber =
 
 
 -- some update functions
+
+
+updateOnLoadPokedex : ApplicationState -> WebData Pokedex -> ( ApplicationState, Cmd Msg )
+updateOnLoadPokedex oldState pokedex =
+    let
+        ( statusMessage, statusLevel ) =
+            case pokedex of
+                NotAsked ->
+                    ( "Preparing...", Notice )
+
+                Loading ->
+                    ( "Loading...", Notice )
+
+                Failure mess ->
+                    ( toString mess, Error )
+
+                Success _ ->
+                    ( "", None )
+
+        newState =
+            { oldState
+                | pokedex = pokedex
+                , statusMessage = statusMessage
+                , statusLevel = statusLevel
+            }
+
+        generationAndImageUrl p =
+            let
+                generation =
+                    p.generation
+            in
+                List.map
+                    (\v ->
+                        { generation = generation
+                        , imageUrl = v.image
+                        }
+                    )
+                    p.variants
+
+        command =
+            case pokedex of
+                Success actualPokedex ->
+                    actualPokedex
+                        |> List.map generationAndImageUrl
+                        |> List.concat
+                        |> preloadImages
+
+                _ ->
+                    Cmd.none
+    in
+        ( newState, command )
 
 
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
@@ -211,8 +263,14 @@ update msg oldState =
 
         Msgs.OnLoadRatings (Success ratings) ->
             let
+                newRatings =
+                    RemoteData.succeed ratings
+
+                userName =
+                    getUserNameForAuthModel newRatings oldState.authModel
+
                 newState =
-                    { oldState | ratings = RemoteData.succeed ratings }
+                    { oldState | ratings = newRatings, user = userName }
             in
                 ( newState, loadPokedex )
 
@@ -244,73 +302,20 @@ update msg oldState =
                 ( newState, Cmd.none )
 
         Msgs.OnLoadPokedex pokedex ->
+            updateOnLoadPokedex oldState pokedex
+
+        Msgs.AuthenticationMsg authMsg ->
             let
-                ( statusMessage, statusLevel ) =
-                    case pokedex of
-                        NotAsked ->
-                            ( "Preparing...", Notice )
-
-                        Loading ->
-                            ( "Loading...", Notice )
-
-                        Failure mess ->
-                            ( toString mess, Error )
-
-                        Success _ ->
-                            ( "", None )
+                ( authModel, cmd ) =
+                    Authentication.update authMsg oldState.authModel
 
                 newState =
                     { oldState
-                        | pokedex = pokedex
-                        , statusMessage = statusMessage
-                        , statusLevel = statusLevel
+                        | authModel = authModel
+                        , user = getUserNameForAuthModel oldState.ratings authModel
                     }
-
-                generationAndImageUrl p =
-                    let
-                        generation =
-                            p.generation
-                    in
-                        List.map
-                            (\v ->
-                                { generation = generation
-                                , imageUrl = v.image
-                                }
-                            )
-                            p.variants
-
-                command =
-                    case pokedex of
-                        Success actualPokedex ->
-                            actualPokedex
-                                |> List.map generationAndImageUrl
-                                |> List.concat
-                                |> preloadImages
-
-                        _ ->
-                            Cmd.none
             in
-                ( newState, command )
-
-        Msgs.ChangeUser newUser ->
-            let
-                newState =
-                    case oldState.ratings of
-                        Success actualRatings ->
-                            if
-                                List.map .userName actualRatings
-                                    |> List.member newUser
-                            then
-                                { oldState | user = Just newUser, statusMessage = "", statusLevel = None }
-                            else if newUser == "" then
-                                { oldState | user = Nothing, statusMessage = "", statusLevel = None }
-                            else
-                                { oldState | statusMessage = "Unknown user", statusLevel = Error }
-
-                        _ ->
-                            oldState
-            in
-                ( newState, Cmd.none )
+                ( newState, Cmd.map Msgs.AuthenticationMsg cmd )
 
         Msgs.ChangeGeneration newGen ->
             let
