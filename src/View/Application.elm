@@ -4,7 +4,7 @@ import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput)
-import Authentication
+import Authentication exposing (tryGetUserProfile, isLoggedIn)
 import RemoteData exposing (WebData, RemoteData(..))
 import Helpers exposing (filterPokedex)
 import Msgs exposing (Msg)
@@ -113,11 +113,11 @@ letterButtons pokedex currentGen currentLetter =
 loginLogoutButton : Authentication.Model -> Html Msg
 loginLogoutButton authModel =
     let
-        isLoggedIn =
-            Authentication.isLoggedIn authModel
+        loggedIn =
+            isLoggedIn authModel
 
         userName =
-            case Authentication.tryGetUserProfile authModel of
+            case tryGetUserProfile authModel of
                 Nothing ->
                     ""
 
@@ -127,11 +127,11 @@ loginLogoutButton authModel =
         button
             [ classList
                 [ ( "user-button", True )
-                , ( "current", isLoggedIn )
+                , ( "current", loggedIn )
                 ]
             , onClick
                 (Msgs.AuthenticationMsg
-                    (if isLoggedIn then
+                    (if loggedIn then
                         Authentication.LogOut
                      else
                         Authentication.ShowLogIn
@@ -139,7 +139,7 @@ loginLogoutButton authModel =
                 )
             ]
             [ text
-                (if isLoggedIn then
+                (if loggedIn then
                     "Logout " ++ userName
                  else
                     "Login"

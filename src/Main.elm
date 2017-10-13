@@ -26,7 +26,7 @@ init initialUser =
     let
         initialState : ApplicationState
         initialState =
-            { authModel = (Authentication.init auth0showLock auth0logout initialUser)
+            { authModel = Authentication.init auth0showLock auth0logout initialUser
             , user = Nothing
             , statusMessage = ""
             , statusLevel = None

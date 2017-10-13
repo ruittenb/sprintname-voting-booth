@@ -2,11 +2,11 @@ module Update exposing (update)
 
 import Set
 import RemoteData exposing (WebData, RemoteData(..))
-import Authentication
+import Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
-import Helpers exposing (filterPokedex, searchPokedex)
+import Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
 import Commands.Pokemon exposing (loadPokedex, preloadImages)
 import Commands.Ratings exposing (saveRatings)
 
@@ -33,6 +33,57 @@ extractOnePokemonFromRatingString ratingString pokemonNumber =
 
 
 -- some update functions
+
+
+updateOnLoadPokedex : ApplicationState -> WebData Pokedex -> ( ApplicationState, Cmd Msg )
+updateOnLoadPokedex oldState pokedex =
+    let
+        ( statusMessage, statusLevel ) =
+            case pokedex of
+                NotAsked ->
+                    ( "Preparing...", Notice )
+
+                Loading ->
+                    ( "Loading...", Notice )
+
+                Failure mess ->
+                    ( toString mess, Error )
+
+                Success _ ->
+                    ( "", None )
+
+        newState =
+            { oldState
+                | pokedex = pokedex
+                , statusMessage = statusMessage
+                , statusLevel = statusLevel
+            }
+
+        generationAndImageUrl p =
+            let
+                generation =
+                    p.generation
+            in
+                List.map
+                    (\v ->
+                        { generation = generation
+                        , imageUrl = v.image
+                        }
+                    )
+                    p.variants
+
+        command =
+            case pokedex of
+                Success actualPokedex ->
+                    actualPokedex
+                        |> List.map generationAndImageUrl
+                        |> List.concat
+                        |> preloadImages
+
+                _ ->
+                    Cmd.none
+    in
+        ( newState, command )
 
 
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
@@ -212,8 +263,14 @@ update msg oldState =
 
         Msgs.OnLoadRatings (Success ratings) ->
             let
+                newRatings =
+                    RemoteData.succeed ratings
+
+                userName =
+                    getUserNameForAuthModel newRatings oldState.authModel
+
                 newState =
-                    { oldState | ratings = RemoteData.succeed ratings }
+                    { oldState | ratings = newRatings, user = userName }
             in
                 ( newState, loadPokedex )
 
@@ -245,53 +302,7 @@ update msg oldState =
                 ( newState, Cmd.none )
 
         Msgs.OnLoadPokedex pokedex ->
-            let
-                ( statusMessage, statusLevel ) =
-                    case pokedex of
-                        NotAsked ->
-                            ( "Preparing...", Notice )
-
-                        Loading ->
-                            ( "Loading...", Notice )
-
-                        Failure mess ->
-                            ( toString mess, Error )
-
-                        Success _ ->
-                            ( "", None )
-
-                newState =
-                    { oldState
-                        | pokedex = pokedex
-                        , statusMessage = statusMessage
-                        , statusLevel = statusLevel
-                    }
-
-                generationAndImageUrl p =
-                    let
-                        generation =
-                            p.generation
-                    in
-                        List.map
-                            (\v ->
-                                { generation = generation
-                                , imageUrl = v.image
-                                }
-                            )
-                            p.variants
-
-                command =
-                    case pokedex of
-                        Success actualPokedex ->
-                            actualPokedex
-                                |> List.map generationAndImageUrl
-                                |> List.concat
-                                |> preloadImages
-
-                        _ ->
-                            Cmd.none
-            in
-                ( newState, command )
+            updateOnLoadPokedex oldState pokedex
 
         Msgs.AuthenticationMsg authMsg ->
             let
@@ -299,7 +310,10 @@ update msg oldState =
                     Authentication.update authMsg oldState.authModel
 
                 newState =
-                    { oldState | authModel = authModel }
+                    { oldState
+                        | authModel = authModel
+                        , user = getUserNameForAuthModel oldState.ratings authModel
+                    }
             in
                 ( newState, Cmd.map Msgs.AuthenticationMsg cmd )
 

@@ -1,8 +1,30 @@
-module Helpers exposing (filterPokedex, searchPokedex)
+module Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
 
 import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
+import Authentication exposing (tryGetUserProfile)
 import Models exposing (..)
+
+
+getUserNameForAuthModel : WebData TeamRatings -> Authentication.Model -> Maybe String
+getUserNameForAuthModel ratings authModel =
+    let
+        userEmail =
+            tryGetUserProfile authModel
+                |> Maybe.map .email
+    in
+        case ratings of
+            Success teamRatings ->
+                teamRatings
+                    |> List.filter
+                        (\r ->
+                            userEmail == Just r.email
+                        )
+                    |> List.map .userName
+                    |> List.head
+
+            _ ->
+                Nothing
 
 
 filterPokedex : WebData Pokedex -> Int -> Char -> List Pokemon
