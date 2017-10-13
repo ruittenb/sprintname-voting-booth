@@ -1,7 +1,7 @@
 module Models exposing (..)
 
 import RemoteData exposing (WebData, RemoteData(..))
-import Constants exposing (..)
+import Authentication
 
 
 type BrowseDirection
@@ -60,7 +60,8 @@ type alias TeamRatings =
 
 
 type alias ApplicationState =
-    { user : CurrentUser
+    { authModel : Authentication.Model
+    , user : CurrentUser
     , statusMessage : String
     , statusLevel : StatusLevel
     , generation : Int
@@ -90,15 +91,3 @@ type alias PokemonVariant =
 
 type alias Pokedex =
     List Pokemon
-
-
-initialState : ApplicationState
-initialState =
-    { user = Nothing
-    , statusMessage = ""
-    , statusLevel = None
-    , generation = initialGeneration
-    , letter = initialLetter
-    , pokedex = NotAsked
-    , ratings = NotAsked
-    }

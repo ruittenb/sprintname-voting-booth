@@ -2,6 +2,7 @@ module Update exposing (update)
 
 import Set
 import RemoteData exposing (WebData, RemoteData(..))
+import Authentication
 import Constants exposing (..)
 import Models exposing (..)
 import Msgs exposing (Msg)
@@ -291,6 +292,16 @@ update msg oldState =
                             Cmd.none
             in
                 ( newState, command )
+
+        Msgs.AuthenticationMsg authMsg ->
+            let
+                ( authModel, cmd ) =
+                    Authentication.update authMsg oldState.authModel
+
+                newState =
+                    { oldState | authModel = authModel }
+            in
+                ( newState, Cmd.map Msgs.AuthenticationMsg cmd )
 
         Msgs.ChangeUser newUser ->
             let
