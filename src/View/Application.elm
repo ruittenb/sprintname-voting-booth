@@ -133,16 +133,18 @@ loginLogoutButton authModel user message level =
                 Authentication.ShowLogIn
     in
         div [ id "user-buttons" ] <|
-            [ button
-                [ classList
-                    [ ( "user-button", True )
-                    , ( "current", loggedIn )
+            [ div
+                [ id "user-name"
+                , classList
+                    [ ( "current", loggedIn )
                     ]
+                ]
+                [ text userName ]
+            , button
+                [ class "user-button"
                 , onClick (Msgs.AuthenticationMsg buttonMsg)
                 ]
                 [ text buttonText ]
-            , div [ id "user-name" ]
-                [ text userName ]
             , messageBox message level
             ]
 
