@@ -9,6 +9,11 @@ type BrowseDirection
     | Prev
 
 
+type ViewMode
+    = Search
+    | Browse
+
+
 type StatusLevel
     = Error
     | Warning
@@ -64,8 +69,10 @@ type alias ApplicationState =
     , user : CurrentUser
     , statusMessage : String
     , statusLevel : StatusLevel
+    , viewMode : ViewMode
     , generation : Int
     , letter : Char
+    , search : String
     , pokedex : WebData Pokedex
     , ratings : WebData TeamRatings
     }

@@ -90,6 +90,9 @@ updateOnLoadPokedex oldState pokedex =
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
 updateSearchPokemon oldState query =
     let
+        newViewMode =
+            Search
+
         newState =
             if query == "" then
                 oldState
@@ -114,7 +117,9 @@ updateSearchPokemon oldState query =
                     _ ->
                         oldState
     in
-        ( newState, Cmd.none )
+        ( { newState | viewMode = newViewMode }
+        , Cmd.none
+        )
 
 
 updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )

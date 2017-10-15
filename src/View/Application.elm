@@ -2,7 +2,7 @@ module View.Application exposing (heading)
 
 import Array exposing (Array)
 import Html exposing (..)
-import Html.Attributes exposing (..)
+import Html.Attributes exposing (id, class, classList, tabindex, placeholder, disabled)
 import Html.Events exposing (onClick, onInput)
 import Authentication exposing (tryGetUserProfile, isLoggedIn)
 import RemoteData exposing (WebData, RemoteData(..))
@@ -61,20 +61,29 @@ romanNumeralButton currentGen gen =
         [ text <| romanNumeral gen ]
 
 
-romanNumeralButtons : Int -> Html Msg
-romanNumeralButtons currentGen =
+searchBox : ViewMode -> Html Msg
+searchBox viewMode =
+    span
+        [ id "search-box-container"
+        , classList [ ( "focus", viewMode == Search ) ]
+        ]
+        [ input
+            [ id "search-box"
+            , placeholder "Search in pokédex"
+            , onInput Msgs.SearchPokemon
+            ]
+            []
+        ]
+
+
+romanNumeralButtons : Int -> ViewMode -> Html Msg
+romanNumeralButtons currentGen viewMode =
     div [ id "generation-buttons" ] <|
         (List.map
             (romanNumeralButton currentGen)
             allGenerations
         )
-            ++ [ input
-                    [ placeholder "Search in pokédex"
-                    , id "search-box"
-                    , onInput Msgs.SearchPokemon
-                    ]
-                    []
-               ]
+            ++ [ searchBox viewMode ]
 
 
 letterButton : WebData Pokedex -> Int -> Char -> Char -> Html Msg
@@ -159,6 +168,7 @@ heading state =
             state.statusLevel
         , romanNumeralButtons
             state.generation
+            state.viewMode
         , letterButtons
             state.pokedex
             state.generation

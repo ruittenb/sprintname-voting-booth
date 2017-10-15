@@ -34,7 +34,7 @@ let lock = (function () {
 
 // preload images as requested by elm
 votingApp.ports.preloadImages.subscribe(function (list) {
-    let preloader = new Preloader(list);
+    window.preloader = new Preloader(list);
 });
 
 // show lock (login) widget if the elm app requests it
