@@ -10,7 +10,7 @@ const Preloader = (function (jQuery) {
         this.list = list;
         this.images = [];
         this.generation = 1;
-        this.schedule();
+//        this.schedule();
     };
 
     Preloader.prototype.schedule = function () {

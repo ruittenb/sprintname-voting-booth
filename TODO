@@ -6,6 +6,8 @@ missing:
 
 improvements:
  - have error message box take its message from state, not from errormessage
+ - use jQuery to apply outline styling to span:has(input)
+ - see if unknown-user class can be retired
  - can List.head be replaced with this?
 	 case list of
 	    []      -> []
