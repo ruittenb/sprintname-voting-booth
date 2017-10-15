@@ -28,7 +28,7 @@ init initialUser =
             , viewMode = Browse
             , generation = initialGeneration
             , letter = initialLetter
-            , search = ""
+            , query = ""
             , pokedex = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked
             }

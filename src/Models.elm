@@ -72,7 +72,7 @@ type alias ApplicationState =
     , viewMode : ViewMode
     , generation : Int
     , letter : Char
-    , search : String
+    , query : String
     , pokedex : WebData Pokedex
     , ratings : WebData TeamRatings
     }

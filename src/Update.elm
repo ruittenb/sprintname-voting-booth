@@ -91,35 +91,15 @@ updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg 
 updateSearchPokemon oldState query =
     let
         newViewMode =
-            Search
+            if query == "" then
+                Browse
+            else
+                Search
 
         newState =
-            if query == "" then
-                oldState
-            else
-                case oldState.pokedex of
-                    Success pokedex ->
-                        let
-                            maybePokemon =
-                                searchPokedex oldState.pokedex query
-                                    |> List.head
-
-                            newState =
-                                case maybePokemon of
-                                    Just pokemon ->
-                                        { oldState | letter = pokemon.letter, generation = pokemon.generation }
-
-                                    Nothing ->
-                                        oldState
-                        in
-                            newState
-
-                    _ ->
-                        oldState
+            { oldState | query = query, viewMode = newViewMode }
     in
-        ( { newState | viewMode = newViewMode }
-        , Cmd.none
-        )
+        ( newState, Cmd.none )
 
 
 updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )
@@ -325,9 +305,17 @@ update msg oldState =
 
         Msgs.ChangeGeneration newGen ->
             let
+                newViewMode =
+                    Browse
+
                 newState =
                     if List.member newGen allGenerations then
-                        { oldState | generation = newGen, statusMessage = "", statusLevel = None }
+                        { oldState
+                            | generation = newGen
+                            , statusMessage = ""
+                            , statusLevel = None
+                            , viewMode = newViewMode
+                        }
                     else
                         oldState
             in
@@ -335,9 +323,17 @@ update msg oldState =
 
         Msgs.ChangeLetter newLetter ->
             let
+                newViewMode =
+                    Browse
+
                 newState =
                     if List.member newLetter allLetters then
-                        { oldState | letter = newLetter, statusMessage = "", statusLevel = None }
+                        { oldState
+                            | letter = newLetter
+                            , statusMessage = ""
+                            , statusLevel = None
+                            , viewMode = newViewMode
+                        }
                     else
                         oldState
             in

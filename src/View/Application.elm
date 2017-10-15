@@ -14,19 +14,23 @@ import Constants exposing (..)
 
 messageBox : String -> StatusLevel -> Html Msg
 messageBox message level =
-    span [ id "message-box-container" ]
-        [ span
-            [ id "message-box"
-            , classList
-                [ ( "autohide", String.length message > 0 )
-                , ( "debug", level == Debug )
-                , ( "notice", level == Notice )
-                , ( "warning", level == Warning )
-                , ( "error", level == Error )
+    let
+        autohide =
+            String.length message > 0 && level /= Error
+    in
+        span [ id "message-box-container" ]
+            [ span
+                [ id "message-box"
+                , classList
+                    [ ( "autohide", autohide )
+                    , ( "debug", level == Debug )
+                    , ( "notice", level == Notice )
+                    , ( "warning", level == Warning )
+                    , ( "error", level == Error )
+                    ]
                 ]
+                [ text message ]
             ]
-            [ text message ]
-        ]
 
 
 romanNumerals : Array String
@@ -48,17 +52,21 @@ romanNumeral i =
                 "?"
 
 
-romanNumeralButton : Int -> Int -> Html Msg
-romanNumeralButton currentGen gen =
-    button
-        [ classList
-            [ ( "generation-button", True )
-            , ( "current", gen == currentGen )
-            , ( "transparent", gen == 0 )
+romanNumeralButton : ViewMode -> Int -> Int -> Html Msg
+romanNumeralButton viewMode currentGen gen =
+    let
+        currentHighLight =
+            gen == currentGen && viewMode == Browse
+    in
+        button
+            [ classList
+                [ ( "generation-button", True )
+                , ( "current", currentHighLight )
+                , ( "transparent", gen == 0 )
+                ]
+            , onClick (Msgs.ChangeGeneration gen)
             ]
-        , onClick (Msgs.ChangeGeneration gen)
-        ]
-        [ text <| romanNumeral gen ]
+            [ text <| romanNumeral gen ]
 
 
 searchBox : ViewMode -> Html Msg
@@ -69,6 +77,7 @@ searchBox viewMode =
         ]
         [ input
             [ id "search-box"
+            , classList [ ( "current", viewMode == Search ) ]
             , placeholder "Search in pokédex"
             , onInput Msgs.SearchPokemon
             ]
@@ -76,26 +85,29 @@ searchBox viewMode =
         ]
 
 
-romanNumeralButtons : Int -> ViewMode -> Html Msg
-romanNumeralButtons currentGen viewMode =
+romanNumeralButtons : ViewMode -> Int -> Html Msg
+romanNumeralButtons viewMode currentGen =
     div [ id "generation-buttons" ] <|
         (List.map
-            (romanNumeralButton currentGen)
+            (romanNumeralButton viewMode currentGen)
             allGenerations
         )
             ++ [ searchBox viewMode ]
 
 
-letterButton : WebData Pokedex -> Int -> Char -> Char -> Html Msg
-letterButton pokedex currentGen currentLetter letter =
+letterButton : ViewMode -> WebData Pokedex -> Int -> Char -> Char -> Html Msg
+letterButton viewMode pokedex currentGen currentLetter letter =
     let
+        currentHighLight =
+            letter == currentLetter && viewMode == Browse
+
         pokeList =
             filterPokedex pokedex currentGen letter
     in
         button
             [ classList
                 [ ( "letter-button", True )
-                , ( "current", letter == currentLetter )
+                , ( "current", currentHighLight )
                 ]
             , onClick (Msgs.ChangeLetter letter)
             , disabled (List.isEmpty pokeList)
@@ -103,14 +115,14 @@ letterButton pokedex currentGen currentLetter letter =
             [ text <| String.fromChar letter ]
 
 
-letterButtons : WebData Pokedex -> Int -> Char -> Html Msg
-letterButtons pokedex currentGen currentLetter =
+letterButtons : ViewMode -> WebData Pokedex -> Int -> Char -> Html Msg
+letterButtons viewMode pokedex currentGen currentLetter =
     let
         buttonList =
             case pokedex of
                 Success pokeList ->
                     List.map
-                        (letterButton pokedex currentGen currentLetter)
+                        (letterButton viewMode pokedex currentGen currentLetter)
                         allLetters
 
                 _ ->
@@ -167,9 +179,10 @@ heading state =
             state.statusMessage
             state.statusLevel
         , romanNumeralButtons
-            state.generation
             state.viewMode
+            state.generation
         , letterButtons
+            state.viewMode
             state.pokedex
             state.generation
             state.letter
