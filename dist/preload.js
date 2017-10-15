@@ -17,10 +17,13 @@ const Preloader = (function (jQuery) {
         this.timer = setTimeout(this.preloadImages.bind(this), batchTime);
     };
 
-    Preloader.prototype.stop = function ()
+    Preloader.prototype.resume = Preloader.prototype.schedule;
+
+    Preloader.prototype.pause = function ()
     {
         if (this.timer) {
             clearTimeout(this.timer);
+            jQuery('.generation-button').removeClass('loading');
             this.timer = null;
         }
     };
