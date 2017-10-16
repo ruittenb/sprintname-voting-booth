@@ -1,6 +1,7 @@
 module Update exposing (update)
 
 import Set
+import List
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Constants exposing (..)
@@ -30,6 +31,18 @@ extractOnePokemonFromRatingString ratingString pokemonNumber =
     String.slice pokemonNumber (pokemonNumber + 1) ratingString
         |> String.toInt
         |> Result.withDefault 0
+
+
+putCurrentGenFirst : Int -> List PreloadCandidate -> List PreloadCandidate
+putCurrentGenFirst gen imgList =
+    let
+        nr =
+            gen - 1
+
+        ( head, tail ) =
+            List.partition (.generation >> (>) gen) imgList
+    in
+        tail ++ head
 
 
 
@@ -79,6 +92,7 @@ updateOnLoadPokedex oldState pokedex =
                     actualPokedex
                         |> List.map generationAndImageUrl
                         |> List.concat
+                        |> putCurrentGenFirst oldState.generation
                         |> preloadImages
 
                 _ ->
@@ -90,29 +104,14 @@ updateOnLoadPokedex oldState pokedex =
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
 updateSearchPokemon oldState query =
     let
-        newState =
+        newViewMode =
             if query == "" then
-                oldState
+                Browse
             else
-                case oldState.pokedex of
-                    Success pokedex ->
-                        let
-                            maybePokemon =
-                                searchPokedex oldState.pokedex query
-                                    |> List.head
+                Search
 
-                            newState =
-                                case maybePokemon of
-                                    Just pokemon ->
-                                        { oldState | letter = pokemon.letter, generation = pokemon.generation }
-
-                                    Nothing ->
-                                        oldState
-                        in
-                            newState
-
-                    _ ->
-                        oldState
+        newState =
+            { oldState | query = query, viewMode = newViewMode }
     in
         ( newState, Cmd.none )
 
@@ -320,9 +319,17 @@ update msg oldState =
 
         Msgs.ChangeGeneration newGen ->
             let
+                newViewMode =
+                    Browse
+
                 newState =
                     if List.member newGen allGenerations then
-                        { oldState | generation = newGen, statusMessage = "", statusLevel = None }
+                        { oldState
+                            | generation = newGen
+                            , statusMessage = ""
+                            , statusLevel = None
+                            , viewMode = newViewMode
+                        }
                     else
                         oldState
             in
@@ -330,9 +337,17 @@ update msg oldState =
 
         Msgs.ChangeLetter newLetter ->
             let
+                newViewMode =
+                    Browse
+
                 newState =
                     if List.member newLetter allLetters then
-                        { oldState | letter = newLetter, statusMessage = "", statusLevel = None }
+                        { oldState
+                            | letter = newLetter
+                            , statusMessage = ""
+                            , statusLevel = None
+                            , viewMode = newViewMode
+                        }
                     else
                         oldState
             in

@@ -7,7 +7,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (maxStars)
-import Helpers exposing (filterPokedex)
+import Helpers exposing (filterPokedex, searchPokedex)
 import Models exposing (..)
 import Msgs exposing (Msg)
 
@@ -243,6 +243,11 @@ pokemonCanvas : ApplicationState -> Html Msg
 pokemonCanvas state =
     let
         pokeList =
-            filterPokedex state.pokedex state.generation state.letter
+            case state.viewMode of
+                Browse ->
+                    filterPokedex state.pokedex state.generation state.letter
+
+                Search ->
+                    searchPokedex state.pokedex state.query
     in
         div [ class "pokecanvas" ] <| pokemonTiles pokeList state.ratings state.user

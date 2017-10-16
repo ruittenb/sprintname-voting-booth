@@ -9,6 +9,11 @@ type BrowseDirection
     | Prev
 
 
+type ViewMode
+    = Search
+    | Browse
+
+
 type StatusLevel
     = Error
     | Warning
@@ -20,6 +25,12 @@ type StatusLevel
 type alias LighthouseData =
     { name : String
     , caption : String
+    }
+
+
+type alias PreloadCandidate =
+    { generation : Int
+    , imageUrl : String
     }
 
 
@@ -64,8 +75,10 @@ type alias ApplicationState =
     , user : CurrentUser
     , statusMessage : String
     , statusLevel : StatusLevel
+    , viewMode : ViewMode
     , generation : Int
     , letter : Char
+    , query : String
     , pokedex : WebData Pokedex
     , ratings : WebData TeamRatings
     }

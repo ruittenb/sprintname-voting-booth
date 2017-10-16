@@ -33,8 +33,9 @@ filterPokedex pokedex generation letter =
         selection =
             case pokedex of
                 Success pokeList ->
-                    List.filter (.letter >> (==) letter) <|
-                        List.filter (.generation >> (==) generation) pokeList
+                    pokeList
+                        |> List.filter (.letter >> (==) letter)
+                        |> List.filter (.generation >> (==) generation)
 
                 _ ->
                     []

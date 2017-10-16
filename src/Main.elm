@@ -5,7 +5,7 @@ import Auth0
 import Authentication
 import RemoteData exposing (RemoteData(..))
 import Constants exposing (initialGeneration, initialLetter)
-import Models exposing (ApplicationState, StatusLevel(None))
+import Models exposing (ApplicationState, StatusLevel(None), ViewMode(..))
 import Ports exposing (auth0showLock, auth0logout, auth0authResult)
 import View exposing (view)
 import Update exposing (update)
@@ -25,8 +25,10 @@ init initialUser =
             , user = Nothing
             , statusMessage = ""
             , statusLevel = None
+            , viewMode = Browse
             , generation = initialGeneration
             , letter = initialLetter
+            , query = ""
             , pokedex = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked
             }

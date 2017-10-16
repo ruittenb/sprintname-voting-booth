@@ -1,19 +1,18 @@
 
 missing:
- - introduce search results view
  - listen to database changes (subscriptions?)
  - secure database API
+ - do something about unrendered animation on messagebox
 
 improvements:
  - have error message box take its message from state, not from errormessage
- - can List.head be replaced with this?
-	 case list of
-	    []      -> []
-	    x::xs   -> ..
+ - fix outline css on input text box
+ - see if unknown-user class can be retired
 
 consider:
  - rename Msgs to Messages
  - add Mega variants like https://www.pokemon.com/us/pokedex/manectric ?
  - add Alola variants like https://www.pokemon.com/us/pokedex/muk ?
+ - Material Design?
 
 

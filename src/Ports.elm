@@ -1,9 +1,10 @@
 port module Ports exposing (preloadImages, auth0showLock, auth0authResult, auth0logout)
 
 import Auth0
+import Models exposing (PreloadCandidate)
 
 
-port preloadImages : List { generation : Int, imageUrl : String } -> Cmd msg
+port preloadImages : List PreloadCandidate -> Cmd msg
 
 
 port auth0showLock : Auth0.Options -> Cmd msg
