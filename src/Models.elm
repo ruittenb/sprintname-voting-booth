@@ -28,6 +28,12 @@ type alias LighthouseData =
     }
 
 
+type alias PreloadCandidate =
+    { generation : Int
+    , imageUrl : String
+    }
+
+
 type alias UserVote =
     { pokemonNumber : Int
     , vote : Int

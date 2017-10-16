@@ -1,6 +1,7 @@
 module Update exposing (update)
 
 import Set
+import List
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Constants exposing (..)
@@ -30,6 +31,18 @@ extractOnePokemonFromRatingString ratingString pokemonNumber =
     String.slice pokemonNumber (pokemonNumber + 1) ratingString
         |> String.toInt
         |> Result.withDefault 0
+
+
+putCurrentGenFirst : Int -> List PreloadCandidate -> List PreloadCandidate
+putCurrentGenFirst gen imgList =
+    let
+        nr =
+            gen - 1
+
+        ( head, tail ) =
+            List.partition (.generation >> (>) gen) imgList
+    in
+        tail ++ head
 
 
 
@@ -79,6 +92,7 @@ updateOnLoadPokedex oldState pokedex =
                     actualPokedex
                         |> List.map generationAndImageUrl
                         |> List.concat
+                        |> putCurrentGenFirst oldState.generation
                         |> preloadImages
 
                 _ ->
