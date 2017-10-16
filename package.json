@@ -12,6 +12,7 @@
     "font-awesome": "4",
     "foreman": "^2.0.0",
     "json-server": "0.9.5",
+    "jsonwebtoken": "^8.1.0",
     "lightbox2": "^2.9.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
