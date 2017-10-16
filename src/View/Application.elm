@@ -138,8 +138,11 @@ loginLogoutButton authModel user message level =
             isLoggedIn authModel
 
         userName =
-            Maybe.map ((++) "Logged in as ") user
-                |> Maybe.withDefault "Not logged in"
+            if not loggedIn then
+                "Not logged in"
+            else
+                Maybe.map ((++) "Logged in as ") user
+                    |> Maybe.withDefault "Not authorized"
 
         buttonText =
             if loggedIn then
