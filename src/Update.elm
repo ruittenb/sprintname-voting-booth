@@ -198,8 +198,34 @@ updateVoteForPokemon oldState userVote =
                         userVote.vote
 
                 -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
+                ( generation, letter ) =
+                    case oldState.pokedex of
+                        Success actualPokedex ->
+                            if oldState.viewMode == Browse then
+                                let
+                                    pokemon =
+                                        List.filter (.number >> (==) pokemonNumber) actualPokedex
+                                            |> List.head
+                                            |> Maybe.withDefault
+                                                { id = 0
+                                                , number = 0
+                                                , generation = 0
+                                                , letter = '?'
+                                                , name = ""
+                                                , url = ""
+                                                , currentVariant = 0
+                                                , variants = []
+                                                }
+                                in
+                                    ( pokemon.generation, pokemon.letter )
+                            else
+                                ( oldState.generation, oldState.letter )
+
+                        _ ->
+                            ( oldState.generation, oldState.letter )
+
                 pokeList =
-                    filterPokedex oldState.pokedex oldState.generation oldState.letter
+                    filterPokedex oldState.pokedex generation letter
 
                 -- extract one pokemon rating
                 oldPokeRating =
