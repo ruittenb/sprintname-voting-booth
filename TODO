@@ -4,7 +4,6 @@ missing:
  - secure database API
    - use jsonwebtoken on dbserver
  - do something about unrendered animation on messagebox
- - make sure double votes are detected with the generation/letter of the pokemon voted for (not the current ones)
 
 improvements:
  - have error message box take its message from state, not from errormessage
