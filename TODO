@@ -4,14 +4,13 @@ missing:
  - secure database API
    - use jsonwebtoken on dbserver
  - do something about unrendered animation on messagebox
+ - add URL navigation à la #3D
 
 improvements:
  - have error message box take its message from state, not from errormessage
  - fix outline css on input text box
- - see if unknown-user class can be retired
 
 consider:
- - rename Msgs to Messages
  - add Mega variants like https://www.pokemon.com/us/pokedex/manectric ?
  - add Alola variants like https://www.pokemon.com/us/pokedex/muk ?
  - Material Design?
