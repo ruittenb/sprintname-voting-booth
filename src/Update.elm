@@ -116,6 +116,27 @@ updateSearchPokemon oldState query =
         ( newState, Cmd.none )
 
 
+updateChangeGenerationAndLetter : ApplicationState -> Int -> Char -> ( ApplicationState, Cmd Msg )
+updateChangeGenerationAndLetter oldState newGen newLetter =
+    let
+        newState =
+            if
+                List.member newGen allGenerations
+                    && List.member newLetter allLetters
+            then
+                { oldState
+                    | letter = newLetter
+                    , generation = newGen
+                    , statusMessage = ""
+                    , statusLevel = None
+                    , viewMode = Browse
+                }
+            else
+                oldState
+    in
+        ( newState, Cmd.none )
+
+
 updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )
 updateChangeVariant oldState pokemonNumber direction =
     let
@@ -337,40 +358,13 @@ update msg oldState =
                 ( newState, Cmd.map Msgs.AuthenticationMsg cmd )
 
         Msgs.ChangeGeneration newGen ->
-            let
-                newViewMode =
-                    Browse
-
-                newState =
-                    if List.member newGen allGenerations then
-                        { oldState
-                            | generation = newGen
-                            , statusMessage = ""
-                            , statusLevel = None
-                            , viewMode = newViewMode
-                        }
-                    else
-                        oldState
-            in
-                ( newState, Cmd.none )
+            updateChangeGenerationAndLetter oldState newGen oldState.letter
 
         Msgs.ChangeLetter newLetter ->
-            let
-                newViewMode =
-                    Browse
+            updateChangeGenerationAndLetter oldState oldState.generation newLetter
 
-                newState =
-                    if List.member newLetter allLetters then
-                        { oldState
-                            | letter = newLetter
-                            , statusMessage = ""
-                            , statusLevel = None
-                            , viewMode = newViewMode
-                        }
-                    else
-                        oldState
-            in
-                ( newState, Cmd.none )
+        Msgs.ChangeGenerationAndLetter newGen newLetter ->
+            updateChangeGenerationAndLetter oldState newGen newLetter
 
         Msgs.ChangeVariant pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction

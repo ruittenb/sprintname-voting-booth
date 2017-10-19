@@ -1,9 +1,29 @@
-module Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
+module Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex, romanNumeral)
 
+import Array exposing (Array)
 import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (tryGetUserProfile)
 import Models exposing (..)
+
+
+romanNumerals : Array String
+romanNumerals =
+    Array.fromList [ "O", "I", "II", "III", "IV", "V", "VI", "VII" ]
+
+
+romanNumeral : Int -> String
+romanNumeral i =
+    let
+        roman =
+            Array.get i romanNumerals
+    in
+        case roman of
+            Just actualRoman ->
+                actualRoman
+
+            Nothing ->
+                "?"
 
 
 getUserNameForAuthModel : WebData TeamRatings -> Authentication.Model -> Maybe String

@@ -37,6 +37,7 @@ button.generation-button {
     float: left;
 }
 
+.poketile button:hover,
 button.user-button:hover,
 button.letter-button:hover,
 button.generation-button:hover {
@@ -262,6 +263,13 @@ button.generation-button.error {
 .poketile .right-arrow {
     width: 50px;
     height: 120px;
+}
+
+.poketile button {
+    width: 20px;
+    border: 1px solid #888;
+    padding: 1px;
+    background-color: white;
 }
 
 .poketile:hover .left-arrow {

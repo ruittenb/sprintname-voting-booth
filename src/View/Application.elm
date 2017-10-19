@@ -1,12 +1,11 @@
 module View.Application exposing (heading)
 
-import Array exposing (Array)
 import Html exposing (..)
 import Html.Attributes exposing (id, class, classList, tabindex, placeholder, disabled)
 import Html.Events exposing (onClick, onInput)
 import Authentication exposing (tryGetUserProfile, isLoggedIn)
 import RemoteData exposing (WebData, RemoteData(..))
-import Helpers exposing (filterPokedex)
+import Helpers exposing (filterPokedex, romanNumeral)
 import Msgs exposing (Msg)
 import Models exposing (..)
 import Constants exposing (..)
@@ -31,25 +30,6 @@ messageBox message level =
                 ]
                 [ text message ]
             ]
-
-
-romanNumerals : Array String
-romanNumerals =
-    Array.fromList [ "O", "I", "II", "III", "IV", "V", "VI", "VII" ]
-
-
-romanNumeral : Int -> String
-romanNumeral i =
-    let
-        roman =
-            Array.get i romanNumerals
-    in
-        case roman of
-            Just actualRoman ->
-                actualRoman
-
-            Nothing ->
-                "?"
 
 
 romanNumeralButton : ViewMode -> Int -> Int -> Html Msg

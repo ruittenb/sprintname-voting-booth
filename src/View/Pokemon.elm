@@ -7,7 +7,7 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (maxStars)
-import Helpers exposing (filterPokedex, searchPokedex)
+import Helpers exposing (filterPokedex, searchPokedex, romanNumeral)
 import Models exposing (..)
 import Msgs exposing (Msg)
 
@@ -168,8 +168,8 @@ variantLinks pokemonName variants =
     List.map (variantLink pokemonName) variants
 
 
-pokemonTile : WebData TeamRatings -> CurrentUser -> Pokemon -> Html Msg
-pokemonTile ratings currentUser pokemon =
+pokemonTile : ViewMode -> WebData TeamRatings -> CurrentUser -> Pokemon -> Html Msg
+pokemonTile viewMode ratings currentUser pokemon =
     let
         allUserRatings =
             extractOnePokemonFromRatings ratings pokemon
@@ -179,6 +179,20 @@ pokemonTile ratings currentUser pokemon =
 
         leftMargin =
             toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
+
+        generationElement : Int -> List (Html Msg)
+        generationElement gen =
+            case viewMode of
+                Browse ->
+                    [ text "" ]
+
+                Search ->
+                    [ button
+                        [ onClick (Msgs.ChangeGenerationAndLetter pokemon.generation pokemon.letter) ]
+                        [ text (romanNumeral gen)
+                        ]
+                    , text " " -- no-breaking space
+                    ]
 
         actualVoteWidget =
             case currentUser of
@@ -190,7 +204,9 @@ pokemonTile ratings currentUser pokemon =
     in
         div [ class "poketile" ] <|
             [ p []
-                [ text <| toString pokemon.number
+                [ span [] <|
+                    (generationElement pokemon.generation)
+                        ++ [ text <| toString pokemon.number ]
                 , linkTo pokemon.url <| text pokemon.name
                 ]
             , div [ class "pokemon-image-strip-box" ]
@@ -234,9 +250,9 @@ pokemonTile ratings currentUser pokemon =
                         [ loadingBusyIcon ]
 
 
-pokemonTiles : List Pokemon -> WebData TeamRatings -> CurrentUser -> List (Html Msg)
-pokemonTiles pokelist ratings currentUser =
-    List.map (pokemonTile ratings currentUser) pokelist
+pokemonTiles : ViewMode -> List Pokemon -> WebData TeamRatings -> CurrentUser -> List (Html Msg)
+pokemonTiles viewMode pokelist ratings currentUser =
+    List.map (pokemonTile viewMode ratings currentUser) pokelist
 
 
 pokemonCanvas : ApplicationState -> Html Msg
@@ -250,4 +266,4 @@ pokemonCanvas state =
                 Search ->
                     searchPokedex state.pokedex state.query
     in
-        div [ class "pokecanvas" ] <| pokemonTiles pokeList state.ratings state.user
+        div [ class "pokecanvas" ] <| pokemonTiles state.viewMode pokeList state.ratings state.user

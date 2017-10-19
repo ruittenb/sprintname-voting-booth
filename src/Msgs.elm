@@ -10,6 +10,7 @@ type Msg
     | OnSaveRatings (WebData UserRatings)
     | OnLoadPokedex (WebData Pokedex)
     | AuthenticationMsg Authentication.Msg
+    | ChangeGenerationAndLetter Int Char
     | ChangeGeneration Int
     | ChangeLetter Char
     | ChangeVariant Int BrowseDirection

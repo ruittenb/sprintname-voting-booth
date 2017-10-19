@@ -70,17 +70,9 @@ type alias TeamRatings =
     List UserRatings
 
 
-type alias ApplicationState =
-    { authModel : Authentication.Model
-    , user : CurrentUser
-    , statusMessage : String
-    , statusLevel : StatusLevel
-    , viewMode : ViewMode
-    , generation : Int
-    , letter : Char
-    , query : String
-    , pokedex : WebData Pokedex
-    , ratings : WebData TeamRatings
+type alias PokemonVariant =
+    { image : String
+    , vname : String
     }
 
 
@@ -96,11 +88,19 @@ type alias Pokemon =
     }
 
 
-type alias PokemonVariant =
-    { image : String
-    , vname : String
-    }
-
-
 type alias Pokedex =
     List Pokemon
+
+
+type alias ApplicationState =
+    { authModel : Authentication.Model
+    , user : CurrentUser
+    , statusMessage : String
+    , statusLevel : StatusLevel
+    , viewMode : ViewMode
+    , generation : Int
+    , letter : Char
+    , query : String
+    , pokedex : WebData Pokedex
+    , ratings : WebData TeamRatings
+    }
