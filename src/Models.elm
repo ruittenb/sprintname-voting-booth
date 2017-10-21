@@ -28,6 +28,12 @@ type alias LighthouseData =
     }
 
 
+type alias Subpage =
+    { generation : Int
+    , letter : Char
+    }
+
+
 type alias PreloadCandidate =
     { generation : Int
     , imageUrl : String

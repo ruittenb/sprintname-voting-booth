@@ -1,4 +1,4 @@
-module Update exposing (update)
+module Update exposing (update, dissectLocationHash, hashToMsg)
 
 import Set
 import Char
@@ -47,26 +47,37 @@ putCurrentGenFirst gen imgList =
         tail ++ head
 
 
-hashToMsg : Location -> Msg
-hashToMsg location =
+dissectLocationHash : Location -> Subpage -> Subpage
+dissectLocationHash location defaultSubpage =
     let
         ( _, hash ) =
             String.uncons location.hash
                 |> Maybe.withDefault ( '#', "" )
-
-        ( gen, letter ) =
-            String.uncons hash
-                |> Maybe.withDefault ( ';', "" )
-
-        newGen =
-            Char.toCode gen - 48
-
-        newLetter =
-            String.toList letter
-                |> List.head
-                |> Maybe.withDefault '_'
     in
-        Msgs.ChangeGenerationAndLetter newGen newLetter
+        case String.uncons hash of
+            Just ( gen, letter ) ->
+                { generation = Char.toCode gen - 48
+                , letter =
+                    String.toUpper letter
+                        |> String.toList
+                        |> List.head
+                        |> Maybe.withDefault '_'
+                }
+
+            Nothing ->
+                defaultSubpage
+
+
+hashToMsg : Location -> Msg
+hashToMsg location =
+    let
+        invalidPage =
+            { generation = -1, letter = '_' }
+
+        subpage =
+            dissectLocationHash location invalidPage
+    in
+        Msgs.ChangeGenerationAndLetter subpage.generation subpage.letter
 
 
 
