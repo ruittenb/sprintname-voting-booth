@@ -4,7 +4,6 @@ missing:
  - secure database API
    - use jsonwebtoken on dbserver
  - do something about unrendered animation on messagebox
- - add URL navigation à la #3D
 
 improvements:
  - have error message box take its message from state, not from errormessage
