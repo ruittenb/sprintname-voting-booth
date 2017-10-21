@@ -1,8 +1,8 @@
 module View.Application exposing (heading)
 
 import Html exposing (..)
-import Html.Attributes exposing (id, class, classList, tabindex, placeholder, disabled)
-import Html.Events exposing (onClick, onInput)
+import Html.Attributes exposing (attribute, id, href, class, classList, tabindex, placeholder, disabled)
+import Html.Events exposing (onClick, onInput, onSubmit)
 import Authentication exposing (tryGetUserProfile, isLoggedIn)
 import RemoteData exposing (WebData, RemoteData(..))
 import Helpers exposing (filterPokedex, romanNumeral)
@@ -32,19 +32,23 @@ messageBox message level =
             ]
 
 
-romanNumeralButton : ViewMode -> Int -> Int -> Html Msg
-romanNumeralButton viewMode currentGen gen =
+romanNumeralButton : ViewMode -> Int -> Char -> Int -> Html Msg
+romanNumeralButton viewMode currentGen currentLetter gen =
     let
         currentHighLight =
             gen == currentGen && viewMode == Browse
+
+        hash =
+            "#" ++ (toString gen) ++ (String.fromChar currentLetter)
     in
-        button
+        a
             [ classList
-                [ ( "generation-button", True )
+                [ ( "button", True )
+                , ( "generation-button", True )
                 , ( "current", currentHighLight )
                 , ( "transparent", gen == 0 )
                 ]
-            , onClick (Msgs.ChangeGeneration gen)
+            , href hash
             ]
             [ text <| romanNumeral gen ]
 
@@ -65,11 +69,11 @@ searchBox viewMode =
         ]
 
 
-romanNumeralButtons : ViewMode -> Int -> Html Msg
-romanNumeralButtons viewMode currentGen =
+romanNumeralButtons : ViewMode -> Int -> Char -> Html Msg
+romanNumeralButtons viewMode currentGen currentLetter =
     div [ id "generation-buttons" ] <|
         (List.map
-            (romanNumeralButton viewMode currentGen)
+            (romanNumeralButton viewMode currentGen currentLetter)
             allGenerations
         )
             ++ [ searchBox viewMode ]
@@ -83,14 +87,24 @@ letterButton viewMode pokedex currentGen currentLetter letter =
 
         pokeList =
             filterPokedex pokedex currentGen letter
+
+        hash =
+            "#" ++ (toString currentGen) ++ (String.fromChar letter)
+
+        linkElem =
+            if List.isEmpty pokeList then
+                span
+            else
+                a
     in
-        button
+        linkElem
             [ classList
-                [ ( "letter-button", True )
+                [ ( "button", True )
+                , ( "letter-button", True )
                 , ( "current", currentHighLight )
+                , ( "disabled", List.isEmpty pokeList )
                 ]
-            , onClick (Msgs.ChangeLetter letter)
-            , disabled (List.isEmpty pokeList)
+            , href hash
             ]
             [ text <| String.fromChar letter ]
 
@@ -164,6 +178,7 @@ heading state =
         , romanNumeralButtons
             state.viewMode
             state.generation
+            state.letter
         , letterButtons
             state.viewMode
             state.pokedex

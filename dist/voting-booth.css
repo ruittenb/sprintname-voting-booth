@@ -6,19 +6,35 @@
 body {
     padding: 8px;
     background-color: #f0f0f0 !important;
+    font-face: Helvetica, Arial, Sans;
     font-size: 14px;
 }
 
+button,
+.button {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    line-height: 30px;
+    cursor: default;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Chrome and Opera */
+}
+
 button.user-button,
-button.letter-button,
-button.generation-button {
+.button.letter-button,
+.button.generation-button {
     height: 30px;
     margin-right: 4px;
     margin-bottom: 4px;
     background-color: white;
     border: 1px solid black;
     color: black;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 button.user-button {
@@ -27,43 +43,47 @@ button.user-button {
     float: left;
 }
 
-button.letter-button {
+.button.letter-button {
     width: 40px;
 }
 
-button.generation-button {
+.button.generation-button {
     width: 40px;
     display: block;
     float: left;
 }
 
-.poketile button:hover,
 button.user-button:hover,
-button.letter-button:hover,
-button.generation-button:hover {
+.poketile .button:hover,
+.button.letter-button:hover,
+.button.generation-button:hover {
     background-color: #f8f0f8; /* light purple */
 }
 
 #user-name.current,
 button.user-button.current,
-button.letter-button.current,
-button.generation-button.current,
-button.generation-button.current.loading,
-button.generation-button.current.transparent {
+.button.letter-button.current,
+.button.generation-button.current,
+.button.generation-button.current.loading,
+.button.generation-button.current.transparent {
     background-color: #e6c6e6; /* purple */
     opacity: 1;
 }
 
-button.letter-button:disabled {
+.button.letter-button.disabled {
     border-color: #777;
     background-color: #eee;
 }
 
-button.generation-button.transparent {
+.button.generation-button.transparent {
     opacity: 0.01;
 }
 
-button.generation-button.loading {
+.button.generation-button.error {
+    background: #e6c6e6 url(images/loading-error.png) 0 0 repeat;
+}
+
+.button.generation-button.loading {
     background: url(images/loading-shade.png) 0 0 repeat;
     -webkit-animation: loading 2s linear 0s infinite;
     animation: loading 2s linear 0s infinite;
@@ -82,10 +102,6 @@ button.generation-button.loading {
 @-webkit-keyframes loading {
     0%   { background-position-x: 20px; }
     100% { background-position-x: 0; }
-}
-
-button.generation-button.error {
-    background: #e6c6e6 url(images/loading-error.png) 0 0 repeat;
 }
 
 #user-buttons,
@@ -112,7 +128,7 @@ button.generation-button.error {
     color: black;
     text-align: center;
     line-height: 30px;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 #message-box-container {
@@ -220,6 +236,7 @@ button.generation-button.error {
     background-color: #e6c6e6; /* purple */
 }
 
+/* apparently, these cannot be combined */
 ::-webkit-input-placeholder {
    font-style: italic;
    color: #aaa;
@@ -254,7 +271,6 @@ button.generation-button.error {
 
 .poketile p {
     display: flex;
-    font-face: Helvetica, Arial, Sans;
     justify-content: space-between;
     margin: 8px 14px;
 }
@@ -265,11 +281,17 @@ button.generation-button.error {
     height: 120px;
 }
 
-.poketile button {
-    width: 20px;
+.poketile .button {
+    display: inline-block;
+    width: 22px;
     border: 1px solid #888;
     padding: 1px;
     background-color: white;
+    color: #888;
+    line-height: normal;
+    text-decoration: none;
+    text-align: center;
+    cursor: default;
 }
 
 .poketile:hover .left-arrow {
