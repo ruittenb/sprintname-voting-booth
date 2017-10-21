@@ -1,7 +1,9 @@
 module Update exposing (update)
 
 import Set
+import Char
 import List
+import Navigation exposing (Location)
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Constants exposing (..)
@@ -43,6 +45,28 @@ putCurrentGenFirst gen imgList =
             List.partition (.generation >> (>) gen) imgList
     in
         tail ++ head
+
+
+hashToMsg : Location -> Msg
+hashToMsg location =
+    let
+        ( _, hash ) =
+            String.uncons location.hash
+                |> Maybe.withDefault ( '#', "" )
+
+        ( gen, letter ) =
+            String.uncons hash
+                |> Maybe.withDefault ( ';', "" )
+
+        newGen =
+            Char.toCode gen - 48
+
+        newLetter =
+            String.toList letter
+                |> List.head
+                |> Maybe.withDefault '_'
+    in
+        Msgs.ChangeGenerationAndLetter newGen newLetter
 
 
 
