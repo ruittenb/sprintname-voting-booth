@@ -10,7 +10,7 @@ const Preloader = (function (jQuery) {
         this.list = list;
         this.images = [];
         this.generation = 1;
-        if (location.hash !== "#nopreload") {
+        if (location.search !== "?nopreload") {
             this.schedule();
         }
     };

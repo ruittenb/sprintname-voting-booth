@@ -180,6 +180,9 @@ pokemonTile viewMode ratings currentUser pokemon =
         leftMargin =
             toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
 
+        hash =
+            "#" ++ (toString pokemon.generation) ++ (String.fromChar pokemon.letter)
+
         generationElement : Int -> List (Html Msg)
         generationElement gen =
             case viewMode of
@@ -187,8 +190,10 @@ pokemonTile viewMode ratings currentUser pokemon =
                     [ text "" ]
 
                 Search ->
-                    [ button
-                        [ onClick (Msgs.ChangeGenerationAndLetter pokemon.generation pokemon.letter) ]
+                    [ a
+                        [ href hash
+                        , classList [ ( "button", True ) ]
+                        ]
                         [ text (romanNumeral gen)
                         ]
                     , text " " -- no-breaking space

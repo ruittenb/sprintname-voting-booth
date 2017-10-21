@@ -1,7 +1,9 @@
-module Update exposing (update)
+module Update exposing (update, dissectLocationHash, hashToMsg)
 
 import Set
+import Char
 import List
+import Navigation exposing (Location)
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Constants exposing (..)
@@ -43,6 +45,39 @@ putCurrentGenFirst gen imgList =
             List.partition (.generation >> (>) gen) imgList
     in
         tail ++ head
+
+
+dissectLocationHash : Location -> Subpage -> Subpage
+dissectLocationHash location defaultSubpage =
+    let
+        ( _, hash ) =
+            String.uncons location.hash
+                |> Maybe.withDefault ( '#', "" )
+    in
+        case String.uncons hash of
+            Just ( gen, letter ) ->
+                { generation = Char.toCode gen - 48
+                , letter =
+                    String.toUpper letter
+                        |> String.toList
+                        |> List.head
+                        |> Maybe.withDefault '_'
+                }
+
+            Nothing ->
+                defaultSubpage
+
+
+hashToMsg : Location -> Msg
+hashToMsg location =
+    let
+        invalidPage =
+            { generation = -1, letter = '_' }
+
+        subpage =
+            dissectLocationHash location invalidPage
+    in
+        Msgs.ChangeGenerationAndLetter subpage.generation subpage.letter
 
 
 
