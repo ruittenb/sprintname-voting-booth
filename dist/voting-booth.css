@@ -15,7 +15,7 @@ button,
     display: inline-block;
     text-decoration: none;
     text-align: center;
-    line-height: 30px;
+    line-height: 28px;
     cursor: default;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -127,7 +127,7 @@ button.user-button.current,
     background-color: #eee;
     color: black;
     text-align: center;
-    line-height: 30px;
+    line-height: 28px;
     font-size: 13px;
 }
 
