@@ -62,6 +62,8 @@ voteWidgetStar pokemonNumber currentUserName rating stars =
     span
         [ classList
             [ ( "star", True )
+            , ( "fa-star", True )
+            , ( "fa", True )
             , ( "selected", rating >= stars )
             ]
         , onClick (Msgs.VoteForPokemon { pokemonNumber = pokemonNumber, vote = stars })
@@ -96,7 +98,14 @@ ratingNode : UserRating -> Html Msg
 ratingNode rating =
     let
         star =
-            span [ class "star" ] []
+            span
+                [ classList
+                    [ ( "star", True )
+                    , ( "fa-star", True )
+                    , ( "fa", True )
+                    ]
+                ]
+                []
 
         userTitle =
             rating.userName ++ ": " ++ toString rating.rating
@@ -109,13 +118,14 @@ ratingNode rating =
             List.repeat rating.rating star
 
 
-ratingWidget : TeamRating -> Html Msg
-ratingWidget ratings =
+ratingWidget : TeamRating -> Html Msg -> Html Msg
+ratingWidget ratings actualVoteWidget =
     div
         [ class "rating-nodes"
         ]
     <|
-        List.map ratingNode ratings
+        (List.map ratingNode ratings)
+            ++ [ actualVoteWidget ]
 
 
 extractOnePokemonFromRatings : WebData TeamRatings -> Pokemon -> TeamRating
@@ -202,7 +212,7 @@ pokemonTile viewMode ratings currentUser pokemon =
         actualVoteWidget =
             case currentUser of
                 Nothing ->
-                    unknownUserIcon
+                    text ""
 
                 Just actualUserName ->
                     voteWidget ownRatings pokemon.number actualUserName
@@ -244,9 +254,7 @@ pokemonTile viewMode ratings currentUser pokemon =
             ]
                 ++ case ratings of
                     Success _ ->
-                        [ ratingWidget otherRatings
-                        , actualVoteWidget
-                        ]
+                        [ ratingWidget otherRatings actualVoteWidget ]
 
                     Failure _ ->
                         [ loadingErrorIcon ]

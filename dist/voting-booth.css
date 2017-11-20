@@ -346,25 +346,17 @@ button.user-button.current,
     margin-right: 2px;
 }
 
-.rating-nodes span.star::after {
-    content: '\f005';
-}
-
-.voting-node span.star::after {
-    content: '\f005';
+.voting-node span.star {
     color: #eee; /* light grey */
 }
 
-.voting-node span.star.selected::after {
+.voting-node span.star.selected,
+.voting-node:hover span.star,
+.voting-node:hover span.star.selected {
     color: #edb867; /* warm yellow */
 }
 
-.voting-node:hover span.star::after,
-.voting-node:hover span.star.selected::after {
-    color: #edb867; /* warm yellow */
-}
-
-.voting-node span.star:hover ~ span.star::after {
+.voting-node span.star:hover ~ span.star {
     color: #eee; /* light grey */
 }
 
