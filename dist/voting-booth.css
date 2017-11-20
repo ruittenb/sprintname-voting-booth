@@ -356,8 +356,13 @@ button.user-button.current,
     color: #edb867; /* warm yellow */
 }
 
+.voting-node:hover span.star::before {
+    content: "\f005";
+}
+
 .voting-node span.star:hover ~ span.star {
-    color: #eee; /* light grey */
+    content: "\f006";
+    color: #ddd; /* light grey */
 }
 
 .loading-error {

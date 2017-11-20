@@ -62,8 +62,9 @@ voteWidgetStar pokemonNumber currentUserName rating stars =
     span
         [ classList
             [ ( "star", True )
-            , ( "fa-star", True )
             , ( "fa", True )
+            , ( "fa-star-o", rating < stars )
+            , ( "fa-star", rating >= stars )
             , ( "selected", rating >= stars )
             ]
         , onClick (Msgs.VoteForPokemon { pokemonNumber = pokemonNumber, vote = stars })
