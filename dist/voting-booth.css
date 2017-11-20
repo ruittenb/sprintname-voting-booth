@@ -6,7 +6,7 @@
 body {
     padding: 8px;
     background-color: #f0f0f0 !important;
-    font-face: Helvetica, Arial, Sans;
+    font-family: Helvetica, Arial, Sans;
     font-size: 14px;
 }
 
@@ -33,6 +33,7 @@ button.user-button,
     margin-bottom: 4px;
     background-color: white;
     border: 1px solid black;
+    border-radius: 0;
     color: black;
     font-size: 13px;
 }
@@ -326,6 +327,14 @@ button.user-button.current,
     margin-top: 5px;
     height: 28px;
     white-space: nowrap;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.rating-nodes > span {
+    line-height: 26px;
+    height: 26px;
 }
 
 .rating-nodes span.star,
