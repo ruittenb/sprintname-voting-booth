@@ -347,7 +347,7 @@ button.user-button.current,
 }
 
 .voting-node span.star {
-    color: #eee; /* light grey */
+    color: #ddd; /* light grey */
 }
 
 .voting-node span.star.selected,
@@ -361,8 +361,11 @@ button.user-button.current,
 }
 
 .voting-node span.star:hover ~ span.star {
-    content: "\f006";
     color: #ddd; /* light grey */
+}
+
+.voting-node span.star:hover ~ span.star::before {
+    content: "\f006";
 }
 
 .loading-error {
