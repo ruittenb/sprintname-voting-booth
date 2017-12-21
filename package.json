@@ -5,19 +5,19 @@
   "author": "René Uittenbogaard <rene.uittenbogaard@proforto.nl>",
   "dependencies": {
     "ace-css": "1.1",
-    "auth0-js": "^8.10.1",
+    "auth0-js": "^8.12.1",
     "css-loader": "^0.26.1",
-    "elm-webpack-loader": "^4.2.0",
+    "elm-webpack-loader": "^4.4.0",
     "file-loader": "^0.10.0",
     "font-awesome": "4",
     "foreman": "^2.0.0",
     "json-server": "0.9.5",
     "jsonwebtoken": "^8.1.0",
-    "lightbox2": "^2.9.0",
+    "lightbox2": "^2.10.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.0"
+    "webpack-dev-server": "^2.9.7"
   },
   "devDependencies": {},
   "scripts": {
