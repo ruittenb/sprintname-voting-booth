@@ -6,7 +6,8 @@ import Char
 dbHostname : String
 dbHostname =
     --"192.168.1.190"
-    "sprintname-voting-booth.ruittenbook.local"
+    --"sprintname-voting-booth.ruittenbook.local"
+    "votingbooth.ddns.net"
 
 
 pokedexApiUrl : String
