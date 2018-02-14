@@ -63,6 +63,7 @@ type alias UserRatings =
     { id : Int
     , userName : String
     , email : String
+    , active : Bool
     , color : String
     , ratings : String
     }
