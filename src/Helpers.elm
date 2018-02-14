@@ -38,7 +38,7 @@ getUserNameForAuthModel ratings authModel =
                 teamRatings
                     |> List.filter
                         (\r ->
-                            userEmail == Just r.email
+                            userEmail == Just r.email && r.active == True
                         )
                     |> List.map .userName
                     |> List.head
