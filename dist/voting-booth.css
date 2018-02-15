@@ -90,7 +90,7 @@ button.user-button.current,
     animation: loading 2s linear 0s infinite;
     /*
     background-image: url(images/loading-circle.svg);
-    background=position: center center;
+    background-position: center center;
     background-repeat: no-repeat;
     */
 }
