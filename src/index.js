@@ -20,9 +20,10 @@ let lock = (function () {
     const options = {
         allowedConnections: ['google-oauth2'], // 'Username-Password-Authentication'
         autoclose: true,
+        audience: 'proforto.eu.auth0.com/userinfo',
         auth: {
             redirect: false,
-            responseType: 'id_token',
+            responseType: 'token',
             params: {
                 // Learn about scopes: https://auth0.com/docs/scopes
                 scope: 'openid email profile'
@@ -51,9 +52,9 @@ votingApp.ports.auth0logout.subscribe(function (opts) {
 // on succesful authentication, pass the credentials to elm
 lock.on("authenticated", function (authResult) {
     // Use the token in authResult to getProfile() and save it to localStorage
-    lock.getProfile(authResult.idToken, function (err, profile) {
+    lock.getUserInfo(authResult.accessToken, function (err, profile) {
         let result = { err: null, ok: null };
-        let token = authResult.idToken;
+        let token = authResult.accessToken;
 
         if (!err) {
             result.ok = { profile: profile, token: token };
