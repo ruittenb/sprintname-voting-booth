@@ -1803,7 +1803,7 @@
       "number": 122,
       "generation": 1,
       "letter": "M",
-      "name": "Mr.Mime",
+      "name": "Mr. Mime",
       "url": "https://bulbapedia.bulbagarden.net/wiki/Mr._Mime_(Pok%C3%A9mon)",
       "variants": [
         {
@@ -6288,7 +6288,11 @@
       "variants": [
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/421.png",
-          "vname": ""
+          "vname": "Overcast Form"
+        },
+        {
+          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/421_f2.png",
+          "vname": "Sunshine Form"
         }
       ]
     },
@@ -6302,7 +6306,11 @@
       "variants": [
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/422.png",
-          "vname": ""
+          "vname": "West Sea"
+        },
+        {
+          "image": "/dist/pokeart/shellos-east-sea.png",
+          "vname": "East Sea"
         }
       ]
     },
@@ -6316,7 +6324,11 @@
       "variants": [
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/423.png",
-          "vname": ""
+          "vname": "West Sea"
+        },
+        {
+          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/423_f2.png",
+          "vname": "East Sea"
         }
       ]
     },
@@ -6387,6 +6399,10 @@
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/428.png",
           "vname": ""
+        },
+        {
+          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/428_f2.png",
+          "vname": "Mega Form"
         }
       ]
     },
@@ -6535,8 +6551,8 @@
       "number": 439,
       "generation": 4,
       "letter": "M",
-      "name": "Mime-jr",
-      "url": "https://bulbapedia.bulbagarden.net/wiki/Mime-jr_(Pok%C3%A9mon)",
+      "name": "Mime Jr.",
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Mime_Jr._(Pok%C3%A9mon)",
       "variants": [
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/439.png",
@@ -6625,6 +6641,10 @@
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/445.png",
           "vname": ""
+        },
+        {
+          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/445_f2.png",
+          "vname": "Mega Form"
         }
       ]
     },
@@ -6667,6 +6687,10 @@
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/448.png",
           "vname": ""
+        },
+        {
+          "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/448_f2.png",
+          "vname": "Mega Form"
         }
       ]
     },
