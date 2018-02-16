@@ -1,16 +1,21 @@
 
 NODE_PIDS=$$(/bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2 }')
 
-restart:
-	make stop
-	make start
+status:
+	@test "$(NODE_PIDS)" && echo Running || echo Stopped
 
 stop:
-	-kill -TERM $(NODE_PIDS) && sleep 1 && \
-	-kill -QUIT $(NODE_PIDS) && sleep 1 && \
-	-kill -KILL $(NODE_PIDS)
+	if [ "$(NODE_PIDS)" ]; then \
+		kill -TERM $(NODE_PIDS) && sleep 1 && \
+		kill -QUIT $(NODE_PIDS) && sleep 1 && \
+		kill -KILL $(NODE_PIDS); \
+	fi
 
 start:
 	yarn start
 
-.PHONY: stop start restart
+restart:
+	make stop
+	make start
+
+.PHONY: status stop start restart

@@ -1,2 +1,2 @@
-api: yarn api
-client: yarn client
+api: node api.js
+client: webpack-dev-server

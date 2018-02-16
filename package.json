@@ -23,8 +23,6 @@
   "devDependencies": {},
   "scripts": {
     "build": "webpack",
-    "client": "webpack-dev-server",
-    "api": "node api.js",
     "start": "nf start"
   },
   "license": "BSD-3-Clause",
