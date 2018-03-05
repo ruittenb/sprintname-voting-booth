@@ -4,6 +4,7 @@ missing:
  - secure database API
    - use jsonwebtoken on dbserver
  - do something about unrendered animation on messagebox
+ - rename messages in terms of things that happened <https://gist.github.com/Chadtech/89d9e085c3c5bf79602cceb53fbd6e31>
 
 improvements:
  - have error message box take its message from state, not from errormessage
