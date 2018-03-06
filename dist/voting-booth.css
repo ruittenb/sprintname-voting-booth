@@ -95,6 +95,30 @@ button.user-button.current,
     */
 }
 
+.button.generation-button.loading:after {
+    top: -15px;
+    right: -20px;
+    height: 20px;
+    width: 120px;
+    display: none;
+    position: relative;
+    z-index: 2;
+    padding: 2px;
+    text-align: center;
+    line-height: 20px;
+    background-color: #fef4c5;
+    border: 1px solid #d4b943;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    content: 'loading images...';
+}
+
+.button.generation-button.loading:hover:after {
+    display: block;
+}
+
 @keyframes loading {
     0%   { background-position-x: 20px; }
     100% { background-position-x: 0; }
