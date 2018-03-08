@@ -5,7 +5,7 @@
   "author": "René Uittenbogaard <rene.uittenbogaard@proforto.nl>",
   "dependencies": {
     "ace-css": "1.1",
-    "auth0-js": "^8.12.1",
+    "auth0-js": "^9.3.0",
     "auth0-lock": "^11.2.3",
     "css-loader": "^0.26.1",
     "elm-webpack-loader": "^4.4.0",
@@ -16,6 +16,7 @@
     "json-server": "0.9.5",
     "jsonwebtoken": "^8.1.0",
     "lightbox2": "^2.10.0",
+    "npm": "^5.7.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
