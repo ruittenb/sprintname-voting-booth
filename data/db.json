@@ -1,6 +1,20 @@
 {
   "pokedex": [
     {
+      "id": 0,
+      "number": 0,
+      "generation": 0,
+      "letter": "M",
+      "name": "MissingNo.",
+      "url": "https://bulbapedia.bulbagarden.net/wiki/MissingNo.",
+      "variants": [
+        {
+          "image": "https://wiki.p-insurgence.com/images/0/09/722.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
       "id": 1,
       "number": 1,
       "generation": 1,
@@ -2234,20 +2248,6 @@
       "variants": [
         {
           "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/151.png",
-          "vname": ""
-        }
-      ]
-    },
-    {
-      "id": 0,
-      "number": 0,
-      "generation": 0,
-      "letter": "M",
-      "name": "MissingNo.",
-      "url": "https://bulbapedia.bulbagarden.net/wiki/MissingNo.",
-      "variants": [
-        {
-          "image": "https://wiki.p-insurgence.com/images/0/09/722.png",
           "vname": ""
         }
       ]
