@@ -12,6 +12,7 @@ import View exposing (view)
 import Update exposing (update, dissectLocationHash, hashToMsg)
 import Msgs exposing (Msg)
 import Commands exposing (loadAll)
+import Control exposing (initialState)
 
 
 init : Maybe Auth0.LoggedInUser -> Location -> ( ApplicationState, Cmd Msg )
@@ -34,6 +35,7 @@ init initialUser location =
             , user = Nothing
             , statusMessage = ""
             , statusLevel = None
+            , debounceState = Control.initialState
             , viewMode = Browse
             , generation = subpage.generation
             , letter = subpage.letter

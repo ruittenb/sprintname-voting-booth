@@ -5,6 +5,7 @@ import Authentication
 import Models.Types exposing (..)
 import Models.Pokedex exposing (Pokedex)
 import Models.Ratings exposing (UserVote, TeamRatings, UserRatings)
+import Control exposing (Control)
 
 
 type Msg
@@ -17,4 +18,5 @@ type Msg
     | ChangeLetter Char
     | ChangeVariant Int BrowseDirection
     | SearchPokemon String
+    | Debounce (Control Msg)
     | VoteForPokemon UserVote
