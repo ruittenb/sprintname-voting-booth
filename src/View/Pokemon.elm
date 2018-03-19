@@ -9,6 +9,9 @@ import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (maxStars)
 import Helpers exposing (filterPokedex, searchPokedex, romanNumeral)
 import Models exposing (..)
+import Models.Types exposing (..)
+import Models.Ratings exposing (..)
+import Models.Pokedex exposing (..)
 import Msgs exposing (Msg)
 
 

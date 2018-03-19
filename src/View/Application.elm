@@ -8,6 +8,8 @@ import RemoteData exposing (WebData, RemoteData(..))
 import Helpers exposing (filterPokedex, romanNumeral)
 import Msgs exposing (Msg)
 import Models exposing (..)
+import Models.Types exposing (..)
+import Models.Pokedex exposing (..)
 import Constants exposing (..)
 
 

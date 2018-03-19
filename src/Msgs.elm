@@ -2,7 +2,9 @@ module Msgs exposing (Msg(..))
 
 import RemoteData exposing (WebData)
 import Authentication
-import Models exposing (..)
+import Models.Types exposing (..)
+import Models.Pokedex exposing (Pokedex)
+import Models.Ratings exposing (UserVote, TeamRatings, UserRatings)
 
 
 type Msg

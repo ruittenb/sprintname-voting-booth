@@ -6,7 +6,7 @@ import Json.Encode as Encode
 import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional)
 import Constants exposing (..)
-import Models exposing (..)
+import Models.Ratings exposing (UserRatings, TeamRatings)
 import Msgs exposing (Msg)
 
 

@@ -4,7 +4,8 @@ import Array exposing (Array)
 import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (tryGetUserProfile)
-import Models exposing (..)
+import Models.Pokedex exposing (..)
+import Models.Ratings exposing (..)
 
 
 romanNumerals : Array String
