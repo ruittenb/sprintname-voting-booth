@@ -3,10 +3,10 @@ module Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokedex exposing (Pokedex)
 import Models.Ratings exposing (TeamRatings)
-import RemoteData exposing (WebData, RemoteData(..))
 import Msgs exposing (Msg)
-import Control exposing (State)
 import Authentication
+import Control exposing (State)
+import RemoteData exposing (WebData, RemoteData(..))
 
 
 type alias LighthouseData =

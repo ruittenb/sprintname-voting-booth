@@ -25,6 +25,11 @@ saveUserRatingsUrl userId =
     ratingsApiUrl ++ "/" ++ toString userId
 
 
+debounceDelay : Float
+debounceDelay =
+    0.5
+
+
 initialGeneration : Int
 initialGeneration =
     3
@@ -32,7 +37,7 @@ initialGeneration =
 
 initialLetter : Char
 initialLetter =
-    'N'
+    'O'
 
 
 maxStars : Int
