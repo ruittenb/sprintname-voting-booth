@@ -6,6 +6,7 @@ import List
 import Navigation exposing (Location)
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (isLoggedIn, tryGetUserProfile)
+import Control exposing (update)
 import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
@@ -409,6 +410,12 @@ update msg oldState =
 
         Msgs.SearchPokemon pattern ->
             updateSearchPokemon oldState pattern
+
+        Msgs.DebounceSearchPokemon debMsg ->
+            Control.update
+                (\s -> { oldState | debounceState = s })
+                oldState.debounceState
+                debMsg
 
         Msgs.VoteForPokemon userVote ->
             updateVoteForPokemon oldState userVote

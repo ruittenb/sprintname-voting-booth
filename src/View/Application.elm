@@ -1,12 +1,14 @@
 module View.Application exposing (heading)
 
+import Time exposing (Time, second)
 import Html exposing (..)
 import Html.Attributes exposing (attribute, id, href, class, classList, tabindex, placeholder, disabled)
 import Html.Events exposing (onClick, onInput, onSubmit)
 import Authentication exposing (tryGetUserProfile, isLoggedIn)
 import RemoteData exposing (WebData, RemoteData(..))
+import Control.Debounce exposing (trailing)
 import Helpers exposing (filterPokedex, romanNumeral)
-import Msgs exposing (Msg)
+import Msgs exposing (Msg(..))
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokedex exposing (..)
@@ -55,6 +57,13 @@ romanNumeralButton viewMode currentGen currentLetter gen =
             [ text <| romanNumeral gen ]
 
 
+debounce : Msg -> Msg
+debounce =
+    Control.Debounce.trailing
+        DebounceSearchPokemon
+        (debounceDelay * Time.second)
+
+
 searchBox : ViewMode -> Html Msg
 searchBox viewMode =
     span
@@ -65,7 +74,7 @@ searchBox viewMode =
             [ id "search-box"
             , classList [ ( "current", viewMode == Search ) ]
             , placeholder "Search in pokédex"
-            , onInput Msgs.SearchPokemon
+            , Html.Attributes.map debounce <| onInput Msgs.SearchPokemon
             ]
             []
         ]
