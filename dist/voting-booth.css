@@ -98,14 +98,14 @@ button.user-button.current,
 .button.generation-button.loading:after {
     top: -15px;
     right: -20px;
-    height: 20px;
+    height: 17px;
     width: 110px;
     display: none;
     position: relative;
     z-index: 2;
     padding: 2px;
     text-align: center;
-    line-height: 20px;
+    line-height: 17px;
     background-color: #fef4c5;
     border: 1px solid #d4b943;
     -moz-border-radius: 5px;
