@@ -21,12 +21,6 @@ type alias Subpage =
     }
 
 
-type alias PreloadCandidate =
-    { generation : Int
-    , imageUrl : String
-    }
-
-
 type alias CurrentUser =
     Maybe String
 

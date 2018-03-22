@@ -1,6 +1,12 @@
 module Models.Pokedex exposing (..)
 
 
+type alias PreloadCandidate =
+    { generation : Int
+    , imageUrl : String
+    }
+
+
 type alias PokemonVariant =
     { image : String
     , vname : String
