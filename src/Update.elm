@@ -113,17 +113,13 @@ updateOnLoadPokedex oldState pokedex =
             }
 
         generationAndImageUrl p =
-            let
-                generation =
-                    p.generation
-            in
-                List.map
-                    (\v ->
-                        { generation = generation
-                        , imageUrl = v.image
-                        }
-                    )
-                    p.variants
+            List.map
+                (\v ->
+                    { generation = p.generation
+                    , imageUrl = v.image
+                    }
+                )
+                p.variants
 
         command =
             case pokedex of
