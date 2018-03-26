@@ -30,12 +30,9 @@ decodePokemon =
                     1
 
                 letterChar =
-                    case String.uncons letterString of
-                        Just ( first, _ ) ->
-                            first
-
-                        _ ->
-                            '?'
+                    String.uncons letterString
+                        |> Maybe.map Tuple.first
+                        |> Maybe.withDefault '?'
             in
                 Decode.succeed (Pokemon id number generation letterChar name url currentVariant variants)
     in
