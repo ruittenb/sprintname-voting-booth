@@ -15,7 +15,6 @@ import Models.Pokedex exposing (..)
 import Msgs exposing (Msg)
 import Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
 import Ports exposing (preloadImages)
-import Commands.Pokemon exposing (loadPokedex)
 import Commands.Ratings exposing (saveRatings)
 
 
@@ -347,7 +346,7 @@ update msg oldState =
                 newState =
                     { oldState | ratings = newRatings, user = userName }
             in
-                ( newState, loadPokedex )
+                ( newState, Cmd.none )
 
         Msgs.OnLoadRatings (Failure message) ->
             let
@@ -358,7 +357,7 @@ update msg oldState =
                         , ratings = RemoteData.Failure message
                     }
             in
-                ( newState, loadPokedex )
+                ( newState, Cmd.none )
 
         Msgs.OnSaveRatings NotAsked ->
             ( oldState, Cmd.none )
