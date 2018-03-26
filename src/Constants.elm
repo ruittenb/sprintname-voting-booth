@@ -7,6 +7,7 @@ dbHostname : String
 dbHostname =
     --"192.168.1.190"
     --"sprintname-voting-booth.ruittenbook.local"
+    --"localhost"
     "votingbooth.ddns.net"
 
 
