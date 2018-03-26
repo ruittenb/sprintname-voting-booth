@@ -24,7 +24,6 @@ const Preloader = (function (jQuery) {
     Preloader.prototype.schedule = function () {
         if (this.doPreload && !this.timer && this.list.length) {
             this.timer = setTimeout(this.preloadImages.bind(this), batchTime);
-            console.log('new timer: ', this.timer);
         }
     };
 

@@ -17,4 +17,4 @@ port auth0logout : () -> Cmd msg
 
 
 
---port loadPokedex : () -> Cmd msg
+--port onLoadPokedex : () -> Cmd msg
