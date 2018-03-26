@@ -15,16 +15,8 @@ romanNumerals =
 
 romanNumeral : Int -> String
 romanNumeral i =
-    let
-        roman =
-            Array.get i romanNumerals
-    in
-        case roman of
-            Just actualRoman ->
-                actualRoman
-
-            Nothing ->
-                "?"
+    Array.get i romanNumerals
+        |> Maybe.withDefault "?"
 
 
 getUserNameForAuthModel : WebData TeamRatings -> Authentication.Model -> Maybe String
