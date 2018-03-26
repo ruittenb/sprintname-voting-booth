@@ -85,12 +85,9 @@ voteWidget ownRatings pokemonNumber currentUserName =
             }
 
         rating =
-            case List.head ownRatings of
-                Nothing ->
-                    0
-
-                Just ratingRecord ->
-                    ratingRecord.rating
+            List.head ownRatings
+                |> Maybe.map .rating
+                |> Maybe.withDefault 0
     in
         span [ class "voting-node" ] <|
             List.map
