@@ -76,6 +76,26 @@ lock.on("authenticated", function (authResult) {
 });
 
 /** **********************************************************************
+ * database actions
+ */
+
+// load user ratings and send them to elm
+//votingDb.users.on('value', function (data) {
+//    console.log('on child_added: received snapshot = ', data.key, data.val());
+//});
+//
+//votingDb.users.on('child_changed', function (data) {
+//    console.log('on child_changed: received snapshot = ', data.key, data.val());
+//});
+
+// load pokedex and send it to elm
+votingDb.pokedex.on('value', function (data) {
+    let pokedex = data.val();
+    console.log(pokedex); // TODO
+    votingApp.ports.onLoadPokedex.send(pokedex);
+});
+
+/** **********************************************************************
  * preload images
  */
 
@@ -85,32 +105,5 @@ let preloader = new Preloader();
 votingApp.ports.preloadImages.subscribe(function (imageList) {
     preloader.queue(imageList);
 });
-
-/** **********************************************************************
- * database actions
- */
-
-// load pokedex and send it to elm
-votingDb.pokedex.on('value', function (data) {
-    let pokedex = data.val();
-    votingApp.ports.onLoadPokedex.send(pokedex);
-    // let variantImages = pokemon.map(function (p) {
-    //     return p.variants.map(function (v) {
-    //         return {
-    //             generation : p.generation,
-    //             imageUrl   : v.image
-    //         };
-    //     });
-    // }).reduce((n, m) => n.concat(m), []);
-    // preloader.queue(variantImages);
-});
-
-//votingDb.users.on('value', function (data) {
-//    console.log('on child_added: received snapshot = ', data.key, data.val());
-//});
-//
-//votingDb.users.on('child_changed', function (data) {
-//    console.log('on child_changed: received snapshot = ', data.key, data.val());
-//});
 
 

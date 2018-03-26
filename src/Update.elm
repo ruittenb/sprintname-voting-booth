@@ -18,6 +18,7 @@ import Ports exposing (preloadImages)
 import Commands.Ratings exposing (saveRatings)
 
 
+--import Commands.Pokemon exposing (loadPokedex)
 -- helper functions specific to Update
 
 

@@ -12,6 +12,7 @@ import View exposing (view)
 import Update exposing (update, dissectLocationHash, hashToMsg)
 import Msgs exposing (Msg)
 import Commands exposing (loadAll)
+import Commands.Pokemon exposing (decodePokedex)
 import Control exposing (initialState)
 
 
@@ -49,7 +50,10 @@ init initialUser location =
 
 subscriptions : ApplicationState -> Sub Msg
 subscriptions state =
-    auth0authResult (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
+    Sub.batch
+        [ auth0authResult (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
+        , decodePokedex >> Msgs.OnLoadPokedex
+        ]
 
 
 main : Program (Maybe Auth0.LoggedInUser) ApplicationState Msg

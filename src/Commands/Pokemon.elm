@@ -1,4 +1,4 @@
-module Commands.Pokemon exposing (loadPokedex)
+module Commands.Pokemon exposing (decodePokedex)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
@@ -9,11 +9,11 @@ import Models.Pokedex exposing (..)
 import Msgs exposing (Msg)
 
 
-loadPokedex : Cmd Msg
-loadPokedex =
-    Http.get pokedexApiUrl decodePokedex
-        |> RemoteData.sendRequest
-        |> Cmd.map Msgs.OnLoadPokedex
+--loadPokedex : Cmd Msg
+--loadPokedex =
+--    Http.get pokedexApiUrl decodePokedex
+--        |> RemoteData.sendRequest
+--        |> Cmd.map Msgs.OnLoadPokedex
 
 
 decodePokedex : Decoder (List Pokemon)
