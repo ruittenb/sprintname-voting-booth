@@ -1,4 +1,6 @@
 DOCKERNAME=voting-booth
+DOCKERNET=voting-net
+DOCKERPORT=4201
 NODE_PIDS=$$(/bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2 }')
 
 status:
@@ -20,7 +22,9 @@ restart:
 
 docker-start:
 	docker build -t $(DOCKERNAME):latest .
-	docker run --name $(DOCKERNAME) -t $(DOCKERNAME):latest &
+	docker run --name $(DOCKERNAME) -p $(DOCKERPORT):$(DOCKERPORT) -t $(DOCKERNAME):latest &
+	#docker network create -d bridge $(DOCKERNET)
+	#docker network connect --ip 192.168.199.1 $(DOCKERNET) $(DOCKERNAME)
 
 docker-stop:
 	docker rm -f $(DOCKERNAME)
