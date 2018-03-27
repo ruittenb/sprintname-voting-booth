@@ -24,3 +24,12 @@ yarn start
 ```
 
 Open `http://localhost:4201`
+
+## Installing in a docker image:
+
+If you want to install the voting booth app in a docker image, you may do so with:
+
+```
+make docker-start
+```
+

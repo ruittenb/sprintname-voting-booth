@@ -30,7 +30,7 @@ docker-start:
 
 docker-stop:
 	-docker rm -f $(DOCKERNAME)
-	docker rmi $(DOCKERNAME):latest
+	-docker rmi $(DOCKERNAME):latest
 
 docker-shell:
 	docker exec -it $(DOCKERNAME) /bin/bash
