@@ -1,8 +1,13 @@
-
+DOCKERNAME=voting-booth
+DOCKERNET=voting-net
+DOCKERPORTS=-p 4201:4201 -p 4202:4202
 NODE_PIDS=$$(/bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2 }')
 
 status:
 	@test "$(NODE_PIDS)" && echo Running || echo Stopped
+
+start:
+	yarn start
 
 stop:
 	if [ "$(NODE_PIDS)" ]; then \
@@ -11,11 +16,23 @@ stop:
 		kill -KILL $(NODE_PIDS); \
 	fi
 
-start:
-	yarn start
-
 restart:
 	make stop
 	make start
 
-.PHONY: status stop start restart
+docker-status:
+	docker images  | grep voting-booth
+	docker ps -a | grep voting-booth
+
+docker-start:
+	docker build -t $(DOCKERNAME):latest .
+	docker run --name $(DOCKERNAME) $(DOCKERPORTS) -t $(DOCKERNAME):latest &
+
+docker-stop:
+	-docker rm -f $(DOCKERNAME)
+	-docker rmi $(DOCKERNAME):latest
+
+docker-shell:
+	docker exec -it $(DOCKERNAME) /bin/bash
+
+.PHONY: status start stop restart docker-status docker-start docker-stop docker-shell
