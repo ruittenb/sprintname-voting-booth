@@ -18,44 +18,42 @@ pids
 *.pid.lock
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
+#build/Release
 
 # Dependency directories
 node_modules/
-jspm_packages/
+#jspm_packages/
 
 # Typescript v1 declaration files
-typings/
+#typings/
 
 # Instrumentation
-lib-cov
-coverage
-.nyc_output
+#lib-cov
+#coverage
+#.nyc_output
 
 # node-waf configuration
-.lock-wscript
+#.lock-wscript
+
+# Optional eslint cache
+#.eslintcache
 
 # Optional npm cache directory
 .npm
-
-# Optional eslint cache
-.eslintcache
 
 # Optional REPL history
 .node_repl_history
 
 # Output of 'npm pack'
-*.tgz
+#*.tgz
 
 # Yarn Integrity file
 .yarn-integrity
-
 
 ### macOS ###
 *.DS_Store
 .AppleDouble
 .LSOverride
-
 # Icon must end with two \r
 Icon
 
