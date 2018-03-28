@@ -92,7 +92,7 @@ lock.on("authenticated", function (authResult) {
 votingDb.pokedex.on('value', function (data) {
     let pokedex = data.val();
     console.log(pokedex); // TODO
-    votingApp.ports.onLoadPokedex.send(pokedex);
+    votingApp.ports.pokedexReceived.send(pokedex);
 });
 
 /** **********************************************************************

@@ -7,7 +7,7 @@ import RemoteData exposing (RemoteData(..))
 import Constants exposing (initialGeneration, initialLetter)
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), ViewMode(..))
-import Ports exposing (auth0showLock, auth0logout, auth0authResult)
+import Ports exposing (auth0showLock, auth0logout, auth0authResult, onLoadPokedex)
 import View exposing (view)
 import Update exposing (update, dissectLocationHash, hashToMsg)
 import Msgs exposing (Msg)
@@ -49,10 +49,10 @@ init initialUser location =
 
 
 subscriptions : ApplicationState -> Sub Msg
-subscriptions state =
+subscriptions _ =
     Sub.batch
         [ auth0authResult (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
-        , decodePokedex >> Msgs.OnLoadPokedex
+        , onLoadPokedex (decodePokedex >> Msgs.OnLoadPokedex)
         ]
 
 
