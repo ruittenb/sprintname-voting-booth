@@ -88,7 +88,7 @@ hashToMsg location =
 -- some update functions
 
 
-updateOnLoadPokedex : ApplicationState -> WebData Pokedex -> ( ApplicationState, Cmd Msg )
+updateOnLoadPokedex : ApplicationState -> RemoteData String Pokedex -> ( ApplicationState, Cmd Msg )
 updateOnLoadPokedex oldState pokedex =
     let
         ( statusMessage, statusLevel ) =

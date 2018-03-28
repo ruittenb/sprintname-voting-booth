@@ -90,7 +90,7 @@ romanNumeralButtons viewMode currentGen currentLetter =
             ++ [ searchBox viewMode ]
 
 
-letterButton : ViewMode -> WebData Pokedex -> Int -> Char -> Char -> Html Msg
+letterButton : ViewMode -> RemoteData String Pokedex -> Int -> Char -> Char -> Html Msg
 letterButton viewMode pokedex currentGen currentLetter letter =
     let
         currentHighLight =
@@ -120,7 +120,7 @@ letterButton viewMode pokedex currentGen currentLetter letter =
             [ text <| String.fromChar letter ]
 
 
-letterButtons : ViewMode -> WebData Pokedex -> Int -> Char -> Html Msg
+letterButtons : ViewMode -> RemoteData String Pokedex -> Int -> Char -> Html Msg
 letterButtons viewMode pokedex currentGen currentLetter =
     let
         buttonList =

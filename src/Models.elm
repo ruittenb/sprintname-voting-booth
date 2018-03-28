@@ -35,6 +35,6 @@ type alias ApplicationState =
     , generation : Int
     , letter : Char
     , query : String
-    , pokedex : WebData Pokedex
+    , pokedex : RemoteData String Pokedex
     , ratings : WebData TeamRatings
     }

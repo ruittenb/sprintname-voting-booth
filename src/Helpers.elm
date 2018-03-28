@@ -40,7 +40,7 @@ getUserNameForAuthModel ratings authModel =
                 Nothing
 
 
-filterPokedex : WebData Pokedex -> Int -> Char -> List Pokemon
+filterPokedex : RemoteData e Pokedex -> Int -> Char -> List Pokemon
 filterPokedex pokedex generation letter =
     let
         selection =
@@ -56,7 +56,7 @@ filterPokedex pokedex generation letter =
         List.sortBy .name selection
 
 
-searchPokedex : WebData Pokedex -> String -> List Pokemon
+searchPokedex : RemoteData e Pokedex -> String -> List Pokemon
 searchPokedex pokedex query =
     case pokedex of
         Success pokedex ->

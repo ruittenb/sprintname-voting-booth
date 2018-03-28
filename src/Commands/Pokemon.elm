@@ -1,6 +1,5 @@
 module Commands.Pokemon exposing (decodePokedex)
 
-import Http exposing (get)
 import RemoteData exposing (RemoteData, WebData, sendRequest, fromResult)
 import Json.Encode exposing (Value)
 import Json.Decode as Decode exposing (Decoder, decodeValue)
@@ -8,6 +7,7 @@ import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Models.Pokedex exposing (..)
 
 
+--import Http exposing (get)
 --import Constants exposing (..)
 --import Msgs exposing (Msg)
 --loadPokedex : Cmd Msg
@@ -17,16 +17,10 @@ import Models.Pokedex exposing (..)
 --        |> Cmd.map Msgs.OnLoadPokedex
 
 
-decodePokedex : Value -> WebData (List Pokemon)
+decodePokedex : Value -> RemoteData String (List Pokemon)
 decodePokedex val =
     decodeValue (Decode.list decodePokemon) val
-        -- Result String a
         |> RemoteData.fromResult
-
-
-
--- RemoteData String a
---        |> RemoteData.mapError (\_ -> )             -- RemoteData Http.Error a (=== WebData a)
 
 
 decodePokemon : Decoder Pokemon
