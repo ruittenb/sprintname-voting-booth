@@ -11,7 +11,7 @@ import Helpers exposing (filterPokedex, searchPokedex, romanNumeral)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Ratings exposing (..)
-import Models.Pokedex exposing (..)
+import Models.Pokemon exposing (..)
 import Msgs exposing (Msg)
 
 

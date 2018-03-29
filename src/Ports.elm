@@ -2,6 +2,7 @@ port module Ports exposing (preloadImages, auth0showLock, auth0authResult, auth0
 
 import Auth0
 import Models exposing (PreloadCandidate)
+import Json.Encode exposing (Value)
 
 
 port preloadImages : List PreloadCandidate -> Cmd msg

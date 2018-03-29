@@ -5,8 +5,8 @@ import RemoteData exposing (WebData, sendRequest)
 import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Constants exposing (..)
-import Models.Pokedex exposing (..)
 import Msgs exposing (Msg)
+import Models.Pokemon exposing (..)
 
 
 loadPokedex : Cmd Msg
