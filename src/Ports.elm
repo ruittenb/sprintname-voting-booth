@@ -1,7 +1,7 @@
-port module Ports exposing (preloadImages, auth0showLock, auth0authResult, auth0logout, onLoadPokedex)
+port module Ports exposing (preloadImages, auth0showLock, auth0authResult, auth0logout, onLoadPokedex, onLoadUser)
 
 import Auth0
-import Models.Pokemon exposing (Pokedex, PreloadCandidate)
+import Models.Pokemon exposing (PreloadCandidate)
 import Json.Encode exposing (Value)
 
 
@@ -18,3 +18,6 @@ port auth0logout : () -> Cmd msg
 
 
 port onLoadPokedex : (Value -> msg) -> Sub msg
+
+
+port onLoadUser : (Value -> msg) -> Sub msg
