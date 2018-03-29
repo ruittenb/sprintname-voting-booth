@@ -80,13 +80,17 @@ lock.on("authenticated", function (authResult) {
  */
 
 // load user ratings and send them to elm
-//votingDb.users.on('value', function (data) {
-//    console.log('on child_added: received snapshot = ', data.key, data.val());
-//});
-//
-//votingDb.users.on('child_changed', function (data) {
-//    console.log('on child_changed: received snapshot = ', data.key, data.val());
-//});
+votingDb.users.on('child_added', function (data) {
+    let user = data.val();
+    console.log('on child_added: received snapshot = ', data.key, data.val());
+    votingApp.ports.onLoadUser.send(user);
+});
+
+votingDb.users.on('child_changed', function (data) {
+    let user = data.val();
+    console.log('on child_changed: received snapshot = ', data.key, data.val());
+    votingApp.ports.onLoadUser.send(user);
+});
 
 // load pokedex and send it to elm
 votingDb.pokedex.on('value', function (data) {
