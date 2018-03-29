@@ -4,7 +4,7 @@ import RemoteData exposing (WebData, RemoteData)
 import Authentication
 import Control exposing (Control)
 import Models.Types exposing (..)
-import Models.Pokedex exposing (Pokedex)
+import Models.Pokemon exposing (Pokedex)
 import Models.Ratings exposing (UserVote, TeamRatings, UserRatings)
 
 

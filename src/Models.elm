@@ -1,7 +1,7 @@
 module Models exposing (..)
 
 import Models.Types exposing (..)
-import Models.Pokedex exposing (Pokedex)
+import Models.Pokemon exposing (Pokedex)
 import Models.Ratings exposing (TeamRatings)
 import Msgs exposing (Msg)
 import Authentication

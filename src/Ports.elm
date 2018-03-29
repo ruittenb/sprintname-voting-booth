@@ -1,11 +1,8 @@
 port module Ports exposing (preloadImages, auth0showLock, auth0authResult, auth0logout, onLoadPokedex)
 
 import Auth0
-import Models.Pokedex exposing (Pokedex, PreloadCandidate)
+import Models.Pokemon exposing (Pokedex, PreloadCandidate)
 import Json.Encode exposing (Value)
-
-
---import Msgs exposing (Msg)
 
 
 port preloadImages : List PreloadCandidate -> Cmd msg

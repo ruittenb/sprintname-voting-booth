@@ -1,4 +1,4 @@
-module Models.Pokedex exposing (..)
+module Models.Pokemon exposing (..)
 
 
 type alias PreloadCandidate =
