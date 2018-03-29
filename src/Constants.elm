@@ -7,8 +7,8 @@ dbHostname : String
 dbHostname =
     --"192.168.1.190"
     --"sprintname-voting-booth.ruittenbook.local"
-    --"votingbooth.ddns.net"
-    "localhost"
+    --"localhost"
+    "votingbooth.ddns.net"
 
 
 pokedexApiUrl : String

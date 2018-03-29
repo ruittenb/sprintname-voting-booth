@@ -17,7 +17,7 @@ import Models.Pokedex exposing (..)
 --        |> Cmd.map Msgs.OnLoadPokedex
 
 
-decodePokedex : Value -> RemoteData String (List Pokemon)
+decodePokedex : Value -> RemoteData String Pokedex
 decodePokedex val =
     decodeValue (Decode.list decodePokemon) val
         |> RemoteData.fromResult

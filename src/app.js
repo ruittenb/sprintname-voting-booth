@@ -91,8 +91,7 @@ lock.on("authenticated", function (authResult) {
 // load pokedex and send it to elm
 votingDb.pokedex.on('value', function (data) {
     let pokedex = data.val();
-    console.log(pokedex); // TODO
-    votingApp.ports.pokedexReceived.send(pokedex);
+    votingApp.ports.onLoadPokedex.send(pokedex);
 });
 
 /** **********************************************************************
