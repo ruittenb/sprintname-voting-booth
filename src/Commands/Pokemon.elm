@@ -4,8 +4,6 @@ import RemoteData exposing (RemoteData, WebData, sendRequest, fromResult)
 import Json.Encode exposing (Value)
 import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
-import Constants exposing (..)
-import Msgs exposing (Msg)
 import Models.Pokemon exposing (..)
 
 
