@@ -13,7 +13,9 @@ loadAll =
 
 
 
---    Cmd.batch
---        [ loadRatings
---        , loadPokedex
---        ]
+{-
+   Cmd.batch
+       [ loadRatings
+       , loadPokedex
+       ]
+-}

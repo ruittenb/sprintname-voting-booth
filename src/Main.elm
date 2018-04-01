@@ -13,6 +13,7 @@ import Update exposing (update, dissectLocationHash, hashToMsg)
 import Msgs exposing (Msg)
 import Commands exposing (loadAll)
 import Commands.Pokemon exposing (decodePokedex)
+import Commands.Ratings exposing (decodeRating)
 import Control exposing (initialState)
 
 
@@ -53,7 +54,8 @@ subscriptions _ =
     Sub.batch
         [ auth0authResult (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
         , onLoadPokedex (decodePokedex >> Msgs.OnLoadPokedex)
-        , onLoadUser (decodePokedex >> Msgs.OnLoadPokedex)
+        , onLoadUser (decodeUserRatings >> Msgs.OnLoadUser)
+        , onLoadRatings (decodeTeamRatings >> Msgs.OnLoadRatings)
         ]
 
 

@@ -11,6 +11,7 @@ import Models.Ratings exposing (UserVote, TeamRatings, UserRatings)
 type Msg
     = OnLoadRatings (WebData TeamRatings)
     | OnSaveRatings (WebData UserRatings)
+    | OnLoadUser (RemoteData String UserRatings)
     | OnLoadPokedex (RemoteData String Pokedex)
     | AuthenticationMsg Authentication.Msg
     | ChangeGenerationAndLetter Int Char

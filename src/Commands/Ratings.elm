@@ -1,4 +1,4 @@
-module Commands.Ratings exposing (loadRatings, saveRatings)
+module Commands.Ratings exposing (saveRatings)
 
 import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
@@ -10,11 +10,11 @@ import Models.Ratings exposing (UserRatings, TeamRatings)
 import Msgs exposing (Msg)
 
 
-loadRatings : Cmd Msg
-loadRatings =
-    Http.get ratingsApiUrl decodeTeamRatings
-        |> RemoteData.sendRequest
-        |> Cmd.map Msgs.OnLoadRatings
+--loadRatings : Cmd Msg
+--loadRatings =
+--    Http.get ratingsApiUrl decodeTeamRatings
+--        |> RemoteData.sendRequest
+--        |> Cmd.map Msgs.OnLoadRatings
 
 
 saveRatings : UserRatings -> Cmd Msg
