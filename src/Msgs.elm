@@ -12,7 +12,7 @@ type Msg
     = OnLoadRatings (WebData TeamRatings)
     | OnSaveRatings (WebData UserRatings)
     | OnLoadUser (RemoteData String UserRatings)
-    | OnLoadPokedex (RemoteData String Pokedex)
+    | OnLoadPokedex Pokedex
     | AuthenticationMsg Authentication.Msg
     | ChangeGenerationAndLetter Int Char
     | ChangeGeneration Int
