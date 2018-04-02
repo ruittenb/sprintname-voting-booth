@@ -9,9 +9,9 @@ import Models.Ratings exposing (UserVote, RemoteTeamRatings, RemoteUserRatings)
 
 type Msg
     = OnLoadPokedex RemotePokedex
-    | OnLoadUser RemoteUserRatings
-    | OnLoadRatings RemoteTeamRatings
-    | OnSaveRatings RemoteUserRatings
+    | OnLoadTeamRatings RemoteTeamRatings
+    | OnLoadUserRatings RemoteUserRatings
+    | OnSaveUserRatings RemoteUserRatings
     | AuthenticationMsg Authentication.Msg
     | ChangeGenerationAndLetter Int Char
     | ChangeGeneration Int

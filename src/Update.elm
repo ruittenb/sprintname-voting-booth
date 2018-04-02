@@ -15,9 +15,9 @@ import Models.Pokemon exposing (..)
 import Msgs exposing (Msg)
 import Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
 import Ports exposing (preloadImages)
-import Commands.Ratings exposing (saveRatings)
 
 
+--import Commands.Ratings  exposing (saveRatings)
 --import Commands.Pokemon exposing (loadPokedex)
 -- helper functions specific to Update
 
@@ -88,7 +88,7 @@ hashToMsg location =
 -- some update functions
 
 
-updateOnLoadPokedex : ApplicationState -> Pokedex -> ( ApplicationState, Cmd Msg )
+updateOnLoadPokedex : ApplicationState -> RemotePokedex -> ( ApplicationState, Cmd Msg )
 updateOnLoadPokedex oldState pokedex =
     let
         ( statusMessage, statusLevel ) =
@@ -302,7 +302,9 @@ updateVoteForPokemon oldState userVote =
                                                     newCurrentUserRatings :: otherUserRatings
                                             in
                                                 ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
-                                                , saveRatings newCurrentUserRatings
+                                                  --, saveRatings newCurrentUserRatings
+                                                  -- TODO
+                                                , Cmd.none
                                                 )
                                 else
                                     -- vote already cast
@@ -330,13 +332,13 @@ updateVoteForPokemon oldState userVote =
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
-        Msgs.OnLoadRatings NotAsked ->
+        Msgs.OnLoadTeamRatings NotAsked ->
             ( oldState, Cmd.none )
 
-        Msgs.OnLoadRatings Loading ->
+        Msgs.OnLoadTeamRatings Loading ->
             ( oldState, Cmd.none )
 
-        Msgs.OnLoadRatings (Success ratings) ->
+        Msgs.OnLoadTeamRatings (Success ratings) ->
             let
                 newRatings =
                     RemoteData.succeed ratings
@@ -349,7 +351,7 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.OnLoadRatings (Failure message) ->
+        Msgs.OnLoadTeamRatings (Failure message) ->
             let
                 newState =
                     { oldState
@@ -360,16 +362,19 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.OnSaveRatings NotAsked ->
+        Msgs.OnLoadUserRatings _ ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveRatings Loading ->
+        Msgs.OnSaveUserRatings NotAsked ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveRatings (Success ratings) ->
+        Msgs.OnSaveUserRatings Loading ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveRatings (Failure message) ->
+        Msgs.OnSaveUserRatings (Success ratings) ->
+            ( oldState, Cmd.none )
+
+        Msgs.OnSaveUserRatings (Failure message) ->
             let
                 newState =
                     { oldState | statusMessage = toString message, statusLevel = Error }

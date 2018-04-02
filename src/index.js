@@ -86,16 +86,16 @@ votingDb.pokedex.on('value', function (data) {
 });
 
 // load user ratings and send them to elm
-votingDb.users.one('value', function (data) {
-    let ratings = data.val();
+votingDb.users.once('value', function (data) {
+    let team = data.val();
     console.log('on value: received snapshot = ', data.key, data.val());
-    votingApp.ports.onLoadRatings.send(ratings);
+    votingApp.ports.onLoadTeamRatings.send(team);
 });
 
 votingDb.users.on('child_changed', function (data) {
     let user = data.val();
     console.log('on child_changed: received snapshot = ', data.key, data.val());
-    votingApp.ports.onLoadUser.send(user);
+    votingApp.ports.onLoadUserRatings.send(user);
 });
 
 /** **********************************************************************

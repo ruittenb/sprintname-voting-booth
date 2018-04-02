@@ -24,7 +24,7 @@ isNumeric query =
     Regex.contains (regex "^[0-9]+$") query
 
 
-getUserNameForAuthModel : WebData TeamRatings -> Authentication.Model -> Maybe String
+getUserNameForAuthModel : RemoteTeamRatings -> Authentication.Model -> Maybe String
 getUserNameForAuthModel ratings authModel =
     let
         userEmail =

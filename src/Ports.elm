@@ -1,4 +1,13 @@
-port module Ports exposing (preloadImages, auth0showLock, auth0authResult, auth0logout, onLoadPokedex, onLoadUser)
+port module Ports
+    exposing
+        ( preloadImages
+        , auth0showLock
+        , auth0authResult
+        , auth0logout
+        , onLoadPokedex
+        , onLoadTeamRatings
+        , onLoadUserRatings
+        )
 
 import Auth0
 import Models.Pokemon exposing (PreloadCandidate)
@@ -20,4 +29,7 @@ port auth0logout : () -> Cmd msg
 port onLoadPokedex : (Value -> msg) -> Sub msg
 
 
-port onLoadUser : (Value -> msg) -> Sub msg
+port onLoadTeamRatings : (Value -> msg) -> Sub msg
+
+
+port onLoadUserRatings : (Value -> msg) -> Sub msg

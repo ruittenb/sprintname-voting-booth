@@ -14,8 +14,10 @@ loadAll =
 
 
 {-
-   Cmd.batch
-       [ loadRatings
-       , loadPokedex
-       ]
+   loadAll : Cmd Msg
+   loadAll =
+      Cmd.batch
+          [ loadRatings
+          , loadPokedex
+          ]
 -}

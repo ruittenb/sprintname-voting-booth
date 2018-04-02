@@ -6,7 +6,6 @@ import Models.Ratings exposing (RemoteTeamRatings)
 import Msgs exposing (Msg)
 import Authentication
 import Control exposing (State)
-import RemoteData exposing (WebData, RemoteData(..))
 
 
 type alias LighthouseData =
