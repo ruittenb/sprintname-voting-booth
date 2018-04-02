@@ -129,7 +129,7 @@ ratingWidget ratings actualVoteWidget =
             ++ [ actualVoteWidget ]
 
 
-extractOnePokemonFromRatings : WebData TeamRatings -> Pokemon -> TeamRating
+extractOnePokemonFromRatings : RemoteTeamRatings -> Pokemon -> TeamRating
 extractOnePokemonFromRatings ratings pokemon =
     case ratings of
         Success actualRatings ->
@@ -180,7 +180,7 @@ variantLinks pokemonName variants =
     List.map (variantLink pokemonName) variants
 
 
-pokemonTile : ViewMode -> WebData TeamRatings -> CurrentUser -> Pokemon -> Html Msg
+pokemonTile : ViewMode -> RemoteTeamRatings -> CurrentUser -> Pokemon -> Html Msg
 pokemonTile viewMode ratings currentUser pokemon =
     let
         allUserRatings =
@@ -265,7 +265,7 @@ pokemonTile viewMode ratings currentUser pokemon =
                         [ loadingBusyIcon ]
 
 
-pokemonTiles : ViewMode -> List Pokemon -> WebData TeamRatings -> CurrentUser -> List (Html Msg)
+pokemonTiles : ViewMode -> List Pokemon -> RemoteTeamRatings -> CurrentUser -> List (Html Msg)
 pokemonTiles viewMode pokelist ratings currentUser =
     List.map (pokemonTile viewMode ratings currentUser) pokelist
 

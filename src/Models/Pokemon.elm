@@ -28,4 +28,8 @@ type alias Pokemon =
 
 
 type alias Pokedex =
-    RemoteData String (List Pokemon)
+    List Pokemon
+
+
+type alias RemotePokedex =
+    RemoteData String Pokedex

@@ -1,8 +1,8 @@
 module Models exposing (..)
 
 import Models.Types exposing (..)
-import Models.Pokemon exposing (Pokedex)
-import Models.Ratings exposing (TeamRatings)
+import Models.Pokemon exposing (RemotePokedex)
+import Models.Ratings exposing (RemoteTeamRatings)
 import Msgs exposing (Msg)
 import Authentication
 import Control exposing (State)
@@ -35,6 +35,6 @@ type alias ApplicationState =
     , generation : Int
     , letter : Char
     , query : String
-    , pokedex : Pokedex
-    , ratings : WebData TeamRatings
+    , pokedex : RemotePokedex
+    , ratings : RemoteTeamRatings
     }
