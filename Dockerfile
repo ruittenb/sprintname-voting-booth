@@ -6,7 +6,7 @@ ADD . .
 
 RUN npm uninstall --save fsevents
 
-ENTRYPOINT make start || sleep 1000000
+ENTRYPOINT make install start || sleep 1000000
 
 EXPOSE 4201
 
