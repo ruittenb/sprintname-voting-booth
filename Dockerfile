@@ -4,12 +4,9 @@ RUN mkdir /app
 WORKDIR /app
 ADD . .
 
-RUN npm uninstall --save fsevents && \
-    npm install -g yarn  && \
-    yarn install
+RUN npm uninstall --save fsevents
 
-ENTRYPOINT yarn start || sleep 1000000
+ENTRYPOINT make start || sleep 1000000
 
 EXPOSE 4201
-EXPOSE 4202
 
