@@ -26,16 +26,27 @@ button,
 }
 
 button.user-button,
+button.pause-button,
 .button.letter-button,
 .button.generation-button {
     height: 30px;
     margin-right: 4px;
     margin-bottom: 4px;
+    border-radius: 0;
+    font-size: 13px;
+}
+
+button.pause-button {
+    opacity: 0.01;
+}
+
+
+button.user-button,
+.button.letter-button,
+.button.generation-button {
     background-color: white;
     border: 1px solid black;
-    border-radius: 0;
     color: black;
-    font-size: 13px;
 }
 
 button.user-button {
@@ -48,12 +59,20 @@ button.user-button {
     width: 40px;
 }
 
+button.pause-button,
 .button.generation-button {
     width: 40px;
     display: block;
     float: left;
 }
 
+button.pause-button:hover {
+    font: normal normal normal 12px/1 FontAwesome;
+    background-color: #fef4c5;
+    border: 1px solid #d4b943;
+    color: #d4b943;
+    opacity: 1;
+}
 button.user-button:hover,
 .poketile .button:hover,
 .button.letter-button:hover,
@@ -158,7 +177,7 @@ button.user-button.current,
 
 #message-box-container {
     display: block;
-    padding-left: 352px;
+    padding-left: 352px; /* necessary ? */
 }
 
 #message-box {

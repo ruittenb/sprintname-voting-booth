@@ -15,7 +15,7 @@ import Models.Ratings exposing (..)
 import Models.Pokemon exposing (..)
 import Msgs exposing (Msg)
 import Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
-import Ports exposing (preloadImages)
+import Ports exposing (preloadImages, togglePreloader)
 import Commands.Ratings exposing (saveRatings)
 
 
@@ -427,3 +427,6 @@ update msg oldState =
 
         Msgs.VoteForPokemon userVote ->
             updateVoteForPokemon oldState userVote
+
+        Msgs.TogglePreloader ->
+            ( oldState, togglePreloader True )

@@ -20,3 +20,4 @@ type Msg
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | VoteForPokemon UserVote
+    | TogglePreloader
