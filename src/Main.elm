@@ -11,7 +11,6 @@ import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), ViewMode(..))
 import View exposing (view)
 import Update exposing (update, dissectLocationHash, hashToMsg)
-import Commands exposing (loadAll)
 import Commands.Pokemon exposing (decodePokedex)
 import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
 import Ports
@@ -54,7 +53,7 @@ init initialUser location =
             , ratings = RemoteData.NotAsked
             }
     in
-        ( initialState, loadAll )
+        ( initialState, Cmd.none )
 
 
 subscriptions : ApplicationState -> Sub Msg

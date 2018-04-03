@@ -3,6 +3,7 @@ module Update exposing (update, dissectLocationHash, hashToMsg)
 import Set
 import Char
 import List
+import List.Extra exposing (replaceIf)
 import Navigation exposing (Location)
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (isLoggedIn, tryGetUserProfile)
@@ -18,7 +19,6 @@ import Ports exposing (preloadImages)
 
 
 --import Commands.Ratings  exposing (saveRatings)
---import Commands.Pokemon exposing (loadPokedex)
 -- helper functions specific to Update
 
 
@@ -359,6 +359,18 @@ update msg oldState =
                         , statusLevel = Error
                         , ratings = RemoteData.Failure message
                     }
+            in
+                ( newState, Cmd.none )
+
+        Msgs.OnLoadUserRatings (Success userRatings) ->
+            let
+                newRatings =
+                    RemoteData.map
+                        (replaceIf (.id >> (==) userRatings.id) userRatings)
+                        oldState.ratings
+
+                newState =
+                    { oldState | ratings = newRatings }
             in
                 ( newState, Cmd.none )
 

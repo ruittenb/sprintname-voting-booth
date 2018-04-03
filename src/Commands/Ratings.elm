@@ -10,13 +10,7 @@ import Models.Ratings exposing (RemoteUserRatings, RemoteTeamRatings, UserRating
 
 
 --import Msgs exposing (Msg)
---import Http exposing (get)
 --import Constants exposing (..)
---loadRatings : Cmd Msg
---loadRatings =
---    Http.get ratingsApiUrl decodeTeamRatings
---        |> RemoteData.sendRequest
---        |> Cmd.map Msgs.OnLoadRatings
 {-
    saveRatings : UserRatings -> Cmd Msg
    saveRatings userRatings =

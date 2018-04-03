@@ -76,37 +76,50 @@ lock.on("authenticated", function (authResult) {
 });
 
 /** **********************************************************************
- * database actions
+ * database actions: loading ratings
  */
-
-// load pokedex and send it to elm
-votingDb.pokedex.on('value', function (data) {
-    let pokedex = data.val();
-    votingApp.ports.onLoadPokedex.send(pokedex);
-});
 
 // load user ratings and send them to elm
 votingDb.users.once('value', function (data) {
     let team = data.val();
-    console.log('on value: received snapshot = ', data.key, data.val());
     votingApp.ports.onLoadTeamRatings.send(team);
 });
 
 votingDb.users.on('child_changed', function (data) {
     let user = data.val();
-    console.log('on child_changed: received snapshot = ', data.key, data.val());
     votingApp.ports.onLoadUserRatings.send(user);
 });
 
 /** **********************************************************************
- * preload images
+ * database actions: loading pokedex and preloading images
  */
+
+const elm_initiates_preload = true;
 
 let preloader = new Preloader();
 
+// load pokedex and send it to elm
+votingDb.pokedex.on('value', function (data) {
+    let pokedex = data.val();
+    votingApp.ports.onLoadPokedex.send(pokedex);
+    if (!elm_initiates_preload) {
+        let variantImages = pokedex.map(function (p) {
+            return p.variants.map(function (v) {
+                return {
+                    generation : p.generation,
+                    imageUrl   : v.image
+                };
+            });
+        }).reduce((n, m) => n.concat(m), []);
+        preloader.queue(variantImages);
+    }
+});
+
 // preload images as requested by elm
 votingApp.ports.preloadImages.subscribe(function (imageList) {
-    preloader.queue(imageList);
+    if (elm_initiates_preload) {
+        preloader.queue(imageList);
+    }
 });
 
 

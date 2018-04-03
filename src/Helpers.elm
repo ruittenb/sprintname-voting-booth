@@ -20,8 +20,8 @@ romanNumeral i =
 
 
 isNumeric : String -> Bool
-isNumeric query =
-    Regex.contains (regex "^[0-9]+$") query
+isNumeric str =
+    Regex.contains (regex "^[0-9]+$") str
 
 
 getUserNameForAuthModel : RemoteTeamRatings -> Authentication.Model -> Maybe String
@@ -66,16 +66,14 @@ searchPokedex pokedex query =
     case pokedex of
         Success pokedex ->
             let
-                pattern =
+                queryPattern =
                     caseInsensitive (regex query)
 
                 pokeList =
                     if isNumeric query then
-                        -- query by number
                         List.filter (.number >> toString >> (==) query) pokedex
                     else
-                        -- query by regex
-                        List.filter (.name >> Regex.contains pattern) pokedex
+                        List.filter (.name >> Regex.contains queryPattern) pokedex
             in
                 pokeList
 
