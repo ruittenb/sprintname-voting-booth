@@ -5231,15 +5231,15 @@
           "vname": "Normal"
         },
         {
-          "image": "/dist/pokeart/351_f1.png",
+          "image": "/dist/pokeart/351_f3.png",
           "vname": "Sunny"
         },
         {
-          "image": "/dist/pokeart/351_f2.png",
+          "image": "/dist/pokeart/351_f1.png",
           "vname": "Rainy"
         },
         {
-          "image": "/dist/pokeart/351_f3.png",
+          "image": "/dist/pokeart/351_f2.png",
           "vname": "Snowy"
         }
       ]
@@ -6305,11 +6305,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Shellos_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/422.png",
+          "image": "/dist/pokeart/422_f1.png",
           "vname": "West Sea"
         },
         {
-          "image": "/dist/pokeart/422_f1.png",
+          "image": "/dist/pokeart/422.png",
           "vname": "East Sea"
         }
       ]
