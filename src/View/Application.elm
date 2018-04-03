@@ -174,6 +174,9 @@ loginLogoutButton authModel user message level =
                 , onClick (Msgs.AuthenticationMsg buttonMsg)
                 ]
                 [ text buttonText ]
+            , div
+                [ class "button button-spacer" ]
+                []
             , messageBox message level
             ]
 
