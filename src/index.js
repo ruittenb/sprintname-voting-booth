@@ -123,3 +123,10 @@ votingApp.ports.preloadImages.subscribe(function (imageList) {
 });
 
 
+/** **********************************************************************
+ * disclose certain objects to the console user
+ */
+
+window.preloader = preloader;
+window.votingDb  = votingDb;
+
