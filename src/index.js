@@ -76,7 +76,7 @@ lock.on("authenticated", function (authResult) {
 });
 
 /** **********************************************************************
- * database actions: loading ratings
+ * database actions: loading and saving ratings
  */
 
 // load user ratings and send them to elm
@@ -88,6 +88,13 @@ votingDb.users.once('value', function (data) {
 votingDb.users.on('child_changed', function (data) {
     let user = data.val();
     votingApp.ports.onLoadUserRatings.send(user);
+});
+
+votingApp.ports.saveUserRatings.subscribe(function (userRatings) {
+    if (userRatings.id) {
+        let userRef = votingDb.users.child(userRatings.id); //.child('ratings');
+        userRef.set(userRatings); //.ratings);
+    }
 });
 
 /** **********************************************************************
@@ -124,7 +131,7 @@ votingApp.ports.preloadImages.subscribe(function (imageList) {
 
 
 /** **********************************************************************
- * disclose certain objects to the console user
+ * make certain objects available for debugging
  */
 
 window.preloader = preloader;

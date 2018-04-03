@@ -7,10 +7,12 @@ port module Ports
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
+        , saveUserRatings
         )
 
 import Auth0
 import Models.Pokemon exposing (PreloadCandidate)
+import Models.Ratings exposing (UserRatings)
 import Json.Encode exposing (Value)
 
 
@@ -33,3 +35,6 @@ port onLoadTeamRatings : (Value -> msg) -> Sub msg
 
 
 port onLoadUserRatings : (Value -> msg) -> Sub msg
+
+
+port saveUserRatings : UserRatings -> Cmd msg

@@ -16,9 +16,9 @@ import Models.Pokemon exposing (..)
 import Msgs exposing (Msg)
 import Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex)
 import Ports exposing (preloadImages)
+import Commands.Ratings exposing (saveRatings)
 
 
---import Commands.Ratings  exposing (saveRatings)
 -- helper functions specific to Update
 
 
@@ -239,12 +239,9 @@ updateVoteForPokemon oldState userVote =
 
                 -- extract user rating string, or create one
                 oldUserRatingString =
-                    case List.head oldCurrentUserRatings of
-                        Nothing ->
-                            String.repeat totalPokemon "0"
-
-                        Just actualUserRatings ->
-                            actualUserRatings.ratings
+                    List.head oldCurrentUserRatings
+                        |> Maybe.map .ratings
+                        |> Maybe.withDefault (String.repeat totalPokemon "0")
 
                 -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
                 ( newState, newCmd ) =
@@ -302,9 +299,7 @@ updateVoteForPokemon oldState userVote =
                                                     newCurrentUserRatings :: otherUserRatings
                                             in
                                                 ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
-                                                  --, saveRatings newCurrentUserRatings
-                                                  -- TODO
-                                                , Cmd.none
+                                                , saveRatings newCurrentUserRatings
                                                 )
                                 else
                                     -- vote already cast

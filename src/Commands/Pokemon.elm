@@ -7,15 +7,6 @@ import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Models.Pokemon exposing (..)
 
 
---import Constants exposing (..)
---import Msgs exposing (Msg)
---loadPokedex : Cmd Msg
---loadPokedex =
---    Http.get pokedexApiUrl decodePokedex
---        |> RemoteData.sendRequest
---        |> Cmd.map Msgs.OnLoadPokedex
-
-
 decodePokedex : Value -> RemotePokedex
 decodePokedex val =
     decodeValue (Decode.list pokemonDecoder) val
