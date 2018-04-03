@@ -22,7 +22,7 @@ usage:
 	@echo
 
 install:
-	webpack
+	npm install
 
 status:
 	@test "$(NODE_PIDS)" && echo Running || echo Stopped
