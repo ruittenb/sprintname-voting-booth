@@ -1,28 +1,20 @@
-module Commands.Pokemon exposing (loadPokedex)
+module Commands.Pokemon exposing (decodePokedex)
 
-import Http exposing (get)
-import RemoteData exposing (WebData, sendRequest)
+import RemoteData exposing (fromResult)
+import Json.Encode as Encode exposing (Value)
 import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
-import Constants exposing (..)
-import Msgs exposing (Msg)
 import Models.Pokemon exposing (..)
 
 
-loadPokedex : Cmd Msg
-loadPokedex =
-    Http.get pokedexApiUrl decodePokedex
-        |> RemoteData.sendRequest
-        |> Cmd.map Msgs.OnLoadPokedex
+decodePokedex : Value -> RemotePokedex
+decodePokedex val =
+    decodeValue (Decode.list pokemonDecoder) val
+        |> RemoteData.fromResult
 
 
-decodePokedex : Decoder (List Pokemon)
-decodePokedex =
-    Decode.list decodePokemon
-
-
-decodePokemon : Decoder Pokemon
-decodePokemon =
+pokemonDecoder : Decoder Pokemon
+pokemonDecoder =
     let
         toDecoder id number generation letterString name url variants =
             let
@@ -43,17 +35,17 @@ decodePokemon =
             |> required "letter" Decode.string
             |> required "name" Decode.string
             |> required "url" Decode.string
-            |> required "variants" decodePokemonVariants
+            |> required "variants" pokemonVariantsDecoder
             |> resolve
 
 
-decodePokemonVariants : Decoder (List PokemonVariant)
-decodePokemonVariants =
-    Decode.list decodePokemonVariant
+pokemonVariantsDecoder : Decoder (List PokemonVariant)
+pokemonVariantsDecoder =
+    Decode.list pokemonVariantDecoder
 
 
-decodePokemonVariant : Decoder PokemonVariant
-decodePokemonVariant =
+pokemonVariantDecoder : Decoder PokemonVariant
+pokemonVariantDecoder =
     decode PokemonVariant
         |> required "image" Decode.string
         |> required "vname" Decode.string

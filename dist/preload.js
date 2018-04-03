@@ -6,17 +6,25 @@ const Preloader = (function (jQuery) {
 
     let Preloader = function (list)
     {
+        this.doPreload = (location.search !== "?nopreload");
+        this.list = [];
         this.timer = null;
-        this.list = list;
         this.images = [];
         this.generation = 1;
-        if (location.search !== "?nopreload") {
-            this.schedule();
+        this.queue(list);
+    };
+
+    Preloader.prototype.queue = function (list) {
+        if (list instanceof Array) {
+            this.list = this.list.concat(list);
         }
+        this.schedule();
     };
 
     Preloader.prototype.schedule = function () {
-        this.timer = setTimeout(this.preloadImages.bind(this), batchTime);
+        if (this.doPreload && !this.timer && this.list.length) {
+            this.timer = setTimeout(this.preloadImages.bind(this), batchTime);
+        }
     };
 
     Preloader.prototype.resume = Preloader.prototype.schedule;
@@ -30,7 +38,7 @@ const Preloader = (function (jQuery) {
         }
     };
 
-    Preloader.prototype.toggleGenerationButton = function (state, gen)
+    Preloader.prototype.highlightGenerationButton = function (state, gen)
     {
         const $button = jQuery('.generation-button:nth-child('+String(gen)+')');
         $button.toggleClass('loading', state);
@@ -45,9 +53,10 @@ const Preloader = (function (jQuery) {
             this.images[i] = new Image();
             this.images[i].src = nextImg.imageUrl;
         }
-        this.toggleGenerationButton(false, prevGeneration);
+        this.highlightGenerationButton(false, prevGeneration);
+        this.timer = null;
         if (this.list.length) {
-            this.toggleGenerationButton(true, this.generation);
+            this.highlightGenerationButton(true, this.generation);
             this.schedule();
         }
     };

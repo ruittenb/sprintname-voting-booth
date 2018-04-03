@@ -1,13 +1,6 @@
-module Commands exposing (loadAll)
-
-import Msgs exposing (Msg)
-import Commands.Ratings exposing (loadRatings)
-import Commands.Pokemon exposing (loadPokedex)
+module Commands exposing (..)
 
 
 loadAll : Cmd Msg
 loadAll =
-    Cmd.batch
-        [ loadRatings
-        , loadPokedex
-        ]
+    Cmd.none

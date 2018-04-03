@@ -1,5 +1,13 @@
 module Models.Pokemon exposing (..)
 
+import RemoteData exposing (RemoteData)
+
+
+type alias PreloadCandidate =
+    { generation : Int
+    , imageUrl : String
+    }
+
 
 type alias PokemonVariant =
     { image : String
@@ -21,3 +29,7 @@ type alias Pokemon =
 
 type alias Pokedex =
     List Pokemon
+
+
+type alias RemotePokedex =
+    RemoteData String Pokedex

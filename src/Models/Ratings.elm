@@ -1,5 +1,7 @@
 module Models.Ratings exposing (..)
 
+import RemoteData exposing (RemoteData)
+
 
 type alias UserVote =
     { pokemonNumber : Int
@@ -17,6 +19,10 @@ type alias UserRating =
     }
 
 
+type alias TeamRating =
+    List UserRating
+
+
 type alias UserRatings =
     { id : Int
     , userName : String
@@ -27,9 +33,13 @@ type alias UserRatings =
     }
 
 
-type alias TeamRating =
-    List UserRating
-
-
 type alias TeamRatings =
     List UserRatings
+
+
+type alias RemoteUserRatings =
+    RemoteData String UserRatings
+
+
+type alias RemoteTeamRatings =
+    RemoteData String TeamRatings

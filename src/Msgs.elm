@@ -1,17 +1,17 @@
 module Msgs exposing (Msg(..))
 
-import RemoteData exposing (WebData)
 import Authentication
 import Control exposing (Control)
 import Models.Types exposing (..)
-import Models.Pokemon exposing (Pokedex)
-import Models.Ratings exposing (UserVote, TeamRatings, UserRatings)
+import Models.Pokemon exposing (RemotePokedex)
+import Models.Ratings exposing (UserVote, RemoteTeamRatings, RemoteUserRatings)
 
 
 type Msg
-    = OnLoadRatings (WebData TeamRatings)
-    | OnSaveRatings (WebData UserRatings)
-    | OnLoadPokedex (WebData Pokedex)
+    = OnLoadPokedex RemotePokedex
+    | OnLoadTeamRatings RemoteTeamRatings
+    | OnLoadUserRatings RemoteUserRatings
+    | OnSaveUserRatings RemoteUserRatings
     | AuthenticationMsg Authentication.Msg
     | ChangeGenerationAndLetter Int Char
     | ChangeGeneration Int

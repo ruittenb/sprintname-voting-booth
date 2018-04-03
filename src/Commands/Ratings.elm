@@ -1,49 +1,37 @@
-module Commands.Ratings exposing (loadRatings, saveRatings)
+module Commands.Ratings exposing (saveRatings, decodeTeamRatings, decodeUserRatings)
 
-import Http exposing (get)
 import RemoteData exposing (WebData, sendRequest)
-import Json.Encode as Encode
+import Json.Encode as Encode exposing (Value)
 import Json.Decode as Decode exposing (Decoder, decodeValue)
 import Json.Decode.Pipeline exposing (decode, required, optional)
-import Constants exposing (..)
-import Models.Ratings exposing (UserRatings, TeamRatings)
-import Msgs exposing (Msg)
+import Models.Ratings exposing (RemoteUserRatings, RemoteTeamRatings, UserRatings, TeamRatings)
+import Ports exposing (saveUserRatings)
 
 
-loadRatings : Cmd Msg
-loadRatings =
-    Http.get ratingsApiUrl decodeTeamRatings
-        |> RemoteData.sendRequest
-        |> Cmd.map Msgs.OnLoadRatings
-
-
-saveRatings : UserRatings -> Cmd Msg
+saveRatings : UserRatings -> Cmd msg
 saveRatings userRatings =
-    saveUserRatingsRequest userRatings
-        |> RemoteData.sendRequest
-        |> Cmd.map Msgs.OnSaveRatings
+    saveUserRatings userRatings
 
 
-saveUserRatingsRequest : UserRatings -> Http.Request UserRatings
-saveUserRatingsRequest userRatings =
-    Http.request
-        { body = encodeUserRatings userRatings |> Http.jsonBody
-        , expect = Http.expectJson decodeUserRatings
-        , headers = []
-        , method = "PATCH"
-        , timeout = Nothing
-        , url = saveUserRatingsUrl userRatings.id
-        , withCredentials = False
-        }
+decodeTeamRatings : Value -> RemoteTeamRatings
+decodeTeamRatings val =
+    decodeValue teamRatingsDecoder val
+        |> RemoteData.fromResult
 
 
-decodeTeamRatings : Decoder TeamRatings
-decodeTeamRatings =
-    Decode.list decodeUserRatings
+decodeUserRatings : Value -> RemoteUserRatings
+decodeUserRatings val =
+    decodeValue userRatingsDecoder val
+        |> RemoteData.fromResult
 
 
-decodeUserRatings : Decoder UserRatings
-decodeUserRatings =
+teamRatingsDecoder : Decoder TeamRatings
+teamRatingsDecoder =
+    Decode.list userRatingsDecoder
+
+
+userRatingsDecoder : Decoder UserRatings
+userRatingsDecoder =
     decode UserRatings
         |> required "id" Decode.int
         |> required "userName" Decode.string
@@ -51,18 +39,3 @@ decodeUserRatings =
         |> required "active" Decode.bool
         |> required "color" Decode.string
         |> required "ratings" Decode.string
-
-
-encodeUserRatings : UserRatings -> Encode.Value
-encodeUserRatings userRatings =
-    let
-        attributes =
-            [ ( "id", Encode.int userRatings.id )
-            , ( "userName", Encode.string userRatings.userName )
-            , ( "email", Encode.string userRatings.email )
-            , ( "active", Encode.bool userRatings.active )
-            , ( "color", Encode.string userRatings.color )
-            , ( "ratings", Encode.string userRatings.ratings )
-            ]
-    in
-        Encode.object attributes

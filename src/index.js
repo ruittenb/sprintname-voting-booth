@@ -4,6 +4,10 @@ require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
 require('./index.html'); // ensure index.html gets copied during build
 
+/** **********************************************************************
+ * instantiate main objects
+ */
+
 // instantiate the main voting app
 let Elm = require('./Main.elm');
 let votingApp = (function () {
@@ -33,10 +37,9 @@ let lock = (function () {
     return new Auth0Lock(clientId, clientDomain, options);
 })();
 
-// preload images as requested by elm
-votingApp.ports.preloadImages.subscribe(function (list) {
-    window.preloader = new Preloader(list);
-});
+/** **********************************************************************
+ * communication between lock and elm
+ */
 
 // show lock (login) widget if the elm app requests it
 votingApp.ports.auth0showLock.subscribe(function (opts) {
@@ -71,4 +74,66 @@ lock.on("authenticated", function (authResult) {
         votingApp.ports.auth0authResult.send(result);
     });
 });
+
+/** **********************************************************************
+ * database actions: loading and saving ratings
+ */
+
+// load user ratings and send them to elm
+votingDb.users.once('value', function (data) {
+    let team = data.val();
+    votingApp.ports.onLoadTeamRatings.send(team);
+});
+
+votingDb.users.on('child_changed', function (data) {
+    let user = data.val();
+    votingApp.ports.onLoadUserRatings.send(user);
+});
+
+votingApp.ports.saveUserRatings.subscribe(function (userRatings) {
+    if (userRatings.id) {
+        let userRef = votingDb.users.child(userRatings.id); //.child('ratings');
+        userRef.set(userRatings); //.ratings);
+    }
+});
+
+/** **********************************************************************
+ * database actions: loading pokedex and preloading images
+ */
+
+const elm_initiates_preload = true;
+
+let preloader = new Preloader();
+
+// load pokedex and send it to elm
+votingDb.pokedex.on('value', function (data) {
+    let pokedex = data.val();
+    votingApp.ports.onLoadPokedex.send(pokedex);
+    if (!elm_initiates_preload) {
+        let variantImages = pokedex.map(function (p) {
+            return p.variants.map(function (v) {
+                return {
+                    generation : p.generation,
+                    imageUrl   : v.image
+                };
+            });
+        }).reduce((n, m) => n.concat(m), []);
+        preloader.queue(variantImages);
+    }
+});
+
+// preload images as requested by elm
+votingApp.ports.preloadImages.subscribe(function (imageList) {
+    if (elm_initiates_preload) {
+        preloader.queue(imageList);
+    }
+});
+
+
+/** **********************************************************************
+ * make certain objects available for debugging
+ */
+
+window.preloader = preloader;
+window.votingDb  = votingDb;
 

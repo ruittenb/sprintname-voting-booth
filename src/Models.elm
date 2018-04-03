@@ -1,12 +1,11 @@
 module Models exposing (..)
 
 import Models.Types exposing (..)
-import Models.Pokemon exposing (Pokedex)
-import Models.Ratings exposing (TeamRatings)
+import Models.Pokemon exposing (RemotePokedex)
+import Models.Ratings exposing (RemoteTeamRatings)
 import Msgs exposing (Msg)
 import Authentication
 import Control exposing (State)
-import RemoteData exposing (WebData, RemoteData(..))
 
 
 type alias LighthouseData =
@@ -18,12 +17,6 @@ type alias LighthouseData =
 type alias Subpage =
     { generation : Int
     , letter : Char
-    }
-
-
-type alias PreloadCandidate =
-    { generation : Int
-    , imageUrl : String
     }
 
 
@@ -41,6 +34,6 @@ type alias ApplicationState =
     , generation : Int
     , letter : Char
     , query : String
-    , pokedex : WebData Pokedex
-    , ratings : WebData TeamRatings
+    , pokedex : RemotePokedex
+    , ratings : RemoteTeamRatings
     }

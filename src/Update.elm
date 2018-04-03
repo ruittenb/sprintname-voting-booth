@@ -3,6 +3,7 @@ module Update exposing (update, dissectLocationHash, hashToMsg)
 import Set
 import Char
 import List
+import List.Extra exposing (replaceIf)
 import Navigation exposing (Location)
 import RemoteData exposing (WebData, RemoteData(..))
 import Authentication exposing (isLoggedIn, tryGetUserProfile)
@@ -87,7 +88,7 @@ hashToMsg location =
 -- some update functions
 
 
-updateOnLoadPokedex : ApplicationState -> WebData Pokedex -> ( ApplicationState, Cmd Msg )
+updateOnLoadPokedex : ApplicationState -> RemotePokedex -> ( ApplicationState, Cmd Msg )
 updateOnLoadPokedex oldState pokedex =
     let
         ( statusMessage, statusLevel ) =
@@ -238,12 +239,9 @@ updateVoteForPokemon oldState userVote =
 
                 -- extract user rating string, or create one
                 oldUserRatingString =
-                    case List.head oldCurrentUserRatings of
-                        Nothing ->
-                            String.repeat totalPokemon "0"
-
-                        Just actualUserRatings ->
-                            actualUserRatings.ratings
+                    List.head oldCurrentUserRatings
+                        |> Maybe.map .ratings
+                        |> Maybe.withDefault (String.repeat totalPokemon "0")
 
                 -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
                 ( newState, newCmd ) =
@@ -329,13 +327,13 @@ updateVoteForPokemon oldState userVote =
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
-        Msgs.OnLoadRatings NotAsked ->
+        Msgs.OnLoadTeamRatings NotAsked ->
             ( oldState, Cmd.none )
 
-        Msgs.OnLoadRatings Loading ->
+        Msgs.OnLoadTeamRatings Loading ->
             ( oldState, Cmd.none )
 
-        Msgs.OnLoadRatings (Success ratings) ->
+        Msgs.OnLoadTeamRatings (Success ratings) ->
             let
                 newRatings =
                     RemoteData.succeed ratings
@@ -348,7 +346,7 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.OnLoadRatings (Failure message) ->
+        Msgs.OnLoadTeamRatings (Failure message) ->
             let
                 newState =
                     { oldState
@@ -359,16 +357,31 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.OnSaveRatings NotAsked ->
+        Msgs.OnLoadUserRatings (Success userRatings) ->
+            let
+                newRatings =
+                    RemoteData.map
+                        (replaceIf (.id >> (==) userRatings.id) userRatings)
+                        oldState.ratings
+
+                newState =
+                    { oldState | ratings = newRatings }
+            in
+                ( newState, Cmd.none )
+
+        Msgs.OnLoadUserRatings _ ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveRatings Loading ->
+        Msgs.OnSaveUserRatings NotAsked ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveRatings (Success ratings) ->
+        Msgs.OnSaveUserRatings Loading ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveRatings (Failure message) ->
+        Msgs.OnSaveUserRatings (Success ratings) ->
+            ( oldState, Cmd.none )
+
+        Msgs.OnSaveUserRatings (Failure message) ->
             let
                 newState =
                     { oldState | statusMessage = toString message, statusLevel = Error }

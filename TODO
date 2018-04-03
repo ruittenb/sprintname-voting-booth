@@ -9,7 +9,6 @@ missing:
 improvements:
  - have error message box take its message from state, not from errormessage
  - fix outline css on input text box
- - rename app.js to index.js
  - move all original js from dist/ to src/
  - move keys to their own file
  - consistent names : 

@@ -3,29 +3,6 @@ module Constants exposing (..)
 import Char
 
 
-dbHostname : String
-dbHostname =
-    --"192.168.1.190"
-    --"sprintname-voting-booth.ruittenbook.local"
-    --"localhost"
-    "votingbooth.ddns.net"
-
-
-pokedexApiUrl : String
-pokedexApiUrl =
-    "http://" ++ dbHostname ++ ":4202/pokedex"
-
-
-ratingsApiUrl : String
-ratingsApiUrl =
-    "http://" ++ dbHostname ++ ":4202/users"
-
-
-saveUserRatingsUrl : Int -> String
-saveUserRatingsUrl userId =
-    ratingsApiUrl ++ "/" ++ toString userId
-
-
 debounceDelay : Float
 debounceDelay =
     0.5

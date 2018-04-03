@@ -19,7 +19,12 @@ romanNumeral i =
         |> Maybe.withDefault "?"
 
 
-getUserNameForAuthModel : WebData TeamRatings -> Authentication.Model -> Maybe String
+isNumeric : String -> Bool
+isNumeric str =
+    Regex.contains (regex "^[0-9]+$") str
+
+
+getUserNameForAuthModel : RemoteTeamRatings -> Authentication.Model -> Maybe String
 getUserNameForAuthModel ratings authModel =
     let
         userEmail =
@@ -40,7 +45,7 @@ getUserNameForAuthModel ratings authModel =
                 Nothing
 
 
-filterPokedex : WebData Pokedex -> Int -> Char -> List Pokemon
+filterPokedex : RemotePokedex -> Int -> Char -> List Pokemon
 filterPokedex pokedex generation letter =
     let
         selection =
@@ -56,24 +61,19 @@ filterPokedex pokedex generation letter =
         List.sortBy .name selection
 
 
-searchPokedex : WebData Pokedex -> String -> List Pokemon
+searchPokedex : RemotePokedex -> String -> List Pokemon
 searchPokedex pokedex query =
     case pokedex of
         Success pokedex ->
             let
-                justNumber =
-                    regex "^[0-9]+$"
-
-                pattern =
+                queryPattern =
                     caseInsensitive (regex query)
 
                 pokeList =
-                    if Regex.contains justNumber query then
-                        -- query by number
+                    if isNumeric query then
                         List.filter (.number >> toString >> (==) query) pokedex
                     else
-                        -- query by regex
-                        List.filter (.name >> Regex.contains pattern) pokedex
+                        List.filter (.name >> Regex.contains queryPattern) pokedex
             in
                 pokeList
 

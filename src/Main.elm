@@ -4,15 +4,24 @@ import Auth0
 import Authentication
 import Navigation exposing (programWithFlags, Location)
 import RemoteData exposing (RemoteData(..))
+import Control exposing (initialState)
 import Constants exposing (initialGeneration, initialLetter)
+import Msgs exposing (Msg)
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), ViewMode(..))
-import Ports exposing (auth0showLock, auth0logout, auth0authResult)
 import View exposing (view)
 import Update exposing (update, dissectLocationHash, hashToMsg)
-import Msgs exposing (Msg)
-import Commands exposing (loadAll)
-import Control exposing (initialState)
+import Commands.Pokemon exposing (decodePokedex)
+import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
+import Ports
+    exposing
+        ( auth0showLock
+        , auth0logout
+        , auth0authResult
+        , onLoadPokedex
+        , onLoadTeamRatings
+        , onLoadUserRatings
+        )
 
 
 init : Maybe Auth0.LoggedInUser -> Location -> ( ApplicationState, Cmd Msg )
@@ -44,12 +53,17 @@ init initialUser location =
             , ratings = RemoteData.NotAsked
             }
     in
-        ( initialState, loadAll )
+        ( initialState, Cmd.none )
 
 
 subscriptions : ApplicationState -> Sub Msg
-subscriptions state =
-    auth0authResult (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
+subscriptions _ =
+    Sub.batch
+        [ auth0authResult (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
+        , onLoadPokedex (decodePokedex >> Msgs.OnLoadPokedex)
+        , onLoadTeamRatings (decodeTeamRatings >> Msgs.OnLoadTeamRatings)
+        , onLoadUserRatings (decodeUserRatings >> Msgs.OnLoadUserRatings)
+        ]
 
 
 main : Program (Maybe Auth0.LoggedInUser) ApplicationState Msg
