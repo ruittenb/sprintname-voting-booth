@@ -24,10 +24,6 @@
     "webpack-dev-server": "^2.9.7"
   },
   "devDependencies": {},
-  "scripts": {
-    "build": "webpack",
-    "start": "nf start"
-  },
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",

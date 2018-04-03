@@ -6,8 +6,11 @@ NODE_PIDS=$$(/bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2
 status:
 	@test "$(NODE_PIDS)" && echo Running || echo Stopped
 
+build:
+	webpack
+
 start:
-	yarn start
+	webpack-dev-server
 
 stop:
 	if [ "$(NODE_PIDS)" ]; then \

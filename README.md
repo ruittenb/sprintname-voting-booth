@@ -7,12 +7,11 @@ of a simple Node.js web server and an Elm SPA.
 
 - [Install Elm](http://elm-lang.org/install)
 - [Install Node](https://nodejs.org/en/download/)
-- [Install Yarn](https://yarnpkg.com/)
 
 Next, install the server dependencies, by running
 
 ```
-yarn
+make install
 ```
 
 ## Running the application:
@@ -20,7 +19,7 @@ yarn
 In terminal run:
 
 ```
-yarn start
+make start
 ```
 
 Open `http://localhost:4201`
