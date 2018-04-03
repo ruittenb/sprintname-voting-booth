@@ -1,13 +1,34 @@
 DOCKERNAME=voting-booth
 DOCKERNET=voting-net
-DOCKERPORTS=-p 4201:4201 -p 4202:4202
+DOCKERPORTS=-p 4201:4201
 NODE_PIDS=$$(/bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2 }')
+
+usage:
+	@echo "Recognized targets:"
+	@echo
+	@echo "  make install : install all dependencies"
+	@echo "  make start   : start the webserver"
+	@echo "  make stop    : stop the webserver"
+	@echo "  make restart : restart the webserver"
+	@echo "  make status  : show webserver status"
+	@echo
+	@echo "  make docker-build      : build the docker image"
+	@echo "  make docker-start      : start the docker container"
+	@echo "  make docker-build-start: build and start the docker container"
+	@echo "  make docker-stop       : stop the docker container"
+	@echo "  make docker-status     : show docker container + image status"
+	@echo "  make docker-shell      : shell into docker container"
+	@echo "  make docker-destroy    : destroy docker container + image"
+	@echo
+
+install:
+	npm install
 
 status:
 	@test "$(NODE_PIDS)" && echo Running || echo Stopped
 
 start:
-	yarn start
+	webpack-dev-server
 
 stop:
 	if [ "$(NODE_PIDS)" ]; then \
@@ -42,6 +63,6 @@ docker-destroy: docker-stop
 docker-shell:
 	docker exec -it $(DOCKERNAME) /bin/bash
 
-.PHONY: status start stop restart \
+.PHONY: usage install status start stop restart \
 	docker-status docker-build docker-start docker-build-start \
 	docker-stop docker-destroy docker-shell

@@ -21,13 +21,9 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.11.2"
   },
   "devDependencies": {},
-  "scripts": {
-    "build": "webpack",
-    "start": "nf start"
-  },
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
