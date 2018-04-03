@@ -5,6 +5,7 @@ WORKDIR /app
 ADD . .
 
 RUN npm uninstall --save fsevents
+ENV PATH="$PATH:./node_modules/.bin"
 
 ENTRYPOINT make install start || sleep 1000000
 
