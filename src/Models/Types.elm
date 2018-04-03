@@ -6,8 +6,8 @@ module Models.Types exposing (..)
     the cyclic dependency Models -> Msgs -> Models.
 
     By taking these apart, the dependencies are now
-    Models -> Msgs -> Models.Types
-    Models -> Models.Types
+    - Models -> Msgs -> Models.Types
+    - Models -> Models.Types
 -}
 
 
