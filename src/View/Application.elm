@@ -175,7 +175,7 @@ loginLogoutButton authModel user message level =
                 ]
                 [ text buttonText ]
             , div
-                [ class "button-spacer" ]
+                [ class "button button-spacer" ]
                 []
             , messageBox message level
             ]
