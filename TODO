@@ -11,7 +11,7 @@ improvements:
  - move keys to their own file
 
 consider:
- - rename variant files
+ - rename variant files (done: 550-802)
  - resize variant images
  - Material Design?
 

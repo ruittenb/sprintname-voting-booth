@@ -8161,11 +8161,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Basculin_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/550.png",
+          "image": "/dist/pokeart/550-red.png",
           "vname": "Red-Striped"
         },
         {
-          "image": "/dist/pokeart/550_f2.png",
+          "image": "/dist/pokeart/550-blue.png",
           "vname": "Blue-Striped"
         }
       ]
@@ -8235,11 +8235,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Darmanitan_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/555.png",
+          "image": "/dist/pokeart/555-normal.png",
           "vname": "Normal Mode"
         },
         {
-          "image": "/dist/pokeart/555_f1.png",
+          "image": "/dist/pokeart/555-zen.png",
           "vname": "Zen Mode"
         }
       ]
@@ -8659,19 +8659,19 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Deerling_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/585.png",
+          "image": "/dist/pokeart/585-spring.png",
           "vname": "Spring Form"
         },
         {
-          "image": "/dist/pokeart/585_f2.png",
+          "image": "/dist/pokeart/585-summer.png",
           "vname": "Summer Form"
         },
         {
-          "image": "/dist/pokeart/585_f3.png",
+          "image": "/dist/pokeart/585-autumn.png",
           "vname": "Autumn Form"
         },
         {
-          "image": "/dist/pokeart/585_f4.png",
+          "image": "/dist/pokeart/585-winter.png",
           "vname": "Winter Form"
         }
       ]
@@ -8798,7 +8798,7 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Jellicent_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/593-m,.png",
+          "image": "/dist/pokeart/593-m.png",
           "vname": "Male"
         },
         {
@@ -9474,12 +9474,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Tornadus_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/641.png",
-          "vname": "Incarnate"
+          "image": "/dist/pokeart/641-incarnate.png",
+          "vname": "Incarnate Forme"
         },
         {
-          "image": "/dist/pokeart/641_f2.png",
-          "vname": "Therian"
+          "image": "/dist/pokeart/641-therian.png",
+          "vname": "Therian Forme"
         }
       ]
     },
@@ -9492,12 +9492,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Thundurus_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/642.png",
-          "vname": "Incarnate"
+          "image": "/dist/pokeart/642-incarnate.png",
+          "vname": "Incarnate Forme"
         },
         {
-          "image": "/dist/pokeart/642_f2.png",
-          "vname": "Therian"
+          "image": "/dist/pokeart/642-therian.png",
+          "vname": "Therian Forme"
         }
       ]
     },
@@ -9538,12 +9538,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Landorus_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/645.png",
-          "vname": "Incarnate"
+          "image": "/dist/pokeart/645-incarnate.png",
+          "vname": "Incarnate Forme"
         },
         {
-          "image": "/dist/pokeart/645_f2.png",
-          "vname": "Therian"
+          "image": "/dist/pokeart/645-therian.png",
+          "vname": "Therian Forme"
         }
       ]
     },
@@ -9557,15 +9557,15 @@
       "variants": [
         {
           "image": "/dist/pokeart/646.png",
-          "vname": "Normal Form"
+          "vname": ""
         },
         {
-          "image": "/dist/pokeart/646_f3.png",
-          "vname": "White Form"
+          "image": "/dist/pokeart/646-white.png",
+          "vname": "White"
         },
         {
-          "image": "/dist/pokeart/646_f2.png",
-          "vname": "Black Form"
+          "image": "/dist/pokeart/646-black.png",
+          "vname": "Black"
         }
       ]
     },
@@ -9578,12 +9578,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Keldeo_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/647.png",
-          "vname": "Ordinary"
+          "image": "/dist/pokeart/647-ordinary.png",
+          "vname": "Ordinary Form"
         },
         {
-          "image": "/dist/pokeart/647_f2.png",
-          "vname": "Resolute"
+          "image": "/dist/pokeart/647-resolute.png",
+          "vname": "Resolute Form"
         }
       ]
     },
@@ -9596,11 +9596,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Meloetta_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/648.png",
+          "image": "/dist/pokeart/648-aria.png",
           "vname": "Aria Forme"
         },
         {
-          "image": "/dist/pokeart/648_f2.png",
+          "image": "/dist/pokeart/648-pirouette.png",
           "vname": "Pirouette Forme"
         }
       ]
@@ -9744,7 +9744,7 @@
           "vname": "Normal Form"
         },
         {
-          "image": "/dist/pokeart/658_f1.png",
+          "image": "/dist/pokeart/658-ash.png",
           "vname": "Ash-Greninja"
         }
       ]
@@ -10122,11 +10122,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Aegislash_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/681.png",
+          "image": "/dist/pokeart/681-shield.png",
           "vname": "Shield Forme"
         },
         {
-          "image": "/dist/pokeart/681_f2.png",
+          "image": "/dist/pokeart/681-blade.png",
           "vname": "Blade Forme"
         }
       ]
