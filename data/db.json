@@ -8780,11 +8780,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Frillish_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/592.png",
+          "image": "/dist/pokeart/592-m.png",
           "vname": "Male"
         },
         {
-          "image": "/dist/pokeart/592_f1.png",
+          "image": "/dist/pokeart/592-f.png",
           "vname": "Female"
         }
       ]
@@ -8798,11 +8798,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Jellicent_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/593.png",
+          "image": "/dist/pokeart/593-m,.png",
           "vname": "Male"
         },
         {
-          "image": "/dist/pokeart/593_f1.png",
+          "image": "/dist/pokeart/593-f.png",
           "vname": "Female"
         }
       ]
@@ -10986,8 +10986,20 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Oricorio_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/741.png",
-          "vname": ""
+          "image": "/dist/pokeart/741-baile.png",
+          "vname": "Baile Style"
+        },
+        {
+          "image": "/dist/pokeart/741-pom-pom.png",
+          "vname": "Pom-Pom Style"
+        },
+        {
+          "image": "/dist/pokeart/741-pau.png",
+          "vname": "Pa'u Style"
+        },
+        {
+          "image": "/dist/pokeart/741-sensu.png",
+          "vname": "Sensu Style"
         }
       ]
     },
@@ -11042,8 +11054,16 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Lycanroc_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/745.png",
-          "vname": ""
+          "image": "/dist/pokeart/745-midday.png",
+          "vname": "Midday Form"
+        },
+        {
+          "image": "/dist/pokeart/745-midnight.png",
+          "vname": "Midnight Form"
+        },
+        {
+          "image": "/dist/pokeart/745-dusk.png",
+          "vname": "Dusk Form"
         }
       ]
     },
@@ -11056,8 +11076,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Wishiwashi_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/746.png",
-          "vname": ""
+          "image": "/dist/pokeart/746-solo.png",
+          "vname": "Solo Form"
+        },
+        {
+          "image": "/dist/pokeart/746-school.png",
+          "vname": "School Form"
         }
       ]
     },
@@ -11448,8 +11472,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Minior_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/774.png",
-          "vname": ""
+          "image": "/dist/pokeart/774-meteor.png",
+          "vname": "Meteor Form"
+        },
+        {
+          "image": "/dist/pokeart/774-core.png",
+          "vname": "Core Form"
         }
       ]
     },
@@ -11814,6 +11842,18 @@
         {
           "image": "/dist/pokeart/800.png",
           "vname": ""
+        },
+        {
+          "image": "/dist/pokeart/800-dusk-mane.png",
+          "vname": "Dusk Mane"
+        },
+        {
+          "image": "/dist/pokeart/800-dawn-wings.png",
+          "vname": "Dawn Wings"
+        },
+        {
+          "image": "/dist/pokeart/800-ultra.png",
+          "vname": "Ultra Form"
         }
       ]
     },
