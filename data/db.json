@@ -9932,8 +9932,24 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Floette_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/670.png",
-          "vname": ""
+          "image": "/dist/pokeart/670-red.png",
+          "vname": "Red Flower"
+        },
+        {
+          "image": "/dist/pokeart/670-yellow.png",
+          "vname": "Yellow Flower"
+        },
+        {
+          "image": "/dist/pokeart/670-orange.png",
+          "vname": "Orange Flower"
+        },
+        {
+          "image": "/dist/pokeart/670-blue.png",
+          "vname": "Blue Flower"
+        },
+        {
+          "image": "/dist/pokeart/670-white.png",
+          "vname": "White Flower"
         }
       ]
     },
@@ -9946,8 +9962,24 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Florges_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/671.png",
-          "vname": ""
+          "image": "/dist/pokeart/671-red.png",
+          "vname": "Red Flower"
+        },
+        {
+          "image": "/dist/pokeart/671-yellow.png",
+          "vname": "Yellow Flower"
+        },
+        {
+          "image": "/dist/pokeart/671-orange.png",
+          "vname": "Orange Flower"
+        },
+        {
+          "image": "/dist/pokeart/671-blue.png",
+          "vname": "Blue Flower"
+        },
+        {
+          "image": "/dist/pokeart/671-white.png",
+          "vname": "White Flower"
         }
       ]
     },
@@ -10044,11 +10076,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Meowstic_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/678.png",
+          "image": "/dist/pokeart/678-m.png",
           "vname": "Male"
         },
         {
-          "image": "/dist/pokeart/678_f2.png",
+          "image": "/dist/pokeart/678-f.png",
           "vname": "Female"
         }
       ]
