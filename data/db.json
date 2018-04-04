@@ -7747,11 +7747,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Unfezant_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/521.png",
+          "image": "/dist/pokeart/521-m.png",
           "vname": "Male"
         },
         {
-          "image": "/dist/pokeart/521_f1.png",
+          "image": "/dist/pokeart/521-f.png",
           "vname": "Female"
         }
       ]
@@ -7895,7 +7895,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/531_f1.png",
+          "image": "/dist/pokeart/531-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -8685,19 +8685,19 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Sawsbuck_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/586.png",
+          "image": "/dist/pokeart/586-spring.png",
           "vname": "Spring Form"
         },
         {
-          "image": "/dist/pokeart/586_f2.png",
+          "image": "/dist/pokeart/586-summer.png",
           "vname": "Summer Form"
         },
         {
-          "image": "/dist/pokeart/586_f3.png",
+          "image": "/dist/pokeart/586-autumn.png",
           "vname": "Autumn Form"
         },
         {
-          "image": "/dist/pokeart/586_f4.png",
+          "image": "/dist/pokeart/586-winter.png",
           "vname": "Winter Form"
       ]
     },
