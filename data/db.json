@@ -55,7 +55,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/003_f2.png",
+          "image": "/dist/pokeart/003-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -101,11 +101,11 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/006_f2.png",
+          "image": "/dist/pokeart/006-mega-x.png",
           "vname": "Mega X"
         },
         {
-          "image": "/dist/pokeart/006_f3.png",
+          "image": "/dist/pokeart/006-mega-y.png",
           "vname": "Mega Y"
         }
       ]
@@ -151,7 +151,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/009_f2.png",
+          "image": "/dist/pokeart/009-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -239,7 +239,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/015_f2.png",
+          "image": "/dist/pokeart/015-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -285,7 +285,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/018_f2.png",
+          "image": "/dist/pokeart/018-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -303,7 +303,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/019_f2.png",
+          "image": "/dist/pokeart/019-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -321,7 +321,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/020_f2.png",
+          "image": "/dist/pokeart/020-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -409,7 +409,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/026_f2.png",
+          "image": "/dist/pokeart/026-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -427,7 +427,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/027_f2.png",
+          "image": "/dist/pokeart/027-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -445,7 +445,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/028_f2.png",
+          "image": "/dist/pokeart/028-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -575,7 +575,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/037_f2.png",
+          "image": "/dist/pokeart/037-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -593,7 +593,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/038_f2.png",
+          "image": "/dist/pokeart/038-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -765,7 +765,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/050_f2.png",
+          "image": "/dist/pokeart/050-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -783,7 +783,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/051_f2.png",
+          "image": "/dist/pokeart/051-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -801,7 +801,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/052_f2.png",
+          "image": "/dist/pokeart/052-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -819,7 +819,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/053_f2.png",
+          "image": "/dist/pokeart/053-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -991,7 +991,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/065_f2.png",
+          "image": "/dist/pokeart/065-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -1121,7 +1121,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/074_f2.png",
+          "image": "/dist/pokeart/074-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -1139,7 +1139,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/075_f2.png",
+          "image": "/dist/pokeart/075-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -1157,7 +1157,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/076_f2.png",
+          "image": "/dist/pokeart/076-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -1343,7 +1343,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/089_f2.png",
+          "image": "/dist/pokeart/089-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -1417,7 +1417,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/094_f2.png",
+          "image": "/dist/pokeart/094-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -1547,7 +1547,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/103_f2.png",
+          "image": "/dist/pokeart/103-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -1579,7 +1579,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/105_f2.png",
+          "image": "/dist/pokeart/105-alola.png",
           "vname": "Alola Form"
         }
       ]
@@ -1723,7 +1723,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/115_f2.png",
+          "image": "/dist/pokeart/115-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -1895,7 +1895,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/127_f2.png",
+          "image": "/dist/pokeart/127-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -1941,7 +1941,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/130_f2.png",
+          "image": "/dist/pokeart/130-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -2113,7 +2113,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/142_f2.png",
+          "image": "/dist/pokeart/142-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -2229,11 +2229,11 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/150_f2.png",
+          "image": "/dist/pokeart/150-mega-x.png",
           "vname": "Mega X"
         },
         {
-          "image": "/dist/pokeart/150_f3.png",
+          "image": "/dist/pokeart/150-mega-y.png",
           "vname": "Mega Y"
         }
       ]
@@ -2671,7 +2671,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/181_f2.png",
+          "image": "/dist/pokeart/181-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -3161,7 +3161,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/208_f2.png",
+          "image": "/dist/pokeart/208-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -3221,7 +3221,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/212_f2.png",
+          "image": "/dist/pokeart/212-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -3253,7 +3253,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/214_f2.png",
+          "image": "/dist/pokeart/214-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -3467,7 +3467,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/229_f2.png",
+          "image": "/dist/pokeart/229-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -3737,7 +3737,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/248_f2.png",
+          "image": "/dist/pokeart/248-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -3825,7 +3825,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/254_f2.png",
+          "image": "/dist/pokeart/254-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -3871,7 +3871,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/257_f2.png",
+          "image": "/dist/pokeart/257-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -3917,7 +3917,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/260_f2.png",
+          "image": "/dist/pokeart/260-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4229,7 +4229,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/282_f2.png",
+          "image": "/dist/pokeart/282-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4513,7 +4513,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/302_f2.png",
+          "image": "/dist/pokeart/302-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4531,7 +4531,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/303_f2.png",
+          "image": "/dist/pokeart/303-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4577,7 +4577,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/306_f2.png",
+          "image": "/dist/pokeart/306-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4609,7 +4609,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/308_f2.png",
+          "image": "/dist/pokeart/308-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4641,7 +4641,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/310_f2.png",
+          "image": "/dist/pokeart/310-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4771,7 +4771,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/319_f2.png",
+          "image": "/dist/pokeart/319-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4831,7 +4831,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/323_f2.png",
+          "image": "/dist/pokeart/323-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -4989,7 +4989,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/334_f2.png",
+          "image": "/dist/pokeart/334-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5227,19 +5227,19 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Castform_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/351.png",
+          "image": "/dist/pokeart/351-normal.png",
           "vname": "Normal"
         },
         {
-          "image": "/dist/pokeart/351_f3.png",
+          "image": "/dist/pokeart/351-sunny.png",
           "vname": "Sunny"
         },
         {
-          "image": "/dist/pokeart/351_f1.png",
+          "image": "/dist/pokeart/351-rainy.png",
           "vname": "Rainy"
         },
         {
-          "image": "/dist/pokeart/351_f2.png",
+          "image": "/dist/pokeart/351-snowy.png",
           "vname": "Snowy"
         }
       ]
@@ -5285,7 +5285,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/354_f2.png",
+          "image": "/dist/pokeart/354-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5359,7 +5359,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/359_f2.png",
+          "image": "/dist/pokeart/359-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5405,7 +5405,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/362_f2.png",
+          "image": "/dist/pokeart/362-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5563,7 +5563,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/373_f2.png",
+          "image": "/dist/pokeart/373-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5609,7 +5609,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/376_f2.png",
+          "image": "/dist/pokeart/376-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5669,7 +5669,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/380_f2.png",
+          "image": "/dist/pokeart/380-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5687,7 +5687,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/381_f2.png",
+          "image": "/dist/pokeart/381-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5705,7 +5705,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/382_f2.png",
+          "image": "/dist/pokeart/382-primal.png",
           "vname": "Primal Form"
         }
       ]
@@ -5723,7 +5723,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/383_f2.png",
+          "image": "/dist/pokeart/383-primal.png",
           "vname": "Primal Form"
         }
       ]
@@ -5741,7 +5741,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/384_f2.png",
+          "image": "/dist/pokeart/384-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -5769,19 +5769,19 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Deoxys_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/386.png",
+          "image": "/dist/pokeart/386-normal.png",
           "vname": "Normal"
         },
         {
-          "image": "/dist/pokeart/386_f2.png",
+          "image": "/dist/pokeart/386-attack.png",
           "vname": "Attack"
         },
         {
-          "image": "/dist/pokeart/386_f3.png",
+          "image": "/dist/pokeart/386-defense.png",
           "vname": "Defense"
         },
         {
-          "image": "/dist/pokeart/386_f4.png",
+          "image": "/dist/pokeart/386-speed.png",
           "vname": "Speed"
         }
       ]
@@ -8699,6 +8699,7 @@
         {
           "image": "/dist/pokeart/586-winter.png",
           "vname": "Winter Form"
+	}
       ]
     },
     {
