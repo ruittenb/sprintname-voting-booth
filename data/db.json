@@ -6862,7 +6862,7 @@
         },
         {
           "image": "/dist/pokeart/460_f2.png",
-          "vname": "Mega"
+          "vname": "Mega Form"
         }
       ]
     },
@@ -7073,6 +7073,10 @@
         {
           "image": "/dist/pokeart/475.png",
           "vname": ""
+        },
+        {
+          "image": "/dist/pokeart/475_f2.png",
+          "vname": "Mega Form"
         }
       ]
     },
@@ -7128,7 +7132,27 @@
       "variants": [
         {
           "image": "/dist/pokeart/479.png",
-          "vname": ""
+          "vname": "Normal Form"
+        },
+        {
+          "image": "/dist/pokeart/479_f1.png",
+          "vname": "Heat Form"
+        },
+        {
+          "image": "/dist/pokeart/479_f2.png",
+          "vname": "Wash Form"
+        },
+        {
+          "image": "/dist/pokeart/479_f3.png",
+          "vname": "Frost Form"
+        },
+        {
+          "image": "/dist/pokeart/479_f4.png",
+          "vname": "Fan Form"
+        },
+        {
+          "image": "/dist/pokeart/479_f5.png",
+          "vname": "Mow Form"
         }
       ]
     },
@@ -7724,7 +7748,11 @@
       "variants": [
         {
           "image": "/dist/pokeart/521.png",
-          "vname": ""
+          "vname": "Male"
+        },
+        {
+          "image": "/dist/pokeart/521_f1.png",
+          "vname": "Female"
         }
       ]
     },
@@ -7865,6 +7893,10 @@
         {
           "image": "/dist/pokeart/531.png",
           "vname": ""
+        },
+        {
+          "image": "/dist/pokeart/531_f1.png",
+          "vname": "Mega Form"
         }
       ]
     },
@@ -8628,7 +8660,19 @@
       "variants": [
         {
           "image": "/dist/pokeart/585.png",
-          "vname": ""
+          "vname": "Spring Form"
+        },
+        {
+          "image": "/dist/pokeart/585_f2.png",
+          "vname": "Summer Form"
+        },
+        {
+          "image": "/dist/pokeart/585_f3.png",
+          "vname": "Autumn Form"
+        },
+        {
+          "image": "/dist/pokeart/585_f4.png",
+          "vname": "Winter Form"
         }
       ]
     },
@@ -8642,8 +8686,19 @@
       "variants": [
         {
           "image": "/dist/pokeart/586.png",
-          "vname": ""
-        }
+          "vname": "Spring Form"
+        },
+        {
+          "image": "/dist/pokeart/586_f2.png",
+          "vname": "Summer Form"
+        },
+        {
+          "image": "/dist/pokeart/586_f3.png",
+          "vname": "Autumn Form"
+        },
+        {
+          "image": "/dist/pokeart/586_f4.png",
+          "vname": "Winter Form"
       ]
     },
     {
@@ -8726,7 +8781,11 @@
       "variants": [
         {
           "image": "/dist/pokeart/592.png",
-          "vname": ""
+          "vname": "Male"
+        },
+        {
+          "image": "/dist/pokeart/592_f1.png",
+          "vname": "Female"
         }
       ]
     },
@@ -8740,7 +8799,11 @@
       "variants": [
         {
           "image": "/dist/pokeart/593.png",
-          "vname": ""
+          "vname": "Male"
+        },
+        {
+          "image": "/dist/pokeart/593_f1.png",
+          "vname": "Female"
         }
       ]
     },
@@ -9494,7 +9557,15 @@
       "variants": [
         {
           "image": "/dist/pokeart/646.png",
-          "vname": ""
+          "vname": "Normal Form"
+        },
+        {
+          "image": "/dist/pokeart/646_f3.png",
+          "vname": "White Form"
+        },
+        {
+          "image": "/dist/pokeart/646_f2.png",
+          "vname": "Black Form"
         }
       ]
     },
@@ -9670,7 +9741,11 @@
       "variants": [
         {
           "image": "/dist/pokeart/658.png",
-          "vname": ""
+          "vname": "Normal Form"
+        },
+        {
+          "image": "/dist/pokeart/658_f1.png",
+          "vname": "Ash-Greninja"
         }
       ]
     },
@@ -9809,8 +9884,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Pyroar_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/668.png",
-          "vname": ""
+          "image": "/dist/pokeart/668-m.png",
+          "vname": "Male"
+        },
+        {
+          "image": "/dist/pokeart/668-f.png",
+          "vname": "Female"
         }
       ]
     },
@@ -9819,12 +9898,28 @@
       "number": 669,
       "generation": 6,
       "letter": "F",
-      "name": "Flabebe",
+      "name": "Flabébé",
       "url": "https://bulbapedia.bulbagarden.net/wiki/Flabebe_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/669.png",
-          "vname": ""
+          "image": "/dist/pokeart/669-red.png",
+          "vname": "Red Flower"
+        },
+        {
+          "image": "/dist/pokeart/669-yellow.png",
+          "vname": "Yellow Flower"
+        },
+        {
+          "image": "/dist/pokeart/669-orange.png",
+          "vname": "Orange Flower"
+        },
+        {
+          "image": "/dist/pokeart/669-blue.png",
+          "vname": "Blue Flower"
+        },
+        {
+          "image": "/dist/pokeart/669-white.png",
+          "vname": "White Flower"
         }
       ]
     },
