@@ -6145,15 +6145,15 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Burmy_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/412.png",
+          "image": "/dist/pokeart/412-plant.png",
           "vname": "Plant Cloak"
         },
         {
-          "image": "/dist/pokeart/412_f2.png",
+          "image": "/dist/pokeart/412-sandy.png",
           "vname": "Sandy Cloak"
         },
         {
-          "image": "/dist/pokeart/412_f3.png",
+          "image": "/dist/pokeart/412-trash.png",
           "vname": "Trash Cloak"
         }
       ]
@@ -6167,15 +6167,15 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Wormadam_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/413.png",
+          "image": "/dist/pokeart/413-plant.png",
           "vname": "Plant Cloak"
         },
         {
-          "image": "/dist/pokeart/413_f2.png",
+          "image": "/dist/pokeart/413-sandy.png",
           "vname": "Sandy Cloak"
         },
         {
-          "image": "/dist/pokeart/413_f3.png",
+          "image": "/dist/pokeart/413-trash.png",
           "vname": "Trash Cloak"
         }
       ]
@@ -6287,11 +6287,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Cherrim_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/421.png",
+          "image": "/dist/pokeart/421-overcast.png",
           "vname": "Overcast Form"
         },
         {
-          "image": "/dist/pokeart/421_f2.png",
+          "image": "/dist/pokeart/421-sunshine.png",
           "vname": "Sunshine Form"
         }
       ]
@@ -6305,11 +6305,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Shellos_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/422_f1.png",
+          "image": "/dist/pokeart/422-west.png",
           "vname": "West Sea"
         },
         {
-          "image": "/dist/pokeart/422.png",
+          "image": "/dist/pokeart/422-east.png",
           "vname": "East Sea"
         }
       ]
@@ -6323,11 +6323,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Gastrodon_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/423.png",
+          "image": "/dist/pokeart/423-west.png",
           "vname": "West Sea"
         },
         {
-          "image": "/dist/pokeart/423_f2.png",
+          "image": "/dist/pokeart/423-east.png",
           "vname": "East Sea"
         }
       ]
@@ -6401,7 +6401,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/428_f2.png",
+          "image": "/dist/pokeart/428-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -6643,7 +6643,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/445_f2.png",
+          "image": "/dist/pokeart/445-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -6689,7 +6689,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/448_f2.png",
+          "image": "/dist/pokeart/448-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -6861,7 +6861,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/460_f2.png",
+          "image": "/dist/pokeart/460-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -7075,7 +7075,7 @@
           "vname": ""
         },
         {
-          "image": "/dist/pokeart/475_f2.png",
+          "image": "/dist/pokeart/475-mega.png",
           "vname": "Mega Form"
         }
       ]
@@ -7131,27 +7131,27 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Rotom_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/479.png",
+          "image": "/dist/pokeart/479-normal.png",
           "vname": "Normal Form"
         },
         {
-          "image": "/dist/pokeart/479_f1.png",
+          "image": "/dist/pokeart/479-heat.png",
           "vname": "Heat Form"
         },
         {
-          "image": "/dist/pokeart/479_f2.png",
+          "image": "/dist/pokeart/479-wash.png",
           "vname": "Wash Form"
         },
         {
-          "image": "/dist/pokeart/479_f3.png",
+          "image": "/dist/pokeart/479-frost.png",
           "vname": "Frost Form"
         },
         {
-          "image": "/dist/pokeart/479_f4.png",
+          "image": "/dist/pokeart/479-fan.png",
           "vname": "Fan Form"
         },
         {
-          "image": "/dist/pokeart/479_f5.png",
+          "image": "/dist/pokeart/479-mow.png",
           "vname": "Mow Form"
         }
       ]
@@ -7263,11 +7263,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Giratina_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/487.png",
+          "image": "/dist/pokeart/487-altered.png",
           "vname": "Altered Forme"
         },
         {
-          "image": "/dist/pokeart/487_f2.png",
+          "image": "/dist/pokeart/487-origin.png",
           "vname": "Origin Forme"
         }
       ]
@@ -7337,11 +7337,11 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Shaymin_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/492.png",
+          "image": "/dist/pokeart/492-land.png",
           "vname": "Land Forme"
         },
         {
-          "image": "/dist/pokeart/492_f2.png",
+          "image": "/dist/pokeart/492-sky.png",
           "vname": "Sky Forme"
         }
       ]
