@@ -10616,8 +10616,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Xerneas_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/716.png",
-          "vname": ""
+          "image": "/dist/pokeart/716-active.png",
+          "vname": "Active Mode"
+        },
+        {
+          "image": "/dist/pokeart/716-neutral.png",
+          "vname": "Neutral Mode"
         }
       ]
     },
@@ -10644,8 +10648,16 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Zygarde_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/718.png",
-          "vname": ""
+          "image": "/dist/pokeart/718-50.png",
+          "vname": "50% Form"
+        },
+        {
+          "image": "/dist/pokeart/718-10.png",
+          "vname": "10% Form"
+        },
+        {
+          "image": "/dist/pokeart/718-complete.png",
+          "vname": "Complete Form"
         }
       ]
     },
@@ -10660,6 +10672,10 @@
         {
           "image": "/dist/pokeart/719.png",
           "vname": ""
+        },
+        {
+          "image": "/dist/pokeart/719-mega.png",
+          "vname": "Mega Form"
         }
       ]
     },
@@ -10672,8 +10688,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Hoopa_(Pok%C3%A9mon)",
       "variants": [
         {
-          "image": "/dist/pokeart/720.png",
-          "vname": ""
+          "image": "/dist/pokeart/720-confined.png",
+          "vname": "Confined"
+        },
+        {
+          "image": "/dist/pokeart/720-unbound.png",
+          "vname": "Unbound"
         }
       ]
     },
