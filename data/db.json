@@ -9904,23 +9904,7 @@
       "variants": [
         {
           "image": "/dist/pokeart/669-red.png",
-          "vname": "Red Flower"
-        },
-        {
-          "image": "/dist/pokeart/669-yellow.png",
-          "vname": "Yellow Flower"
-        },
-        {
-          "image": "/dist/pokeart/669-orange.png",
-          "vname": "Orange Flower"
-        },
-        {
-          "image": "/dist/pokeart/669-blue.png",
-          "vname": "Blue Flower"
-        },
-        {
-          "image": "/dist/pokeart/669-white.png",
-          "vname": "White Flower"
+          "vname": ""
         }
       ]
     },
@@ -9934,23 +9918,7 @@
       "variants": [
         {
           "image": "/dist/pokeart/670-red.png",
-          "vname": "Red Flower"
-        },
-        {
-          "image": "/dist/pokeart/670-yellow.png",
-          "vname": "Yellow Flower"
-        },
-        {
-          "image": "/dist/pokeart/670-orange.png",
-          "vname": "Orange Flower"
-        },
-        {
-          "image": "/dist/pokeart/670-blue.png",
-          "vname": "Blue Flower"
-        },
-        {
-          "image": "/dist/pokeart/670-white.png",
-          "vname": "White Flower"
+          "vname": ""
         }
       ]
     },
@@ -9964,23 +9932,7 @@
       "variants": [
         {
           "image": "/dist/pokeart/671-red.png",
-          "vname": "Red Flower"
-        },
-        {
-          "image": "/dist/pokeart/671-yellow.png",
-          "vname": "Yellow Flower"
-        },
-        {
-          "image": "/dist/pokeart/671-orange.png",
-          "vname": "Orange Flower"
-        },
-        {
-          "image": "/dist/pokeart/671-blue.png",
-          "vname": "Blue Flower"
-        },
-        {
-          "image": "/dist/pokeart/671-white.png",
-          "vname": "White Flower"
+          "vname": ""
         }
       ]
     },
