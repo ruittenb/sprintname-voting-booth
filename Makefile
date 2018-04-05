@@ -24,10 +24,13 @@ usage:
 install:
 	npm install
 
+version:
+	echo "jQuery(document).ready(function () { jQuery('#version').text('$$(git describe --tags)'); });" > dist/version.js
+
 status:
 	@test "$(NODE_PIDS)" && echo Running || echo Stopped
 
-start:
+start: version
 	webpack-dev-server
 
 stop:
@@ -63,6 +66,6 @@ docker-destroy: docker-stop
 docker-shell:
 	docker exec -it $(DOCKERNAME) /bin/bash
 
-.PHONY: usage install status start stop restart \
+.PHONY: usage install version status start stop restart \
 	docker-status docker-build docker-start docker-build-start \
 	docker-stop docker-destroy docker-shell

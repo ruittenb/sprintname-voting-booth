@@ -64,3 +64,5 @@ Icon
 _fabriek
 # ruittenb sensitive data
 dist/keys.js
+# ruittenb volatile data
+dist/version.js
