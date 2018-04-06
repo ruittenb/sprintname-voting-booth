@@ -12,7 +12,6 @@ const firebaseSignin = function (token)
 {
     console.log('firebaseSignin()'); // TODO
     console.log('token = (', token, ')'); // TODO
-    return;
     firebase.auth().signInWithCustomToken(token).then(function () {
         console.log('then!');
         console.log(arguments);
@@ -36,7 +35,7 @@ let votingApp = (function () {
     const storedProfile = localStorage.getItem('profile');
     const storedAccessToken = localStorage.getItem('accessToken');
     const storedIdToken = localStorage.getItem('idToken');
-    if (storedIdToken) {
+    if (storedProfile && storedIdToken) {
         firebaseSignin(storedIdToken);
     }
     const authData = storedProfile && storedAccessToken
@@ -52,6 +51,8 @@ let lock = (function () {
         allowedConnections: ['google-oauth2'], // 'Username-Password-Authentication'
         autoclose: true,
         audience: 'proforto.eu.auth0.com/userinfo',
+        // learn more about authentication parameters:
+        // https://auth0.com/docs/libraries/lock/v11/sending-authentication-parameters
         auth: {
             redirect: false,
             responseType: 'token id_token',
