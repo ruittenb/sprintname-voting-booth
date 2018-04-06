@@ -14,6 +14,13 @@ Next, install the server dependencies, by running
 make install
 ```
 
+## Firebase Keys:
+
+Download the firebase private key from:
+https://console.firebase.google.com/u/0/project/sprintname-voting-booth/settings/serviceaccounts/adminsdk
+
+Save it to `dist/serviceAccountKey.json`.
+
 ## Running the application:
 
 In terminal run:

@@ -63,6 +63,6 @@ Icon
 # ruittenb scratchpad
 _fabriek
 # ruittenb sensitive data
-dist/keys.js
+dist/serviceAccountKey.json
 # ruittenb volatile data
 dist/version.js

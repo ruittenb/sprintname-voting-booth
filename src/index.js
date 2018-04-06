@@ -5,6 +5,28 @@ require('font-awesome/css/font-awesome.css');
 require('./index.html'); // ensure index.html gets copied during build
 
 /** **********************************************************************
+ * prepare function for firebase login
+ */
+
+const firebaseSignin = function (token)
+{
+    console.log('firebaseSignin()'); // TODO
+    console.log('token = (', token, ')'); // TODO
+    return;
+    firebase.auth().signInWithCustomToken(token).then(function () {
+        console.log('then!');
+        console.log(arguments);
+    }).catch(function(error) {
+        console.log('catch!');
+        console.log(arguments);
+        // Handle Errors here.
+        //var errorCode = error.code;
+        //var errorMessage = error.message;
+        // ...
+    });
+};
+
+/** **********************************************************************
  * instantiate main objects
  */
 
@@ -12,8 +34,13 @@ require('./index.html'); // ensure index.html gets copied during build
 let Elm = require('./Main.elm');
 let votingApp = (function () {
     const storedProfile = localStorage.getItem('profile');
-    const storedToken = localStorage.getItem('token');
-    const authData = storedProfile && storedToken ? { profile: JSON.parse(storedProfile), token: storedToken } : null;
+    const storedAccessToken = localStorage.getItem('accessToken');
+    const storedIdToken = localStorage.getItem('idToken');
+    if (storedIdToken) {
+        firebaseSignin(storedIdToken);
+    }
+    const authData = storedProfile && storedAccessToken
+        ? { profile: JSON.parse(storedProfile), token: storedAccessToken } : null;
     return Elm.Main.fullscreen(authData);
 })();
 
@@ -27,7 +54,7 @@ let lock = (function () {
         audience: 'proforto.eu.auth0.com/userinfo',
         auth: {
             redirect: false,
-            responseType: 'token',
+            responseType: 'token id_token',
             params: {
                 // Learn about scopes: https://auth0.com/docs/scopes
                 scope: 'openid email profile'
@@ -49,20 +76,26 @@ votingApp.ports.auth0showLock.subscribe(function (opts) {
 // logout if the elm app requests it
 votingApp.ports.auth0logout.subscribe(function (opts) {
     localStorage.removeItem('profile');
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('idToken');
 });
 
 // on succesful authentication, pass the credentials to elm
 lock.on("authenticated", function (authResult) {
+    console.log('on-authenticated'); // TODO
     // Use the token in authResult to getProfile() and save it to localStorage
     lock.getUserInfo(authResult.accessToken, function (err, profile) {
+        console.log('getUserInfo', authResult); // TODO
         let result = { err: null, ok: null };
-        let token = authResult.accessToken;
+        let accessToken = authResult.accessToken;
+        let idToken = authResult.idToken;
 
         if (!err) {
-            result.ok = { profile: profile, token: token };
+            result.ok = { profile: profile, token: accessToken };
             localStorage.setItem('profile', JSON.stringify(profile));
-            localStorage.setItem('token', token);
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('idToken', idToken);
+            firebaseSignin(idToken);
         } else {
             result.err = err.details;
 
