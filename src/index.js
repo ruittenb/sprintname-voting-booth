@@ -103,7 +103,7 @@ votingApp.ports.saveUserRatings.subscribe(function (userRatings) {
 
 const elm_initiates_preload = true;
 
-let preloader = new Preloader();
+let preloader = new Preloader('#version');
 
 // load pokedex and send it to elm
 votingDb.pokedex.on('value', function (data) {
