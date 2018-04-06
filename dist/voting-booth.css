@@ -426,3 +426,6 @@ button.user-button.current,
     font-size: 7pt;
     color: #ccc;
 }
+#preload-controls {
+    padding-left: 4px;
+}
