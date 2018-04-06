@@ -10,6 +10,7 @@
     "css-loader": "^0.26.1",
     "elm-webpack-loader": "^4.4.0",
     "file-loader": "^0.10.0",
+    "firebase-admin": "^5.12.0",
     "firebase-tools": "^3.17.7",
     "font-awesome": "4",
     "foreman": "^2.0.0",
