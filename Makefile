@@ -25,7 +25,7 @@ install:
 	npm install
 
 version:
-	echo "jQuery(document).ready(function () { jQuery('#version').text('$$(git describe --tags)'); });" > dist/version.js
+	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$$(git describe --tags)'); });" > dist/version.js
 
 status:
 	@test "$(NODE_PIDS)" && echo Running || echo Stopped

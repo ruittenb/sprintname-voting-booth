@@ -38,6 +38,15 @@ const Preloader = (function (jQuery) {
         }
     };
 
+    Preloader.prototype.toggle = function ()
+    {
+        if (this.timer) {
+            this.pause();
+        } else {
+            this.resume();
+        }
+    };
+
     Preloader.prototype.highlightGenerationButton = function (state, gen)
     {
         const $button = jQuery('.generation-button:nth-child('+String(gen)+')');
