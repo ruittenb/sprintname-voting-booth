@@ -36,79 +36,78 @@ const Jwt2FirebaseServer = (function () {
     {
         this.publicKey = fs.readFileSync('./dist/public-auth0.key');
         this.serviceAccountKey = require('./dist/serviceAccountKey.json');
+        this.server = express();
         this.startServer();
     };
 
     /**
-     * Start the server.
+     * Start the server. Install processRequest() as handler.
      */
     Jwt2FirebaseServer.prototype.startServer = function ()
     {
-        this.server = express();
-        let me = this;
-
-        /**
-         * Parses the body test as JSON and exposes the resulting object on request.body
-         */
+        // Parses the body test as JSON and exposes the resulting object on request.body
         this.server.use(bodyParser.json());
         this.server.use(function (err, request, response, callback) {
             response.status(err.status).json({ ...err, success : false });
             callback();
         });
-
-        this.server.post('/', async function (request, response) {
-            /**
-             * Try to retrieve JWT token
-             */
-            let status, userData, firebaseToken;
-            let jwtToken = request.body.jwtToken;
-            if (!jwtToken) {
-                status = 400;
-                return response.status(status).json({
-                    success: false,
-                    status,
-                    message: 'Missing or empty property "jwtToken"'
-                });
-            };
-            /**
-             * Try to validate JWT token
-             */
-            try {
-                userData = me.validateJwtToken(jwtToken);
-            }
-            catch (e) {
-                status = e.status || 400;
-                return response.status(status).json({
-                    success: false,
-                    status,
-                    message: e.message
-                });
-            }
-            /**
-             * Try to issue firebase token
-             */
-            try {
-                firebaseToken = await me.issueFirebaseToken(userData);
-            }
-            catch (e) {
-                status = e.status || 500;
-                return response.status(status).json({
-                    success: false,
-                    status,
-                    message: e.message
-                });
-            }
-            response.json({
-                success : true,
-                firebaseToken
-            });
-        });
-
+        this.server.post('/', this.processRequest.bind(this));
         this.server.listen(PORT, function (err) {
             if (err) {
                 return console.log('Unable to listen on port', PORT, ': ', err);
             }
             console.log('Server is listening on port', PORT);
+        });
+    };
+
+    /**
+     * Process a request. Takes a JWT web token as JSON as input and returns
+     * a firebase token.
+     */
+    Jwt2FirebaseServer.prototype.processRequest = function (request, response)
+    {
+        /**
+         * Try to retrieve JWT token
+         */
+        let status, userData, firebaseToken;
+        let jwtToken = request.body.jwtToken;
+        if (!jwtToken) {
+            status = 400;
+            return response.status(status).json({
+                success: false,
+                status,
+                message: 'Missing or empty property "jwtToken"'
+            });
+        };
+        /**
+         * Try to validate JWT token
+         */
+        try {
+            userData = this.validateJwtToken(jwtToken);
+        }
+        catch (e) {
+            status = e.status || 400;
+            return response.status(status).json({
+                success: false,
+                status,
+                message: e.message
+            });
+        }
+        /**
+         * Try to issue firebase token
+         */
+        this.issueFirebaseToken(userData).then(function (firebaseToken) {
+            response.json({
+                success : true,
+                firebaseToken
+            });
+        }).catch(function (e) {
+            status = e.status || 500;
+            return response.status(status).json({
+                success: false,
+                status,
+                message: e.message
+            });
         });
     };
 
@@ -119,7 +118,8 @@ const Jwt2FirebaseServer = (function () {
      *
      * @return userData from JWT token if successful.
      */
-    Jwt2FirebaseServer.prototype.validateJwtToken = function (jwtToken) {
+    Jwt2FirebaseServer.prototype.validateJwtToken = function (jwtToken)
+    {
         let userData;
         try {
             userData = jwt.verify(jwtToken, this.publicKey);
@@ -142,27 +142,18 @@ const Jwt2FirebaseServer = (function () {
     /**
      * use the service account key to authenticate with the firebase server
      */
-    Jwt2FirebaseServer.prototype.issueFirebaseToken = async function (userData) {
-
-        let firebaseToken;
+    Jwt2FirebaseServer.prototype.issueFirebaseToken = function (userData)
+    {
         firebaseAdmin.initializeApp({
             credential: firebaseAdmin.credential.cert(this.serviceAccountKey),
             databaseURL: DATABASE_URL
         });
 
-        firebaseToken = await firebaseAdmin.auth().createCustomToken(userData.email);
-        return firebaseToken;
+        return firebaseAdmin.auth().createCustomToken(userData.email);
     };
 
     return Jwt2FirebaseServer;
 })();
 
 const server = new Jwt2FirebaseServer();
-
-
-//    "gmailUsers": {
-//      "$uid": {
-//        ".write": "auth.profile.email_verified == true && auth.profile.email.matches(/.*@proforto.nl$/)"
-//      }
-//    }
 
