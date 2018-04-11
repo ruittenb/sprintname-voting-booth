@@ -7,7 +7,18 @@
  *
  * Usage:
  * - POST a string of the form:
- *   { "jwtToken": "<jwt data>" }
+ *   {
+ *     "jwtToken": <string>
+ *   }
+ *
+ * Result:
+ * - A JSON response of the form:
+ *   {
+ *     "success": <boolean>,
+ *     "firebaseToken": <string>,   // if success == true
+ *     "status": <int statuscode>,  // if success == false
+ *     "message": <string>,         // if success == false
+ *   }
  *
  * See also:
  * - http://blog.pixelastic.com/2017/10/28/authenticating-to-firebase-from-a-server/
@@ -22,12 +33,12 @@ const Jwt2FirebaseServer = (function () {
     const PORT = 4202;
     const AUTHORIZED_USERS = /^[^@]+@proforto\.nl$/;
     const DATABASE_URL = 'https://sprintname-voting-booth.firebaseio.com';
+    const VALID_REFERERS = [ 'http://localhost:4201', 'http://votingbooth.ddns.net:4201' ];
 
     const fs = require('fs');
     const express = require('express');
     const bodyParser = require('body-parser');
     const jwt = require('jsonwebtoken');
-    const firebaseAdmin = require('firebase-admin');
 
     /**
      * Constructor.
@@ -36,6 +47,11 @@ const Jwt2FirebaseServer = (function () {
     {
         this.publicKey = fs.readFileSync('./dist/public-auth0.key');
         this.serviceAccountKey = require('./dist/serviceAccountKey.json');
+        this.firebaseAdmin = require('firebase-admin');
+        this.firebaseAdmin.initializeApp({
+            credential: this.firebaseAdmin.credential.cert(this.serviceAccountKey),
+            databaseURL: DATABASE_URL
+        });
         this.server = express();
         this.startServer();
     };
@@ -46,7 +62,8 @@ const Jwt2FirebaseServer = (function () {
     Jwt2FirebaseServer.prototype.startServer = function ()
     {
         // Parses the body test as JSON and exposes the resulting object on request.body
-        this.server.use(bodyParser.json());
+        //        this.server.use(bodyParser.json());
+        this.server.use(bodyParser.urlencoded({ extended: false }));
         this.server.use(function (err, request, response, callback) {
             response.status(err.status).json({ ...err, success : false });
             callback();
@@ -66,10 +83,21 @@ const Jwt2FirebaseServer = (function () {
      */
     Jwt2FirebaseServer.prototype.processRequest = function (request, response)
     {
+        let status, userData, firebaseToken;
+        /**
+         * Validate the referer (origin)
+         */
+        if (!this.validateOrigin(request, response)) {
+            status = 403;
+            return response.status(status).json({
+                success: false,
+                status,
+                message: 'Referer not allowed'
+            });
+        }
         /**
          * Try to retrieve JWT token
          */
-        let status, userData, firebaseToken;
         let jwtToken = request.body.jwtToken;
         if (!jwtToken) {
             status = 400;
@@ -112,6 +140,18 @@ const Jwt2FirebaseServer = (function () {
     };
 
     /**
+     * Validate the referer (origin) and fix the headers to allow CORS
+     *
+     * We could have chosen for  https://www.npmjs.com/package/cors
+     */
+    Jwt2FirebaseServer.prototype.validateOrigin = function (request, response)
+    {
+        let referer = request.headers.referer.replace(/\/$/, '');
+        response.header('Access-Control-Allow-Origin', referer);
+        return VALID_REFERERS.includes(referer);
+    };
+
+    /**
      * Validate the JWT token.
      * Also validate that this is an authorized account.
      * Throw an error if invalid or unauthorized.
@@ -144,12 +184,7 @@ const Jwt2FirebaseServer = (function () {
      */
     Jwt2FirebaseServer.prototype.issueFirebaseToken = function (userData)
     {
-        firebaseAdmin.initializeApp({
-            credential: firebaseAdmin.credential.cert(this.serviceAccountKey),
-            databaseURL: DATABASE_URL
-        });
-
-        return firebaseAdmin.auth().createCustomToken(userData.email);
+        return this.firebaseAdmin.auth().createCustomToken(userData.email);
     };
 
     return Jwt2FirebaseServer;

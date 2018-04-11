@@ -1,5 +1,7 @@
 'use strict';
 
+const JWT2FIREBASE_URL = 'http://localhost:4202/'
+
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
 require('./index.html'); // ensure index.html gets copied during build
@@ -8,21 +10,29 @@ require('./index.html'); // ensure index.html gets copied during build
  * prepare function for firebase login
  */
 
-const firebaseSignin = function (token)
+const firebaseSignin = function (jwtToken)
 {
-    console.log('firebaseSignin()'); // TODO
-    console.log('token = (', token, ')'); // TODO
-    firebase.auth().signInWithCustomToken(token).then(function () {
-        console.log('then!');
-        console.log(arguments);
-    }).catch(function(error) {
-        console.log('catch!');
-        console.log(arguments);
-        // Handle Errors here.
-        //var errorCode = error.code;
-        //var errorMessage = error.message;
-        // ...
-    });
+    jQuery
+        .post({
+            url: JWT2FIREBASE_URL,
+            data: { jwtToken }
+        })
+        .then(function (tokenData) {
+            if (tokenData.success) {
+                return Promise.resolve(tokenData.firebaseToken);
+            } else {
+                return Promise.reject(tokenData);
+            }
+        })
+        .then( function (firebaseToken) {
+            return firebase.auth().signInWithCustomToken(firebaseToken);
+        })
+        .catch(function (e) {
+            console.log('catch ', e, arguments);
+            let status = e.status || 500;
+            jQuery('#message-box').text(status + ': ' + e.message).addClass('error');
+        });
+    return;
 };
 
 /** **********************************************************************
@@ -83,10 +93,8 @@ votingApp.ports.auth0logout.subscribe(function (opts) {
 
 // on succesful authentication, pass the credentials to elm
 lock.on("authenticated", function (authResult) {
-    console.log('on-authenticated'); // TODO
     // Use the token in authResult to getProfile() and save it to localStorage
     lock.getUserInfo(authResult.accessToken, function (err, profile) {
-        console.log('getUserInfo', authResult); // TODO
         let result = { err: null, ok: null };
         let accessToken = authResult.accessToken;
         let idToken = authResult.idToken;
