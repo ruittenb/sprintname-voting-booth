@@ -42,9 +42,10 @@ const firebaseSignin = function (jwtToken)
 // instantiate the main voting app
 let Elm = require('./Main.elm');
 let votingApp = (function () {
-    const storedProfile = localStorage.getItem('profile');
-    const storedAccessToken = localStorage.getItem('accessToken');
-    const storedIdToken = localStorage.getItem('idToken');
+    let storedProfile, storedAccessToken, storedIdToken;    
+    // const storedProfile     = localStorage.getItem('profile');
+    // const storedAccessToken = localStorage.getItem('accessToken');
+    // const storedIdToken     = localStorage.getItem('idToken');
     if (storedProfile && storedIdToken) {
         firebaseSignin(storedIdToken);
     }
