@@ -45,9 +45,9 @@ const Preloader = (function (jQuery) {
             return;
         }
         if (state === 'play') {
-            this.$button.show().addClass('fa-play').removeClass('fa-pause');
+            this.$button.show().addClass('fa-play').removeClass('fa-pause')[0].title = 'resume preloading';
         } else if (state === 'pause') {
-            this.$button.show().addClass('fa-pause').removeClass('fa-play');
+            this.$button.show().addClass('fa-pause').removeClass('fa-play')[0].title = 'pause preloading';
         } else {
             this.$button.hide();
         }
