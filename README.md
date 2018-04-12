@@ -14,6 +14,24 @@ Next, install the server dependencies, by running
 make install
 ```
 
+## Security Keys:
+
+### Auth0:
+
+Download the Auth0 private key from:
+
+https://manage.auth0.com/#/clients/n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9/settings
+
+Scroll down and click 'Show Advanced Settings'. Open the tab 'certificates' and copy the 'Signing Certificate'.
+Save it to `dist/public-auth0.key`
+
+### Firebase:
+
+Download the firebase private key from:
+https://console.firebase.google.com/u/0/project/sprintname-voting-booth/settings/serviceaccounts/adminsdk
+
+Click "Generate new private key".  Save it to `dist/serviceAccountKey.json`.
+
 ## Running the application:
 
 In terminal run:

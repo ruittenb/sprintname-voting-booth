@@ -1,0 +1,11 @@
+{
+  "rules": {
+    ".read" : "true",
+    ".write" : "false",
+    "users": {
+      "$user": {
+        ".write": "auth != null && newData.child('users').child('email').val() == auth.token.email"
+      }
+    }
+  }
+}

@@ -1,8 +1,39 @@
 'use strict';
 
+const JWT2FIREBASE_URL = 'http://localhost:4202/'
+
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
 require('./index.html'); // ensure index.html gets copied during build
+
+/** **********************************************************************
+ * prepare function for firebase login
+ */
+
+const firebaseSignin = function (jwtToken)
+{
+    jQuery
+        .post({
+            url: JWT2FIREBASE_URL,
+            data: { jwtToken }
+        })
+        .then(function (tokenData) {
+            if (tokenData.success) {
+                return Promise.resolve(tokenData.firebaseToken);
+            } else {
+                return Promise.reject(tokenData);
+            }
+        })
+        .then( function (firebaseToken) {
+            return firebase.auth().signInWithCustomToken(firebaseToken);
+        })
+        .catch(function (e) {
+            console.log('catch ', e, arguments);
+            let status = e.status || 500;
+            jQuery('#message-box').text(status + ': ' + e.message).addClass('error');
+        });
+    return;
+};
 
 /** **********************************************************************
  * instantiate main objects
@@ -11,9 +42,15 @@ require('./index.html'); // ensure index.html gets copied during build
 // instantiate the main voting app
 let Elm = require('./Main.elm');
 let votingApp = (function () {
-    const storedProfile = localStorage.getItem('profile');
-    const storedToken = localStorage.getItem('token');
-    const authData = storedProfile && storedToken ? { profile: JSON.parse(storedProfile), token: storedToken } : null;
+    let storedProfile, storedAccessToken, storedIdToken;    
+    // const storedProfile     = localStorage.getItem('profile');
+    // const storedAccessToken = localStorage.getItem('accessToken');
+    // const storedIdToken     = localStorage.getItem('idToken');
+    if (storedProfile && storedIdToken) {
+        firebaseSignin(storedIdToken);
+    }
+    const authData = storedProfile && storedAccessToken
+        ? { profile: JSON.parse(storedProfile), token: storedAccessToken } : null;
     return Elm.Main.fullscreen(authData);
 })();
 
@@ -25,9 +62,11 @@ let lock = (function () {
         allowedConnections: ['google-oauth2'], // 'Username-Password-Authentication'
         autoclose: true,
         audience: 'proforto.eu.auth0.com/userinfo',
+        // learn more about authentication parameters:
+        // https://auth0.com/docs/libraries/lock/v11/sending-authentication-parameters
         auth: {
             redirect: false,
-            responseType: 'token',
+            responseType: 'token id_token',
             params: {
                 // Learn about scopes: https://auth0.com/docs/scopes
                 scope: 'openid email profile'
@@ -49,7 +88,8 @@ votingApp.ports.auth0showLock.subscribe(function (opts) {
 // logout if the elm app requests it
 votingApp.ports.auth0logout.subscribe(function (opts) {
     localStorage.removeItem('profile');
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('idToken');
 });
 
 // on succesful authentication, pass the credentials to elm
@@ -57,12 +97,15 @@ lock.on("authenticated", function (authResult) {
     // Use the token in authResult to getProfile() and save it to localStorage
     lock.getUserInfo(authResult.accessToken, function (err, profile) {
         let result = { err: null, ok: null };
-        let token = authResult.accessToken;
+        let accessToken = authResult.accessToken;
+        let idToken = authResult.idToken;
 
         if (!err) {
-            result.ok = { profile: profile, token: token };
+            result.ok = { profile: profile, token: accessToken };
             localStorage.setItem('profile', JSON.stringify(profile));
-            localStorage.setItem('token', token);
+            localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('idToken', idToken);
+            firebaseSignin(idToken);
         } else {
             result.err = err.details;
 
