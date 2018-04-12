@@ -1,11 +1,25 @@
 {
   "rules": {
-    ".read" : "true",
-    ".write" : "false",
+    ".read": "true",
+    "pokedex": {
+      ".write": "false"
+    },
     "users": {
-      "$user": {
-        ".write": "auth != null && newData.child('users').child('email').val() == auth.token.email"
+      "$user_id": {
+        ".write": "auth != null
+                && data.child('active').val() == true
+                && data.child('email').val() == auth.uid
+                && newData.child('email').val() == auth.uid",
+        ".validate": "newData.hasChildren(['id', 'active', 'color', 'email', 'ratings', 'userName'])
+                && newData.child('id').isNumber()
+                && newData.child('active').isBoolean()
+                && newData.child('color').isString()
+                && newData.child('email').isString()
+                && newData.child('ratings').isString()
+                && newData.child('ratings').val().length == 803
+                && newData.child('userName').isString()"
       }
     }
   }
 }
+/* vim: set ft=text ts=2 sw=2 et list: */
