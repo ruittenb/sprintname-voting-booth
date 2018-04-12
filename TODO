@@ -1,5 +1,7 @@
 
 missing:
+ - start/stop servers simultaneously
+ - show ratings also when user did not yet login
  - refresh auth0 token when it expires
    - then re-enable reading the authentication info from the localStorage
  - do something about unrendered animation on messagebox
