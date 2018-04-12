@@ -7,8 +7,10 @@
     "users": {
       "$user_id": {
         ".write": "auth != null
+                && data.exists()
                 && data.child('active').val() == true
                 && data.child('email').val() == auth.uid
+                && newData.exists()
                 && newData.child('email').val() == auth.uid",
         ".validate": "newData.hasChildren(['id', 'active', 'color', 'email', 'ratings', 'userName'])
                 && newData.child('id').isNumber()
