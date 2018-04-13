@@ -1,2 +1,2 @@
-tokenserver: node server.js
-voting-booth: webpack-dev-server
+tokenserver: node tokenserver.js
+webserver: webpack-dev-server
