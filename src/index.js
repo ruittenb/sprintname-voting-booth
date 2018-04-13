@@ -59,7 +59,7 @@ let lock = (function () {
     const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
     const clientDomain = 'proforto.eu.auth0.com';
     const options = {
-        allowedConnections: ['google-oauth2'], // 'Username-Password-Authentication'
+        allowedConnections: ['google-oauth2'], // or 'Username-Password-Authentication'
         autoclose: true,
         audience: 'proforto.eu.auth0.com/userinfo',
         // learn more about authentication parameters:
@@ -134,9 +134,11 @@ votingDb.users.on('child_changed', function (data) {
 });
 
 votingApp.ports.saveUserRatings.subscribe(function (userRatings) {
-    if (userRatings.id) {
-        let userRef = votingDb.users.child(userRatings.id); //.child('ratings');
-        userRef.set(userRatings); //.ratings);
+    // id === null would correspond to a delete request.
+    // id should not be null, but let's be defensive here.
+    if (userRatings.id !== null) {
+        let userRef = votingDb.users.child(userRatings.id);
+        userRef.set(userRatings);
     }
 });
 
