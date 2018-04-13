@@ -1,6 +1,6 @@
 'use strict';
 
-const JWT2FIREBASE_URL = 'http://localhost:4202/'
+const TOKENSERVER_URL = `http://${window.location.hostname}:4202/`;
 
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
@@ -14,7 +14,7 @@ const firebaseSignin = function (jwtToken)
 {
     jQuery
         .post({
-            url: JWT2FIREBASE_URL,
+            url: TOKENSERVER_URL,
             data: { jwtToken }
         })
         .then(function (tokenData) {
