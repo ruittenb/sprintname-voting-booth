@@ -62,10 +62,19 @@ button.user-button {
 }
 
 button.user-button:hover,
-.poketile .button:hover,
+.button.generation-button:hover,
 .button.letter-button:hover,
-.button.generation-button:hover {
+.poketile .button:hover {
     background-color: #f8f0f8; /* light purple */
+}
+
+/*
+button.user-button:active,
+.button.generation-button:active,
+.button.letter-button:active,
+*/
+.poketile .button:active {
+    background-color: #f0d8f0; /* medium purple */
 }
 
 #user-name.current,
