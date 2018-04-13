@@ -1,8 +1,9 @@
 /**
  * Server that
+ * - listens for HTTP POST requests
  * - takes a JWT token
  * - validates it
- * - verifies that it concerns a valid email address
+ * - verifies that it contains a valid email address
  * - returns a valid Firebase token
  *
  * Usage:
