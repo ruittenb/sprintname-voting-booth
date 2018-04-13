@@ -24,7 +24,7 @@ const firebaseSignin = function (jwtToken)
                 return Promise.reject(tokenData);
             }
         })
-        .then( function (firebaseToken) {
+        .then(function (firebaseToken) {
             return firebase.auth().signInWithCustomToken(firebaseToken);
         })
         .catch(function (e) {
@@ -42,10 +42,9 @@ const firebaseSignin = function (jwtToken)
 // instantiate the main voting app
 let Elm = require('./Main.elm');
 let votingApp = (function () {
-    let storedProfile, storedAccessToken, storedIdToken;    
-    // const storedProfile     = localStorage.getItem('profile');
-    // const storedAccessToken = localStorage.getItem('accessToken');
-    // const storedIdToken     = localStorage.getItem('idToken');
+    let storedProfile     = localStorage.getItem('profile');
+    let storedAccessToken = localStorage.getItem('accessToken');
+    let storedIdToken     = localStorage.getItem('idToken');
     if (storedProfile && storedIdToken) {
         firebaseSignin(storedIdToken);
     }
@@ -77,6 +76,19 @@ let lock = (function () {
     return new Auth0Lock(clientId, clientDomain, options);
 })();
 
+/*
+lock.checkSession({}, function (error, authResult) {
+  if (error || !authResult) {
+    lock.show();
+  } else {
+    // user has an active session, so we can use the accessToken directly.
+    lock.getUserInfo(authResult.accessToken, function (error, profile) {
+      console.log(error, profile);
+    });
+  }
+});
+*/
+
 /** **********************************************************************
  * communication between lock and elm
  */
@@ -94,7 +106,8 @@ votingApp.ports.auth0logout.subscribe(function (opts) {
 });
 
 // on succesful authentication, pass the credentials to elm
-lock.on("authenticated", function (authResult) {
+lock.on('authenticated', function (authResult) {
+    console.log(authResult); // TODO
     // Use the token in authResult to getProfile() and save it to localStorage
     lock.getUserInfo(authResult.accessToken, function (err, profile) {
         let result = { err: null, ok: null };
