@@ -7,6 +7,41 @@ require('font-awesome/css/font-awesome.css');
 require('./index.html'); // ensure index.html gets copied during build
 
 /** **********************************************************************
+ * main
+ */
+
+const ElmAuthenticator = function (jQuery) {
+    /**
+     * Constructor
+     */
+    let ElmAuthenticator = function () {
+
+        // instantiate the main voting app
+        this.votingApp = (function () {
+            const Elm = require('./Main.elm');
+            let storedProfile     = localStorage.getItem('profile');
+            let storedAccessToken = localStorage.getItem('accessToken');
+            let storedIdToken     = localStorage.getItem('idToken');
+            if (storedProfile && storedIdToken) {
+                firebaseSignin(storedIdToken);
+            }
+            const authData = storedProfile && storedAccessToken
+                ? { profile: JSON.parse(storedProfile), token: storedAccessToken } : null;
+            const appNode = document.getElementById('voting-app-node');
+            return Elm.Main.embed(appNode, authData);
+        })();
+    };
+
+/** **********************************************************************
+ * instantiate main objects
+ */
+
+    ElmAuthenticator.prototype.
+
+    return ElmAuthenticator;
+}(jQuery);
+
+/** **********************************************************************
  * prepare function for firebase login
  */
 
@@ -34,25 +69,6 @@ const firebaseSignin = function (jwtToken)
         });
     return;
 };
-
-/** **********************************************************************
- * instantiate main objects
- */
-
-// instantiate the main voting app
-let Elm = require('./Main.elm');
-let votingApp = (function () {
-    let storedProfile     = localStorage.getItem('profile');
-    let storedAccessToken = localStorage.getItem('accessToken');
-    let storedIdToken     = localStorage.getItem('idToken');
-    if (storedProfile && storedIdToken) {
-        firebaseSignin(storedIdToken);
-    }
-    const authData = storedProfile && storedAccessToken
-        ? { profile: JSON.parse(storedProfile), token: storedAccessToken } : null;
-    const appNode = document.getElementById('voting-app-node');
-    return Elm.Main.embed(appNode, authData);
-})();
 
 // instantiate the lock (login) widget
 let lock = (function () {

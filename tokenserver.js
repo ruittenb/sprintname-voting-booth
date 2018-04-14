@@ -34,7 +34,10 @@ const Jwt2FirebaseServer = (function () {
     const PORT = 4202;
     const AUTHORIZED_USERS = /^[^@]+@proforto\.nl$/;
     const DATABASE_URL = 'https://sprintname-voting-booth.firebaseio.com';
-    const VALID_REFERERS = [ 'http://localhost:4201', 'http://votingbooth.ddns.net:4201' ];
+    const VALID_REFERERS = [
+        'http://localhost:4201',
+        'http://votingbooth.ddns.net:4201'
+    ];
 
     const fs = require('fs');
     const express = require('express');
