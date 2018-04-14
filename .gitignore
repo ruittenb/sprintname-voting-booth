@@ -1,6 +1,6 @@
 ### Elm ###
 # Elm-generated
-elm-stuff
+/elm-stuff
 repl-temp-*
 
 ### Node ###
