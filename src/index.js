@@ -51,7 +51,8 @@ let votingApp = (function () {
     }
     const authData = storedProfile && storedAccessToken
         ? { profile: JSON.parse(storedProfile), token: storedAccessToken } : null;
-    return Elm.Main.fullscreen(authData);
+    const appNode = document.getElementById('voting-app-node');
+    return Elm.Main.embed(appNode, authData);
 })();
 
 // instantiate the lock (login) widget
