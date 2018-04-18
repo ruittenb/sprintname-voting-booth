@@ -1,185 +1,278 @@
 'use strict';
 
-const TOKENSERVER_URL = `http://${window.location.hostname}:4202/`;
-
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
 require('./index.html'); // ensure index.html gets copied during build
 
 /** **********************************************************************
- * prepare function for firebase login
+ * main
  */
 
-const firebaseSignin = function (jwtToken)
+const ElmConnector = function (jQuery, firebase)
 {
-    jQuery
-        .post({
-            url: TOKENSERVER_URL,
-            data: { jwtToken }
-        })
-        .then(function (tokenData) {
-            if (tokenData.success) {
-                return Promise.resolve(tokenData.firebaseToken);
-            } else {
-                return Promise.reject(tokenData);
-            }
-        })
-        .then( function (firebaseToken) {
-            return firebase.auth().signInWithCustomToken(firebaseToken);
-        })
-        .catch(function (e) {
-            console.log('catch ', e, arguments);
-            let status = e.status || 500;
-            jQuery('#message-box').text(status + ': ' + e.message).addClass('error');
+    const elm_initiates_preload = true;
+
+    /** **********************************************************************
+     * Constructor
+     */
+    let ElmConnector = function ()
+    {
+        // instantiate main objects
+        this.votingApp = this.getVotingApp();
+        this.votingDb = this.getVotingDb(firebase);
+        this.lock = this.getLock();
+        this.preloader = new Preloader('#version');
+
+        // communication between lock and elm
+        let me = this;
+
+        // show lock (login) widget if the elm app requests it
+        this.votingApp.ports.auth0showLock.subscribe(this.lock.show.bind(this.lock));
+
+        // when authentication was succesful
+        this.lock.on('authenticated', this.onLockAuthenticated.bind(this));
+
+        // logout if the elm app requests it
+        this.votingApp.ports.auth0logout.subscribe(this.logout.bind(this));
+
+        /** **********************************************************************
+         * database actions: loading and saving ratings
+         */
+
+        // load user ratings and send them to elm
+        this.votingDb.users.once('value', function (data) {
+            let team = data.val();
+            me.votingApp.ports.onLoadTeamRatings.send(team);
         });
-    return;
-};
+        this.votingDb.users.on('child_changed', function (data) {
+            let user = data.val();
+            me.votingApp.ports.onLoadUserRatings.send(user);
+        });
 
-/** **********************************************************************
- * instantiate main objects
- */
-
-// instantiate the main voting app
-let Elm = require('./Main.elm');
-let votingApp = (function () {
-    let storedProfile, storedAccessToken, storedIdToken;    
-    // const storedProfile     = localStorage.getItem('profile');
-    // const storedAccessToken = localStorage.getItem('accessToken');
-    // const storedIdToken     = localStorage.getItem('idToken');
-    if (storedProfile && storedIdToken) {
-        firebaseSignin(storedIdToken);
-    }
-    const authData = storedProfile && storedAccessToken
-        ? { profile: JSON.parse(storedProfile), token: storedAccessToken } : null;
-    const appNode = document.getElementById('voting-app-node');
-    return Elm.Main.embed(appNode, authData);
-})();
-
-// instantiate the lock (login) widget
-let lock = (function () {
-    const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
-    const clientDomain = 'proforto.eu.auth0.com';
-    const options = {
-        allowedConnections: ['google-oauth2'], // or 'Username-Password-Authentication'
-        autoclose: true,
-        audience: 'proforto.eu.auth0.com/userinfo',
-        // learn more about authentication parameters:
-        // https://auth0.com/docs/libraries/lock/v11/sending-authentication-parameters
-        auth: {
-            redirect: false,
-            responseType: 'token id_token',
-            params: {
-                // Learn about scopes: https://auth0.com/docs/scopes
-                scope: 'openid email profile'
+        // save user ratings to firebase
+        this.votingApp.ports.saveUserRatings.subscribe(function (userRatings) {
+            // id === null would correspond to a delete request.
+            // id should not be null, but let's be defensive here.
+            if (userRatings.id !== null) {
+                let userRef = me.votingDb.users.child(userRatings.id);
+                userRef.set(userRatings);
             }
+        });
+
+        /** **********************************************************************
+         * database actions: loading pokedex and preloading images
+         */
+
+        // load pokedex and send it to elm
+        this.votingDb.pokedex.on('value', function (data) {
+
+            let pokedex = data.val();
+            me.votingApp.ports.onLoadPokedex.send(pokedex);
+            if (!elm_initiates_preload) {
+                let variantImages = pokedex.map(function (p) {
+                    return p.variants.map(function (v) {
+                        return {
+                            generation : p.generation,
+                            imageUrl   : v.image
+                        };
+                    });
+                }).reduce((n, m) => n.concat(m), []);
+                me.preloader.queue(variantImages);
+            }
+        });
+
+        // preload images as requested by elm
+        this.votingApp.ports.preloadImages.subscribe(function (imageList) {
+            if (elm_initiates_preload) {
+                me.preloader.queue(imageList);
+            }
+        });
+    }; // constructor
+
+    /** **********************************************************************
+     * instantiate and initialize main voting app
+     */
+    ElmConnector.prototype.getVotingApp = function ()
+    {
+        let storedProfile     = localStorage.getItem('profile');
+        let storedAccessToken = localStorage.getItem('accessToken');
+        let storedIdToken     = localStorage.getItem('idToken');
+        if (storedProfile && storedIdToken) {
+            this.firebaseSignin(storedIdToken);
         }
+        const Elm = require('./Main.elm');
+        const appNode = document.getElementById('voting-app-node');
+        const authData = storedProfile && storedAccessToken
+            ? { profile: JSON.parse(storedProfile), token: storedAccessToken } : null;
+        return Elm.Main.embed(appNode, authData);
     };
-    return new Auth0Lock(clientId, clientDomain, options);
-})();
 
-/** **********************************************************************
- * communication between lock and elm
- */
+    /** **********************************************************************
+     * instantiate and initialize the firebase client object
+     */
 
-// show lock (login) widget if the elm app requests it
-votingApp.ports.auth0showLock.subscribe(function (opts) {
-    lock.show(opts);
-});
+    ElmConnector.prototype.getVotingDb = function (firebase)
+    {
+        const firebaseConfig = {
+            apiKey            : "AIzaSyAm4--Q2MjVWGZYW-IC8LPZARXJq-XyHXA",
+            databaseURL       : "https://sprintname-voting-booth.firebaseio.com",
+            authDomain        : "sprintname-voting-booth.firebaseapp.com",
+            storageBucket     : "sprintname-voting-booth.appspot.com",
+            messagingSenderId : "90828432994"
+        };
 
-// logout if the elm app requests it
-votingApp.ports.auth0logout.subscribe(function (opts) {
-    localStorage.removeItem('profile');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('idToken');
-});
+        firebase.initializeApp(firebaseConfig);
 
-// on succesful authentication, pass the credentials to elm
-lock.on("authenticated", function (authResult) {
-    // Use the token in authResult to getProfile() and save it to localStorage
-    lock.getUserInfo(authResult.accessToken, function (err, profile) {
-        let result = { err: null, ok: null };
-        let accessToken = authResult.accessToken;
-        let idToken = authResult.idToken;
+        return {
+            database: firebase.database(),
+            pokedex : firebase.database().ref('pokedex'),
+            users   : firebase.database().ref('users')
+        };
+    };
 
-        if (!err) {
-            result.ok = { profile: profile, token: accessToken };
-            localStorage.setItem('profile', JSON.stringify(profile));
-            localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('idToken', idToken);
-            firebaseSignin(idToken);
-        } else {
-            result.err = err.details;
 
-            // Ensure that optional fields are on the object
-            result.err.name = result.err.name ? result.err.name : null;
-            result.err.code = result.err.code ? result.err.code : null;
-            result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
-        }
-        votingApp.ports.auth0authResult.send(result);
-    });
-});
+    /** **********************************************************************
+     * instantiate and initialize the lock (login) widget
+     */
+    ElmConnector.prototype.getLock = function ()
+    {
+        const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
+        const clientDomain = 'proforto.eu.auth0.com';
+        const options = {
+            allowedConnections: ['google-oauth2'], // or 'Username-Password-Authentication'
+            autoclose: true,
+            audience: 'proforto.eu.auth0.com/userinfo',
+            // learn more about authentication parameters at:
+            // https://auth0.com/docs/libraries/lock/v11/sending-authentication-parameters
+            auth: {
+                redirect: false,
+                responseType: 'token id_token',
+                params: {
+                    // Learn more about scopes at: https://auth0.com/docs/scopes
+                    scope: 'openid email profile'
+                }
+            }
+        };
+        return new Auth0Lock(clientId, clientDomain, options);
+    };
 
-/** **********************************************************************
- * database actions: loading and saving ratings
- */
+    /**
+     * Destroy Auth0 token
+     */
+    ElmConnector.prototype.logout = function () {
+        localStorage.removeItem('profile');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('idToken');
+        firebase.auth().signOut();
+    };
 
-// load user ratings and send them to elm
-votingDb.users.once('value', function (data) {
-    let team = data.val();
-    votingApp.ports.onLoadTeamRatings.send(team);
-});
+    /**
+     * on succesful authentication, pass the credentials to elm
+     *
+     * maybe replace this with http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
+     */
+    ElmConnector.prototype.onLockAuthenticated = function (authResult)
+    {
+        let me = this;
 
-votingDb.users.on('child_changed', function (data) {
-    let user = data.val();
-    votingApp.ports.onLoadUserRatings.send(user);
-});
+        // Use the token in authResult to getUserInfo() and save it to localStorage
+        this.lock.getUserInfo(authResult.accessToken, function (err, profile) {
+            let result = { err: null, ok: null };
+            let accessToken = authResult.accessToken;
+            let idToken = authResult.idToken;
 
-votingApp.ports.saveUserRatings.subscribe(function (userRatings) {
-    // id === null would correspond to a delete request.
-    // id should not be null, but let's be defensive here.
-    if (userRatings.id !== null) {
-        let userRef = votingDb.users.child(userRatings.id);
-        userRef.set(userRatings);
-    }
-});
+            if (!err) {
+                result.ok = { profile: profile, token: accessToken };
+                localStorage.setItem('profile', JSON.stringify(profile));
+                localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('idToken', idToken);
+                me.firebaseSignin(idToken); // TODO perhaps move this to caller
+            } else {
+                result.err = err.details;
 
-/** **********************************************************************
- * database actions: loading pokedex and preloading images
- */
+                // Ensure that optional fields are on the object
+                result.err.name = result.err.name ? result.err.name : null;
+                result.err.code = result.err.code ? result.err.code : null;
+                result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
+            }
+            me.votingApp.ports.onAuth0Result.send(result);
+        });
+    };
 
-const elm_initiates_preload = true;
+    /** **********************************************************************
+     * take a JWT token, obtain a firebase token, and log in in firebase
+     */
+    ElmConnector.prototype.firebaseSignin = function (jwtToken)
+    {
+        const tokenserverUrl = `http://${window.location.hostname}:4202/`;
+        let me = this;
 
-let preloader = new Preloader('#version');
-
-// load pokedex and send it to elm
-votingDb.pokedex.on('value', function (data) {
-    let pokedex = data.val();
-    votingApp.ports.onLoadPokedex.send(pokedex);
-    if (!elm_initiates_preload) {
-        let variantImages = pokedex.map(function (p) {
-            return p.variants.map(function (v) {
-                return {
-                    generation : p.generation,
-                    imageUrl   : v.image
-                };
+        jQuery
+            .post({
+                url: tokenserverUrl,
+                data: { jwtToken }
+            })
+            .then(function (tokenData) {
+                if (tokenData.success) {
+                    return Promise.resolve(tokenData.firebaseToken);
+                } else {
+                    return Promise.reject(tokenData);
+                }
+            })
+            .then(function (firebaseToken) {
+                return firebase.auth().signInWithCustomToken(firebaseToken);
+            })
+            .catch(function (e) {
+                console.error('caught: ', e);
+                let status = e.status || 500;
+                let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
+                jQuery('#message-box').text(status + ': ' + message).addClass('error');
+                // communicate logout to elm
+                me.votingApp.ports.onAuth0Logout.send(null);
+                // destroy tokens
+                me.logout();
+                // if the token was expired, try to obtain a new one
+                if (status === 403) {
+                    me.lock.show.call(me.lock);
+                }
             });
-        }).reduce((n, m) => n.concat(m), []);
-        preloader.queue(variantImages);
-    }
-});
+        return;
+    };
 
-// preload images as requested by elm
-votingApp.ports.preloadImages.subscribe(function (imageList) {
-    if (elm_initiates_preload) {
-        preloader.queue(imageList);
-    }
-});
+    return ElmConnector;
 
+}(jQuery, firebase);
+
+/*
+lock.checkSession({}, function (error, authResult) {
+  if (error || !authResult) {
+    lock.show();
+  } else {
+    // user has an active session, so we can use the accessToken directly.
+    lock.getUserInfo(authResult.accessToken, function (error, profile) {
+      console.log(error, profile);
+    });
+  }
+});
+*/
+
+/*
+ firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+  }
+  // ...
+});
+*/
 
 /** **********************************************************************
  * make certain objects available for debugging
  */
 
-window.preloader = preloader;
-window.votingDb  = votingDb;
-
+window.elmConnector = new ElmConnector();

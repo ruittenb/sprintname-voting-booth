@@ -2,8 +2,9 @@ port module Ports
     exposing
         ( preloadImages
         , auth0showLock
-        , auth0authResult
         , auth0logout
+        , onAuth0Result
+        , onAuth0Logout
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
@@ -22,10 +23,13 @@ port preloadImages : List PreloadCandidate -> Cmd msg
 port auth0showLock : Auth0.Options -> Cmd msg
 
 
-port auth0authResult : (Auth0.RawAuthenticationResult -> msg) -> Sub msg
-
-
 port auth0logout : () -> Cmd msg
+
+
+port onAuth0Result : (Auth0.RawAuthenticationResult -> msg) -> Sub msg
+
+
+port onAuth0Logout : (() -> msg) -> Sub msg
 
 
 port onLoadPokedex : (Value -> msg) -> Sub msg

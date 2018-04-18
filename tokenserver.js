@@ -21,6 +21,17 @@
  *     "message": <string>,         // if success == false
  *   }
  *
+ * Possible status codes:
+ *   success == false:
+ *     400 : Referer not allowed (CORS)
+ *     400 : Missing or empty property "jwtToken"
+ *     400 : JWT token malformed
+ *     400 : JWT token invalid  
+ *     403 : JWT token expired  
+ *     500 : Unable to obtain Firebase token
+ *   success == true:
+ *     200 : OK, returns Firebase token
+ *
  * See also:
  * - http://blog.pixelastic.com/2017/10/28/authenticating-to-firebase-from-a-server/
  * - http://blog.pixelastic.com/2017/11/01/firebase-authentication-with-auth0/
@@ -29,12 +40,16 @@
 
 'use strict';
 
-const Jwt2FirebaseServer = (function () {
+const FirebaseTokenServer = (function () {
 
     const PORT = 4202;
     const AUTHORIZED_USERS = /^[^@]+@proforto\.nl$/;
     const DATABASE_URL = 'https://sprintname-voting-booth.firebaseio.com';
-    const VALID_REFERERS = [ 'http://localhost:4201', 'http://votingbooth.ddns.net:4201' ];
+    const DEBUG_EXPIRED_TOKEN = false;
+    const VALID_REFERERS = [
+        'http://localhost:4201',
+        'http://votingbooth.ddns.net:4201'
+    ];
 
     const fs = require('fs');
     const express = require('express');
@@ -44,7 +59,7 @@ const Jwt2FirebaseServer = (function () {
     /**
      * Constructor.
      */
-    let Jwt2FirebaseServer = function ()
+    let FirebaseTokenServer = function ()
     {
         this.publicKey = fs.readFileSync('./dist/public-auth0.key');
         this.serviceAccountKey = require('./dist/serviceAccountKey.json');
@@ -60,7 +75,7 @@ const Jwt2FirebaseServer = (function () {
     /**
      * Start the server. Install processRequest() as handler.
      */
-    Jwt2FirebaseServer.prototype.startServer = function ()
+    FirebaseTokenServer.prototype.startServer = function ()
     {
         // Parses the body test as JSON and exposes the resulting object on request.body
         //        this.server.use(bodyParser.json());
@@ -82,18 +97,31 @@ const Jwt2FirebaseServer = (function () {
      * Process a request. Takes a JWT web token as JSON as input and returns
      * a firebase token.
      */
-    Jwt2FirebaseServer.prototype.processRequest = function (request, response)
+    FirebaseTokenServer.prototype.processRequest = function (request, response)
     {
         let status, userData, firebaseToken;
+        
         /**
          * Validate the referer (origin)
          */
         if (!this.validateOrigin(request, response)) {
-            status = 403;
+            status = 400;
             return response.status(status).json({
                 success: false,
                 status,
                 message: 'Referer not allowed'
+            });
+        }
+
+        /**
+         * For debugging: in case a token has expired
+         */
+        if (DEBUG_EXPIRED_TOKEN) {
+            status = 403;
+            return response.status(status).json({
+                success: false,
+                status,
+                message: 'JWT token has expired'
             });
         }
         /**
@@ -145,7 +173,7 @@ const Jwt2FirebaseServer = (function () {
      *
      * We could have chosen for  https://www.npmjs.com/package/cors
      */
-    Jwt2FirebaseServer.prototype.validateOrigin = function (request, response)
+    FirebaseTokenServer.prototype.validateOrigin = function (request, response)
     {
         let referer = request.headers.referer.replace(/\/$/, '');
         response.header('Access-Control-Allow-Origin', referer);
@@ -157,9 +185,11 @@ const Jwt2FirebaseServer = (function () {
      * Also validate that this is an authorized account.
      * Throw an error if invalid or unauthorized.
      *
+     * See also https://github.com/auth0/node-jsonwebtoken
+     *
      * @return userData from JWT token if successful.
      */
-    Jwt2FirebaseServer.prototype.validateJwtToken = function (jwtToken)
+    FirebaseTokenServer.prototype.validateJwtToken = function (jwtToken)
     {
         let userData;
         try {
@@ -175,7 +205,9 @@ const Jwt2FirebaseServer = (function () {
             }
         }
         catch (e) {
-            throw({ status: 403, message: e.message });
+            let message = e.message.replace(/^jwt /, 'JWT ');
+            let status = e.name === 'TokenExpiredError' ? 403 : 400;
+            throw({ status, message });
         }
         return userData;
     };
@@ -183,13 +215,13 @@ const Jwt2FirebaseServer = (function () {
     /**
      * use the service account key to authenticate with the firebase server
      */
-    Jwt2FirebaseServer.prototype.issueFirebaseToken = function (userData)
+    FirebaseTokenServer.prototype.issueFirebaseToken = function (userData)
     {
         return this.firebaseAdmin.auth().createCustomToken(userData.email);
     };
 
-    return Jwt2FirebaseServer;
+    return FirebaseTokenServer;
 })();
 
-const server = new Jwt2FirebaseServer();
+const server = new FirebaseTokenServer();
 
