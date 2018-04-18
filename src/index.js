@@ -195,7 +195,7 @@ const ElmConnector = function (jQuery, firebase)
                 result.err.code = result.err.code ? result.err.code : null;
                 result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
             }
-            me.votingApp.ports.onAuthenticationResult.send(result);
+            me.votingApp.ports.onAuth0Result.send(result);
         });
     };
 
@@ -227,11 +227,10 @@ const ElmConnector = function (jQuery, firebase)
                 let status = e.status || 500;
                 let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
                 jQuery('#message-box').text(status + ': ' + message).addClass('error');
+                // communicate logout to elm
+                me.votingApp.ports.onAuth0Logout.send(null);
                 // destroy tokens
                 me.logout();
-                // communicate to elm
-                let result = { ok: null, err: null };
-                me.votingApp.ports.onAuthenticationResult.send(result);
                 // if the token was expired, try to obtain a new one
                 if (status === 403) {
                     me.lock.show.call(me.lock);
