@@ -8,15 +8,15 @@ import Models.Ratings exposing (UserVote, RemoteTeamRatings, RemoteUserRatings)
 
 
 type Msg
-    = OnLoadPokedex RemotePokedex
-    | OnLoadTeamRatings RemoteTeamRatings
-    | OnLoadUserRatings RemoteUserRatings
-    | OnSaveUserRatings RemoteUserRatings
+    = PokedexLoaded RemotePokedex
+    | TeamRatingsLoaded RemoteTeamRatings
+    | UserRatingsLoaded RemoteUserRatings
+    | UserRatingsSaved RemoteUserRatings
     | AuthenticationMsg Authentication.Msg
-    | ChangeGenerationAndLetter Int Char
-    | ChangeGeneration Int
-    | ChangeLetter Char
-    | ChangeVariant Int BrowseDirection
+    | GenerationAndLetterChanged Int Char
+    | GenerationChanged Int
+    | LetterChanged Char
+    | VariantChanged Int BrowseDirection
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | VoteForPokemon UserVote
