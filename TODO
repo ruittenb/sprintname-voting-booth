@@ -1,8 +1,9 @@
 
 missing:
- - show ratings also when user did not yet login
  - refresh auth0 token when it expires
    - then re-enable reading the authentication info from the localStorage
+ - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
+ - trigger elm logout from javascript
  - do something about unrendered animation on messagebox
  - rename messages in terms of things that happened <https://gist.github.com/Chadtech/89d9e085c3c5bf79602cceb53fbd6e31>
 
