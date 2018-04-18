@@ -17,7 +17,7 @@ import Ports
     exposing
         ( auth0showLock
         , auth0logout
-        , auth0authResult
+        , onAuthenticationResult
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
@@ -59,7 +59,7 @@ init initialUser location =
 subscriptions : ApplicationState -> Sub Msg
 subscriptions _ =
     Sub.batch
-        [ auth0authResult (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
+        [ onAuthenticationResult (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
         , onLoadPokedex (decodePokedex >> Msgs.OnLoadPokedex)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.OnLoadTeamRatings)
         , onLoadUserRatings (decodeUserRatings >> Msgs.OnLoadUserRatings)

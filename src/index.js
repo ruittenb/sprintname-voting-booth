@@ -168,6 +168,8 @@ const ElmConnector = function (jQuery, firebase)
 
     /**
      * on succesful authentication, pass the credentials to elm
+     *
+     * maybe replace this with http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
      */
     ElmConnector.prototype.onLockAuthenticated = function (authResult)
     {
@@ -193,7 +195,7 @@ const ElmConnector = function (jQuery, firebase)
                 result.err.code = result.err.code ? result.err.code : null;
                 result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
             }
-            me.votingApp.ports.auth0authResult.send(result);
+            me.votingApp.ports.onAuthenticationResult.send(result);
         });
     };
 
@@ -221,16 +223,18 @@ const ElmConnector = function (jQuery, firebase)
                 return firebase.auth().signInWithCustomToken(firebaseToken);
             })
             .catch(function (e) {
-                console.log('catch ', e);
+                console.error('caught: ', e);
                 let status = e.status || 500;
                 let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
                 jQuery('#message-box').text(status + ': ' + message).addClass('error');
+                // destroy tokens
+                me.logout();
+                // communicate to elm
+                let result = { ok: null, err: null };
+                me.votingApp.ports.onAuthenticationResult.send(result);
+                // if the token was expired, try to obtain a new one
                 if (status === 403) {
-                    me.lock.show.bind(me.lock)();
-                /*
-                } else {
-                    me.logout(); // this does not communicate the authenticated-state to elm
-                */
+                    me.lock.show.call(me.lock);
                 }
             });
         return;

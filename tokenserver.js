@@ -45,6 +45,7 @@ const FirebaseTokenServer = (function () {
     const PORT = 4202;
     const AUTHORIZED_USERS = /^[^@]+@proforto\.nl$/;
     const DATABASE_URL = 'https://sprintname-voting-booth.firebaseio.com';
+    const DEBUG_EXPIRED_TOKEN = false;
     const VALID_REFERERS = [
         'http://localhost:4201',
         'http://votingbooth.ddns.net:4201'
@@ -99,6 +100,7 @@ const FirebaseTokenServer = (function () {
     FirebaseTokenServer.prototype.processRequest = function (request, response)
     {
         let status, userData, firebaseToken;
+        
         /**
          * Validate the referer (origin)
          */
@@ -108,6 +110,18 @@ const FirebaseTokenServer = (function () {
                 success: false,
                 status,
                 message: 'Referer not allowed'
+            });
+        }
+
+        /**
+         * For debugging: in case a token has expired
+         */
+        if (DEBUG_EXPIRED_TOKEN) {
+            status = 403;
+            return response.status(status).json({
+                success: false,
+                status,
+                message: 'JWT token has expired'
             });
         }
         /**
