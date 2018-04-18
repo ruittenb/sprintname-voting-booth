@@ -33,12 +33,7 @@ const ElmConnector = function (jQuery, firebase)
         this.lock.on('authenticated', this.onLockAuthenticated.bind(this));
 
         // logout if the elm app requests it
-        this.votingApp.ports.auth0logout.subscribe(function (opts) {
-            localStorage.removeItem('profile');
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('idToken');
-            // TODO firebase signout
-        });
+        this.votingApp.ports.auth0logout.subscribe(this.logout.bind(this));
 
         /** **********************************************************************
          * database actions: loading and saving ratings
@@ -47,11 +42,11 @@ const ElmConnector = function (jQuery, firebase)
         // load user ratings and send them to elm
         this.votingDb.users.once('value', function (data) {
             let team = data.val();
-            this.votingApp.ports.onLoadTeamRatings.send(team);
+            me.votingApp.ports.onLoadTeamRatings.send(team);
         });
         this.votingDb.users.on('child_changed', function (data) {
             let user = data.val();
-            votingApp.ports.onLoadUserRatings.send(user);
+            me.votingApp.ports.onLoadUserRatings.send(user);
         });
 
         // save user ratings to firebase
@@ -72,7 +67,7 @@ const ElmConnector = function (jQuery, firebase)
         this.votingDb.pokedex.on('value', function (data) {
 
             let pokedex = data.val();
-            votingApp.ports.onLoadPokedex.send(pokedex);
+            me.votingApp.ports.onLoadPokedex.send(pokedex);
             if (!elm_initiates_preload) {
                 let variantImages = pokedex.map(function (p) {
                     return p.variants.map(function (v) {
@@ -162,6 +157,16 @@ const ElmConnector = function (jQuery, firebase)
     };
 
     /**
+     * Destroy Auth0 token
+     */
+    ElmConnector.prototype.logout = function () {
+        localStorage.removeItem('profile');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('idToken');
+        firebase.auth().signOut();
+    };
+
+    /**
      * on succesful authentication, pass the credentials to elm
      */
     ElmConnector.prototype.onLockAuthenticated = function (authResult)
@@ -218,10 +223,14 @@ const ElmConnector = function (jQuery, firebase)
             .catch(function (e) {
                 console.log('catch ', e);
                 let status = e.status || 500;
-                let message = e.responseJSON ? e.responseJSON.message : e.message;
+                let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
                 jQuery('#message-box').text(status + ': ' + message).addClass('error');
                 if (status === 403) {
                     me.lock.show.bind(me.lock)();
+                /*
+                } else {
+                    me.logout(); // this does not communicate the authenticated-state to elm
+                */
                 }
             });
         return;
@@ -244,6 +253,20 @@ lock.checkSession({}, function (error, authResult) {
 });
 */
 
+/*
+ firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+  }
+  // ...
+});
+*/
 
 /** **********************************************************************
  * make certain objects available for debugging
