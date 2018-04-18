@@ -54,7 +54,7 @@ hashToMsg location =
         subpage =
             dissectLocationHash location invalidPage
     in
-        Msgs.ChangeGenerationAndLetter subpage.generation subpage.letter
+        Msgs.GenerationAndLetterChanged subpage.generation subpage.letter
 
 
 
@@ -64,13 +64,13 @@ hashToMsg location =
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
-        Msgs.OnLoadTeamRatings NotAsked ->
+        Msgs.TeamRatingsLoaded NotAsked ->
             ( oldState, Cmd.none )
 
-        Msgs.OnLoadTeamRatings Loading ->
+        Msgs.TeamRatingsLoaded Loading ->
             ( oldState, Cmd.none )
 
-        Msgs.OnLoadTeamRatings (Success ratings) ->
+        Msgs.TeamRatingsLoaded (Success ratings) ->
             let
                 newRatings =
                     RemoteData.succeed ratings
@@ -83,7 +83,7 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.OnLoadTeamRatings (Failure message) ->
+        Msgs.TeamRatingsLoaded (Failure message) ->
             let
                 newState =
                     { oldState
@@ -94,7 +94,7 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.OnLoadUserRatings (Success userRatings) ->
+        Msgs.UserRatingsLoaded (Success userRatings) ->
             let
                 newRatings =
                     RemoteData.map
@@ -106,26 +106,26 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.OnLoadUserRatings _ ->
+        Msgs.UserRatingsLoaded _ ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveUserRatings NotAsked ->
+        Msgs.UserRatingsSaved NotAsked ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveUserRatings Loading ->
+        Msgs.UserRatingsSaved Loading ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveUserRatings (Success ratings) ->
+        Msgs.UserRatingsSaved (Success ratings) ->
             ( oldState, Cmd.none )
 
-        Msgs.OnSaveUserRatings (Failure message) ->
+        Msgs.UserRatingsSaved (Failure message) ->
             let
                 newState =
                     { oldState | statusMessage = toString message, statusLevel = Error }
             in
                 ( newState, Cmd.none )
 
-        Msgs.OnLoadPokedex pokedex ->
+        Msgs.PokedexLoaded pokedex ->
             updateOnLoadPokedex oldState pokedex
 
         Msgs.AuthenticationMsg authMsg ->
@@ -141,16 +141,16 @@ update msg oldState =
             in
                 ( newState, Cmd.map Msgs.AuthenticationMsg cmd )
 
-        Msgs.ChangeGeneration newGen ->
+        Msgs.GenerationChanged newGen ->
             updateChangeGenerationAndLetter oldState newGen oldState.letter
 
-        Msgs.ChangeLetter newLetter ->
+        Msgs.LetterChanged newLetter ->
             updateChangeGenerationAndLetter oldState oldState.generation newLetter
 
-        Msgs.ChangeGenerationAndLetter newGen newLetter ->
+        Msgs.GenerationAndLetterChanged newGen newLetter ->
             updateChangeGenerationAndLetter oldState newGen newLetter
 
-        Msgs.ChangeVariant pokemonNumber direction ->
+        Msgs.VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction
 
         Msgs.SearchPokemon pattern ->

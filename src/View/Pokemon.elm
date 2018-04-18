@@ -231,7 +231,7 @@ pokemonTile viewMode ratings currentUser pokemon =
                     [ classList
                         [ ( "left-arrow", List.length pokemon.variants > 1 )
                         ]
-                    , onClick (Msgs.ChangeVariant pokemon.number Prev)
+                    , onClick (Msgs.VariantChanged pokemon.number Prev)
                     ]
                     []
                 , div [ class "pokemon-image-box" ]
@@ -249,7 +249,7 @@ pokemonTile viewMode ratings currentUser pokemon =
                     [ classList
                         [ ( "right-arrow", List.length pokemon.variants > 1 )
                         ]
-                    , onClick (Msgs.ChangeVariant pokemon.number Next)
+                    , onClick (Msgs.VariantChanged pokemon.number Next)
                     ]
                     []
                 ]

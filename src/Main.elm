@@ -62,9 +62,9 @@ subscriptions _ =
     Sub.batch
         [ onAuth0Result (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
         , onAuth0Logout (\() -> Msgs.AuthenticationMsg Authentication.LogOut)
-        , onLoadPokedex (decodePokedex >> Msgs.OnLoadPokedex)
-        , onLoadTeamRatings (decodeTeamRatings >> Msgs.OnLoadTeamRatings)
-        , onLoadUserRatings (decodeUserRatings >> Msgs.OnLoadUserRatings)
+        , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
+        , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)
+        , onLoadUserRatings (decodeUserRatings >> Msgs.UserRatingsLoaded)
         ]
 
 
