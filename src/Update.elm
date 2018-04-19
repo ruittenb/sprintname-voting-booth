@@ -162,5 +162,5 @@ update msg oldState =
                 oldState.debounceState
                 debMsg
 
-        Msgs.VoteForPokemon userVote ->
+        Msgs.PokemonVoteCast userVote ->
             updateVoteForPokemon oldState userVote
