@@ -220,6 +220,7 @@ const ElmConnector = function (jQuery, firebase)
                 }
             })
             .then(function (firebaseToken) {
+                jQuery('#message-box').text('').removeClass('error warning');
                 return firebase.auth().signInWithCustomToken(firebaseToken);
             })
             .catch(function (e) {
