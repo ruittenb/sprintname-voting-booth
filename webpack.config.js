@@ -1,4 +1,5 @@
-var path = require("path");
+const path = require("path");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -36,8 +37,23 @@ module.exports = {
       },
     ],
 
-    noParse: /\.elm$/,
+    noParse: /\.elm$/
   },
+
+  plugins: [
+    /* minification is achieved through following the procedure on:
+     * https://github.com/webpack-contrib/uglifyjs-webpack-plugin
+     */
+    new UglifyJsPlugin({
+      test: /\.js$/,
+      include: /\.js$/,
+      uglifyOptions: {
+        compress: {
+          pure_funcs: [ 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9' ]
+        }
+      }
+    })
+  ],
 
   devServer: {
     inline: true,
