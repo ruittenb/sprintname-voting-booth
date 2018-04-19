@@ -70,7 +70,7 @@ voteWidgetStar pokemonNumber currentUserName rating stars =
             , ( "fa-star", rating >= stars )
             , ( "selected", rating >= stars )
             ]
-        , onClick (Msgs.VoteForPokemon { pokemonNumber = pokemonNumber, vote = stars })
+        , onClick (Msgs.PokemonVoteCast { pokemonNumber = pokemonNumber, vote = stars })
         , title <| currentUserName ++ ": " ++ (toString stars)
         ]
         []
