@@ -11,6 +11,7 @@ improvements:
  - have error message box take its message from state, not from errormessage
  - fix outline css on input text box
  - use actual Route package in Elm
+ - refactor JS with Observer classes
 
 consider:
  - Material Design?
