@@ -7,6 +7,12 @@ import Models.Pokemon exposing (RemotePokedex)
 import Models.Ratings exposing (UserVote, RemoteTeamRatings, RemoteUserRatings)
 
 
+{-
+   Messages should be formulated in terms of things that happened, see:
+   https://gist.github.com/Chadtech/89d9e085c3c5bf79602cceb53fbd6e31
+-}
+
+
 type Msg
     = AuthenticationMsg Authentication.Msg
     | PokedexLoaded RemotePokedex
