@@ -24,6 +24,11 @@ const Preloader = (function (jQuery) {
         this.installButton(buttonParentNode);
     };
 
+    // inherit Observable...
+    Preloader.prototype = new Observable();
+    // but restore the constructor
+    Preloader.prototype.constructor = Preloader;
+
     Preloader.prototype.installButton = function (parentNode)
     {
         let me = this;
