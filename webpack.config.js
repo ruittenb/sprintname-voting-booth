@@ -41,8 +41,21 @@ module.exports = {
   },
 
   plugins: [
-    /* minification is achieved through following the procedure on:
-     * https://github.com/webpack-contrib/uglifyjs-webpack-plugin
+    /**
+     * For configuration, see: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
+     *
+     * Uglification when unbundled (firebase sources are loaded in <script> tags) gives us:
+     * - firebase.js      416366
+     * - firebase-auth.js 144225
+     * - app.js           792084 -> 323247
+     * Result:           1352675 -> 883838 = reduction of 35 %
+     *
+     * Uglification when bundled (firebase sources are loaded in app.js) gives us:
+     * - app.js          1914087 -> 752640 = reduction of 61 %
+     *
+     * Note that bundling increases the un-uglified size.
+     * Unbundled -> Bundled and uglified
+     *   1352675 -> 752640 = reduction of 44 %
      */
     new UglifyJsPlugin({
       test: /\.js$/,
