@@ -35,7 +35,7 @@ start: version
 	nf start
 
 stop:
-	if [ "$(NODE_PIDS)" ]; then \
+	-if [ "$(NODE_PIDS)" ]; then \
 		kill -TERM $(NODE_PIDS) && sleep 1 && \
 		kill -QUIT $(NODE_PIDS) && sleep 1 && \
 		kill -KILL $(NODE_PIDS); \
