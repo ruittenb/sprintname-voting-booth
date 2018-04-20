@@ -3,12 +3,15 @@
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
 require('./index.html'); // ensure index.html gets copied during build
+const firebase = require('firebase');
+require('firebase/auth');
+require('firebase/database');
 
 /** **********************************************************************
  * main
  */
 
-const ElmConnector = function (jQuery, firebase)
+const ElmConnector = function ()
 {
     const elm_initiates_preload = true;
 
@@ -242,7 +245,7 @@ const ElmConnector = function (jQuery, firebase)
 
     return ElmConnector;
 
-}(jQuery, firebase);
+}();
 
 /*
 lock.checkSession({}, function (error, authResult) {
