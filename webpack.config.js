@@ -47,6 +47,7 @@ module.exports = {
     new UglifyJsPlugin({
       test: /\.js$/,
       include: /\.js$/,
+      sourceMap: true,
       uglifyOptions: {
         compress: {
           pure_funcs: [ 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9' ]
@@ -54,6 +55,8 @@ module.exports = {
       }
     })
   ],
+
+  devtool: 'source-map',
 
   devServer: {
     inline: true,
