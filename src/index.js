@@ -7,7 +7,6 @@ const firebase = require('firebase');
 require('firebase/auth');
 require('firebase/database');
 
-require('../dist/Observable.js');
 require('../dist/EventHub.js');
 require('../dist/AuthWrapper.js');
 require('../dist/VotingDb.js');

@@ -1,6 +1,6 @@
 'use strict';
 
-require('Preloader.js');
+require('./Preloader.js');
 
 /** **********************************************************************
  * VotingApp
@@ -69,7 +69,7 @@ const VotingApp = (function (jQuery)
     {
         this.preloader = new Preloader('#' + preloaderControlNodeId);
 
-        const elm = require('./Main.elm');
+        const elm = require('../src/Main.elm');
         const appNode = document.getElementById(votingAppNodeId);
         const authData = profile && accessToken
             ? { profile: JSON.parse(profile), token: accessToken } : null;
