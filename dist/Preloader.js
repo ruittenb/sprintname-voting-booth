@@ -1,3 +1,8 @@
+'use strict';
+
+/** **********************************************************************
+ * VotingAppWrapper
+ */
 
 const Preloader = (function (jQuery) {
 
@@ -23,11 +28,6 @@ const Preloader = (function (jQuery) {
         this.queue(list);
         this.installButton(buttonParentNode);
     };
-
-    // inherit Observable...
-    Preloader.prototype = new Observable();
-    // but restore the constructor
-    Preloader.prototype.constructor = Preloader;
 
     Preloader.prototype.installButton = function (parentNode)
     {
