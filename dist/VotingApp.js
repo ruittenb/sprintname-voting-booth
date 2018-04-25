@@ -1,12 +1,15 @@
 'use strict';
 
-require('./Preloader.js');
+require('./Globals.js');
+const Preloader  = require('./Preloader.js');
+const Observable = require('./Observable.js');
+const Elm        = require('../src/Main.elm');
 
 /** **********************************************************************
  * VotingApp
  */
 
-const VotingApp = (function (jQuery)
+module.exports = (function (jQuery)
 {
     /** **********************************************************************
      * Static data for the event hub
@@ -56,7 +59,7 @@ const VotingApp = (function (jQuery)
     /** **********************************************************************
      * destroy identity
      */
-    AuthWrapper.prototype.appLogout = function ()
+    VotingApp.prototype.appLogout = function ()
     {
         // communicate logout to elm
         this.elmClient.ports.onAuth0Logout.send(null);
@@ -69,11 +72,10 @@ const VotingApp = (function (jQuery)
     {
         this.preloader = new Preloader('#' + preloaderControlNodeId);
 
-        const elm = require('../src/Main.elm');
         const appNode = document.getElementById(votingAppNodeId);
         const authData = profile && accessToken
             ? { profile: JSON.parse(profile), token: accessToken } : null;
-        this.elmClient = elm.Main.embed(appNode, authData);
+        this.elmClient = Elm.Main.embed(appNode, authData);
 
         let me = this;
 
@@ -116,3 +118,4 @@ const VotingApp = (function (jQuery)
 
 })(jQuery);
 
+/* vim: set ts=4 sw=4 et list: */

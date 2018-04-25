@@ -3,7 +3,7 @@
  * Description : Simple implementation of observable-listener pattern
  * Author      : René Uittenbogaard
  */
-const Observable = (function ()
+module.exports = (function ()
 {
     /**
      * Create a constructor function.

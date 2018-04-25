@@ -1,12 +1,14 @@
 'use strict';
 
 require('auth0-lock');
+require('./Globals.js');
+const Observable = require('./Observable.js');
 
 /** **********************************************************************
  * AuthWrapper
  */
 
-const AuthWrapper = function (jQuery)
+module.exports = function (jQuery)
 {
     /** **********************************************************************
      * Static data for the event hub
@@ -151,3 +153,4 @@ const AuthWrapper = function (jQuery)
 
 }(jQuery);
 
+/* vim: set ts=4 sw=4 et list: */

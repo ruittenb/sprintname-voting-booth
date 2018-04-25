@@ -1,10 +1,16 @@
 'use strict';
 
+const firebase = require('firebase');
+require('firebase/auth');
+require('firebase/database');
+require('./Globals.js');
+const Observable = require('./Observable.js');
+
 /** **********************************************************************
  * VotingDb
  */
 
-const VotingDb = (function (jQuery, firebase)
+module.exports = (function (jQuery, firebase)
 {
     /** **********************************************************************
      * Static data for the event hub
@@ -140,3 +146,4 @@ const VotingDb = (function (jQuery, firebase)
 
 })(jQuery, firebase);
 
+/* vim: set ts=4 sw=4 et list: */
