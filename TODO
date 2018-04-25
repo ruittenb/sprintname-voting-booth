@@ -8,10 +8,8 @@ improvements:
  - Use Firebase objects when they have been ported to 0.18:
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire-extra/latest
- - have error message box take its message from state, not from errormessage
  - fix outline css on input text box
  - use actual Route package in Elm
- - refactor JS with Observer classes
 
 consider:
  - Material Design?

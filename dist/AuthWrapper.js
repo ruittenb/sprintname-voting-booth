@@ -52,7 +52,8 @@ module.exports = function (jQuery)
         const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
         const clientDomain = 'proforto.eu.auth0.com';
         const options = {
-            allowedConnections: ['google-oauth2'], // or 'Username-Password-Authentication'
+            allowedConnections: [ 'google-oauth2' ],
+            rememberLastLogin: true,
             autoclose: true,
             audience: 'proforto.eu.auth0.com/userinfo',
             // learn more about authentication parameters at:
@@ -64,6 +65,12 @@ module.exports = function (jQuery)
                     // Learn more about scopes at: https://auth0.com/docs/scopes
                     scope: 'openid email profile'
                 }
+            },
+            theme: {
+                logo: '/dist/favicon-58x58.png'
+            },
+            languageDictionary: {
+                title: "Log in using Auth0"
             }
         };
         this.lock = new Auth0Lock(clientId, clientDomain, options);
