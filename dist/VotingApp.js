@@ -108,9 +108,7 @@ module.exports = (function (jQuery)
 
         // preload images as requested by elm
         this.elmClient.ports.preloadImages.subscribe(function (imageList) {
-            if (elm_initiates_preload) {
-                me.preloader.queue(imageList);
-            }
+            me.preloader.queue(imageList);
         });
     }; // start
 

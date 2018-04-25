@@ -24,20 +24,27 @@ module.exports = (function ()
     EventHub.prototype.constructor = EventHub;
 
     /** **********************************************************************
-     * children are registered and fired to if necessary
+     * children are registered and passed events if necessary
      */
-    EventHub.prototype.register = function (child, fires)
+    EventHub.prototype.register = function (child, events)
     {
-        this.children.push({ child, fires });
+        this.children.push({ child, events });
 
         let me = this;
-        let event, i;
+        let event, handler, i;
 
-        for (i in fires) {
-            event = fires[i];
-            child.on(event, function () {
-                me.fire(event, ...arguments);
-            });
+        for (event of events) {
+            // Create a handler in a new closure scope.
+            // If we didn't do this, all handlers would have the same scope.
+            handler = (function (me, event) {
+                return function () {
+                    let args = Array.prototype.slice.apply(arguments);
+                    Array.prototype.unshift.call(args, event);
+                    me.fire.apply(me, args);
+                };
+            })(me, event);
+            // now install the handler on the client
+            child.on(event, handler);
         }
     };
 

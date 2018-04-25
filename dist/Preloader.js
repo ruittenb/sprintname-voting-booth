@@ -4,7 +4,7 @@
  * VotingAppWrapper
  */
 
-const Preloader = (function (jQuery) {
+module.exports = (function (jQuery) {
 
     const batchSize = 5;
     const batchTime = 250;
@@ -103,7 +103,7 @@ const Preloader = (function (jQuery) {
     {
         const prevGeneration = this.generation;
         for (let i = 0; i < Math.min(batchSize, this.list.length); i += 1) {
-            nextImg = this.list.shift();
+            let nextImg = this.list.shift();
             this.generation = nextImg.generation;
             this.images[i] = new Image();
             this.images[i].src = nextImg.imageUrl;

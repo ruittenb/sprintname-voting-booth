@@ -22,10 +22,12 @@ module.exports = (function ()
      */
     Observable.prototype.fire = function () // event, arguments
     {
-        let handler, data = arguments;
+        let handler;
+        let data = Array.prototype.slice.apply(arguments);
         let ev = Array.prototype.shift.call(data);
+
         for (let i in this.handlers[ev]) {
-            this.handlers[ev][i].apply(this, data);
+            this.handlers[ev][i](...data);
         }
     };
 
@@ -36,17 +38,13 @@ module.exports = (function ()
      *   Event to handle
      * @param Function handler
      *   Handler to call when the event is fired
-     * @param Object context
-     *   Handler's context
      */
-    Observable.prototype.on = function (ev, handler, context)
+    Observable.prototype.on = function (ev, handler)
     {
         if (this.handlers[ev] === undefined) {
             this.handlers[ev] = [];
         }
-        this.handlers[ev].push(function () {
-            handler.apply(context, arguments);
-        });
+        this.handlers[ev].push(handler);
     };
 
     // return constructor function

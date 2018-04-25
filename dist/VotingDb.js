@@ -18,7 +18,8 @@ module.exports = (function (jQuery, firebase)
     const fires = [
         FIREBASE_SIGNIN_FAILED,
         TEAM_RATINGS_LOADED,
-        USER_RATINGS_LOADED
+        USER_RATINGS_LOADED,
+        POKEDEX_LOADED
     ];
 
     const tokenserverUrl = `http://${window.location.hostname}:4202/`;

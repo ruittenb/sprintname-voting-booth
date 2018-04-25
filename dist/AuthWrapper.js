@@ -79,9 +79,9 @@ module.exports = function (jQuery)
         let storedIdToken     = localStorage.getItem('idToken');
         if (storedProfile && storedIdToken) {
             // for firebase
-            me.fire(ID_TOKEN_FOUND_IN_STORAGE, storedIdToken);
+            this.fire(ID_TOKEN_FOUND_IN_STORAGE, storedIdToken);
         }
-        me.fire(PROFILE_PROBED_IN_STORAGE, storedProfile, storedAccessToken);
+        this.fire(PROFILE_PROBED_IN_STORAGE, storedProfile, storedAccessToken);
     };
 
 
