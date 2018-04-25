@@ -122,7 +122,7 @@ module.exports = function (jQuery)
                 result.err.code = result.err.code ? result.err.code : null;
                 result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
             }
-            me.fire('USER_AUTHENTICATED', result);
+            me.fire(USER_AUTHENTICATED, result);
         });
     };
 
@@ -141,7 +141,6 @@ module.exports = function (jQuery)
      */
     AuthWrapper.prototype.forceLogout = function (retry)
     {
-        this.votingApp.ports.onAuth0Logout.send(null);
         // destroy tokens
         this.logout();
         if (retry) {

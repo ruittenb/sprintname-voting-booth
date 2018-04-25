@@ -22,29 +22,27 @@ module.exports = (function ()
      */
     Observable.prototype.fire = function () // event, arguments
     {
-        let handler;
         let data = Array.prototype.slice.apply(arguments);
-        let ev = Array.prototype.shift.call(data);
-
-        for (let i in this.handlers[ev]) {
-            this.handlers[ev][i](...data);
+        let event = Array.prototype.shift.call(data);
+        for (let i in this.handlers[event]) {
+            this.handlers[event][i](...data);
         }
     };
 
     /**
      * Add a handler.
      *
-     * @param String ev
+     * @param String event
      *   Event to handle
      * @param Function handler
      *   Handler to call when the event is fired
      */
-    Observable.prototype.on = function (ev, handler)
+    Observable.prototype.on = function (event, handler)
     {
-        if (this.handlers[ev] === undefined) {
-            this.handlers[ev] = [];
+        if (this.handlers[event] === undefined) {
+            this.handlers[event] = [];
         }
-        this.handlers[ev].push(handler);
+        this.handlers[event].push(handler);
     };
 
     // return constructor function

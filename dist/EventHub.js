@@ -38,6 +38,8 @@ module.exports = (function ()
             // If we didn't do this, all handlers would have the same scope.
             handler = (function (me, event) {
                 return function () {
+                    console.info('%c' + event.toUpperCase(), 'background-color: #bef'); // TODO
+
                     let args = Array.prototype.slice.apply(arguments);
                     Array.prototype.unshift.call(args, event);
                     me.fire.apply(me, args);
