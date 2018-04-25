@@ -41,9 +41,7 @@ stop:
 		kill -KILL $(NODE_PIDS); \
 	fi
 
-restart:
-	make stop
-	make start
+restart: stop start
 
 docker-status:
 	-docker images | grep voting-booth

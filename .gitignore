@@ -63,7 +63,7 @@ Icon
 # ruittenb scratchpad
 _fabriek
 # ruittenb sensitive data
-dist/serviceAccountKey.json
-dist/public-auth0.key
+serviceAccountKey.json
+public-auth0.key
 # ruittenb volatile data
 dist/version.js

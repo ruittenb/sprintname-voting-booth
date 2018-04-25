@@ -61,8 +61,8 @@ const FirebaseTokenServer = (function () {
      */
     let FirebaseTokenServer = function ()
     {
-        this.publicKey = fs.readFileSync('./dist/public-auth0.key');
-        this.serviceAccountKey = require('./dist/serviceAccountKey.json');
+        this.publicKey = fs.readFileSync('./keys/public-auth0.key');
+        this.serviceAccountKey = require('./keys/serviceAccountKey.json');
         this.firebaseAdmin = require('firebase-admin');
         this.firebaseAdmin.initializeApp({
             credential: this.firebaseAdmin.credential.cert(this.serviceAccountKey),
