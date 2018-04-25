@@ -11,6 +11,7 @@ usage:
 	@echo "  make start   : start the webserver"
 	@echo "  make stop    : stop the webserver"
 	@echo "  make restart : restart the webserver"
+	@echo "  make version : write tag version to webroot file"
 	@echo "  make status  : show webserver status"
 	@echo
 	@echo "  make docker-build      : build the docker image"
