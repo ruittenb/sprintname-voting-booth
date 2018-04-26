@@ -70,7 +70,7 @@ module.exports = function (jQuery)
                 logo: '/dist/favicon-58x58.png'
             },
             languageDictionary: {
-                title: "Log in using Auth0"
+                title: "Voting Booth Login"
             }
         };
         this.lock = new Auth0Lock(clientId, clientDomain, options);
