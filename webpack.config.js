@@ -45,7 +45,6 @@ module.exports = {
      * For configuration, see: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
      *
      * Uglification gives us an average reduction of 40% in file size.
-     */
     new UglifyJsPlugin({
       test: /\.js$/,
       include: /\.js$/,
@@ -56,6 +55,7 @@ module.exports = {
         }
       }
     })
+     */
   ],
 
   devtool: 'source-map',
