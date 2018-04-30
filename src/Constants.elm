@@ -15,7 +15,7 @@ initialGeneration =
 
 initialLetter : Char
 initialLetter =
-    'P'
+    'S'
 
 
 maxStars : Int
