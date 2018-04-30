@@ -45,7 +45,7 @@ module.exports = (function (jQuery)
     /** **********************************************************************
      * signal GO!
      */
-    VotingApp.prototype.start = function (result) {
+    VotingApp.prototype.run = function (result) {
         this.fire(APP_REQUESTS_STORED_PROFILE);
     };
 
@@ -110,7 +110,7 @@ module.exports = (function (jQuery)
         this.elmClient.ports.preloadImages.subscribe(function (imageList) {
             me.preloader.queue(imageList);
         });
-    }; // start
+    }; // receiveProfile
 
     return VotingApp;
 
