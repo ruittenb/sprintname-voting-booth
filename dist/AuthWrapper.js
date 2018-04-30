@@ -53,7 +53,9 @@ module.exports = function (jQuery)
         const clientDomain = 'proforto.eu.auth0.com';
         const options = {
             allowedConnections: [ 'google-oauth2' ],
+            oidcConformant: true,
             rememberLastLogin: true,
+            disableSignupAction: true,
             autoclose: true,
             audience: 'proforto.eu.auth0.com/userinfo',
             // learn more about authentication parameters at:
