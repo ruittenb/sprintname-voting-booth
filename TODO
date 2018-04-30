@@ -10,8 +10,10 @@ improvements:
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire-extra/latest
  - fix outline css on input text box
  - use actual Route package in Elm
+ - better preloading strategy: preload only:
+   - all letters in current generation
+   - all generations for current letter (how?)
 
 consider:
  - Material Design?
-
 
