@@ -32,7 +32,7 @@ module.exports = (function (jQuery)
         this.eventHub = eventHub;
 
         eventHub.register(this, fires);
-        eventHub.on(PROFILE_PROBED_IN_STORAGE, this.receiveProfile.bind(this));
+        eventHub.on(PROFILE_FOUND_IN_STORAGE, this.receiveProfile.bind(this));
 
     }; // constructor
 

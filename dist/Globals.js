@@ -6,7 +6,7 @@
 global.APP_REQUESTS_STORED_PROFILE = 'app_requests_stored_profile';
 global.ID_TOKEN_RECEIVED_FROM_AUTH = 'id_token_received_from_auth';
 global.ID_TOKEN_FOUND_IN_STORAGE   = 'id_token_found_in_storage';
-global.PROFILE_PROBED_IN_STORAGE   = 'profile_probed_in_storage';
+global.PROFILE_FOUND_IN_STORAGE    = 'profile_found_in_storage';
 global.USER_REQUESTED_LOGIN_DIALOG = 'user_requested_login_dialog';
 global.USER_REQUESTED_LOGOUT       = 'user_requested_logout';
 global.USER_AUTHENTICATED          = 'user_authenticated';

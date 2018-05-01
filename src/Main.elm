@@ -60,6 +60,7 @@ init initialUser location =
 subscriptions : ApplicationState -> Sub Msg
 subscriptions _ =
     Sub.batch
+        --, Time.every second Tick
         [ onAuth0Result (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
         , onAuth0Logout (\() -> Msgs.AuthenticationMsg Authentication.LogOut)
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)

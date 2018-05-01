@@ -16,7 +16,7 @@ module.exports = function (jQuery)
     const fires = [
         ID_TOKEN_RECEIVED_FROM_AUTH,
         ID_TOKEN_FOUND_IN_STORAGE,
-        PROFILE_PROBED_IN_STORAGE,
+        PROFILE_FOUND_IN_STORAGE,
         USER_AUTHENTICATED
     ];
 
@@ -29,7 +29,7 @@ module.exports = function (jQuery)
 
         eventHub.register(this, fires);
 
-        eventHub.on(APP_REQUESTS_STORED_PROFILE, this.probeStoredProfile.bind(this));
+        eventHub.on(APP_REQUESTS_STORED_PROFILE, this.seekStoredProfile.bind(this));
         eventHub.on(USER_REQUESTED_LOGIN_DIALOG, this.show.bind(this));
         eventHub.on(USER_REQUESTED_LOGOUT, this.logout.bind(this));
         eventHub.on(FIREBASE_SIGNIN_FAILED, this.forceLogout.bind(this));
@@ -81,7 +81,7 @@ module.exports = function (jQuery)
     /** **********************************************************************
      * start: try to find a stored id token
      */
-    AuthWrapper.prototype.probeStoredProfile = function ()
+    AuthWrapper.prototype.seekStoredProfile = function ()
     {
         let storedProfile     = localStorage.getItem('profile');
         let storedAccessToken = localStorage.getItem('accessToken');
@@ -90,7 +90,7 @@ module.exports = function (jQuery)
             // for firebase
             this.fire(ID_TOKEN_FOUND_IN_STORAGE, storedIdToken);
         }
-        this.fire(PROFILE_PROBED_IN_STORAGE, storedProfile, storedAccessToken);
+        this.fire(PROFILE_FOUND_IN_STORAGE, storedProfile, storedAccessToken);
     };
 
 
@@ -109,6 +109,7 @@ module.exports = function (jQuery)
      */
     AuthWrapper.prototype.onLockAuthenticated = function (authResult)
     {
+        console.log(authResult); // TODO
         let me = this;
 
         // Use the token in authResult to getUserInfo() and save it to localStorage
