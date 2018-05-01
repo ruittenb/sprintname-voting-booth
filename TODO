@@ -1,13 +1,16 @@
 
 missing:
  - refresh auth0 token when it expires
+   - runs into difficulties with checkSession() which seems to attempt to validate wrong email address
  - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
  - do something about unrendered animation on messagebox
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
-   - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest
+   - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest			@effect-manager
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire-extra/latest
+   - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
+   - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
  - fix outline css on input text box
  - use actual Route package in Elm
  - better preloading strategy: preload only:
