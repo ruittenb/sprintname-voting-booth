@@ -109,7 +109,6 @@ module.exports = function (jQuery)
      */
     AuthWrapper.prototype.onLockAuthenticated = function (authResult)
     {
-        console.log(authResult); // TODO
         let me = this;
 
         // Use the token in authResult to getUserInfo() and save it to localStorage
