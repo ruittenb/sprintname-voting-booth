@@ -109,30 +109,46 @@ module.exports = function (jQuery)
      */
     AuthWrapper.prototype.onLockAuthenticated = function (authResult)
     {
-        let me = this;
+        let profile = authResult.profile;
+        let accessToken = authResult.accessToken;
+        let idToken = authResult.idToken;
 
-        // Use the token in authResult to getUserInfo() and save it to localStorage
-        this.lock.getUserInfo(authResult.accessToken, function (err, profile) {
-            let result = { err: null, ok: null };
-            let accessToken = authResult.accessToken;
-            let idToken = authResult.idToken;
+        localStorage.setItem('profile', JSON.stringify(profile));
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('idToken', idToken);
 
-            if (!err) {
-                result.ok = { profile: profile, token: accessToken };
-                localStorage.setItem('profile', JSON.stringify(profile));
-                localStorage.setItem('accessToken', accessToken);
-                localStorage.setItem('idToken', idToken);
-                me.fire(ID_TOKEN_RECEIVED_FROM_AUTH, idToken);
-            } else {
-                result.err = err.details;
+        let result = { err: null, ok: {
+            profile: profile,
+            token: accessToken
+        } };
+        me.fire(ID_TOKEN_RECEIVED_FROM_AUTH, idToken);
+        me.fire(USER_AUTHENTICATED, result);
 
-                // Ensure that optional fields are on the object
-                result.err.name = result.err.name ? result.err.name : null;
-                result.err.code = result.err.code ? result.err.code : null;
-                result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
-            }
-            me.fire(USER_AUTHENTICATED, result);
-        });
+    };
+
+    /** **********************************************************************
+     * Fetch profile if it was not returned with authentication result
+     */
+    AuthWrapper.prototype.getUserInfo = function ()
+    {
+        // // Use the token in authResult to getUserInfo() and save it to localStorage
+        // this.lock.getUserInfo(authResult.accessToken, function (err, profile) {
+        //  if (!err) {
+        //      result.ok = { profile: profile, token: accessToken };
+        //      localStorage.setItem('profile', JSON.stringify(profile));
+        //      localStorage.setItem('accessToken', accessToken);
+        //      localStorage.setItem('idToken', idToken);
+        //      me.fire(ID_TOKEN_RECEIVED_FROM_AUTH, idToken);
+        //  } else {
+        //      result.err = err.details;
+        //
+        //      // Ensure that optional fields are on the object
+        //      result.err.name = result.err.name ? result.err.name : null;
+        //      result.err.code = result.err.code ? result.err.code : null;
+        //      result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
+        //  }
+        //  me.fire(USER_AUTHENTICATED, result);
+        // });
     };
 
     /** **********************************************************************
