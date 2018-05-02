@@ -1,5 +1,7 @@
 const path = require("path");
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: {
@@ -40,11 +42,12 @@ module.exports = {
     noParse: /\.elm$/
   },
 
-  plugins: [
+  plugins: !isProduction ? [] : [
     /**
      * For configuration, see: https://github.com/webpack-contrib/uglifyjs-webpack-plugin
      *
      * Uglification gives us an average reduction of 40% in file size.
+     */
     new UglifyJsPlugin({
       test: /\.js$/,
       include: /\.js$/,
@@ -55,7 +58,6 @@ module.exports = {
         }
       }
     })
-     */
   ],
 
   devtool: 'source-map',
