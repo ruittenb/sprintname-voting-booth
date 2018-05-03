@@ -1,10 +1,10 @@
 module Msgs exposing (Msg(..))
 
-import Authentication
 import Control exposing (Control)
 import Models.Types exposing (..)
+import Models.Auth exposing (RemoteLoggedInUser)
 import Models.Pokemon exposing (RemotePokedex)
-import Models.Ratings exposing (UserVote, RemoteTeamRatings, RemoteUserRatings)
+import Models.Ratings exposing (RemoteTeamRatings, RemoteUserRatings, UserVote)
 
 
 {-
@@ -14,7 +14,9 @@ import Models.Ratings exposing (UserVote, RemoteTeamRatings, RemoteUserRatings)
 
 
 type Msg
-    = AuthenticationMsg Authentication.Msg
+    = AuthenticationReceived RemoteLoggedInUser
+    | AuthenticationLoginClicked
+    | AuthenticationLogoutClicked
     | PokedexLoaded RemotePokedex
     | TeamRatingsLoaded RemoteTeamRatings
     | UserRatingsLoaded RemoteUserRatings

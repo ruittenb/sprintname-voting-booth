@@ -15,7 +15,6 @@ module.exports = (function (jQuery)
      * Static data for the event hub
      */
     const fires = [
-        APP_REQUESTS_STORED_PROFILE,
         USER_REQUESTED_LOGIN_DIALOG,
         USER_REQUESTED_LOGOUT,
         USER_VOTES_CAST
@@ -30,9 +29,9 @@ module.exports = (function (jQuery)
     let VotingApp = function (eventHub)
     {
         this.eventHub = eventHub;
+        this.preloader = new Preloader('#' + preloaderControlNodeId);
 
         eventHub.register(this, fires);
-        eventHub.on(PROFILE_FOUND_IN_STORAGE, this.receiveProfile.bind(this));
 
     }; // constructor
 
@@ -43,39 +42,17 @@ module.exports = (function (jQuery)
     VotingApp.prototype.constructor = VotingApp;
 
     /** **********************************************************************
-     * signal GO!
+     * GO!
      */
-    VotingApp.prototype.run = function (result) {
-        this.fire(APP_REQUESTS_STORED_PROFILE);
-    };
-
-    /** **********************************************************************
-     * when credentials change
-     */
-    VotingApp.prototype.sendAuthResult = function (result) {
-        this.elmClient.ports.onAuth0Result.send(result);
-    };
-
-    /** **********************************************************************
-     * destroy identity
-     */
-    VotingApp.prototype.appLogout = function ()
+    VotingApp.prototype.run = function (idToken, accessToken, profile)
     {
-        // communicate logout to elm
-        this.elmClient.ports.onAuth0Logout.send(null);
-    };
-
-    /** **********************************************************************
-     * start the elm app with credentials, if possible
-     */
-    VotingApp.prototype.receiveProfile = function (profile, accessToken)
-    {
-        this.preloader = new Preloader('#' + preloaderControlNodeId);
-
+        const storedProfile = {
+            idToken: idToken,
+            accessToken: accessToken,
+            profile: profile,
+        };
         const appNode = document.getElementById(votingAppNodeId);
-        const authData = profile && accessToken
-            ? { profile: JSON.parse(profile), token: accessToken } : null;
-        this.elmClient = Elm.Main.embed(appNode, authData);
+        this.elmClient = Elm.Main.embed(appNode, JSON.stringify(storedProfile));
 
         let me = this;
 
@@ -94,11 +71,11 @@ module.exports = (function (jQuery)
         });
 
         // user clicked 'login'
-        this.elmClient.ports.auth0showLock.subscribe(function () {
+        this.elmClient.ports.auth0ShowLock.subscribe(function () {
             me.fire(USER_REQUESTED_LOGIN_DIALOG);
         });
         // logout if the elm app requests it
-        this.elmClient.ports.auth0logout.subscribe(function () {
+        this.elmClient.ports.auth0Logout.subscribe(function () {
             me.fire(USER_REQUESTED_LOGOUT);
         });
         // save user ratings to firebase
@@ -110,7 +87,29 @@ module.exports = (function (jQuery)
         this.elmClient.ports.preloadImages.subscribe(function (imageList) {
             me.preloader.queue(imageList);
         });
-    }; // receiveProfile
+    };
+
+    /** **********************************************************************
+     * when credentials change
+     */
+    VotingApp.prototype.sendAuthResult = function (idToken, accessToken, profile)
+    {
+        const result = {
+            idToken: idToken,
+            accessToken: accessToken,
+            profile: profile,
+        };
+        this.elmClient.ports.onAuth0Result.send(JSON.stringify(result));
+    };
+
+    /** **********************************************************************
+     * destroy identity
+     */
+    VotingApp.prototype.appLogout = function ()
+    {
+        // communicate logout to elm
+        this.elmClient.ports.onAuth0Logout.send(null);
+    };
 
     return VotingApp;
 

@@ -18,5 +18,5 @@ const auth      = new AuthWrapper(eventHub);
 const votingDb  = new VotingDb(eventHub);
 const votingApp = new VotingApp(eventHub);
 
-votingApp.run();
+votingApp.run(auth.retrieveProfile());
 

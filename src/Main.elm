@@ -1,23 +1,26 @@
 module Main exposing (main)
 
-import Auth0
-import Authentication
+import Control
+import Result
 import Navigation exposing (programWithFlags, Location)
 import RemoteData exposing (RemoteData(..))
-import Control exposing (initialState)
+import Json.Encode as Encode exposing (Value)
 import Constants exposing (initialGeneration, initialLetter)
-import Msgs exposing (Msg)
+import Constants.Authentication exposing (auth0Options)
+import Msgs exposing (Msg(..))
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), ViewMode(..))
+import Models.Authentication as Authentication
 import View exposing (view)
 import Update exposing (update, dissectLocationHash, hashToMsg)
+import Commands.Authentication exposing (decodeUser)
 import Commands.Pokemon exposing (decodePokedex)
 import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
 import Ports
     exposing
-        ( auth0showLock
-        , auth0logout
-        , onAuth0Result
+        ( auth0ShowLock
+        , auth0Logout
+        , onAuthenticationReceived
         , onAuth0Logout
         , onLoadPokedex
         , onLoadTeamRatings
@@ -25,11 +28,15 @@ import Ports
         )
 
 
-init : Maybe Auth0.LoggedInUser -> Location -> ( ApplicationState, Cmd Msg )
-init initialUser location =
+init : Value -> Location -> ( ApplicationState, Cmd Msg )
+init storedProfile location =
     let
+        storedUser =
+            decodeUser storedProfile
+                |> Result.toMaybe
+
         authModel =
-            Authentication.init auth0showLock auth0logout initialUser
+            Authentication.init auth0ShowLock auth0Logout auth0Options storedUser
 
         defaultSubpage =
             { generation = initialGeneration
@@ -54,22 +61,26 @@ init initialUser location =
             , ratings = RemoteData.NotAsked
             }
     in
-        ( initialState, Cmd.none )
+        ( initialState
+        , Cmd.none
+          -- |> andThenCmd firebaseAuthUpdate
+        )
 
 
 subscriptions : ApplicationState -> Sub Msg
 subscriptions _ =
     Sub.batch
         --, Time.every second Tick
-        [ onAuth0Result (Authentication.handleAuthResult >> Msgs.AuthenticationMsg)
-        , onAuth0Logout (\() -> Msgs.AuthenticationMsg Authentication.LogOut)
+        [ onAuthenticationReceived (decodeUser >> Msgs.AuthenticationReceived)
+
+        --        , onAuth0Logout (\() -> Msgs.AuthenticationMsg Authentication.LogOut)
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)
         , onLoadUserRatings (decodeUserRatings >> Msgs.UserRatingsLoaded)
         ]
 
 
-main : Program (Maybe Auth0.LoggedInUser) ApplicationState Msg
+main : Program Value ApplicationState Msg
 main =
     Navigation.programWithFlags
         hashToMsg

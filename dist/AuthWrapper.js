@@ -15,8 +15,6 @@ module.exports = function (jQuery)
      */
     const fires = [
         ID_TOKEN_RECEIVED_FROM_AUTH,
-        ID_TOKEN_FOUND_IN_STORAGE,
-        PROFILE_FOUND_IN_STORAGE,
         USER_AUTHENTICATED
     ];
 
@@ -25,17 +23,12 @@ module.exports = function (jQuery)
      */
     let AuthWrapper = function (eventHub)
     {
-        this.init();
-
         eventHub.register(this, fires);
 
-        eventHub.on(APP_REQUESTS_STORED_PROFILE, this.seekStoredProfile.bind(this));
         eventHub.on(USER_REQUESTED_LOGIN_DIALOG, this.show.bind(this));
-        eventHub.on(USER_REQUESTED_LOGOUT, this.logout.bind(this));
+        eventHub.on(USER_REQUESTED_LOGOUT, this.deleteStoredProfile.bind(this));
         eventHub.on(FIREBASE_SIGNIN_FAILED, this.forceLogout.bind(this));
 
-        // when authentication was succesful
-        this.lock.on('authenticated', this.onLockAuthenticated.bind(this));
     }; // constructor
 
     /** **********************************************************************
@@ -51,54 +44,21 @@ module.exports = function (jQuery)
     {
         const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
         const clientDomain = 'proforto.eu.auth0.com';
-        const options = {
-            allowedConnections: [ 'google-oauth2' ],
-            oidcConformant: true,
-            rememberLastLogin: true,
-            disableSignupAction: true,
-            autoclose: true,
-            audience: 'proforto.eu.auth0.com/userinfo',
-            // learn more about authentication parameters at:
-            // https://auth0.com/docs/libraries/lock/v11/sending-authentication-parameters
-            auth: {
-                redirect: false,
-                responseType: 'token id_token',
-                params: {
-                    // Learn more about scopes at: https://auth0.com/docs/scopes
-                    scope: 'openid email profile'
-                }
-            },
-            theme: {
-                logo: '/dist/favicon-58x58.png'
-            },
-            languageDictionary: {
-                title: "Voting Booth Login"
-            }
-        };
-        this.lock = new Auth0Lock(clientId, clientDomain, options);
-    };
 
-    /** **********************************************************************
-     * start: try to find a stored id token
-     */
-    AuthWrapper.prototype.seekStoredProfile = function ()
-    {
-        let storedProfile     = localStorage.getItem('profile');
-        let storedAccessToken = localStorage.getItem('accessToken');
-        let storedIdToken     = localStorage.getItem('idToken');
-        if (storedProfile && storedIdToken) {
-            // for firebase
-            this.fire(ID_TOKEN_FOUND_IN_STORAGE, storedIdToken);
-        }
-        this.fire(PROFILE_FOUND_IN_STORAGE, storedProfile, storedAccessToken);
-    };
+        this.lock = new Auth0Lock(clientId, clientDomain, {});
 
+        // when authentication was succesful
+        this.lock.on('authenticated', this.onLockAuthenticated.bind(this));
+    };
 
     /** **********************************************************************
      * show the login dialog
      */
     AuthWrapper.prototype.show = function ()
     {
+        if (!this.lock) {
+            this.init();
+        }
         this.lock.show();
     };
 
@@ -112,53 +72,41 @@ module.exports = function (jQuery)
         let profile = authResult.profile;
         let accessToken = authResult.accessToken;
         let idToken = authResult.idToken;
+        this.storeProfile(idToken, accessToken, profile);
 
-        localStorage.setItem('profile', JSON.stringify(profile));
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('idToken', idToken);
-
-        let result = { err: null, ok: {
-            profile: profile,
-            token: accessToken
-        } };
-        me.fire(ID_TOKEN_RECEIVED_FROM_AUTH, idToken);
-        me.fire(USER_AUTHENTICATED, result);
-
-    };
-
-    /** **********************************************************************
-     * Fetch profile if it was not returned with authentication result
-     */
-    AuthWrapper.prototype.getUserInfo = function ()
-    {
-        // // Use the token in authResult to getUserInfo() and save it to localStorage
-        // this.lock.getUserInfo(authResult.accessToken, function (err, profile) {
-        //  if (!err) {
-        //      result.ok = { profile: profile, token: accessToken };
-        //      localStorage.setItem('profile', JSON.stringify(profile));
-        //      localStorage.setItem('accessToken', accessToken);
-        //      localStorage.setItem('idToken', idToken);
-        //      me.fire(ID_TOKEN_RECEIVED_FROM_AUTH, idToken);
-        //  } else {
-        //      result.err = err.details;
-        //
-        //      // Ensure that optional fields are on the object
-        //      result.err.name = result.err.name ? result.err.name : null;
-        //      result.err.code = result.err.code ? result.err.code : null;
-        //      result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
-        //  }
-        //  me.fire(USER_AUTHENTICATED, result);
-        // });
+        this.fire(ID_TOKEN_RECEIVED_FROM_AUTH, idToken);
+        this.fire(USER_AUTHENTICATED, accessToken, profile);
     };
 
     /** **********************************************************************
      * Logging out essentially means destroying the token
      */
-    AuthWrapper.prototype.logout = function ()
+    AuthWrapper.prototype.deleteStoredProfile = function ()
     {
-        localStorage.removeItem('profile');
-        localStorage.removeItem('accessToken');
         localStorage.removeItem('idToken');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('profile');
+    };
+
+    /** **********************************************************************
+     * store authentication information
+     */
+    AuthWrapper.prototype.storeProfile = function (idToken, accessToken, profile)
+    {
+        localStorage.setItem('idToken', idToken);
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('profile', JSON.stringify(profile));
+    };
+
+    /** **********************************************************************
+     * retrieve authentication information
+     */
+    AuthWrapper.prototype.retrieveProfile = function ()
+    {
+        let idToken     = localStorage.getItem('idToken');
+        let accessToken = localStorage.getItem('accessToken');
+        let profile     = localStorage.getItem('profile');
+        return [ idToken, accessToken, profile ];
     };
 
     /** **********************************************************************
@@ -167,7 +115,7 @@ module.exports = function (jQuery)
     AuthWrapper.prototype.forceLogout = function (retry)
     {
         // destroy tokens
-        this.logout();
+        this.deleteStoredProfile();
         if (retry) {
             this.show();
         }

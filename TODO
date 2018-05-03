@@ -12,11 +12,16 @@ improvements:
    - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
  - fix outline css on input text box
+ - use billstclair/elm-localstorage?
  - use actual Route package in Elm
+ - subpage in model instead of subpage.currentLetter and subpage.currentGeneration
+ - rename RemotePokedex etc. to PokedexData or PokedexBlurb or PokedexSplotch or PokedexGoo o.i.d.
  - better preloading strategy: preload only:
    - all letters in current generation
    - all generations for current letter (how?)
 
 consider:
  - Material Design?
+ - replace tooltips with jQuery.Tooltip ?
+
 

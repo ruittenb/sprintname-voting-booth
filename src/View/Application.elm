@@ -4,13 +4,14 @@ import Time exposing (Time, second)
 import Html exposing (..)
 import Html.Attributes exposing (attribute, id, href, class, classList, tabindex, placeholder, disabled)
 import Html.Events exposing (onClick, onInput, onSubmit)
-import Authentication exposing (tryGetUserProfile, isLoggedIn)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
 import Helpers exposing (filterPokedex, romanNumeral)
+import Helpers.Authentication exposing (tryGetUserProfile, isLoggedIn)
 import Msgs exposing (Msg(..))
 import Models exposing (..)
 import Models.Types exposing (..)
+import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
 import Constants exposing (..)
 
@@ -74,7 +75,8 @@ searchBox viewMode =
             [ id "search-box"
             , classList [ ( "current", viewMode == Search ) ]
             , placeholder "Search in pokédex"
-            , Html.Attributes.map debounce <| onInput Msgs.SearchPokemon
+            , onInput Msgs.SearchPokemon
+                |> Html.Attributes.map debounce
             ]
             []
         ]
@@ -117,7 +119,7 @@ letterButton viewMode pokedex currentGen currentLetter letter =
                 ]
             , href hash
             ]
-            [ text <| String.fromChar letter ]
+            [ String.fromChar letter |> text ]
 
 
 letterButtons : ViewMode -> RemotePokedex -> Int -> Char -> Html Msg
@@ -136,7 +138,7 @@ letterButtons viewMode pokedex currentGen currentLetter =
         div [ id "letter-buttons" ] buttonList
 
 
-loginLogoutButton : Authentication.Model -> CurrentUser -> String -> StatusLevel -> Html Msg
+loginLogoutButton : AuthenticationModel -> CurrentUser -> String -> StatusLevel -> Html Msg
 loginLogoutButton authModel user message level =
     let
         loggedIn =
@@ -157,11 +159,11 @@ loginLogoutButton authModel user message level =
 
         buttonMsg =
             if loggedIn then
-                Authentication.LogOut
+                AuthenticationLogoutClicked
             else
-                Authentication.ShowLogIn
+                AuthenticationLoginClicked
     in
-        div [ id "user-buttons" ] <|
+        div [ id "user-buttons" ]
             [ div
                 [ id "user-name"
                 , classList
@@ -171,7 +173,7 @@ loginLogoutButton authModel user message level =
                 [ text userName ]
             , button
                 [ class "user-button"
-                , onClick (Msgs.AuthenticationMsg buttonMsg)
+                , onClick buttonMsg
                 ]
                 [ text buttonText ]
             , div

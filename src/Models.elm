@@ -1,10 +1,10 @@
 module Models exposing (..)
 
 import Models.Types exposing (..)
+import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (RemotePokedex)
 import Models.Ratings exposing (RemoteTeamRatings)
 import Msgs exposing (Msg)
-import Authentication
 import Control exposing (State)
 
 
@@ -25,7 +25,7 @@ type alias CurrentUser =
 
 
 type alias ApplicationState =
-    { authModel : Authentication.Model
+    { authModel : AuthenticationModel
     , user : CurrentUser
     , statusMessage : String
     , statusLevel : StatusLevel
