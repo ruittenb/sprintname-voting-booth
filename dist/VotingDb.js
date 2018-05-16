@@ -3,8 +3,6 @@
 const firebase = require('firebase');
 require('firebase/auth');
 require('firebase/database');
-require('./Globals.js');
-const Observable = require('./Observable.js');
 
 /** **********************************************************************
  * VotingDb
@@ -13,25 +11,16 @@ const Observable = require('./Observable.js');
 module.exports = (function (jQuery, firebase)
 {
     /** **********************************************************************
-     * Static data for the event hub
+     * Static data
      */
-    const fires = [
-        FIREBASE_SIGNIN_FAILED,
-        TEAM_RATINGS_LOADED,
-        USER_RATINGS_LOADED,
-        POKEDEX_LOADED
-    ];
-
     const tokenserverUrl = `http://${window.location.hostname}:4202/`;
 
     /** **********************************************************************
      * Constructor
      */
-    let VotingDb = function (eventHub)
+    let VotingDb = function ()
     {
         this.init();
-
-        eventHub.register(this, fires);
 
         // user logged out
         eventHub.on(USER_REQUESTED_LOGOUT, this.logout.bind(this));
@@ -39,31 +28,37 @@ module.exports = (function (jQuery, firebase)
         eventHub.on(ID_TOKEN_FOUND_IN_STORAGE, this.login.bind(this));
         eventHub.on(USER_VOTES_CAST, this.castVote.bind(this));
 
-        let me = this;
+        // ----- messages incoming from elm -----
+
+        // save user ratings to firebase
+        this.elmClient.ports.saveUserRatings.subscribe((userRatings) => {
+            this.fire(USER_VOTES_CAST, userRatings);
+        });
+
+        // ----- messages outgoing to elm -----
 
         // when pokedex loads
-        this.votingDb.pokedex.on('value', function (data) {
+        this.votingDb.pokedex.on('value', (data) => {
             let pokedex = data.val();
-            me.fire(POKEDEX_LOADED, pokedex);
+            this.elmClient.ports.onLoadPokedex.send(pokedex);
         });
 
-        // when user ratings load
-        this.votingDb.users.once('value', function (data) {
+        // when user ratings load (initially: entire team)
+        this.votingDb.users.once('value', (data) => {
             let team = data.val();
-            me.fire(TEAM_RATINGS_LOADED, team);
+            this.elmClient.ports.onLoadTeamRatings.send(team);
         });
-        this.votingDb.users.on('child_changed', function (data) {
+
+        // when user ratings load (when a user votes)
+        this.votingDb.users.on('child_changed', (data) => {
             let user = data.val();
-            me.fire(USER_RATINGS_LOADED, user);
+            this.elmClient.ports.onLoadUserRatings.send(user);
         });
+
+
 
     }; // constructor
 
-    /** **********************************************************************
-     * inherit Observable, but restore the constructor
-     */
-    VotingDb.prototype = new Observable();
-    VotingDb.prototype.constructor = VotingDb;
 
     /** **********************************************************************
      * instantiate and initialize the database
