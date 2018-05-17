@@ -18,41 +18,41 @@ module.exports = (function (jQuery, firebase)
     /** **********************************************************************
      * Constructor
      */
-    let VotingDb = function ()
+    let VotingDb = function (elmClient)
     {
         this.init();
 
-        // user logged out
-        eventHub.on(USER_REQUESTED_LOGOUT, this.logout.bind(this));
-        eventHub.on(ID_TOKEN_RECEIVED_FROM_AUTH, this.login.bind(this));
-        eventHub.on(ID_TOKEN_FOUND_IN_STORAGE, this.login.bind(this));
-        eventHub.on(USER_VOTES_CAST, this.castVote.bind(this));
-
         // ----- messages incoming from elm -----
 
-        // save user ratings to firebase
-        this.elmClient.ports.saveUserRatings.subscribe((userRatings) => {
-            this.fire(USER_VOTES_CAST, userRatings);
+        // user clicked 'logout'
+        elmClient.ports.auth0Logout.subscribe(() => {
+            this.firebase.auth().signOut();
         });
+
+        // user logged in
+        elmClient.ports.firebaseLogin.subscribe(this.login.bind(this));
+
+        // save user ratings to firebase
+        elmClient.ports.saveUserRatings.subscribe(this.castVote.bind(this));
 
         // ----- messages outgoing to elm -----
 
         // when pokedex loads
         this.votingDb.pokedex.on('value', (data) => {
-            let pokedex = data.val();
-            this.elmClient.ports.onLoadPokedex.send(pokedex);
+            const pokedex = data.val();
+            elmClient.ports.onLoadPokedex.send(pokedex);
         });
 
         // when user ratings load (initially: entire team)
         this.votingDb.users.once('value', (data) => {
-            let team = data.val();
-            this.elmClient.ports.onLoadTeamRatings.send(team);
+            const team = data.val();
+            elmClient.ports.onLoadTeamRatings.send(team);
         });
 
         // when user ratings load (when a user votes)
         this.votingDb.users.on('child_changed', (data) => {
-            let user = data.val();
-            this.elmClient.ports.onLoadUserRatings.send(user);
+            const user = data.val();
+            elmClient.ports.onLoadUserRatings.send(user);
         });
 
 
@@ -115,14 +115,6 @@ module.exports = (function (jQuery, firebase)
                 me.fire(FIREBASE_SIGNIN_FAILED, retry);
             });
         return;
-    };
-
-    /** **********************************************************************
-     * Log out of firebase
-     */
-    VotingDb.prototype.logout = function ()
-    {
-        firebase.auth().signOut();
     };
 
     /** **********************************************************************

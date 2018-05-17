@@ -21,6 +21,13 @@ module.exports = function ()
     {
         this.lock = new Auth0Lock(clientId, clientDomain, {});
 
+    }
+
+    /** **********************************************************************
+     * Register ourselves with the elmClient
+     */
+    AuthWrapper.prototype.register = function (elmClient)
+    {
         // ----- messages incoming from elm -----
 
         // user clicked 'login'
@@ -30,16 +37,19 @@ module.exports = function ()
 
         // user clicked 'logout'
         elmClient.ports.auth0Logout.subscribe(() => {
-            this.deleteStoredProfile();
+            this.deleteCredentials();
             elmClient.ports.onAuthenticationReceived.send(null);
         });
 
         // ----- messages outgoing to elm -----
 
         // when authentication was succesful
-        this.lock.on('authenticated', (authResult) => {
-            this.storeProfile(authResult);
-            elmClient.ports.onAuthenticationReceived.send(authResult);
+        this.lock.on('authenticated', (credentials) => {
+
+            // we'll need to fetch the profile here.
+            console.log(credentials);
+            this.storeCredentials(credentials);
+            elmClient.ports.onAuthenticationReceived.send(credentials.profile);
         });
 
         // communicate logout to elm
@@ -51,7 +61,7 @@ module.exports = function ()
     /** **********************************************************************
      * destroy authentication information
      */
-    AuthWrapper.prototype.deleteStoredProfile = function ()
+    AuthWrapper.prototype.deleteCredentials = function ()
     {
         localStorage.removeItem('idToken');
         localStorage.removeItem('accessToken');
@@ -61,7 +71,7 @@ module.exports = function ()
     /** **********************************************************************
      * store authentication information
      */
-    AuthWrapper.prototype.storeProfile = function ({ idToken, accessToken, profile })
+    AuthWrapper.prototype.storeCredentials = function ({ idToken, accessToken, profile })
     {
         localStorage.setItem('idToken', idToken);
         localStorage.setItem('accessToken', accessToken);
@@ -71,7 +81,7 @@ module.exports = function ()
     /** **********************************************************************
      * retrieve authentication information
      */
-    AuthWrapper.prototype.retrieveProfile = function ()
+    AuthWrapper.prototype.retrieveCredentials = function ()
     {
         let idToken     = localStorage.getItem('idToken');
         let accessToken = localStorage.getItem('accessToken');
