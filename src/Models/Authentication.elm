@@ -12,19 +12,19 @@ type AuthenticationState
 type alias AuthenticationModel =
     { state : AuthenticationState
     , lastError : Maybe AuthenticationError
-    , showLock : LockOptions -> Cmd Msg
-    , auth0Options : LockOptions
+    , showLock : LockParameters -> Cmd Msg
+    , lockParameters : LockParameters
     , logOut : () -> Cmd Msg
     }
 
 
 init :
-    (LockOptions -> Cmd Msg)
+    (LockParameters -> Cmd Msg)
     -> (() -> Cmd Msg)
-    -> LockOptions
+    -> LockParameters
     -> Maybe LoggedInUser
     -> AuthenticationModel
-init showLock logOut lockOptions initialData =
+init showLock logOut lockParameters initialData =
     { state =
         case initialData of
             Just user ->
@@ -33,7 +33,7 @@ init showLock logOut lockOptions initialData =
             Nothing ->
                 LoggedOut
     , lastError = Nothing
-    , auth0Options = lockOptions
+    , lockParameters = lockParameters
     , showLock = showLock
     , logOut = logOut
     }

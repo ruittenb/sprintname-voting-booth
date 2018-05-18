@@ -15,7 +15,6 @@ improvements:
  - use billstclair/elm-localstorage?
  - use actual Route package in Elm
  - subpage in model instead of subpage.currentLetter and subpage.currentGeneration
- - rename RemotePokedex etc. to PokedexData or PokedexBlurb or PokedexSplotch or PokedexGoo o.i.d.
  - better preloading strategy: preload only:
    - all letters in current generation
    - all generations for current letter (how?)

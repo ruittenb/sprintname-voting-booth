@@ -11,7 +11,7 @@ port module Ports
         , onLoadUserRatings
         )
 
-import Models.Auth exposing (LockOptions, Token)
+import Models.Auth exposing (LockParameters, Token)
 import Models.Pokemon exposing (PreloadCandidate)
 import Models.Ratings exposing (UserRatings)
 import Json.Encode exposing (Value)
@@ -20,7 +20,7 @@ import Json.Encode exposing (Value)
 -- Commands (outgoing)
 
 
-port auth0ShowLock : LockOptions -> Cmd msg
+port auth0ShowLock : LockParameters -> Cmd msg
 
 
 port firebaseLogin : Token -> Cmd msg

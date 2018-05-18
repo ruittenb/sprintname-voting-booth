@@ -1,6 +1,16 @@
-module Constants.Authentication exposing (auth0Options)
+module Constants.Authentication exposing (lockParameters)
 
-import Models.Auth exposing (LockOptions, LockAuthenticationParameters)
+import Models.Auth exposing (LockParameters, LockOptions, LockAuthenticationParameters)
+
+
+clientId : String
+clientId =
+    "n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9"
+
+
+clientDomain : String
+clientDomain =
+    "proforto.eu.auth0.com"
 
 
 authenticationParameters : LockAuthenticationParameters
@@ -16,8 +26,8 @@ authenticationParameters =
     }
 
 
-auth0Options : LockOptions
-auth0Options =
+lockOptions : LockOptions
+lockOptions =
     { allowedConnections = [ "google-oauth2" ]
     , auth = authenticationParameters
     , audience = "proforto.eu.auth0.com/userinfo"
@@ -32,3 +42,8 @@ auth0Options =
         { logo = "/dist/favicon-58x58.png"
         }
     }
+
+
+lockParameters : LockParameters
+lockParameters =
+    ( clientId, clientDomain, lockOptions )

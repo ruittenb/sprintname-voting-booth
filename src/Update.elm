@@ -82,7 +82,7 @@ update msg oldState =
 
         AuthenticationLoginClicked ->
             ( oldState
-            , oldState.authModel.showLock oldState.authModel.auth0Options
+            , oldState.authModel.showLock oldState.authModel.lockParameters
             )
 
         TeamRatingsLoaded NotAsked ->

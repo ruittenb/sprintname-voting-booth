@@ -6,7 +6,7 @@ import Navigation exposing (programWithFlags, Location)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
 import Constants exposing (initialGeneration, initialLetter)
-import Constants.Authentication exposing (auth0Options)
+import Constants.Authentication exposing (lockParameters)
 import Msgs exposing (Msg(..))
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), ViewMode(..))
@@ -36,7 +36,7 @@ init credentials location =
                 |> Result.toMaybe
 
         authModel =
-            Authentication.init auth0ShowLock auth0Logout auth0Options storedUser
+            Authentication.init auth0ShowLock auth0Logout lockParameters storedUser
 
         defaultSubpage =
             { generation = initialGeneration

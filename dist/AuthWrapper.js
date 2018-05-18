@@ -9,17 +9,10 @@ require('auth0-lock');
 module.exports = function ()
 {
     /** **********************************************************************
-     * Static data
-     */
-    const clientId = 'n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9';
-    const clientDomain = 'proforto.eu.auth0.com';
-
-    /** **********************************************************************
      * Constructor
      */
     let AuthWrapper = function ()
-    {
-    }
+    { }
 
     /** **********************************************************************
      * Register ourselves with the elmClient
@@ -31,7 +24,8 @@ module.exports = function ()
         // ----- messages incoming from elm -----
 
         // user clicked 'login'
-        elmClient.ports.auth0ShowLock.subscribe((options) => {
+        elmClient.ports.auth0ShowLock.subscribe((lockParameters) => {
+            var [ clientId, clientDomain, options ] = lockParameters;
             this.lock = new Auth0Lock(clientId, clientDomain, options);
             this.lock.show();
             this.lock.on('authenticated', this.onLockAuthenticated.bind(this));

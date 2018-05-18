@@ -48,6 +48,10 @@ type alias AuthenticationResult =
 -- Lock 11
 
 
+type alias LockParameters =
+    ( String, String, LockOptions )
+
+
 type alias LockAuthenticationParameters =
     { redirect : Bool
     , responseType : String
