@@ -28,9 +28,8 @@ module.exports = (function (jQuery)
      */
     VotingApp.prototype.run = function (credentials)
     {
-        console.log('run(): credentials = ', credentials);
         const appNode = document.getElementById(appNodeId);
-        this.elmClient = Elm.Main.embed(appNode, credentials.profile);
+        this.elmClient = Elm.Main.embed(appNode, credentials);
 
         // preload images as requested by elm
         this.elmClient.ports.preloadImages.subscribe((imageList) => {

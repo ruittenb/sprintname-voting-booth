@@ -17,10 +17,8 @@ module.exports = function ()
     /** **********************************************************************
      * Constructor
      */
-    let AuthWrapper = function (elmClient)
+    let AuthWrapper = function ()
     {
-        this.lock = new Auth0Lock(clientId, clientDomain, {});
-
     }
 
     /** **********************************************************************
@@ -28,12 +26,16 @@ module.exports = function ()
      */
     AuthWrapper.prototype.register = function (elmClient)
     {
+        this.elmClient = elmClient;
+
         // ----- messages incoming from elm -----
 
         // user clicked 'login'
-        elmClient.ports.auth0ShowLock.subscribe(
-            this.lock.show.bind(this.lock)
-        );
+        elmClient.ports.auth0ShowLock.subscribe((options) => {
+            this.lock = new Auth0Lock(clientId, clientDomain, options);
+            this.lock.show();
+            this.lock.on('authenticated', this.onLockAuthenticated.bind(this));
+        });
 
         // user clicked 'logout'
         elmClient.ports.auth0Logout.subscribe(() => {
@@ -43,20 +45,43 @@ module.exports = function ()
 
         // ----- messages outgoing to elm -----
 
-        // when authentication was succesful
-        this.lock.on('authenticated', (credentials) => {
-
-            // we'll need to fetch the profile here.
-            console.log(credentials);
-            this.storeCredentials(credentials);
-            elmClient.ports.onAuthenticationReceived.send(credentials.profile);
-        });
-
         // communicate logout to elm
         // elmClient.ports.onAuth0Logout.send(null);
 
-    }; // constructor
+    }; // register
 
+    /** **********************************************************************
+     * proceed after succesful login attempt
+     */
+    AuthWrapper.prototype.onLockAuthenticated = function (authResult)
+    {
+        let accessToken = authResult.accessToken;
+
+        // We'll need to fetch the profile here.
+        // Use the token in authResult to fetch the profile
+        this.lock.getUserInfo(accessToken, (err, profile) => {
+            let idToken = authResult.idToken;
+            let credentials;
+
+            if (!err) {
+                credentials = { idToken, accessToken, profile };
+                this.storeCredentials(credentials);
+                this.elmClient.ports.onAuthenticationReceived.send(credentials);
+            } else {
+        console.log('4- err: ', err);
+                // result.err = err.details;
+                //
+                //      // Ensure that optional fields are on the object
+                //      result.err.name = result.err.name ? result.err.name : null;
+                //      result.err.code = result.err.code ? result.err.code : null;
+                //      result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
+                //  }
+                //  me.fire(USER_AUTHENTICATED, result);
+                this.deleteCredentials();
+                this.elmClient.ports.onAuth0Logout.send({});
+            };
+        }); // getUserInfo
+    }; // onAuthenticated
 
     /** **********************************************************************
      * destroy authentication information
@@ -86,7 +111,7 @@ module.exports = function ()
         let idToken     = localStorage.getItem('idToken');
         let accessToken = localStorage.getItem('accessToken');
         let profile     = localStorage.getItem('profile');
-        return { idToken, accessToken, profile };
+        return { idToken, accessToken, profile: JSON.parse(profile) };
     };
 
     return AuthWrapper;

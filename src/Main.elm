@@ -29,10 +29,10 @@ import Ports
 
 
 init : Value -> Location -> ( ApplicationState, Cmd Msg )
-init storedProfile location =
+init credentials location =
     let
         storedUser =
-            decodeUser storedProfile
+            decodeUser credentials
                 |> Result.toMaybe
 
         authModel =

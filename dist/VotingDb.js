@@ -22,6 +22,8 @@ module.exports = (function (jQuery, firebase)
     {
         this.init();
 
+        return; 
+
         // ----- messages incoming from elm -----
 
         // user clicked 'logout'
