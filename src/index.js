@@ -12,14 +12,14 @@ const VotingApp   = require('../dist/VotingApp.js');
  * main
  */
 
-const auth      = new AuthWrapper();
+const auth = new AuthWrapper();
+const credentials = auth.retrieveCredentials();
 
 const votingApp = new VotingApp();
-const credentials = auth.retrieveCredentials();
 votingApp.run(credentials);
 auth.register(votingApp.elmClient);
 
-const votingDb  = new VotingDb(votingApp.elmClient);
+const votingDb = new VotingDb(votingApp.elmClient);
 
 window.votingApp = votingApp;
 

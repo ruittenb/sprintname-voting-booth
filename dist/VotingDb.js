@@ -22,7 +22,7 @@ module.exports = (function (jQuery, firebase)
     {
         this.init();
 
-        return; 
+        return;
 
         // ----- messages incoming from elm -----
 

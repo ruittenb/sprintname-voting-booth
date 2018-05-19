@@ -15,6 +15,7 @@ import Models.Ratings exposing (RemoteTeamRatings, RemoteUserRatings, UserVote)
 
 type Msg
     = AuthenticationReceived RemoteLoggedInUser
+    | AuthenticationFailed String
     | AuthenticationLoginClicked
     | AuthenticationLogoutClicked
     | PokedexLoaded RemotePokedex

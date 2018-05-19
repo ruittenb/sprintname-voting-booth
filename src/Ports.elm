@@ -5,7 +5,7 @@ port module Ports
         , auth0Logout
         , saveUserRatings
         , onAuthenticationReceived
-        , onAuth0Logout
+        , onAuthenticationFailed
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
@@ -42,7 +42,7 @@ port saveUserRatings : UserRatings -> Cmd msg
 port onAuthenticationReceived : (Value -> msg) -> Sub msg
 
 
-port onAuth0Logout : (() -> msg) -> Sub msg
+port onAuthenticationFailed : (String -> msg) -> Sub msg
 
 
 port onFirebaseLogin : (() -> msg) -> Sub msg

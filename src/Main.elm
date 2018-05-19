@@ -6,7 +6,6 @@ import Navigation exposing (programWithFlags, Location)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
 import Constants exposing (initialGeneration, initialLetter)
-import Constants.Authentication exposing (lockParameters)
 import Msgs exposing (Msg(..))
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), ViewMode(..))
@@ -18,10 +17,8 @@ import Commands.Pokemon exposing (decodePokedex)
 import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
 import Ports
     exposing
-        ( auth0ShowLock
-        , auth0Logout
-        , onAuthenticationReceived
-        , onAuth0Logout
+        ( onAuthenticationReceived
+        , onAuthenticationFailed
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
@@ -31,12 +28,10 @@ import Ports
 init : Value -> Location -> ( ApplicationState, Cmd Msg )
 init credentials location =
     let
-        storedUser =
+        authModel =
             decodeUser credentials
                 |> Result.toMaybe
-
-        authModel =
-            Authentication.init auth0ShowLock auth0Logout lockParameters storedUser
+                |> Authentication.init
 
         defaultSubpage =
             { generation = initialGeneration
@@ -73,7 +68,8 @@ subscriptions _ =
         --, Time.every second Tick
         [ onAuthenticationReceived (decodeUser >> Msgs.AuthenticationReceived)
 
-        --        , onAuth0Logout (\() -> Msgs.AuthenticationMsg Authentication.LogOut)
+        --, onAuthenticationFailed (\reason -> Msgs.AuthenticationFailed reason)
+        , onAuthenticationFailed Msgs.AuthenticationFailed
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)
         , onLoadUserRatings (decodeUserRatings >> Msgs.UserRatingsLoaded)

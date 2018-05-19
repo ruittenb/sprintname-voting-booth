@@ -1,7 +1,9 @@
 module Models.Authentication exposing (..)
 
+import Constants.Authentication exposing (lockParameters)
 import Models.Auth as Auth exposing (..)
 import Msgs exposing (Msg)
+import Ports exposing (auth0ShowLock, auth0Logout)
 
 
 type AuthenticationState
@@ -12,19 +14,14 @@ type AuthenticationState
 type alias AuthenticationModel =
     { state : AuthenticationState
     , lastError : Maybe AuthenticationError
-    , showLock : LockParameters -> Cmd Msg
     , lockParameters : LockParameters
+    , showLock : LockParameters -> Cmd Msg
     , logOut : () -> Cmd Msg
     }
 
 
-init :
-    (LockParameters -> Cmd Msg)
-    -> (() -> Cmd Msg)
-    -> LockParameters
-    -> Maybe LoggedInUser
-    -> AuthenticationModel
-init showLock logOut lockParameters initialData =
+init : Maybe LoggedInUser -> AuthenticationModel
+init initialData =
     { state =
         case initialData of
             Just user ->
@@ -34,6 +31,6 @@ init showLock logOut lockParameters initialData =
                 LoggedOut
     , lastError = Nothing
     , lockParameters = lockParameters
-    , showLock = showLock
-    , logOut = logOut
+    , showLock = auth0ShowLock
+    , logOut = auth0Logout
     }

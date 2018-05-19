@@ -69,5 +69,6 @@ type alias LockOptions =
     , languageDictionary : { title : String }
     , oidcConformant : Bool
     , rememberLastLogin : Bool
-    , theme : { logo : String }
+    , theme :
+        { logo : String }
     }

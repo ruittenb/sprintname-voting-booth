@@ -34,13 +34,7 @@ module.exports = function ()
         // user clicked 'logout'
         elmClient.ports.auth0Logout.subscribe(() => {
             this.deleteCredentials();
-            elmClient.ports.onAuthenticationReceived.send(null);
         });
-
-        // ----- messages outgoing to elm -----
-
-        // communicate logout to elm
-        // elmClient.ports.onAuth0Logout.send(null);
 
     }; // register
 
@@ -50,32 +44,25 @@ module.exports = function ()
     AuthWrapper.prototype.onLockAuthenticated = function (authResult)
     {
         let accessToken = authResult.accessToken;
+        let idToken     = authResult.idToken;
 
-        // We'll need to fetch the profile here.
-        // Use the token in authResult to fetch the profile
+        // It is not always clear whether we need to fetch the profile here,
+        // so we do it anyway, just to be sure.
+        // Use the accessToken to fetch the profile.
         this.lock.getUserInfo(accessToken, (err, profile) => {
-            let idToken = authResult.idToken;
-            let credentials;
 
             if (!err) {
-                credentials = { idToken, accessToken, profile };
+                let credentials = { idToken, accessToken, profile };
                 this.storeCredentials(credentials);
                 this.elmClient.ports.onAuthenticationReceived.send(credentials);
             } else {
-        console.log('4- err: ', err);
-                // result.err = err.details;
-                //
-                //      // Ensure that optional fields are on the object
-                //      result.err.name = result.err.name ? result.err.name : null;
-                //      result.err.code = result.err.code ? result.err.code : null;
-                //      result.err.statusCode = result.err.statusCode ? result.err.statusCode : null;
-                //  }
-                //  me.fire(USER_AUTHENTICATED, result);
+                console.error('error fetching profile: ', err);
+                let reason = err.details;
                 this.deleteCredentials();
-                this.elmClient.ports.onAuth0Logout.send({});
+                this.elmClient.ports.onAuthenticationFailed.send(reason);
             };
         }); // getUserInfo
-    }; // onAuthenticated
+    }; // onLockAuthenticated
 
     /** **********************************************************************
      * destroy authentication information
@@ -102,10 +89,14 @@ module.exports = function ()
      */
     AuthWrapper.prototype.retrieveCredentials = function ()
     {
+        let result      = null;
         let idToken     = localStorage.getItem('idToken');
         let accessToken = localStorage.getItem('accessToken');
         let profile     = localStorage.getItem('profile');
-        return { idToken, accessToken, profile: JSON.parse(profile) };
+        if (idToken && accessToken && profile) {
+            result = { idToken, accessToken, profile: JSON.parse(profile) };
+        }
+        return result;
     };
 
     return AuthWrapper;

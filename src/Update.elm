@@ -76,6 +76,10 @@ update msg oldState =
             -- |> andThenCmd firebaseLogout
             updateAuthWithNoProfile oldState (Just error)
 
+        AuthenticationFailed reason ->
+            -- |> andThenCmd firebaseLogout
+            updateAuthWithNoProfile oldState (Just reason)
+
         AuthenticationLogoutClicked ->
             -- |> andThenCmd firebaseAuthUpdate
             updateAuthWithNoProfile oldState Nothing
