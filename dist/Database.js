@@ -26,7 +26,7 @@ module.exports = (function (jQuery, firebase)
 
         // user clicked 'logout'
         elmClient.ports.firebaseLogout.subscribe(() => {
-            this.firebase.auth().signOut();
+            firebase.auth().signOut();
         });
 
         // user logged in

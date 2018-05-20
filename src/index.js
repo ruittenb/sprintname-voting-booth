@@ -4,15 +4,15 @@ require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
 require('./index.html'); // ensure index.html gets copied during build
 
-const AuthWrapper = require('../dist/AuthWrapper.js');
-const Database    = require('../dist/Database.js');
-const VotingApp   = require('../dist/VotingApp.js');
+const Authentication = require('../dist/Authentication.js');
+const Database       = require('../dist/Database.js');
+const VotingApp      = require('../dist/VotingApp.js');
 
 /** **********************************************************************
  * main
  */
 
-const auth = new AuthWrapper();
+const auth = new Authentication();
 const credentials = auth.retrieveCredentials();
 
 const votingApp = new VotingApp();
