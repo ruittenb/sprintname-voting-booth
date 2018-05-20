@@ -9,10 +9,11 @@ import Constants exposing (initialGeneration, initialLetter)
 import Msgs exposing (Msg(..))
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), ViewMode(..))
-import Models.Authentication as Authentication
+import Models.Authentication as Authentication exposing (AuthenticationState(..))
 import View exposing (view)
 import Update exposing (update, dissectLocationHash, hashToMsg)
 import Commands.Authentication exposing (decodeUser)
+import Commands.Database exposing (firebaseInit, firebaseLogin)
 import Commands.Pokemon exposing (decodePokedex)
 import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
 import Ports
@@ -32,6 +33,17 @@ init credentials location =
             decodeUser credentials
                 |> Result.toMaybe
                 |> Authentication.init
+
+        cmd =
+            case authModel.state of
+                LoggedIn userData ->
+                    Cmd.batch
+                        [ firebaseInit
+                        , firebaseLogin userData.idToken
+                        ]
+
+                LoggedOut ->
+                    Cmd.none
 
         defaultSubpage =
             { generation = initialGeneration
@@ -56,10 +68,7 @@ init credentials location =
             , ratings = RemoteData.NotAsked
             }
     in
-        ( initialState
-        , Cmd.none
-          -- |> andThenCmd firebaseAuthUpdate
-        )
+        ( initialState, cmd )
 
 
 subscriptions : ApplicationState -> Sub Msg

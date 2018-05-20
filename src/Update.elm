@@ -9,10 +9,8 @@ import Control exposing (update)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
-
-
---import Commands exposing (andThenCmd)
-
+import Commands exposing (andThenCmd)
+import Commands.Database exposing (firebaseInit, firebaseLogin, firebaseLogout)
 import Helpers exposing (getUserNameForAuthModel)
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
 import Update.Ratings exposing (updateVoteForPokemon)
@@ -68,21 +66,22 @@ hashToMsg location =
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
-        AuthenticationReceived (Ok userData) ->
-            -- |> andThenCmd firebaseLogin
-            updateAuthWithProfile oldState userData
+        AuthenticationReceived (Ok credentials) ->
+            updateAuthWithProfile oldState credentials
+                |> andThenCmd firebaseInit
+                |> andThenCmd (firebaseLogin credentials.idToken)
 
         AuthenticationReceived (Err error) ->
-            -- |> andThenCmd firebaseLogout
             updateAuthWithNoProfile oldState (Just error)
+                |> andThenCmd firebaseLogout
 
         AuthenticationFailed reason ->
-            -- |> andThenCmd firebaseLogout
             updateAuthWithNoProfile oldState (Just reason)
+                |> andThenCmd firebaseLogout
 
         AuthenticationLogoutClicked ->
-            -- |> andThenCmd firebaseAuthUpdate
             updateAuthWithNoProfile oldState Nothing
+                |> andThenCmd firebaseLogout
 
         AuthenticationLoginClicked ->
             ( oldState

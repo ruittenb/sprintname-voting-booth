@@ -1,8 +1,11 @@
 port module Ports
     exposing
-        ( preloadImages
-        , auth0ShowLock
+        ( auth0ShowLock
         , auth0Logout
+        , firebaseInit
+        , firebaseLogin
+        , firebaseLogout
+        , preloadImages
         , saveUserRatings
         , onAuthenticationReceived
         , onAuthenticationFailed
@@ -12,6 +15,7 @@ port module Ports
         )
 
 import Models.Auth exposing (LockParameters, Token)
+import Models.Database exposing (FirebaseConfig)
 import Models.Pokemon exposing (PreloadCandidate)
 import Models.Ratings exposing (UserRatings)
 import Json.Encode exposing (Value)
@@ -23,13 +27,19 @@ import Json.Encode exposing (Value)
 port auth0ShowLock : LockParameters -> Cmd msg
 
 
+port auth0Logout : () -> Cmd msg
+
+
+port firebaseInit : FirebaseConfig -> Cmd msg
+
+
 port firebaseLogin : Token -> Cmd msg
 
 
+port firebaseLogout : () -> Cmd msg
+
+
 port preloadImages : List PreloadCandidate -> Cmd msg
-
-
-port auth0Logout : () -> Cmd msg
 
 
 port saveUserRatings : UserRatings -> Cmd msg

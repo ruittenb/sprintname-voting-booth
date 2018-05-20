@@ -5,7 +5,7 @@ require('firebase/auth');
 require('firebase/database');
 
 /** **********************************************************************
- * VotingDb
+ * Database
  */
 
 module.exports = (function (jQuery, firebase)
@@ -18,16 +18,14 @@ module.exports = (function (jQuery, firebase)
     /** **********************************************************************
      * Constructor
      */
-    let VotingDb = function (elmClient)
+    let Database = function (elmClient)
     {
         this.init();
-
-        return;
 
         // ----- messages incoming from elm -----
 
         // user clicked 'logout'
-        elmClient.ports.auth0Logout.subscribe(() => {
+        elmClient.ports.firebaseLogout.subscribe(() => {
             this.firebase.auth().signOut();
         });
 
@@ -57,15 +55,12 @@ module.exports = (function (jQuery, firebase)
             elmClient.ports.onLoadUserRatings.send(user);
         });
 
-
-
     }; // constructor
-
 
     /** **********************************************************************
      * instantiate and initialize the database
      */
-    VotingDb.prototype.init = function ()
+    Database.prototype.init = function ()
     {
         const firebaseConfig = {
             apiKey            : "AIzaSyAm4--Q2MjVWGZYW-IC8LPZARXJq-XyHXA",
@@ -87,7 +82,7 @@ module.exports = (function (jQuery, firebase)
     /** **********************************************************************
      * take a JWT token, obtain a firebase token, and log in in firebase
      */
-    VotingDb.prototype.login = function (jwtToken)
+    Database.prototype.login = function (jwtToken)
     {
         let me = this;
 
@@ -122,7 +117,7 @@ module.exports = (function (jQuery, firebase)
     /** **********************************************************************
      * database action: casting votes
      */
-    VotingDb.prototype.castVote = function (userRatings)
+    Database.prototype.castVote = function (userRatings)
     {
         // id === null would correspond to a delete request.
         // id should not be null, but let's be defensive here.
@@ -132,7 +127,7 @@ module.exports = (function (jQuery, firebase)
         }
     };
 
-    return VotingDb;
+    return Database;
 
 })(jQuery, firebase);
 

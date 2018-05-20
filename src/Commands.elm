@@ -3,8 +3,8 @@ module Commands exposing (..)
 import Models exposing (ApplicationState)
 
 
-andThenCmd : ( ApplicationState, Cmd msg ) -> Cmd msg -> ( ApplicationState, Cmd msg )
-andThenCmd ( model, firstCmd ) secondCmd =
+andThenCmd : Cmd msg -> ( ApplicationState, Cmd msg ) -> ( ApplicationState, Cmd msg )
+andThenCmd secondCmd ( model, firstCmd ) =
     ( model
     , Cmd.batch [ firstCmd, secondCmd ]
     )
