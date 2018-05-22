@@ -5,6 +5,9 @@ missing:
  - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
  - do something about unrendered animation on messagebox
 
+ - JWT expired: what should be done?
+   - try to cache firebase token?
+
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest			@effect-manager
