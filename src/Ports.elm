@@ -15,7 +15,7 @@ port module Ports
         )
 
 import Models.Auth exposing (LockParameters, Token)
-import Models.Database exposing (FirebaseConfig)
+import Models.Database exposing (FirebaseConfig, Diagnostics)
 import Models.Pokemon exposing (PreloadCandidate)
 import Models.Ratings exposing (UserRatings)
 import Json.Encode exposing (Value)
@@ -56,6 +56,9 @@ port onAuthenticationFailed : (String -> msg) -> Sub msg
 
 
 port onFirebaseLogin : (() -> msg) -> Sub msg
+
+
+port onFirebaseLoginFailed : (Diagnostics -> msg) -> Sub msg
 
 
 port onLoadPokedex : (Value -> msg) -> Sub msg

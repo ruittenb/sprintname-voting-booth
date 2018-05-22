@@ -16,60 +16,34 @@ module.exports = (function (jQuery, firebase)
     const tokenserverUrl = `http://${window.location.hostname}:4202/`;
 
     /** **********************************************************************
-     * Constructor
+     * Constructor. This only installs the incoming port message listeners.
      */
     let Database = function (elmClient)
     {
-        this.init();
+        this.elmClient = elmClient;
 
         // ----- messages incoming from elm -----
 
+        // application is ready for initialization of the database
+        this.elmClient.ports.firebaseInit.subscribe(this.init.bind(this));
+
         // user clicked 'logout'
-        elmClient.ports.firebaseLogout.subscribe(() => {
+        this.elmClient.ports.firebaseLogout.subscribe(() => {
             firebase.auth().signOut();
         });
 
         // user logged in
-        elmClient.ports.firebaseLogin.subscribe(this.login.bind(this));
+        this.elmClient.ports.firebaseLogin.subscribe(this.login.bind(this));
 
         // save user ratings to firebase
-        elmClient.ports.saveUserRatings.subscribe(this.castVote.bind(this));
-
-        // ----- messages outgoing to elm -----
-
-        // when pokedex loads
-        this.votingDb.pokedex.on('value', (data) => {
-            const pokedex = data.val();
-            elmClient.ports.onLoadPokedex.send(pokedex);
-        });
-
-        // when user ratings load (initially: entire team)
-        this.votingDb.users.once('value', (data) => {
-            const team = data.val();
-            elmClient.ports.onLoadTeamRatings.send(team);
-        });
-
-        // when user ratings load (when a user votes)
-        this.votingDb.users.on('child_changed', (data) => {
-            const user = data.val();
-            elmClient.ports.onLoadUserRatings.send(user);
-        });
-
-    }; // constructor
+        this.elmClient.ports.saveUserRatings.subscribe(this.castVote.bind(this));
+    };
 
     /** **********************************************************************
      * instantiate and initialize the database
      */
-    Database.prototype.init = function ()
+    Database.prototype.init = function (firebaseConfig)
     {
-        const firebaseConfig = {
-            apiKey            : "AIzaSyAm4--Q2MjVWGZYW-IC8LPZARXJq-XyHXA",
-            databaseURL       : "https://sprintname-voting-booth.firebaseio.com",
-            authDomain        : "sprintname-voting-booth.firebaseapp.com",
-            storageBucket     : "sprintname-voting-booth.appspot.com",
-            messagingSenderId : "90828432994"
-        };
-
         firebase.initializeApp(firebaseConfig);
 
         this.votingDb = {
@@ -77,7 +51,36 @@ module.exports = (function (jQuery, firebase)
             pokedex : firebase.database().ref('pokedex'),
             users   : firebase.database().ref('users')
         };
+
+        this.initListeners();
     };
+
+    /** **********************************************************************
+     * instantiate and initialize the outgoing port handlers.
+     */
+    Database.prototype.initListeners = function ()
+    {
+        // ----- messages outgoing to elm -----
+
+        // when pokedex loads
+        this.votingDb.pokedex.on('value', (data) => {
+            const pokedex = data.val();
+            this.elmClient.ports.onLoadPokedex.send(pokedex);
+        });
+
+        // when user ratings load (initially: entire team)
+        this.votingDb.users.once('value', (data) => {
+            const team = data.val();
+            this.elmClient.ports.onLoadTeamRatings.send(team);
+        });
+
+        // when user ratings load (when a user votes)
+        this.votingDb.users.on('child_changed', (data) => {
+            const user = data.val();
+            this.elmClient.ports.onLoadUserRatings.send(user);
+        });
+
+    }; // initListeners
 
     /** **********************************************************************
      * take a JWT token, obtain a firebase token, and log in in firebase
@@ -100,16 +103,14 @@ module.exports = (function (jQuery, firebase)
             })
             .then(function (firebaseToken) {
                 jQuery('#message-box').text('').removeClass('error warning');
+                localStorage.firebaseToken = firebaseToken;
                 return firebase.auth().signInWithCustomToken(firebaseToken);
             })
             .catch(function (e) {
-                console.error('caught: ', e);
                 let status = e.status || 500;
                 let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
                 jQuery('#message-box').text(status + ': ' + message).addClass('error');
-                // if the token was expired, try to obtain a new one
-                let retry = status === 403;
-                me.fire(FIREBASE_SIGNIN_FAILED, retry);
+                me.elmClient.ports.onFirebaseLoginFailed.send(e);
             });
         return;
     };

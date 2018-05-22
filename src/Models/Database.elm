@@ -1,4 +1,4 @@
-module Models.Database exposing (FirebaseConfig, FirebaseLoginParameters)
+module Models.Database exposing (FirebaseConfig, FirebaseLoginParameters, Diagnostics)
 
 import Models.Auth exposing (Token)
 
@@ -14,3 +14,9 @@ type alias FirebaseConfig =
 
 type alias FirebaseLoginParameters =
     ( Token, FirebaseConfig )
+
+
+type alias Diagnostics =
+    { message : String
+    , status : Int
+    }
