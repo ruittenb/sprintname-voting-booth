@@ -73,7 +73,7 @@ const FirebaseTokenServer = (function () {
     };
 
     /**
-     * Start the server. Install processRequest() as handler.
+     * Start the express server. Install processRequest() as handler.
      */
     FirebaseTokenServer.prototype.startServer = function ()
     {
