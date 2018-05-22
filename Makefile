@@ -1,8 +1,8 @@
 DOCKERNAME=voting-booth
 DOCKERNET=voting-net
 DOCKERPORTS=-p 4201:4201
-#NODE_PIDS=$$(/bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2 }')
-NODE_PIDS=$$(lsof -l -n -i tcp | awk '/ \*:420[12] / { print $$2 }')
+#NODE_PIDS=$(shell /bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2 }')
+NODE_PIDS=$(shell lsof -l -n -i tcp | awk '/ \*:420[12] / { print $$2 }')
 
 usage:
 	@echo "Recognized targets:"
