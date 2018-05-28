@@ -43,7 +43,7 @@ init credentials location =
                         ]
 
                 LoggedOut ->
-                    Cmd.none
+                    firebaseInit
 
         defaultSubpage =
             { generation = initialGeneration

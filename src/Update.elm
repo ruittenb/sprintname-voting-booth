@@ -68,7 +68,6 @@ update msg oldState =
     case msg of
         AuthenticationReceived (Ok credentials) ->
             updateAuthWithProfile oldState credentials
-                |> andThenCmd firebaseInit
                 |> andThenCmd (firebaseLogin credentials.idToken)
 
         AuthenticationReceived (Err error) ->
