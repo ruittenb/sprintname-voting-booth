@@ -4,8 +4,7 @@ missing:
    - runs into difficulties with checkSession() which seems to attempt to validate wrong email address
  - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
  - do something about unrendered animation on messagebox
- - show total number of votes on pokemon
-   - disregarding incomplete votes
+ - disregard incomplete votes when showing total number of votes on pokemon
  - enable declaring a generation/letter as "closed"/"finalized"
  - JWT expired: what should be done?
    - try to cache firebase token?

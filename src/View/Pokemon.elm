@@ -30,6 +30,12 @@ unknownUserIcon =
     div [ class "unknown-user" ] []
 
 
+countCompleteVotes : TeamRating -> Int
+countCompleteVotes teamRating =
+    List.map .rating teamRating
+        |> List.sum
+
+
 linkTo : String -> Html Msg -> Html Msg
 linkTo url content =
     a
@@ -183,11 +189,14 @@ variantLinks pokemonName variants =
 pokemonTile : ViewMode -> RemoteTeamRatings -> CurrentUser -> Pokemon -> Html Msg
 pokemonTile viewMode ratings currentUser pokemon =
     let
-        allUserRatings =
+        teamRatings =
             extractOnePokemonFromRatings ratings pokemon
 
+        totalVotes =
+            countCompleteVotes teamRatings
+
         ( ownRatings, otherRatings ) =
-            extractOneUserFromRatings allUserRatings currentUser
+            extractOneUserFromRatings teamRatings currentUser
 
         leftMargin =
             toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
@@ -219,12 +228,16 @@ pokemonTile viewMode ratings currentUser pokemon =
                 Just actualUserName ->
                     voteWidget ownRatings pokemon.number actualUserName
     in
-        div [ class "poketile" ] <|
+        div
+            [ class "poketile"
+            , "Total: " ++ toString totalVotes |> title
+            ]
+        <|
             [ p []
                 [ span [] <|
                     (generationElement pokemon.generation)
-                        ++ [ text <| toString pokemon.number ]
-                , linkTo pokemon.url <| text pokemon.name
+                        ++ [ toString pokemon.number |> text ]
+                , text pokemon.name |> linkTo pokemon.url
                 ]
             , div [ class "pokemon-image-strip-box" ]
                 [ div
