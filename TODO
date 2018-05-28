@@ -4,6 +4,9 @@ missing:
    - runs into difficulties with checkSession() which seems to attempt to validate wrong email address
  - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
  - do something about unrendered animation on messagebox
+ - show total number of votes on pokemon
+   - disregarding incomplete votes
+ - enable declaring a generation/letter as "closed"/"finalized"
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
@@ -14,8 +17,9 @@ improvements:
  - fix outline css on input text box
  - use actual Route package in Elm
  - better preloading strategy: preload only:
-   - all letters in current generation
-   - all generations for current letter (how?)
+   - all letters in current generation, starting with current letter
+   - all generations for current letter
+   - keep track of preloaded generations and letters
 
 consider:
  - Material Design?
