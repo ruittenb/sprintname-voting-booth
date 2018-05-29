@@ -16,7 +16,7 @@ port module Ports
 
 import Models.Auth exposing (LockParameters, Token)
 import Models.Database exposing (FirebaseConfig, Diagnostics)
-import Models.Pokemon exposing (PreloadCandidate)
+import Models.Pokemon exposing (PortCompatiblePreloadCandidate)
 import Models.Ratings exposing (UserRatings)
 import Json.Encode exposing (Value)
 
@@ -39,7 +39,7 @@ port firebaseLogin : Token -> Cmd msg
 port firebaseLogout : () -> Cmd msg
 
 
-port preloadImages : List PreloadCandidate -> Cmd msg
+port preloadImages : List PortCompatiblePreloadCandidate -> Cmd msg
 
 
 port saveUserRatings : UserRatings -> Cmd msg

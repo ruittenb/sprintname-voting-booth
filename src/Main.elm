@@ -45,6 +45,11 @@ init credentials location =
                 LoggedOut ->
                     firebaseInit
 
+        emptyPreloaded =
+            { generations = []
+            , letters = []
+            }
+
         defaultSubpage =
             { generation = initialGeneration
             , letter = initialLetter
@@ -63,6 +68,7 @@ init credentials location =
             , viewMode = Browse
             , generation = subpage.generation
             , letter = subpage.letter
+            , preloaded = emptyPreloaded
             , query = ""
             , pokedex = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked

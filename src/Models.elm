@@ -24,6 +24,12 @@ type alias CurrentUser =
     Maybe String
 
 
+type alias PreloadedSets =
+    { generations : List Int
+    , letters : List Char
+    }
+
+
 type alias ApplicationState =
     { authModel : AuthenticationModel
     , user : CurrentUser
@@ -33,6 +39,7 @@ type alias ApplicationState =
     , viewMode : ViewMode
     , generation : Int
     , letter : Char
+    , preloaded : PreloadedSets
     , query : String
     , pokedex : RemotePokedex
     , ratings : RemoteTeamRatings
