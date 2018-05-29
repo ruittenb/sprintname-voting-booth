@@ -31,6 +31,11 @@ init initialUser location =
         authModel =
             Authentication.init auth0showLock auth0logout initialUser
 
+        emptyPreloaded =
+            { generations = []
+            , letters = []
+            }
+
         defaultSubpage =
             { generation = initialGeneration
             , letter = initialLetter
@@ -49,6 +54,7 @@ init initialUser location =
             , viewMode = Browse
             , generation = subpage.generation
             , letter = subpage.letter
+            , preloaded = emptyPreloaded
             , query = ""
             , pokedex = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked

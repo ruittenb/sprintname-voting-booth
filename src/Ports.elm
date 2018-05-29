@@ -12,7 +12,7 @@ port module Ports
         )
 
 import Auth0
-import Models.Pokemon exposing (PreloadCandidate)
+import Models.Pokemon exposing (PortCompatiblePreloadCandidate)
 import Models.Ratings exposing (UserRatings)
 import Json.Encode exposing (Value)
 
@@ -20,7 +20,7 @@ import Json.Encode exposing (Value)
 -- Commands (outgoing)
 
 
-port preloadImages : List PreloadCandidate -> Cmd msg
+port preloadImages : List PortCompatiblePreloadCandidate -> Cmd msg
 
 
 port auth0showLock : Auth0.Options -> Cmd msg

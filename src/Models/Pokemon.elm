@@ -5,6 +5,14 @@ import RemoteData exposing (RemoteData)
 
 type alias PreloadCandidate =
     { generation : Int
+    , letter : Char
+    , imageUrl : String
+    }
+
+
+type alias PortCompatiblePreloadCandidate =
+    { generation : Int
+    , letter : String
     , imageUrl : String
     }
 
