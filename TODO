@@ -22,10 +22,6 @@ improvements:
  - use actual Route package in Elm
  - split Constants into Constants/Pokedex.elm
  - subpage in model instead of subpage.currentLetter and subpage.currentGeneration
- - better preloading strategy: preload only:
-   - all letters in current generation, starting with current letter
-   - all generations for current letter
-   - keep track of preloaded generations and letters
 
 consider:
  - Material Design?
