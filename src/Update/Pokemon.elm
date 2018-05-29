@@ -7,6 +7,7 @@ module Update.Pokemon
         )
 
 import RemoteData exposing (WebData, RemoteData(..))
+import List.Extra exposing (unique, notMember)
 import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
@@ -18,6 +19,21 @@ import Ports exposing (preloadImages)
 -- some helper functions specific to update
 
 
+filterCurrentSubpage : Int -> Char -> List PreloadCandidate -> List PreloadCandidate
+filterCurrentSubpage gen letter imgList =
+    List.filter (\i -> i.generation == gen || i.letter == letter) imgList
+
+
+filterNotAlreadyPreloaded : PreloadedSets -> Int -> Char -> List PreloadCandidate -> List PreloadCandidate
+filterNotAlreadyPreloaded preloaded gen letter imgList =
+    List.filter
+        (\i ->
+            notMember i.generation preloaded.generations
+                && notMember i.letter preloaded.letters
+        )
+        imgList
+
+
 putCurrentGenFirst : Int -> List PreloadCandidate -> List PreloadCandidate
 putCurrentGenFirst gen imgList =
     let
@@ -25,6 +41,54 @@ putCurrentGenFirst gen imgList =
             List.partition (.generation >> (>) gen) imgList
     in
         tail ++ head
+
+
+mapCharLettersToString : List PreloadCandidate -> List PortCompatiblePreloadCandidate
+mapCharLettersToString imgList =
+    List.map (\i -> { i | letter = toString i.letter }) imgList
+
+
+getPreloadCommandForPokedexCrossSection : PreloadedSets -> Int -> Char -> RemotePokedex -> Cmd msg
+getPreloadCommandForPokedexCrossSection preloaded generation letter pokedex =
+    let
+        generationLetterAndImageUrl p =
+            List.map
+                (\v ->
+                    { generation = p.generation
+                    , letter = p.letter
+                    , imageUrl = v.image
+                    }
+                )
+                p.variants
+    in
+        case pokedex of
+            Success actualPokedex ->
+                actualPokedex
+                    |> List.map generationLetterAndImageUrl
+                    |> List.concat
+                    |> filterCurrentSubpage generation letter
+                    |> filterNotAlreadyPreloaded preloaded generation letter
+                    |> putCurrentGenFirst generation
+                    |> mapCharLettersToString
+                    |> preloadImages
+
+            _ ->
+                Cmd.none
+
+
+addCurrentSubpageToPreloaded : PreloadedSets -> Int -> Char -> PreloadedSets
+addCurrentSubpageToPreloaded preloaded generation letter =
+    let
+        newGenerations =
+            generation :: preloaded.generations
+
+        newLetters =
+            letter :: preloaded.letters
+    in
+        { preloaded
+            | generations = unique newGenerations
+            , letters = unique newLetters
+        }
 
 
 
@@ -48,33 +112,27 @@ updateOnLoadPokedex oldState pokedex =
                 Success _ ->
                     ( "", None )
 
+        command =
+            getPreloadCommandForPokedexCrossSection
+                oldState.preloaded
+                oldState.generation
+                oldState.letter
+                pokedex
+
+        newPreloaded =
+            addCurrentSubpageToPreloaded
+                oldState.preloaded
+                oldState.generation
+                oldState.letter
+
         newState =
             { oldState
                 | pokedex = pokedex
+                , preloaded = newPreloaded
                 , statusMessage = statusMessage
                 , statusLevel = statusLevel
+                , preloaded = newPreloaded
             }
-
-        generationAndImageUrl p =
-            List.map
-                (\v ->
-                    { generation = p.generation
-                    , imageUrl = v.image
-                    }
-                )
-                p.variants
-
-        command =
-            case pokedex of
-                Success actualPokedex ->
-                    actualPokedex
-                        |> List.map generationAndImageUrl
-                        |> List.concat
-                        |> putCurrentGenFirst oldState.generation
-                        |> preloadImages
-
-                _ ->
-                    Cmd.none
     in
         ( newState, command )
 
@@ -97,14 +155,28 @@ updateSearchPokemon oldState query =
 updateChangeGenerationAndLetter : ApplicationState -> Int -> Char -> ( ApplicationState, Cmd Msg )
 updateChangeGenerationAndLetter oldState newGen newLetter =
     let
+        command =
+            getPreloadCommandForPokedexCrossSection
+                oldState.preloaded
+                newGen
+                newLetter
+                oldState.pokedex
+
+        newPreloaded =
+            addCurrentSubpageToPreloaded
+                oldState.preloaded
+                newGen
+                newLetter
+
         newState =
             if
                 List.member newGen allGenerations
                     && List.member newLetter allLetters
             then
                 { oldState
-                    | letter = newLetter
-                    , generation = newGen
+                    | generation = newGen
+                    , letter = newLetter
+                    , preloaded = newPreloaded
                     , statusMessage = ""
                     , statusLevel = None
                     , viewMode = Browse
@@ -112,7 +184,7 @@ updateChangeGenerationAndLetter oldState newGen newLetter =
             else
                 oldState
     in
-        ( newState, Cmd.none )
+        ( newState, command )
 
 
 updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )
