@@ -15,10 +15,6 @@ improvements:
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
  - fix outline css on input text box
  - use actual Route package in Elm
- - better preloading strategy: preload only:
-   - all letters in current generation, starting with current letter
-   - all generations for current letter
-   - keep track of preloaded generations and letters
 
 consider:
  - Material Design?
