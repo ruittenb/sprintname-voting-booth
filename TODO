@@ -6,6 +6,7 @@ missing:
  - do something about unrendered animation on messagebox
  - disregard incomplete votes when showing total number of votes on pokemon
  - enable declaring a generation/letter as "closed"/"finalized"
+ - use extensible records
 
  - JWT expired: what should be done?
    - try to cache firebase token?
