@@ -33,7 +33,7 @@ module.exports = (function (jQuery, firebase)
         });
 
         // user logged in
-        this.elmClient.ports.firebaseLogin.subscribe(this.login.bind(this));
+        this.elmClient.ports.firebaseLoginWithJwtToken.subscribe(this.login.bind(this));
 
         // save user ratings to firebase
         this.elmClient.ports.saveUserRatings.subscribe(this.castVote.bind(this));
@@ -103,7 +103,7 @@ module.exports = (function (jQuery, firebase)
             })
             .then(function (firebaseToken) {
                 jQuery('#message-box').text('').removeClass('error warning');
-                localStorage.firebaseToken = firebaseToken;
+                localStorage.setItem('firebaseToken', firebaseToken);
                 return firebase.auth().signInWithCustomToken(firebaseToken);
             })
             .catch(function (e) {

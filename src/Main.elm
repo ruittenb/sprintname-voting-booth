@@ -13,7 +13,7 @@ import Models.Authentication as Authentication exposing (AuthenticationState(..)
 import View exposing (view)
 import Update exposing (update, dissectLocationHash, hashToMsg)
 import Commands.Authentication exposing (decodeUser)
-import Commands.Database exposing (firebaseInit, firebaseLogin)
+import Commands.Database exposing (firebaseInit, firebaseLoginWithJwtToken)
 import Commands.Pokemon exposing (decodePokedex)
 import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
 import Ports
@@ -39,7 +39,7 @@ init credentials location =
                 LoggedIn userData ->
                     Cmd.batch
                         [ firebaseInit
-                        , firebaseLogin userData.idToken
+                        , firebaseLoginWithJwtToken userData.idToken
                         ]
 
                 LoggedOut ->
@@ -82,9 +82,10 @@ subscriptions _ =
     Sub.batch
         --, Time.every second Tick
         [ onAuthenticationReceived (decodeUser >> Msgs.AuthenticationReceived)
-
-        --, onAuthenticationFailed (\reason -> Msgs.AuthenticationFailed reason)
         , onAuthenticationFailed Msgs.AuthenticationFailed
+
+        --, onFirebaseLogin
+        --, onFirebaseLoginFailed
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)
         , onLoadUserRatings (decodeUserRatings >> Msgs.UserRatingsLoaded)

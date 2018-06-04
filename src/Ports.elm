@@ -3,7 +3,8 @@ port module Ports
         ( auth0ShowLock
         , auth0Logout
         , firebaseInit
-        , firebaseLogin
+        , firebaseLoginWithJwtToken
+        , firebaseLoginWithFirebaseToken
         , firebaseLogout
         , preloadImages
         , saveUserRatings
@@ -33,7 +34,10 @@ port auth0Logout : () -> Cmd msg
 port firebaseInit : FirebaseConfig -> Cmd msg
 
 
-port firebaseLogin : Token -> Cmd msg
+port firebaseLoginWithJwtToken : Token -> Cmd msg
+
+
+port firebaseLoginWithFirebaseToken : Token -> Cmd msg
 
 
 port firebaseLogout : () -> Cmd msg

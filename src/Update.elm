@@ -10,7 +10,13 @@ import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
 import Commands exposing (andThenCmd)
-import Commands.Database exposing (firebaseInit, firebaseLogin, firebaseLogout)
+import Commands.Database
+    exposing
+        ( firebaseInit
+        , firebaseLoginWithJwtToken
+        , firebaseLoginWithFirebaseToken
+        , firebaseLogout
+        )
 import Helpers exposing (getUserNameForAuthModel)
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
 import Update.Ratings exposing (updateVoteForPokemon)
@@ -68,7 +74,7 @@ update msg oldState =
     case msg of
         AuthenticationReceived (Ok credentials) ->
             updateAuthWithProfile oldState credentials
-                |> andThenCmd (firebaseLogin credentials.idToken)
+                |> andThenCmd (firebaseLoginWithJwtToken credentials.idToken)
 
         AuthenticationReceived (Err error) ->
             updateAuthWithNoProfile oldState (Just error)
@@ -86,6 +92,12 @@ update msg oldState =
             ( oldState
             , oldState.authModel.showLock oldState.authModel.lockParameters
             )
+
+        FirebaseLoginSucceeded ->
+            ( oldState, Cmd.none )
+
+        FirebaseLoginFailed ->
+            ( oldState, Cmd.none )
 
         TeamRatingsLoaded NotAsked ->
             ( oldState, Cmd.none )

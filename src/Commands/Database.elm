@@ -1,4 +1,10 @@
-module Commands.Database exposing (firebaseInit, firebaseLogin, firebaseLogout)
+module Commands.Database
+    exposing
+        ( firebaseInit
+        , firebaseLoginWithJwtToken
+        , firebaseLoginWithFirebaseToken
+        , firebaseLogout
+        )
 
 import Constants.Database exposing (..)
 import Models.Auth exposing (Token)
@@ -10,9 +16,14 @@ firebaseInit =
     Ports.firebaseInit firebaseConfig
 
 
-firebaseLogin : Token -> Cmd msg
-firebaseLogin token =
-    Ports.firebaseLogin token
+firebaseLoginWithFirebaseToken : Token -> Cmd msg
+firebaseLoginWithFirebaseToken token =
+    Ports.firebaseLoginWithFirebaseToken token
+
+
+firebaseLoginWithJwtToken : Token -> Cmd msg
+firebaseLoginWithJwtToken token =
+    Ports.firebaseLoginWithJwtToken token
 
 
 firebaseLogout : Cmd msg
