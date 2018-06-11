@@ -4,13 +4,13 @@ USERS=users.json
 
 usage:
 	@echo "Usage:"
-	@echo "  make usage    : print this usage text"
-	@echo "  make compose  : create $(COMBINED) from $(POKEDEX) and $(USERS)"
-	@echo "  make decompose: split  $(COMBINED) into $(POKEDEX) and $(USERS)"
+	@echo "  make usage   : print this usage text"
+	@echo "  make combine : create $(COMBINED) from $(POKEDEX) and $(USERS)"
+	@echo "  make split   : split  $(COMBINED) into $(POKEDEX) and $(USERS)"
 	@echo
 	@echo "Note: this needs jq(1)"
 
-compose:
+combine:
 	{                            \
 		printf "{\n"       ; \
 		printf '"pokedex":'; \
@@ -22,8 +22,8 @@ compose:
 	} > $(COMBINED)
 
 
-decompose:
+split:
 	jq '.pokedex' $(COMBINED) > $(POKEDEX)
 	jq '.users'   $(COMBINED) > $(USERS)
 
-.PHONY: usage compose decompose
+.PHONY: usage combine split
