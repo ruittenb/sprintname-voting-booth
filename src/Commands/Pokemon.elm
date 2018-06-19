@@ -2,7 +2,7 @@ module Commands.Pokemon exposing (decodePokedex)
 
 import RemoteData exposing (fromResult)
 import Json.Encode as Encode exposing (Value)
-import Json.Decode as Decode exposing (Decoder, decodeValue)
+import Json.Decode as Decode exposing (Decoder, decodeValue, int, string)
 import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Models.Pokemon exposing (..)
 
@@ -16,7 +16,7 @@ decodePokedex val =
 pokemonDecoder : Decoder Pokemon
 pokemonDecoder =
     let
-        toDecoder id number generation letterString name url variants =
+        toDecoder id number generation description letterString name url variants =
             let
                 currentVariant =
                     1
@@ -26,15 +26,16 @@ pokemonDecoder =
                         |> Maybe.map Tuple.first
                         |> Maybe.withDefault '?'
             in
-                Decode.succeed (Pokemon id number generation letterChar name url currentVariant variants)
+                Decode.succeed (Pokemon id number generation description letterChar name url currentVariant variants)
     in
         decode toDecoder
-            |> required "id" Decode.int
-            |> required "number" Decode.int
-            |> required "generation" Decode.int
-            |> required "letter" Decode.string
-            |> required "name" Decode.string
-            |> required "url" Decode.string
+            |> required "id" int
+            |> required "number" int
+            |> required "generation" int
+            |> required "description" string
+            |> required "letter" string
+            |> required "name" string
+            |> required "url" string
             |> required "variants" pokemonVariantsDecoder
             |> resolve
 
@@ -47,5 +48,5 @@ pokemonVariantsDecoder =
 pokemonVariantDecoder : Decoder PokemonVariant
 pokemonVariantDecoder =
     decode PokemonVariant
-        |> required "image" Decode.string
-        |> required "vname" Decode.string
+        |> required "image" string
+        |> required "vname" string
