@@ -27,6 +27,7 @@ type alias Pokemon =
     { id : Int
     , number : Int
     , generation : Int
+    , description : String
     , letter : Char
     , name : String
     , url : String
