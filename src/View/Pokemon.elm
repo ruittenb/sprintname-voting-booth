@@ -168,22 +168,22 @@ extractOneUserFromRatings ratings currentUser =
             List.partition (.userName >> (==) simpleUserName) ratings
 
 
-variantLink : String -> PokemonVariant -> Html Msg
-variantLink pokemonName variant =
+variantLink : String -> String -> PokemonVariant -> Html Msg
+variantLink pokemonName description variant =
     let
         caption =
             if String.length variant.vname > 0 then
-                pokemonName ++ " (" ++ variant.vname ++ ") "
+                pokemonName ++ " (" ++ variant.vname ++ "): " ++ description
             else
-                pokemonName
+                pokemonName ++ ": " ++ description
     in
         pokemonImg variant.image variant.vname
             |> linkToLighthouse variant.image caption
 
 
-variantLinks : String -> List PokemonVariant -> List (Html Msg)
-variantLinks pokemonName variants =
-    List.map (variantLink pokemonName) variants
+variantLinks : String -> String -> List PokemonVariant -> List (Html Msg)
+variantLinks pokemonName description variants =
+    List.map (variantLink pokemonName description) variants
 
 
 pokemonTile : ViewMode -> RemoteTeamRatings -> CurrentUser -> Pokemon -> Html Msg
@@ -256,7 +256,7 @@ pokemonTile viewMode ratings currentUser pokemon =
                             |> Html.Attributes.attribute "data-variants"
                         ]
                       <|
-                        variantLinks pokemon.name pokemon.variants
+                        variantLinks pokemon.name pokemon.description pokemon.variants
                     ]
                 , div
                     [ classList
