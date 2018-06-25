@@ -45,12 +45,13 @@ linkTo url content =
         [ content ]
 
 
-linkToLighthouse : String -> String -> Html Msg -> Html Msg
-linkToLighthouse imageUrl caption content =
+linkToLighthouse : String -> String -> String -> Html Msg -> Html Msg
+linkToLighthouse imageUrl title caption content =
     a
         [ href imageUrl
         , Html.Attributes.attribute "data-lightbox" "pokemon"
-        , Html.Attributes.attribute "data-title" caption
+        , Html.Attributes.attribute "data-title" title
+        , Html.Attributes.attribute "data-caption" caption
         ]
         [ content ]
 
@@ -171,14 +172,14 @@ extractOneUserFromRatings ratings currentUser =
 variantLink : String -> String -> PokemonVariant -> Html Msg
 variantLink pokemonName description variant =
     let
-        caption =
+        title =
             if String.length variant.vname > 0 then
-                pokemonName ++ " (" ++ variant.vname ++ "): " ++ description
+                pokemonName ++ " (" ++ variant.vname ++ ")"
             else
-                pokemonName ++ ": " ++ description
+                pokemonName
     in
         pokemonImg variant.image variant.vname
-            |> linkToLighthouse variant.image caption
+            |> linkToLighthouse variant.image title description
 
 
 variantLinks : String -> String -> List PokemonVariant -> List (Html Msg)

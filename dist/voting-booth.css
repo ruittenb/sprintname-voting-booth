@@ -408,6 +408,19 @@ button.user-button.current,
     content: "\f006";
 }
 
+.lb-dataContainer .lb-data .lb-details {
+    width: 90%;
+}
+
+.lb-title {
+    bottom: 14px;
+    position: relative;
+    color: #eee;
+    font-weight: bold;
+    font-size: 16px;
+    /* font-variant: small-caps; */
+}
+
 .loading-error {
     height: 16px;
     width: 16px;
