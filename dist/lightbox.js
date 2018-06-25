@@ -1,0 +1,1 @@
+/Users/ruittenb/Downloads/lightbox2-master/dist/js/lightbox.js
