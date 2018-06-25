@@ -10,12 +10,12 @@ debounceDelay =
 
 initialGeneration : Int
 initialGeneration =
-    3
+    4
 
 
 initialLetter : Char
 initialLetter =
-    'Z'
+    'A'
 
 
 maxStars : Int
