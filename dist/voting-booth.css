@@ -412,6 +412,10 @@ button.user-button.current,
     width: 90%;
 }
 
+.lb-dataContainer .lb-data .lb-number {
+    padding-top: 4px;
+}
+
 .lb-title {
     bottom: 14px;
     position: relative;
