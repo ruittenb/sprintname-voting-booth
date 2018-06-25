@@ -434,7 +434,6 @@
     ) {
       var $caption = this.$lightbox.find('.lb-caption');
       var $title = this.$lightbox.find('.lb-title');
-      console.log($caption, $title); // TODO
       if (this.options.sanitizeTitle) {
         $title.text(this.album[this.currentImageIndex].title);
         $caption.text(this.album[this.currentImageIndex].caption);
