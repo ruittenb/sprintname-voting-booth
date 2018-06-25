@@ -1,17 +1,22 @@
 port module Ports
     exposing
-        ( preloadImages
-        , auth0showLock
-        , auth0logout
+        ( auth0ShowLock
+        , auth0Logout
+        , firebaseInit
+        , firebaseLoginWithJwtToken
+        , firebaseLoginWithFirebaseToken
+        , firebaseLogout
+        , preloadImages
         , saveUserRatings
-        , onAuth0Result
-        , onAuth0Logout
+        , onAuthenticationReceived
+        , onAuthenticationFailed
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
         )
 
-import Auth0
+import Models.Auth exposing (LockParameters, Token)
+import Models.Database exposing (FirebaseConfig, Diagnostics)
 import Models.Pokemon exposing (PortCompatiblePreloadCandidate)
 import Models.Ratings exposing (UserRatings)
 import Json.Encode exposing (Value)
@@ -20,13 +25,25 @@ import Json.Encode exposing (Value)
 -- Commands (outgoing)
 
 
+port auth0ShowLock : LockParameters -> Cmd msg
+
+
+port auth0Logout : () -> Cmd msg
+
+
+port firebaseInit : FirebaseConfig -> Cmd msg
+
+
+port firebaseLoginWithJwtToken : Token -> Cmd msg
+
+
+port firebaseLoginWithFirebaseToken : Token -> Cmd msg
+
+
+port firebaseLogout : () -> Cmd msg
+
+
 port preloadImages : List PortCompatiblePreloadCandidate -> Cmd msg
-
-
-port auth0showLock : Auth0.Options -> Cmd msg
-
-
-port auth0logout : () -> Cmd msg
 
 
 port saveUserRatings : UserRatings -> Cmd msg
@@ -36,10 +53,16 @@ port saveUserRatings : UserRatings -> Cmd msg
 -- Subscriptions (incoming)
 
 
-port onAuth0Result : (Auth0.RawAuthenticationResult -> msg) -> Sub msg
+port onAuthenticationReceived : (Value -> msg) -> Sub msg
 
 
-port onAuth0Logout : (() -> msg) -> Sub msg
+port onAuthenticationFailed : (String -> msg) -> Sub msg
+
+
+port onFirebaseLogin : (() -> msg) -> Sub msg
+
+
+port onFirebaseLoginFailed : (Diagnostics -> msg) -> Sub msg
 
 
 port onLoadPokedex : (Value -> msg) -> Sub msg

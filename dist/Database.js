@@ -3,81 +3,47 @@
 const firebase = require('firebase');
 require('firebase/auth');
 require('firebase/database');
-require('./Globals.js');
-const Observable = require('./Observable.js');
 
 /** **********************************************************************
- * VotingDb
+ * Database
  */
 
 module.exports = (function (jQuery, firebase)
 {
     /** **********************************************************************
-     * Static data for the event hub
+     * Static data
      */
-    const fires = [
-        FIREBASE_SIGNIN_FAILED,
-        TEAM_RATINGS_LOADED,
-        USER_RATINGS_LOADED,
-        POKEDEX_LOADED
-    ];
-
     const tokenserverUrl = `http://${window.location.hostname}:4202/`;
 
     /** **********************************************************************
-     * Constructor
+     * Constructor. This only installs the incoming port message listeners.
      */
-    let VotingDb = function (eventHub)
+    let Database = function (elmClient)
     {
-        this.init();
+        this.elmClient = elmClient;
 
-        eventHub.register(this, fires);
+        // ----- messages incoming from elm -----
 
-        // user logged out
-        eventHub.on(USER_REQUESTED_LOGOUT, this.logout.bind(this));
-        eventHub.on(ID_TOKEN_RECEIVED_FROM_AUTH, this.login.bind(this));
-        eventHub.on(ID_TOKEN_FOUND_IN_STORAGE, this.login.bind(this));
-        eventHub.on(USER_VOTES_CAST, this.castVote.bind(this));
+        // application is ready for initialization of the database
+        this.elmClient.ports.firebaseInit.subscribe(this.init.bind(this));
 
-        let me = this;
-
-        // when pokedex loads
-        this.votingDb.pokedex.on('value', function (data) {
-            let pokedex = data.val();
-            me.fire(POKEDEX_LOADED, pokedex);
+        // user clicked 'logout'
+        this.elmClient.ports.firebaseLogout.subscribe(() => {
+            firebase.auth().signOut();
         });
 
-        // when user ratings load
-        this.votingDb.users.once('value', function (data) {
-            let team = data.val();
-            me.fire(TEAM_RATINGS_LOADED, team);
-        });
-        this.votingDb.users.on('child_changed', function (data) {
-            let user = data.val();
-            me.fire(USER_RATINGS_LOADED, user);
-        });
+        // user logged in
+        this.elmClient.ports.firebaseLoginWithJwtToken.subscribe(this.login.bind(this));
 
-    }; // constructor
-
-    /** **********************************************************************
-     * inherit Observable, but restore the constructor
-     */
-    VotingDb.prototype = new Observable();
-    VotingDb.prototype.constructor = VotingDb;
+        // save user ratings to firebase
+        this.elmClient.ports.saveUserRatings.subscribe(this.castVote.bind(this));
+    };
 
     /** **********************************************************************
      * instantiate and initialize the database
      */
-    VotingDb.prototype.init = function ()
+    Database.prototype.init = function (firebaseConfig)
     {
-        const firebaseConfig = {
-            apiKey            : "AIzaSyAm4--Q2MjVWGZYW-IC8LPZARXJq-XyHXA",
-            databaseURL       : "https://sprintname-voting-booth.firebaseio.com",
-            authDomain        : "sprintname-voting-booth.firebaseapp.com",
-            storageBucket     : "sprintname-voting-booth.appspot.com",
-            messagingSenderId : "90828432994"
-        };
-
         firebase.initializeApp(firebaseConfig);
 
         this.votingDb = {
@@ -85,12 +51,41 @@ module.exports = (function (jQuery, firebase)
             pokedex : firebase.database().ref('pokedex'),
             users   : firebase.database().ref('users')
         };
+
+        this.initListeners();
     };
+
+    /** **********************************************************************
+     * instantiate and initialize the outgoing port handlers.
+     */
+    Database.prototype.initListeners = function ()
+    {
+        // ----- messages outgoing to elm -----
+
+        // when pokedex loads
+        this.votingDb.pokedex.on('value', (data) => {
+            const pokedex = data.val();
+            this.elmClient.ports.onLoadPokedex.send(pokedex);
+        });
+
+        // when user ratings load (initially: entire team)
+        this.votingDb.users.once('value', (data) => {
+            const team = data.val();
+            this.elmClient.ports.onLoadTeamRatings.send(team);
+        });
+
+        // when user ratings load (when a user votes)
+        this.votingDb.users.on('child_changed', (data) => {
+            const user = data.val();
+            this.elmClient.ports.onLoadUserRatings.send(user);
+        });
+
+    }; // initListeners
 
     /** **********************************************************************
      * take a JWT token, obtain a firebase token, and log in in firebase
      */
-    VotingDb.prototype.login = function (jwtToken)
+    Database.prototype.login = function (jwtToken)
     {
         let me = this;
 
@@ -108,32 +103,22 @@ module.exports = (function (jQuery, firebase)
             })
             .then(function (firebaseToken) {
                 jQuery('#message-box').text('').removeClass('error warning');
+                localStorage.setItem('firebaseToken', firebaseToken);
                 return firebase.auth().signInWithCustomToken(firebaseToken);
             })
             .catch(function (e) {
-                console.error('caught: ', e);
                 let status = e.status || 500;
                 let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
                 jQuery('#message-box').text(status + ': ' + message).addClass('error');
-                // if the token was expired, try to obtain a new one
-                let retry = status === 403;
-                me.fire(FIREBASE_SIGNIN_FAILED, retry);
+                me.elmClient.ports.onFirebaseLoginFailed.send(e);
             });
         return;
     };
 
     /** **********************************************************************
-     * Log out of firebase
-     */
-    VotingDb.prototype.logout = function ()
-    {
-        firebase.auth().signOut();
-    };
-
-    /** **********************************************************************
      * database action: casting votes
      */
-    VotingDb.prototype.castVote = function (userRatings)
+    Database.prototype.castVote = function (userRatings)
     {
         // id === null would correspond to a delete request.
         // id should not be null, but let's be defensive here.
@@ -143,7 +128,7 @@ module.exports = (function (jQuery, firebase)
         }
     };
 
-    return VotingDb;
+    return Database;
 
 })(jQuery, firebase);
 

@@ -3,9 +3,10 @@ module Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex, 
 import Array exposing (Array)
 import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
-import Authentication exposing (tryGetUserProfile)
+import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
 import Models.Ratings exposing (..)
+import Helpers.Authentication exposing (tryGetUserProfile)
 
 
 romanNumerals : Array String
@@ -24,7 +25,7 @@ isNumeric str =
     Regex.contains (regex "^[0-9]+$") str
 
 
-getUserNameForAuthModel : RemoteTeamRatings -> Authentication.Model -> Maybe String
+getUserNameForAuthModel : RemoteTeamRatings -> AuthenticationModel -> Maybe String
 getUserNameForAuthModel ratings authModel =
     let
         userEmail =

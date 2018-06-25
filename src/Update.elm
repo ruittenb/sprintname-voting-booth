@@ -5,12 +5,20 @@ import List
 import List.Extra exposing (replaceIf)
 import Navigation exposing (Location)
 import RemoteData exposing (WebData, RemoteData(..))
-import Authentication exposing (update)
 import Control exposing (update)
 import Models exposing (..)
 import Models.Types exposing (..)
-import Msgs exposing (Msg)
+import Msgs exposing (Msg(..))
+import Commands exposing (andThenCmd)
+import Commands.Database
+    exposing
+        ( firebaseInit
+        , firebaseLoginWithJwtToken
+        , firebaseLoginWithFirebaseToken
+        , firebaseLogout
+        )
 import Helpers exposing (getUserNameForAuthModel)
+import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
 import Update.Ratings exposing (updateVoteForPokemon)
 import Update.Pokemon
     exposing
@@ -64,13 +72,40 @@ hashToMsg location =
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
     case msg of
-        Msgs.TeamRatingsLoaded NotAsked ->
+        AuthenticationReceived (Ok credentials) ->
+            updateAuthWithProfile oldState credentials
+                |> andThenCmd (firebaseLoginWithJwtToken credentials.idToken)
+
+        AuthenticationReceived (Err error) ->
+            updateAuthWithNoProfile oldState (Just error)
+                |> andThenCmd firebaseLogout
+
+        AuthenticationFailed reason ->
+            updateAuthWithNoProfile oldState (Just reason)
+                |> andThenCmd firebaseLogout
+
+        AuthenticationLogoutClicked ->
+            updateAuthWithNoProfile oldState Nothing
+                |> andThenCmd firebaseLogout
+
+        AuthenticationLoginClicked ->
+            ( oldState
+            , oldState.authModel.showLock oldState.authModel.lockParameters
+            )
+
+        FirebaseLoginSucceeded ->
             ( oldState, Cmd.none )
 
-        Msgs.TeamRatingsLoaded Loading ->
+        FirebaseLoginFailed ->
             ( oldState, Cmd.none )
 
-        Msgs.TeamRatingsLoaded (Success ratings) ->
+        TeamRatingsLoaded NotAsked ->
+            ( oldState, Cmd.none )
+
+        TeamRatingsLoaded Loading ->
+            ( oldState, Cmd.none )
+
+        TeamRatingsLoaded (Success ratings) ->
             let
                 newRatings =
                     RemoteData.succeed ratings
@@ -83,7 +118,7 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.TeamRatingsLoaded (Failure message) ->
+        TeamRatingsLoaded (Failure message) ->
             let
                 newState =
                     { oldState
@@ -94,7 +129,7 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.UserRatingsLoaded (Success userRatings) ->
+        UserRatingsLoaded (Success userRatings) ->
             let
                 newRatings =
                     RemoteData.map
@@ -106,61 +141,48 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        Msgs.UserRatingsLoaded _ ->
+        UserRatingsLoaded _ ->
             ( oldState, Cmd.none )
 
-        Msgs.UserRatingsSaved NotAsked ->
-            ( oldState, Cmd.none )
-
-        Msgs.UserRatingsSaved Loading ->
-            ( oldState, Cmd.none )
-
-        Msgs.UserRatingsSaved (Success ratings) ->
-            ( oldState, Cmd.none )
-
-        Msgs.UserRatingsSaved (Failure message) ->
-            let
-                newState =
-                    { oldState | statusMessage = toString message, statusLevel = Error }
-            in
-                ( newState, Cmd.none )
-
-        Msgs.PokedexLoaded pokedex ->
+        PokedexLoaded pokedex ->
             updateOnLoadPokedex oldState pokedex
 
-        Msgs.AuthenticationMsg authMsg ->
-            let
-                ( authModel, cmd ) =
-                    Authentication.update authMsg oldState.authModel
-
-                newState =
-                    { oldState
-                        | authModel = authModel
-                        , user = getUserNameForAuthModel oldState.ratings authModel
-                    }
-            in
-                ( newState, Cmd.map Msgs.AuthenticationMsg cmd )
-
-        Msgs.GenerationChanged newGen ->
+        GenerationChanged newGen ->
             updateChangeGenerationAndLetter oldState newGen oldState.letter
 
-        Msgs.LetterChanged newLetter ->
+        LetterChanged newLetter ->
             updateChangeGenerationAndLetter oldState oldState.generation newLetter
 
-        Msgs.GenerationAndLetterChanged newGen newLetter ->
+        GenerationAndLetterChanged newGen newLetter ->
             updateChangeGenerationAndLetter oldState newGen newLetter
 
-        Msgs.VariantChanged pokemonNumber direction ->
+        VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction
 
-        Msgs.SearchPokemon pattern ->
+        SearchPokemon pattern ->
             updateSearchPokemon oldState pattern
 
-        Msgs.DebounceSearchPokemon debMsg ->
+        DebounceSearchPokemon debMsg ->
             Control.update
                 (\s -> { oldState | debounceState = s })
                 oldState.debounceState
                 debMsg
 
-        Msgs.PokemonVoteCast userVote ->
+        PokemonVoteCast userVote ->
             updateVoteForPokemon oldState userVote
+
+        UserRatingsSaved NotAsked ->
+            ( oldState, Cmd.none )
+
+        UserRatingsSaved Loading ->
+            ( oldState, Cmd.none )
+
+        UserRatingsSaved (Success ratings) ->
+            ( oldState, Cmd.none )
+
+        UserRatingsSaved (Failure message) ->
+            let
+                newState =
+                    { oldState | statusMessage = toString message, statusLevel = Error }
+            in
+                ( newState, Cmd.none )
