@@ -66,4 +66,5 @@ _fabriek
 serviceAccountKey.json
 public-auth0.key
 # ruittenb volatile data
-dist/version.js
+/dist/version.js
+/data/backups

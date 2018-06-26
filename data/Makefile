@@ -1,4 +1,4 @@
-COMBINED=db.json
+COMBINED=total.json
 POKEDEX=pokedex.json
 USERS=users.json
 
