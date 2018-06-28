@@ -11,6 +11,18 @@
       {
         "image": "/dist/pokeart/000.png",
         "vname": ""
+      },
+      {
+        "image": "/dist/pokeart/000-ghost.png",
+        "vname": "Ghost"
+      },
+      {
+        "image": "/dist/pokeart/000-fossil1.png",
+        "vname": "Aerodactyl fossil"
+      },
+      {
+        "image": "/dist/pokeart/000-fossil2.png",
+        "vname": "Kabutops fossil"
       }
     ]
   },
