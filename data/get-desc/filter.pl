@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-##<dt class="dex-flavor-generation"><img alt="Generation 7" src="/static/pokedex/images/versions/generation-7.png" title="Generation 7" /></dt>
+#<dt class="dex-flavor-generation"><img alt="Generation 7" src="/static/pokedex/images/versions/generation-7.png" title="Generation 7" /></dt>
 #<dd>
 #  <dl>
 #    <dt><img alt="Moon" src="/static/pokedex/images/versions/moon.png" title="Moon" /></dt>
@@ -13,21 +13,29 @@ use warnings;
 #  </dl>
 #</dd>
 
+sub contains {
+	my ($needle, @haystack) = @_;
+	return scalar grep { $_ eq $needle } @haystack;
+}
+
 sub filter {
 	my $inside = 0;
 	my @buffer;
 	while (<>) {
 		next unless $inside or /"dex-flavor-generation"/;
-		$inside or $inside++, @buffer = (), next;
+		#$inside or $inside++, next;
 		#s!^    <dd><p>(?<description>[^<]*)</p></dd>$!$+{description}! and print, next;
-		if (s!^    <dd><p>(?<description>[^<]*)</p></dd>$!$+{description}! and !grep($_, @buffer)) {
-			print;
-			push @buffer, $_;
-			next;
+		if (s!^    <dd><p>(?<description>[^<]*)</p></dd>$!$+{description}!) {
+			if (!contains($_, @buffer)) {
+				print;
+				push @buffer, $_;
+				next;
+			}
 		}
 		$inside = !m!^</dd>!;
 	}
 }
 
 filter();
+
 
