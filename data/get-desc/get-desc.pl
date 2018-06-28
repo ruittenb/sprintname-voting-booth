@@ -27,6 +27,7 @@ sub main {
 	my $filename;
 	foreach my $pokie (@pokies) {
 		$filename = "$current-$pokie.html";
+		#system qq!curl $base$pokie > $filename ! and die "Error";
 		system qq!curl $base$pokie | ./filter.pl > $filename ! and die "Error";
 		$current++;
 	}

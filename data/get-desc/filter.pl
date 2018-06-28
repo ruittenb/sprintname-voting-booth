@@ -23,15 +23,7 @@ sub filter {
 	my @buffer;
 	while (<>) {
 		next unless $inside or /"dex-flavor-generation"/;
-		#$inside or $inside++, next;
-		#s!^    <dd><p>(?<description>[^<]*)</p></dd>$!$+{description}! and print, next;
-		if (s!^    <dd><p>(?<description>[^<]*)</p></dd>$!$+{description}!) {
-			if (!contains($_, @buffer)) {
-				print;
-				push @buffer, $_;
-				next;
-			}
-		}
+		s!^    <dd><p>(?<description>[^<]*)</p></dd>$!$+{description}! and !contains($_, @buffer) and print, push @buffer, $_;
 		$inside = !m!^</dd>!;
 	}
 }
