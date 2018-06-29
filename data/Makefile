@@ -21,7 +21,7 @@ combine:
 		printf '"users":'  ; \
 		cat $(USERS)       ; \
 		printf "}\n"       ; \
-	} > $(COMBINED)
+	} | jq . > $(COMBINED)
 
 split:
 	jq '.pokedex' $(COMBINED) > $(POKEDEX)
@@ -36,7 +36,7 @@ replace-pokedex:
 		printf '"users":'      ; \
 		jq '.users' $(COMBINED); \
 		printf "}\n"           ; \
-	} > $(COMBINED).new
+	} | jq . > $(COMBINED).new
 	mv $(COMBINED).new $(COMBINED)
 
 replace-users:
@@ -48,7 +48,7 @@ replace-users:
 		printf '"users":'        ; \
 		cat $(USERS)             ; \
 		printf "}\n"             ; \
-	} > $(COMBINED).new
+	} | jq . > $(COMBINED).new
 	mv $(COMBINED).new $(COMBINED)
 
 .PHONY: usage combine split
