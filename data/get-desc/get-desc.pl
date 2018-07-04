@@ -9,19 +9,19 @@ my @pokies = qw(
 	missingno.  bulbasaur ivysaur venusaur charmander charmeleon
 	charizard squirtle wartortle blastoise caterpie metapod butterfree
 	weedle kakuna beedrill pidgey pidgeotto pidgeot rattata raticate
-	spearow fearow ekans arbok pikachu raichu sandshrew sandslash nidoran%20♀
-	nidorina nidoqueen nidoran%20♂ nidorino nidoking clefairy clefable
+	spearow fearow ekans arbok pikachu raichu sandshrew sandslash nidoran♀
+	nidorina nidoqueen nidoran♂ nidorino nidoking clefairy clefable
 	vulpix ninetales jigglypuff wigglytuff zubat golbat oddish gloom
 	vileplume paras parasect venonat venomoth diglett dugtrio meowth
 	persian psyduck golduck mankey primeape growlithe arcanine poliwag
 	poliwhirl poliwrath abra kadabra alakazam machop machoke machamp
 	bellsprout weepinbell victreebel tentacool tentacruel geodude
 	graveler golem ponyta rapidash slowpoke slowbro magnemite magneton
-	farfetchd doduo dodrio seel dewgong grimer muk shellder cloyster
+	farfetch%27d doduo dodrio seel dewgong grimer muk shellder cloyster
 	gastly haunter gengar onix drowzee hypno krabby kingler voltorb
 	electrode exeggcute exeggutor cubone marowak hitmonlee hitmonchan
 	lickitung koffing weezing rhyhorn rhydon chansey tangela kangaskhan
-	horsea seadra goldeen seaking staryu starmie mr%56%20mime scyther jynx
+	horsea seadra goldeen seaking staryu starmie mr.%20mime scyther jynx
 	electabuzz magmar pinsir tauros magikarp gyarados lapras ditto eevee
 	vaporeon jolteon flareon porygon omanyte omastar kabuto kabutops
 	aerodactyl snorlax articuno zapdos moltres dratini dragonair dragonite
@@ -60,7 +60,7 @@ my @pokies = qw(
 	rampardos shieldon bastiodon burmy wormadam mothim combee vespiquen
 	pachirisu buizel floatzel cherubi cherrim shellos gastrodon ambipom
 	drifloon drifblim buneary lopunny mismagius honchkrow glameow purugly
-	chingling stunky skuntank bronzor bronzong bonsly mime%20jr%56  happiny
+	chingling stunky skuntank bronzor bronzong bonsly mime%20jr. happiny
 	chatot spiritomb gible gabite garchomp munchlax riolu lucario
 	hippopotas hippowdon skorupi drapion croagunk toxicroak carnivine
 	finneon lumineon mantyke snover abomasnow weavile magnezone lickilicky
@@ -108,13 +108,13 @@ my @pokies = qw(
 );
 
 sub main {
-	my $current = 0;
 	my $filename;
-	foreach my $pokie (@pokies) {
-		$filename = sprintf('%03d.html', $current);
+	#foreach my $i (0 .. $#pokies) {
+	foreach my $i (20 .. $#pokies) {
+		my $pokie = $pokies[$i];
+		$filename = sprintf('%03d.html', $i);
 		#system qq!curl $base$pokie > $filename ! and die "Error";
 		system qq!curl $base$pokie | ./filter.pl > $filename ! and die "Error";
-		$current++;
 	}
 }
 
