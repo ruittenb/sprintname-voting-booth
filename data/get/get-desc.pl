@@ -113,8 +113,8 @@ sub main {
 	foreach my $i (20 .. $#pokies) {
 		my $pokie = $pokies[$i];
 		$filename = sprintf('%03d.html', $i);
-		#system qq!curl $base$pokie > $filename ! and die "Error";
-		system qq!curl $base$pokie | ./filter.pl > $filename ! and die "Error";
+		#system qq!curl $base$pokie > desc/$filename ! and die "Error";
+		system qq!curl $base$pokie | ./filter.pl > desc/$filename ! and die "Error";
 	}
 }
 
