@@ -232,6 +232,8 @@ pokemonTile viewMode ratings currentUser pokemon =
         div
             [ class "poketile"
             , "Total: " ++ toString totalVotes |> title
+            , toString totalVotes |> attribute "data-votes"
+            , pokemon.name |> attribute "data-name"
             ]
         <|
             [ p []

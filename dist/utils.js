@@ -1,4 +1,5 @@
-function countVotes() {
+function countVotes()
+{
     var votes = [];
     var person, vote;
 
@@ -35,3 +36,23 @@ function countVotes() {
     return;
 }
 
+function showRankings()
+{
+    var color = 'color: red; font-weight: bold';
+    var rankings = jQuery('.poketile').toArray().reduce(
+        function (acc, elem) {
+            acc.push({
+                votes: parseInt(elem.getAttribute('data-votes'), 10),
+                name: elem.getAttribute('data-name'),
+            });
+            return acc;
+        }, []
+    ).sort(
+        function (a, b) {
+            return a.votes > b.votes ? -1 : a.votes < b.votes ? 1 : 0;
+        }
+    ).forEach(function (votee) {
+        console.log('%c' + votee.name + ': ' + votee.votes, color);
+        color = '';
+    });
+}
