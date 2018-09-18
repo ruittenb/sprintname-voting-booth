@@ -40,7 +40,7 @@
     "userName": "Dennis"
   },
   {
-    "active": true,
+    "active": false,
     "color": "#89ccff",
     "email": "ivan.kaplya@proforto.nl",
     "id": 5,
