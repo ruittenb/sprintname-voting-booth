@@ -31,7 +31,7 @@ maxGeneration =
 totalPokemon : Int
 totalPokemon =
     -- zero included
-    803
+    809
 
 
 allGenerations : List Int
