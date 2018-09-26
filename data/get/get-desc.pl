@@ -104,13 +104,18 @@ my @pokies = qw(
 	toxapex mudbray mudsdale dewpider araquanid fomantis lurantis
 	morelull shiinotic salandit salazzle stufful bewear bounsweet steenee
 	tsareena comfey oranguru passimian wimpod golisopod sandygast
-	palossand pyukumuku
+	palossand pyukumuku type:%20null silvally minior komala turtonator
+	togedemaru mimikyu bruxish drampa dhelmise jangmo-o hakamo-o kommo-o
+	tapu%20koko tapu%20lele tapu%20bulu tapu%20fini cosmog cosmoem solgaleo
+	lunala nihilego buzzwole pheromosa xurkitree celesteela kartana guzzlord
+	necrozma magearna marshadow poipole naganadel stakataka blacephalon
+	zeraora meltan
 );
 
 sub main {
 	my $filename;
 	#foreach my $i (0 .. $#pokies) {
-	foreach my $i (20 .. $#pokies) {
+	foreach my $i (803 .. $#pokies) {
 		my $pokie = $pokies[$i];
 		$filename = sprintf('%03d.html', $i);
 		#system qq!curl $base$pokie > desc/$filename ! and die "Error";
