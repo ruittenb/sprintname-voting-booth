@@ -12652,6 +12652,96 @@
           "vname": ""
         }
       ]
+    },
+    {
+      "description": "An Ultra Beast that lives in a different world, it cackles wildly as it sprays its opponents with poison from the needles on its head.  This Ultra Beast is well enough liked to be chosen as a first partner in its own world.",
+      "generation": 7,
+      "id": 803,
+      "letter": "P",
+      "name": "Poipole",
+      "number": 803,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Poipole_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "/dist/pokeart/803.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "One kind of Ultra Beast, it fires a glowing, venomous liquid from its needles. This liquid is also immensely adhesive.",
+      "generation": 7,
+      "id": 804,
+      "letter": "N",
+      "name": "Naganadel",
+      "number": 804,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Naganadel_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "/dist/pokeart/804.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "When stone walls started moving and attacking, the brute's true identity was this mysterious life-form, which brings to mind an Ultra Beast.  It appeared from an Ultra Wormhole. Each one appears to be made up of many life-forms stacked one on top of each other.",
+      "generation": 7,
+      "id": 805,
+      "letter": "S",
+      "name": "Stakataka",
+      "number": 805,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Stakataka_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "/dist/pokeart/805.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "It slithers toward people. Then, without warning, it triggers the explosion of its own head.  An Ultra Beast that appeared from an Ultra Wormhole, it causes explosions, then takes advantage of opponents' surprise to rob them of their vitality.",
+      "generation": 7,
+      "id": 806,
+      "letter": "B",
+      "name": "Blacephalon",
+      "number": 806,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Blacephalon_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "/dist/pokeart/806.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "It approaches its enemies at the speed of lightning, then electrifies its claws and tears its opponents apart with them. Even if they dodge its attack, they'll be electrocuted by the flying sparks.",
+      "generation": 7,
+      "id": 807,
+      "letter": "Z",
+      "name": "Zeraora",
+      "number": 807,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Zeraora_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "/dist/pokeart/807.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "Most of Meltan's body is made from liquid metal, and its shape is very fluid. It can use its liquid arms and legs to corrode metal and absorb it into its own body. Meltan generates electricity using the metal it absorbs from outside sources. It uses this electricity as an energy source and also as an attack that can be fired from its eye.  Clearly a curious Pokémon, Meltan is very expressive and shows an interest in all kinds of things.",
+      "generation": 7,
+      "id": 808,
+      "letter": "M",
+      "name": "Meltan",
+      "number": 808,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Meltan_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "/dist/pokeart/808.png",
+          "vname": ""
+        }
+      ]
     }
   ],
   "users": [

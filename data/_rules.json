@@ -18,7 +18,7 @@
                 && newData.child('color').isString()
                 && newData.child('email').isString()
                 && newData.child('ratings').isString()
-                && newData.child('ratings').val().length == 803
+                && newData.child('ratings').val().length >= 803
                 && newData.child('userName').isString()"
       }
     }
