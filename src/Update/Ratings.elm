@@ -31,6 +31,26 @@ extractOnePokemonFromRatingString ratingString pokemonNumber =
         |> Result.withDefault 0
 
 
+
+{-
+   See if the ratings string is long enough to accommodate all pokemon.
+   If not, expand it.
+-}
+
+
+ensureRatingStringLength : String -> String
+ensureRatingStringLength ratingString =
+    let
+        lengthDifference =
+            totalPokemon - String.length ratingString
+    in
+        ratingString
+            ++ if lengthDifference <= 0 then
+                ""
+               else
+                String.repeat lengthDifference "0"
+
+
 updateVoteForPokemon : ApplicationState -> UserVote -> ( ApplicationState, Cmd Msg )
 updateVoteForPokemon oldState userVote =
     case oldState.ratings of
@@ -49,6 +69,7 @@ updateVoteForPokemon oldState userVote =
                     List.head oldCurrentUserRatings
                         |> Maybe.map .ratings
                         |> Maybe.withDefault (String.repeat totalPokemon "0")
+                        |> ensureRatingStringLength
 
                 -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
                 ( newState, newCmd ) =
