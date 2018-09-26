@@ -10,6 +10,7 @@ port module Ports
         , saveUserRatings
         , onAuthenticationReceived
         , onAuthenticationFailed
+        , onFirebaseLoginFailed
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
