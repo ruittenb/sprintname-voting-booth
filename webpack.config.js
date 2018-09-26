@@ -27,7 +27,7 @@ module.exports = {
       },
       {
         test:    /\.elm$/,
-        exclude: [/elm-stuff/, /node_modules/],
+        exclude: [ /elm-stuff/, /node_modules/ ],
         loader:  'elm-webpack-loader?verbose=true&warn=true&debug=' + debug,
       },
       {
@@ -72,4 +72,4 @@ module.exports = {
   },
 };
 
-// vim: set ts=2 sw=2 et:
+/* vim: set ts=2 sw=2 et: */
