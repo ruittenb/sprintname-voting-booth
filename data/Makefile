@@ -28,14 +28,14 @@ split:
 	jq '.users'   $(COMBINED) > $(USERS)
 
 replace-pokedex:
-	{                                \
-		printf "{\n"           ; \
-		printf '"pokedex":'    ; \
-		cat $(POKEDEX)         ; \
-		printf ",\n"           ; \
-		printf '"users":'      ; \
-		jq '.users' $(COMBINED); \
-		printf "}\n"           ; \
+	{                                  \
+		printf "{\n"             ; \
+		printf '"pokedex":'      ; \
+		cat $(POKEDEX)           ; \
+		printf ",\n"             ; \
+		printf '"users":'        ; \
+		jq '.users' $(COMBINED)  ; \
+		printf "}\n"             ; \
 	} | jq . > $(COMBINED).new
 	mv $(COMBINED).new $(COMBINED)
 
