@@ -11,7 +11,7 @@ import Helpers.Authentication exposing (tryGetUserProfile)
 
 romanNumerals : Array String
 romanNumerals =
-    Array.fromList [ "O", "I", "II", "III", "IV", "V", "VI", "VII" ]
+    Array.fromList [ "O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII" ]
 
 
 romanNumeral : Int -> String

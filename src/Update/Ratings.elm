@@ -61,7 +61,7 @@ updateVoteForPokemon oldState userVote =
                     userVote.pokemonNumber
 
                 -- extract one user
-                ( oldCurrentUserRatings, otherUserRatings ) =
+                ( oldCurrentUserRatings, otherUsersRatings ) =
                     extractOneUserFromRatings oldRatings oldState.user
 
                 -- extract user rating string, or create one
@@ -124,7 +124,7 @@ updateVoteForPokemon oldState userVote =
                                                     { actualUserRatings | ratings = newUserRatingString }
 
                                                 newStateRatings =
-                                                    newCurrentUserRatings :: otherUserRatings
+                                                    newCurrentUserRatings :: otherUsersRatings
                                             in
                                                 ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
                                                 , saveRatings newCurrentUserRatings

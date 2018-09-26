@@ -84,7 +84,7 @@ voteWidgetStar pokemonNumber currentUserName rating stars =
 
 
 voteWidget : TeamRating -> Int -> String -> Html Msg
-voteWidget ownRatings pokemonNumber currentUserName =
+voteWidget currentUserRating pokemonNumber currentUserName =
     let
         userVote =
             { pokemonNumber = pokemonNumber
@@ -92,7 +92,7 @@ voteWidget ownRatings pokemonNumber currentUserName =
             }
 
         rating =
-            List.head ownRatings
+            List.head currentUserRating
                 |> Maybe.map .rating
                 |> Maybe.withDefault 0
     in
@@ -127,13 +127,19 @@ ratingNode rating =
 
 
 ratingWidget : TeamRating -> Html Msg -> Html Msg
-ratingWidget ratings actualVoteWidget =
+ratingWidget otherUsersRating actualVoteWidget =
     div
         [ class "rating-nodes"
         ]
     <|
-        (List.map ratingNode ratings)
+        (List.map ratingNode otherUsersRating)
             ++ [ actualVoteWidget ]
+
+
+
+{- in: a list of user data with ratings array.
+   out: a list of user data with rating element (integer) for the specified pokemon.
+-}
 
 
 extractOnePokemonFromRatings : RemoteTeamRatings -> Pokemon -> TeamRating
@@ -190,14 +196,14 @@ variantLinks pokemonName description variants =
 pokemonTile : ViewMode -> RemoteTeamRatings -> CurrentUser -> Pokemon -> Html Msg
 pokemonTile viewMode ratings currentUser pokemon =
     let
-        teamRatings =
+        teamRating =
             extractOnePokemonFromRatings ratings pokemon
 
         totalVotes =
-            countCompleteVotes teamRatings
+            countCompleteVotes teamRating
 
-        ( ownRatings, otherRatings ) =
-            extractOneUserFromRatings teamRatings currentUser
+        ( currentUserRating, otherUsersRating ) =
+            extractOneUserFromRatings teamRating currentUser
 
         leftMargin =
             toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
@@ -227,7 +233,7 @@ pokemonTile viewMode ratings currentUser pokemon =
                     text ""
 
                 Just actualUserName ->
-                    voteWidget ownRatings pokemon.number actualUserName
+                    voteWidget currentUserRating pokemon.number actualUserName
     in
         div
             [ class "poketile"
@@ -272,7 +278,7 @@ pokemonTile viewMode ratings currentUser pokemon =
             ]
                 ++ case ratings of
                     Success _ ->
-                        [ ratingWidget otherRatings actualVoteWidget ]
+                        [ ratingWidget otherUsersRating actualVoteWidget ]
 
                     Failure _ ->
                         [ loadingErrorIcon ]
