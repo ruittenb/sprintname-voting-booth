@@ -22,15 +22,18 @@ type alias AuthenticationModel =
 
 init : Maybe LoggedInUser -> AuthenticationModel
 init initialData =
-    { state =
-        case initialData of
-            Just user ->
-                LoggedIn user
+    let
+        state =
+            case initialData of
+                Just user ->
+                    LoggedIn user
 
-            Nothing ->
-                LoggedOut
-    , lastError = Nothing
-    , lockParameters = lockParameters
-    , showLock = auth0ShowLock
-    , logOut = auth0Logout
-    }
+                Nothing ->
+                    LoggedOut
+    in
+        { state = state
+        , lastError = Nothing
+        , lockParameters = lockParameters
+        , showLock = auth0ShowLock
+        , logOut = auth0Logout
+        }
