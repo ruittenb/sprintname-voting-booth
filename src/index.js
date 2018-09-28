@@ -2,8 +2,9 @@
 
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
-require('./index.html'); // ensure index.html gets copied during build
-require('../dist/utils.js'); // ensure utils.js gets copied during build
+require('./index.html');       // ensure index.html gets copied during build
+require('../dist/utils.js');   // ensure utils.js gets copied during build
+require('../dist/version.js'); // ensure version.js gets copied during build
 
 const Authentication = require('../dist/Authentication.js');
 const Database       = require('../dist/Database.js');

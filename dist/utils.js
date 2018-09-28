@@ -1,4 +1,4 @@
-function countVotes()
+window.countVotes = function ()
 {
     var votes = [];
     var person, vote;
@@ -34,9 +34,9 @@ function countVotes()
         console.log('%c' + name + ': ' + votes[name], 'color:' + color);
     };
     return;
-}
+};
 
-function showRankings()
+window.showRankings = function ()
 {
     var color = 'color: red; font-weight: bold';
     var rankings = jQuery('.poketile').toArray().reduce(
@@ -55,4 +55,4 @@ function showRankings()
         console.log('%c' + votee.name + ': ' + votee.votes, color);
         color = '';
     });
-}
+};
