@@ -68,7 +68,7 @@ updateVoteForPokemon oldState userVote =
                 oldUserRatingString =
                     List.head oldCurrentUserRatings
                         |> Maybe.map .ratings
-                        |> Maybe.withDefault (String.repeat totalPokemon "0")
+                        |> Maybe.withDefault ""
                         |> ensureRatingStringLength
 
                 -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
