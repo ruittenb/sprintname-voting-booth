@@ -9,6 +9,13 @@ require('auth0-lock');
 module.exports = function ()
 {
     /** **********************************************************************
+     * Static data
+     */
+    const idTokenKey     = 'idToken';
+    const accessTokenKey = 'accessToken';
+    const profileKey     = 'profile';
+
+    /** **********************************************************************
      * Constructor
      */
     let Authentication = function ()
@@ -43,8 +50,8 @@ module.exports = function ()
      */
     Authentication.prototype.onLockAuthenticated = function (authResult)
     {
-        let accessToken = authResult.accessToken;
         let idToken     = authResult.idToken;
+        let accessToken = authResult.accessToken;
 
         // It is not always clear whether we need to fetch the profile here,
         // so we do it anyway, just to be sure.
@@ -69,9 +76,9 @@ module.exports = function ()
      */
     Authentication.prototype.deleteCredentials = function ()
     {
-        localStorage.removeItem('idToken');
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('profile');
+        localStorage.removeItem(idTokenKey);
+        localStorage.removeItem(accessTokenKey);
+        localStorage.removeItem(profileKey);
     };
 
     /** **********************************************************************
@@ -79,9 +86,9 @@ module.exports = function ()
      */
     Authentication.prototype.storeCredentials = function ({ idToken, accessToken, profile })
     {
-        localStorage.setItem('idToken', idToken);
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('profile', JSON.stringify(profile));
+        localStorage.setItem(idTokenKey,     idToken);
+        localStorage.setItem(accessTokenKey, accessToken);
+        localStorage.setItem(profileKey,     JSON.stringify(profile));
     };
 
     /** **********************************************************************
@@ -90,9 +97,9 @@ module.exports = function ()
     Authentication.prototype.retrieveCredentials = function ()
     {
         let result      = null;
-        let idToken     = localStorage.getItem('idToken');
-        let accessToken = localStorage.getItem('accessToken');
-        let profile     = localStorage.getItem('profile');
+        let idToken     = localStorage.getItem(idTokenKey);
+        let accessToken = localStorage.getItem(accessTokenKey);
+        let profile     = localStorage.getItem(profileKey);
         if (idToken && accessToken && profile) {
             result = { idToken, accessToken, profile: JSON.parse(profile) };
         }
