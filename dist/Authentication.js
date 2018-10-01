@@ -11,9 +11,9 @@ module.exports = function ()
     /** **********************************************************************
      * Static data
      */
-    const idTokenKey     = 'idToken';
-    const accessTokenKey = 'accessToken';
-    const profileKey     = 'profile';
+    const idTokenKey     = 'elmVotingApp.idToken';
+    const accessTokenKey = 'elmVotingApp.accessToken';
+    const profileKey     = 'elmVotingApp.profile';
 
     /** **********************************************************************
      * Constructor

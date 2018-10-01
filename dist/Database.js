@@ -13,7 +13,8 @@ module.exports = (function (jQuery, firebase)
     /** **********************************************************************
      * Static data
      */
-    const tokenserverUrl = `http://${window.location.hostname}:4202/`;
+    const tokenserverUrl   = `http://${window.location.hostname}:4202/`;
+    const firebaseTokenKey = 'elmVotingApp.firebaseToken';
 
     /** **********************************************************************
      * Constructor. This only installs the incoming port message listeners.
@@ -103,7 +104,7 @@ module.exports = (function (jQuery, firebase)
             })
             .then(function (firebaseToken) {
                 jQuery('#message-box').text('').removeClass('error warning');
-                localStorage.setItem('firebaseToken', firebaseToken);
+                localStorage.setItem(firebaseTokenKey, firebaseToken);
                 return firebase.auth().signInWithCustomToken(firebaseToken);
             })
             .catch(function (e) {
