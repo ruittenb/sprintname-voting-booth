@@ -15,6 +15,7 @@ const VotingApp      = require('../dist/VotingApp.js');
  */
 
 const auth = new Authentication();
+// fetch credentials from localStorage, if there are any
 const credentials = auth.retrieveCredentials();
 
 const votingApp = new VotingApp();
