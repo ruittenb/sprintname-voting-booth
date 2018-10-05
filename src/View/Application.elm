@@ -89,7 +89,6 @@ romanNumeralButtons viewMode currentGen currentLetter =
             (romanNumeralButton viewMode currentGen currentLetter)
             allGenerations
         )
-            ++ [ searchBox viewMode ]
 
 
 letterButton : ViewMode -> RemotePokedex -> Int -> Char -> Char -> Html Msg
@@ -195,6 +194,8 @@ heading state =
             state.viewMode
             state.generation
             state.letter
+        , searchBox
+            state.viewMode
         , letterButtons
             state.viewMode
             state.pokedex
