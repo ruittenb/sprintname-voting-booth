@@ -336,6 +336,13 @@ button.user-button.current,
     margin: 10px 10px 0 0;
 }
 
+/* make tiles full-width on mobile */
+@media (max-width: 455px) {
+    .poketile {
+        width: 100%;
+    }
+}
+
 .poketile p {
     display: flex;
     justify-content: space-between;
