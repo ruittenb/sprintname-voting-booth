@@ -61,7 +61,7 @@ button.user-button {
     float: left;
 }
 
-@media (max-width: 460px) {
+@media (max-width: 455px) {
     .button.button-spacer {
         display: none;
     }
@@ -97,7 +97,8 @@ button.user-button.current,
     opacity: 0.01;
 }
 
-@media (max-width: 368px) {
+/* hide the generation 0 button if it would be on one line (looking empty) */
+@media (min-width: 324px) and (max-width: 367px) {
     .button.generation-button.transparent {
         display: none;
     }
@@ -152,10 +153,19 @@ button.user-button.current,
     100% { background-position-x: 0; }
 }
 
-#user-buttons,
-#generation-buttons,
-#letter-buttons {
-    margin-bottom: 6px;
+/* change the order of items on mobile:
+ * keep the generation buttons close to the letter buttons
+ * and move the search box above both.
+ */
+@media (max-width: 455px) {
+    #filter-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+    #user-buttons         { order: 1; }
+    #search-box-container { order: 2; }
+    #generation-buttons   { order: 3; }
+    #letter-buttons       { order: 4; }
 }
 
 #user-buttons,
@@ -186,7 +196,8 @@ button.user-button.current,
 #message-box {
     height: 30px;
     padding: 2px 6px;
-    margin: 1px 0 4px 0;
+    margin-bottom: 6px;
+    margin-right: 4px;
     overflow: hidden;
     border: 1px solid black;
     background-color: #eee;
@@ -232,7 +243,7 @@ button.user-button.current,
     background-color: #ffbabc; /* light red / pink */
 }
 
-@media (max-width: 460px) {
+@media (max-width: 455px) {
     #message-box {
         clear: left;
     }
@@ -259,16 +270,10 @@ button.user-button.current,
 #search-box-container {
     overflow: hidden;
     margin-bottom: 6px;
+    margin-right: 4px;
 }
 
-/*
-#search-box-container.focus {
-    outline-color: rgb(59, 153, 252);
-    outline-width: 5px;
-}
-*/
-
-@media (max-width: 460px) {
+@media (max-width: 455px) {
     #search-box-container {
         clear: left;
     }
@@ -288,8 +293,11 @@ button.user-button.current,
     background-color: #f8f0f8; /* light purple */
 }
 #search-box:focus {
+    outline: none;
+    /*
     outline-color: rgb(59, 153, 252);
     outline-width: 5px;
+    */
 }
 #search-box.current {
     background-color: #e6c6e6; /* purple */
