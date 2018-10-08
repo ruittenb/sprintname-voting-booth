@@ -23,7 +23,7 @@ messageBox message level =
             String.length message > 0 && level /= Error
     in
         span [ id "message-box-container" ]
-            [ span
+            [ div
                 [ id "message-box"
                 , classList
                     [ ( "autohide", autohide )
@@ -67,7 +67,7 @@ debounce =
 
 searchBox : ViewMode -> Html Msg
 searchBox viewMode =
-    span
+    div
         [ id "search-box-container"
         , classList [ ( "focus", viewMode == Search ) ]
         ]
@@ -89,7 +89,6 @@ romanNumeralButtons viewMode currentGen currentLetter =
             (romanNumeralButton viewMode currentGen currentLetter)
             allGenerations
         )
-            ++ [ searchBox viewMode ]
 
 
 letterButton : ViewMode -> RemotePokedex -> Int -> Char -> Char -> Html Msg
@@ -195,6 +194,8 @@ heading state =
             state.viewMode
             state.generation
             state.letter
+        , searchBox
+            state.viewMode
         , letterButtons
             state.viewMode
             state.pokedex
