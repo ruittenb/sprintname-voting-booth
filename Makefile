@@ -45,8 +45,8 @@ stop:
 restart: stop start
 
 docker-status:
-	-docker images | grep voting-booth
-	-docker ps -a  | grep voting-booth
+	-docker images | grep $(DOCKERNAME)
+	-docker ps -a  | grep $(DOCKERNAME)
 
 docker-build:
 	docker build -t $(DOCKERNAME):latest .
