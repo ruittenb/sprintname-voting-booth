@@ -7,7 +7,7 @@ const Elm        = require('../src/Main.elm');
  * VotingApp
  */
 
-module.exports = (function (jQuery)
+module.exports = (function ()
 {
     /** **********************************************************************
      * Static data
@@ -39,6 +39,6 @@ module.exports = (function (jQuery)
 
     return VotingApp;
 
-})(jQuery);
+})();
 
 /* vim: set ts=4 sw=4 et list: */

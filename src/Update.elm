@@ -96,8 +96,9 @@ update msg oldState =
         FirebaseLoginSucceeded ->
             ( oldState, Cmd.none )
 
-        FirebaseLoginFailed ->
-            ( oldState, Cmd.none )
+        FirebaseLoginFailed reason ->
+            updateAuthWithNoProfile oldState (Just reason)
+                |> andThenCmd firebaseLogout
 
         TeamRatingsLoaded NotAsked ->
             ( oldState, Cmd.none )

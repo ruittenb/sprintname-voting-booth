@@ -20,6 +20,7 @@ import Ports
     exposing
         ( onAuthenticationReceived
         , onAuthenticationFailed
+        , onFirebaseLoginFailed
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
@@ -85,7 +86,7 @@ subscriptions _ =
         , onAuthenticationFailed Msgs.AuthenticationFailed
 
         --, onFirebaseLogin
-        --, onFirebaseLoginFailed
+        , onFirebaseLoginFailed (.message >> Msgs.FirebaseLoginFailed)
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)
         , onLoadUserRatings (decodeUserRatings >> Msgs.UserRatingsLoaded)

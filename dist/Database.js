@@ -111,7 +111,9 @@ module.exports = (function (jQuery, firebase)
                 let status = e.status || 500;
                 let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
                 jQuery('#message-box').text(status + ': ' + message).addClass('error');
-                me.elmClient.ports.onFirebaseLoginFailed.send(e);
+                setTimeout(function () {
+                    me.elmClient.ports.onFirebaseLoginFailed.send({ message, status });
+                }, 100);
             });
         return;
     };

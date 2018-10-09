@@ -17,7 +17,7 @@ type Msg
     = AuthenticationReceived RemoteLoggedInUser
     | AuthenticationFailed String
     | FirebaseLoginSucceeded
-    | FirebaseLoginFailed
+    | FirebaseLoginFailed String
     | AuthenticationLoginClicked
     | AuthenticationLogoutClicked
     | PokedexLoaded RemotePokedex
