@@ -33,7 +33,6 @@ button.user-button,
     margin-right: 4px;
     margin-bottom: 6px;
     border-radius: 0;
-    font-size: 13px;
 }
 
 button.user-button,
@@ -48,6 +47,7 @@ button.user-button {
     width: 84px;
     display: block;
     float: left;
+    font-size: 14px;
 }
 
 .button.letter-button {
@@ -190,7 +190,10 @@ button.user-button.current,
     color: black;
     text-align: center;
     line-height: 28px;
-    font-size: 13px;
+}
+
+#message-box-container {
+    line-height: 24px;
 }
 
 #message-box {
