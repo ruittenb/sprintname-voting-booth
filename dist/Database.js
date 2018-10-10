@@ -103,14 +103,12 @@ module.exports = (function (jQuery, firebase)
                 }
             })
             .then(function (firebaseToken) {
-                jQuery('#message-box').text('').removeClass('error warning');
                 localStorage.setItem(firebaseTokenKey, firebaseToken);
                 return firebase.auth().signInWithCustomToken(firebaseToken);
             })
             .catch(function (e) {
                 let status = e.status || 500;
                 let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
-                jQuery('#message-box').text(status + ': ' + message).addClass('error');
                 setTimeout(function () {
                     me.elmClient.ports.onFirebaseLoginFailed.send({ message, status });
                 }, 100);

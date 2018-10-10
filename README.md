@@ -1,7 +1,7 @@
 # Pokémon Sprint Name Voting Booth App in Elm
 
-This example shows embedding an Elm app into an ordinary HTML-page. It consists
-of a simple Node.js web server and an Elm SPA.
+This is a tool for allowing developers to vote for sprint names.
+It consists of a simple Node.js web server and an Elm SPA.
 
 ## Ingredients and dependencies:
 
