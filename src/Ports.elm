@@ -60,9 +60,6 @@ port onAuthenticationReceived : (Value -> msg) -> Sub msg
 port onAuthenticationFailed : (String -> msg) -> Sub msg
 
 
-port onFirebaseLogin : (() -> msg) -> Sub msg
-
-
 port onFirebaseLoginFailed : (Diagnostics -> msg) -> Sub msg
 
 

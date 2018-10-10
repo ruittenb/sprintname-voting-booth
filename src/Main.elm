@@ -84,8 +84,6 @@ subscriptions _ =
         --, Time.every second Tick
         [ onAuthenticationReceived (decodeUser >> Msgs.AuthenticationReceived)
         , onAuthenticationFailed Msgs.AuthenticationFailed
-
-        --, onFirebaseLogin
         , onFirebaseLoginFailed (.message >> Msgs.FirebaseLoginFailed)
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)

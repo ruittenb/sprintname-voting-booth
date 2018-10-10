@@ -93,9 +93,6 @@ update msg oldState =
             , oldState.authModel.showLock oldState.authModel.lockParameters
             )
 
-        FirebaseLoginSucceeded ->
-            ( oldState, Cmd.none )
-
         FirebaseLoginFailed reason ->
             updateAuthWithNoProfile oldState (Just reason)
                 |> andThenCmd firebaseLogout
