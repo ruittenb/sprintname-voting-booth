@@ -34,6 +34,11 @@ totalPokemon =
     809
 
 
+imageDir : String
+imageDir =
+    "pokeart/"
+
+
 allGenerations : List Int
 allGenerations =
     List.range 1 maxGeneration

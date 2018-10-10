@@ -8,6 +8,7 @@ module.exports = (function (jQuery) {
 
     const batchSize = 5;
     const batchTime = 250;
+    const imageDir = 'pokeart/';
 
     /**
      * @param {DOMNode} buttonParentNode
@@ -106,7 +107,7 @@ module.exports = (function (jQuery) {
             let nextImg = this.list.shift();
             this.generation = nextImg.generation;
             this.images[i] = new Image();
-            this.images[i].src = nextImg.imageUrl;
+            this.images[i].src = imageDir + nextImg.imageUrl;
         }
         this.highlightGenerationButton(false, prevGeneration);
         this.timer = null;
