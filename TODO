@@ -8,11 +8,6 @@ missing:
  - enable declaring a generation/letter as "closed"/"finalized"
  - use extensible records
 
- - JWT expired: what should be done?
-   - try to cache firebase token?
- - refresh token?
- - what if a firebase token is already in localStorage?
-
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest			@effect-manager

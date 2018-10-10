@@ -39,7 +39,8 @@ lockOptions =
         { title = "Voting Booth Login"
         }
     , theme =
-        { logo = "/dist/favicon-58x58.png"
+        { logo = "/favicons/favicon-58x58.png"
+        , primaryColor = "#e6c6e6"
         }
     }
 

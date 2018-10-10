@@ -70,5 +70,7 @@ type alias LockOptions =
     , oidcConformant : Bool
     , rememberLastLogin : Bool
     , theme :
-        { logo : String }
+        { logo : String
+        , primaryColor : String
+        }
     }
