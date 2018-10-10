@@ -3,9 +3,9 @@
     margin: 0;
 }
 
-body {
+body#voting-app-body {
     padding: 8px;
-    background-color: #f0f0f0 !important;
+    background-color: #f0f0f0;
     font-family: Helvetica, Arial, Sans;
     font-size: 14px;
 }

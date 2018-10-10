@@ -14,14 +14,10 @@ improvements:
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire-extra/latest
    - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
- - fix outline css on input text box
  - use actual Route package in Elm
- - split Constants into Constants/Pokedex.elm
- - subpage in model instead of subpage.currentLetter and subpage.currentGeneration
 
 consider:
  - Material Design?
  - replace tooltips with jQuery.Tooltip ?
  - Bootstrap? https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
-
 
