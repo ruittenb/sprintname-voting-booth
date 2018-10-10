@@ -40,6 +40,7 @@ lockOptions =
         }
     , theme =
         { logo = "/favicons/favicon-58x58.png"
+        , primaryColor = "#e6c6e6"
         }
     }
 
