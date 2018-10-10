@@ -15,7 +15,6 @@ const VotingApp      = require('../dist/VotingApp.js');
  */
 
 const auth = new Authentication();
-// fetch credentials from localStorage, if there are any
 const credentials = auth.retrieveCredentials();
 
 const votingApp = new VotingApp();
@@ -26,3 +25,11 @@ const database = new Database(votingApp.elmClient);
 
 window.votingApp = votingApp;
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(function(registration) { console.log('Service Worker Registered with scope ', registration.scope); })
+            .catch(function (err) { console.log('ServiceWorker registration failed: ', err) });
+    });
+}

@@ -4,6 +4,10 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const isProduction = process.env.NODE_ENV === 'production';
 const debug = false;
 
+/* wensen:
+ * /favicons/favicon.ico serven als /favicon.ico
+ */
+
 module.exports = {
   entry: {
     app: [ './src/index.js' ]
@@ -64,6 +68,7 @@ module.exports = {
   devtool: 'source-map',
 
   devServer: {
+    contentBase: path.join(__dirname, 'dist'),
     inline: true,
     stats: { colors: true },
     host: '0.0.0.0',
