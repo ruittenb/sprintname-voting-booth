@@ -1,4 +1,4 @@
-window.countVotes = function ()
+window.showPeopleVotes = function ()
 {
     var votes = [];
     var person, vote;
@@ -36,7 +36,7 @@ window.countVotes = function ()
     return;
 };
 
-window.showRankings = function ()
+window.showPokemonVotes = function ()
 {
     var color = 'color: red; font-weight: bold';
     var rankings = jQuery('.poketile').toArray().reduce(
