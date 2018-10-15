@@ -5,12 +5,17 @@ USERS=users.json
 usage:
 	@echo "Usage:"
 	@echo "  make usage   : print this usage text"
+	@echo "  make cleanup : beautify $(COMBINED)"
 	@echo "  make combine : create $(COMBINED) from $(POKEDEX) and $(USERS)"
 	@echo "  make split   : split  $(COMBINED) into $(POKEDEX) and $(USERS)"
 	@echo "  make replace-pokedex: replace pokedex in $(COMBINED) with $(POKEDEX)"
 	@echo "  make replace-users  : replace users   in $(COMBINED) with $(USERS)"
 	@echo
 	@echo "Note: this needs jq(1)"
+
+cleanup:
+	jq . < $(COMBINED) > $(COMBINED).new
+	mv $(COMBINED).new $(COMBINED)
 
 combine:
 	{                            \
