@@ -1,10 +1,15 @@
 /**
- * Server that
+ * Server that:
  * - listens for HTTP POST requests
  * - takes a JWT token
  * - validates it
  * - verifies that it contains a valid email address
  * - returns a valid Firebase token
+ *
+ * This code runs in a separate process for two reasons:
+ * - it leans on the 'firebase-admin' and 'jsonwebtoken' modules
+ * - it reads the secret Auth0 and Firebase keys from the 'keys'
+ *   directory without having to reveal them to the client
  *
  * Usage:
  * - POST a string of the form:
@@ -15,10 +20,10 @@
  * Result:
  * - A JSON response of the form:
  *   {
- *     "success": <boolean>,
- *     "firebaseToken": <string>,   // if success == true
- *     "status": <int statuscode>,  // if success == false
- *     "message": <string>,         // if success == false
+ *     "success"      : <boolean>,
+ *     "firebaseToken": <string>,         // if success == true
+ *     "status"       : <int statuscode>, // if success == false
+ *     "message"      : <string>,         // if success == false
  *   }
  *
  * Possible status codes:
@@ -26,8 +31,8 @@
  *     400 : Referer not allowed (CORS)
  *     400 : Missing or empty property "jwtToken"
  *     400 : JWT token malformed
- *     400 : JWT token invalid  
- *     403 : JWT token expired  
+ *     400 : JWT token invalid
+ *     403 : JWT token expired
  *     500 : Unable to obtain Firebase token
  *   success == true:
  *     200 : OK, returns Firebase token
@@ -51,10 +56,10 @@ const FirebaseTokenServer = (function () {
         'http://votingbooth.ddns.net:4201'
     ];
 
-    const fs = require('fs');
-    const express = require('express');
+    const fs         = require('fs');
+    const express    = require('express');
     const bodyParser = require('body-parser');
-    const jwt = require('jsonwebtoken');
+    const jwt        = require('jsonwebtoken');
 
     /**
      * Constructor.
@@ -100,7 +105,7 @@ const FirebaseTokenServer = (function () {
     FirebaseTokenServer.prototype.processRequest = function (request, response)
     {
         let status, userData, firebaseToken;
-        
+
         /**
          * Validate the referer (origin)
          */
