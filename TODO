@@ -15,9 +15,11 @@ improvements:
    - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
  - use actual Route package in Elm
+ - swipe images in lightbox?
 
 consider:
  - Material Design?
  - replace tooltips with jQuery.Tooltip ?
  - Bootstrap? https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+ - shake to display random pokemon :)
 

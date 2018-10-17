@@ -56,4 +56,4 @@ replace-users:
 	} | jq . > $(COMBINED).new
 	mv $(COMBINED).new $(COMBINED)
 
-.PHONY: usage combine split
+.PHONY: usage cleanup combine split replace-pokedex replace-users
