@@ -48,6 +48,7 @@ button.user-button {
     display: block;
     float: left;
     font-size: 14px;
+    font-family: inherit;
 }
 
 .button.letter-button {
