@@ -1,6 +1,6 @@
 'use strict';
 
-require('auth0-lock');
+const { Auth0Lock } = require('auth0-lock');
 
 /** **********************************************************************
  * Authentication
