@@ -3,16 +3,17 @@ DOCKERNET=voting-net
 DOCKERPORTS=-p 4201:4201
 #NODE_PIDS=$(shell /bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2 }')
 NODE_PIDS=$(shell lsof -l -n -i tcp | awk '/ \*:420[12] / { print $$2 }')
+NODE_PROCS=$(shell lsof -l -n -i tcp | awk '/ \*:420[12] / { print "-p " $$2 }')
+
+##@ Generic:
 
 # automatic self-documentation
 .DEFAULT_GOAL:=help
 
-##@ General targets:
-
 help: ## display this help
-	@awk 'BEGIN { FS = ":.*##"; tab = 18; printf "\nUsage:\n  make \033[36m<target>\033[0m\n" } /^[a-zA-Z0-9_-]+:.*?##/ { pad = sprintf("\n%" tab "s    ", ""); gsub(/\\n/, pad, $$2); printf "  \033[36m%-" tab "s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+	@awk 'BEGIN { FS = ":.*## "; tab = 19; color = "\033[36m"; indent = "  "; printf "\nUsage:\n  make " color "<target>\033[0m\n\nRecognized targets:" } /^[a-zA-Z0-9_-]+:.*?## / { pad = sprintf("\n%" tab "s" indent indent, ""); gsub(/\\n/, pad, $$2); printf indent indent color "%-" tab "s\033[0m%s\n", $$1, $$2 } /^##@/ { printf "\n" indent "%s\n", substr($$0, 5) } END { print }' $(MAKEFILE_LIST)
 
-##@ Webserver targets:
+##@ Webserver:
 
 install: ## install all npm dependencies
 	npm install
@@ -21,7 +22,7 @@ version: ## update the version file with the current git tag name
 	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$$(git describe --tags)'); });" > dist/version.js
 
 status: ## show the webserver status
-	@test "$(NODE_PIDS)" && echo Running || echo Stopped
+	@test "$(NODE_PIDS)" && ps $(NODE_PROCS) || echo Stopped
 
 start: version ## start the webserver
 	nf start
@@ -33,9 +34,9 @@ stop: ## stop the webserver
 		kill -KILL $(NODE_PIDS); \
 	fi
 
-restart: stop start ## restart the webserver
+restart: stop start ## restart the webserver\nand the tokenserver
 
-##@ Docker targets:
+##@ Docker:
 
 docker-status: ## show the status of the docker image and containers
 	-docker images | grep $(DOCKERNAME)
