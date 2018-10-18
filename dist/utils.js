@@ -52,7 +52,7 @@ window.showPokemonVotes = function ()
             return a.votes > b.votes ? -1 : a.votes < b.votes ? 1 : 0;
         }
     ).forEach(function (votee) {
+        if (votee.votes < rankings[0].votes) color = '';
         console.log('%c' + votee.name + ': ' + votee.votes, color);
-        color = '';
     });
 };
