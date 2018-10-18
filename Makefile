@@ -22,7 +22,13 @@ version: ## update the version file with the current git tag name
 	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$$(git describe --tags)'); });" > dist/version.js
 
 status: ## show the webserver status
-	@test "$(NODE_PIDS)" && ps $(NODE_PROCS) || echo Stopped
+	@if [ "$(NODE_PIDS)" ]; then ps $(NODE_PROCS); fi | awk ' \
+		/tokenserver/     { t=1 }  \
+		/webpack.*server/ { w=1 }  \
+		END {                      \
+		    print "Webserver   is " (w ? "running" : "stopped"); \
+		    print "Tokenserver is " (t ? "running" : "stopped"); \
+		}'
 
 start: version ## start the webserver
 	nf start
@@ -34,7 +40,7 @@ stop: ## stop the webserver
 		kill -KILL $(NODE_PIDS); \
 	fi
 
-restart: stop start ## restart the webserver\nand the tokenserver
+restart: stop start ## restart the webserver
 
 ##@ Docker:
 
