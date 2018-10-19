@@ -18,10 +18,13 @@ improvements:
  - swipe images in lightbox?
 
  - check the descriptions in the pokedex: some descriptions in gen IV have been displaced by 1
+   - gen IV: correct (in increments of 10)
+   - gen V: correct (in increments of 10); corrected from 556-582
 
 consider:
  - Material Design?
  - replace tooltips with jQuery.Tooltip ?
  - Bootstrap? https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+ - LocalStorage? https://package.elm-lang.org/packages/billstclair/elm-localstorage/4.0.2/LocalStorage-SharedTypes
  - shake to display random pokemon :)
 
