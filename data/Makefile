@@ -2,23 +2,18 @@ COMBINED=total.json
 POKEDEX=pokedex.json
 USERS=users.json
 
-usage:
-	@echo "Usage:"
-	@echo "  make usage   : print this usage text"
-	@echo "  make cleanup : beautify $(COMBINED)"
-	@echo "  make combine : create $(COMBINED) from $(POKEDEX) and $(USERS)"
-	@echo "  make split   : split  $(COMBINED) into $(POKEDEX) and $(USERS)"
-	@echo "  make replace-pokedex: replace pokedex in $(COMBINED) with $(POKEDEX)"
-	@echo "  make replace-users  : replace users   in $(COMBINED) with $(USERS)"
-	@echo
-	@echo "Note: this needs jq(1)"
+# automatic self-documentation
+.DEFAULT_GOAL:=help
 
-cleanup:
+help: ## display this help
+	@awk 'BEGIN { FS = ":.*## "; tab = 19; color = "\033[36m"; indent = "  "; printf "\nUsage:\n  make " color "<target>\033[0m\n\nRecognized targets:\n" } /^[a-zA-Z0-9_-]+:.*?## / { pad = sprintf("\n%" tab "s" indent, "", $$2); gsub(/\\n/, pad); printf indent color "%-" tab "s\033[0m%s\n", $$1, $$2 } /^##@/ { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.41
+
+cleanup: ## cleanup the formatting of 'total'
 	jq . < $(COMBINED) > $(COMBINED).new
 	mv $(COMBINED).new $(COMBINED)
 
-combine:
-	{                            \
+combine: ## combine 'pokedex' and 'users' to 'total'
+	{                        \
 		printf "{\n"       ; \
 		printf '"pokedex":'; \
 		cat $(POKEDEX)     ; \
@@ -28,12 +23,12 @@ combine:
 		printf "}\n"       ; \
 	} | jq . > $(COMBINED)
 
-split:
+split: ## split 'total' into 'pokedex' and 'users'
 	jq '.pokedex' $(COMBINED) > $(POKEDEX)
 	jq '.users'   $(COMBINED) > $(USERS)
 
-replace-pokedex:
-	{                                  \
+replace-pokedex: ## update 'total' with the data from 'pokedex'
+	{                              \
 		printf "{\n"             ; \
 		printf '"pokedex":'      ; \
 		cat $(POKEDEX)           ; \
@@ -44,8 +39,8 @@ replace-pokedex:
 	} | jq . > $(COMBINED).new
 	mv $(COMBINED).new $(COMBINED)
 
-replace-users:
-	{                                  \
+replace-users: ## update 'total' with the data from 'users'
+	{                              \
 		printf "{\n"             ; \
 		printf '"pokedex":'      ; \
 		jq '.pokedex' $(COMBINED); \
@@ -56,4 +51,7 @@ replace-users:
 	} | jq . > $(COMBINED).new
 	mv $(COMBINED).new $(COMBINED)
 
-.PHONY: usage cleanup combine split replace-pokedex replace-users
+##@ Note: the above commands require the jq(1) command
+
+.PHONY: help cleanup combine split replace-pokedex replace-users
+
