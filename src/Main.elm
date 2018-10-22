@@ -62,7 +62,7 @@ init credentials location =
         initialState : ApplicationState
         initialState =
             { authModel = authModel
-            , user = Nothing
+            , currentUser = Nothing
             , statusMessage = ""
             , statusLevel = None
             , debounceState = Control.initialState

@@ -165,7 +165,7 @@ extractOnePokemonFromRatings ratings pokemon =
             []
 
 
-extractOneUserFromRatings : TeamRating -> CurrentUser -> ( TeamRating, TeamRating )
+extractOneUserFromRatings : TeamRating -> User -> ( TeamRating, TeamRating )
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -196,7 +196,7 @@ variantLinks pokemonName description variants =
     List.map (variantLink pokemonName description) variants
 
 
-pokemonTile : ViewMode -> RemoteTeamRatings -> CurrentUser -> Pokemon -> Html Msg
+pokemonTile : ViewMode -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
 pokemonTile viewMode ratings currentUser pokemon =
     let
         teamRating =
@@ -290,7 +290,7 @@ pokemonTile viewMode ratings currentUser pokemon =
                         [ loadingBusyIcon ]
 
 
-pokemonTiles : ViewMode -> List Pokemon -> RemoteTeamRatings -> CurrentUser -> List (Html Msg)
+pokemonTiles : ViewMode -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
 pokemonTiles viewMode pokelist ratings currentUser =
     List.map (pokemonTile viewMode ratings currentUser) pokelist
 
@@ -306,4 +306,4 @@ pokemonCanvas state =
                 Search ->
                     searchPokedex state.pokedex state.query
     in
-        div [ class "pokecanvas" ] <| pokemonTiles state.viewMode pokeList state.ratings state.user
+        div [ class "pokecanvas" ] <| pokemonTiles state.viewMode pokeList state.ratings state.currentUser
