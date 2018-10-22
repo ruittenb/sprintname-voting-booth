@@ -28,3 +28,5 @@ type Msg
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | PokemonVoteCast UserVote
+    | ShowRankingsClicked
+    | ShowVotersClicked

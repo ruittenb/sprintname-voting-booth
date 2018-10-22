@@ -34,6 +34,8 @@ button,
 }
 
 button.user-button,
+button.show-rankings,
+button.show-voters,
 .button.button-spacer,
 .button.letter-button,
 .button.generation-button {
@@ -44,6 +46,8 @@ button.user-button,
 }
 
 button.user-button,
+button.show-rankings,
+button.show-voters,
 .button.letter-button,
 .button.generation-button {
     background-color: white;
@@ -53,6 +57,17 @@ button.user-button,
 
 button.user-button {
     width: 84px;
+}
+
+button.show-rankings,
+button.show-voters {
+    width: 128px;
+}
+
+button.user-button,
+button.show-rankings,
+button.show-voters {
+    outline: none;
     display: block;
     float: left;
     font-size: 14px;
@@ -77,12 +92,17 @@ button.user-button {
 }
 
 button.user-button:hover,
+button.show-rankings:hover,
+button.show-voters:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
 .poketile .button:hover {
     background-color: #f8f0f8; /* light purple */
 }
 
+button.user-button:active,
+button.show-rankings:active,
+button.show-voters:active,
 .poketile .button:active {
     background-color: #f0d8f0; /* medium purple */
 }
@@ -335,6 +355,7 @@ button.user-button.current,
 
 .pokecanvas {
     margin-top: 10px;
+    clear: left;
     display: flex;
     flex-wrap: wrap;
 }

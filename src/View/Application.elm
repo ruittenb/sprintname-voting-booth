@@ -209,6 +209,24 @@ loginLogoutButton authModel currentUser message level =
             ]
 
 
+calculationButtons : Html Msg
+calculationButtons =
+    div
+        [ id "calculation-buttons"
+        ]
+        [ button
+            [ class "show-rankings"
+            , onClick ShowRankingsClicked
+            ]
+            [ text "Show Rankings" ]
+        , button
+            [ class "show-voters"
+            , onClick ShowVotersClicked
+            ]
+            [ text "Show Voters" ]
+        ]
+
+
 heading : ApplicationState -> Html Msg
 heading state =
     div [ id "filter-buttons" ]
@@ -228,6 +246,7 @@ heading state =
             state.pokedex
             state.generation
             state.letter
+        , calculationButtons
         ]
 
 

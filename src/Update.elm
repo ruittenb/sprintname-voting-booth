@@ -152,3 +152,9 @@ update msg oldState =
                     { oldState | statusMessage = toString message, statusLevel = Error }
             in
                 ( newState, Cmd.none )
+
+        ShowRankingsClicked ->
+            ( oldState, Cmd.none )
+
+        ShowVotersClicked ->
+            ( oldState, Cmd.none )
