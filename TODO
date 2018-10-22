@@ -16,10 +16,7 @@ improvements:
  - use actual Route package in Elm
  - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
  - swipe images in lightbox?
-
- - check the descriptions in the pokedex: some descriptions in gen IV have been displaced by 1
-   - gen IV: correct (in increments of 10)
-   - gen V: correct (in increments of 10); corrected from 556-582
+ - strip font-awesome
 
 consider:
  - Material Design?
