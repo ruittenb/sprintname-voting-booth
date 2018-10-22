@@ -33,7 +33,7 @@ updateAuthWithProfile oldState userData =
                 | authModel = newAuthModel
                 , statusMessage = ""
                 , statusLevel = None
-                , user = getUserNameForAuthModel oldState.ratings newAuthModel
+                , currentUser = getUserNameForAuthModel oldState.ratings newAuthModel
             }
     in
         ( newState, cmd )
@@ -52,7 +52,7 @@ updateAuthWithNoProfile oldState possibleError =
                         | authModel = newAuthModel
                         , statusMessage = error
                         , statusLevel = Error
-                        , user = Nothing
+                        , currentUser = Nothing
                     }
 
                 Nothing ->
@@ -60,7 +60,7 @@ updateAuthWithNoProfile oldState possibleError =
                         | authModel = newAuthModel
                         , statusMessage = ""
                         , statusLevel = None
-                        , user = Nothing
+                        , currentUser = Nothing
                     }
     in
         ( newState, cmd )

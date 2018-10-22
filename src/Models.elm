@@ -20,7 +20,7 @@ type alias Subpage =
     }
 
 
-type alias CurrentUser =
+type alias User =
     Maybe String
 
 
@@ -32,7 +32,7 @@ type alias PreloadedSets =
 
 type alias ApplicationState =
     { authModel : AuthenticationModel
-    , user : CurrentUser
+    , currentUser : User
     , statusMessage : String
     , statusLevel : StatusLevel
     , debounceState : Control.State Msg

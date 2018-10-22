@@ -14,7 +14,7 @@ import Commands.Ratings exposing (saveRatings)
 -- helper functions specific to Update
 
 
-extractOneUserFromRatings : TeamRatings -> CurrentUser -> ( TeamRatings, TeamRatings )
+extractOneUserFromRatings : TeamRatings -> User -> ( TeamRatings, TeamRatings )
 extractOneUserFromRatings ratings currentUser =
     case currentUser of
         Nothing ->
@@ -62,7 +62,7 @@ updateVoteForPokemon oldState userVote =
 
                 -- extract one user
                 ( oldCurrentUserRatings, otherUsersRatings ) =
-                    extractOneUserFromRatings oldRatings oldState.user
+                    extractOneUserFromRatings oldRatings oldState.currentUser
 
                 -- extract user rating string, or create one
                 oldUserRatingString =

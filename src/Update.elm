@@ -112,7 +112,7 @@ update msg oldState =
                     getUserNameForAuthModel newRatings oldState.authModel
 
                 newState =
-                    { oldState | ratings = newRatings, user = userName }
+                    { oldState | ratings = newRatings, currentUser = userName }
             in
                 ( newState, Cmd.none )
 

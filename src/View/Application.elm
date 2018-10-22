@@ -137,8 +137,8 @@ letterButtons viewMode pokedex currentGen currentLetter =
         div [ id "letter-buttons" ] buttonList
 
 
-loginLogoutButton : AuthenticationModel -> CurrentUser -> String -> StatusLevel -> Html Msg
-loginLogoutButton authModel user message level =
+loginLogoutButton : AuthenticationModel -> User -> String -> StatusLevel -> Html Msg
+loginLogoutButton authModel currentUser message level =
     let
         loggedIn =
             isLoggedIn authModel
@@ -147,7 +147,7 @@ loginLogoutButton authModel user message level =
             if not loggedIn then
                 "Not logged in"
             else
-                Maybe.map ((++) "Logged in as ") user
+                Maybe.map ((++) "Logged in as ") currentUser
                     |> Maybe.withDefault "Not authorized"
 
         buttonText =
@@ -187,7 +187,7 @@ heading state =
     div [ id "filter-buttons" ]
         [ loginLogoutButton
             state.authModel
-            state.user
+            state.currentUser
             state.statusMessage
             state.statusLevel
         , romanNumeralButtons
