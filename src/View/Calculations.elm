@@ -1,11 +1,9 @@
-module View.Calculations exposing (calculateVoters, calculateRankings)
+module View.Calculations exposing (calculatePeopleVotes, calculatePokemonVotes)
 
-import Html exposing (Html, div, text)
 import RemoteData exposing (WebData, RemoteData(..))
 import Models exposing (..)
 import Models.Ratings exposing (..)
 import Models.Pokemon exposing (..)
-import Msgs exposing (Msg)
 import Helpers
     exposing
         ( filterPokedex
@@ -13,8 +11,69 @@ import Helpers
         )
 
 
-calculateVoters : ApplicationState -> Html Msg
-calculateVoters model =
+addOneUserVoteByUser : UserRatings -> Pokemon -> Int -> Int
+addOneUserVoteByUser userRatings pokemon total =
+    total + extractOnePokemonFromRatingString userRatings.ratings pokemon.number
+
+
+sumVotesByUser : List Pokemon -> UserRatings -> TeamGenLetterVotes -> TeamGenLetterVotes
+sumVotesByUser pokelist userRatings teamGenLetterVotes =
+    let
+        totalVotes =
+            List.foldl (addOneUserVoteByUser userRatings) 0 pokelist
+
+        expectedVotes =
+            if List.length pokelist == 0 then
+                0
+            else if List.length pokelist == 1 then
+                3
+            else if List.length pokelist == 2 then
+                5
+            else
+                6
+
+        completionLevel =
+            if totalVotes == expectedVotes then
+                Complete
+            else if totalVotes == 0 then
+                Absent
+            else
+                Incomplete
+    in
+        if userRatings.active || totalVotes > 0 then
+            { userId = userRatings.id
+            , userName = userRatings.userName
+            , totalVotes = totalVotes
+            , completionLevel = completionLevel
+            }
+                :: teamGenLetterVotes
+        else
+            teamGenLetterVotes
+
+
+
+{-
+   sumVotesByUser : List Pokemon -> UserRatings -> TeamGenLetterVotes -> TeamGenLetterVotes
+   sumVotesByUser pokelist userRatings teamGenLetterVotes =
+       let
+           totalVotes =
+               List.foldl (addOneUserVoteByUser userRatings) 0 pokelist
+
+           teamGenLetterVote =
+               if userRatings.active && totalVotes > 0 then
+                   [ { userName = userRatings.userName
+                     , totalVotes = totalVotes
+                     }
+                   ]
+               else
+                   []
+       in
+           teamGenLetterVote ++ teamGenLetterVotes
+-}
+
+
+calculatePeopleVotes : ApplicationState -> TeamGenLetterVotes
+calculatePeopleVotes model =
     let
         pokelist =
             filterPokedex
@@ -29,23 +88,26 @@ calculateVoters model =
 
                 _ ->
                     []
-
-        pokeVotes =
-            List.foldl (addTeamVotes teamRatings) [] pokelist
     in
-        div [] [ text "voters here" ]
+        List.foldl (sumVotesByUser pokelist) [] teamRatings
 
 
-addUserVote : Int -> UserRatings -> Int -> Int
-addUserVote pokeNumber userRatings total =
+
+{-
+   Calculates the number of total votes (for the current generation and letter) by user.
+-}
+
+
+addOneUserVoteByPokemon : Int -> UserRatings -> Int -> Int
+addOneUserVoteByPokemon pokeNumber userRatings total =
     total + extractOnePokemonFromRatingString userRatings.ratings pokeNumber
 
 
-addTeamVotes : TeamRatings -> Pokemon -> PokeRankings -> PokeRankings
-addTeamVotes teamRatings pokemon rankings =
+sumVotesByPokemon : TeamRatings -> Pokemon -> PokeRankings -> PokeRankings
+sumVotesByPokemon teamRatings pokemon rankings =
     let
         totalVotes =
-            List.foldl (addUserVote pokemon.number) 0 teamRatings
+            List.foldl (addOneUserVoteByPokemon pokemon.number) 0 teamRatings
 
         ranking =
             { number = pokemon.number
@@ -56,8 +118,8 @@ addTeamVotes teamRatings pokemon rankings =
         ranking :: rankings
 
 
-calculateRankings : ApplicationState -> PokeRankings
-calculateRankings model =
+calculatePokemonVotes : ApplicationState -> PokeRankings
+calculatePokemonVotes model =
     let
         pokelist =
             filterPokedex
@@ -73,4 +135,4 @@ calculateRankings model =
                 _ ->
                     []
     in
-        List.foldl (addTeamVotes teamRatings) [] pokelist
+        List.foldl (sumVotesByPokemon teamRatings) [] pokelist

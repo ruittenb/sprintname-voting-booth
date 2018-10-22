@@ -13,8 +13,9 @@ import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
+import Models.Ratings exposing (..)
 import Constants exposing (..)
-import View.Calculations exposing (calculateRankings, calculateVoters)
+import View.Calculations exposing (calculatePeopleVotes, calculatePokemonVotes)
 
 
 messageBox : String -> StatusLevel -> Html Msg
@@ -232,7 +233,7 @@ rankingsTable : ApplicationState -> Html Msg
 rankingsTable state =
     let
         rankingsToShow =
-            calculateRankings state
+            calculatePokemonVotes state
                 |> List.sortBy .totalVotes
                 |> List.reverse
 
@@ -250,8 +251,8 @@ rankingsTable state =
                     span [] []
 
                 Browse ->
-                    div [ class "ranking-table-wrapper" ]
-                        [ table [ class "ranking-table" ] <|
+                    div [ class "rankings-table-wrapper" ]
+                        [ table [ class "rankings-table" ] <|
                             List.map
                                 (\r ->
                                     tr
@@ -263,6 +264,40 @@ rankingsTable state =
                                         ]
                                 )
                                 rankingsToShow
+                        ]
+    in
+        resultTable
+
+
+votersTable : ApplicationState -> Html Msg
+votersTable state =
+    let
+        votersToShow =
+            calculatePeopleVotes state
+                |> List.sortBy .userId
+
+        resultTable =
+            case state.viewMode of
+                Search ->
+                    span [] []
+
+                Browse ->
+                    div [ class "voters-table-wrapper" ]
+                        [ table [ class "voters-table" ] <|
+                            List.map
+                                (\v ->
+                                    tr
+                                        [ classList
+                                            [ ( "complete", v.completionLevel == Complete )
+                                            , ( "incomplete", v.completionLevel == Incomplete )
+                                            , ( "absent", v.completionLevel == Absent )
+                                            ]
+                                        ]
+                                        [ td [] [ text v.userName ]
+                                        , td [] [ text (toString v.totalVotes) ]
+                                        ]
+                                )
+                                votersToShow
                         ]
     in
         resultTable
@@ -288,7 +323,7 @@ heading state =
             state.generation
             state.letter
         , calculationButtons
-        , rankingsTable state
+        , votersTable state
         ]
 
 
