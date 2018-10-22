@@ -243,21 +243,29 @@ rankingsTable state =
 
                 Nothing ->
                     0
+
+        resultTable =
+            case state.viewMode of
+                Search ->
+                    span [] []
+
+                Browse ->
+                    div [ class "ranking-table-wrapper" ]
+                        [ table [ class "ranking-table" ] <|
+                            List.map
+                                (\r ->
+                                    tr
+                                        [ classList
+                                            [ ( "winner-rating", r.totalVotes == winnerRating && r.totalVotes > 0 ) ]
+                                        ]
+                                        [ td [] [ text r.name ]
+                                        , td [] [ text (toString r.totalVotes) ]
+                                        ]
+                                )
+                                rankingsToShow
+                        ]
     in
-        div [ class "ranking-table-wrapper" ]
-            [ table [ class "ranking-table" ] <|
-                List.map
-                    (\r ->
-                        tr
-                            [ classList
-                                [ ( "winner-rating", r.totalVotes == winnerRating ) ]
-                            ]
-                            [ td [] [ text r.name ]
-                            , td [] [ text (toString r.totalVotes) ]
-                            ]
-                    )
-                    rankingsToShow
-            ]
+        resultTable
 
 
 heading : ApplicationState -> Html Msg
