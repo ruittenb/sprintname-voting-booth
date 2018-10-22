@@ -14,6 +14,7 @@ import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
 import Constants exposing (..)
+import View.Calculations exposing (calculateRankings, calculateVoters)
 
 
 messageBox : String -> StatusLevel -> Html Msg
@@ -227,6 +228,38 @@ calculationButtons =
         ]
 
 
+rankingsTable : ApplicationState -> Html Msg
+rankingsTable state =
+    let
+        rankingsToShow =
+            calculateRankings state
+                |> List.sortBy .totalVotes
+                |> List.reverse
+
+        winnerRating =
+            case List.head rankingsToShow of
+                Just winner ->
+                    winner.totalVotes
+
+                Nothing ->
+                    0
+    in
+        div [ class "ranking-table-wrapper" ]
+            [ table [ class "ranking-table" ] <|
+                List.map
+                    (\r ->
+                        tr
+                            [ classList
+                                [ ( "winner-rating", r.totalVotes == winnerRating ) ]
+                            ]
+                            [ td [] [ text r.name ]
+                            , td [] [ text (toString r.totalVotes) ]
+                            ]
+                    )
+                    rankingsToShow
+            ]
+
+
 heading : ApplicationState -> Html Msg
 heading state =
     div [ id "filter-buttons" ]
@@ -247,6 +280,7 @@ heading state =
             state.generation
             state.letter
         , calculationButtons
+        , rankingsTable state
         ]
 
 

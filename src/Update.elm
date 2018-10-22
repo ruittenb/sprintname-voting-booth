@@ -16,7 +16,12 @@ import Commands.Database
         , firebaseLoginWithFirebaseToken
         , firebaseLogout
         )
-import Helpers exposing (getUserNameForAuthModel)
+import Helpers
+    exposing
+        ( getUserNameForAuthModel
+        , extractOneUserFromRatings
+        , extractOnePokemonFromRatingString
+        )
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
 import Update.Ratings exposing (updateVoteForPokemon)
 import Update.Pokemon

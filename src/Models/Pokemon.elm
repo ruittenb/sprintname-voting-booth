@@ -23,6 +23,17 @@ type alias PokemonVariant =
     }
 
 
+type alias PokeRankings =
+    List PokeRanking
+
+
+type alias PokeRanking =
+    { number : Int
+    , name : String
+    , totalVotes : Int
+    }
+
+
 type alias Pokemon =
     { id : Int
     , number : Int
