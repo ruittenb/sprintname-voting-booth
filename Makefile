@@ -45,8 +45,10 @@ restart: stop start ## restart the webserver
 ##@ Docker:
 
 docker-status: ## show the status of the docker image and containers
-	-docker images | grep $(DOCKERNAME)
-	-docker ps -a  | grep $(DOCKERNAME)
+	@echo IMAGES
+	@docker images | grep $(DOCKERNAME) || echo none
+	@echo CONTAINERS
+	@docker ps -a  | grep $(DOCKERNAME) || echo none
 
 docker-build: ## build the docker image
 	docker build -t $(DOCKERNAME):latest .
@@ -57,7 +59,7 @@ docker-start: ## start the docker container
 docker-build-start: docker-build docker-start ## build the docker image and start a container
 
 docker-stop: ## stop the docker container
-	docker stop $(DOCKERNAME)
+	-docker stop $(DOCKERNAME)
 
 docker-destroy: docker-stop ## destroy the docker image and container
 	-docker rm -f $(DOCKERNAME)
