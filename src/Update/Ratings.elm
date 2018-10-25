@@ -78,14 +78,16 @@ updateVoteForPokemon oldState userVote =
                             -- find pokemon category (generation and letter):
                             let
                                 ( generation, letter ) =
-                                    if oldState.viewMode == Search then
-                                        List.filter (.number >> (==) pokemonNumber) actualPokedex
-                                            |> List.map (\p -> ( p.generation, p.letter ))
-                                            |> List.head
-                                            |> Maybe.withDefault ( 0, '?' )
-                                    else
-                                        -- viewmode == browse
-                                        ( oldState.generation, oldState.letter )
+                                    case oldState.currentRoute of
+                                        Search _ ->
+                                            List.filter (.number >> (==) pokemonNumber) actualPokedex
+                                                |> List.map (\p -> ( p.generation, p.letter ))
+                                                |> List.head
+                                                |> Maybe.withDefault ( 0, '?' )
+
+                                        _ ->
+                                            -- currentRoute == browse*
+                                            ( oldState.generation, oldState.letter )
 
                                 pokeList =
                                     filterPokedex oldState.pokedex generation letter

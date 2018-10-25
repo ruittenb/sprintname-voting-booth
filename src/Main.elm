@@ -7,11 +7,12 @@ import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
 import Constants exposing (initialGeneration, initialLetter)
 import Msgs exposing (Msg(..))
+import Routing exposing (parseLocation)
 import Models exposing (ApplicationState)
-import Models.Types exposing (StatusLevel(None), ViewMode(..))
+import Models.Types exposing (StatusLevel(None), Route(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
 import View exposing (view)
-import Update exposing (update, dissectLocationHash, hashToMsg)
+import Update exposing (update)
 import Commands.Authentication exposing (decodeUser)
 import Commands.Database exposing (firebaseInit, firebaseLoginWithJwtToken)
 import Commands.Pokemon exposing (decodePokedex)
@@ -51,13 +52,14 @@ init credentials location =
             , letters = []
             }
 
-        defaultSubpage =
+        initialSubpage =
             { generation = initialGeneration
             , letter = initialLetter
             }
 
-        subpage =
-            dissectLocationHash location defaultSubpage
+        currentRoute =
+            parseLocation location
+                |> Maybe.withDefault (Browse initialSubpage)
 
         initialState : ApplicationState
         initialState =
@@ -66,9 +68,9 @@ init credentials location =
             , statusMessage = ""
             , statusLevel = None
             , debounceState = Control.initialState
-            , viewMode = Browse
-            , generation = subpage.generation
-            , letter = subpage.letter
+            , currentRoute = currentRoute
+            , generation = initialSubpage.generation
+            , letter = initialSubpage.letter
             , preloaded = emptyPreloaded
             , query = ""
             , pokedex = RemoteData.NotAsked
@@ -94,7 +96,7 @@ subscriptions _ =
 main : Program Value ApplicationState Msg
 main =
     Navigation.programWithFlags
-        hashToMsg
+        (parseLocation >> UrlChanged)
         { init = init
         , view = view
         , update = update

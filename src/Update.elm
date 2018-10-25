@@ -1,9 +1,6 @@
 module Update exposing (update)
 
-import Char
-import List
 import List.Extra exposing (replaceIf)
-import Navigation exposing (Location)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control exposing (update)
 import Models exposing (..)
@@ -105,8 +102,23 @@ update msg oldState =
         PokedexLoaded pokedex ->
             updateOnLoadPokedex oldState pokedex
 
-        GenerationAndLetterChanged newGen newLetter ->
-            updateChangeGenerationAndLetter oldState newGen newLetter
+        UrlChanged (Just newRoute) ->
+            case newRoute of
+                Search query ->
+                    -- TODO
+                    ( oldState, Cmd.none )
+
+                Browse newSubpage ->
+                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
+
+                BrowseWithPeopleVotes newSubpage ->
+                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
+
+                BrowseWithPokemonRankings newSubpage ->
+                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
+
+        UrlChanged Nothing ->
+            ( oldState, Cmd.none )
 
         VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction

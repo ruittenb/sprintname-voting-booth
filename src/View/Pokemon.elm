@@ -196,8 +196,8 @@ variantLinks pokemonName description variants =
     List.map (variantLink pokemonName description) variants
 
 
-pokemonTile : ViewMode -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
-pokemonTile viewMode ratings currentUser pokemon =
+pokemonTile : Route -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
+pokemonTile currentRoute ratings currentUser pokemon =
     let
         teamRating =
             extractOnePokemonFromRatings ratings pokemon
@@ -216,11 +216,8 @@ pokemonTile viewMode ratings currentUser pokemon =
 
         generationElement : Int -> List (Html Msg)
         generationElement gen =
-            case viewMode of
-                Browse ->
-                    [ text "" ]
-
-                Search ->
+            case currentRoute of
+                Search _ ->
                     [ a
                         [ href hash
                         , classList [ ( "button", True ) ]
@@ -229,6 +226,10 @@ pokemonTile viewMode ratings currentUser pokemon =
                         ]
                     , text " " -- no-breaking space
                     ]
+
+                _ ->
+                    -- currentRoute == browse*
+                    [ text "" ]
 
         actualVoteWidget =
             case currentUser of
@@ -290,20 +291,26 @@ pokemonTile viewMode ratings currentUser pokemon =
                         [ loadingBusyIcon ]
 
 
-pokemonTiles : ViewMode -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
-pokemonTiles viewMode pokelist ratings currentUser =
-    List.map (pokemonTile viewMode ratings currentUser) pokelist
+pokemonTiles : Route -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
+pokemonTiles currentRoute pokelist ratings currentUser =
+    List.map (pokemonTile currentRoute ratings currentUser) pokelist
 
 
 pokemonCanvas : ApplicationState -> Html Msg
 pokemonCanvas state =
     let
         pokeList =
-            case state.viewMode of
-                Browse ->
+            case state.currentRoute of
+                Browse _ ->
                     filterPokedex state.pokedex state.generation state.letter
 
-                Search ->
+                BrowseWithPeopleVotes _ ->
+                    filterPokedex state.pokedex state.generation state.letter
+
+                BrowseWithPokemonRankings _ ->
+                    filterPokedex state.pokedex state.generation state.letter
+
+                Search _ ->
                     searchPokedex state.pokedex state.query
     in
-        div [ class "pokecanvas" ] <| pokemonTiles state.viewMode pokeList state.ratings state.currentUser
+        div [ class "pokecanvas" ] <| pokemonTiles state.currentRoute pokeList state.ratings state.currentUser

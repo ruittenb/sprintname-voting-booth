@@ -140,14 +140,19 @@ updateOnLoadPokedex oldState pokedex =
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
 updateSearchPokemon oldState query =
     let
-        newViewMode =
+        newBrowseRoute =
+            { generation = oldState.generation
+            , letter = oldState.letter
+            }
+
+        newRoute =
             if query == "" then
-                Browse
+                Browse newBrowseRoute
             else
-                Search
+                Search query
 
         newState =
-            { oldState | query = query, viewMode = newViewMode }
+            { oldState | query = query, currentRoute = newRoute }
     in
         ( newState, Cmd.none )
 
@@ -168,6 +173,11 @@ updateChangeGenerationAndLetter oldState newGen newLetter =
                 newGen
                 newLetter
 
+        newBrowseRoute =
+            { generation = newGen
+            , letter = newLetter
+            }
+
         newState =
             if
                 List.member newGen allGenerations
@@ -179,7 +189,7 @@ updateChangeGenerationAndLetter oldState newGen newLetter =
                     , preloaded = newPreloaded
                     , statusMessage = ""
                     , statusLevel = None
-                    , viewMode = Browse
+                    , currentRoute = Browse newBrowseRoute
                 }
             else
                 oldState

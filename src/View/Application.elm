@@ -37,14 +37,19 @@ messageBox message level =
             ]
 
 
-romanNumeralButton : ViewMode -> Int -> Char -> Int -> Html Msg
-romanNumeralButton viewMode currentGen currentLetter gen =
+romanNumeralButton : Route -> Int -> Char -> Int -> Html Msg
+romanNumeralButton currentRoute currentGen currentLetter gen =
     let
         currentHighLight =
-            gen == currentGen && viewMode == Browse
+            case currentRoute of
+                Search _ ->
+                    False
+
+                _ ->
+                    gen == currentGen
 
         hash =
-            "#" ++ (toString gen) ++ (String.fromChar currentLetter)
+            "#/" ++ browsePathSegment ++ "/" ++ (toString gen) ++ (String.fromChar currentLetter)
     in
         a
             [ classList
@@ -65,43 +70,57 @@ debounce =
         (debounceDelay * Time.second)
 
 
-searchBox : ViewMode -> Html Msg
-searchBox viewMode =
-    div
-        [ id "search-box-container"
-        , classList [ ( "focus", viewMode == Search ) ]
-        ]
-        [ input
-            [ id "search-box"
-            , classList [ ( "current", viewMode == Search ) ]
-            , placeholder "Search in pokédex"
-            , onInput Msgs.SearchPokemon
-                |> Html.Attributes.map debounce
+searchBox : Route -> Html Msg
+searchBox currentRoute =
+    let
+        searching =
+            case currentRoute of
+                Search _ ->
+                    True
+
+                _ ->
+                    False
+    in
+        div
+            [ id "search-box-container"
+            , classList [ ( "focus", searching ) ]
             ]
-            []
-        ]
+            [ input
+                [ id "search-box"
+                , classList [ ( "current", searching ) ]
+                , placeholder "Search in pokédex"
+                , onInput Msgs.SearchPokemon
+                    |> Html.Attributes.map debounce
+                ]
+                []
+            ]
 
 
-romanNumeralButtons : ViewMode -> Int -> Char -> Html Msg
-romanNumeralButtons viewMode currentGen currentLetter =
+romanNumeralButtons : Route -> Int -> Char -> Html Msg
+romanNumeralButtons currentRoute currentGen currentLetter =
     div [ id "generation-buttons" ] <|
         (List.map
-            (romanNumeralButton viewMode currentGen currentLetter)
+            (romanNumeralButton currentRoute currentGen currentLetter)
             allGenerations
         )
 
 
-letterButton : ViewMode -> RemotePokedex -> Int -> Char -> Char -> Html Msg
-letterButton viewMode pokedex currentGen currentLetter letter =
+letterButton : Route -> RemotePokedex -> Int -> Char -> Char -> Html Msg
+letterButton currentRoute pokedex currentGen currentLetter letter =
     let
         currentHighLight =
-            letter == currentLetter && viewMode == Browse
+            case currentRoute of
+                Search _ ->
+                    False
+
+                _ ->
+                    letter == currentLetter
 
         pokeList =
             filterPokedex pokedex currentGen letter
 
         hash =
-            "#" ++ (toString currentGen) ++ (String.fromChar letter)
+            "#/" ++ browsePathSegment ++ "/" ++ (toString currentGen) ++ (String.fromChar letter)
 
         linkElem =
             if List.isEmpty pokeList then
@@ -121,14 +140,14 @@ letterButton viewMode pokedex currentGen currentLetter letter =
             [ String.fromChar letter |> text ]
 
 
-letterButtons : ViewMode -> RemotePokedex -> Int -> Char -> Html Msg
-letterButtons viewMode pokedex currentGen currentLetter =
+letterButtons : Route -> RemotePokedex -> Int -> Char -> Html Msg
+letterButtons currentRoute pokedex currentGen currentLetter =
     let
         buttonList =
             case pokedex of
                 Success _ ->
                     List.map
-                        (letterButton viewMode pokedex currentGen currentLetter)
+                        (letterButton currentRoute pokedex currentGen currentLetter)
                         allLetters
 
                 _ ->
@@ -191,13 +210,13 @@ heading state =
             state.statusMessage
             state.statusLevel
         , romanNumeralButtons
-            state.viewMode
+            state.currentRoute
             state.generation
             state.letter
         , searchBox
-            state.viewMode
+            state.currentRoute
         , letterButtons
-            state.viewMode
+            state.currentRoute
             state.pokedex
             state.generation
             state.letter
