@@ -1,4 +1,4 @@
-module View.Application exposing (heading)
+module View.Application exposing (heading, title)
 
 import Time exposing (Time, second)
 import Html exposing (..)
@@ -202,3 +202,11 @@ heading state =
             state.generation
             state.letter
         ]
+
+
+title : Html msg
+title =
+    h1
+        [ id "page-title"
+        ]
+        [ text "Pokémon Sprint Name Voting Booth" ]
