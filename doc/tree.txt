@@ -1,0 +1,88 @@
+Main
+|-- Constants
+|-- Msgs
+|   |-- Models.Types
+|   |-- Models.Auth
+|   |-- Models.Pokemon
+|   `-- Models.Ratings
+|-- Models
+|   |-- Models.Types
+|   |-- Models.Authentication
+|   |   |-- Constants.Authentication
+|   |   |-- Models.Auth
+|   |   |-- Msgs
+|   |   |-- Ports
+|   |-- Models.Pokemon
+|   |-- Models.Ratings
+|   `-- Msgs
+|-- Models.Types
+|-- Models.Authentication
+|-- View
+|   |-- View.Application
+|   |   |-- Helpers
+|   |   |-- Helpers.Authentication
+|   |   |-- Msgs
+|   |   |-- Models
+|   |   |-- Models.Types
+|   |   |-- Models.Authentication
+|   |   |-- Models.Pokemon
+|   |   `-- Constants
+|   |-- View.Pokemon
+|   |   |-- Constants
+|   |   |-- Helpers
+|   |   |-- Models
+|   |   |-- Models.Types
+|   |   |-- Models.Ratings
+|   |   |-- Models.Pokemon
+|   |   `-- Msgs
+|   |-- Models
+|   `-- Msgs
+|-- Ports
+|   |-- Models.Auth
+|   |-- Models.Database
+|   |-- Models.Pokemon
+|   `-- Models.Ratings
+|-- Update
+|   |-- Models
+|   |-- Models.Types
+|   |-- Msgs
+|   |-- Commands
+|   |-- Commands.Database
+|   |-- Helpers
+|   |   |-- Models.Authentication
+|   |   |-- Models.Pokemon
+|   |   |-- Models.Ratings
+|   |   `-- Helpers.Authentication
+|   |-- Update.Authentication
+|   |   |-- Models.Types
+|   |   |-- Models.Auth
+|   |   |-- Models.Authentication
+|   |   |-- Models
+|   |   |-- Msgs
+|   |   `-- Helpers
+|   |-- Update.Ratings
+|   |   |-- Constants
+|   |   |-- Models
+|   |   |-- Models.Types
+|   |   |-- Models.Ratings
+|   |   |-- Msgs
+|   |   |-- Helpers
+|   |   `-- Commands.Ratings
+|   `-- Update.Pokemon
+|       |-- Constants
+|       |-- Models
+|       |-- Models.Types
+|       |-- Models.Pokemon
+|       |-- Msgs
+|       `-- Ports
+|-- Commands.Authentication
+|   `-- Models.Auth
+|-- Commands.Database
+|   |-- Constants.Database
+|   |-- Models.Auth
+|   `-- Ports
+|-- Commands.Pokemon
+|   `-- Models.Pokemon
+`-- Commands.Ratings
+    |-- Models.Ratings
+    `-- Ports

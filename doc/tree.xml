@@ -1,0 +1,106 @@
+<module>
+<name>Main</name>
+<children>
+    <module>
+         <name>Constants</name>
+    </module>
+    <module>
+        <name>Msgs</name>
+        <children>
+            <module><name>Models.Types</name></module>
+            <module><name>Models.Auth</name></module>
+            <module><name>Models.Pokemon</name></module>
+            <module><name>Models.Ratings</name></module>
+        </children>
+    </module>
+    <module>
+        <name>Models</name>
+        <children>
+            <module><name>Models.Types</name></module>
+            <module><name>Models.Authentication</name>
+            <children>
+                <module><name>Constants.Authentication</name></module>
+                <module><name>Models.Auth</name></module>
+                <module><name>Msgs</name></module>
+                <module><name>Ports</name></module>
+            </children>
+            </module>
+            <module><name>Models.Pokemon</name></module>
+            <module><name>Models.Ratings</name></module>
+            <module><name>Msgs</name></module>
+        </children>
+    </module>
+|-- <module><name>Models.Types</name></module>
+|-- <module><name>Models.Authentication</name></module>
+|-- <module><name>View</name></module>
+|   |-- <module><name>View.Application</name></module>
+|   |   |-- <module><name>Helpers</name></module>
+|   |   |-- <module><name>Helpers.Authentication</name></module>
+|   |   |-- <module><name>Msgs</name></module>
+|   |   |-- <module><name>Models</name></module>
+|   |   |-- <module><name>Models.Types</name></module>
+|   |   |-- <module><name>Models.Authentication</name></module>
+|   |   |-- <module><name>Models.Pokemon</name></module>
+|   |   `-- <module><name>Constants</name></module>
+|   |-- <module><name>View.Pokemon</name></module>
+|   |   |-- <module><name>Constants</name></module>
+|   |   |-- <module><name>Helpers</name></module>
+|   |   |-- <module><name>Models</name></module>
+|   |   |-- <module><name>Models.Types</name></module>
+|   |   |-- <module><name>Models.Ratings</name></module>
+|   |   |-- <module><name>Models.Pokemon</name></module>
+|   |   `-- <module><name>Msgs</name></module>
+|   |-- <module><name>Models</name></module>
+|   `-- <module><name>Msgs</name></module>
+|-- <module><name>Ports</name></module>
+|   |-- <module><name>Models.Auth</name></module>
+|   |-- <module><name>Models.Database</name></module>
+|   |-- <module><name>Models.Pokemon</name></module>
+|   `-- <module><name>Models.Ratings</name></module>
+|-- <module>Update // TODO</module>
+|   |-- <module><name>Models</name></module>
+|   |-- <module><name>Models.Types</name></module>
+|   |-- <module><name>Msgs</name></module>
+|   |-- <module><name>Commands</name></module>
+|   |-- <module><name>Commands.Database</name></module>
+|   |-- <module><name>Helpers</name></module>
+|   |   |-- <module><name>Models.Authentication</name></module>
+|   |   |-- <module><name>Models.Pokemon</name></module>
+|   |   |-- <module><name>Models.Ratings</name></module>
+|   |   `-- <module><name>Helpers.Authentication</name></module>
+|   |-- <module><name>Update.Authentication</name></module>
+|   |   |-- <module><name>Models.Types</name></module>
+|   |   |-- <module><name>Models.Auth</name></module>
+|   |   |-- <module><name>Models.Authentication</name></module>
+|   |   |-- <module><name>Models</name></module>
+|   |   |-- <module><name>Msgs</name></module>
+|   |   `-- <module><name>Helpers</name></module>
+|   |-- <module><name>Update.Ratings</name></module>
+|   |   |-- <module><name>Constants</name></module>
+|   |   |-- <module><name>Models</name></module>
+|   |   |-- <module><name>Models.Types</name></module>
+|   |   |-- <module><name>Models.Ratings</name></module>
+|   |   |-- <module><name>Msgs</name></module>
+|   |   |-- <module><name>Helpers</name></module>
+|   |   `-- <module><name>Commands.Ratings</name></module>
+|   `-- <module><name>Update.Pokemon</name></module>
+|       |-- <module><name>Constants</name></module>
+|       |-- <module><name>Models</name></module>
+|       |-- <module><name>Models.Types</name></module>
+|       |-- <module><name>Models.Pokemon</name></module>
+|       |-- <module><name>Msgs</name></module>
+|       `-- <module><name>Ports</name></module>
+|-- <module><name>Commands.Authentication</name></module>
+|   `-- <module><name>Models.Auth</name></module>
+|-- <module><name>Commands.Database</name></module>
+|   |-- <module><name>Constants.Database</name></module>
+|   |-- <module><name>Models.Auth</name></module>
+|   `-- <module><name>Ports</name></module>
+|-- <module><name>Commands.Pokemon</name></module>
+|   `-- <module><name>Models.Pokemon</name></module>
+`-- <module><name>Commands.Ratings</name></module>
+    |-- <module><name>Models.Ratings</name></module>
+    `-- <module><name>Ports</name></module>
+</children>
+</module>
+<!-- vim: set sw=4 ts=4 et: -->
