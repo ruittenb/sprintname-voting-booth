@@ -107,8 +107,19 @@ module.exports = (function (jQuery, firebase)
                 return firebase.auth().signInWithCustomToken(firebaseToken);
             })
             .catch(function (e) {
-                let status = e.status || 500;
-                let message = e.responseJSON ? e.responseJSON.message : (e.message || "Server error");
+                let status = e.status;
+                let message;
+                if (e.responseJSON) {
+                    message = e.responseJSON.message;
+                } else if (e.message) {
+                    message = e.message;
+                } else if (!status) {
+                    // A Status Code of 0 means "The browser refused to honor the request."
+                    // @see https://salesforce.stackexchange.com/questions/158448/response-status-is-0-in-jquery-ajax
+                    message = "The browser refused to honor the request.";
+                } else {
+                    message = String(status) + " Server error";
+                }
                 setTimeout(function () {
                     me.elmClient.ports.onFirebaseLoginFailed.send({ message, status });
                 }, 100);

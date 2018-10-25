@@ -53,7 +53,8 @@ const FirebaseTokenServer = (function () {
     const DEBUG_EXPIRED_TOKEN = false;
     const VALID_REFERERS = [
         'http://localhost:4201',
-        'http://votingbooth.ddns.net:4201'
+        'http://votingbooth.ddns.net:4201',
+        'http://votingbooth.kube.profortool.com:4201'
     ];
 
     const fs         = require('fs');
@@ -158,19 +159,22 @@ const FirebaseTokenServer = (function () {
         /**
          * Try to issue firebase token
          */
-        this.issueFirebaseToken(userData).then(function (firebaseToken) {
-            response.json({
-                success : true,
-                firebaseToken
+        this.issueFirebaseToken(userData)
+            .then(function (firebaseToken) {
+                return response.status(200).json({
+                    success : true,
+                    firebaseToken
+                });
+            })
+            .catch(function (e) {
+                status = e.status || 500;
+                return response.status(status).json({
+                    success: false,
+                    status,
+                    //message: JSON.stringify(e)
+                    message: e.message
+                });
             });
-        }).catch(function (e) {
-            status = e.status || 500;
-            return response.status(status).json({
-                success: false,
-                status,
-                message: e.message
-            });
-        });
     };
 
     /**
