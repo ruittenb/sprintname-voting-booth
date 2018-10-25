@@ -145,12 +145,6 @@ update msg oldState =
         PokedexLoaded pokedex ->
             updateOnLoadPokedex oldState pokedex
 
-        GenerationChanged newGen ->
-            updateChangeGenerationAndLetter oldState newGen oldState.letter
-
-        LetterChanged newLetter ->
-            updateChangeGenerationAndLetter oldState oldState.generation newLetter
-
         GenerationAndLetterChanged newGen newLetter ->
             updateChangeGenerationAndLetter oldState newGen newLetter
 

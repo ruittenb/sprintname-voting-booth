@@ -24,8 +24,6 @@ type Msg
     | UserRatingsLoaded RemoteUserRatings
     | UserRatingsSaved RemoteUserRatings
     | GenerationAndLetterChanged Int Char
-    | GenerationChanged Int
-    | LetterChanged Char
     | VariantChanged Int BrowseDirection
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
