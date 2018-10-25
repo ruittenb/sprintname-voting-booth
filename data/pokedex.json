@@ -12741,5 +12741,20 @@
         "vname": ""
       }
     ]
+  },
+  {
+    "description": "In ancient times, this Pokémon was worshiped for its power to create metal. The bulk of its body is made of liquid metal. Its arms in particular are very flexible, and they can whip forward to deliver devastating punches.",
+    "generation": 7,
+    "id": 809,
+    "letter": "M",
+    "name": "Melmetal",
+    "number": 809,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Melmetal_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "809.png",
+        "vname": ""
+      }
+    ]
   }
 ]
