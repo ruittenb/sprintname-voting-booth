@@ -1,7 +1,7 @@
 'use strict';
 
-const Preloader  = require('./Preloader.js');
-const Elm        = require('../src/Main.elm');
+const Preloader = require('./Preloader.js');
+const Elm       = require('../src/Main.elm');
 
 /** **********************************************************************
  * VotingApp

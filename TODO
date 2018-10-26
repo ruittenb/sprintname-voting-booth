@@ -7,6 +7,10 @@ missing:
  - enable declaring a generation/letter as "closed"/"finalized"
  - use extensible records
  - cleanup composing browsePathSegment and searchPathSegment
+ - mobile site shows hover when active
+   https://www.prowebdesign.ro/how-to-deal-with-hover-on-touch-screen-devices/
+   add .no-touch class to app element if(!("ontouchstart" in document.documentElement))
+   maybe div [ on "touchstart" removeClass "no-touch" ]?
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
