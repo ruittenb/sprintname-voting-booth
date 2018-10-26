@@ -2,7 +2,7 @@ module View.Application exposing (heading, title)
 
 import Time exposing (Time, second)
 import Html exposing (..)
-import Html.Attributes exposing (attribute, id, href, class, classList, tabindex, placeholder, disabled)
+import Html.Attributes exposing (attribute, id, href, class, classList, tabindex, placeholder, disabled, value)
 import Html.Events exposing (onClick, onInput, onSubmit)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
@@ -73,6 +73,14 @@ debounce =
 searchBox : Route -> Html Msg
 searchBox currentRoute =
     let
+        valueAttribute =
+            case currentRoute of
+                Search query ->
+                    [ value query ]
+
+                _ ->
+                    []
+
         searching =
             case currentRoute of
                 Search _ ->

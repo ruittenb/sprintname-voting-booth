@@ -2,7 +2,9 @@ module Update exposing (update)
 
 import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
+import Navigation exposing (newUrl)
 import Control exposing (update)
+import Constants exposing (searchPathSegment)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
@@ -105,8 +107,7 @@ update msg oldState =
         UrlChanged (Just newRoute) ->
             case newRoute of
                 Search query ->
-                    -- TODO
-                    ( oldState, Cmd.none )
+                    updateSearchPokemon oldState query
 
                 Browse newSubpage ->
                     updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
@@ -123,8 +124,9 @@ update msg oldState =
         VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction
 
-        SearchPokemon pattern ->
-            updateSearchPokemon oldState pattern
+        SearchPokemon query ->
+            updateSearchPokemon oldState query
+                |> andThenCmd (newUrl <| "#/" ++ searchPathSegment ++ "/" ++ query)
 
         DebounceSearchPokemon debMsg ->
             Control.update

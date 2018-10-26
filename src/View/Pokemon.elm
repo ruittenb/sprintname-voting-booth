@@ -6,7 +6,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
-import Constants exposing (maxStars, imageDir)
+import Constants exposing (maxStars, imageDir, browsePathSegment)
 import Helpers exposing (filterPokedex, searchPokedex, romanNumeral)
 import Models exposing (..)
 import Models.Types exposing (..)
@@ -212,7 +212,7 @@ pokemonTile currentRoute ratings currentUser pokemon =
             toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
 
         hash =
-            "#" ++ (toString pokemon.generation) ++ (String.fromChar pokemon.letter)
+            "#/" ++ browsePathSegment ++ "/" ++ (toString pokemon.generation) ++ (String.fromChar pokemon.letter)
 
         generationElement : Int -> List (Html Msg)
         generationElement gen =
