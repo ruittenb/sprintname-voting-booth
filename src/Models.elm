@@ -14,12 +14,6 @@ type alias LighthouseData =
     }
 
 
-type alias Subpage =
-    { generation : Int
-    , letter : Char
-    }
-
-
 type alias User =
     Maybe String
 
@@ -36,7 +30,7 @@ type alias ApplicationState =
     , statusMessage : String
     , statusLevel : StatusLevel
     , debounceState : Control.State Msg
-    , viewMode : ViewMode
+    , currentRoute : Route
     , generation : Int
     , letter : Char
     , preloaded : PreloadedSets

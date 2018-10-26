@@ -8,6 +8,7 @@ module Update.Pokemon
 
 import RemoteData exposing (WebData, RemoteData(..))
 import List.Extra exposing (unique, notMember)
+import Navigation exposing (modifyUrl)
 import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
@@ -140,16 +141,27 @@ updateOnLoadPokedex oldState pokedex =
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
 updateSearchPokemon oldState query =
     let
-        newViewMode =
+        newSubpage =
+            { generation = oldState.generation
+            , letter = oldState.letter
+            }
+
+        newRoute =
             if query == "" then
-                Browse
+                Browse newSubpage
             else
-                Search
+                Search query
+
+        newCmd =
+            if query == "" then
+                modifyUrl <| "#/" ++ browsePathSegment ++ "/" ++ (toString newSubpage.generation) ++ (String.fromChar newSubpage.letter)
+            else
+                Cmd.none
 
         newState =
-            { oldState | query = query, viewMode = newViewMode }
+            { oldState | query = query, currentRoute = newRoute }
     in
-        ( newState, Cmd.none )
+        ( newState, newCmd )
 
 
 updateChangeGenerationAndLetter : ApplicationState -> Int -> Char -> ( ApplicationState, Cmd Msg )
@@ -168,6 +180,11 @@ updateChangeGenerationAndLetter oldState newGen newLetter =
                 newGen
                 newLetter
 
+        newBrowseRoute =
+            { generation = newGen
+            , letter = newLetter
+            }
+
         newState =
             if
                 List.member newGen allGenerations
@@ -179,7 +196,7 @@ updateChangeGenerationAndLetter oldState newGen newLetter =
                     , preloaded = newPreloaded
                     , statusMessage = ""
                     , statusLevel = None
-                    , viewMode = Browse
+                    , currentRoute = Browse newBrowseRoute
                 }
             else
                 oldState

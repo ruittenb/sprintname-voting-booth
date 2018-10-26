@@ -11,14 +11,22 @@ module Models.Types exposing (..)
 -}
 
 
+type alias Subpage =
+    { generation : Int
+    , letter : Char
+    }
+
+
+type Route
+    = Browse Subpage
+    | BrowseWithPeopleVotes Subpage
+    | BrowseWithPokemonRankings Subpage
+    | Search String
+
+
 type BrowseDirection
     = Next
     | Prev
-
-
-type ViewMode
-    = Search
-    | Browse
 
 
 type StatusLevel

@@ -1,11 +1,10 @@
-module Update exposing (update, dissectLocationHash, hashToMsg)
+module Update exposing (update)
 
-import Char
-import List
 import List.Extra exposing (replaceIf)
-import Navigation exposing (Location)
 import RemoteData exposing (WebData, RemoteData(..))
+import Navigation exposing (newUrl)
 import Control exposing (update)
+import Constants exposing (searchPathSegment)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
@@ -27,46 +26,6 @@ import Update.Pokemon
         , updateSearchPokemon
         , updateChangeVariant
         )
-
-
--- helper functions specific to Update
-
-
-dissectLocationHash : Location -> Subpage -> Subpage
-dissectLocationHash location defaultSubpage =
-    let
-        ( _, hash ) =
-            String.uncons location.hash
-                |> Maybe.withDefault ( '#', "" )
-    in
-        case String.uncons hash of
-            Just ( gen, letter ) ->
-                { generation = Char.toCode gen - 48
-                , letter =
-                    String.toUpper letter
-                        |> String.toList
-                        |> List.head
-                        |> Maybe.withDefault '_'
-                }
-
-            Nothing ->
-                defaultSubpage
-
-
-hashToMsg : Location -> Msg
-hashToMsg location =
-    let
-        invalidPage =
-            { generation = -1, letter = '_' }
-
-        subpage =
-            dissectLocationHash location invalidPage
-    in
-        Msgs.GenerationAndLetterChanged subpage.generation subpage.letter
-
-
-
--- central update function
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -145,14 +104,29 @@ update msg oldState =
         PokedexLoaded pokedex ->
             updateOnLoadPokedex oldState pokedex
 
-        GenerationAndLetterChanged newGen newLetter ->
-            updateChangeGenerationAndLetter oldState newGen newLetter
+        UrlChanged (Just newRoute) ->
+            case newRoute of
+                Search query ->
+                    updateSearchPokemon oldState query
+
+                Browse newSubpage ->
+                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
+
+                BrowseWithPeopleVotes newSubpage ->
+                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
+
+                BrowseWithPokemonRankings newSubpage ->
+                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
+
+        UrlChanged Nothing ->
+            ( oldState, Cmd.none )
 
         VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction
 
-        SearchPokemon pattern ->
-            updateSearchPokemon oldState pattern
+        SearchPokemon query ->
+            updateSearchPokemon oldState query
+                |> andThenCmd (newUrl <| "#/" ++ searchPathSegment ++ "/" ++ query)
 
         DebounceSearchPokemon debMsg ->
             Control.update

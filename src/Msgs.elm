@@ -23,8 +23,8 @@ type Msg
     | TeamRatingsLoaded RemoteTeamRatings
     | UserRatingsLoaded RemoteUserRatings
     | UserRatingsSaved RemoteUserRatings
-    | GenerationAndLetterChanged Int Char
     | VariantChanged Int BrowseDirection
+    | UrlChanged (Maybe Route)
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | PokemonVoteCast UserVote
