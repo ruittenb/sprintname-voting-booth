@@ -52,14 +52,28 @@ init credentials location =
             , letters = []
             }
 
-        initialSubpage =
+        defaultSubpage =
             { generation = initialGeneration
             , letter = initialLetter
             }
 
         currentRoute =
             parseLocation location
-                |> Maybe.withDefault (Browse initialSubpage)
+                |> Maybe.withDefault (Browse defaultSubpage)
+
+        ( initialSubpage, initialQuery ) =
+            case currentRoute of
+                Search query ->
+                    ( defaultSubpage, query )
+
+                Browse subpage ->
+                    ( subpage, "" )
+
+                BrowseWithPeopleVotes subpage ->
+                    ( subpage, "" )
+
+                BrowseWithPokemonRankings subpage ->
+                    ( subpage, "" )
 
         initialState : ApplicationState
         initialState =
@@ -72,7 +86,7 @@ init credentials location =
             , generation = initialSubpage.generation
             , letter = initialSubpage.letter
             , preloaded = emptyPreloaded
-            , query = ""
+            , query = initialQuery
             , pokedex = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked
             }

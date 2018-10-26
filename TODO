@@ -7,6 +7,8 @@ missing:
  - enable declaring a generation/letter as "closed"/"finalized"
  - use extensible records
  - cleanup composing browsePathSegment and searchPathSegment
+ - fix routing issues
+   - initial search page does not update search box
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
