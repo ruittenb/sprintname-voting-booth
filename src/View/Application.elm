@@ -264,9 +264,7 @@ rankingsTable state =
                             0
             in
                 div
-                    [ class "rankings-table-wrapper"
-                    , onClick CloseMaskClicked
-                    ]
+                    [ class "rankings-table-wrapper" ]
                     [ table [ class "rankings-table" ] <|
                         List.map
                             (\r ->
@@ -295,9 +293,7 @@ votersTable state =
                         |> List.sortBy .userId
             in
                 div
-                    [ class "voters-table-wrapper"
-                    , onClick CloseMaskClicked
-                    ]
+                    [ class "voters-table-wrapper" ]
                     [ table [ class "voters-table" ] <|
                         List.map
                             (\v ->
@@ -323,7 +319,11 @@ tableMask : Route -> Html Msg
 tableMask route =
     let
         maskDiv =
-            div [ class "mask" ] []
+            div
+                [ class "mask"
+                , onClick CloseMaskClicked
+                ]
+                []
     in
         case route of
             BrowseWithPokemonRankings _ ->

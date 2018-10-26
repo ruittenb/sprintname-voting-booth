@@ -1,11 +1,16 @@
 'use strict';
 
+/** **********************************************************************
+ * includes
+ */
+
 require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
-require('./index.html');       // ensure index.html gets copied during build
-require('../dist/utils.js');   // ensure utils.js gets copied during build
-require('../dist/version.js'); // ensure version.js gets copied during build
+// The following files are included just to ensure they get copied during build
+require('./index.html');
+require('../dist/version.js');
 
+// Javascript "bridges" to Auth0, Firebase and the Elm app
 const Authentication = require('../dist/Authentication.js');
 const Database       = require('../dist/Database.js');
 const VotingApp      = require('../dist/VotingApp.js');
@@ -25,7 +30,7 @@ const database = new Database(votingApp.elmClient);
 
 window.votingApp = votingApp;
 
-/**
+/** **********************************************************************
  * Register serviceworker if supported
  */
 if ('serviceWorker' in navigator) {
@@ -37,7 +42,7 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-/**
+/** **********************************************************************
  * fix styling issues with :hover on mobile devices
  * @see https://www.prowebdesign.ro/how-to-deal-with-hover-on-touch-screen-devices/
  */

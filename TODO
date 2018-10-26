@@ -6,8 +6,7 @@ missing:
  - disregard incomplete votes when showing total number of votes on pokemon
  - enable declaring a generation/letter as "closed"/"finalized"
  - use extensible records
- - cleanup composing browsePathSegment and searchPathSegment
- - fix routing issues
+ - fix routing issues with search box:
    - initial search page does not update search box
 
 improvements:
@@ -17,10 +16,10 @@ improvements:
    - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
  - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
- - swipe images in lightbox?
 
 consider:
  - Material Design?
+ - swipe images in lightbox?
  - replace tooltips with jQuery.Tooltip ?
  - Bootstrap? https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
  - LocalStorage? https://package.elm-lang.org/packages/billstclair/elm-localstorage/4.0.2/LocalStorage-SharedTypes
