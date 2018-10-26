@@ -530,13 +530,25 @@ button.user-button.current,
  * calculated rankings and votes
  */
 
+.mask {
+    z-index: 30;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0.5;
+}
+
 .voters-table-wrapper,
 .rankings-table-wrapper {
     margin: 0 auto;
     border: 1px solid black;
     background-color: white;
-    box-shadow: 5px 10px 8px #888;
+    /* box-shadow: 5px 10px 8px #888; */
     position: fixed;
+    z-index: 60;
     width: 240px;
     left: calc(50% - 120px);
     top: calc(50% - 100px);
@@ -580,7 +592,6 @@ button.user-button.current,
 .voters-table tr.absent {
     color: #e00; /* dark red */
 }
-
 
 
 /* vim: set sw=4 ts=4 et list: */

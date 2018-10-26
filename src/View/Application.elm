@@ -263,7 +263,10 @@ rankingsTable state =
                         Nothing ->
                             0
             in
-                div [ class "rankings-table-wrapper" ]
+                div
+                    [ class "rankings-table-wrapper"
+                    , onClick CloseMaskClicked
+                    ]
                     [ table [ class "rankings-table" ] <|
                         List.map
                             (\r ->
@@ -291,7 +294,10 @@ votersTable state =
                     calculatePeopleVotes state
                         |> List.sortBy .userId
             in
-                div [ class "voters-table-wrapper" ]
+                div
+                    [ class "voters-table-wrapper"
+                    , onClick CloseMaskClicked
+                    ]
                     [ table [ class "voters-table" ] <|
                         List.map
                             (\v ->
@@ -311,6 +317,23 @@ votersTable state =
 
         _ ->
             span [] []
+
+
+tableMask : Route -> Html Msg
+tableMask route =
+    let
+        maskDiv =
+            div [ class "mask" ] []
+    in
+        case route of
+            BrowseWithPokemonRankings _ ->
+                maskDiv
+
+            BrowseWithPeopleVotes _ ->
+                maskDiv
+
+            _ ->
+                span [] []
 
 
 heading : ApplicationState -> Html Msg
@@ -335,6 +358,7 @@ heading state =
         , calculationButtons
             state.generation
             state.letter
+        , tableMask state.currentRoute
         , votersTable state
         , rankingsTable state
         ]

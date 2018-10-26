@@ -7,7 +7,7 @@ import Control exposing (update)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
-import Routing exposing (createSearchPath)
+import Routing exposing (createSearchPath, createBrowsePath)
 import Commands exposing (andThenCmd)
 import Commands.Database
     exposing
@@ -61,12 +61,6 @@ update msg oldState =
             updateAuthWithNoProfile oldState (Just reason)
                 |> andThenCmd firebaseLogout
 
-        TeamRatingsLoaded NotAsked ->
-            ( oldState, Cmd.none )
-
-        TeamRatingsLoaded Loading ->
-            ( oldState, Cmd.none )
-
         TeamRatingsLoaded (Success ratings) ->
             let
                 newRatings =
@@ -90,6 +84,9 @@ update msg oldState =
                     }
             in
                 ( newState, Cmd.none )
+
+        TeamRatingsLoaded _ ->
+            ( oldState, Cmd.none )
 
         UserRatingsLoaded (Success userRatings) ->
             let
@@ -120,6 +117,19 @@ update msg oldState =
         UrlChanged Nothing ->
             ( oldState, Cmd.none )
 
+        CloseMaskClicked ->
+            let
+                browseSubpage =
+                    Browse
+                        { generation = oldState.generation
+                        , letter = oldState.letter
+                        }
+            in
+                ( { oldState | currentRoute = browseSubpage }
+                , newUrl <|
+                    createBrowsePath oldState.generation oldState.letter
+                )
+
         VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction
 
@@ -136,15 +146,6 @@ update msg oldState =
         PokemonVoteCast userVote ->
             updateVoteForPokemon oldState userVote
 
-        UserRatingsSaved NotAsked ->
-            ( oldState, Cmd.none )
-
-        UserRatingsSaved Loading ->
-            ( oldState, Cmd.none )
-
-        UserRatingsSaved (Success ratings) ->
-            ( oldState, Cmd.none )
-
         UserRatingsSaved (Failure message) ->
             let
                 newState =
@@ -152,8 +153,5 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
-        ShowRankingsClicked ->
-            ( oldState, Cmd.none )
-
-        ShowVotersClicked ->
+        UserRatingsSaved _ ->
             ( oldState, Cmd.none )
