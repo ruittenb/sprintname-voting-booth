@@ -1,5 +1,5 @@
 
-var version = 'v8.1b'
+var version = 'v8.6.1'
 var cacheName = 'sprintname-voting-booth-' + version;
 var filesToCache = [
     '/',
