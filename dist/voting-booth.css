@@ -436,20 +436,20 @@ button.user-button.current,
 }
 
 .voting-node span.star.selected,
-.voting-node:hover span.star,
-.voting-node:hover span.star.selected {
+.no-touch .voting-node:hover span.star,
+.no-touch .voting-node:hover span.star.selected {
     color: #edb867; /* warm yellow */
 }
 
-.voting-node:hover span.star::before {
+.no-touch .voting-node:hover span.star::before {
     content: "\f005";
 }
 
-.voting-node span.star:hover ~ span.star {
+.no-touch .voting-node span.star:hover ~ span.star {
     color: #ddd; /* light grey */
 }
 
-.voting-node span.star:hover ~ span.star::before {
+.no-touch .voting-node span.star:hover ~ span.star::before {
     content: "\f006";
 }
 

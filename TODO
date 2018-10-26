@@ -10,7 +10,7 @@ missing:
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
-   - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest			@effect-manager
+   - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest	@effect-manager
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire-extra/latest
    - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
@@ -24,5 +24,3 @@ consider:
  - LocalStorage? https://package.elm-lang.org/packages/billstclair/elm-localstorage/4.0.2/LocalStorage-SharedTypes
  - shake to display random pokemon :)
 
-done:
- - use actual Route package in Elm
