@@ -91,6 +91,7 @@ const FirebaseTokenServer = (function () {
             callback();
         });
         this.server.post('/', this.processRequest.bind(this));
+        this.server.options('/', this.processOptionsRequest.bind(this));
         this.server.listen(PORT, function (err) {
             if (err) {
                 return console.log('Unable to listen on port', PORT, ': ', err);
@@ -100,17 +101,38 @@ const FirebaseTokenServer = (function () {
     };
 
     /**
+     * Reply to an OPTIONS request. This is required for Cross-Origin AJAX requests.
+     * @see https://techblog.constantcontact.com/software-development/using-cors-for-cross-domain-ajax-requests/
+     *
+     * TODO This function does not seem to get called?
+     */
+    FirebaseTokenServer.prototype.processOptionsRequest = function (request, response)
+    {
+        let origin = req.get('origin');
+        console.log(`Received OPTIONS request from ${origin}`);
+        /**
+         * validate the origin
+         */
+        if (!this.validateOrigin(origin, response)) {
+            response.send(400);
+        } else {
+            response.send(200);
+        }
+    };
+
+    /**
      * Process a request. Takes a JWT web token as JSON as input and returns
      * a firebase token.
      */
     FirebaseTokenServer.prototype.processRequest = function (request, response)
     {
+        let referer = request.headers.referer;
         let status, userData, firebaseToken;
-
+        console.log(`Received POST request from ${referer}`);
         /**
-         * Validate the referer (origin)
+         * Validate the referer
          */
-        if (!this.validateOrigin(request, response)) {
+        if (!this.validateOrigin(referer, response)) {
             status = 400;
             return response.status(status).json({
                 success: false,
@@ -178,15 +200,20 @@ const FirebaseTokenServer = (function () {
     };
 
     /**
-     * Validate the referer (origin) and fix the headers to allow CORS
+     * Validate the referer/origin and fix the headers to allow CORS
      *
-     * We could have chosen for  https://www.npmjs.com/package/cors
+     * We could have chosen for https://www.npmjs.com/package/cors
      */
-    FirebaseTokenServer.prototype.validateOrigin = function (request, response)
+    FirebaseTokenServer.prototype.validateOrigin = function (referer, response)
     {
-        let referer = request.headers.referer.replace(/\/$/, '');
-        response.header('Access-Control-Allow-Origin', referer);
-        return VALID_REFERERS.includes(referer);
+        let origin = referer.replace(/\/(index\.html)?$/, '');
+        let valid = VALID_REFERERS.includes(origin);
+        if (valid) {
+            response.header('Access-Control-Allow-Origin', origin);
+            response.header('Access-Control-Allow-Methods', 'POST,OPTIONS');
+            response.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+        }
+        return valid;
     };
 
     /**
