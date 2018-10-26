@@ -34,8 +34,8 @@ button,
 }
 
 button.user-button,
-button.show-rankings,
-button.show-voters,
+.button.show-rankings,
+.button.show-voters,
 .button.button-spacer,
 .button.letter-button,
 .button.generation-button {
@@ -46,8 +46,8 @@ button.show-voters,
 }
 
 button.user-button,
-button.show-rankings,
-button.show-voters,
+.button.show-rankings,
+.button.show-voters,
 .button.letter-button,
 .button.generation-button {
     background-color: white;
@@ -59,14 +59,14 @@ button.user-button {
     width: 84px;
 }
 
-button.show-rankings,
-button.show-voters {
+.button.show-rankings,
+.button.show-voters {
     width: 128px;
 }
 
 button.user-button,
-button.show-rankings,
-button.show-voters {
+.button.show-rankings,
+.button.show-voters {
     outline: none;
     display: block;
     float: left;
@@ -92,8 +92,8 @@ button.show-voters {
 }
 
 button.user-button:hover,
-button.show-rankings:hover,
-button.show-voters:hover,
+.button.show-rankings:hover,
+.button.show-voters:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
 .poketile .button:hover {
@@ -101,8 +101,8 @@ button.show-voters:hover,
 }
 
 button.user-button:active,
-button.show-rankings:active,
-button.show-voters:active,
+.button.show-rankings:active,
+.button.show-voters:active,
 .poketile .button:active {
     background-color: #f0d8f0; /* medium purple */
 }
@@ -195,6 +195,7 @@ button.user-button.current,
     #search-box-container { order: 2; }
     #generation-buttons   { order: 3; }
     #letter-buttons       { order: 4; }
+    #calculation-buttons  { order: 5; }
 }
 
 #user-buttons,

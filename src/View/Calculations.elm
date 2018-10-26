@@ -11,6 +11,12 @@ import Helpers
         )
 
 
+{-
+   Calculates the number of total votes (for the current generation and letter) by user.
+   This helps to decide if everyone has cast the correct number of votes.
+-}
+
+
 addOneUserVoteByUser : UserRatings -> Pokemon -> Int -> Int
 addOneUserVoteByUser userRatings pokemon total =
     total + extractOnePokemonFromRatingString userRatings.ratings pokemon.number
@@ -51,27 +57,6 @@ sumVotesByUser pokelist userRatings teamGenLetterVotes =
             teamGenLetterVotes
 
 
-
-{-
-   sumVotesByUser : List Pokemon -> UserRatings -> TeamGenLetterVotes -> TeamGenLetterVotes
-   sumVotesByUser pokelist userRatings teamGenLetterVotes =
-       let
-           totalVotes =
-               List.foldl (addOneUserVoteByUser userRatings) 0 pokelist
-
-           teamGenLetterVote =
-               if userRatings.active && totalVotes > 0 then
-                   [ { userName = userRatings.userName
-                     , totalVotes = totalVotes
-                     }
-                   ]
-               else
-                   []
-       in
-           teamGenLetterVote ++ teamGenLetterVotes
--}
-
-
 calculatePeopleVotes : ApplicationState -> TeamGenLetterVotes
 calculatePeopleVotes model =
     let
@@ -94,7 +79,8 @@ calculatePeopleVotes model =
 
 
 {-
-   Calculates the number of total votes (for the current generation and letter) by user.
+   Calculates the number of total votes (for the current generation and letter) by pokemon.
+   This helps to decide which pokemon won this round's votes.
 -}
 
 

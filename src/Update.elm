@@ -4,10 +4,10 @@ import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
 import Navigation exposing (newUrl)
 import Control exposing (update)
-import Constants exposing (searchPathSegment)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
+import Routing exposing (createSearchPath)
 import Commands exposing (andThenCmd)
 import Commands.Database
     exposing
@@ -114,14 +114,8 @@ update msg oldState =
                 Search query ->
                     updateSearchPokemon oldState query
 
-                Browse newSubpage ->
-                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
-
-                BrowseWithPeopleVotes newSubpage ->
-                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
-
-                BrowseWithPokemonRankings newSubpage ->
-                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
+                _ ->
+                    updateChangeGenerationAndLetter oldState newRoute
 
         UrlChanged Nothing ->
             ( oldState, Cmd.none )
@@ -131,7 +125,7 @@ update msg oldState =
 
         SearchPokemon query ->
             updateSearchPokemon oldState query
-                |> andThenCmd (newUrl <| "#/" ++ searchPathSegment ++ "/" ++ query)
+                |> andThenCmd (newUrl <| createSearchPath query)
 
         DebounceSearchPokemon debMsg ->
             Control.update

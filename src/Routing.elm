@@ -1,10 +1,56 @@
-module Routing exposing (parseLocation)
+module Routing
+    exposing
+        ( parseLocation
+        , createBrowsePath
+        , createSearchPath
+        , createShowRankingsPath
+        , createShowVotesPath
+        )
 
 import Char
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
 import Models.Types exposing (Route(..), Subpage)
-import Constants exposing (browsePathSegment, searchPathSegment)
+
+
+searchPathSegment : String
+searchPathSegment =
+    "search"
+
+
+browsePathSegment : String
+browsePathSegment =
+    "browse"
+
+
+showVotesPathSegment : String
+showVotesPathSegment =
+    "show-votes"
+
+
+showRankingsPathSegment : String
+showRankingsPathSegment =
+    "show-rankings"
+
+
+createSearchPath : String -> String
+createSearchPath query =
+    "#/" ++ searchPathSegment ++ "/" ++ query
+
+
+createBrowsePath : Int -> Char -> String
+createBrowsePath gen letter =
+    "#/" ++ browsePathSegment ++ "/" ++ (toString gen) ++ (String.fromChar letter)
+
+
+createShowRankingsPath : Int -> Char -> String
+createShowRankingsPath gen letter =
+    (createBrowsePath gen letter) ++ "/" ++ showRankingsPathSegment
+
+
+createShowVotesPath : Int -> Char -> String
+createShowVotesPath gen letter =
+    (createBrowsePath gen letter) ++ "/" ++ showVotesPathSegment
 
 
 extractSubpage : String -> Maybe Subpage
@@ -37,8 +83,8 @@ subPageParser =
 routeParser : Parser (Route -> a) a
 routeParser =
     UrlParser.oneOf
-        [ UrlParser.map BrowseWithPeopleVotes (s browsePathSegment </> subPageParser </> s "show-votes")
-        , UrlParser.map BrowseWithPokemonRankings (s browsePathSegment </> subPageParser </> s "show-rankings")
+        [ UrlParser.map BrowseWithPeopleVotes (s browsePathSegment </> subPageParser </> s showVotesPathSegment)
+        , UrlParser.map BrowseWithPokemonRankings (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
         , UrlParser.map Browse (s browsePathSegment </> subPageParser)
         , UrlParser.map Search (s searchPathSegment </> string)
         ]

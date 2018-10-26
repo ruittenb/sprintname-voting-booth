@@ -49,13 +49,3 @@ allLetters : List Char
 allLetters =
     List.map Char.fromCode <|
         List.range (Char.toCode 'A') (Char.toCode 'Z')
-
-
-browsePathSegment : String
-browsePathSegment =
-    "browse"
-
-
-searchPathSegment : String
-searchPathSegment =
-    "search"

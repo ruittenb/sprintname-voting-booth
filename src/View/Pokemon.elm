@@ -6,13 +6,14 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
-import Constants exposing (maxStars, imageDir, browsePathSegment)
+import Constants exposing (maxStars, imageDir)
 import Helpers exposing (filterPokedex, searchPokedex, romanNumeral)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Ratings exposing (..)
 import Models.Pokemon exposing (..)
 import Msgs exposing (Msg)
+import Routing exposing (createBrowsePath)
 
 
 loadingBusyIcon : Html Msg
@@ -212,7 +213,7 @@ pokemonTile currentRoute ratings currentUser pokemon =
             toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
 
         hash =
-            "#/" ++ browsePathSegment ++ "/" ++ (toString pokemon.generation) ++ (String.fromChar pokemon.letter)
+            createBrowsePath pokemon.generation pokemon.letter
 
         generationElement : Int -> List (Html Msg)
         generationElement gen =
