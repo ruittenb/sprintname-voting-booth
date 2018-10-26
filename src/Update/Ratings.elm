@@ -7,29 +7,13 @@ import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Ratings exposing (..)
 import Msgs exposing (Msg)
-import Helpers exposing (filterPokedex)
+import Helpers
+    exposing
+        ( filterPokedex
+        , extractOneUserFromRatings
+        , extractOnePokemonFromRatingString
+        )
 import Commands.Ratings exposing (saveRatings)
-
-
--- helper functions specific to Update
-
-
-extractOneUserFromRatings : TeamRatings -> User -> ( TeamRatings, TeamRatings )
-extractOneUserFromRatings ratings currentUser =
-    case currentUser of
-        Nothing ->
-            ( [], ratings )
-
-        Just simpleUserName ->
-            List.partition (.userName >> (==) simpleUserName) ratings
-
-
-extractOnePokemonFromRatingString : String -> Int -> Int
-extractOnePokemonFromRatingString ratingString pokemonNumber =
-    String.slice pokemonNumber (pokemonNumber + 1) ratingString
-        |> String.toInt
-        |> Result.withDefault 0
-
 
 
 {-

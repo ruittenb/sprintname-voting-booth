@@ -43,3 +43,21 @@ type alias RemoteUserRatings =
 
 type alias RemoteTeamRatings =
     RemoteData String TeamRatings
+
+
+type CompletionLevel
+    = Absent
+    | Incomplete
+    | Complete
+
+
+type alias TeamGenLetterVote =
+    { userId : Int
+    , userName : String
+    , totalVotes : Int
+    , completionLevel : CompletionLevel
+    }
+
+
+type alias TeamGenLetterVotes =
+    List TeamGenLetterVote

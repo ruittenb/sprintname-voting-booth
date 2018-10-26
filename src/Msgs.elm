@@ -25,6 +25,7 @@ type Msg
     | UserRatingsSaved RemoteUserRatings
     | VariantChanged Int BrowseDirection
     | UrlChanged (Maybe Route)
+    | CloseMaskClicked
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | PokemonVoteCast UserVote

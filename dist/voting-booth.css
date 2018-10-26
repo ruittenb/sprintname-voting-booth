@@ -34,6 +34,8 @@ button,
 }
 
 button.user-button,
+.button.show-rankings,
+.button.show-voters,
 .button.button-spacer,
 .button.letter-button,
 .button.generation-button {
@@ -44,6 +46,8 @@ button.user-button,
 }
 
 button.user-button,
+.button.show-rankings,
+.button.show-voters,
 .button.letter-button,
 .button.generation-button {
     background-color: white;
@@ -53,6 +57,17 @@ button.user-button,
 
 button.user-button {
     width: 84px;
+}
+
+.button.show-rankings,
+.button.show-voters {
+    width: 128px;
+}
+
+button.user-button,
+.button.show-rankings,
+.button.show-voters {
+    outline: none;
     display: block;
     float: left;
     font-size: 14px;
@@ -77,12 +92,17 @@ button.user-button {
 }
 
 button.user-button:hover,
+.button.show-rankings:hover,
+.button.show-voters:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
 .poketile .button:hover {
     background-color: #f8f0f8; /* light purple */
 }
 
+button.user-button:active,
+.button.show-rankings:active,
+.button.show-voters:active,
 .poketile .button:active {
     background-color: #f0d8f0; /* medium purple */
 }
@@ -175,6 +195,7 @@ button.user-button.current,
     #search-box-container { order: 2; }
     #generation-buttons   { order: 3; }
     #letter-buttons       { order: 4; }
+    #calculation-buttons  { order: 5; }
 }
 
 #user-buttons,
@@ -335,6 +356,7 @@ button.user-button.current,
 
 .pokecanvas {
     margin-top: 10px;
+    clear: left;
     display: flex;
     flex-wrap: wrap;
 }
@@ -503,5 +525,73 @@ button.user-button.current,
     background-color: #f8f8f8;
     margin: 0 2px;
 }
+
+/**
+ * calculated rankings and votes
+ */
+
+.mask {
+    z-index: 30;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.voters-table-wrapper,
+.rankings-table-wrapper {
+    margin: 0 auto;
+    border: 1px solid black;
+    background-color: white;
+    /* box-shadow: 5px 10px 8px #888; */
+    position: fixed;
+    z-index: 60;
+    width: 240px;
+    left: calc(50% - 120px);
+    top: calc(50% - 100px);
+}
+
+.voters-table,
+.rankings-table {
+    border-width: 1px 0;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-color: black;
+    background-color: white;
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 80%;
+}
+
+.voters-table tr:nth-child(even),
+.rankings-table tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.voters-table td,
+.rankings-table td {
+    padding: 1px 10px;
+}
+
+.rankings-table tr.winner-rating {
+    color: #e00; /* dark red */
+    font-weight: bold;
+}
+
+.voters-table tr.complete {
+    color: #0a4; /* dark green */
+}
+
+.voters-table tr.incomplete {
+    color: #bb0; /* dark yellow */
+}
+
+.voters-table tr.absent {
+    color: #e00; /* dark red */
+}
+
 
 /* vim: set sw=4 ts=4 et list: */

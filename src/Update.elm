@@ -4,10 +4,10 @@ import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
 import Navigation exposing (newUrl)
 import Control exposing (update)
-import Constants exposing (searchPathSegment)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
+import Routing exposing (createSearchPath, createBrowsePath)
 import Commands exposing (andThenCmd)
 import Commands.Database
     exposing
@@ -16,7 +16,12 @@ import Commands.Database
         , firebaseLoginWithFirebaseToken
         , firebaseLogout
         )
-import Helpers exposing (getUserNameForAuthModel)
+import Helpers
+    exposing
+        ( getUserNameForAuthModel
+        , extractOneUserFromRatings
+        , extractOnePokemonFromRatingString
+        )
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
 import Update.Ratings exposing (updateVoteForPokemon)
 import Update.Pokemon
@@ -56,12 +61,6 @@ update msg oldState =
             updateAuthWithNoProfile oldState (Just reason)
                 |> andThenCmd firebaseLogout
 
-        TeamRatingsLoaded NotAsked ->
-            ( oldState, Cmd.none )
-
-        TeamRatingsLoaded Loading ->
-            ( oldState, Cmd.none )
-
         TeamRatingsLoaded (Success ratings) ->
             let
                 newRatings =
@@ -86,6 +85,9 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
+        TeamRatingsLoaded _ ->
+            ( oldState, Cmd.none )
+
         UserRatingsLoaded (Success userRatings) ->
             let
                 newRatings =
@@ -109,24 +111,31 @@ update msg oldState =
                 Search query ->
                     updateSearchPokemon oldState query
 
-                Browse newSubpage ->
-                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
-
-                BrowseWithPeopleVotes newSubpage ->
-                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
-
-                BrowseWithPokemonRankings newSubpage ->
-                    updateChangeGenerationAndLetter oldState newSubpage.generation newSubpage.letter
+                _ ->
+                    updateChangeGenerationAndLetter oldState newRoute
 
         UrlChanged Nothing ->
             ( oldState, Cmd.none )
+
+        CloseMaskClicked ->
+            let
+                browseSubpage =
+                    Browse
+                        { generation = oldState.generation
+                        , letter = oldState.letter
+                        }
+            in
+                ( { oldState | currentRoute = browseSubpage }
+                , newUrl <|
+                    createBrowsePath oldState.generation oldState.letter
+                )
 
         VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction
 
         SearchPokemon query ->
             updateSearchPokemon oldState query
-                |> andThenCmd (newUrl <| "#/" ++ searchPathSegment ++ "/" ++ query)
+                |> andThenCmd (newUrl <| createSearchPath query)
 
         DebounceSearchPokemon debMsg ->
             Control.update
@@ -137,18 +146,12 @@ update msg oldState =
         PokemonVoteCast userVote ->
             updateVoteForPokemon oldState userVote
 
-        UserRatingsSaved NotAsked ->
-            ( oldState, Cmd.none )
-
-        UserRatingsSaved Loading ->
-            ( oldState, Cmd.none )
-
-        UserRatingsSaved (Success ratings) ->
-            ( oldState, Cmd.none )
-
         UserRatingsSaved (Failure message) ->
             let
                 newState =
                     { oldState | statusMessage = toString message, statusLevel = Error }
             in
                 ( newState, Cmd.none )
+
+        UserRatingsSaved _ ->
+            ( oldState, Cmd.none )

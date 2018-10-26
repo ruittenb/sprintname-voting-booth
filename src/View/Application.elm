@@ -13,7 +13,19 @@ import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
+import Models.Ratings exposing (..)
 import Constants exposing (..)
+import Routing
+    exposing
+        ( createBrowsePath
+        , createShowRankingsPath
+        , createShowVotesPath
+        )
+import View.Calculations
+    exposing
+        ( calculatePeopleVotes
+        , calculatePokemonVotes
+        )
 
 
 messageBox : String -> StatusLevel -> Html Msg
@@ -49,7 +61,7 @@ romanNumeralButton currentRoute currentGen currentLetter gen =
                     gen == currentGen
 
         hash =
-            "#/" ++ browsePathSegment ++ "/" ++ (toString gen) ++ (String.fromChar currentLetter)
+            createBrowsePath gen currentLetter
     in
         a
             [ classList
@@ -128,7 +140,7 @@ letterButton currentRoute pokedex currentGen currentLetter letter =
             filterPokedex pokedex currentGen letter
 
         hash =
-            "#/" ++ browsePathSegment ++ "/" ++ (toString currentGen) ++ (String.fromChar letter)
+            createBrowsePath currentGen letter
 
         linkElem =
             if List.isEmpty pokeList then
@@ -209,6 +221,121 @@ loginLogoutButton authModel currentUser message level =
             ]
 
 
+calculationButtons : Int -> Char -> Html Msg
+calculationButtons gen letter =
+    div
+        [ id "calculation-buttons"
+        ]
+        [ a
+            [ classList
+                [ ( "show-rankings", True )
+                , ( "button", True )
+                ]
+            , href (createShowRankingsPath gen letter)
+            ]
+            [ text "Show Rankings" ]
+        , a
+            [ classList
+                [ ( "show-voters", True )
+                , ( "button", True )
+                ]
+            , href (createShowVotesPath gen letter)
+            ]
+            [ text "Show Voters" ]
+        ]
+
+
+rankingsTable : ApplicationState -> Html Msg
+rankingsTable state =
+    case state.currentRoute of
+        BrowseWithPokemonRankings _ ->
+            let
+                rankingsToShow =
+                    calculatePokemonVotes state
+                        |> List.sortBy .totalVotes
+                        |> List.reverse
+
+                winnerRating =
+                    case List.head rankingsToShow of
+                        Just winner ->
+                            winner.totalVotes
+
+                        Nothing ->
+                            0
+            in
+                div
+                    [ class "rankings-table-wrapper"
+                    , onClick CloseMaskClicked
+                    ]
+                    [ table [ class "rankings-table" ] <|
+                        List.map
+                            (\r ->
+                                tr
+                                    [ classList
+                                        [ ( "winner-rating", r.totalVotes == winnerRating && r.totalVotes > 0 ) ]
+                                    ]
+                                    [ td [] [ text r.name ]
+                                    , td [] [ text (toString r.totalVotes) ]
+                                    ]
+                            )
+                            rankingsToShow
+                    ]
+
+        _ ->
+            span [] []
+
+
+votersTable : ApplicationState -> Html Msg
+votersTable state =
+    case state.currentRoute of
+        BrowseWithPeopleVotes _ ->
+            let
+                votersToShow =
+                    calculatePeopleVotes state
+                        |> List.sortBy .userId
+            in
+                div
+                    [ class "voters-table-wrapper"
+                    , onClick CloseMaskClicked
+                    ]
+                    [ table [ class "voters-table" ] <|
+                        List.map
+                            (\v ->
+                                tr
+                                    [ classList
+                                        [ ( "complete", v.completionLevel == Complete )
+                                        , ( "incomplete", v.completionLevel == Incomplete )
+                                        , ( "absent", v.completionLevel == Absent )
+                                        ]
+                                    ]
+                                    [ td [] [ text v.userName ]
+                                    , td [] [ text (toString v.totalVotes) ]
+                                    ]
+                            )
+                            votersToShow
+                    ]
+
+        _ ->
+            span [] []
+
+
+tableMask : Route -> Html Msg
+tableMask route =
+    let
+        maskDiv =
+            div [ class "mask" ] []
+    in
+        case route of
+            BrowseWithPokemonRankings _ ->
+                maskDiv
+
+            BrowseWithPeopleVotes _ ->
+                maskDiv
+
+            _ ->
+                span [] []
+
+
 heading : ApplicationState -> Html Msg
 heading state =
     div [ id "filter-buttons" ]
@@ -228,6 +355,12 @@ heading state =
             state.pokedex
             state.generation
             state.letter
+        , calculationButtons
+            state.generation
+            state.letter
+        , tableMask state.currentRoute
+        , votersTable state
+        , rankingsTable state
         ]
 
 

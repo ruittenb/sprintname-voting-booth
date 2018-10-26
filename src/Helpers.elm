@@ -1,8 +1,17 @@
-module Helpers exposing (getUserNameForAuthModel, filterPokedex, searchPokedex, romanNumeral)
+module Helpers
+    exposing
+        ( getUserNameForAuthModel
+        , filterPokedex
+        , searchPokedex
+        , romanNumeral
+        , extractOnePokemonFromRatingString
+        , extractOneUserFromRatings
+        )
 
 import Array exposing (Array)
 import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
+import Models exposing (User)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
 import Models.Ratings exposing (..)
@@ -80,3 +89,20 @@ searchPokedex pokedex query =
 
         _ ->
             []
+
+
+extractOnePokemonFromRatingString : String -> Int -> Int
+extractOnePokemonFromRatingString ratingString pokemonNumber =
+    String.slice pokemonNumber (pokemonNumber + 1) ratingString
+        |> String.toInt
+        |> Result.withDefault 0
+
+
+extractOneUserFromRatings : TeamRatings -> User -> ( TeamRatings, TeamRatings )
+extractOneUserFromRatings ratings currentUser =
+    case currentUser of
+        Nothing ->
+            ( [], ratings )
+
+        Just simpleUserName ->
+            List.partition (.userName >> (==) simpleUserName) ratings

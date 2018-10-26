@@ -13,6 +13,7 @@ import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokemon exposing (..)
+import Routing exposing (createBrowsePath)
 import Msgs exposing (Msg)
 import Ports exposing (preloadImages)
 
@@ -154,7 +155,8 @@ updateSearchPokemon oldState query =
 
         newCmd =
             if query == "" then
-                modifyUrl <| "#/" ++ browsePathSegment ++ "/" ++ (toString newSubpage.generation) ++ (String.fromChar newSubpage.letter)
+                createBrowsePath newSubpage.generation newSubpage.letter
+                    |> modifyUrl
             else
                 Cmd.none
 
@@ -164,9 +166,23 @@ updateSearchPokemon oldState query =
         ( newState, newCmd )
 
 
-updateChangeGenerationAndLetter : ApplicationState -> Int -> Char -> ( ApplicationState, Cmd Msg )
-updateChangeGenerationAndLetter oldState newGen newLetter =
+updateChangeGenerationAndLetter : ApplicationState -> Route -> ( ApplicationState, Cmd Msg )
+updateChangeGenerationAndLetter oldState newRoute =
     let
+        ( newGen, newLetter ) =
+            case newRoute of
+                Search _ ->
+                    ( oldState.generation, oldState.letter )
+
+                Browse newSubpage ->
+                    ( newSubpage.generation, newSubpage.letter )
+
+                BrowseWithPeopleVotes newSubpage ->
+                    ( newSubpage.generation, newSubpage.letter )
+
+                BrowseWithPokemonRankings newSubpage ->
+                    ( newSubpage.generation, newSubpage.letter )
+
         command =
             getPreloadCommandForPokedexCrossSection
                 oldState.preloaded
@@ -196,7 +212,7 @@ updateChangeGenerationAndLetter oldState newGen newLetter =
                     , preloaded = newPreloaded
                     , statusMessage = ""
                     , statusLevel = None
-                    , currentRoute = Browse newBrowseRoute
+                    , currentRoute = newRoute
                 }
             else
                 oldState
