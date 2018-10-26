@@ -4,7 +4,7 @@
 }
 
 body#voting-app-body {
-    padding: 8px;
+    padding: 8px 8px 8px 12px;
     background-color: #f0f0f0;
     font-family: Helvetica, Arial, Sans;
     font-size: 14px;
@@ -14,7 +14,7 @@ h1#page-title {
     font-style: italic;
     font-size: 18px;
     color: #333;
-    margin: 4px 0 12px 0;
+    margin: 4px 4px 12px 0;
 }
 
 button,
