@@ -4,6 +4,7 @@
 }
 
 body#voting-app-body {
+    /* allow for 4px more on the left because buttons have 4px space on the right */
     padding: 8px 8px 8px 12px;
     background-color: #f0f0f0;
     font-family: Helvetica, Arial, Sans;
