@@ -54,7 +54,7 @@ const FirebaseTokenServer = (function () {
     const VALID_REFERERS = [
         'http://localhost:4201',
         'http://votingbooth.ddns.net:4201',
-        'http://votingbooth.kube.profortool.com:4201'
+        'https://voting-booth.kube.profortool.com'
     ];
 
     const fs         = require('fs');

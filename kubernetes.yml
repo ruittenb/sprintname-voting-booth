@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    # Zorgt dat we de nginx ingress gebruiken
+    kubernetes.io/ingress.class: nginx
+
+    # Zorgt dat cert-manager een SSL certificaat
+    # via LetsEncrypt gaat aanmaken en deze aan deze ingress verbindt
+    kubernetes.io/tls-acme: "true"
+
+    # Extra configuratie voor Nginx om altijd https te gebruiken
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'True'
+  labels:
+    app: voting-booth
+  name: voting-booth-ingress
+  namespace: voting-booth
+spec:
+  backend:
+    serviceName: voting-booth-service
+    servicePort: 4201
+  rules:
+  - host: voting-booth.kube.profortool.com
+    http:
+      paths:
+      - backend:
+          serviceName: voting-booth-service
+          servicePort: 4201
+  tls:
+  - secretName: voting-booth-certificate
+    hosts:
+    - voting-booth.kube.profortool.com
