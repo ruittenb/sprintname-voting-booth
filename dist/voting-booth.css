@@ -554,8 +554,9 @@ button.user-button.current,
     position: fixed;
     z-index: 60;
     width: 240px;
-    left: calc(50% - 120px);
-    top: calc(50% - 100px);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .voters-table,
