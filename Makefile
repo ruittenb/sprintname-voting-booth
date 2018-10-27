@@ -1,9 +1,16 @@
-DOCKERNAME=voting-booth
-DOCKERNET=voting-net
-DOCKERPORTS=-p 4201:4201
+
 #NODE_PIDS=$(shell /bin/ps -o user,pid,args -t `tty` | awk '$$3 ~ /[n]ode/ { print $$2 }')
 NODE_PIDS=$(shell lsof -l -n -i tcp | awk '/ \*:420[12] / { print $$2 }')
 NODE_PROCS=$(shell lsof -l -n -i tcp | awk '/ \*:420[12] / { print "-p " $$2 }')
+NEXT_VERSION=$(shell git tag | awk '{ sub(/^v/, ""); if (0 + $$1 > max) max = $$1; } END { print max + 0.1 }')
+SERVICE_WORKER=dist/service-worker.js
+NEXT_TAG=v$(NEXT_VERSION)
+CURRENT_VERSION=$(shell git describe --tags | sed -e 's/^v//')
+CURRENT_TAG=$(shell git describe --tags)
+GOOGLE_CLOUD_PREFIX=eu.gcr.io/proforto-team-sso
+DOCKERNAME=voting-booth
+DOCKERNET=voting-net
+DOCKERPORTS=-p 4201:4201
 
 ##@ Generic:
 
@@ -18,8 +25,17 @@ help: ## display this help
 install: ## install all npm dependencies
 	npm install
 
-version: ## update the version file with the current git tag name
-	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$$(git describe --tags)'); });" > dist/version.js
+tag: ## create git tag, next in line (with 0.1 increments) and push to repo
+	git tag $(NEXT_TAG)
+	make version
+	git push --tags
+
+version: ## update the version file and serviceworker with the current git tag name
+	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > dist/version.js
+	sed -i "" -e "s/^var version = 'v[0-9.]*';/var version = '$(CURRENT_TAG)';/" $(SERVICE_WORKER)
+
+bump: ## increment the version in the serviceworker
+	sed -i "" -E "s/^(var version = 'v[0-9.]*)';/\1.1';/" $(SERVICE_WORKER)
 
 status: ## show the webserver status
 	@if [ "$(NODE_PIDS)" ]; then ps $(NODE_PROCS); fi | awk ' \
@@ -52,6 +68,9 @@ docker-status: ## show the status of the docker image and containers
 
 docker-build: ## build the docker image
 	docker build -t $(DOCKERNAME):latest .
+
+docker-tag: ## tag the :lastest docker image with the current version
+	docker image tag $(DOCKERNAME):latest $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
 docker-start: ## start the docker container
 	docker run --name $(DOCKERNAME) $(DOCKERPORTS) -t $(DOCKERNAME):latest &

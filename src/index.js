@@ -18,6 +18,7 @@ const VotingApp      = require('../dist/VotingApp.js');
 /** **********************************************************************
  * Register serviceworker if supported
  */
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
         navigator.serviceWorker
@@ -48,8 +49,10 @@ window.votingApp = votingApp;
 
 /** **********************************************************************
  * fix styling issues with :hover on mobile devices
+ *
  * @see https://www.prowebdesign.ro/how-to-deal-with-hover-on-touch-screen-devices/
  */
+
 if ('ontouchstart' in document.documentElement) {
     document.body.classList.remove('no-touch');
 }

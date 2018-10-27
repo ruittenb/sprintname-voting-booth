@@ -1,5 +1,5 @@
 
-var version = 'v8.6.3'
+var version = 'v9.1.1.1.1.1.1';
 var cacheName = 'sprintname-voting-booth-' + version;
 var filesToCache = [
     '/',
@@ -19,9 +19,9 @@ var filesToCache = [
     '/icons/cross.png',
 ];
 
-self.addEventListener('install', function (e) {
+self.addEventListener('install', function (event) {
     console.log('[ServiceWorker] Installing');
-    e.waitUntil(
+    event.waitUntil(
         caches.open(cacheName).then(function (cache) {
             console.log('[ServiceWorker] Caching app shell');
             return cache.addAll(filesToCache);
@@ -29,9 +29,9 @@ self.addEventListener('install', function (e) {
     );
 });
 
-self.addEventListener('activate', function (e) {
+self.addEventListener('activate', function (event) {
     console.log('[ServiceWorker] Activating');
-    e.waitUntil(
+    event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
                 if (key !== cacheName) {
@@ -44,11 +44,42 @@ self.addEventListener('activate', function (e) {
     return self.clients.claim();
 });
 
-self.addEventListener('fetch', function (e) {
-    console.log('[ServiceWorker] Fetching', e.request.url);
-    e.respondWith(
-        caches.match(e.request).then(function (response) {
-            return response || fetch(e.request);
+/**
+ * Cache, falling back to network:
+ * If found in cache, then send the file from cache.
+ * If not found in cache, fetch the file over the network.
+ *
+ * @see https://jakearchibald.com/2014/offline-cookbook/#cache-falling-back-to-network
+ */
+/*
+self.addEventListener('fetch', function (event) {
+    console.log('[ServiceWorker] Fetching', event.request.url);
+    event.respondWith(
+        caches.match(event.request).then(function (response) {
+            return response || fetch(event.request);
+        })
+    );
+});
+*/
+
+/**
+ * Stale-while-revalidate:
+ * If found in cache, then send the version from cache.
+ * Meanwhile, fetch the new version over the network and cache it.
+ *
+ * @see https://jakearchibald.com/2014/offline-cookbook/#stale-while-revalidate
+ */
+self.addEventListener('fetch', function (event) {
+    event.respondWith(
+        caches.open(cacheName).then(function (cache) {
+            console.log('[ServiceWorker] Fetching', event.request.url);
+            return cache.match(event.request).then(function (response) {
+                var fetchPromise = fetch(event.request).then(function (networkResponse) {
+                    cache.put(event.request, networkResponse.clone());
+                    return networkResponse;
+                })
+                return response || fetchPromise;
+            })
         })
     );
 });
