@@ -228,20 +228,20 @@ calculationButtons gen letter =
         ]
         [ a
             [ classList
-                [ ( "show-rankings", True )
-                , ( "button", True )
-                ]
-            , href (createShowRankingsPath gen letter)
-            ]
-            [ text "Show Rankings" ]
-        , a
-            [ classList
                 [ ( "show-voters", True )
                 , ( "button", True )
                 ]
             , href (createShowVotesPath gen letter)
             ]
             [ text "Show Voters" ]
+        , a
+            [ classList
+                [ ( "show-rankings", True )
+                , ( "button", True )
+                ]
+            , href (createShowRankingsPath gen letter)
+            ]
+            [ text "Show Rankings" ]
         ]
 
 

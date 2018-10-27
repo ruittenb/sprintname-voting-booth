@@ -31,12 +31,6 @@ unknownUserIcon =
     div [ class "unknown-user" ] []
 
 
-countCompleteVotes : TeamRating -> Int
-countCompleteVotes teamRating =
-    List.map .rating teamRating
-        |> List.sum
-
-
 linkTo : String -> Html Msg -> Html Msg
 linkTo url content =
     a
@@ -203,9 +197,6 @@ pokemonTile currentRoute ratings currentUser pokemon =
         teamRating =
             extractOnePokemonFromRatings ratings pokemon
 
-        totalVotes =
-            countCompleteVotes teamRating
-
         ( currentUserRating, otherUsersRating ) =
             extractOneUserFromRatings teamRating currentUser
 
@@ -229,7 +220,6 @@ pokemonTile currentRoute ratings currentUser pokemon =
                     ]
 
                 _ ->
-                    -- currentRoute == browse*
                     [ text "" ]
 
         actualVoteWidget =
@@ -241,11 +231,7 @@ pokemonTile currentRoute ratings currentUser pokemon =
                     voteWidget currentUserRating pokemon.number actualUserName
     in
         div
-            [ class "poketile"
-            , "Total: " ++ toString totalVotes |> title
-            , toString totalVotes |> attribute "data-votes"
-            , pokemon.name |> attribute "data-name"
-            ]
+            [ class "poketile" ]
         <|
             [ p []
                 [ span [] <|
