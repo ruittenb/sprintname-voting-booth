@@ -16,6 +16,22 @@ const Database       = require('../dist/Database.js');
 const VotingApp      = require('../dist/VotingApp.js');
 
 /** **********************************************************************
+ * Register serviceworker if supported
+ */
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(function(registration) {
+                console.log('Service Worker Registered with scope ', registration.scope);
+            })
+            .catch(function (err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+    });
+}
+
+/** **********************************************************************
  * main
  */
 
@@ -29,18 +45,6 @@ auth.register(votingApp.elmClient);
 const database = new Database(votingApp.elmClient);
 
 window.votingApp = votingApp;
-
-/** **********************************************************************
- * Register serviceworker if supported
- */
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-        navigator.serviceWorker
-            .register('/service-worker.js')
-            .then(function(registration) { console.log('Service Worker Registered with scope ', registration.scope); })
-            .catch(function (err) { console.log('ServiceWorker registration failed: ', err) });
-    });
-}
 
 /** **********************************************************************
  * fix styling issues with :hover on mobile devices
