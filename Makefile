@@ -33,12 +33,12 @@ tag: ## create git tag, next in line (with 0.1 increments) and push to repo
 	git push
 	git push --tags
 
-version: ## update the version file with the current git tag name
-	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > dist/version.js
-
 rmtag: ## remove a tag erroneously created (current tag only)
 	git push origin --delete $(CURRENT_TAG)
 	git tag --delete $(CURRENT_TAG)
+
+version: ## update the version file with the current git tag name
+	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > dist/version.js
 
 bump: ## increment the version in the serviceworker
 	sed -i "" -E "s/^(var version = 'v[0-9.]*)';/\1.1';/" $(SERVICE_WORKER)
@@ -76,7 +76,10 @@ docker-build: ## build the docker image
 	docker build -t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest .
 
 docker-tag: ## tag the :lastest docker image with the current version
-	docker image tag $(DOCKERNAME):latest $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
+	docker image tag $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
+
+docker-push: ## push the current image tag to docker repo
+	docker push $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
 docker-start: ## start the docker container
 	docker run --name $(DOCKERNAME) $(DOCKERPORTS) -t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest &
@@ -93,7 +96,7 @@ docker-destroy: docker-stop ## destroy the docker image and container
 docker-shell: ## shell into the running docker container
 	docker exec -it $(DOCKERNAME) /bin/bash
 
-.PHONY: help install version status start stop restart \
-	docker-status docker-build docker-start docker-build-start \
-	docker-stop docker-destroy docker-shell
+.PHONY: help install tag rmtag version bump status start stop restart \
+	docker-status docker-build docker-tag docker-push docker-start \
+	docker-build-start docker-stop docker-destroy docker-shell
 
