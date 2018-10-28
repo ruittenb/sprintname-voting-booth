@@ -45,24 +45,6 @@ self.addEventListener('activate', function (event) {
 });
 
 /**
- * Cache, falling back to network:
- * If found in cache, then send the file from cache.
- * If not found in cache, fetch the file over the network.
- *
- * @see https://jakearchibald.com/2014/offline-cookbook/#cache-falling-back-to-network
- */
-/*
-self.addEventListener('fetch', function (event) {
-    console.log('[ServiceWorker] Fetching', event.request.url);
-    event.respondWith(
-        caches.match(event.request).then(function (response) {
-            return response || fetch(event.request);
-        })
-    );
-});
-*/
-
-/**
  * Stale-while-revalidate:
  * If found in cache, then send the version from cache.
  * Meanwhile, fetch the new version over the network and cache it.
