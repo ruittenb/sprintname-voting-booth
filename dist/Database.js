@@ -13,7 +13,7 @@ module.exports = (function (jQuery, firebase)
     /** **********************************************************************
      * Static data
      */
-    const tokenserverUrl   = `http://${window.location.hostname}:4202/`;
+    const tokenserverUrl   = `${window.location.protocol}//${window.location.hostname}:4202/`;
     const firebaseTokenKey = 'elmVotingApp.firebaseToken';
 
     /** **********************************************************************

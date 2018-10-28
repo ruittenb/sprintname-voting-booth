@@ -1,5 +1,5 @@
 
-var version = 'v9.3';
+var version = 'v9.4';
 var cacheName = 'sprintname-voting-booth-' + version;
 var filesToCache = [
     '/',
@@ -53,7 +53,9 @@ self.addEventListener('activate', function (event) {
  */
 self.addEventListener('fetch', function (event) {
     var requestFile = event.request.url.replace(/^https?:\/\/[^\/]+/, '');
-    if (filesToCache.indexOf(requestFile) != -1) {
+    if (filesToCache.indexOf(requestFile) != -1 /* requestFile is in filesToCache ? */
+        && event.request.method != 'POST'
+    ) {
         event.respondWith(
             caches.open(cacheName).then(function (cache) {
                 return cache.match(event.request).then(function (response) {

@@ -104,7 +104,7 @@ const FirebaseTokenServer = (function () {
      * Reply to an OPTIONS request. This is required for Cross-Origin AJAX requests.
      * @see https://techblog.constantcontact.com/software-development/using-cors-for-cross-domain-ajax-requests/
      *
-     * TODO This function does not seem to get called?
+     * Note: This function does not seem to get called?
      */
     FirebaseTokenServer.prototype.processOptionsRequest = function (request, response)
     {
@@ -207,6 +207,7 @@ const FirebaseTokenServer = (function () {
     FirebaseTokenServer.prototype.validateOrigin = function (referer, response)
     {
         let origin = referer.replace(/\/(index\.html)?$/, '');
+        response.header('X-Debug-Origin', origin);
         let valid = VALID_REFERERS.includes(origin);
         if (valid) {
             response.header('Access-Control-Allow-Origin', origin);

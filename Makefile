@@ -75,7 +75,7 @@ docker-status: ## show the status of the docker image and containers
 docker-build: ## build the docker image
 	docker build -t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest .
 
-docker-tag: ## tag the :lastest docker image with the current version
+docker-tag: ## tag the :latest docker image with the current version
 	docker image tag $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
 docker-push: ## push the current image tag to docker repo
