@@ -130,8 +130,13 @@ button.user-button.current,
     opacity: 0.01;
 }
 
-/* hide the generation 0 button if it would be on one line (looking empty) */
-@media (min-width: 324px) and (max-width: 367px) {
+/**
+ * Hide the generation 0 button if it would be on one line (looking empty).
+ * The scrollbar width messes this up, because its width is browser-dependent
+ * and its presence is dependent on the length of the page.
+ * Therefore, allow for a big margin of error.
+ */
+@media (min-width: 328px) and (max-width: 416px) {
     .button.generation-button.transparent {
         display: none;
     }
