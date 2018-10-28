@@ -46,8 +46,8 @@ button.user-button,
 }
 
 button.user-button,
-.button.show-rankings,
 .button.show-voters,
+.button.show-rankings,
 .button.letter-button,
 .button.generation-button {
     background-color: white;
@@ -55,18 +55,24 @@ button.user-button,
     color: black;
 }
 
+span.button.show-voters,
+span.button.show-rankings {
+    background-color: #eee;
+    border-color: #777;
+}
+
 button.user-button {
     width: 84px;
 }
 
-.button.show-rankings,
-.button.show-voters {
+.button.show-voters,
+.button.show-rankings {
     width: 128px;
 }
 
 button.user-button,
-.button.show-rankings,
-.button.show-voters {
+.button.show-voters,
+.button.show-rankings {
     outline: none;
     display: block;
     float: left;
@@ -92,8 +98,8 @@ button.user-button,
 }
 
 button.user-button:hover,
-.button.show-rankings:hover,
-.button.show-voters:hover,
+a.button.show-voters:hover,
+a.button.show-rankings:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
 .poketile .button:hover {
@@ -101,8 +107,8 @@ button.user-button:hover,
 }
 
 button.user-button:active,
-.button.show-rankings:active,
-.button.show-voters:active,
+a.button.show-voters:active,
+a.button.show-rankings:active,
 .poketile .button:active {
     background-color: #f0d8f0; /* medium purple */
 }

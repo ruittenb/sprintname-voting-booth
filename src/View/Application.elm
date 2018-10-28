@@ -221,28 +221,37 @@ loginLogoutButton authModel currentUser message level =
             ]
 
 
-calculationButtons : Int -> Char -> Html Msg
-calculationButtons gen letter =
-    div
-        [ id "calculation-buttons"
-        ]
-        [ a
-            [ classList
-                [ ( "show-voters", True )
-                , ( "button", True )
-                ]
-            , href (createShowVotesPath gen letter)
+calculationButtons : Route -> Int -> Char -> Html Msg
+calculationButtons route gen letter =
+    let
+        linkElem =
+            case route of
+                Search _ ->
+                    span
+
+                _ ->
+                    a
+    in
+        div
+            [ id "calculation-buttons"
             ]
-            [ text "Show Voters" ]
-        , a
-            [ classList
-                [ ( "show-rankings", True )
-                , ( "button", True )
+            [ linkElem
+                [ classList
+                    [ ( "show-voters", True )
+                    , ( "button", True )
+                    ]
+                , href (createShowVotesPath gen letter)
                 ]
-            , href (createShowRankingsPath gen letter)
+                [ text "Show Voters" ]
+            , linkElem
+                [ classList
+                    [ ( "show-rankings", True )
+                    , ( "button", True )
+                    ]
+                , href (createShowRankingsPath gen letter)
+                ]
+                [ text "Show Rankings" ]
             ]
-            [ text "Show Rankings" ]
-        ]
 
 
 rankingsTable : ApplicationState -> Html Msg
@@ -356,6 +365,7 @@ heading state =
             state.generation
             state.letter
         , calculationButtons
+            state.currentRoute
             state.generation
             state.letter
         , tableMask state.currentRoute
