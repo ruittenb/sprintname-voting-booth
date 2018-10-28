@@ -73,13 +73,13 @@ docker-status: ## show the status of the docker image and containers
 	@docker ps -a  | grep $(DOCKERNAME) || echo none
 
 docker-build: ## build the docker image
-	docker build -t $(DOCKERNAME):latest .
+	docker build -t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest .
 
 docker-tag: ## tag the :lastest docker image with the current version
 	docker image tag $(DOCKERNAME):latest $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
 docker-start: ## start the docker container
-	docker run --name $(DOCKERNAME) $(DOCKERPORTS) -t $(DOCKERNAME):latest &
+	docker run --name $(DOCKERNAME) $(DOCKERPORTS) -t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest &
 
 docker-build-start: docker-build docker-start ## build the docker image and start a container
 
@@ -88,7 +88,7 @@ docker-stop: ## stop the docker container
 
 docker-destroy: docker-stop ## destroy the docker image and container
 	-docker rm -f $(DOCKERNAME)
-	-docker rmi $(DOCKERNAME):latest
+	-docker rmi $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest
 
 docker-shell: ## shell into the running docker container
 	docker exec -it $(DOCKERNAME) /bin/bash
