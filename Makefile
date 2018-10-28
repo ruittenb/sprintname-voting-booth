@@ -26,13 +26,19 @@ install: ## install all npm dependencies
 	npm install
 
 tag: ## create git tag, next in line (with 0.1 increments) and push to repo
+	sed -i "" -e "s/^var version = 'v[0-9.]*';/var version = '$(NEXT_TAG)';/" $(SERVICE_WORKER)
+	git commit $(SERVICE_WORKER) -m 'Updated service-worker with new tag'
 	git tag $(NEXT_TAG)
 	make version
+	git push
 	git push --tags
 
-version: ## update the version file and serviceworker with the current git tag name
+version: ## update the version file with the current git tag name
 	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > dist/version.js
-	sed -i "" -e "s/^var version = 'v[0-9.]*';/var version = '$(CURRENT_TAG)';/" $(SERVICE_WORKER)
+
+rmtag: ## remove a tag erroneously created (current tag only)
+	git push origin --delete $(CURRENT_TAG)
+	git tag --delete $(CURRENT_TAG)
 
 bump: ## increment the version in the serviceworker
 	sed -i "" -E "s/^(var version = 'v[0-9.]*)';/\1.1';/" $(SERVICE_WORKER)
