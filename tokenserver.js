@@ -1,6 +1,7 @@
 /**
  * Server that:
  * - listens for HTTP POST requests
+ *   - on http://<hostname>:4202/tokenserver
  * - takes a JWT token
  * - validates it
  * - verifies that it contains a valid email address
@@ -90,8 +91,8 @@ const FirebaseTokenServer = (function () {
             response.status(err.status).json({ ...err, success : false });
             callback();
         });
-        this.server.post('/', this.processRequest.bind(this));
-        this.server.options('/', this.processOptionsRequest.bind(this));
+        this.server.post('/tokenserver', this.processRequest.bind(this));
+        this.server.options('/tokenserver', this.processOptionsRequest.bind(this));
         this.server.listen(PORT, function (err) {
             if (err) {
                 return console.log('Unable to listen on port', PORT, ': ', err);

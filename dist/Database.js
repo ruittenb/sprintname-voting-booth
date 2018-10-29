@@ -13,7 +13,7 @@ module.exports = (function (jQuery, firebase)
     /** **********************************************************************
      * Static data
      */
-    const tokenserverUrl   = `${window.location.protocol}//${window.location.hostname}:4202/`;
+    const tokenserverUrl   = `${window.location.protocol}//${window.location.hostname}:4202/tokenserver`;
     const firebaseTokenKey = 'elmVotingApp.firebaseToken';
 
     /** **********************************************************************
@@ -116,7 +116,7 @@ module.exports = (function (jQuery, firebase)
                 } else if (!status) {
                     // A Status Code of 0 means "The browser refused to honor the request."
                     // @see https://salesforce.stackexchange.com/questions/158448/response-status-is-0-in-jquery-ajax
-                    message = "The browser refused to honor the request, possibly a tokenserver CORS issue";
+                    message = "The browser refused to honor the request (is the tokenserver reachable?)";
                 } else {
                     message = String(status) + " Server error";
                 }
