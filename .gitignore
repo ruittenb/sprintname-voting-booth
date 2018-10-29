@@ -64,7 +64,7 @@ Icon
 _fabriek
 # ruittenb sensitive data
 serviceAccountKey.json
-public-auth0.key
+private-auth0.key
 # ruittenb volatile data
 /dist/version.js
 /data/backups

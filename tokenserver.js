@@ -68,7 +68,7 @@ const FirebaseTokenServer = (function () {
      */
     let FirebaseTokenServer = function ()
     {
-        this.publicKey = fs.readFileSync('./keys/public-auth0.key');
+        this.privateKey = fs.readFileSync('./keys/private-auth0.key');
         this.serviceAccountKey = require('./keys/serviceAccountKey.json');
         this.firebaseAdmin = require('firebase-admin');
         this.firebaseAdmin.initializeApp({
@@ -231,7 +231,7 @@ const FirebaseTokenServer = (function () {
     {
         let userData;
         try {
-            userData = jwt.verify(jwtToken, this.publicKey);
+            userData = jwt.verify(jwtToken, this.privateKey);
             if (!userData) {
                 throw new Error('Not allowed: JWT token could not be validated');
             }
