@@ -1,4 +1,8 @@
 
+/**
+ * Serviceworker for Pokémon Sprint Name Voting Booth
+ */
+
 var version = 'v9.4';
 var cacheName = 'sprintname-voting-booth-' + version;
 var filesToCache = [
@@ -8,6 +12,7 @@ var filesToCache = [
     '/voting-booth.css',
     '/lightbox.css',
     '/lightbox.min.js',
+    '/icons/cross.png',
     '/images/lb-close.png',
     '/images/lb-loading.gif',
     '/images/lb-next.png',
@@ -16,7 +21,20 @@ var filesToCache = [
     '/images/loading-circle.svg',
     '/images/loading-error.png',
     '/images/loading-shade.png',
-    '/icons/cross.png',
+    '/favicons/apple-touch-icon.png',
+    '/favicons/favicon.ico',
+    '/favicons/favicon-16x16.png',
+    '/favicons/favicon-32x32.png',
+    '/favicons/favicon-57x57.png',
+    '/favicons/favicon-58x58.png',
+    '/favicons/favicon-72x72.png',
+    '/favicons/favicon-114x114.png',
+    '/favicons/favicon-128x128.png',
+    '/favicons/favicon-144x144.png',
+    '/favicons/favicon-152x152.png',
+    '/favicons/favicon-192x192.png',
+    '/favicons/favicon-256x256.png',
+    '/favicons/favicon-512x512.png'
 ];
 
 self.addEventListener('install', function (event) {
