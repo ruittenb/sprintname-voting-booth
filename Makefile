@@ -53,7 +53,8 @@ status: ## show the webserver status
 		}'
 
 start: version ## start the webserver
-	nf start
+	elm-make src/Main.elm --output dist/Elm.js
+	node server.js
 
 stop: ## stop the webserver
 	-if [ "$(NODE_PIDS)" ]; then \

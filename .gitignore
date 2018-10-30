@@ -67,4 +67,5 @@ serviceAccountKey.json
 private-auth0.key
 # ruittenb volatile data
 /dist/version.js
+/dist/Elm.js
 /data/backups

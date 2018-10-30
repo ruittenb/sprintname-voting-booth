@@ -8,12 +8,12 @@ require('ace-css/css/ace.css');
 require('font-awesome/css/font-awesome.css');
 // The following files are included just to ensure they get copied during build
 require('./index.html');
-require('../dist/version.js');
+require('./version.js');
 
 // Javascript "bridges" to Auth0, Firebase and the Elm app
-const Authentication = require('../dist/Authentication.js');
-const Database       = require('../dist/Database.js');
-const VotingApp      = require('../dist/VotingApp.js');
+const Authentication = require('./Authentication.js');
+const Database       = require('./Database.js');
+const VotingApp      = require('./VotingApp.js');
 
 /** **********************************************************************
  * Register serviceworker if supported
