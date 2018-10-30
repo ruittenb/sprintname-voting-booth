@@ -4,8 +4,6 @@
  * includes
  */
 
-//require('ace-css/css/ace.css');
-//require('font-awesome/css/font-awesome.css');
 require('./version.js');
 
 // Javascript "bridges" to Auth0, Firebase and the Elm app

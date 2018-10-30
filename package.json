@@ -4,7 +4,6 @@
   "description": "Pokémon Sprint Name Voting Booth",
   "author": "René Uittenbogaard <rene.uittenbogaard@proforto.nl>",
   "dependencies": {
-    "ace-css": "1.1",
     "auth0-js": "^9.3.0",
     "auth0-lock": "^11.10.0",
     "css-loader": "^0.26.1",
@@ -13,7 +12,6 @@
     "file-loader": "^0.10.0",
     "firebase": "^4.13.0",
     "firebase-admin": "^5.12.0",
-    "font-awesome": "4",
     "foreman": "^2.0.0",
     "fsevents": "^1.2.4",
     "jsonwebtoken": "^8.2.1",
