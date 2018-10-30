@@ -3,12 +3,12 @@
  * Serviceworker for Pokémon Sprint Name Voting Booth
  */
 
-var version = 'v9.5';
+var version = 'v9.5.1';
 var cacheName = 'sprintname-voting-booth-' + version;
 var filesToCache = [
     '/',
     '/index.html',
-//    '/app.js',
+//    '/bundle.js',
     '/voting-booth.css',
     '/lightbox.css',
     '/lightbox.min.js',

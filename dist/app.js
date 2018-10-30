@@ -4,10 +4,8 @@
  * includes
  */
 
-require('ace-css/css/ace.css');
-require('font-awesome/css/font-awesome.css');
-// The following files are included just to ensure they get copied during build
-require('./index.html');
+//require('ace-css/css/ace.css');
+//require('font-awesome/css/font-awesome.css');
 require('./version.js');
 
 // Javascript "bridges" to Auth0, Firebase and the Elm app
