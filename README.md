@@ -23,14 +23,14 @@ Download the Auth0 private key from:
 https://manage.auth0.com/#/clients/n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9/settings
 
 Scroll down and click 'Show Advanced Settings'. Open the tab 'certificates' and copy the 'Signing Certificate'.
-Save it to `keys/private-auth0.key`
+Save it to `tokenserver/keys/private-auth0.key`
 
 ### Firebase:
 
 Download the firebase private key from:
 https://console.firebase.google.com/u/0/project/sprintname-voting-booth/settings/serviceaccounts/adminsdk
 
-Click "Generate new private key".  Save it to `keys/serviceAccountKey.json`.
+Click "Generate new private key".  Save it to `tokenserver/keys/serviceAccountKey.json`.
 
 ## Running the application:
 
