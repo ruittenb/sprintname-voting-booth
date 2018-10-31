@@ -54,6 +54,7 @@ module.exports = (function () {
     const AUTHORIZED_USERS = /^[^@]+@proforto\.nl$/;
     const DATABASE_URL = 'https://sprintname-voting-booth.firebaseio.com';
     const DEBUG_EXPIRED_TOKEN = false;
+    const DEBUG = false;
     const VALID_REFERERS = [
         'http://localhost:4201',
         'http://votingbooth.ddns.net:4201',
@@ -104,7 +105,9 @@ module.exports = (function () {
     FirebaseTokenServer.prototype.processOptionsRequest = function (request, response)
     {
         let origin = req.get('origin');
-        console.log(`Received OPTIONS request from ${origin}`);
+        if (DEBUG) {
+            console.log(`Received OPTIONS request from ${origin}`);
+        }
         /**
          * validate the origin
          */
@@ -123,7 +126,9 @@ module.exports = (function () {
     {
         let referer = request.headers.referer || '';
         let status, userData, firebaseToken;
-        console.log(`Received POST request from ${referer}`);
+        if (DEBUG) {
+            console.log(`Received POST request from ${referer}`);
+        }
         /**
          * Validate the referer
          */
