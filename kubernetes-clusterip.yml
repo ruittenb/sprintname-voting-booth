@@ -16,10 +16,6 @@ spec:
     port: 4201
     protocol: TCP
     targetPort: 4201
-  - name: 4202-to-4202-tcp
-    port: 4202
-    protocol: TCP
-    targetPort: 4202
   selector:
     app: voting-booth
   sessionAffinity: None

@@ -23,13 +23,6 @@ spec:
         backend:
           serviceName: voting-booth-service
           servicePort: 4201
-  - host: voting-booth.kube.profortool.com
-    http:
-      paths:
-      - path: /tokenserver
-        backend:
-          serviceName: voting-booth-service
-          servicePort: 4202
   tls:
   - hosts:
     - voting-booth.kube.profortool.com
