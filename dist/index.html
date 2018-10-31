@@ -8,8 +8,8 @@
         <!-- open graph tags -->
         <meta property="og:title" content="Pokémon Sprint Name Voting Booth">
         <meta property="og:type" content="website">
-        <meta property="og:image" content="http://votingbooth.ddns.net:4201/favicons/apple-touch-icon.png">
-        <meta property="og:url" content="http://votingbooth.ddns.net:4201/">
+        <meta property="og:image" content="https://voting-booth.kube.profortool.com/favicons/apple-touch-icon.png">
+        <meta property="og:url" content="https://voting-booth.kube.profortool.com/">
         <meta property="og:description" content="Voting page for deciding on a Pokémon name to use for the upcoming sprint">
         <meta property="og:site_name" content="Pokémon Sprint Name Voting Booth">
         <!-- tile icon for windows -->
@@ -31,15 +31,18 @@
         <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
         <link rel="shortcut icon" href="favicons/favicon.ico">
         <!-- style sheets -->
+        <link rel="stylesheet" href="https://unpkg.com/ace-css/css/ace.min.css">
         <link rel="stylesheet" href="voting-booth.css">
         <link rel="stylesheet" href="lightbox.css">
+        <link rel="stylesheet" href="font-awesome.css">
         <!-- scripts -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="lightbox.min.js"></script>
     </head>
     <body id="voting-app-body" class="no-touch">
         <div id="voting-app-node">
-            <script src="/app.js"></script>
+            <script src="bundle.js"></script>
         </div>
         <span id="version"></span>
     </body>

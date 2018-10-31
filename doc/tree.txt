@@ -17,18 +17,26 @@ Main
 |   `-- Msgs
 |-- Models.Types
 |-- Models.Authentication
+|-- Routing
+|-- Ports
+|   |-- Models.Auth
+|   |-- Models.Database
+|   |-- Models.Pokemon
+|   `-- Models.Ratings
 |-- View
 |   |-- View.Application
+|   |   |-- Constants
+|   |   |-- Routing
 |   |   |-- Helpers
 |   |   |-- Helpers.Authentication
-|   |   |-- Msgs
 |   |   |-- Models
 |   |   |-- Models.Types
 |   |   |-- Models.Authentication
 |   |   |-- Models.Pokemon
-|   |   `-- Constants
+|   |   `-- Msgs
 |   |-- View.Pokemon
 |   |   |-- Constants
+|   |   |-- Routing
 |   |   |-- Helpers
 |   |   |-- Models
 |   |   |-- Models.Types
@@ -37,11 +45,6 @@ Main
 |   |   `-- Msgs
 |   |-- Models
 |   `-- Msgs
-|-- Ports
-|   |-- Models.Auth
-|   |-- Models.Database
-|   |-- Models.Pokemon
-|   `-- Models.Ratings
 |-- Update
 |   |-- Models
 |   |-- Models.Types
@@ -86,3 +89,6 @@ Main
 `-- Commands.Ratings
     |-- Models.Ratings
     `-- Ports
+
+Update/Pokemon.elm:import Routing exposing (createBrowsePath)
+Update.elm:import Routing exposing (createSearchPath, createBrowsePath)

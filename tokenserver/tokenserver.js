@@ -1,7 +1,6 @@
 /**
  * Server that:
- * - listens for HTTP POST requests
- *   - on http://<hostname>:4202/tokenserver
+ * - listens for HTTP POST requests on /tokenserver
  * - takes a JWT token
  * - validates it
  * - verifies that it contains a valid email address
@@ -46,43 +45,45 @@
 
 'use strict';
 
-const FirebaseTokenServer = (function () {
+module.exports = (function () {
 
-    const PORT = 4202;
+    const fs         = require('fs');
+    const bodyParser = require('body-parser');
+    const jwt        = require('jsonwebtoken');
+
     const AUTHORIZED_USERS = /^[^@]+@proforto\.nl$/;
     const DATABASE_URL = 'https://sprintname-voting-booth.firebaseio.com';
     const DEBUG_EXPIRED_TOKEN = false;
+    const DEBUG = false;
     const VALID_REFERERS = [
         'http://localhost:4201',
         'http://votingbooth.ddns.net:4201',
         'https://voting-booth.kube.profortool.com'
     ];
 
-    const fs         = require('fs');
-    const express    = require('express');
-    const bodyParser = require('body-parser');
-    const jwt        = require('jsonwebtoken');
+    // These values must stay private.
+    let privateKey, serviceAccountKey;
 
     /**
      * Constructor.
      */
-    let FirebaseTokenServer = function ()
+    let FirebaseTokenServer = function (webserver)
     {
-        this.privateKey = fs.readFileSync('./keys/private-auth0.key');
-        this.serviceAccountKey = require('./keys/serviceAccountKey.json');
+        serviceAccountKey  = require(__dirname + '/keys/serviceAccountKey.json');
+        privateKey = fs.readFileSync(__dirname + '/keys/private-auth0.key');
         this.firebaseAdmin = require('firebase-admin');
         this.firebaseAdmin.initializeApp({
-            credential: this.firebaseAdmin.credential.cert(this.serviceAccountKey),
+            credential: this.firebaseAdmin.credential.cert(serviceAccountKey),
             databaseURL: DATABASE_URL
         });
-        this.server = express();
-        this.startServer();
+        this.server = webserver;
+        this.addRoutes();
     };
 
     /**
      * Start the express server. Install processRequest() as handler.
      */
-    FirebaseTokenServer.prototype.startServer = function ()
+    FirebaseTokenServer.prototype.addRoutes = function ()
     {
         // Parses the body test as JSON and exposes the resulting object on request.body
         //        this.server.use(bodyParser.json());
@@ -93,12 +94,6 @@ const FirebaseTokenServer = (function () {
         });
         this.server.post('/tokenserver', this.processRequest.bind(this));
         this.server.options('/tokenserver', this.processOptionsRequest.bind(this));
-        this.server.listen(PORT, function (err) {
-            if (err) {
-                return console.log('Unable to listen on port', PORT, ': ', err);
-            }
-            console.log('Server is listening on port', PORT);
-        });
     };
 
     /**
@@ -110,7 +105,9 @@ const FirebaseTokenServer = (function () {
     FirebaseTokenServer.prototype.processOptionsRequest = function (request, response)
     {
         let origin = req.get('origin');
-        console.log(`Received OPTIONS request from ${origin}`);
+        if (DEBUG) {
+            console.log(`Received OPTIONS request from ${origin}`);
+        }
         /**
          * validate the origin
          */
@@ -127,9 +124,11 @@ const FirebaseTokenServer = (function () {
      */
     FirebaseTokenServer.prototype.processRequest = function (request, response)
     {
-        let referer = request.headers.referer;
+        let referer = request.headers.referer || '';
         let status, userData, firebaseToken;
-        console.log(`Received POST request from ${referer}`);
+        if (DEBUG) {
+            console.log(`Received POST request from ${referer}`);
+        }
         /**
          * Validate the referer
          */
@@ -231,7 +230,7 @@ const FirebaseTokenServer = (function () {
     {
         let userData;
         try {
-            userData = jwt.verify(jwtToken, this.privateKey);
+            userData = jwt.verify(jwtToken, privateKey);
             if (!userData) {
                 throw new Error('Not allowed: JWT token could not be validated');
             }
@@ -260,6 +259,4 @@ const FirebaseTokenServer = (function () {
 
     return FirebaseTokenServer;
 })();
-
-const server = new FirebaseTokenServer();
 
