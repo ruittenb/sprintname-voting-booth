@@ -3,28 +3,25 @@ kind: Ingress
 metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
+    # Tell cert-manager to create an SSL certificate via LetsEncrypt
     kubernetes.io/tls-acme: "true"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "True"
-  creationTimestamp: 2018-10-27T08:10:13Z
-  generation: 3
+    nginx.ingress.kubernetes.io/force-ssl-redirect: 'True'
   labels:
     app: voting-booth
   name: voting-booth-ingress
   namespace: voting-booth
-  resourceVersion: "6299998"
-  selfLink: /apis/extensions/v1beta1/namespaces/voting-booth/ingresses/voting-booth-ingress
-  uid: bb24c32c-d9bf-11e8-ac8e-42010aa40119
 spec:
+  backend:
+    serviceName: voting-booth-service
+    servicePort: 4201
   rules:
   - host: voting-booth.kube.profortool.com
     http:
       paths:
-      - path: /
-        backend:
+      - backend:
           serviceName: voting-booth-service
           servicePort: 4201
   tls:
-  - hosts:
+  - secretName: voting-booth-certificate
+    hosts:
     - voting-booth.kube.profortool.com
-    secretName: voting-booth-certificate
-
