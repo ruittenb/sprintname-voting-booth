@@ -1,4 +1,3 @@
-#FROM node:6.9.1
 FROM node:10.12.0
 
 RUN mkdir /app
