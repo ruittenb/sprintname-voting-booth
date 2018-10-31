@@ -37,14 +37,18 @@ rmtag: ## remove a tag erroneously created (current tag only)
 	git tag --delete $(CURRENT_TAG)
 
 version: ## update the version file with the current git tag name
-	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > dist/version.js
+	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > jssrc/version.js
 
 bump: ## increment the version in the serviceworker
 	sed -i "" -E "s/^(var version = 'v[0-9.]*)';/\1.1';/" $(SERVICE_WORKER)
 
-start: version ## start the webserver
-	elm-make src/Main.elm --output dist/Elm.js
-	browserify dist/app.js -o dist/bundle.js
+build: version ## compile elm files to JS; bundle and minify JS files
+	elm-make src/Main.elm --output jssrc/Elm.js
+	browserify jssrc/app.js -o jssrc/bundle.js
+	uglifyjs jssrc/bundle.js --compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
+		--mangle --output dist/bundle.js
+
+start: build ## start the webserver
 	( node server.js & jobs -p % > $(PIDFILE) )
 	sleep 1
 
@@ -104,7 +108,7 @@ docker-destroy: docker-stop ## destroy the docker image and container
 docker-shell: ## shell into the running docker container
 	docker exec -it $(DOCKERNAME) /bin/bash
 
-.PHONY: help install tag rmtag version bump status start stop restart \
+.PHONY: help install tag rmtag version bump build start stop status restart \
 	docker-status docker-build docker-tag docker-push docker-start \
 	docker-build-start docker-stop docker-destroy docker-shell
 

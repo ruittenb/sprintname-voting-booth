@@ -1,7 +1,6 @@
 /**
  * Server that:
- * - listens for HTTP POST requests
- *   - on http://<hostname>:4202/tokenserver
+ * - listens for HTTP POST requests on /tokenserver
  * - takes a JWT token
  * - validates it
  * - verifies that it contains a valid email address

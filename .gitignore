@@ -61,7 +61,8 @@ _fabriek
 serviceAccountKey.json
 private-auth0.key
 # ruittenb volatile data
-/dist/Elm.js
-/dist/version.js
+/jssrc/Elm.js
+/jssrc/version.js
+/jssrc/bundle.js
 /dist/bundle.js
 /data/backups
