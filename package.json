@@ -13,10 +13,9 @@
     "fsevents": "^1.2.4",
     "jsonwebtoken": "^8.2.1",
     "lightbox2": "^2.10.0",
-    "npm": "^5.7.1",
+    "npm": "^6.4.1",
     "style-loader": "^0.13.1",
-    "uglify-es": "^3.3.9",
-    "url-loader": "^0.5.7"
+    "uglify-es": "^3.3.9"
   },
   "devDependencies": {},
   "license": "BSD-3-Clause",

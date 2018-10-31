@@ -43,14 +43,15 @@ bump: ## increment the version in the serviceworker
 	sed -i "" -E "s/^(var version = 'v[0-9.]*)';/\1.1';/" $(SERVICE_WORKER)
 
 build: version ## compile elm files to JS; bundle and minify JS files
-	elm-make src/Main.elm --output jssrc/Elm.js
+	elm-make src/Main.elm --yes --output jssrc/Elm.js
 	browserify jssrc/app.js -o jssrc/bundle.js
 	uglifyjs jssrc/bundle.js --compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
 		--mangle --output dist/bundle.js
 
 start: build ## start the webserver
-	( node server.js & jobs -p % > $(PIDFILE) )
-	sleep 1
+	node server.js
+	#( node server.js & jobs -p % > $(PIDFILE) )
+	#sleep 1
 
 stop: ## stop the webserver
 	-@if [ $(PID) ]; then                               \
@@ -65,14 +66,16 @@ stop: ## stop the webserver
 	fi
 
 status: ## show the webserver status
-	-@if kill -0 $(PID) 2>/dev/null; then  \
-		echo 'Server is running';      \
-	else                                   \
-		echo 'Server is not running';  \
-		if [ -f $(PIDFILE) ]; then     \
-			rm $(PIDFILE);         \
-		fi                             \
-	fi
+	@ps -ef | grep -s '[n]ode server.js' || true
+
+#-@if kill -0 $(PID) 2>/dev/null; then  \
+#	echo 'Server is running';      \
+#else                                   \
+#	echo 'Server is not running';  \
+#	if [ -f $(PIDFILE) ]; then     \
+#		rm $(PIDFILE);         \
+#	fi                             \
+#fi
 
 restart: stop start ## restart the webserver
 

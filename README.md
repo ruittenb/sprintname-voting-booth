@@ -5,8 +5,8 @@ It consists of a simple Node.js web server and an Elm SPA.
 
 ## Ingredients and dependencies:
 
-- [Install Elm](http://elm-lang.org/install)
-- [Install Node](https://nodejs.org/en/download/)
+- [Install Elm](http://elm-lang.org/install). You will need elm 0.18.
+- [Install Node](https://nodejs.org/en/download/). You might need node 10.12.0.
 
 Next, install the server dependencies, by running
 
