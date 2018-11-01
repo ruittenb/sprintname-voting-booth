@@ -1,13 +1,13 @@
 
 SHELL:=bash
-PIDFILE=server.pid
-PID=$(shell cat $(PIDFILE) 2>/dev/null)
+ENVIRONMENT=$(shell which -s jq && jq .environment .env)
 NEXT_VERSION=$(shell git tag | awk '{ sub(/^v/, ""); if (0 + $$1 > max) max = $$1; } END { print max + 0.1 }')
 SERVICE_WORKER=dist/service-worker.js
 NEXT_TAG=v$(NEXT_VERSION)
 CURRENT_VERSION=$(shell git describe --tags | sed -e 's/^v//')
 CURRENT_TAG=$(shell git describe --tags)
 GOOGLE_CLOUD_PREFIX=eu.gcr.io/proforto-team-sso
+SERVERREGEX=[v]oting-booth
 DOCKERNAME=voting-booth
 DOCKERNET=voting-net
 DOCKERPORTS=-p 4201:4201
@@ -45,37 +45,19 @@ bump: ## increment the version in the serviceworker
 build: version ## compile elm files to JS; bundle and minify JS files
 	elm-make src/Main.elm --yes --output jssrc/Elm.js
 	browserify jssrc/app.js -o jssrc/bundle.js
-	uglifyjs jssrc/bundle.js --compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
-		--mangle --output dist/bundle.js
+	test "$(ENVIRONMENT)" = development || \
+		$$(npm bin)/uglifyjs jssrc/bundle.js \
+			--compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
+			--mangle --output dist/bundle.js
 
 start: build ## start the webserver
-	node server.js
-	#( node server.js & jobs -p % > $(PIDFILE) )
-	#sleep 1
+	npm start
 
 stop: ## stop the webserver
-	-@if [ $(PID) ]; then                               \
-		kill -0    $(PID) 2>/dev/null &&            \
-		kill -TERM $(PID) 2>/dev/null && sleep 1 && \
-		kill -QUIT $(PID) 2>/dev/null && sleep 1 && \
-		kill -KILL $(PID) 2>/dev/null ||            \
-		rm $(PIDFILE);                              \
-		echo 'Server was stopped';                  \
-	else                                                \
-		echo 'Server was not running';              \
-	fi
+	npm stop
 
 status: ## show the webserver status
-	@ps -ef | grep -s '[n]ode server.js' || true
-
-#-@if kill -0 $(PID) 2>/dev/null; then  \
-#	echo 'Server is running';      \
-#else                                   \
-#	echo 'Server is not running';  \
-#	if [ -f $(PIDFILE) ]; then     \
-#		rm $(PIDFILE);         \
-#	fi                             \
-#fi
+	@ps -ef | grep -s $(SERVERREGEX) || true
 
 restart: stop start ## restart the webserver
 

@@ -1,6 +1,8 @@
 
 'use strict';
 
+process.title = 'voting-booth-server';
+
 const FirebaseTokenServer = require('./tokenserver/tokenserver.js');
 
 const PORT        = 4201;
