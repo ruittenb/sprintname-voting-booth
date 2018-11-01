@@ -1,26 +1,29 @@
 {
   "name": "elm-pokemon-voting-booth",
-  "version": "1.0.0",
+  "version": "9.6.0",
   "description": "Pokémon Sprint Name Voting Booth",
   "author": "René Uittenbogaard <rene.uittenbogaard@proforto.nl>",
-  "dependencies": {
-    "auth0-js": "^9.3.0",
-    "auth0-lock": "^11.10.0",
-    "express": "^4.16.3",
-    "file-loader": "^0.10.0",
-    "firebase": "^4.13.0",
-    "firebase-admin": "^5.12.0",
-    "fsevents": "^1.2.4",
-    "jsonwebtoken": "^8.2.1",
-    "lightbox2": "^2.10.0",
-    "npm": "^6.4.1",
-    "style-loader": "^0.13.1",
-    "uglify-es": "^3.3.9"
+  "license": "CC-BY-NC-2.0",
+  "homepage": "https://github.com/ruittenb/elm-pokemon-voting-booth#readme",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
   },
-  "devDependencies": {},
-  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ruittenb/elm-pokemon-voting-booth.git"
+    "url": "git+ssh://git@github.com/ruittenb/elm-pokemon-voting-booth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ruittenb/elm-pokemon-voting-booth/issues"
+  },
+  "dependencies": {
+    "auth0-js": "^9.8.1",
+    "auth0-lock": "^11.11.0",
+    "express": "^4.16.4",
+    "firebase": "^5.5.6",
+    "firebase-admin": "^6.1.0",
+    "jsonwebtoken": "^8.3.0",
+    "npm": "^6.4.1",
+    "uglify-es": "^3.3.9"
   }
 }
