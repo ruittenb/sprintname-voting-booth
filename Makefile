@@ -53,10 +53,10 @@ bump: ## increment the version in the serviceworker
 build: version ## compile elm files to JS; bundle and minify JS files
 	elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
 	browserify $(JS_SOURCE)/app.js -o $(JS_SOURCE)/bundle.js
-	if [[ "$(ENVIRONMENT)" = development ]]; then                             \
-		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js;                          \
-	else                                                                      \
-		uglifyjs $(JS_SOURCE)/bundle.js                                       \
+	if [[ "$(ENVIRONMENT)" = development ]]; then                                     \
+		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js;                              \
+	else                                                                              \
+		uglifyjs $(JS_SOURCE)/bundle.js                                           \
 			--compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
 			--mangle --output $(DIST)/bundle.js;                              \
 	fi
@@ -90,11 +90,11 @@ docker-push: ## push the current image tag to docker repo
 	docker push $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
 docker-start: ## start the docker container
-	if docker ps -a | grep voting-booth >/dev/null 2>&1; then \
-		docker start $(DOCKERNAME) &                          \
-	else                                                      \
-		docker run --name $(DOCKERNAME) $(DOCKERPORTS)        \
-			-t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest &  \
+	if docker ps -a | grep voting-booth >/dev/null 2>&1; then        \
+		docker start $(DOCKERNAME);                              \
+	else                                                             \
+		docker run --name $(DOCKERNAME) $(DOCKERPORTS)           \
+			-t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest & \
 	fi
 
 docker-build-start: docker-build docker-start ## build the docker image and start a container
@@ -110,6 +110,6 @@ docker-shell: ## shell into the running docker container
 	docker exec -it $(DOCKERNAME) /bin/bash
 
 .PHONY: help install tag rmtag version bump build start stop status restart \
-	docker-status docker-build docker-tag docker-push docker-start \
+	docker-status docker-build docker-tag docker-push docker-start      \
 	docker-build-start docker-stop docker-destroy docker-shell
 
