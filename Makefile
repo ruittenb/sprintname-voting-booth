@@ -1,11 +1,18 @@
 
+export PATH:=$(PATH):$(shell npm bin)
 SHELL:=bash
-ENVIRONMENT=$(shell which -s jq && jq -r .environment .env)
+
+ENVIRONMENT=$(shell if which jq; then jq -r .environment .env; fi >/dev/null 2>&1)
 NEXT_VERSION=$(shell git tag | awk '{ sub(/^v/, ""); if (0 + $$1 > max) max = $$1; } END { print max + 0.1 }')
-SERVICE_WORKER=dist/service-worker.js
 NEXT_TAG=v$(NEXT_VERSION)
 CURRENT_VERSION=$(shell git describe --tags | sed -e 's/^v//')
 CURRENT_TAG=$(shell git describe --tags)
+
+JS_SOURCE=jssrc
+ELM_SOURCE=src
+DIST=dist
+SERVICE_WORKER=$(DIST)/service-worker.js
+
 GOOGLE_CLOUD_PREFIX=eu.gcr.io/proforto-team-sso
 SERVERREGEX=[v]oting-booth
 DOCKERNAME=voting-booth
@@ -38,20 +45,20 @@ rmtag: ## remove a tag erroneously created (current tag only)
 	git tag --delete $(CURRENT_TAG)
 
 version: ## update the version file with the current git tag name
-	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > jssrc/version.js
+	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > $(JS_SOURCE)/version.js
 
 bump: ## increment the version in the serviceworker
 	sed -i "" -E "s/^(var version = 'v[0-9.]*)';/\1.1';/" $(SERVICE_WORKER)
 
 build: version ## compile elm files to JS; bundle and minify JS files
-	elm-make src/Main.elm --yes --output jssrc/Elm.js
-	browserify jssrc/app.js -o jssrc/bundle.js
-	if [[ "$(ENVIRONMENT)" = development ]]; then                                     \
-		cp jssrc/bundle.js dist/bundle.js;                                        \
-	else                                                                              \
-		$$(npm bin)/uglifyjs jssrc/bundle.js                                      \
+	elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
+	browserify $(JS_SOURCE)/app.js -o $(JS_SOURCE)/bundle.js
+	if [[ "$(ENVIRONMENT)" = development ]]; then                             \
+		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js;                          \
+	else                                                                      \
+		uglifyjs $(JS_SOURCE)/bundle.js                                       \
 			--compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
-			--mangle --output dist/bundle.js;                                 \
+			--mangle --output $(DIST)/bundle.js;                              \
 	fi
 
 start: build ## start the webserver
@@ -83,7 +90,12 @@ docker-push: ## push the current image tag to docker repo
 	docker push $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
 docker-start: ## start the docker container
-	docker run --name $(DOCKERNAME) $(DOCKERPORTS) -t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest &
+	if docker ps -a | grep voting-booth >/dev/null 2>&1; then \
+		docker start $(DOCKERNAME) &                          \
+	else                                                      \
+		docker run --name $(DOCKERNAME) $(DOCKERPORTS)        \
+			-t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest &  \
+	fi
 
 docker-build-start: docker-build docker-start ## build the docker image and start a container
 

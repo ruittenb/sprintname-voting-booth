@@ -4,7 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 ADD . .
 
-ENV PATH="$PATH:./node_modules/.bin"
+#ENV PATH="$PATH:./node_modules/.bin"
 RUN make install build
 ENTRYPOINT npm start || sleep 1000000
 

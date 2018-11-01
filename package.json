@@ -20,6 +20,8 @@
   "dependencies": {
     "auth0-js": "^9.8.1",
     "auth0-lock": "^11.11.0",
+    "browserify": "^16.2.3",
+    "elm": "^0.18.0",
     "express": "^4.16.4",
     "firebase": "^5.5.6",
     "firebase-admin": "^6.1.0",
