@@ -55,6 +55,8 @@ Icon
 # Thumbnails
 ._*
 
+# environment file
+/.env
 # ruittenb scratchpad
 _fabriek
 # ruittenb sensitive data

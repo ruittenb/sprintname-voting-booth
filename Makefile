@@ -1,6 +1,6 @@
 
 SHELL:=bash
-ENVIRONMENT=$(shell which -s jq && jq .environment .env)
+ENVIRONMENT=$(shell which -s jq && jq -r .environment .env)
 NEXT_VERSION=$(shell git tag | awk '{ sub(/^v/, ""); if (0 + $$1 > max) max = $$1; } END { print max + 0.1 }')
 SERVICE_WORKER=dist/service-worker.js
 NEXT_TAG=v$(NEXT_VERSION)
@@ -45,10 +45,13 @@ bump: ## increment the version in the serviceworker
 build: version ## compile elm files to JS; bundle and minify JS files
 	elm-make src/Main.elm --yes --output jssrc/Elm.js
 	browserify jssrc/app.js -o jssrc/bundle.js
-	test "$(ENVIRONMENT)" = development || \
-		$$(npm bin)/uglifyjs jssrc/bundle.js \
+	if [[ "$(ENVIRONMENT)" = development ]]; then                                     \
+		cp jssrc/bundle.js dist/bundle.js;                                        \
+	else                                                                              \
+		$$(npm bin)/uglifyjs jssrc/bundle.js                                      \
 			--compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
-			--mangle --output dist/bundle.js
+			--mangle --output dist/bundle.js;                                 \
+	fi
 
 start: build ## start the webserver
 	npm start

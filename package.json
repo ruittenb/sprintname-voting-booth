@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "stop": "pkill voting-booth"
+    "stop": "pkill voting-booth || true"
   },
   "repository": {
     "type": "git",
