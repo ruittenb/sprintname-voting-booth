@@ -25,8 +25,9 @@ install: ## install all npm dependencies
 	npm install
 
 tag: ## create git tag, next in line (with 0.1 increments) and push to repo
-	sed -i "" -e "s/^var version = 'v[0-9.]*';/var version = '$(NEXT_TAG)';/" $(SERVICE_WORKER)
-	git commit $(SERVICE_WORKER) -m 'Updated service-worker with new tag'
+	sed -i "" -E "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG)\2/" $(SERVICE_WORKER)
+	sed -i "" -E 's/^(  "version": ")[^"]*(",)/\1$(NEXT_VERSION).0\2/' package.json
+	git commit $(SERVICE_WORKER) package.json -m 'Updated files with new tag'
 	git tag $(NEXT_TAG)
 	make version
 	git push
