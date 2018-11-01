@@ -8,6 +8,7 @@ missing:
  - use extensible records
  - fix routing issues with search box:
    - initial search page does not update search box
+ - mooie shaded tile toevoegen while loading
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
