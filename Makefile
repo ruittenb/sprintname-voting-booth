@@ -85,14 +85,14 @@ show-ok: # iTerm2 tab coloring
 	@printf '\033]6;1;bg;green;brightness;128\a'
 
 watch: ## start the webserver. rebuild and restart if the source changes
-	# precedence left-to-right
-	while make build && make show-ok || make show-err; do               \
-		npm start &                                                 \
-		rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null;     \
-		fswatch --one-event $(ELM_SOURCE) $(JS_SOURCE) tokenserver; \
-		make show-busy;                                             \
-		echo 'Changes detected, rebuilding...';                     \
-		npm stop;                                                   \
+	while make build && make show-ok || make show-err; do           \
+		npm start &                                             \
+		rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null; \
+		fswatch --one-event $(ELM_SOURCE) $(JS_SOURCE)          \
+				$(SERVICE_WORKER) tokenserver;          \
+		make show-busy;                                         \
+		echo 'Changes detected, rebuilding...';                 \
+		npm stop;                                               \
 	done
 
 ##@ Docker:

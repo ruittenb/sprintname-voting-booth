@@ -9,6 +9,9 @@ missing:
  - fix routing issues with search box:
    - initial search page does not update search box
  - mooie shaded tile toevoegen while loading
+ - Container afslanken
+ - check firebase and react minified warnings
+ - use dotenv for reading .env file
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
