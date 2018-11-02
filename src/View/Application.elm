@@ -30,27 +30,20 @@ import View.Calculations
 
 messageBox : String -> StatusLevel -> Html Msg
 messageBox message level =
-    let
-        autohide =
-            String.length message > 0 && level /= Error
-    in
-        span [ id "message-box-container" ]
-            [ div
-                [ id "message-box"
-                , classList
-                    [ ( "autohide", autohide )
-                    , ( "debug", level == Debug )
-                    , ( "notice", level == Notice )
-                    , ( "warning", level == Warning )
-                    , ( "error", level == Error )
-                    ]
-                ]
-                [ text message ]
+    div
+        [ id "message-box"
+        , classList
+            [ ( "debug", level == Debug )
+            , ( "notice", level == Notice )
+            , ( "warning", level == Warning )
+            , ( "error", level == Error )
             ]
+        ]
+        [ text message ]
 
 
-romanNumeralButton : Route -> Int -> Char -> Int -> Html Msg
-romanNumeralButton currentRoute currentGen currentLetter gen =
+generationButton : Route -> Int -> Char -> Int -> Html Msg
+generationButton currentRoute currentGen currentLetter gen =
     let
         currentHighLight =
             case currentRoute of
@@ -116,11 +109,11 @@ searchBox currentRoute =
             ]
 
 
-romanNumeralButtons : Route -> Int -> Char -> Html Msg
-romanNumeralButtons currentRoute currentGen currentLetter =
+generationButtons : Route -> Int -> Char -> Html Msg
+generationButtons currentRoute currentGen currentLetter =
     div [ id "generation-buttons" ] <|
         (List.map
-            (romanNumeralButton currentRoute currentGen currentLetter)
+            (generationButton currentRoute currentGen currentLetter)
             allGenerations
         )
 
@@ -176,8 +169,8 @@ letterButtons currentRoute pokedex currentGen currentLetter =
         div [ id "letter-buttons" ] buttonList
 
 
-loginLogoutButton : AuthenticationModel -> User -> String -> StatusLevel -> Html Msg
-loginLogoutButton authModel currentUser message level =
+loginLogoutButton : AuthenticationModel -> User -> Html Msg
+loginLogoutButton authModel currentUser =
     let
         loggedIn =
             isLoggedIn authModel
@@ -217,7 +210,6 @@ loginLogoutButton authModel currentUser message level =
             , div
                 [ class "button button-spacer" ]
                 []
-            , messageBox message level
             ]
 
 
@@ -351,9 +343,10 @@ heading state =
         [ loginLogoutButton
             state.authModel
             state.currentUser
+        , messageBox
             state.statusMessage
             state.statusLevel
-        , romanNumeralButtons
+        , generationButtons
             state.currentRoute
             state.generation
             state.letter
@@ -368,9 +361,12 @@ heading state =
             state.currentRoute
             state.generation
             state.letter
-        , tableMask state.currentRoute
-        , votersTable state
-        , rankingsTable state
+        , tableMask
+            state.currentRoute
+        , votersTable
+            state
+        , rankingsTable
+            state
         ]
 
 
