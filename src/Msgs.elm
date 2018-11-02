@@ -1,6 +1,7 @@
 module Msgs exposing (Msg(..))
 
 import Control exposing (Control)
+import Time exposing (Time)
 import Models.Types exposing (..)
 import Models.Auth exposing (RemoteLoggedInUser)
 import Models.Pokemon exposing (RemotePokedex)
@@ -29,3 +30,4 @@ type Msg
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | PokemonVoteCast UserVote
+    | Tick Time

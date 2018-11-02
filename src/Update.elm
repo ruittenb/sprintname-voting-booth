@@ -155,3 +155,10 @@ update msg oldState =
 
         UserRatingsSaved _ ->
             ( oldState, Cmd.none )
+
+        Tick time ->
+            let
+                newState =
+                    { oldState | statusMessage = "", statusLevel = None }
+            in
+                ( newState, Cmd.none )

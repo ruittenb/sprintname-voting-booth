@@ -344,7 +344,6 @@ button.user-button.current,
 }
 
 .pokecanvas {
-    margin-top: 10px;
     clear: left;
     display: flex;
     flex-wrap: wrap;

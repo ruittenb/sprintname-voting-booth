@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import Control
 import Result
+import Time exposing (second)
 import Navigation exposing (programWithFlags, Location)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
@@ -97,8 +98,8 @@ init credentials location =
 subscriptions : ApplicationState -> Sub Msg
 subscriptions _ =
     Sub.batch
-        --, Time.every second Tick
-        [ onAuthenticationReceived (decodeUser >> Msgs.AuthenticationReceived)
+        [ Time.every (2 * second) Tick
+        , onAuthenticationReceived (decodeUser >> Msgs.AuthenticationReceived)
         , onAuthenticationFailed Msgs.AuthenticationFailed
         , onFirebaseLoginFailed (.message >> Msgs.FirebaseLoginFailed)
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
