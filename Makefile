@@ -72,13 +72,27 @@ status: ## show the webserver status
 
 restart: stop start ## restart the webserver
 
+show-err: # iTerm2 tab coloring
+	@printf '\033]6;1;bg;red;brightness;128\a'
+	@printf '\033]6;1;bg;green;brightness;0\a'
+
+show-busy: # iTerm2 tab coloring
+	@printf '\033]6;1;bg;red;brightness;128\a'
+	@printf '\033]6;1;bg;green;brightness;128\a'
+
+show-ok: # iTerm2 tab coloring
+	@printf '\033]6;1;bg;red;brightness;0\a'
+	@printf '\033]6;1;bg;green;brightness;128\a'
+
 watch: ## start the webserver. rebuild and restart if the source changes
-	while make build && npm start & do                               \
-		rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null;  \
-		fswatch --one-event -e bundle.js -e Elm.js -e version.js \
-			$(ELM_SOURCE) $(JS_SOURCE) tokenserver;          \
-		echo 'Changes detected, rebuilding...';                  \
-		npm stop;                                                \
+	# precedence left-to-right
+	while make build && make show-ok || make show-err; do               \
+		npm start &                                                 \
+		rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null;     \
+		fswatch --one-event $(ELM_SOURCE) $(JS_SOURCE) tokenserver; \
+		make show-busy;                                             \
+		echo 'Changes detected, rebuilding...';                     \
+		npm stop;                                                   \
 	done
 
 ##@ Docker:
@@ -122,3 +136,4 @@ docker-shell: ## shell into the running docker container
 	docker-status docker-build docker-tag docker-push docker-start      \
 	docker-build-start docker-stop docker-destroy docker-shell
 
+# vim: set list ts=8 sw=8 noet:
