@@ -72,6 +72,15 @@ status: ## show the webserver status
 
 restart: stop start ## restart the webserver
 
+watch: ## start the webserver. rebuild and restart if the source changes
+	while make build && npm start & do                               \
+		rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null;  \
+		fswatch --one-event -e bundle.js -e Elm.js -e version.js \
+			$(ELM_SOURCE) $(JS_SOURCE) tokenserver;          \
+		echo 'Changes detected, rebuilding...';                  \
+		npm stop;                                                \
+	done
+
 ##@ Docker:
 
 docker-status: ## show the status of the docker image and containers
