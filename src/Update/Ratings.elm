@@ -1,18 +1,21 @@
 module Update.Ratings exposing (updateVoteForPokemon)
 
 import Set
+import Task
+import Time exposing (now)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Ratings exposing (..)
-import Msgs exposing (Msg)
+import Msgs exposing (Msg(..))
 import Helpers
     exposing
         ( filterPokedex
         , extractOneUserFromRatings
         , extractOnePokemonFromRatingString
         )
+import Commands exposing (getStatusMessageExpiryTime)
 import Commands.Ratings exposing (saveRatings)
 
 
@@ -112,7 +115,11 @@ updateVoteForPokemon oldState userVote =
                                                 newStateRatings =
                                                     newCurrentUserRatings :: otherUsersRatings
                                             in
-                                                ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
+                                                ( { oldState
+                                                    | ratings = Success newStateRatings
+                                                    , statusMessage = ""
+                                                    , statusLevel = None
+                                                  }
                                                 , saveRatings newCurrentUserRatings
                                                 )
                                 else
@@ -121,7 +128,7 @@ updateVoteForPokemon oldState userVote =
                                         | statusMessage = "You already voted " ++ toString newPokeRating ++ " in this category"
                                         , statusLevel = Warning
                                       }
-                                    , Cmd.none
+                                    , getStatusMessageExpiryTime Warning
                                     )
 
                         _ ->

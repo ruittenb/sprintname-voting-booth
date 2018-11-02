@@ -159,6 +159,16 @@ update msg oldState =
         Tick time ->
             let
                 newState =
-                    { oldState | statusMessage = "", statusLevel = None }
+                    if time > oldState.statusTime && oldState.statusTime /= 0 then
+                        { oldState | statusMessage = "", statusLevel = None }
+                    else
+                        oldState
+            in
+                ( newState, Cmd.none )
+
+        StatusMessageExpiryTimeReceived time ->
+            let
+                newState =
+                    { oldState | statusTime = time }
             in
                 ( newState, Cmd.none )

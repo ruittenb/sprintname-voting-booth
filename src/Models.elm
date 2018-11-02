@@ -1,5 +1,6 @@
 module Models exposing (..)
 
+import Time exposing (Time)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (RemotePokedex)
@@ -29,6 +30,7 @@ type alias ApplicationState =
     , currentUser : User
     , statusMessage : String
     , statusLevel : StatusLevel
+    , statusTime : Time
     , debounceState : Control.State Msg
     , currentRoute : Route
     , generation : Int
