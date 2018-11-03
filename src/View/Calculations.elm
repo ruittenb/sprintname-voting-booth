@@ -4,7 +4,7 @@ import RemoteData exposing (WebData, RemoteData(..))
 import Models exposing (..)
 import Models.Ratings exposing (..)
 import Models.Pokemon exposing (..)
-import Helpers
+import Helpers.Pokemon
     exposing
         ( filterPokedex
         , extractOnePokemonFromRatingString

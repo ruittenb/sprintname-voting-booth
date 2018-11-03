@@ -1,5 +1,6 @@
 module Update exposing (update)
 
+import Debug
 import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
 import Navigation exposing (newUrl)
@@ -16,10 +17,11 @@ import Commands.Database
         , firebaseLoginWithFirebaseToken
         , firebaseLogout
         )
-import Helpers
+import Helpers exposing (setStatusMessage)
+import Helpers.Authentication exposing (getUserNameForAuthModel)
+import Helpers.Pokemon
     exposing
-        ( getUserNameForAuthModel
-        , extractOneUserFromRatings
+        ( extractOneUserFromRatings
         , extractOnePokemonFromRatingString
         )
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
@@ -35,7 +37,7 @@ import Update.Pokemon
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
-    case msg of
+    case Debug.log "msg: " msg of
         AuthenticationReceived (Ok credentials) ->
             updateAuthWithProfile oldState credentials
                 |> andThenCmd (firebaseLoginWithJwtToken credentials.idToken)
@@ -78,12 +80,11 @@ update msg oldState =
             let
                 newState =
                     { oldState
-                        | statusMessage = toString message
-                        , statusLevel = Error
-                        , ratings = RemoteData.Failure message
+                        | ratings = RemoteData.Failure message
                     }
             in
                 ( newState, Cmd.none )
+                    |> setStatusMessage Error (toString message)
 
         TeamRatingsLoaded _ ->
             ( oldState, Cmd.none )
@@ -147,28 +148,22 @@ update msg oldState =
             updateVoteForPokemon oldState userVote
 
         UserRatingsSaved (Failure message) ->
-            let
-                newState =
-                    { oldState | statusMessage = toString message, statusLevel = Error }
-            in
-                ( newState, Cmd.none )
+            ( oldState, Cmd.none )
+                |> setStatusMessage Error (toString message)
 
         UserRatingsSaved _ ->
             ( oldState, Cmd.none )
 
         Tick time ->
-            let
-                newState =
-                    if time > oldState.statusTime && oldState.statusTime /= 0 then
-                        { oldState | statusMessage = "", statusLevel = None }
-                    else
-                        oldState
-            in
-                ( newState, Cmd.none )
+            if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
+                ( oldState, Cmd.none )
+                    |> setStatusMessage None ""
+            else
+                ( oldState, Cmd.none )
 
         StatusMessageExpiryTimeReceived time ->
             let
                 newState =
-                    { oldState | statusTime = time }
+                    { oldState | statusExpiryTime = Just time }
             in
                 ( newState, Cmd.none )

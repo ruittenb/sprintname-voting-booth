@@ -9,13 +9,13 @@ import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Ratings exposing (..)
 import Msgs exposing (Msg(..))
-import Helpers
+import Helpers exposing (setStatusMessage)
+import Helpers.Pokemon
     exposing
         ( filterPokedex
         , extractOneUserFromRatings
         , extractOnePokemonFromRatingString
         )
-import Commands exposing (getStatusMessageExpiryTime)
 import Commands.Ratings exposing (saveRatings)
 
 
@@ -115,21 +115,15 @@ updateVoteForPokemon oldState userVote =
                                                 newStateRatings =
                                                     newCurrentUserRatings :: otherUsersRatings
                                             in
-                                                ( { oldState
-                                                    | ratings = Success newStateRatings
-                                                    , statusMessage = ""
-                                                    , statusLevel = None
-                                                  }
+                                                ( { oldState | ratings = Success newStateRatings }
                                                 , saveRatings newCurrentUserRatings
                                                 )
+                                                    |> setStatusMessage None ""
                                 else
                                     -- vote already cast
-                                    ( { oldState
-                                        | statusMessage = "You already voted " ++ toString newPokeRating ++ " in this category"
-                                        , statusLevel = Warning
-                                      }
-                                    , getStatusMessageExpiryTime Warning
-                                    )
+                                    ( oldState, Cmd.none )
+                                        |> setStatusMessage Warning
+                                            ("You already voted " ++ toString newPokeRating ++ " in this category")
 
                         _ ->
                             -- no pokedex

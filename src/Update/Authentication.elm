@@ -5,7 +5,8 @@ import Models.Auth exposing (LoggedInUser)
 import Models.Authentication exposing (AuthenticationModel, AuthenticationState(..))
 import Models exposing (..)
 import Msgs exposing (Msg)
-import Helpers exposing (getUserNameForAuthModel)
+import Helpers exposing (setStatusMessage)
+import Helpers.Authentication exposing (getUserNameForAuthModel)
 
 
 login : AuthenticationModel -> LoggedInUser -> ( AuthenticationModel, Cmd Msg )
@@ -31,12 +32,11 @@ updateAuthWithProfile oldState userData =
         newState =
             { oldState
                 | authModel = newAuthModel
-                , statusMessage = ""
-                , statusLevel = None
                 , currentUser = getUserNameForAuthModel oldState.ratings newAuthModel
             }
     in
         ( newState, cmd )
+            |> setStatusMessage None ""
 
 
 updateAuthWithNoProfile : ApplicationState -> Maybe String -> ( ApplicationState, Cmd Msg )
@@ -46,21 +46,16 @@ updateAuthWithNoProfile oldState possibleError =
             logout oldState.authModel
 
         newState =
-            case possibleError of
-                Just error ->
-                    { oldState
-                        | authModel = newAuthModel
-                        , statusMessage = error
-                        , statusLevel = Error
-                        , currentUser = Nothing
-                    }
-
-                Nothing ->
-                    { oldState
-                        | authModel = newAuthModel
-                        , statusMessage = ""
-                        , statusLevel = None
-                        , currentUser = Nothing
-                    }
+            { oldState
+                | authModel = newAuthModel
+                , currentUser = Nothing
+            }
     in
-        ( newState, cmd )
+        case possibleError of
+            Just error ->
+                ( newState, Cmd.none )
+                    |> setStatusMessage Error error
+
+            Nothing ->
+                ( newState, Cmd.none )
+                    |> setStatusMessage None ""

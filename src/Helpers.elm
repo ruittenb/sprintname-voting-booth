@@ -1,21 +1,10 @@
-module Helpers
-    exposing
-        ( getUserNameForAuthModel
-        , filterPokedex
-        , searchPokedex
-        , romanNumeral
-        , extractOnePokemonFromRatingString
-        , extractOneUserFromRatings
-        )
+module Helpers exposing (romanNumeral, setStatusMessage)
 
 import Array exposing (Array)
-import Regex exposing (regex, caseInsensitive)
-import RemoteData exposing (WebData, RemoteData(..))
-import Models exposing (User)
-import Models.Authentication exposing (AuthenticationModel)
-import Models.Pokemon exposing (..)
-import Models.Ratings exposing (..)
-import Helpers.Authentication exposing (tryGetUserProfile)
+import Msgs exposing (Msg(..))
+import Models exposing (ApplicationState, StatusReporter)
+import Models.Types exposing (StatusLevel(..))
+import Commands exposing (getStatusMessageExpiryTime)
 
 
 romanNumerals : Array String
@@ -29,80 +18,22 @@ romanNumeral i =
         |> Maybe.withDefault "?"
 
 
-isNumeric : String -> Bool
-isNumeric str =
-    Regex.contains (regex "^[0-9]+$") str
-
-
-getUserNameForAuthModel : RemoteTeamRatings -> AuthenticationModel -> Maybe String
-getUserNameForAuthModel ratings authModel =
+setStatusMessage : StatusLevel -> String -> ( StatusReporter x, Cmd Msg ) -> ( StatusReporter x, Cmd Msg )
+setStatusMessage statusLevel statusMessage ( state, cmd ) =
     let
-        userEmail =
-            tryGetUserProfile authModel
-                |> Maybe.map .email
+        nextCmd =
+            if statusLevel == None then
+                cmd
+            else
+                Cmd.batch
+                    [ cmd
+                    , getStatusMessageExpiryTime statusLevel
+                    ]
     in
-        case ratings of
-            Success teamRatings ->
-                teamRatings
-                    |> List.filter
-                        (\r ->
-                            userEmail == Just r.email && r.active == True
-                        )
-                    |> List.map .userName
-                    |> List.head
-
-            _ ->
-                Nothing
-
-
-filterPokedex : RemotePokedex -> Int -> Char -> List Pokemon
-filterPokedex pokedex generation letter =
-    let
-        selection =
-            case pokedex of
-                Success pokeList ->
-                    pokeList
-                        |> List.filter (.letter >> (==) letter)
-                        |> List.filter (.generation >> (==) generation)
-
-                _ ->
-                    []
-    in
-        List.sortBy .name selection
-
-
-searchPokedex : RemotePokedex -> String -> List Pokemon
-searchPokedex pokedex query =
-    case pokedex of
-        Success pokedex ->
-            let
-                queryPattern =
-                    caseInsensitive (regex query)
-
-                pokeList =
-                    if isNumeric query then
-                        List.filter (.number >> toString >> (==) query) pokedex
-                    else
-                        List.filter (.name >> Regex.contains queryPattern) pokedex
-            in
-                pokeList
-
-        _ ->
-            []
-
-
-extractOnePokemonFromRatingString : String -> Int -> Int
-extractOnePokemonFromRatingString ratingString pokemonNumber =
-    String.slice pokemonNumber (pokemonNumber + 1) ratingString
-        |> String.toInt
-        |> Result.withDefault 0
-
-
-extractOneUserFromRatings : TeamRatings -> User -> ( TeamRatings, TeamRatings )
-extractOneUserFromRatings ratings currentUser =
-    case currentUser of
-        Nothing ->
-            ( [], ratings )
-
-        Just simpleUserName ->
-            List.partition (.userName >> (==) simpleUserName) ratings
+        ( { state
+            | statusLevel = statusLevel
+            , statusMessage = statusMessage
+            , statusExpiryTime = Nothing
+          }
+        , nextCmd
+        )
