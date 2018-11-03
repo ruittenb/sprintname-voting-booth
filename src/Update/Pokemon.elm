@@ -200,24 +200,22 @@ updateChangeGenerationAndLetter oldState newRoute =
             { generation = newGen
             , letter = newLetter
             }
-
-        newState =
-            if
-                List.member newGen allGenerations
-                    && List.member newLetter allLetters
-            then
-                { oldState
-                    | generation = newGen
-                    , letter = newLetter
-                    , preloaded = newPreloaded
-                    , statusMessage = ""
-                    , statusLevel = None
-                    , currentRoute = newRoute
-                }
-            else
-                oldState
     in
-        ( newState, command )
+        if
+            List.member newGen allGenerations
+                && List.member newLetter allLetters
+        then
+            ( { oldState
+                | generation = newGen
+                , letter = newLetter
+                , preloaded = newPreloaded
+                , currentRoute = newRoute
+              }
+            , command
+            )
+                |> setStatusMessage None ""
+        else
+            ( oldState, command )
 
 
 updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )

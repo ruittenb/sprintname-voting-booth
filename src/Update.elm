@@ -1,6 +1,5 @@
 module Update exposing (update)
 
-import Debug
 import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
 import Navigation exposing (newUrl)
@@ -37,7 +36,7 @@ import Update.Pokemon
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
 update msg oldState =
-    case Debug.log "msg: " msg of
+    case msg of
         AuthenticationReceived (Ok credentials) ->
             updateAuthWithProfile oldState credentials
                 |> andThenCmd (firebaseLoginWithJwtToken credentials.idToken)
