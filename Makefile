@@ -31,35 +31,23 @@ help: ## display this help
 install: ## install all npm dependencies
 	npm install
 
-tag: ## create git tag, next in line (with 0.1 increments) and push to repo
-	sed -i "" -E "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG)\2/" $(SERVICE_WORKER)
-	sed -i "" -E 's/^(  "version": ")[^"]*(",)/\1$(NEXT_VERSION).0\2/' package.json
-	git commit $(SERVICE_WORKER) package.json -m 'Updated files with new tag'
-	git tag $(NEXT_TAG)
-	make version
-	git push
-	git push --tags
-
-rmtag: ## remove a tag erroneously created (current tag only)
-	git push origin --delete $(CURRENT_TAG)
-	git tag --delete $(CURRENT_TAG)
-
-version: ## update the version file with the current git tag name
-	echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > $(JS_SOURCE)/version.js
-
-bump: ## increment the version in the serviceworker
-	sed -i "" -E "s/^(var version = 'v[0-9.]*)';/\1.1';/" $(SERVICE_WORKER)
-
-build: version ## compile elm files to JS; bundle and minify JS files
+build-elm: ## compile elm files to javascript
 	elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
+
+build-browserify: ## bundle javascript files
 	browserify $(JS_SOURCE)/app.js -o $(JS_SOURCE)/bundle.js
-	if [[ "$(ENVIRONMENT)" = development ]]; then                                     \
-		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js;                              \
-	else                                                                              \
-		uglifyjs $(JS_SOURCE)/bundle.js                                           \
-			--compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
-			--mangle --output $(DIST)/bundle.js;                              \
-	fi
+
+build-do-minify:
+	uglifyjs $(JS_SOURCE)/bundle.js                                           \
+		--compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
+		--mangle --output $(DIST)/bundle.js
+
+build-minify: ## minify javascript bundle (unless on development)
+	test "$(ENVIRONMENT)" = development && \
+		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js || \
+		make build-do-minify
+
+build: version build-elm build-browserify build-minify ## all of the build steps above
 
 start: build ## start the webserver
 	npm start
@@ -71,6 +59,15 @@ status: ## show the webserver status
 	@ps -ef | grep -s $(SERVERREGEX) || true
 
 restart: stop start ## restart the webserver
+
+##@ Development:
+
+version: ## update the version file with the current git tag name
+	-which git >/dev/null 2>&1 \
+		&& echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > $(JS_SOURCE)/version.js
+
+bump: ## increment the version in the serviceworker by 0.0.1
+	perl -i'' -pe 's/^(var version = .v\d+\.\d\.)(\d+)(.;)/$$1 . ($$2 + 1) . $$3/e' $(SERVICE_WORKER)
 
 show-err: # iTerm2 tab coloring
 	@printf '\033]6;1;bg;red;brightness;128\a'
@@ -84,6 +81,9 @@ show-ok: # iTerm2 tab coloring
 	@printf '\033]6;1;bg;red;brightness;0\a'
 	@printf '\033]6;1;bg;green;brightness;128\a'
 
+show-none: # iTerm2 tab coloring
+	@printf '\033]6;1;bg;*;default\a'
+
 watch: ## start the webserver. rebuild and restart if the source changes
 	while make build && make show-ok || make show-err; do           \
 		npm start &                                             \
@@ -94,6 +94,19 @@ watch: ## start the webserver. rebuild and restart if the source changes
 		echo 'Changes detected, rebuilding...';                 \
 		npm stop;                                               \
 	done
+
+tag: ## create git tag, next in line (with 0.1 increments) and push to repo
+	sed -i "" -E "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)
+	sed -i "" -E 's/^(  "version": ")[^"]*(",)/\1$(NEXT_VERSION).0\2/' package.json
+	git commit $(SERVICE_WORKER) package.json -m 'Updated files with new tag'
+	git tag $(NEXT_TAG)
+	make version
+	git push
+	git push --tags
+
+rmtag: ## remove a tag erroneously created (current tag only)
+	git push origin --delete $(CURRENT_TAG)
+	git tag --delete $(CURRENT_TAG)
 
 ##@ Docker:
 
@@ -132,8 +145,12 @@ docker-destroy: docker-stop ## destroy the docker image and container
 docker-shell: ## shell into the running docker container
 	docker exec -it $(DOCKERNAME) /bin/bash
 
-.PHONY: help install tag rmtag version bump build start stop status restart \
-	docker-status docker-build docker-tag docker-push docker-start      \
-	docker-build-start docker-stop docker-destroy docker-shell
+.PHONY: help install start stop status restart                        \
+	build-elm build-browserify build-do-minify build-minify build \
+	version bump watch tag rmtag                                  \
+	show-err show-busy show-ok show-none                          \
+	docker-status docker-build docker-tag docker-push             \
+	docker-start docker-build-start docker-stop                   \
+	docker-destroy docker-shell
 
 # vim: set list ts=8 sw=8 noet:
