@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import Control
 import Result
+import Time exposing (millisecond)
 import Navigation exposing (programWithFlags, Location)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
@@ -81,6 +82,7 @@ init credentials location =
             , currentUser = Nothing
             , statusMessage = ""
             , statusLevel = None
+            , statusExpiryTime = Nothing
             , debounceState = Control.initialState
             , currentRoute = currentRoute
             , generation = initialSubpage.generation
@@ -97,13 +99,13 @@ init credentials location =
 subscriptions : ApplicationState -> Sub Msg
 subscriptions _ =
     Sub.batch
-        --, Time.every second Tick
         [ onAuthenticationReceived (decodeUser >> Msgs.AuthenticationReceived)
         , onAuthenticationFailed Msgs.AuthenticationFailed
         , onFirebaseLoginFailed (.message >> Msgs.FirebaseLoginFailed)
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)
         , onLoadUserRatings (decodeUserRatings >> Msgs.UserRatingsLoaded)
+        , Time.every (500 * millisecond) Tick
         ]
 
 

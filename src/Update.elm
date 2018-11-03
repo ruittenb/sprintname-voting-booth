@@ -16,10 +16,11 @@ import Commands.Database
         , firebaseLoginWithFirebaseToken
         , firebaseLogout
         )
-import Helpers
+import Helpers exposing (setStatusMessage)
+import Helpers.Authentication exposing (getUserNameForAuthModel)
+import Helpers.Pokemon
     exposing
-        ( getUserNameForAuthModel
-        , extractOneUserFromRatings
+        ( extractOneUserFromRatings
         , extractOnePokemonFromRatingString
         )
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
@@ -78,12 +79,11 @@ update msg oldState =
             let
                 newState =
                     { oldState
-                        | statusMessage = toString message
-                        , statusLevel = Error
-                        , ratings = RemoteData.Failure message
+                        | ratings = RemoteData.Failure message
                     }
             in
                 ( newState, Cmd.none )
+                    |> setStatusMessage Error (toString message)
 
         TeamRatingsLoaded _ ->
             ( oldState, Cmd.none )
@@ -147,11 +147,22 @@ update msg oldState =
             updateVoteForPokemon oldState userVote
 
         UserRatingsSaved (Failure message) ->
-            let
-                newState =
-                    { oldState | statusMessage = toString message, statusLevel = Error }
-            in
-                ( newState, Cmd.none )
+            ( oldState, Cmd.none )
+                |> setStatusMessage Error (toString message)
 
         UserRatingsSaved _ ->
             ( oldState, Cmd.none )
+
+        Tick time ->
+            if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
+                ( oldState, Cmd.none )
+                    |> setStatusMessage None ""
+            else
+                ( oldState, Cmd.none )
+
+        StatusMessageExpiryTimeReceived time ->
+            let
+                newState =
+                    { oldState | statusExpiryTime = Just time }
+            in
+                ( newState, Cmd.none )

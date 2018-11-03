@@ -13,6 +13,7 @@ import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokemon exposing (..)
+import Helpers exposing (setStatusMessage)
 import Routing exposing (createBrowsePath)
 import Msgs exposing (Msg)
 import Ports exposing (preloadImages)
@@ -131,12 +132,11 @@ updateOnLoadPokedex oldState pokedex =
             { oldState
                 | pokedex = pokedex
                 , preloaded = newPreloaded
-                , statusMessage = statusMessage
-                , statusLevel = statusLevel
                 , preloaded = newPreloaded
             }
     in
         ( newState, command )
+            |> setStatusMessage statusLevel statusMessage
 
 
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
@@ -200,24 +200,22 @@ updateChangeGenerationAndLetter oldState newRoute =
             { generation = newGen
             , letter = newLetter
             }
-
-        newState =
-            if
-                List.member newGen allGenerations
-                    && List.member newLetter allLetters
-            then
-                { oldState
-                    | generation = newGen
-                    , letter = newLetter
-                    , preloaded = newPreloaded
-                    , statusMessage = ""
-                    , statusLevel = None
-                    , currentRoute = newRoute
-                }
-            else
-                oldState
     in
-        ( newState, command )
+        if
+            List.member newGen allGenerations
+                && List.member newLetter allLetters
+        then
+            ( { oldState
+                | generation = newGen
+                , letter = newLetter
+                , preloaded = newPreloaded
+                , currentRoute = newRoute
+              }
+            , command
+            )
+                |> setStatusMessage None ""
+        else
+            ( oldState, command )
 
 
 updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )

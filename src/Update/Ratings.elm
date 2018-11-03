@@ -1,13 +1,16 @@
 module Update.Ratings exposing (updateVoteForPokemon)
 
 import Set
+import Task
+import Time exposing (now)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Ratings exposing (..)
-import Msgs exposing (Msg)
-import Helpers
+import Msgs exposing (Msg(..))
+import Helpers exposing (setStatusMessage)
+import Helpers.Pokemon
     exposing
         ( filterPokedex
         , extractOneUserFromRatings
@@ -112,17 +115,15 @@ updateVoteForPokemon oldState userVote =
                                                 newStateRatings =
                                                     newCurrentUserRatings :: otherUsersRatings
                                             in
-                                                ( { oldState | ratings = Success newStateRatings, statusMessage = "" }
+                                                ( { oldState | ratings = Success newStateRatings }
                                                 , saveRatings newCurrentUserRatings
                                                 )
+                                                    |> setStatusMessage None ""
                                 else
                                     -- vote already cast
-                                    ( { oldState
-                                        | statusMessage = "You already voted " ++ toString newPokeRating ++ " in this category"
-                                        , statusLevel = Warning
-                                      }
-                                    , Cmd.none
-                                    )
+                                    ( oldState, Cmd.none )
+                                        |> setStatusMessage Warning
+                                            ("You already voted " ++ toString newPokeRating ++ " in this category")
 
                         _ ->
                             -- no pokedex

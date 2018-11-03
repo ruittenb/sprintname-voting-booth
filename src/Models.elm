@@ -1,5 +1,6 @@
 module Models exposing (..)
 
+import Time exposing (Time)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (RemotePokedex)
@@ -24,11 +25,9 @@ type alias PreloadedSets =
     }
 
 
-type alias ApplicationState =
+type alias ApplicationStateNoMessage =
     { authModel : AuthenticationModel
     , currentUser : User
-    , statusMessage : String
-    , statusLevel : StatusLevel
     , debounceState : Control.State Msg
     , currentRoute : Route
     , generation : Int
@@ -38,3 +37,15 @@ type alias ApplicationState =
     , pokedex : RemotePokedex
     , ratings : RemoteTeamRatings
     }
+
+
+type alias StatusReporter x =
+    { x
+        | statusMessage : String
+        , statusLevel : StatusLevel
+        , statusExpiryTime : Maybe Time
+    }
+
+
+type alias ApplicationState =
+    StatusReporter ApplicationStateNoMessage
