@@ -3,7 +3,7 @@
  * Serviceworker for Pokémon Sprint Name Voting Booth
  */
 
-var version = 'v9.9.0';
+var version = 'v9.9.2';
 var cacheName = 'sprintname-voting-booth-' + version;
 var filesToCache = [
     '/',
@@ -80,7 +80,6 @@ self.addEventListener('fetch', function (event) {
         event.respondWith(
             caches.open(cacheName).then(function (cache) {
                 return cache.match(event.request).then(function (response) {
-                    console.log('[ServiceWorker] Fetching', event.request.url);
                     var fetchPromise = fetch(event.request).then(function (networkResponse) {
                         cache.put(event.request, networkResponse.clone());
                         return networkResponse;
