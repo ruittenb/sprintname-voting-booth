@@ -3,12 +3,12 @@ module Main exposing (main)
 import Control
 import Result
 import Time exposing (millisecond)
-import Navigation exposing (programWithFlags, Location)
+import Navigation exposing (programWithFlags, Location, newUrl)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
 import Constants exposing (initialGeneration, initialLetter)
 import Msgs exposing (Msg(..))
-import Routing exposing (parseLocation)
+import Routing exposing (parseLocation, createBrowsePath)
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), Route(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
@@ -37,7 +37,7 @@ init credentials location =
                 |> Result.toMaybe
                 |> Authentication.init
 
-        cmd =
+        authCmd =
             case authModel.state of
                 LoggedIn userData ->
                     Cmd.batch
@@ -62,19 +62,19 @@ init credentials location =
             parseLocation location
                 |> Maybe.withDefault (Browse defaultSubpage)
 
-        ( initialSubpage, initialQuery ) =
+        ( initialSubpage, initialQuery, urlCmd ) =
             case currentRoute of
                 Search query ->
-                    ( defaultSubpage, query )
+                    ( defaultSubpage, query, Cmd.none )
 
                 Browse subpage ->
-                    ( subpage, "" )
+                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
 
                 BrowseWithPeopleVotes subpage ->
-                    ( subpage, "" )
+                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
 
                 BrowseWithPokemonRankings subpage ->
-                    ( subpage, "" )
+                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
 
         initialState : ApplicationState
         initialState =
@@ -93,7 +93,9 @@ init credentials location =
             , ratings = RemoteData.NotAsked
             }
     in
-        ( initialState, cmd )
+        ( initialState
+        , Cmd.batch [ authCmd, urlCmd ]
+        )
 
 
 subscriptions : ApplicationState -> Sub Msg
