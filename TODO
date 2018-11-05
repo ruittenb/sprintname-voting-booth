@@ -2,14 +2,12 @@
 missing:
  - refresh auth0 token when it expires
    - runs into difficulties with checkSession() which seems to attempt to validate wrong email address
- - do something about unrendered animation on messagebox
  - disregard incomplete votes when showing total number of votes on pokemon
  - enable declaring a generation/letter as "closed"/"finalized"
  - fix routing issues with search box:
    - initial search page does not update search box
  - mooie shaded tile toevoegen while loading
- - Container afslanken
- - check firebase and react minified warnings
+ - check react minified warning
  - use dotenv for reading .env file
 
 improvements:
@@ -19,6 +17,7 @@ improvements:
    - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
  - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
+ - use date object to calculate default page?
 
 consider:
  - Material Design?
