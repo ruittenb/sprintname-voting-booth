@@ -6,9 +6,12 @@ missing:
  - enable declaring a generation/letter as "closed"/"finalized"
  - fix routing issues with search box:
    - initial search page does not update search box
- - mooie shaded tile toevoegen while loading
- - check react minified warning
  - use dotenv for reading .env file
+>> does the application start preloading when the page is loaded for the first time??
+>> if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
+ - error 'JWT token expired' should stay on screen somewhat longer
+   - no default clearing of message if statusLevel == Error ?
+   - only clearing statusMessage if time runs out?
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
