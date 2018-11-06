@@ -6,11 +6,10 @@ WORKDIR /app
 ADD . .
 
 ENV PATH="$PATH:./node_modules/.bin"
-RUN cp -f .env.production .env && \
-    apk add --update make bash && \
-    make build-minify
+RUN apk add --update make bash && \
+    make prod build-bundle build-minify
 
-ENTRYPOINT npm start || sleep 1000000
+ENTRYPOINT npm start # || sleep 1000000
 
 EXPOSE 4201
 

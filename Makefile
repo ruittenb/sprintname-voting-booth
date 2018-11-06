@@ -34,8 +34,10 @@ install: ## install all npm dependencies
 build-elm: ## compile elm files to javascript
 	elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
 
-build-browserify: ## bundle javascript files
-	browserify $(JS_SOURCE)/app.js -o $(JS_SOURCE)/bundle.js
+build-bundle: ## bundle javascript files
+	browserify $(JS_SOURCE)/app.js \
+		-g [ envify --NODE_ENV $${ENVIRONMENT:-production} ] \
+		-g uglifyify -o $(JS_SOURCE)/bundle.js
 
 build-do-minify:
 	uglifyjs $(JS_SOURCE)/bundle.js                                           \
@@ -47,7 +49,7 @@ build-minify: ## minify javascript bundle (unless on development)
 		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js || \
 		make build-do-minify
 
-build: version build-elm build-browserify build-minify ## all of the build steps above
+build: version build-elm build-bundle build-minify ## all of the build steps above
 
 start: build ## start the webserver
 	npm start
@@ -65,6 +67,12 @@ restart: stop start ## restart the webserver
 version: ## update the version file with the current git tag name
 	-which git >/dev/null 2>&1 \
 		&& echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > $(JS_SOURCE)/version.js
+
+prod: ## mark environment as 'production'
+	cp .env.production .env
+
+devel: ## mark environment as 'development'
+	cp .env.development .env
 
 bump: ## increment the version in the serviceworker by 0.0.1
 	perl -i'' -pe 's/^(var version = .v\d+\.\d\.)(\d+)(.;)/$$1 . ($$2 + 1) . $$3/e' $(SERVICE_WORKER)
@@ -146,8 +154,8 @@ docker-shell: ## shell into the running docker container
 	docker exec -it $(DOCKERNAME) /bin/bash
 
 .PHONY: help install start stop status restart                        \
-	build-elm build-browserify build-do-minify build-minify build \
-	version bump watch tag rmtag                                  \
+	build-elm build-bundle build-do-minify build-minify build     \
+	version prod devel bump watch tag rmtag                       \
 	show-err show-busy show-ok show-none                          \
 	docker-status docker-build docker-tag docker-push             \
 	docker-start docker-build-start docker-stop                   \
