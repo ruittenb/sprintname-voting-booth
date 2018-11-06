@@ -3,7 +3,7 @@ export PATH:=$(PATH):$(shell npm bin)
 SHELL:=bash
 
 ENVIRONMENT=$(shell if test -r .env && which jq >/dev/null 2>&1; then jq -r .environment .env; fi)
-NEXT_VERSION=$(shell git tag | awk '{ sub(/^v/, ""); if (0 + $$1 > max) max = $$1; } END { print max + 0.1 }')
+NEXT_VERSION=$(shell git tag | awk '{ sub(/^v/, ""); if (0 + $$1 > max) max = $$1; } END { printf "%.1f", max + 0.1 }')
 NEXT_TAG=v$(NEXT_VERSION)
 CURRENT_VERSION=$(shell git describe --tags | sed -e 's/^v//')
 CURRENT_TAG=$(shell git describe --tags)
