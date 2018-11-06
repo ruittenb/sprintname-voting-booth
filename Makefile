@@ -35,9 +35,11 @@ build-elm: ## compile elm files to javascript
 	elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
 
 build-bundle: ## bundle javascript files
-	browserify $(JS_SOURCE)/app.js \
-		-g [ envify --NODE_ENV $${ENVIRONMENT:-production} ] \
-		-g uglifyify -o $(JS_SOURCE)/bundle.js
+	test "$(ENVIRONMENT)" = development &&                               \
+		browserify $(JS_SOURCE)/app.js -o $(JS_SOURCE)/bundle.js ||  \
+		browserify $(JS_SOURCE)/app.js                               \
+			-g [ envify --NODE_ENV $${ENVIRONMENT:-production} ] \
+			-g uglifyify -o $(JS_SOURCE)/bundle.js
 
 build-do-minify:
 	uglifyjs $(JS_SOURCE)/bundle.js                                           \
@@ -45,7 +47,7 @@ build-do-minify:
 		--mangle --output $(DIST)/bundle.js
 
 build-minify: ## minify javascript bundle (unless on development)
-	test "$(ENVIRONMENT)" = development && \
+	test "$(ENVIRONMENT)" = development &&                 \
 		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js || \
 		make build-do-minify
 
