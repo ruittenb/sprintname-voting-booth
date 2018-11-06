@@ -45,9 +45,9 @@ linkToLighthouse : String -> String -> String -> Html Msg -> Html Msg
 linkToLighthouse imageUrl title caption content =
     a
         [ href imageUrl
-        , Html.Attributes.attribute "data-lightbox" "pokemon"
-        , Html.Attributes.attribute "data-title" title
-        , Html.Attributes.attribute "data-caption" caption
+        , attribute "data-lightbox" "pokemon"
+        , attribute "data-title" title
+        , attribute "data-caption" caption
         ]
         [ content ]
 
@@ -254,7 +254,7 @@ pokemonTile currentRoute ratings currentUser pokemon =
                         , style [ ( "margin-left", leftMargin ) ]
                         , List.length pokemon.variants
                             |> toString
-                            |> Html.Attributes.attribute "data-variants"
+                            |> attribute "data-variants"
                         ]
                       <|
                         variantLinks pokemon.name pokemon.description pokemon.variants

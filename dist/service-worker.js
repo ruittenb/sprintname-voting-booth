@@ -3,12 +3,15 @@
  * Serviceworker for Pokémon Sprint Name Voting Booth
  */
 
-var version = 'v10.0.0';
+var version = 'v10.0.16';
 var cacheName = 'sprintname-voting-booth-' + version;
+var imageDir = '/pokeart/'
+var placeHolder = 'silhouette.png';
 var filesToCache = [
     '/',
     '/index.html',
     '/bundle.js',
+    '/service-worker.js',
     '/voting-booth.css',
     '/font-awesome.css',
     '/lightbox.css',
@@ -36,9 +39,13 @@ var filesToCache = [
     '/favicons/favicon-152x152.png',
     '/favicons/favicon-192x192.png',
     '/favicons/favicon-256x256.png',
-    '/favicons/favicon-512x512.png'
+    '/favicons/favicon-512x512.png',
+    imageDir + placeHolder
 ];
 
+/**
+ * Cache important files when installing
+ */
 self.addEventListener('install', function (event) {
     console.log('[ServiceWorker] Installing');
     self.skipWaiting();
@@ -50,6 +57,9 @@ self.addEventListener('install', function (event) {
     );
 });
 
+/**
+ * Remove old caches when activating
+ */
 self.addEventListener('activate', function (event) {
     console.log('[ServiceWorker] Activating');
     event.waitUntil(
@@ -73,21 +83,63 @@ self.addEventListener('activate', function (event) {
  * @see https://jakearchibald.com/2014/offline-cookbook/#stale-while-revalidate
  */
 self.addEventListener('fetch', function (event) {
-    var requestFile = event.request.url.replace(/^https?:\/\/[^\/]+/, '');
-    if (filesToCache.indexOf(requestFile) != -1 /* requestFile is in filesToCache ? */
-        && event.request.method != 'POST'
-    ) {
-        event.respondWith(
-            caches.open(cacheName).then(function (cache) {
-                return cache.match(event.request).then(function (response) {
-                    var fetchPromise = fetch(event.request).then(function (networkResponse) {
-                        cache.put(event.request, networkResponse.clone());
-                        return networkResponse;
-                    })
-                    return response || fetchPromise;
-                });
-            })
-        );
+    if (event.request.method !== 'GET') {
+        // We don't handle the request, but don't block it either
+        return;
     }
+    var requestFile = event.request.url.replace(/^https?:\/\/[^\/]+/, '').replace(/#.*/, '');
+    if (filesToCache.indexOf(requestFile) !== -1) {
+        // This file should be in the cache
+        return cacheThenNetwork(event);
+    }
+    else if (requestFile.indexOf(imageDir) === 0) {
+        // This is an image for which a placeholder should be shown
+        return networkThenFallback(event);
+    }
+    // In all other cases: just don't block the default
 });
 
+/**
+ * All important framework files are served from the cache first,
+ * while the cache is refreshed.
+ */
+function cacheThenNetwork(event) {
+    event.respondWith(
+        caches.open(cacheName).then(function (cache) {
+            return cache.match(event.request).then(function (response) {
+                var fetchPromise = fetch(event.request).then(function (networkResponse) {
+                    cache.put(event.request, networkResponse.clone());
+                    return networkResponse;
+                }).catch(function () {
+                    //console.log('[ServiceWorker] not in cache:', event.request.url);
+                });
+                return response || fetchPromise;
+            });
+        })
+    );
+}
+
+/**
+ * All artwork images are served from the network only, but if
+ * unreachable, serve a placeholder image from the cache.
+ */
+function networkThenFallback(event) {
+    event.respondWith(
+        fetch(event.request)
+        .then(function (response) {
+            return response;
+        }, unableToFetch)
+        .catch(unableToFetch)
+    );
+}
+
+/**
+ * Serve a placeholder image from the cache.
+ */
+function unableToFetch() {
+    return caches.open(cacheName).then(function (cache) {
+        return cache.match(imageDir + placeHolder).then(function (response) {
+            return response;
+        });
+    });
+}
