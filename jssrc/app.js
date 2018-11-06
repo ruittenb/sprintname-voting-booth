@@ -16,7 +16,7 @@ const VotingApp      = require('./VotingApp.js');
  */
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
+    //window.addEventListener('load', function () {
         navigator.serviceWorker
             .register('/service-worker.js')
             .then(function(registration) {
@@ -25,7 +25,7 @@ if ('serviceWorker' in navigator) {
             .catch(function (err) {
                 console.log('ServiceWorker registration failed: ', err);
             });
-    });
+    //});
 }
 
 /** **********************************************************************
