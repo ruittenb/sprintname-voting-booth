@@ -6,7 +6,7 @@ import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (RemotePokedex)
 import Models.Ratings exposing (RemoteTeamRatings)
 import Msgs exposing (Msg)
-import Control exposing (State)
+import Control
 
 
 type alias LighthouseData =
