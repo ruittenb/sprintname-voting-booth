@@ -95,15 +95,18 @@ show-none: # iTerm2 tab coloring
 	@printf '\033]6;1;bg;*;default\a'
 
 watch: ## start the webserver. rebuild and restart if the source changes
-	while make build && make show-ok || make show-err; do           \
-		npm start &                                             \
-		rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null; \
-		fswatch --one-event $(ELM_SOURCE) $(JS_SOURCE)          \
-				$(SERVICE_WORKER) tokenserver;          \
-		make show-busy;                                         \
-		echo 'Changes detected, rebuilding...';                 \
-		npm stop;                                               \
-	done
+	(                                                                       \
+		trap 'make show-none; exit' INT;                                \
+		while make build && make show-ok || make show-err; do           \
+			npm start &                                             \
+			rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null; \
+			fswatch --one-event $(ELM_SOURCE) $(JS_SOURCE)          \
+				$(SERVICE_WORKER) tokenserver;                  \
+			make show-busy;                                         \
+			echo 'Changes detected, rebuilding...';                 \
+			npm stop;                                               \
+		done                                                            \
+	)
 
 tag: ## create git tag, next in line (with 0.1 increments) and push to repo
 	sed -i "" -E "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)
