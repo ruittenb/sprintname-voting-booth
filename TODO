@@ -16,7 +16,7 @@ missing:
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
-   - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest	@effect-manager
+   - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest  @effect-manager
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire-extra/latest
    - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
@@ -26,6 +26,41 @@ consider:
  - replace tooltips with jQuery.Tooltip ?
  - use date object to calculate default page?
  - LocalStorage? https://package.elm-lang.org/packages/billstclair/elm-localstorage/4.0.2/LocalStorage-SharedTypes
- - swipe images in lightbox?
  - shake to display random pokemon? :)
+ - swipe images in lightbox?
+    <script>
+        var startX, startY;
+        var gallery = document.querySelector('.lb-container');
+        gallery.addEventListener('touchstart', function (e) {
+            console.log('touch started');
+            startX = e.changedTouches[0].clientX;
+            startY = e.changedTouches[0].clientY;
+        });
 
+        gallery.addEventListener('touchend', function (e) {
+            console.log('touch ended');
+            var currentX = e.changedTouches[0].clientX,
+                currentY = e.changedTouches[0].clientY,
+                horizontal = Math.abs(startX - currentX),
+                vertical = Math.abs(startY - currentY);
+            if (horizontal > vertical) {
+                if (currentX > startX) {
+                    console.log('swiped right');
+                } else {
+                    console.log('swiped left');
+                }
+            }
+        });
+
+       gallery.addEventListener('touchmove', function(e) {
+            console.log('touch moved');
+            var currentX = e.changedTouches[0].clientX,
+                currentY = e.changedTouches[0].clientY,
+                horizontal = Math.abs(startX - currentX),
+                vertical = Math.abs(startY - currentY);
+
+            if (horizontal > vertical && e.cancelable) {
+                e.preventDefault();
+            }
+        });
+    </script>
