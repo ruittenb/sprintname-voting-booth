@@ -20,7 +20,7 @@ import Routing
     exposing
         ( createBrowsePath
         , createShowRankingsPath
-        , createShowVotesPath
+        , createShowVotersPath
         )
 import View.Calculations
     exposing
@@ -233,7 +233,7 @@ calculationButtons route gen letter =
                     [ ( "show-voters", True )
                     , ( "button", True )
                     ]
-                , href (createShowVotesPath gen letter)
+                , href (createShowVotersPath gen letter)
                 ]
                 [ text "Show Voters" ]
             , linkElem

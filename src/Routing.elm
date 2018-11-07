@@ -4,7 +4,7 @@ module Routing
         , createBrowsePath
         , createSearchPath
         , createShowRankingsPath
-        , createShowVotesPath
+        , createShowVotersPath
         )
 
 import Char
@@ -23,9 +23,9 @@ browsePathSegment =
     "browse"
 
 
-showVotesPathSegment : String
-showVotesPathSegment =
-    "show-votes"
+showVotersPathSegment : String
+showVotersPathSegment =
+    "show-voters"
 
 
 showRankingsPathSegment : String
@@ -48,9 +48,9 @@ createShowRankingsPath gen letter =
     (createBrowsePath gen letter) ++ "/" ++ showRankingsPathSegment
 
 
-createShowVotesPath : Int -> Char -> String
-createShowVotesPath gen letter =
-    (createBrowsePath gen letter) ++ "/" ++ showVotesPathSegment
+createShowVotersPath : Int -> Char -> String
+createShowVotersPath gen letter =
+    (createBrowsePath gen letter) ++ "/" ++ showVotersPathSegment
 
 
 extractSubpage : String -> Maybe Subpage
@@ -83,7 +83,7 @@ subPageParser =
 routeParser : Parser (Route -> a) a
 routeParser =
     UrlParser.oneOf
-        [ UrlParser.map BrowseWithPeopleVotes (s browsePathSegment </> subPageParser </> s showVotesPathSegment)
+        [ UrlParser.map BrowseWithPeopleVotes (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
         , UrlParser.map BrowseWithPokemonRankings (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
         , UrlParser.map Browse (s browsePathSegment </> subPageParser)
         , UrlParser.map Search (s searchPathSegment </> string)
