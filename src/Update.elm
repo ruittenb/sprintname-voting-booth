@@ -16,7 +16,7 @@ import Commands.Database
         , firebaseLoginWithFirebaseToken
         , firebaseLogout
         )
-import Helpers exposing (setStatusMessage)
+import Helpers exposing (setStatusMessage, clearStatusMessage)
 import Helpers.Authentication exposing (getUserNameForAuthModel)
 import Helpers.Pokemon
     exposing
@@ -156,7 +156,7 @@ update msg oldState =
         Tick time ->
             if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
                 ( oldState, Cmd.none )
-                    |> setStatusMessage None ""
+                    |> clearStatusMessage
             else
                 ( oldState, Cmd.none )
 

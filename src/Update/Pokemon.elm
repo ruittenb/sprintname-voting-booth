@@ -13,10 +13,15 @@ import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokemon exposing (..)
-import Helpers exposing (setStatusMessage)
 import Routing exposing (createBrowsePath)
 import Msgs exposing (Msg)
 import Ports exposing (preloadImages)
+import Helpers
+    exposing
+        ( setStatusMessage
+        , clearStatusMessage
+        , clearWarningMessage
+        )
 
 
 -- some helper functions specific to update
@@ -163,6 +168,7 @@ updateSearchPokemon oldState query =
             { oldState | query = query, currentRoute = newRoute }
     in
         ( newState, newCmd )
+            |> clearStatusMessage
 
 
 updateChangeGenerationAndLetter : ApplicationState -> Route -> ( ApplicationState, Cmd Msg )
@@ -219,7 +225,7 @@ updateChangeGenerationAndLetter oldState newRoute =
               }
             , command
             )
-                |> setStatusMessage None ""
+                |> clearStatusMessage
         else
             ( oldState, command )
 
