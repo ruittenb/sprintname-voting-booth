@@ -54,15 +54,15 @@ mapCharLettersToString imgList =
 getPreloadCommandForPokedexCrossSection : PreloadedSets -> Int -> Char -> RemotePokedex -> Cmd msg
 getPreloadCommandForPokedexCrossSection preloaded generation letter pokedex =
     let
-        generationLetterAndImageUrl p =
+        generationLetterAndImageUrl pokemon =
             List.map
-                (\v ->
-                    { generation = p.generation
-                    , letter = p.letter
-                    , imageUrl = v.image
+                (\variant ->
+                    { generation = pokemon.generation
+                    , letter = pokemon.letter
+                    , imageUrl = variant.image
                     }
                 )
-                p.variants
+                pokemon.variants
     in
         case pokedex of
             Success actualPokedex ->
@@ -132,7 +132,6 @@ updateOnLoadPokedex oldState pokedex =
             { oldState
                 | pokedex = pokedex
                 , preloaded = newPreloaded
-                , preloaded = newPreloaded
             }
     in
         ( newState, command )
@@ -191,10 +190,17 @@ updateChangeGenerationAndLetter oldState newRoute =
                 oldState.pokedex
 
         newPreloaded =
-            addCurrentSubpageToPreloaded
-                oldState.preloaded
-                newGen
-                newLetter
+            case oldState.pokedex of
+                Success _ ->
+                    addCurrentSubpageToPreloaded
+                        oldState.preloaded
+                        newGen
+                        newLetter
+
+                _ ->
+                    -- if the pokedex has not been loaded yet.
+                    -- don't mark anything as 'already preloaded'
+                    oldState.preloaded
 
         newBrowseRoute =
             { generation = newGen

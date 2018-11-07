@@ -7,7 +7,8 @@ missing:
  - fix routing issues with search box:
    - initial search page does not update search box
  - use dotenv for reading .env file
->> does the application start preloading when the page is loaded for the first time??
+>> Uncaught Error: Trying to send an unexpected type of value through port `onFirebaseLoginFailed`:
+   Expecting an Int at _.status but instead got: undefined
 >> if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
  - error 'JWT token expired' should stay on screen somewhat longer
    - no default clearing of message if statusLevel == Error ?
