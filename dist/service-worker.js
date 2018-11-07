@@ -3,7 +3,7 @@
  * Serviceworker for Pokémon Sprint Name Voting Booth
  */
 
-var version = 'v10.0.16';
+var version = 'v10.0.24';
 var cacheName = 'sprintname-voting-booth-' + version;
 var imageDir = '/pokeart/'
 var placeHolder = 'silhouette.png';
@@ -106,14 +106,14 @@ self.addEventListener('fetch', function (event) {
 function cacheThenNetwork(event) {
     event.respondWith(
         caches.open(cacheName).then(function (cache) {
-            return cache.match(event.request).then(function (response) {
+            return cache.match(event.request).then(function (cacheResponse) {
                 var fetchPromise = fetch(event.request).then(function (networkResponse) {
                     cache.put(event.request, networkResponse.clone());
                     return networkResponse;
                 }).catch(function () {
-                    //console.log('[ServiceWorker] not in cache:', event.request.url);
+                    //console.log('[ServiceWorker] could not fetch:', event.request.url);
                 });
-                return response || fetchPromise;
+                return cacheResponse || fetchPromise;
             });
         })
     );
