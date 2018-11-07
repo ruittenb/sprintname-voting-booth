@@ -149,7 +149,7 @@ button.user-button.current,
 }
 
 .button.generation-button.error {
-    background: #e6c6e6 url(images/loading-error.png) 0 0 repeat;
+    background: #e6c6e6 /* purple */ url(images/loading-error.png) 0 0 repeat;
 }
 
 .button.generation-button.loading {
@@ -283,8 +283,10 @@ button.user-button.current,
     #message-box {
         visibility: hidden;
         clear: left;
-        height: 30px;
-        padding: 2px 50px 0 50px;
+        width: 80%;
+        height: auto;
+        min-height: 30px;
+        padding: 2px 10px 0 10px;
         margin-bottom: 6px;
         position: fixed;
         left: 50%;
@@ -292,6 +294,8 @@ button.user-button.current,
         transform: translate(-50%, -50%);
         z-index: 70;
         box-shadow: 5px 10px 15px 0px #333;
+        white-space: normal;
+        text-align: center;
     }
 }
 
@@ -566,7 +570,7 @@ button.user-button.current,
 }
 
 .rankings-table tr.winner-rating {
-    color: #e00; /* dark red */
+    color: #b768b7; /* dark purple */
     font-weight: bold;
 }
 
