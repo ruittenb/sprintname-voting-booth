@@ -1,4 +1,10 @@
-module Helpers exposing (romanNumeral, setStatusMessage)
+module Helpers
+    exposing
+        ( romanNumeral
+        , setStatusMessage
+        , clearStatusMessage
+        , clearWarningMessage
+        )
 
 import Array exposing (Array)
 import Msgs exposing (Msg(..))
@@ -37,3 +43,18 @@ setStatusMessage statusLevel statusMessage ( state, cmd ) =
           }
         , nextCmd
         )
+
+
+clearStatusMessage : ( StatusReporter x, Cmd Msg ) -> ( StatusReporter x, Cmd Msg )
+clearStatusMessage ( state, cmd ) =
+    ( state, cmd )
+        |> setStatusMessage None ""
+
+
+clearWarningMessage : ( StatusReporter x, Cmd Msg ) -> ( StatusReporter x, Cmd Msg )
+clearWarningMessage ( state, cmd ) =
+    if (state.statusLevel == Warning) then
+        ( state, cmd )
+            |> clearStatusMessage
+    else
+        ( state, cmd )
