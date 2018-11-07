@@ -5,7 +5,7 @@ import Models.Auth exposing (LoggedInUser)
 import Models.Authentication exposing (AuthenticationModel, AuthenticationState(..))
 import Models exposing (..)
 import Msgs exposing (Msg)
-import Helpers exposing (setStatusMessage)
+import Helpers exposing (setStatusMessage, clearWarningMessage)
 import Helpers.Authentication exposing (getUserNameForAuthModel)
 
 
@@ -36,7 +36,7 @@ updateAuthWithProfile oldState userData =
             }
     in
         ( newState, cmd )
-            |> setStatusMessage None ""
+            |> clearWarningMessage
 
 
 updateAuthWithNoProfile : ApplicationState -> Maybe String -> ( ApplicationState, Cmd Msg )
@@ -58,4 +58,4 @@ updateAuthWithNoProfile oldState possibleError =
 
             Nothing ->
                 ( newState, Cmd.none )
-                    |> setStatusMessage None ""
+                    |> clearWarningMessage

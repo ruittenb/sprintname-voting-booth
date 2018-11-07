@@ -106,19 +106,19 @@ addCurrentSubpageToPreloaded preloaded generation letter =
 updateOnLoadPokedex : ApplicationState -> RemotePokedex -> ( ApplicationState, Cmd Msg )
 updateOnLoadPokedex oldState pokedex =
     let
-        ( statusMessage, statusLevel ) =
+        updateStatusMessage =
             case pokedex of
                 NotAsked ->
-                    ( "Preparing...", Notice )
+                    setStatusMessage Notice "Preparing..."
 
                 Loading ->
-                    ( "Loading...", Notice )
+                    setStatusMessage Notice "Loading..."
 
                 Failure mess ->
-                    ( toString mess, Error )
+                    setStatusMessage Error (toString mess)
 
                 Success _ ->
-                    ( "", None )
+                    (\x -> x)
 
         command =
             getPreloadCommandForPokedexCrossSection
@@ -140,7 +140,7 @@ updateOnLoadPokedex oldState pokedex =
             }
     in
         ( newState, command )
-            |> setStatusMessage statusLevel statusMessage
+            |> updateStatusMessage
 
 
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
@@ -168,7 +168,7 @@ updateSearchPokemon oldState query =
             { oldState | query = query, currentRoute = newRoute }
     in
         ( newState, newCmd )
-            |> clearStatusMessage
+            |> clearWarningMessage
 
 
 updateChangeGenerationAndLetter : ApplicationState -> Route -> ( ApplicationState, Cmd Msg )
@@ -225,7 +225,7 @@ updateChangeGenerationAndLetter oldState newRoute =
               }
             , command
             )
-                |> clearStatusMessage
+                |> clearWarningMessage
         else
             ( oldState, command )
 

@@ -9,7 +9,7 @@ import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Ratings exposing (..)
 import Msgs exposing (Msg(..))
-import Helpers exposing (setStatusMessage)
+import Helpers exposing (setStatusMessage, clearStatusMessage)
 import Helpers.Pokemon
     exposing
         ( filterPokedex
@@ -118,7 +118,7 @@ updateVoteForPokemon oldState userVote =
                                                 ( { oldState | ratings = Success newStateRatings }
                                                 , saveRatings newCurrentUserRatings
                                                 )
-                                                    |> setStatusMessage None ""
+                                                    |> clearStatusMessage
                                 else
                                     -- vote already cast
                                     ( oldState, Cmd.none )

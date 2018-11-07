@@ -32,6 +32,6 @@ getStatusMessageExpiryTime statusLevel =
                     2 * second
 
                 Error ->
-                    1 * hour
+                    5 * second
     in
         perform (\time -> StatusMessageExpiryTimeReceived (time + duration)) now
