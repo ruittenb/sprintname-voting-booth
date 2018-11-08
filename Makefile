@@ -97,7 +97,7 @@ show-none: # iTerm2 tab coloring
 watch: ## start the webserver. rebuild and restart if the source changes
 	(                                                                       \
 		trap 'make show-none; exit' INT;                                \
-		while make build && make show-ok || make show-err; do           \
+		while make bump build && make show-ok || make show-err; do      \
 			npm start &                                             \
 			rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null; \
 			fswatch --one-event $(ELM_SOURCE) $(JS_SOURCE)          \
