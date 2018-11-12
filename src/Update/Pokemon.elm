@@ -64,6 +64,7 @@ getPreloadCommandForPokedexCrossSection preloaded generation letter pokedex =
                 (\variant ->
                     { generation = pokemon.generation
                     , letter = pokemon.letter
+                    , num = pokemon.number
                     , imageUrl = variant.image
                     }
                 )

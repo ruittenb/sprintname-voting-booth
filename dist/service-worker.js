@@ -113,9 +113,7 @@ function cacheThenNetwork(event) {
                 var fetchPromise = fetch(event.request).then(function (networkResponse) {
                     cache.put(event.request, networkResponse.clone());
                     return networkResponse;
-                }).catch(function () {
-                    //console.log('[ServiceWorker] could not fetch:', event.request.url);
-                });
+                }).catch(sendCachedFallback);
                 return cacheResponse || fetchPromise;
             });
         })
@@ -131,18 +129,35 @@ function networkThenFallback(event) {
         fetch(event.request)
         .then(function (response) {
             return response;
-        }, unableToFetch)
-        .catch(unableToFetch)
+        }, sendCachedFallback)
+        .catch(sendCachedFallback)
     );
 }
 
 /**
  * Serve a placeholder image from the cache.
  */
-function unableToFetch() {
+function sendCachedFallback() {
     return caches.open(cacheName).then(function (cache) {
         return cache.match(imageDir + placeHolder).then(function (response) {
             return response;
+        });
+    });
+}
+
+/**
+ * Take the image that was retrieved over the network and post it
+ * to the client for update
+ */
+function refreshClients(response) {
+    return self.clients.matchAll().then(function (clients) {
+        clients.forEach(function (client) {
+            var message = {
+                type: 'refresh',
+                url: response.url,
+                eTag: response.headers.get('ETag')
+            };
+            client.postMessage(JSON.stringify(message));
         });
     });
 }
