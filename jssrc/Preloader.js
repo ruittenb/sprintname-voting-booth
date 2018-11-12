@@ -106,8 +106,10 @@ module.exports = (function (jQuery) {
         for (let i = 0; i < Math.min(batchSize, this.list.length); i += 1) {
             let nextImg = this.list.shift();
             this.generation = nextImg.generation;
-            this.images[i] = new Image();
-            this.images[i].src = imageDir + nextImg.imageUrl;
+            if (!this.images[nextImg.num]) {
+                this.images[nextImg.num] = document.createElement('img');
+                this.images[nextImg.num].src = imageDir + nextImg.imageUrl;
+            }
         }
         this.highlightGenerationButton(false, prevGeneration);
         this.timer = null;
