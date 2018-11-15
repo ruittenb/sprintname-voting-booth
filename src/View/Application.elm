@@ -2,7 +2,7 @@ module View.Application exposing (heading, title)
 
 import Time exposing (Time, second)
 import Html exposing (..)
-import Html.Attributes exposing (attribute, id, href, class, classList, tabindex, placeholder, disabled, value)
+import Html.Attributes exposing (attribute, id, href, class, classList, tabindex, placeholder, disabled, value, type_)
 import Html.Events exposing (onClick, onInput, onSubmit)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
@@ -101,6 +101,7 @@ searchBox currentRoute =
             ]
             [ input
                 [ id "search-box"
+                , type_ "search"
                 , classList [ ( "current", searching ) ]
                 , placeholder "Search in pokédex"
                 , onInput Msgs.SearchPokemon

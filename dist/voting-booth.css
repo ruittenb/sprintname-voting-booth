@@ -309,7 +309,7 @@ button.user-button.current,
     display: block;
     height: 30px;
     width: 100%;
-    padding: 0 0 0 6px;
+    padding: 0 6px;
     border: 1px solid black;
     font-size: 14px;
 }
