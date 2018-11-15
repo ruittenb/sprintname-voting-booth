@@ -61,3 +61,8 @@ consider:
             }
         });
     </script>
+
+input[type="search]::-webkit-search-decoration {
+	-webkit-filter: invert(90%);
+	filter: invert(90%);
+}
