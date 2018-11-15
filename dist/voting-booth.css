@@ -123,6 +123,7 @@ button.user-button.current,
     opacity: 1;
 }
 
+.button.letter-button-placeholder.disabled,
 .button.letter-button.disabled {
     border-color: #777;
     background-color: #eee;
@@ -130,6 +131,17 @@ button.user-button.current,
 
 .button.letter-button.disabled.current {
     background-color: rgba(230, 198, 230, 0.5); /* #e6c6e680; */
+}
+
+.button.letter-button-placeholder {
+    font-style: italic;
+    width: calc(100% - 4px);
+    height: 30px;
+    border: 1px solid black;
+}
+
+.button.letter-button-placeholder:nth-child(1) {
+    margin-bottom: 6px;
 }
 
 .button.generation-button.transparent {
@@ -152,15 +164,11 @@ button.user-button.current,
     background: #e6c6e6 /* purple */ url(images/loading-error.png) 0 0 repeat;
 }
 
+.button.letter-button-placeholder.loading,
 .button.generation-button.loading {
     background: url(images/loading-shade.png) 0 0 repeat;
     -webkit-animation: loading 2s linear 0s infinite;
     animation: loading 2s linear 0s infinite;
-    /*
-    background-image: url(images/loading-circle.svg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    */
 }
 
 .button.generation-button.loading:after {
@@ -197,7 +205,8 @@ button.user-button.current,
     100% { background-position-x: 0; }
 }
 
-/* change the order of items on mobile:
+/**
+ * change the order of items on mobile:
  * keep the generation buttons close to the letter buttons
  * and move the search box above both.
  */

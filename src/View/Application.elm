@@ -165,8 +165,24 @@ letterButtons currentRoute pokedex currentGen currentLetter =
                         (letterButton currentRoute pokedex currentGen currentLetter)
                         allLetters
 
-                _ ->
+                Failure _ ->
                     []
+
+                _ ->
+                    let
+                        placeholder =
+                            div
+                                [ classList
+                                    [ ( "button", True )
+                                    , ( "letter-button-placeholder", True )
+                                    , ( "loading", False )
+                                    , ( "disabled", True )
+                                    ]
+                                ]
+                    in
+                        [ placeholder [ text "Loading..." ]
+                        , placeholder []
+                        ]
     in
         div [ id "letter-buttons" ] buttonList
 
