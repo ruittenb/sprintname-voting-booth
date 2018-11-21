@@ -16,16 +16,17 @@ SERVICE_WORKER=$(DIST)/service-worker.js
 GOOGLE_CLOUD_PREFIX=eu.gcr.io/proforto-team-sso
 SERVERREGEX=[v]oting-booth
 DOCKERNAME=voting-booth
-DOCKERNET=voting-net
 DOCKERPORTS=-p 4201:4201
 .DEFAULT_GOAL:=help
 
+############################################################################
 ##@ Generic:
 
 # automatic self-documentation
 help: ## display this help
 	@awk 'BEGIN { FS = ":.*## "; tab = 19; color = "\033[36m"; indent = "  "; printf "\nUsage:\n  make " color "<target>\033[0m\n\nRecognized targets:\n" } /^[a-zA-Z0-9_-]+:.*?## / { pad = sprintf("\n%" tab "s" indent, "", $$2); gsub(/\\n/, pad); printf indent color "%-" tab "s\033[0m%s\n", $$1, $$2 } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.42
 
+############################################################################
 ##@ Webserver:
 
 install: ## install all npm dependencies
@@ -64,6 +65,7 @@ status: ## show the webserver status
 
 restart: stop start ## restart the webserver
 
+############################################################################
 ##@ Development:
 
 version: ## update the version file with the current git tag name
@@ -121,6 +123,7 @@ rmtag: ## remove a tag erroneously created (current tag only)
 	git push origin --delete $(CURRENT_TAG)
 	git tag --delete $(CURRENT_TAG)
 
+############################################################################
 ##@ Docker:
 
 docker-status: ## show the status of the docker image and containers
@@ -139,7 +142,7 @@ docker-push: ## push the current image tag to docker repo
 	docker push $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
 docker-start: ## start the docker container
-	if docker ps -a | grep voting-booth >/dev/null 2>&1; then        \
+	if docker ps -a | grep $(SERVERREGEX) >/dev/null 2>&1; then        \
 		docker start $(DOCKERNAME);                              \
 	else                                                             \
 		docker run --name $(DOCKERNAME) $(DOCKERPORTS)           \
