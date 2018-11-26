@@ -18,12 +18,50 @@ const VotingApp      = require('./VotingApp.js');
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('/service-worker.js')
-        .then(function(registration) {
+        .then(function (registration) {
             console.log('Service Worker Registered with scope', registration.scope);
         })
         .catch(function (err) {
             console.log('ServiceWorker registration failed:', err);
         });
+
+
+    navigator.serviceWorker.onmessage = function (evt) {
+        console.log('message received'); // TODO
+        var message = JSON.parse(evt.data);
+
+        var isRefresh = message.type === 'refresh';
+        var isAsset = message.url.includes('asset');
+        var lastETag = localStorage.currentETag;
+        var isNew =  lastETag !== message.eTag;
+
+        if (isRefresh && isAsset && isNew) {
+            if (lastETag) {
+                notice.hidden = false;
+            }
+            localStorage.currentETag = message.eTag;
+        }
+
+        var img = document.querySelector('img');
+        caches.open(CACHE)
+            .then(function (cache) {
+                return cache.match(img.src);
+            })
+            .then(function (response) {
+                return response.blob();
+            })
+            .then(function (bodyBlob) {
+                var url = URL.createObjectURL(bodyBlob);
+                img.src = url;
+                notice.hidden = true;
+            });
+    };
+
+
+    //navigator.serviceWorker
+    //    .addEventListener('message', function (event) {
+    //        console.log(event.data.message);
+    //    });
 }
 
 /** **********************************************************************
