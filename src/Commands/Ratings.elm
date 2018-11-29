@@ -37,5 +37,6 @@ userRatingsDecoder =
         |> required "userName" Decode.string
         |> required "email" Decode.string
         |> required "active" Decode.bool
+        |> required "admin" Decode.bool
         |> required "color" Decode.string
         |> required "ratings" Decode.string

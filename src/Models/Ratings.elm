@@ -14,6 +14,7 @@ type alias UserRating =
     , userName : String
     , email : String
     , active : Bool
+    , admin : Bool
     , color : String
     , rating : Int
     }
@@ -28,6 +29,7 @@ type alias UserRatings =
     , userName : String
     , email : String
     , active : Bool
+    , admin : Bool
     , color : String
     , ratings : String
     }

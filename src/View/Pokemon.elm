@@ -123,13 +123,17 @@ ratingNode rating =
 
 
 ratingWidget : TeamRating -> Html Msg -> Html Msg
-ratingWidget otherUsersRating actualVoteWidget =
-    div
-        [ class "rating-nodes"
-        ]
-    <|
-        (List.map ratingNode otherUsersRating)
-            ++ [ actualVoteWidget ]
+ratingWidget otherUsersRating voteWidgetElement =
+    let
+        ratingNodes =
+            (List.map ratingNode otherUsersRating)
+    in
+        div
+            [ class "rating-nodes"
+            ]
+        <|
+            ratingNodes
+                ++ [ voteWidgetElement ]
 
 
 
@@ -148,6 +152,7 @@ extractOnePokemonFromRatings ratings pokemon =
                     , userName = r.userName
                     , email = r.email
                     , active = r.active
+                    , admin = r.admin
                     , color = r.color
                     , rating =
                         String.slice pokemon.number (pokemon.number + 1) r.ratings
@@ -223,7 +228,7 @@ pokemonTile currentRoute ratings currentUser pokemon =
                 _ ->
                     [ text "" ]
 
-        actualVoteWidget =
+        voteWidgetElement =
             case currentUser of
                 Nothing ->
                     text ""
@@ -270,7 +275,7 @@ pokemonTile currentRoute ratings currentUser pokemon =
             ]
                 ++ case ratings of
                     Success _ ->
-                        [ ratingWidget otherUsersRating actualVoteWidget ]
+                        [ ratingWidget otherUsersRating voteWidgetElement ]
 
                     Failure _ ->
                         [ loadingErrorIcon ]
