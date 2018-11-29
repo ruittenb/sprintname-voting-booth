@@ -6,15 +6,17 @@
     },
     "users": {
       "$user_id": {
-        ".write": "auth != null
-                && data.exists()
-                && data.child('active').val() == true
-                && data.child('email').val() == auth.uid
-                && newData.exists()
-                && newData.child('email').val() == auth.uid",
-        ".validate": "newData.hasChildren(['id', 'active', 'color', 'email', 'ratings', 'userName'])
+        ".write": "auth != null /* user must be logged in */
+                && data.exists() /* no inserting */
+                && data.child('active').val() == true /* user must be active */
+                && data.child('email').val() == auth.uid /* user may only update their own record */
+                && newData.exists() /* no deleting */
+                && newData.child('email').val() == auth.uid /* user may not change their email */
+                && newData.child('admin').val() == data.child('admin').val()", /* user may not change their admin status */
+        ".validate": "newData.hasChildren(['id', 'active', 'admin', 'color', 'email', 'ratings', 'userName'])
                 && newData.child('id').isNumber()
                 && newData.child('active').isBoolean()
+                && newData.child('admin').isBoolean()
                 && newData.child('color').isString()
                 && newData.child('email').isString()
                 && newData.child('ratings').isString()
