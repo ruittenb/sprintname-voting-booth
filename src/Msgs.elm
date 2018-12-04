@@ -23,6 +23,7 @@ type Msg
     | AuthenticationLogoutClicked
     | SettingsLoaded RemoteSettings
     | PokedexLoaded RemotePokedex
+    | PagesLoaded Pages
     | TeamRatingsLoaded RemoteTeamRatings
     | UserRatingsLoaded RemoteUserRatings
     | UserRatingsSaved RemoteUserRatings
