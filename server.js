@@ -13,7 +13,7 @@ const express     = require('express');
 const webserver   = express();
 const tokenserver = new FirebaseTokenServer(webserver);
 
-webserver.use(express.static('dist'))
+webserver.use(express.static('dist'));
 
 webserver.listen(PORT, ADDR, function () {
     console.log(

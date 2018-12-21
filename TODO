@@ -5,7 +5,7 @@ missing:
  - disregard incomplete votes when showing total number of votes on pokemon
  - make voting widget readonly when browse mode == Search
  - enable declaring a generation/letter as "closed"/"finalized"
- - use dotenv for reading .env file
+   - pages branch
  - Uncaught Error: Trying to send an unexpected type of value through port `onFirebaseLoginFailed`:
    Expecting an Int at _.status but instead got: undefined
  - if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
@@ -17,6 +17,7 @@ improvements:
    - https://discuss.atom.io/t/how-do-i-specify-a-branch-for-an-npm-package-in-dependencies/20452
    - https://stackoverflow.com/questions/16350673/depend-on-a-branch-or-tag-using-a-git-url-in-a-package-json/29595538
  - use Auth0 module http://package.elm-lang.org/packages/kkpoon/elm-auth0/2.0.0/Auth0
+ - use dotenv for reading .env file
 
 consider:
  - replace tooltips with jQuery.Tooltip ?
