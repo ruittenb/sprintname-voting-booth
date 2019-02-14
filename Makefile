@@ -17,6 +17,7 @@ GOOGLE_CLOUD_PREFIX=eu.gcr.io/proforto-team-sso
 SERVERREGEX=[v]oting-booth
 DOCKERNAME=voting-booth
 DOCKERPORTS=-p 4201:4201
+KUBECONTEXT=voting-booth
 .DEFAULT_GOAL:=help
 
 ############################################################################
@@ -126,6 +127,9 @@ rmtag: ## remove a tag erroneously created (current tag only)
 ############################################################################
 ##@ Docker:
 
+select-kube-context:
+	kubectl config use-context $(KUBECONTEXT)
+
 docker-status: ## show the status of the docker image and containers
 	@echo IMAGES
 	@docker images | grep $(DOCKERNAME) || echo none
@@ -138,7 +142,7 @@ docker-build: ## build the docker image
 docker-tag: ## tag the :latest docker image with the current version
 	docker image tag $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
-docker-push: ## push the current image tag to docker repo
+docker-push: select-kube-context ## push the current image tag to docker repo
 	docker push $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
 
 docker-start: ## start the docker container
