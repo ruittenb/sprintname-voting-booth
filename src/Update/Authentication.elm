@@ -53,9 +53,9 @@ updateAuthWithNoProfile oldState possibleError =
     in
         case possibleError of
             Just error ->
-                ( newState, Cmd.none )
+                ( newState, cmd )
                     |> setStatusMessage Error error
 
             Nothing ->
-                ( newState, Cmd.none )
+                ( newState, cmd )
                     |> clearWarningMessage
