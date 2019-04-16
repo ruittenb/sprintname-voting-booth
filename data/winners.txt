@@ -6,7 +6,7 @@
 20160720 - Vaporeon
 20160809 - Wartortle
 20160822 - Zapdos
-20160905 - Ampharos
+20160905 - Ampharos # II
 20160919 - Blissey
 20161003 - Crobat
 20161018 - Donphan
@@ -31,7 +31,7 @@
 20170802 - Wobbuffet
 20170815 - Xatu
 20170829 - Yanma
-20170912 - Aggron
+20170912 - Aggron # III
 20170926 - Blaziken
 20171010 - Cacturne
 20171024 - Deoxys
@@ -53,7 +53,7 @@
 20180528 - Vigoroth
 20180611 - Wailord
 20180626 - Zangoose
-20180710 - Abomasnow
+20180710 - Abomasnow # IV
 20180724 - Buizel
 20180807 - Chimchar
 20180820 - Dialga
@@ -64,5 +64,16 @@
 20181030 - Infernape
 20181113 - Kricketune
 20181127 - Luxray
+20181211 - Munchlax
+20181224 - Palkia
+
+20190108 - Riolu
+20190122 - Snover
+20190205 - Torterra
+20190219 - Uxie
+20190305 - Vespiquen
+20190319 - Weavile
+20190402 - Yanmega
+20190416 - Archeops # V
 
 
