@@ -29,7 +29,7 @@ help: ## display this help
 	@awk 'BEGIN { FS = ":.*## "; tab = 19; color = "\033[36m"; indent = "  "; printf "\nUsage:\n  make " color "<target>\033[0m\n\nRecognized targets:\n" } /^[a-zA-Z0-9%_-]+:.*?## / { pad = sprintf("\n%" tab "s" indent, "", $$2); gsub(/\\n/, pad); printf indent color "%-" tab "s\033[0m%s\n", $$1, $$2 } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.43
 
 ############################################################################
-##@ Webserver:
+##@ Development:
 
 .PHONY: install
 install: ## install all npm dependencies
@@ -62,29 +62,6 @@ build-minify: ## minify javascript bundle (unless on development)
 .PHONY: build
 build: version build-elm build-bundle build-minify ## all of the build steps above
 
-.PHONY: start
-start: build ## start the webserver
-	npm start
-
-.PHONY: stop
-stop: ## stop the webserver
-	npm stop
-
-.PHONY: status
-status: ## show the webserver status
-	@ps -ef | grep -s $(SERVERREGEX) || true
-
-.PHONY: restart
-restart: stop start ## restart the webserver
-
-############################################################################
-##@ Development:
-
-.PHONY: version
-version: ## update the version file with the current git tag name
-	-which git >/dev/null 2>&1 \
-		&& echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > $(JS_SOURCE)/version.js
-
 .PHONY: prod
 prod: ## mark environment as 'production'
 	cp .env.production .env
@@ -93,9 +70,32 @@ prod: ## mark environment as 'production'
 devel: ## mark environment as 'development'
 	cp .env.development .env
 
+.PHONY: version
+version: ## update the version file with the current git tag name
+	-which git >/dev/null 2>&1 \
+		&& echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > $(JS_SOURCE)/version.js
+
 .PHONY: bump
 bump: ## increment the version in the serviceworker by 0.0.1
 	perl -i'' -pe 's/^(var version = .v\d+\.\d\.)(\d+)(.;)/$$1 . ($$2 + 1) . $$3/e' $(SERVICE_WORKER)
+
+.PHONY: tag
+tag: ## create git tag, next in line (with 0.1 increments) and push to repo
+	sed -i "" -E "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)
+	sed -i "" -E 's/^(  "version": ")[^"]*(",)/\1$(NEXT_VERSION).0\2/' package.json
+	git commit $(SERVICE_WORKER) package.json -m 'Updated files with new tag'
+	git tag $(NEXT_TAG)
+	make version
+	git push
+	git push --tags
+
+.PHONY: rmtag
+rmtag: ## remove a tag erroneously created (current tag only)
+	git push origin --delete $(CURRENT_TAG)
+	git tag --delete $(CURRENT_TAG)
+
+############################################################################
+##@ Webserver:
 
 .PHONY: show-err
 show-err: # iTerm2 tab coloring
@@ -116,6 +116,21 @@ show-ok: # iTerm2 tab coloring
 show-none: # iTerm2 tab coloring
 	@printf '\033]6;1;bg;*;default\a'
 
+.PHONY: start
+start: build ## start the webserver
+	npm start
+
+.PHONY: stop
+stop: ## stop the webserver
+	npm stop
+
+.PHONY: status
+status: ## show the webserver status
+	@ps -ef | grep -s $(SERVERREGEX) || true
+
+.PHONY: restart
+restart: stop start ## restart the webserver
+
 .PHONY: watch
 watch: ## start the webserver. rebuild and restart if the source changes
 	(                                                                       \
@@ -130,21 +145,6 @@ watch: ## start the webserver. rebuild and restart if the source changes
 			npm stop;                                               \
 		done                                                            \
 	)
-
-.PHONY: tag
-tag: ## create git tag, next in line (with 0.1 increments) and push to repo
-	sed -i "" -E "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)
-	sed -i "" -E 's/^(  "version": ")[^"]*(",)/\1$(NEXT_VERSION).0\2/' package.json
-	git commit $(SERVICE_WORKER) package.json -m 'Updated files with new tag'
-	git tag $(NEXT_TAG)
-	make version
-	git push
-	git push --tags
-
-.PHONY: rmtag
-rmtag: ## remove a tag erroneously created (current tag only)
-	git push origin --delete $(CURRENT_TAG)
-	git tag --delete $(CURRENT_TAG)
 
 ############################################################################
 ##@ Docker:
