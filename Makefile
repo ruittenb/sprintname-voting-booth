@@ -13,9 +13,9 @@ ELM_SOURCE=src
 DIST=dist
 SERVICE_WORKER=$(DIST)/service-worker.js
 
-GOOGLE_CLOUD_PREFIX=eu.gcr.io/proforto-team-sso
+DOCKER_REGISTRY=eu.gcr.io/proforto-team-sso
 SERVERREGEX=[v]oting-booth
-DOCKERNAME=voting-booth
+DOCKER_REPO=voting-booth
 DOCKERPORTS=-p 4201:4201
 KUBECONTEXT=voting-booth
 .DEFAULT_GOAL:=help
@@ -26,7 +26,7 @@ KUBECONTEXT=voting-booth
 # automatic self-documentation
 .PHONY: help # See https://gist.github.com/ruittenb/5d2d281237385276f49652b9b9f6d5a1
 help: ## display this help
-	@awk -v tab=19 'BEGIN { FS = ":.*## "; buffer = ""; color = "\033[36m"; nocolor = "\033[0m"; indent = "  "; usage(); } function spout(target, desc) { printf "%s%s%-" tab "s%s%s\n", indent, color, target, nocolor, desc; } function usage() { printf "\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n", indent, color, nocolor; } /\\$$/ { gsub(/\\$$/, ""); buffer = buffer $$0; next; } buffer { $$0 = buffer $$0; buffer = ""; } /^[a-zA-Z0-9*%_.-]+:.*?## / { pad = sprintf("\n%" tab "s" indent, "", $$2); gsub(/\\n/, pad); spout($$1, $$2); } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.47
+	@awk -v tab=19 'BEGIN { FS = ":.*## "; buffer = ""; color = "\033[36m"; nocolor = "\033[0m"; indent = "  "; usage(); } function trim(str) { gsub(/[ \t]+$$/, "", str); gsub(/^[ \t]+/, "", str); return str; } function spout(target, desc) { printf "%s%s%-" tab "s%s%s\n", indent, color, trim(target), nocolor, desc; } function usage() { printf "\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n", indent, color, nocolor; } /\\$$/ { gsub(/\\$$/, ""); buffer = buffer $$0; next; } buffer { $$0 = buffer $$0; buffer = ""; } /^[-a-zA-Z0-9*%_. ]+:.*?## / { pad = sprintf("\n%" tab "s" indent, ""); gsub(/\\n/, pad); spout($$1, $$2); } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.51
 
 ############################################################################
 ##@ Development:
@@ -156,29 +156,29 @@ select-kube-context:
 .PHONY: docker-status
 docker-status: ## show the status of the docker image and containers
 	@echo IMAGES
-	@docker images | grep $(DOCKERNAME) || echo none
+	@docker images | grep $(DOCKER_REPO) || echo none
 	@echo CONTAINERS
-	@docker ps -a  | grep $(DOCKERNAME) || echo none
+	@docker ps -a  | grep $(DOCKER_REPO) || echo none
 
 .PHONY: docker-build
 docker-build: ## build the docker image
-	docker build -t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest .
+	docker build -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
 
 .PHONY: docker-tag
 docker-tag: ## tag the :latest docker image with the current version
-	docker image tag $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
+	docker image tag $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest $(DOCKER_REGISTRY)/$(DOCKER_REPO):$(CURRENT_VERSION)
 
 .PHONY: docker-push
 docker-push: select-kube-context ## push the current image tag to docker repo
-	docker push $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):$(CURRENT_VERSION)
+	docker push $(DOCKER_REGISTRY)/$(DOCKER_REPO):$(CURRENT_VERSION)
 
 .PHONY: docker-start
 docker-start: ## start the docker container
-	if docker ps -a | grep $(SERVERREGEX) >/dev/null 2>&1; then        \
-		docker start $(DOCKERNAME);                              \
-	else                                                             \
-		docker run --name $(DOCKERNAME) $(DOCKERPORTS)           \
-			-t $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest & \
+	if docker ps -a | grep $(SERVERREGEX) >/dev/null 2>&1; then   \
+		docker start $(DOCKER_REPO);                          \
+	else                                                          \
+		docker run --name $(DOCKER_REPO) $(DOCKERPORTS)       \
+			-t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest & \
 	fi
 
 .PHONY: docker-build-start
@@ -186,15 +186,15 @@ docker-build-start: docker-build docker-start ## build the docker image and star
 
 .PHONY: docker-stop
 docker-stop: ## stop the docker container
-	-docker stop $(DOCKERNAME)
+	-docker stop $(DOCKER_REPO)
 
 .PHONY: docker-destroy
 docker-destroy: docker-stop ## destroy the docker image and container
-	-docker rm -f $(DOCKERNAME)
-	-docker rmi $(GOOGLE_CLOUD_PREFIX)/$(DOCKERNAME):latest
+	-docker rm -f $(DOCKER_REPO)
+	-docker rmi $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest
 
 .PHONY: docker-shell
 docker-shell: ## shell into the running docker container
-	docker exec -it $(DOCKERNAME) /bin/bash
+	docker exec -it $(DOCKER_REPO) /bin/bash
 
 # vim: set list ts=8 sw=8 noet:
