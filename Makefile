@@ -162,7 +162,7 @@ docker-status: ## show the status of the docker image and containers
 
 .PHONY: docker-build
 docker-build: ## build the docker image
-	docker build -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
+	nice docker build -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
 
 .PHONY: docker-tag
 docker-tag: ## tag the :latest docker image with the current version
