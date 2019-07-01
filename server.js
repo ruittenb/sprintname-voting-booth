@@ -13,6 +13,11 @@ const express     = require('express');
 const webserver   = express();
 const tokenserver = new FirebaseTokenServer(webserver);
 
+webserver.use('/pokeart', (req, res, next) => {
+  const num = Math.floor(Math.random() * 700 + 100);
+  res.sendFile(`dist/pokeart/${num}.png`, { root: __dirname });
+});
+
 webserver.use(express.static('dist'));
 
 webserver.listen(PORT, ADDR, function () {
