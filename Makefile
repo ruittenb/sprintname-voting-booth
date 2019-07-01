@@ -85,11 +85,11 @@ version: ## update the version file with the current git tag name
 
 .PHONY: bump
 bump: ## increment the version in the serviceworker by 0.0.1
-	perl -i'' -pe 's/^(var version = .v\d+\.\d\.)(\d+)(.;)/$$1 . ($$2 + 1) . $$3/e' $(SERVICE_WORKER)
+	perl -i'' -pe 's/^(const version = .v\d+\.\d\.)(\d+)(.;)/$$1 . ($$2 + 1) . $$3/e' $(SERVICE_WORKER)
 
 .PHONY: tag
 tag: ## create git tag, next in line (with 0.1 increments) and push to repo
-	sed $(SED_INPLACE) -r "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)
+	sed $(SED_INPLACE) -r "s/^(const version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)
 	sed $(SED_INPLACE) -r 's/^(  "version": ")[^"]*(",)/\1$(NEXT_VERSION).0\2/' package.json
 	git commit $(SERVICE_WORKER) package.json -m 'Updated files with new tag'
 	git tag $(NEXT_TAG)

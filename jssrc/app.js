@@ -15,53 +15,52 @@ const VotingApp      = require('./VotingApp.js');
  * Register serviceworker if supported
  */
 
+const cacheName = 'sprintname-voting-booth';
+
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('/service-worker.js')
         .then(function (registration) {
-            console.log('Service Worker Registered with scope', registration.scope);
+            console.log('[Navigator] ServiceWorker registered with scope',
+                registration.scope);
         })
         .catch(function (err) {
-            console.log('ServiceWorker registration failed:', err);
+            console.log('[Navigator] ServiceWorker registration failed:', err);
         });
 
 
-    navigator.serviceWorker.onmessage = function (evt) {
-        console.log('message received'); // TODO
-        var message = JSON.parse(evt.data);
+    navigator.serviceWorker.addEventListener('message', function (event) {
+        var message = JSON.parse(event.data);
+        console.log('[Navigator] Message received', message);
 
-        var isRefresh = message.type === 'refresh';
-        var isAsset = message.url.includes('asset');
-        var lastETag = localStorage.currentETag;
-        var isNew =  lastETag !== message.eTag;
+        const file = message.url.replace(/.*pokeart/, '');
 
-        if (isRefresh && isAsset && isNew) {
-            if (lastETag) {
-                notice.hidden = false;
-            }
-            localStorage.currentETag = message.eTag;
+        var img = document.querySelector('img[src$="' + file + '"]');
+        // Test whether we found a corresponding image in-document.
+        // If not, then we were probably just preloading.
+        if (img) {
+            caches.open(cacheName)
+                .then(function (cache) {
+                    return cache.match(img.src);
+                })
+                .then(function (response) {
+                    // Test whether we found cached data for this image.
+                    // If not, then why did we get here? Just skip.
+                    if (response && response.blob) {
+                        return response.blob();
+                    } else {
+                        throw new Error('No image update was found in the application cache, skipping');
+                    }
+                })
+                .then(function (bodyBlob) {
+                    var url = URL.createObjectURL(bodyBlob);
+                    img.src = url;
+                }, function (e) {
+                    console.log(e.message);
+                });
         }
+    });
 
-        var img = document.querySelector('img');
-        caches.open(CACHE)
-            .then(function (cache) {
-                return cache.match(img.src);
-            })
-            .then(function (response) {
-                return response.blob();
-            })
-            .then(function (bodyBlob) {
-                var url = URL.createObjectURL(bodyBlob);
-                img.src = url;
-                notice.hidden = true;
-            });
-    };
-
-
-    //navigator.serviceWorker
-    //    .addEventListener('message', function (event) {
-    //        console.log(event.data.message);
-    //    });
 }
 
 /** **********************************************************************

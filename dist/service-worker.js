@@ -3,11 +3,11 @@
  * Serviceworker for Pokémon Sprint Name Voting Booth
  */
 
-var version = 'v10.9.0';
-var cacheName = 'sprintname-voting-booth-' + version;
-var imageDir = '/pokeart/'
-var placeHolder = 'silhouette.png';
-var filesToCache = [
+const version = 'v10.9.0';
+const cacheName = 'sprintname-voting-booth';
+const imageDir = '/pokeart/'
+const placeHolder = 'silhouette.png';
+const filesToCache = [
     '/',
     '/index.html',
     '/bundle.js',
@@ -173,7 +173,7 @@ function fromNetwork(request) {
  * to the client for update
  */
 function refreshClients(response) {
-    console.log('[ServiceWorker] refreshClients');
+    console.log('[ServiceWorker] refreshClients', response);
     return self.clients.matchAll().then(function (clients) {
         clients.forEach(function (client) {
             var message = {
