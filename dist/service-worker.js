@@ -64,7 +64,7 @@ self.addEventListener('install', function (event) {
  * Remove old caches when activating
  */
 self.addEventListener('activate', function (event) {
-    console.log('[ServiceWorker] Activating');
+    console.log('[ServiceWorker] Activating', version);
     event.waitUntil(
         caches.keys().then(function (keyList) {
             return Promise.all(keyList.map(function (key) {
@@ -97,7 +97,7 @@ self.addEventListener('fetch', function (event) {
     }
     else if (requestFile.indexOf(imageDir) === 0) {
         // This is an image for which a placeholder should be shown
-        return networkThenFallback(event);
+        return cacheElsePlaceholderThenNetworkAndRefresh(event);
     }
     // In all other cases: just don't block the default
 });
@@ -107,6 +107,7 @@ self.addEventListener('fetch', function (event) {
  * while the cache is refreshed.
  */
 function cacheThenNetwork(event) {
+    console.log('[ServiceWorker] cacheThenNetwork', event.request.url);
     event.respondWith(
         caches.open(cacheName).then(function (cache) {
             return cache.match(event.request).then(function (cacheResponse) {
@@ -124,23 +125,45 @@ function cacheThenNetwork(event) {
  * All artwork images are served from the network only, but if
  * unreachable, serve a placeholder image from the cache.
  */
-function networkThenFallback(event) {
-    event.respondWith(
-        fetch(event.request)
-        .then(function (response) {
-            return response;
-        }, sendCachedFallback)
-        .catch(sendCachedFallback)
+function cacheElsePlaceholderThenNetworkAndRefresh(event) {
+    console.log('[ServiceWorker] cacheElsePlaceholderThenNetworkAndRefresh', event.request.url);
+    event.respondWith(sendCachedFallback(event.request));
+    event.waitUntil(
+        fromNetwork(event.request).then(refreshClients)
     );
+}
+
+/**
+ * Find an image in the cache and serve it.
+ */
+function fromCache(request) {
+    console.log('[ServiceWorker] fromCache', request.url);
+    return caches.open(cacheName).then(function (cache) {
+        return cache.match(request);
+    } //, sendCachedFallback
+    )
+     //   .catch(sendCachedFallback)
+    ;
 }
 
 /**
  * Serve a placeholder image from the cache.
  */
 function sendCachedFallback() {
+    console.log('[ServiceWorker] sendCachedFallback');
+    return fromCache(imageDir + placeHolder);
+}
+
+/**
+ * Fetch a file from the network.
+ */
+function fromNetwork(request) {
+    console.log('[ServiceWorker] fromNetwork', request.url);
     return caches.open(cacheName).then(function (cache) {
-        return cache.match(imageDir + placeHolder).then(function (response) {
-            return response;
+        return fetch(request).then(function (response) {
+            return cache.put(request, response.clone()).then(function () {
+                return response;
+            }); // .catch(sendCachedFallback);
         });
     });
 }
@@ -150,6 +173,7 @@ function sendCachedFallback() {
  * to the client for update
  */
 function refreshClients(response) {
+    console.log('[ServiceWorker] refreshClients');
     return self.clients.matchAll().then(function (clients) {
         clients.forEach(function (client) {
             var message = {
@@ -157,6 +181,7 @@ function refreshClients(response) {
                 url: response.url,
                 eTag: response.headers.get('ETag')
             };
+            console.log('[ServiceWorker] Sending received image to client...');
             client.postMessage(JSON.stringify(message));
         });
     });

@@ -13,9 +13,17 @@ const express     = require('express');
 const webserver   = express();
 const tokenserver = new FirebaseTokenServer(webserver);
 
+/*
 webserver.use('/pokeart', (req, res, next) => {
-  const num = Math.floor(Math.random() * 700 + 100);
-  res.sendFile(`dist/pokeart/${num}.png`, { root: __dirname });
+    const num = Math.floor(Math.random() * 700 + 100);
+    res.sendFile(`dist/pokeart/${num}.png`, { root: __dirname });
+});
+*/
+
+webserver.use('/pokeart', (req, res, next) => {
+    setTimeout(function () {
+        res.sendFile('/dist' + req.originalUrl, { root: __dirname });
+    }, 1000);
 });
 
 webserver.use(express.static('dist'));

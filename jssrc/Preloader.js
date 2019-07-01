@@ -102,6 +102,7 @@ module.exports = (function (jQuery) {
 
     Preloader.prototype.preloadImages = function ()
     {
+        return; // TODO FIXME REMOVE
         const prevGeneration = this.generation;
         for (let i = 0; i < Math.min(batchSize, this.list.length); i += 1) {
             let nextImg = this.list.shift();
