@@ -26,7 +26,7 @@ webserver.use('/pokeart', (req, res, next) => {
 webserver.use('/pokeart', (req, res, next) => {
     setTimeout(function () {
         res.sendFile('/dist' + req.originalUrl, { root: __dirname });
-    }, 1000);
+    }, 2000);
 });
 */
 

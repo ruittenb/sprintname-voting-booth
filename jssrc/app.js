@@ -30,34 +30,40 @@ if ('serviceWorker' in navigator) {
 
 
     navigator.serviceWorker.addEventListener('message', function (event) {
-        var message = JSON.parse(event.data);
+        const message = JSON.parse(event.data);
         console.log('[Navigator] Message received', message);
 
-        const file = message.url.replace(/.*pokeart/, '');
+        const isRefresh = message.type === 'refresh';
+        const eTag = message.eTag;
+        const fileName = message.url.replace(/.*pokeart/, '');
+        const img = document.querySelector('img[src$="' + fileName + '"]');
 
-        var img = document.querySelector('img[src$="' + file + '"]');
         // Test whether we found a corresponding image in-document.
         // If not, then we were probably just preloading.
         if (img) {
-            caches.open(cacheName)
-                .then(function (cache) {
-                    return cache.match(img.src);
-                })
-                .then(function (response) {
-                    // Test whether we found cached data for this image.
-                    // If not, then why did we get here? Just skip.
-                    if (response && response.blob) {
-                        return response.blob();
-                    } else {
-                        throw new Error('No image update was found in the application cache, skipping');
-                    }
-                })
-                .then(function (bodyBlob) {
-                    var url = URL.createObjectURL(bodyBlob);
-                    img.src = url;
-                }, function (e) {
-                    console.log(e.message);
-                });
+            const imgETag = img.dataset && img.dataset.eTag;
+            // are we actually refreshing the image?
+            if (eTag !== imgETag && isRefresh) {
+                caches.open(cacheName)
+                    .then(function (cache) {
+                        return cache.match(img.src);
+                    })
+                    .then(function (response) {
+                        // Test whether we found cached data for this image.
+                        // If not, then why did we get here? Just skip.
+                        if (response && response.blob) {
+                            return response.blob();
+                        } else {
+                            throw new Error('No image update was found in the application cache, skipping');
+                        }
+                    })
+                    .then(function (blob) {
+                        img.src = URL.createObjectURL(blob);
+                        img.dataset.eTag = eTag;
+                    }, function (e) {
+                        console.log(e.message);
+                    });
+            }
         }
     });
 

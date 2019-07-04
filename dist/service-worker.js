@@ -79,11 +79,18 @@ self.addEventListener('activate', function (event) {
 });
 
 /**
- * Stale-while-revalidate:
+ * Most non-pokemon images on the site use the 'stale-while-revalidate' strategy:
  * If found in cache, then send the version from cache.
  * Meanwhile, fetch the new version over the network and cache it.
  *
  * @see https://jakearchibald.com/2014/offline-cookbook/#stale-while-revalidate
+ *
+ * Pokemon images use the 'cache-update-and-refresh' strategy:
+ * If found in cache, then send the version from cache, otherwise, send a placeholder.
+ * Meanwhile, fetch the new version over the network, cache it and update the image
+ * in the rendered document.
+ *
+ * @see https://serviceworke.rs/strategy-cache-update-and-refresh_demo.html
  */
 self.addEventListener('fetch', function (event) {
     if (event.request.method !== 'GET') {
@@ -127,7 +134,9 @@ function cacheThenNetwork(event) {
  */
 function cacheElsePlaceholderThenNetworkAndRefresh(event) {
     console.log('[ServiceWorker] cacheElsePlaceholderThenNetworkAndRefresh', event.request.url);
-    event.respondWith(sendCachedFallback(event.request));
+    const firstResponse = fromCache(event.request);
+    console.warn('[ServiceWorker] first response', firstResponse);
+    event.respondWith(firstResponse.then(function (a) { return a; }));
     event.waitUntil(
         fromNetwork(event.request).then(refreshClients)
     );
@@ -140,10 +149,8 @@ function fromCache(request) {
     console.log('[ServiceWorker] fromCache', request.url);
     return caches.open(cacheName).then(function (cache) {
         return cache.match(request);
-    } //, sendCachedFallback
-    )
-     //   .catch(sendCachedFallback)
-    ;
+    }, sendCachedFallback)
+        .catch(sendCachedFallback);
 }
 
 /**
@@ -163,7 +170,7 @@ function fromNetwork(request) {
         return fetch(request).then(function (response) {
             return cache.put(request, response.clone()).then(function () {
                 return response;
-            }); // .catch(sendCachedFallback);
+            }).catch(sendCachedFallback);
         });
     });
 }
