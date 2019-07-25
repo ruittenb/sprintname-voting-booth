@@ -79,7 +79,7 @@ self.addEventListener('activate', function (event) {
 });
 
 /**
- * Most non-pokemon images on the site use the 'stale-while-revalidate' strategy:
+ * Most non-Pokemon images on the site use the 'stale-while-revalidate' strategy:
  * If found in cache, then send the version from cache.
  * Meanwhile, fetch the new version over the network and cache it.
  *
@@ -134,9 +134,15 @@ function cacheThenNetwork(event) {
  */
 function cacheElsePlaceholderThenNetworkAndRefresh(event) {
     console.log('[ServiceWorker] cacheElsePlaceholderThenNetworkAndRefresh', event.request.url);
-    const firstResponse = fromCache(event.request);
-    console.warn('[ServiceWorker] first response', firstResponse);
-    event.respondWith(firstResponse.then(function (a) { return a; }));
+    const cacheResponse = fromCache(event.request);
+    console.warn('[ServiceWorker] cacheElsePlaceholderThenNetworkAndRefresh: cache response', cacheResponse);
+    event.respondWith(cacheResponse.then(function (a) {
+        console.warn('[ServiceWorker] cacheElsePlaceholderThenNetworkAndRefresh: fromCache found');
+        return a;
+    }).catch(function (a) {
+        console.warn('[ServiceWorker] cacheElsePlaceholderThenNetworkAndRefresh: fromCache rejected');
+        return sendCachedFallback();
+    }));;
     event.waitUntil(
         fromNetwork(event.request).then(refreshClients)
     );
@@ -146,9 +152,12 @@ function cacheElsePlaceholderThenNetworkAndRefresh(event) {
  * Find an image in the cache and serve it.
  */
 function fromCache(request) {
-    console.log('[ServiceWorker] fromCache', request.url);
+    console.log('[ServiceWorker] fromCache: received request: ', request.url);
     return caches.open(cacheName).then(function (cache) {
-        return cache.match(request);
+        cache.match(request).then(function (response) {
+            console.log('[ServiceWorker] fromCache: returning: ', response);
+            return response;
+        });
     }, sendCachedFallback)
         .catch(sendCachedFallback);
 }
@@ -158,7 +167,7 @@ function fromCache(request) {
  */
 function sendCachedFallback() {
     console.log('[ServiceWorker] sendCachedFallback');
-    return fromCache(imageDir + placeHolder);
+    return fromCache({ url: imageDir + placeHolder });
 }
 
 /**
@@ -170,7 +179,9 @@ function fromNetwork(request) {
         return fetch(request).then(function (response) {
             return cache.put(request, response.clone()).then(function () {
                 return response;
-            }).catch(sendCachedFallback);
+            }).catch(function () {
+                return response;
+            });
         });
     });
 }

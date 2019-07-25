@@ -9,6 +9,7 @@ missing:
  - use date object to calculate default page?
 
 improvements:
+ - <link rel="prefetch"> voor images?
  - Use Firebase objects when they have been ported to 0.18:
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire/latest  @effect-manager
    - http://package.elm-lang.org/packages/ThomasWeiser/elmfire-extra/latest
