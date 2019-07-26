@@ -57,7 +57,6 @@ module.exports = (function () {
     const DEBUG = false;
     const VALID_REFERERS = [
         'http://localhost:4201',
-        'https://voting-booth.kube.profortool.com',
         'https://voting-booth.dokube.profortool.com'
     ];
 
