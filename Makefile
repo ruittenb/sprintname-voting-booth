@@ -17,7 +17,12 @@ DOCKER_REGISTRY=eu.gcr.io/proforto-team-sso
 SERVERREGEX=[v]oting-booth
 DOCKER_REPO=voting-booth
 DOCKERPORTS=-p 4201:4201
-KUBECONTEXT=voting-booth
+
+KUBE_NAMESPACE=voting-booth
+KUBE_CONTEXT=voting-booth
+KUBE_DEPLOYMENT=locationlabels
+KUBE_RESTART_PATCH=$(shell node kubernetes/restartdate_patch.js)
+
 .DEFAULT_GOAL:=help
 
 ############################################################################
@@ -26,7 +31,7 @@ KUBECONTEXT=voting-booth
 # automatic self-documentation
 .PHONY: help # See https://gist.github.com/ruittenb/5d2d281237385276f49652b9b9f6d5a1
 help: ## display this help
-	@awk -v tab=19 'BEGIN { FS = ":.*## "; buffer = ""; color = "\033[36m"; nocolor = "\033[0m"; indent = "  "; usage(); } function trim(str) { gsub(/[ \t]+$$/, "", str); gsub(/^[ \t]+/, "", str); return str; } function spout(target, desc) { printf "%s%s%-" tab "s%s%s\n", indent, color, trim(target), nocolor, desc; } function usage() { printf "\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n", indent, color, nocolor; } /\\$$/ { gsub(/\\$$/, ""); buffer = buffer $$0; next; } buffer { $$0 = buffer $$0; buffer = ""; } /^[-a-zA-Z0-9*%_. ]+:.*?## / { pad = sprintf("\n%" tab "s" indent, ""); gsub(/\\n/, pad); spout($$1, $$2); } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.51
+	@awk -v tab=20 'BEGIN { FS = ":.*## "; buffer = ""; color = "\033[36m"; nocolor = "\033[0m"; indent = "  "; usage(); } function trim(str) { gsub(/[ \t]+$$/, "", str); gsub(/^[ \t]+/, "", str); return str; } function spout(target, desc) { split(trim(target), fields, " "); for (i in fields) printf "%s%s%-" tab "s%s%s\n", indent, color, trim(fields[i]), nocolor, desc; } function usage() { printf "\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n", indent, color, nocolor; } /\\$$/ { gsub(/\\$$/, ""); buffer = buffer $$0; next; } buffer { $$0 = buffer $$0; buffer = ""; } /^[-a-zA-Z0-9*%_. ]+:.*## / { pad = sprintf("\n%" tab "s" indent, ""); gsub(/\\n/, pad); spout($$1, $$2); } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.53
 
 ############################################################################
 ##@ Development:
@@ -147,11 +152,11 @@ watch: ## start the webserver. rebuild and restart if the source changes
 	)
 
 ############################################################################
-##@ Docker:
+##@ Building and running in docker locally:
 
-.PHONY: select-kube-context
-select-kube-context:
-	kubectl config use-context $(KUBECONTEXT)
+.PHONY: docker-build
+docker-build: ## build the docker image
+	nice docker build -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
 
 .PHONY: docker-status
 docker-status: ## show the status of the docker image and containers
@@ -160,25 +165,17 @@ docker-status: ## show the status of the docker image and containers
 	@echo CONTAINERS
 	@docker ps -a  | grep $(DOCKER_REPO) || echo none
 
-.PHONY: docker-build
-docker-build: ## build the docker image
-	nice docker build -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
-
 .PHONY: docker-tag
 docker-tag: ## tag the :latest docker image with the current version
 	docker image tag $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest $(DOCKER_REGISTRY)/$(DOCKER_REPO):$(CURRENT_VERSION)
 
-.PHONY: docker-push
-docker-push: select-kube-context ## push the current image tag to docker repo
-	docker push $(DOCKER_REGISTRY)/$(DOCKER_REPO):$(CURRENT_VERSION)
-
 .PHONY: docker-start
 docker-start: ## start the docker container
-	if docker ps -a | grep $(SERVERREGEX) >/dev/null 2>&1; then   \
-		docker start $(DOCKER_REPO);                          \
-	else                                                          \
-		docker run --name $(DOCKER_REPO) $(DOCKERPORTS)       \
-			-t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest & \
+	if docker ps -a | grep $(SERVERREGEX) >/dev/null 2>&1; then  \
+		docker start $(DOCKER_REPO);                         \
+	else                                                         \
+		docker run --name $(DOCKER_REPO) $(DOCKERPORTS) -d   \
+			-t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest  \
 	fi
 
 .PHONY: docker-build-start
@@ -196,5 +193,22 @@ docker-destroy: docker-stop ## destroy the docker image and container
 .PHONY: docker-shell
 docker-shell: ## shell into the running docker container
 	docker exec -it $(DOCKER_REPO) /bin/bash
+
+############################################################################
+##@ Publishing and deployment on Kubernetes:
+
+.PHONY: docker-push
+docker-push: ## push the current image tag to docker repo
+	docker push $(DOCKER_REGISTRY)/$(DOCKER_REPO):$(CURRENT_VERSION)
+
+.PHONY: restart-production
+restart-production: ## gracefully restart kubernetes pod
+	kubectl patch deployment $(KUBE_DEPLOYMENT) -n $(KUBE_NAMESPACE) -p '$(KUBE_RESTART_PATCH)'
+
+.PHONY: deploy-production
+deploy-production: docker-build docker-push restart-production \
+## build docker image, push to docker repo and restart production pod
+
+############################################################################
 
 # vim: set list ts=8 sw=8 noet:
