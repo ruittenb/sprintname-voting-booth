@@ -1,6 +1,6 @@
 
 
-
+20160606 - Porygon
 20160621 - Scyther
 20160705 - Tangela
 20160720 - Vaporeon
@@ -75,5 +75,14 @@
 20190319 - Weavile
 20190402 - Yanmega
 20190416 - Archeops # V
+20190430 - Beartic
+20190514 - Carracosta
+20190528 - Ducklett
+20190611 - Emolga
+20190625 - Fraxure
+20190709 - Gigalith
+20190722 - Hydreigon
+20190806 - Joltik
+20190819 - Krokorok
 
 
