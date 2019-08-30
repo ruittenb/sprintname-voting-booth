@@ -16,6 +16,7 @@ import View exposing (view)
 import Update exposing (update)
 import Commands.Authentication exposing (decodeUser)
 import Commands.Database exposing (firebaseInit, firebaseLoginWithJwtToken)
+import Commands.Settings exposing (decodeSettings)
 import Commands.Pokemon exposing (decodePokedex)
 import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
 import Ports
@@ -23,6 +24,7 @@ import Ports
         ( onAuthenticationReceived
         , onAuthenticationFailed
         , onFirebaseLoginFailed
+        , onLoadSettings
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
@@ -89,6 +91,7 @@ init credentials location =
             , letter = initialSubpage.letter
             , preloaded = emptyPreloaded
             , query = initialQuery
+            , settings = RemoteData.NotAsked
             , pokedex = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked
             }
@@ -104,6 +107,7 @@ subscriptions _ =
         [ onAuthenticationReceived (decodeUser >> Msgs.AuthenticationReceived)
         , onAuthenticationFailed Msgs.AuthenticationFailed
         , onFirebaseLoginFailed (.message >> Msgs.FirebaseLoginFailed)
+        , onLoadSettings (decodeSettings >> Msgs.SettingsLoaded)
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)
         , onLoadUserRatings (decodeUserRatings >> Msgs.UserRatingsLoaded)

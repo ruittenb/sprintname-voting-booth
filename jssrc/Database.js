@@ -49,6 +49,7 @@ module.exports = (function (jQuery, firebase)
 
         this.votingDb = {
             database: firebase.database(),
+            settings: firebase.database().ref('settings'),
             pokedex : firebase.database().ref('pokedex'),
             users   : firebase.database().ref('users')
         };
@@ -62,6 +63,12 @@ module.exports = (function (jQuery, firebase)
     Database.prototype.initListeners = function ()
     {
         // ----- messages outgoing to elm -----
+
+        // when settings load
+        this.votingDb.settings.on('value', (data) => {
+            const settings = data.val();
+            this.elmClient.ports.onLoadSettings.send(settings);
+        });
 
         // when pokedex loads
         this.votingDb.pokedex.on('value', (data) => {
@@ -136,6 +143,8 @@ module.exports = (function (jQuery, firebase)
         // id should not be null, but let's be defensive here.
         if (userRatings.id !== null) {
             let userRef = this.votingDb.users.child(userRatings.id);
+            // Database rules ensure that votes cannot be cast if the
+            // application is in maintenance mode, so we don't check that here.
             userRef.set(userRatings);
         }
     };

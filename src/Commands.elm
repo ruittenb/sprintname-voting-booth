@@ -31,6 +31,9 @@ getStatusMessageExpiryTime statusLevel =
                 Warning ->
                     2 * second
 
+                PersistentWarning ->
+                    24 * hour
+
                 Error ->
                     5 * second
     in

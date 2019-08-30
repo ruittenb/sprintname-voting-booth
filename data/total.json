@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "maintenanceMode": false
+  },
   "pokedex": [
     {
       "description": "<i>Comment to be written</i>",

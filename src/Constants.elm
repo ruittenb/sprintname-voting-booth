@@ -3,11 +3,6 @@ module Constants exposing (..)
 import Char
 
 
-debounceDelay : Float
-debounceDelay =
-    0.5
-
-
 initialGeneration : Int
 initialGeneration =
     5
@@ -16,6 +11,16 @@ initialGeneration =
 initialLetter : Char
 initialLetter =
     'L'
+
+
+maintenanceApology : String
+maintenanceApology =
+    "The application is in maintenance mode. We apologize for the inconvenience."
+
+
+debounceDelay : Float
+debounceDelay =
+    0.5
 
 
 maxStars : Int
