@@ -1,27 +1,39 @@
 {
   "rules": {
     ".read": "true",
+    "settings": {
+      /**
+       * Only allow writing through firebase console. By changing the "users" object, we could
+       * change it to: "root.child('users').child(auth.uid).child('admin').val() == true"
+       */
+      ".write": "false"
+    },
     "pokedex": {
       ".write": "false"
     },
     "users": {
       "$user_id": {
-        ".write": "auth != null /* user must be logged in */
-                && data.exists() /* no inserting */
-                && data.child('active').val() == true /* user must be active */
-                && data.child('email').val() == auth.uid /* user may only update their own record */
-                && newData.exists() /* no deleting */
-                && newData.child('email').val() == auth.uid /* user may not change their email */
-                && newData.child('admin').val() == data.child('admin').val()", /* user may not change their admin status */
-        ".validate": "newData.hasChildren(['id', 'active', 'admin', 'color', 'email', 'ratings', 'userName'])
-                && newData.child('id').isNumber()
-                && newData.child('active').isBoolean()
-                && newData.child('admin').isBoolean()
-                && newData.child('color').isString()
-                && newData.child('email').isString()
-                && newData.child('ratings').isString()
-                && newData.child('ratings').val().length >= 803
-                && newData.child('userName').isString()"
+        ".write": "
+          auth != null /* user must be logged in */
+          && root.child('settings').child('maintenanceMode').val() == false /* app not in maintenance mode */
+          && data.exists() /* no inserting */
+          && data.child('active').val() == true /* user must be active */
+          && data.child('email').val() == auth.uid /* user may only update their own record */
+          && newData.exists() /* no deleting */
+          && newData.child('email').val() == auth.uid /* user may not change their email */
+          && newData.child('admin').val() == data.child('admin').val() /* user may not change their admin status */
+        ",
+        ".validate": "
+          newData.hasChildren(['id', 'active', 'admin', 'color', 'email', 'ratings', 'userName'])
+          && newData.child('id').isNumber()
+          && newData.child('active').isBoolean()
+          && newData.child('admin').isBoolean()
+          && newData.child('color').isString()
+          && newData.child('email').isString()
+          && newData.child('ratings').isString()
+          && newData.child('ratings').val().length >= 803
+          && newData.child('userName').isString()
+        "
       }
     }
   }

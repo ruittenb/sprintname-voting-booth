@@ -11,6 +11,7 @@ port module Ports
         , onAuthenticationReceived
         , onAuthenticationFailed
         , onFirebaseLoginFailed
+        , onLoadSettings
         , onLoadPokedex
         , onLoadTeamRatings
         , onLoadUserRatings
@@ -61,6 +62,9 @@ port onAuthenticationFailed : (String -> msg) -> Sub msg
 
 
 port onFirebaseLoginFailed : (Diagnostics -> msg) -> Sub msg
+
+
+port onLoadSettings : (Value -> msg) -> Sub msg
 
 
 port onLoadPokedex : (Value -> msg) -> Sub msg

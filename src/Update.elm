@@ -4,6 +4,7 @@ import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
 import Navigation exposing (newUrl)
 import Control exposing (update)
+import Constants exposing (maintenanceApology)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
@@ -61,6 +62,34 @@ update msg oldState =
         FirebaseLoginFailed reason ->
             updateAuthWithNoProfile oldState (Just reason)
                 |> andThenCmd firebaseLogout
+
+        SettingsLoaded (Success settings) ->
+            let
+                newState =
+                    { oldState | settings = RemoteData.succeed settings }
+
+                newTuple =
+                    if not settings.maintenanceMode then
+                        ( newState, Cmd.none )
+                            |> clearStatusMessage
+                    else
+                        ( newState, Cmd.none )
+                            |> setStatusMessage PersistentWarning maintenanceApology
+            in
+                newTuple
+
+        SettingsLoaded (Failure message) ->
+            let
+                newState =
+                    { oldState
+                        | ratings = RemoteData.Failure message
+                    }
+            in
+                ( newState, Cmd.none )
+                    |> setStatusMessage Error (toString message)
+
+        SettingsLoaded _ ->
+            ( oldState, Cmd.none )
 
         TeamRatingsLoaded (Success ratings) ->
             let

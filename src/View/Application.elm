@@ -1,4 +1,4 @@
-module View.Application exposing (heading, title)
+module View.Application exposing (title, applicationPane, functionPane)
 
 import Time exposing (Time, second)
 import Html exposing (..)
@@ -36,7 +36,7 @@ messageBox message level =
         , classList
             [ ( "debug", level == Debug )
             , ( "notice", level == Notice )
-            , ( "warning", level == Warning )
+            , ( "warning", level == Warning || level == PersistentWarning )
             , ( "error", level == Error )
             ]
         ]
@@ -348,16 +348,22 @@ tableMask route =
                 span [] []
 
 
-heading : ApplicationState -> Html Msg
-heading state =
-    div [ id "filter-buttons" ]
+applicationPane : ApplicationState -> Html Msg
+applicationPane state =
+    div [ id "main-buttons" ]
         [ loginLogoutButton
             state.authModel
             state.currentUser
         , messageBox
             state.statusMessage
             state.statusLevel
-        , generationButtons
+        ]
+
+
+functionPane : ApplicationState -> Html Msg
+functionPane state =
+    div [ id "function-buttons" ]
+        [ generationButtons
             state.currentRoute
             state.generation
             state.letter

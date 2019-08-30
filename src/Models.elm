@@ -3,6 +3,7 @@ module Models exposing (..)
 import Time exposing (Time)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
+import Models.Settings exposing (RemoteSettings)
 import Models.Pokemon exposing (RemotePokedex)
 import Models.Ratings exposing (RemoteTeamRatings)
 import Msgs exposing (Msg)
@@ -34,6 +35,7 @@ type alias ApplicationStateNoMessage =
     , letter : Char
     , preloaded : PreloadedSets
     , query : String
+    , settings : RemoteSettings
     , pokedex : RemotePokedex
     , ratings : RemoteTeamRatings
     }

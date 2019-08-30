@@ -211,7 +211,7 @@ button.user-button.current,
  * and move the search box above both.
  */
 @media (max-width: 455px) {
-    #filter-buttons {
+    #function-buttons {
         display: flex;
         flex-direction: column;
     }
@@ -251,7 +251,7 @@ button.user-button.current,
     border: 1px solid black;
     margin-right: 4px;
     padding: 2px 6px 0 6px;
-    height: 28px;
+    height: 30px;
     overflow: hidden;
     background-color: #eee;
     color: black;

@@ -4,6 +4,7 @@ import Control exposing (Control)
 import Time exposing (Time)
 import Models.Types exposing (..)
 import Models.Auth exposing (RemoteLoggedInUser)
+import Models.Settings exposing (RemoteSettings)
 import Models.Pokemon exposing (RemotePokedex)
 import Models.Ratings exposing (RemoteTeamRatings, RemoteUserRatings, UserVote)
 
@@ -20,6 +21,7 @@ type Msg
     | FirebaseLoginFailed String
     | AuthenticationLoginClicked
     | AuthenticationLogoutClicked
+    | SettingsLoaded RemoteSettings
     | PokedexLoaded RemotePokedex
     | TeamRatingsLoaded RemoteTeamRatings
     | UserRatingsLoaded RemoteUserRatings
