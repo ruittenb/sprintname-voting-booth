@@ -206,7 +206,7 @@ restart-production: ## gracefully restart kubernetes pod
 	kubectl patch deployment $(KUBE_DEPLOYMENT) -n $(KUBE_NAMESPACE) -p '$(KUBE_RESTART_PATCH)'
 
 .PHONY: deploy-production
-deploy-production: docker-build docker-push restart-production \
+deploy-production: docker-build docker-tag docker-push restart-production \
 ## build docker image, push to docker repo and restart production pod
 
 ############################################################################
