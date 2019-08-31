@@ -3,7 +3,7 @@
  * Serviceworker for Pokémon Sprint Name Voting Booth
  */
 
-var version = 'v10.6.0';
+var version = 'v10.7.0';
 var cacheName = 'sprintname-voting-booth-' + version;
 var imageDir = '/pokeart/'
 var placeHolder = 'silhouette.png';
