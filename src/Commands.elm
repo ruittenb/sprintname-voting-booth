@@ -31,10 +31,10 @@ getStatusMessageExpiryTime statusLevel =
                 Warning ->
                     2 * second
 
-                PersistentWarning ->
+                Maintenance ->
                     24 * hour
 
                 Error ->
-                    5 * second
+                    10 * second
     in
         perform (\time -> StatusMessageExpiryTimeReceived (time + duration)) now

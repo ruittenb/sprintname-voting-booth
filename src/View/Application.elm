@@ -36,7 +36,7 @@ messageBox message level =
         , classList
             [ ( "debug", level == Debug )
             , ( "notice", level == Notice )
-            , ( "warning", level == Warning || level == PersistentWarning )
+            , ( "warning", level == Warning || level == Maintenance )
             , ( "error", level == Error )
             ]
         ]

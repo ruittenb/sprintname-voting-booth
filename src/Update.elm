@@ -74,7 +74,7 @@ update msg oldState =
                             |> clearStatusMessage
                     else
                         ( newState, Cmd.none )
-                            |> setStatusMessage PersistentWarning maintenanceApology
+                            |> setStatusMessage Maintenance maintenanceApology
             in
                 newTuple
 

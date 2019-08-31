@@ -31,7 +31,7 @@ type BrowseDirection
 
 type StatusLevel
     = Error
-    | PersistentWarning
+    | Maintenance
     | Warning
     | Notice
     | Debug
