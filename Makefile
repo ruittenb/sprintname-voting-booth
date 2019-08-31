@@ -20,7 +20,7 @@ DOCKERPORTS=-p 4201:4201
 
 KUBE_NAMESPACE=voting-booth
 KUBE_CONTEXT=voting-booth
-KUBE_DEPLOYMENT=locationlabels
+KUBE_DEPLOYMENT=voting-booth
 KUBE_RESTART_PATCH=$(shell node kubernetes/restartdate_patch.js)
 
 .DEFAULT_GOAL:=help
@@ -31,7 +31,7 @@ KUBE_RESTART_PATCH=$(shell node kubernetes/restartdate_patch.js)
 # automatic self-documentation
 .PHONY: help # See https://gist.github.com/ruittenb/5d2d281237385276f49652b9b9f6d5a1
 help: ## display this help
-	@awk -v tab=20 'BEGIN { FS = ":.*## "; buffer = ""; color = "\033[36m"; nocolor = "\033[0m"; indent = "  "; usage(); } function trim(str) { gsub(/[ \t]+$$/, "", str); gsub(/^[ \t]+/, "", str); return str; } function spout(target, desc) { split(trim(target), fields, " "); for (i in fields) printf "%s%s%-" tab "s%s%s\n", indent, color, trim(fields[i]), nocolor, desc; } function usage() { printf "\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n", indent, color, nocolor; } /\\$$/ { gsub(/\\$$/, ""); buffer = buffer $$0; next; } buffer { $$0 = buffer $$0; buffer = ""; } /^[-a-zA-Z0-9*%_. ]+:.*## / { pad = sprintf("\n%" tab "s" indent, ""); gsub(/\\n/, pad); spout($$1, $$2); } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.53
+	@awk -v tab=24 'BEGIN { FS = ":.*## "; buffer = ""; color = "\033[36m"; nocolor = "\033[0m"; indent = "  "; usage(); } function trim(str) { gsub(/[ \t]+$$/, "", str); gsub(/^[ \t]+/, "", str); return str; } function spout(target, desc) { split(trim(target), fields, " "); for (i in fields) printf "%s%s%-" tab "s%s%s\n", indent, color, trim(fields[i]), nocolor, desc; } function usage() { printf "\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n", indent, color, nocolor; } /\\$$/ { gsub(/\\$$/, ""); buffer = buffer $$0; next; } buffer { $$0 = buffer $$0; buffer = ""; } /^[-a-zA-Z0-9*%_. ]+:.*## / { pad = sprintf("\n%" tab "s" indent, ""); gsub(/\\n/, pad); spout($$1, $$2); } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.53
 
 ############################################################################
 ##@ Development:
@@ -201,13 +201,23 @@ docker-shell: ## shell into the running docker container
 docker-push: ## push the current image tag to docker repo
 	docker push $(DOCKER_REGISTRY)/$(DOCKER_REPO):$(CURRENT_VERSION)
 
-.PHONY: restart-production
-restart-production: ## gracefully restart kubernetes pod
+.PHONY: kube-switch-context
+kube-switch-context: ## switch kubernetes context to voting-booth
+	kubectl config use-context $(KUBE_CONTEXT)
+
+.PHONY: kube-edit-deployment
+kube-edit-deployment: ## edit the deployment in an editor, to increment version number
+	@echo "Please increment the version number in the deployment to $(CURRENT_VERSION)"
+	@read -p "Press Enter now to start your editor: " ans
+	kubectl edit deployment $(KUBE_DEPLOYMENT) -n $(KUBE_NAMESPACE)
+
+.PHONY: kube-restart-production
+kube-restart-production: ## gracefully restart kubernetes pod
 	kubectl patch deployment $(KUBE_DEPLOYMENT) -n $(KUBE_NAMESPACE) -p '$(KUBE_RESTART_PATCH)'
 
-.PHONY: deploy-production
-deploy-production: docker-build docker-tag docker-push restart-production \
-## build docker image, push to docker repo and restart production pod
+.PHONY: kube-deploy-production
+kube-deploy-production: docker-build docker-tag docker-push kube-edit-deployment kube-restart-production \
+## build docker image, tag it, push to docker repo and restart production pod
 
 ############################################################################
 
