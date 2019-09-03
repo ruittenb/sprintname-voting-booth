@@ -84,5 +84,6 @@
 20190722 - Hydreigon
 20190806 - Joltik
 20190819 - Krokorok
+20190902 - Lillipup
 
 
