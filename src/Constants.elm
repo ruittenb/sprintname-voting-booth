@@ -10,7 +10,7 @@ initialGeneration =
 
 initialLetter : Char
 initialLetter =
-    'L'
+    'M'
 
 
 maintenanceApology : String
