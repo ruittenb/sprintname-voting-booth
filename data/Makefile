@@ -100,3 +100,9 @@ replace-users: ## update 'total' with the data from 'users'
 
 ##@ Note: the above commands require the jq(1) command
 
+mkwinners:
+	awk '{ \
+		print "    \"winnerNum\": " $$3 ","; \
+		print "    \"winnerName\": \"" $$2 "\","; \
+		print "    \"startDateString\": \"" $$1 "\","; \
+	}' winners.txt > winners.json
