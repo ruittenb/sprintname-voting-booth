@@ -1,4 +1,7 @@
-module Models.Pages exposing (Pages)
+module Models.Pages exposing (RemotePages, Pages)
+
+import Date exposing (Date)
+import RemoteData exposing (RemoteData)
 
 
 type alias Page =
@@ -8,6 +11,14 @@ type alias Page =
     , winnerNum : Maybe Int
     , winnerName : Maybe String
     }
+
+
+type alias Pages =
+    List Page
+
+
+type alias RemotePages =
+    RemoteData String Pages
 
 
 type alias Dated x =

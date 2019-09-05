@@ -32,6 +32,11 @@ unknownUserIcon =
     div [ class "unknown-user" ] []
 
 
+getWinnerDiv : ApplicationState -> Html Msg
+getWinnerDiv state =
+    div [] []
+
+
 linkTo : String -> Html Msg -> Html Msg
 linkTo url content =
     a
@@ -306,4 +311,7 @@ pokemonCanvas state =
                 Search _ ->
                     searchPokedex state.pokedex state.query
     in
-        div [ class "pokecanvas" ] <| pokemonTiles state.currentRoute pokeList state.ratings state.currentUser
+        div []
+            [ div [ class "pokecanvas" ] <| pokemonTiles state.currentRoute pokeList state.ratings state.currentUser
+            , getWinnerDiv state
+            ]

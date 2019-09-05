@@ -6,6 +6,7 @@ import Models.Types exposing (..)
 import Models.Auth exposing (RemoteLoggedInUser)
 import Models.Settings exposing (RemoteSettings)
 import Models.Pokemon exposing (RemotePokedex)
+import Models.Pages exposing (RemotePages)
 import Models.Ratings exposing (RemoteTeamRatings, RemoteUserRatings, UserVote)
 
 
@@ -23,7 +24,7 @@ type Msg
     | AuthenticationLogoutClicked
     | SettingsLoaded RemoteSettings
     | PokedexLoaded RemotePokedex
-    | PagesLoaded Pages
+    | PagesLoaded RemotePages
     | TeamRatingsLoaded RemoteTeamRatings
     | UserRatingsLoaded RemoteUserRatings
     | UserRatingsSaved RemoteUserRatings
