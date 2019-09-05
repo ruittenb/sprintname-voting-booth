@@ -11,8 +11,9 @@ import Helpers exposing (romanNumeral)
 import Helpers.Pokemon exposing (filterPokedex, searchPokedex)
 import Models exposing (..)
 import Models.Types exposing (..)
-import Models.Ratings exposing (..)
 import Models.Pokemon exposing (..)
+import Models.Pages exposing (..)
+import Models.Ratings exposing (..)
 import Msgs exposing (Msg)
 import Routing exposing (createBrowsePath)
 
@@ -32,9 +33,22 @@ unknownUserIcon =
     div [ class "unknown-user" ] []
 
 
+getWinner : RemotePages -> int -> string -> Winner
+getWinner remotePages generation letter =
+    Just
+        { num = -1
+        , name = "The winner is unknown"
+        }
+
+
 getWinnerDiv : ApplicationState -> Html Msg
 getWinnerDiv state =
-    div [] []
+    let
+        winner =
+            getWinner state.pages state.generation state.letter
+                |> Maybe.withDefault { num = -1, name = "No winner known" }
+    in
+        div [ class "blerk" ] [ text winner.name ]
 
 
 linkTo : String -> Html Msg -> Html Msg

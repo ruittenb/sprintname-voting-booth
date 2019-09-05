@@ -13,6 +13,7 @@ port module Ports
         , onFirebaseLoginFailed
         , onLoadSettings
         , onLoadPokedex
+        , onLoadPages
         , onLoadTeamRatings
         , onLoadUserRatings
         )
@@ -68,6 +69,9 @@ port onLoadSettings : (Value -> msg) -> Sub msg
 
 
 port onLoadPokedex : (Value -> msg) -> Sub msg
+
+
+port onLoadPages : (Value -> msg) -> Sub msg
 
 
 port onLoadTeamRatings : (Value -> msg) -> Sub msg

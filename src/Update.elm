@@ -91,6 +91,16 @@ update msg oldState =
         SettingsLoaded _ ->
             ( oldState, Cmd.none )
 
+        PagesLoaded (Success pages) ->
+            let
+                newState =
+                    { oldState | pages = RemoteData.succeed pages }
+            in
+                ( newState, Cmd.none )
+
+        PagesLoaded _ ->
+            ( oldState, Cmd.none )
+
         TeamRatingsLoaded (Success ratings) ->
             let
                 newRatings =

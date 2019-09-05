@@ -51,8 +51,8 @@ module.exports = (function (jQuery, firebase)
             database: firebase.database(),
             settings: firebase.database().ref('settings'),
             pokedex : firebase.database().ref('pokedex'),
+            pages   : firebase.database().ref('pages'),
             users   : firebase.database().ref('users')
-            pages   : firebase.database().ref('pages')
         };
 
         this.initListeners();
@@ -80,7 +80,7 @@ module.exports = (function (jQuery, firebase)
         // when pages information loads (initially)
         this.votingDb.pages.once('value', (data) => {
             const pages = data.val();
-            // this.elmClient.ports.onLoadPages.send(pages);
+            this.elmClient.ports.onLoadPages.send(pages);
         });
 
         // when pages information changes (when a page is closed)

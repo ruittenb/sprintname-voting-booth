@@ -5,6 +5,7 @@ import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Settings exposing (RemoteSettings)
 import Models.Pokemon exposing (RemotePokedex)
+import Models.Pages exposing (RemotePages)
 import Models.Ratings exposing (RemoteTeamRatings)
 import Msgs exposing (Msg)
 import Control
@@ -37,6 +38,7 @@ type alias ApplicationStateNoMessage =
     , query : String
     , settings : RemoteSettings
     , pokedex : RemotePokedex
+    , pages : RemotePages
     , ratings : RemoteTeamRatings
     }
 
