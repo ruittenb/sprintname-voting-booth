@@ -38,7 +38,8 @@ button.user-button,
 .button.show-voters,
 .button.button-spacer,
 .button.letter-button,
-.button.generation-button {
+.button.generation-button,
+.button.lock-button {
     height: 30px;
     margin-right: 4px;
     margin-bottom: 6px;
@@ -49,14 +50,16 @@ button.user-button,
 .button.show-voters,
 .button.show-rankings,
 .button.letter-button,
-.button.generation-button {
+.button.generation-button,
+.button.lock-button {
     background-color: white;
     border: 1px solid black;
     color: black;
 }
 
 span.button.show-voters,
-span.button.show-rankings {
+span.button.show-rankings,
+span.button.lock-button {
     background-color: #eee;
     border-color: #777;
 }
@@ -68,6 +71,14 @@ button.user-button {
 .button.show-voters,
 .button.show-rankings {
     width: 128px;
+}
+
+.button.lock-button {
+    width: 40px;
+    background: url(icons/lock-open-bw.png) no-repeat center center;
+}
+.button.lock-button.locked {
+    background: url(icons/lock-bw.png) no-repeat center center;
 }
 
 button.user-button,

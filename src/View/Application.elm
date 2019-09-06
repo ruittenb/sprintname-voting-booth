@@ -8,12 +8,14 @@ import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
 import Helpers exposing (romanNumeral)
 import Helpers.Pokemon exposing (filterPokedex)
+import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Authentication exposing (tryGetUserProfile, isLoggedIn)
 import Msgs exposing (Msg(..))
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
+import Models.Pages exposing (..)
 import Models.Ratings exposing (..)
 import Constants exposing (..)
 import Routing
@@ -130,13 +132,13 @@ letterButton currentRoute pokedex currentGen currentLetter letter =
         hash =
             createBrowsePath currentGen letter
 
-        linkElem =
+        letterButtonElement =
             if List.isEmpty pokeList then
                 span
             else
                 a
     in
-        linkElem
+        letterButtonElement
             [ classList
                 [ ( "button", True )
                 , ( "letter-button", True )
@@ -224,10 +226,36 @@ loginLogoutButton authModel currentUser =
             ]
 
 
-calculationButtons : Route -> Int -> Char -> Html Msg
-calculationButtons route gen letter =
+lockButton: Route -> RemotePages -> Int -> Char -> Html Msg
+lockButton currentRoute remotePages generation letter =
     let
-        linkElem =
+        currentPage =
+            getCurrentPage remotePages generation letter
+
+        isLocked =
+            isPageLocked currentRoute currentPage
+
+        lockButtonElement =
+            if isLocked then
+                span
+            else
+                a
+    in
+        lockButtonElement
+            [ classList
+                [ ( "button", True )
+                , ( "lock-button", True )
+                , ( "locked", isLocked )
+                ]
+            --, onClick LockMsg
+            ]
+            [ ]
+
+
+calculationButtons : Route -> RemotePages -> Int -> Char -> Html Msg
+calculationButtons route remotePages generation letter =
+    let
+        calculationButtonElement =
             case route of
                 Search _ ->
                     span
@@ -238,22 +266,23 @@ calculationButtons route gen letter =
         div
             [ id "calculation-buttons"
             ]
-            [ linkElem
+            [ calculationButtonElement
                 [ classList
                     [ ( "show-voters", True )
                     , ( "button", True )
                     ]
-                , href (createShowVotersPath gen letter)
+                , href (createShowVotersPath generation letter)
                 ]
                 [ text "Show Voters" ]
-            , linkElem
+            , calculationButtonElement
                 [ classList
                     [ ( "show-rankings", True )
                     , ( "button", True )
                     ]
-                , href (createShowRankingsPath gen letter)
+                , href (createShowRankingsPath generation letter)
                 ]
                 [ text "Show Rankings" ]
+            , lockButton route remotePages generation letter
             ]
 
 
@@ -348,18 +377,6 @@ tableMask route =
                 span [] []
 
 
-applicationPane : ApplicationState -> Html Msg
-applicationPane state =
-    div [ id "main-buttons" ]
-        [ loginLogoutButton
-            state.authModel
-            state.currentUser
-        , messageBox
-            state.statusMessage
-            state.statusLevel
-        ]
-
-
 functionPane : ApplicationState -> Html Msg
 functionPane state =
     div [ id "function-buttons" ]
@@ -377,6 +394,7 @@ functionPane state =
             state.letter
         , calculationButtons
             state.currentRoute
+            state.pages
             state.generation
             state.letter
         , tableMask
@@ -385,6 +403,18 @@ functionPane state =
             state
         , rankingsTable
             state
+        ]
+
+
+applicationPane : ApplicationState -> Html Msg
+applicationPane state =
+    div [ id "main-buttons" ]
+        [ loginLogoutButton
+            state.authModel
+            state.currentUser
+        , messageBox
+            state.statusMessage
+            state.statusLevel
         ]
 
 
