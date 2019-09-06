@@ -8,6 +8,9 @@ NEXT_TAG=v$(NEXT_VERSION)
 CURRENT_VERSION=$(shell git describe --tags | sed -e 's/^v//')
 CURRENT_TAG=$(shell git describe --tags)
 
+# detect GNU and BSD sed
+SED_INPLACE=$(shell sed --version | grep -q -s GNU && echo '-i' || echo '-i ""')
+
 JS_SOURCE=jssrc
 ELM_SOURCE=src
 DIST=dist
@@ -86,8 +89,8 @@ bump: ## increment the version in the serviceworker by 0.0.1
 
 .PHONY: tag
 tag: ## create git tag, next in line (with 0.1 increments) and push to repo
-	sed -i "" -E "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)
-	sed -i "" -E 's/^(  "version": ")[^"]*(",)/\1$(NEXT_VERSION).0\2/' package.json
+	sed $(SED_INPLACE) -r "s/^(var version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)
+	sed $(SED_INPLACE) -r 's/^(  "version": ")[^"]*(",)/\1$(NEXT_VERSION).0\2/' package.json
 	git commit $(SERVICE_WORKER) package.json -m 'Updated files with new tag'
 	git tag $(NEXT_TAG)
 	make version
