@@ -11,6 +11,9 @@ import Commands.Pages exposing (savePageLockState)
 updatePageLockState : ApplicationState -> Page -> ( ApplicationState, Cmd Msg )
 updatePageLockState oldState page =
     let
+        newPage =
+            { page | open = not page.open }
+
         newPages =
             oldState.pages
                 |> RemoteData.map
@@ -20,7 +23,7 @@ updatePageLockState oldState page =
                                 (oldPage.generation == page.generation)
                                     && (oldPage.letter == page.letter)
                             then
-                                { page | open = not page.open }
+                                newPage
 
                             else
                                 oldPage
@@ -31,5 +34,5 @@ updatePageLockState oldState page =
             { oldState | pages = newPages }
     in
         ( newState
-        , savePageLockState page
+        , savePageLockState newPage
         )

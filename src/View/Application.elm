@@ -235,6 +235,18 @@ lockButton currentRoute remotePages generation letter =
         isLocked =
             isPageLocked currentRoute currentPage
 
+        isCurrentUserAdmin =
+            -- TODO determine
+            False
+
+        isRouteBrowse =
+            case currentRoute of
+                Search _ ->
+                    False
+
+                _ ->
+                    True
+
         classProps =
             [ classList
                 [ ( "button", True )
@@ -242,14 +254,14 @@ lockButton currentRoute remotePages generation letter =
                 , ( "locked", isLocked )
                 ]
             ]
+
+        eventProps =
+            [ onClick (PageLockClicked currentPage) ]
     in
-        -- condition should be changed to isCurrentUserAdmin && isRouteBrowse
-        if False then
-            span classProps []
+        if isRouteBrowse && isCurrentUserAdmin then
+            a (classProps ++ eventProps) []
         else
-            a
-                (classProps ++ [ onClick (PageLockClicked currentPage) ])
-                []
+            span classProps []
 
 
 calculationButtons : Route -> RemotePages -> Int -> Char -> Html Msg
