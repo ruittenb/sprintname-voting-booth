@@ -17,7 +17,7 @@ type alias Page =
     , open : Bool
     , winnerNum : Maybe Int
     , winnerName : Maybe String
-    , startDate : String
+    , startDate : Maybe String
     }
 
 

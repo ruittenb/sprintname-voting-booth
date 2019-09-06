@@ -1,6 +1,5 @@
 module View.Pokemon exposing (pokemonCanvas)
 
-import Debug
 import List
 import Maybe
 import Html exposing (..)
@@ -68,7 +67,7 @@ getWinnerDiv state =
             getWinner state.pages state.generation state.letter
                 |> Maybe.withDefault { num = -1, name = "No winner known" }
     in
-        div [ class "blerk" ] [ text winner.name ]
+        div [ class "blerk" ] [ text <| "The winner is: " ++ winner.name ]
 
 
 linkTo : String -> Html Msg -> Html Msg

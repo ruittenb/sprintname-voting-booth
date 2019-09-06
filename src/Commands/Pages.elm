@@ -28,7 +28,7 @@ pageDecoder =
             |> required "generation" int
             |> required "letter" string
             |> required "open" bool
-            |> required "winnerNum" (nullable int)
-            |> required "winnerName" (nullable string)
-            |> required "startDate" string
+            |> optional "winnerNum" (nullable int) Nothing
+            |> optional "winnerName" (nullable string) Nothing
+            |> optional "startDate" (nullable string) Nothing
             |> resolve

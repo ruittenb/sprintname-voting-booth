@@ -84,7 +84,7 @@ module.exports = (function (jQuery, firebase)
         });
 
         // when pages information changes (when a page is closed)
-        this.votingDb.pages.once('child_changed', (data) => {
+        this.votingDb.pages.on('child_changed', (data) => {
             const page = data.val();
             // this.elmClient.ports.onLoadPage.send(page);
         });

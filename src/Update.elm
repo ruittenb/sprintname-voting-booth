@@ -98,6 +98,16 @@ update msg oldState =
             in
                 ( newState, Cmd.none )
 
+        PagesLoaded (Failure message) ->
+            let
+                newState =
+                    { oldState
+                        | pages = RemoteData.Failure message
+                    }
+            in
+                ( newState, Cmd.none )
+                    |> setStatusMessage Error (toString message)
+
         PagesLoaded _ ->
             ( oldState, Cmd.none )
 
