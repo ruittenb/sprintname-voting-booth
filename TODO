@@ -6,7 +6,12 @@ missing:
  - Uncaught Error: Trying to send an unexpected type of value through port `onFirebaseLoginFailed`:
    Expecting an Int at _.status but instead got: undefined
  - if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
- - add check for admin users: see https://firebase.google.com/docs/auth/admin/custom-claims
+ - rules: add check for admin users: see https://firebase.google.com/docs/auth/admin/custom-claims
+
+pages:
+ - publish changes to pages (lock button)
+ - have app listen to changes to pages
+ - change lock button to <a> or <span> according to admin
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:

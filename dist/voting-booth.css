@@ -75,15 +75,19 @@ button.user-button {
 
 .button.lock-button {
     width: 40px;
-    background: url(icons/lock-open-bw.png) no-repeat center center;
+    background-image: url(icons/lock-open-bw.png);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
+
 .button.lock-button.locked {
-    background: url(icons/lock-bw.png) no-repeat center center;
+    background-image: url(icons/lock-bw.png);
 }
 
 button.user-button,
 .button.show-voters,
-.button.show-rankings {
+.button.show-rankings,
+.button.lock-button {
     outline: none;
     display: block;
     float: left;
@@ -111,6 +115,7 @@ button.user-button,
 button.user-button:hover,
 a.button.show-voters:hover,
 a.button.show-rankings:hover,
+a.button.lock-button:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
 .poketile .button:hover {
@@ -120,6 +125,7 @@ a.button.show-rankings:hover,
 button.user-button:active,
 a.button.show-voters:active,
 a.button.show-rankings:active,
+a.button.lock-button:active,
 .poketile .button:active {
     background-color: #f0d8f0; /* medium purple */
 }
