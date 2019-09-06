@@ -26,6 +26,7 @@ import Helpers.Pokemon
         )
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
 import Update.Ratings exposing (updateVoteForPokemon)
+import Update.Pages exposing (updatePageLockState)
 import Update.Pokemon
     exposing
         ( updateOnLoadPokedex
@@ -178,6 +179,9 @@ update msg oldState =
                 , newUrl <|
                     createBrowsePath oldState.generation oldState.letter
                 )
+
+        PageLockClicked page ->
+            updatePageLockState oldState page
 
         VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction

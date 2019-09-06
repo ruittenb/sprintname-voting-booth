@@ -6,7 +6,7 @@ import Models.Types exposing (..)
 import Models.Auth exposing (RemoteLoggedInUser)
 import Models.Settings exposing (RemoteSettings)
 import Models.Pokemon exposing (RemotePokedex)
-import Models.Pages exposing (RemotePages)
+import Models.Pages exposing (RemotePages, Page)
 import Models.Ratings exposing (RemoteTeamRatings, RemoteUserRatings, UserVote)
 
 
@@ -31,6 +31,7 @@ type Msg
     | VariantChanged Int BrowseDirection
     | UrlChanged (Maybe Route)
     | CloseMaskClicked
+    | PageLockClicked Page
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | PokemonVoteCast UserVote

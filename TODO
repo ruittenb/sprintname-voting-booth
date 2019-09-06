@@ -12,6 +12,7 @@ pages:
  - publish changes to pages (lock button)
  - have app listen to changes to pages
  - change lock button to <a> or <span> according to admin
+ - figure out why lock state is reversed on clicking button
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:

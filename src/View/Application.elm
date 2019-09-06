@@ -235,21 +235,21 @@ lockButton currentRoute remotePages generation letter =
         isLocked =
             isPageLocked currentRoute currentPage
 
-        lockButtonElement =
-            if isLocked then
-                span
-            else
-                a
-    in
-        lockButtonElement
+        classProps =
             [ classList
                 [ ( "button", True )
                 , ( "lock-button", True )
                 , ( "locked", isLocked )
                 ]
-            --, onClick LockMsg
             ]
-            [ ]
+    in
+        -- condition should be changed to isCurrentUserAdmin && isRouteBrowse
+        if False then
+            span classProps []
+        else
+            a
+                (classProps ++ [ onClick (PageLockClicked currentPage) ])
+                []
 
 
 calculationButtons : Route -> RemotePages -> Int -> Char -> Html Msg

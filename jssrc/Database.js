@@ -38,6 +38,9 @@ module.exports = (function (jQuery, firebase)
 
         // save user ratings to firebase
         this.elmClient.ports.saveUserRatings.subscribe(this.castVote.bind(this));
+
+        // save page updates to firebase
+        this.elmClient.ports.savePage.subscribe(this.savePage.bind(this));
     };
 
     /** **********************************************************************
@@ -160,6 +163,14 @@ module.exports = (function (jQuery, firebase)
             // application is in maintenance mode, so we don't check that here.
             userRef.set(userRatings);
         }
+    };
+
+    /** **********************************************************************
+     * database action: save page
+     */
+    Database.prototype.savePage = function (page)
+    {
+        console.log(page); // TODO
     };
 
     return Database;
