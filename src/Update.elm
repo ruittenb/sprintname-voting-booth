@@ -91,6 +91,26 @@ update msg oldState =
         SettingsLoaded _ ->
             ( oldState, Cmd.none )
 
+        PagesLoaded (Success pages) ->
+            let
+                newState =
+                    { oldState | pages = RemoteData.succeed pages }
+            in
+                ( newState, Cmd.none )
+
+        PagesLoaded (Failure message) ->
+            let
+                newState =
+                    { oldState
+                        | pages = RemoteData.Failure message
+                    }
+            in
+                ( newState, Cmd.none )
+                    |> setStatusMessage Error (toString message)
+
+        PagesLoaded _ ->
+            ( oldState, Cmd.none )
+
         TeamRatingsLoaded (Success ratings) ->
             let
                 newRatings =

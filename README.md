@@ -25,7 +25,7 @@ make install
 
 Download the Auth0 private key from:
 
-https://manage.auth0.com/#/clients/n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9/settings
+https://manage.auth0.com/dashboard/eu/proforto/applications/n0dhDfP61nzDIRpMaw8UsoPLiNxcxdM9/settings
 
 Scroll down and click 'Show Advanced Settings'. Open the tab 'certificates' and copy the 'Signing Certificate'.
 Save it to `tokenserver/keys/private-auth0.key`

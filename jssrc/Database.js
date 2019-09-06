@@ -51,6 +51,7 @@ module.exports = (function (jQuery, firebase)
             database: firebase.database(),
             settings: firebase.database().ref('settings'),
             pokedex : firebase.database().ref('pokedex'),
+            pages   : firebase.database().ref('pages'),
             users   : firebase.database().ref('users')
         };
 
@@ -74,6 +75,18 @@ module.exports = (function (jQuery, firebase)
         this.votingDb.pokedex.on('value', (data) => {
             const pokedex = data.val();
             this.elmClient.ports.onLoadPokedex.send(pokedex);
+        });
+
+        // when pages information loads (initially)
+        this.votingDb.pages.once('value', (data) => {
+            const pages = data.val();
+            this.elmClient.ports.onLoadPages.send(pages);
+        });
+
+        // when pages information changes (when a page is closed)
+        this.votingDb.pages.on('child_changed', (data) => {
+            const page = data.val();
+            // this.elmClient.ports.onLoadPage.send(page);
         });
 
         // when user ratings load (initially: entire team)
