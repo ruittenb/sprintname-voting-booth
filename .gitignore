@@ -55,6 +55,9 @@ Icon
 # Thumbnails
 ._*
 
+# vim swapfiles
+*.swp
+*.swo
 # environment file
 /.env
 # ruittenb scratchpad

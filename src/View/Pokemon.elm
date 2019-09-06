@@ -60,24 +60,13 @@ getCurrentPage remotePages generation letter =
 getWinner : Page -> Winner
 getWinner page =
     Maybe.map2
-        (\name num ->
+        (\name number ->
             { name = name
-            , num = num
+            , number = number
             }
         )
         page.winnerName
         page.winnerNum
-
-
-getWinnerDiv : ApplicationState -> Html Msg
-getWinnerDiv state =
-    let
-        winner =
-            getCurrentPage state.pages state.generation state.letter
-                |> getWinner
-                |> Maybe.withDefault { num = -1, name = "No winner known" }
-    in
-        div [ class "blerk" ] [ text <| "The winner is: " ++ winner.name ]
 
 
 linkTo : String -> Html Msg -> Html Msg
@@ -245,9 +234,14 @@ variantLinks pokemonName description variants =
     List.map (variantLink pokemonName description) variants
 
 
-pokemonTile : Route -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
-pokemonTile currentRoute ratings currentUser pokemon =
+pokemonTile : Route -> Winner -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
+pokemonTile currentRoute winner ratings currentUser pokemon =
     let
+        isWinner = winner
+            |> Maybe.map .number
+            |> Maybe.map ((==) pokemon.number)
+            |> Maybe.withDefault False
+
         teamRating =
             extractOnePokemonFromRatings ratings pokemon
 
@@ -285,7 +279,11 @@ pokemonTile currentRoute ratings currentUser pokemon =
                     voteWidget currentUserRating pokemon.number actualUserName
     in
         div
-            [ class "poketile" ]
+            [ classList
+                [ ( "poketile", True )
+                , ( "winner", isWinner )
+                ]
+            ]
         <|
             [ p []
                 [ span [] <|
@@ -332,29 +330,27 @@ pokemonTile currentRoute ratings currentUser pokemon =
                         [ loadingBusyIcon ]
 
 
-pokemonTiles : Route -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
-pokemonTiles currentRoute pokelist ratings currentUser =
-    List.map (pokemonTile currentRoute ratings currentUser) pokelist
+pokemonTiles : Route -> Page -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
+pokemonTiles currentRoute currentPage pokelist ratings currentUser =
+    let
+        winner = getWinner currentPage
+    in
+        List.map (pokemonTile currentRoute winner ratings currentUser) pokelist
 
 
 pokemonCanvas : ApplicationState -> Html Msg
 pokemonCanvas state =
     let
+        currentPage = getCurrentPage state.pages state.generation state.letter
+
         pokeList =
             case state.currentRoute of
-                Browse _ ->
-                    filterPokedex state.pokedex state.generation state.letter
-
-                BrowseWithPeopleVotes _ ->
-                    filterPokedex state.pokedex state.generation state.letter
-
-                BrowseWithPokemonRankings _ ->
-                    filterPokedex state.pokedex state.generation state.letter
-
                 Search _ ->
                     searchPokedex state.pokedex state.query
+
+                _ ->
+                    -- Browse*
+                    filterPokedex state.pokedex state.generation state.letter
     in
-        div []
-            [ div [ class "pokecanvas" ] <| pokemonTiles state.currentRoute pokeList state.ratings state.currentUser
-            , getWinnerDiv state
-            ]
+        pokemonTiles state.currentRoute currentPage pokeList state.ratings state.currentUser
+            |> div [ class "pokecanvas" ]

@@ -6,7 +6,7 @@ import RemoteData exposing (RemoteData)
 
 type alias Winner =
     Maybe
-        { num : Int
+        { number : Int
         , name : String
         }
 
