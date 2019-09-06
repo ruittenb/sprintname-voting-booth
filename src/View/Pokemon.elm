@@ -33,8 +33,18 @@ unknownUserIcon =
     div [ class "unknown-user" ] []
 
 
-getWinner : RemotePages -> Int -> Char -> Winner
-getWinner remotePages generation letter =
+getCurrentPage : RemotePages -> Int -> Char -> Page
+getCurrentPage remotePages generation letter =
+    let
+        defaultPage =
+            { generation = generation
+            , letter = letter
+            , open = False
+            , winnerName = Nothing
+            , winnerNum = Nothing
+            , startDate = Nothing
+            }
+    in
     remotePages
         |> RemoteData.map
             (\pages ->
@@ -42,29 +52,29 @@ getWinner remotePages generation letter =
                     |> List.filter (\page -> page.generation == generation)
                     |> List.filter (\page -> page.letter == letter)
                     |> List.head
-                    |> Maybe.map
-                        (\page ->
-                            Maybe.map2
-                                (\name num ->
-                                    { name = name
-                                    , num = num
-                                    }
-                                )
-                                page.winnerName
-                                page.winnerNum
-                        )
-                    -- unwrap nested maybe
-                    |> Maybe.withDefault Nothing
+                    |> Maybe.withDefault defaultPage
             )
-        -- unwrap nested maybe
-        |> RemoteData.withDefault Nothing
+        |> RemoteData.withDefault defaultPage
+
+
+getWinner : Page -> Winner
+getWinner page =
+    Maybe.map2
+        (\name num ->
+            { name = name
+            , num = num
+            }
+        )
+        page.winnerName
+        page.winnerNum
 
 
 getWinnerDiv : ApplicationState -> Html Msg
 getWinnerDiv state =
     let
         winner =
-            getWinner state.pages state.generation state.letter
+            getCurrentPage state.pages state.generation state.letter
+                |> getWinner
                 |> Maybe.withDefault { num = -1, name = "No winner known" }
     in
         div [ class "blerk" ] [ text <| "The winner is: " ++ winner.name ]
