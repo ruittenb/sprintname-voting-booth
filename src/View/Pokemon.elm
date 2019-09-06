@@ -1,5 +1,6 @@
 module View.Pokemon exposing (pokemonCanvas)
 
+import Debug
 import List
 import Maybe
 import Html exposing (..)
@@ -33,12 +34,31 @@ unknownUserIcon =
     div [ class "unknown-user" ] []
 
 
-getWinner : RemotePages -> int -> string -> Winner
+getWinner : RemotePages -> Int -> Char -> Winner
 getWinner remotePages generation letter =
-    Just
-        { num = -1
-        , name = "The winner is unknown"
-        }
+    remotePages
+        |> RemoteData.map
+            (\pages ->
+                pages
+                    |> List.filter (\page -> page.generation == generation)
+                    |> List.filter (\page -> page.letter == letter)
+                    |> List.head
+                    |> Maybe.map
+                        (\page ->
+                            Maybe.map2
+                                (\name num ->
+                                    { name = name
+                                    , num = num
+                                    }
+                                )
+                                page.winnerName
+                                page.winnerNum
+                        )
+                    -- unwrap nested maybe
+                    |> Maybe.withDefault Nothing
+            )
+        -- unwrap nested maybe
+        |> RemoteData.withDefault Nothing
 
 
 getWinnerDiv : ApplicationState -> Html Msg

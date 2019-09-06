@@ -404,6 +404,17 @@ button.user-button.current,
     box-shadow: inset 0 0 10px #fde80b; /* yellow shaded border inside */
 }
 
+.poketile.winner::after {
+    background: url(images/ribbon.png) no-repeat;
+    content: '';
+    width: 32px;
+    height: 50px;
+    position: relative;
+    display: block;
+    top: -200px;
+    left: 94px;
+}
+
 .poketile p {
     display: flex;
     justify-content: space-between;
