@@ -26,15 +26,16 @@ decodePages val =
 pageDecoder : Decoder Page
 pageDecoder =
     let
-        toDecoder generation letter open winnerNum winnerName startDate =
+        toDecoder id generation letter open winnerNum winnerName startDate =
             let
                 ( letterChar, _ ) =
                     String.uncons letter
                         |> Maybe.withDefault ( '?', "" )
             in
-                Decode.succeed (Page generation letterChar open winnerNum winnerName startDate)
+                Decode.succeed (Page id generation letterChar open winnerNum winnerName startDate)
     in
         decode toDecoder
+            |> required "id" int
             |> required "generation" int
             |> required "letter" string
             |> required "open" bool

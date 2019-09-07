@@ -16,7 +16,8 @@ type alias Winner =
         }
 
 type alias Page =
-    { generation : Int
+    { id: Int
+    , generation : Int
     , letter : Char
     , open : Bool
     , winnerNum : Maybe Int
@@ -26,7 +27,8 @@ type alias Page =
 
 
 type alias PortCompatiblePage =
-    { generation : Int
+    { id: Int
+    , generation : Int
     , letter : String
     , open : Bool
     , winnerNum : Maybe Int

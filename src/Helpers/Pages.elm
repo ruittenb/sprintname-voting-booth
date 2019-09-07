@@ -23,7 +23,8 @@ getCurrentPage : RemotePages -> Int -> Char -> Page
 getCurrentPage remotePages generation letter =
     let
         defaultPage =
-            { generation = generation
+            { id = -1
+            , generation = generation
             , letter = letter
             , open = False
             , winnerName = Nothing
