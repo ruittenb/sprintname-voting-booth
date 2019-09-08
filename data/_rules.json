@@ -13,17 +13,21 @@
     },
     "pages": {
       "$page_id": {
-        ".write": "auth != null /* user must be logged in */
-                && data.exists() /* no inserting */
-                && newData.exists() /* no deleting */
-                && newData.child('generation').val() == data.child('generation').val()
-                && newData.child('letter').val() == data.child('letter').val()",
-                /* This should also contain a check that admin == true */
-        ".validate": "newData.hasChildren(['generation', 'letter', 'open', 'dateString'])
-                && newData.child('generation').isNumber()
-                && newData.child('letter').isString()
-                && newData.child('open').isBoolean()
-                && newData.child('dateString').isString()"
+        ".write": "
+          auth != null /* user must be logged in */
+          && data.exists() /* no inserting */
+          && newData.exists() /* no deleting */
+          && newData.child('generation').val() == data.child('generation').val() /* same gen */
+          && newData.child('letter').val() == data.child('letter').val() /* same letter */
+          /* This should also contain a check that admin == true */
+        ",
+        ".validate": "
+          newData.hasChildren(['generation', 'letter', 'open', 'dateString'])
+          && newData.child('generation').isNumber()
+          && newData.child('letter').isString()
+          && newData.child('open').isBoolean()
+          && newData.child('dateString').isString()
+        "
       }
     },
     "users": {
@@ -46,7 +50,6 @@
           && newData.child('color').isString()
           && newData.child('email').isString()
           && newData.child('ratings').isString()
-          && newData.child('ratings').val().length >= 803
           && newData.child('userName').isString()
         "
       }

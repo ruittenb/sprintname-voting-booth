@@ -1,86 +1,103 @@
 {
   "pages" : [ {
     "generation" : 0,
+    "id" : 0,
     "letter" : "M",
     "open" : false,
     "startDateString" : "2015-11-03T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 1,
     "letter" : "A",
     "open" : false,
     "startDateString" : "2015-11-17T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 2,
     "letter" : "B",
     "open" : false,
     "startDateString" : "2015-12-01T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 3,
     "letter" : "C",
     "open" : false,
     "startDateString" : "2015-12-15T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 4,
     "letter" : "D",
     "open" : false,
     "startDateString" : "2015-12-29T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 5,
     "letter" : "E",
     "open" : false,
     "startDateString" : "2016-01-12T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 6,
     "letter" : "F",
     "open" : false,
     "startDateString" : "2016-01-26T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 7,
     "letter" : "G",
     "open" : false,
     "startDateString" : "2016-02-09T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 8,
     "letter" : "H",
     "open" : false,
     "startDateString" : "2016-02-23T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 9,
     "letter" : "I",
     "open" : false,
     "startDateString" : "2016-03-08T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 10,
     "letter" : "J",
     "open" : false,
     "startDateString" : "2016-03-22T00:00:00.000+01:00"
   }, {
     "generation" : 1,
+    "id" : 11,
     "letter" : "K",
     "open" : false,
     "startDateString" : "2016-04-05T00:00:00.000+02:00"
   }, {
     "generation" : 1,
+    "id" : 12,
     "letter" : "L",
     "open" : false,
     "startDateString" : "2016-04-19T00:00:00.000+02:00"
   }, {
     "generation" : 1,
+    "id" : 13,
     "letter" : "M",
     "open" : false,
     "startDateString" : "2016-05-03T00:00:00.000+02:00"
   }, {
     "generation" : 1,
+    "id" : 14,
     "letter" : "N",
     "open" : false,
     "startDateString" : "2016-05-17T00:00:00.000+02:00"
   }, {
     "generation" : 1,
+    "id" : 15,
     "letter" : "O",
     "open" : false,
     "startDateString" : "2016-05-31T00:00:00.000+02:00"
   }, {
     "generation" : 1,
+    "id" : 16,
     "letter" : "P",
     "open" : false,
     "startDateString" : "2016-06-06T00:00:00.000+02:00",
@@ -88,11 +105,13 @@
     "winnerNum" : 137
   }, {
     "generation" : 1,
+    "id" : 17,
     "letter" : "R",
     "open" : false,
     "startDateString" : "2016-06-14T00:00:00.000+02:00"
   }, {
     "generation" : 1,
+    "id" : 18,
     "letter" : "S",
     "open" : false,
     "startDateString" : "2016-06-21T00:00:00.000+02:00",
@@ -100,6 +119,7 @@
     "winnerNum" : 123
   }, {
     "generation" : 1,
+    "id" : 19,
     "letter" : "T",
     "open" : false,
     "startDateString" : "2016-07-05T00:00:00.000+02:00",
@@ -107,6 +127,7 @@
     "winnerNum" : 114
   }, {
     "generation" : 1,
+    "id" : 20,
     "letter" : "V",
     "open" : false,
     "startDateString" : "2016-07-20T00:00:00.000+02:00",
@@ -114,6 +135,7 @@
     "winnerNum" : 134
   }, {
     "generation" : 1,
+    "id" : 21,
     "letter" : "W",
     "open" : false,
     "startDateString" : "2016-08-09T00:00:00.000+02:00",
@@ -121,6 +143,7 @@
     "winnerNum" : 8
   }, {
     "generation" : 1,
+    "id" : 22,
     "letter" : "Z",
     "open" : false,
     "startDateString" : "2016-08-22T00:00:00.000+02:00",
@@ -128,6 +151,7 @@
     "winnerNum" : 145
   }, {
     "generation" : 2,
+    "id" : 23,
     "letter" : "A",
     "open" : false,
     "startDateString" : "2016-09-05T00:00:00.000+02:00",
@@ -135,6 +159,7 @@
     "winnerNum" : 181
   }, {
     "generation" : 2,
+    "id" : 24,
     "letter" : "B",
     "open" : false,
     "startDateString" : "2016-09-19T00:00:00.000+01:00",
@@ -142,6 +167,7 @@
     "winnerNum" : 242
   }, {
     "generation" : 2,
+    "id" : 25,
     "letter" : "C",
     "open" : false,
     "startDateString" : "2016-10-03T00:00:00.000+01:00",
@@ -149,6 +175,7 @@
     "winnerNum" : 169
   }, {
     "generation" : 2,
+    "id" : 26,
     "letter" : "D",
     "open" : false,
     "startDateString" : "2016-10-18T00:00:00.000+01:00",
@@ -156,6 +183,7 @@
     "winnerNum" : 232
   }, {
     "generation" : 2,
+    "id" : 27,
     "letter" : "E",
     "open" : false,
     "startDateString" : "2016-11-09T00:00:00.000+01:00",
@@ -163,6 +191,7 @@
     "winnerNum" : 244
   }, {
     "generation" : 2,
+    "id" : 28,
     "letter" : "F",
     "open" : false,
     "startDateString" : "2016-11-23T00:00:00.000+01:00",
@@ -170,6 +199,7 @@
     "winnerNum" : 160
   }, {
     "generation" : 2,
+    "id" : 29,
     "letter" : "G",
     "open" : false,
     "startDateString" : "2016-12-07T00:00:00.000+01:00",
@@ -177,6 +207,7 @@
     "winnerNum" : 207
   }, {
     "generation" : 2,
+    "id" : 30,
     "letter" : "H",
     "open" : false,
     "startDateString" : "2017-01-04T00:00:00.000+01:00",
@@ -184,6 +215,7 @@
     "winnerNum" : 214
   }, {
     "generation" : 2,
+    "id" : 31,
     "letter" : "I",
     "open" : false,
     "startDateString" : "2017-01-18T00:00:00.000+01:00",
@@ -191,6 +223,7 @@
     "winnerNum" : 174
   }, {
     "generation" : 2,
+    "id" : 32,
     "letter" : "J",
     "open" : false,
     "startDateString" : "2017-02-07T00:00:00.000+01:00",
@@ -198,6 +231,7 @@
     "winnerNum" : 189
   }, {
     "generation" : 2,
+    "id" : 33,
     "letter" : "K",
     "open" : false,
     "startDateString" : "2017-02-21T00:00:00.000+01:00",
@@ -205,6 +239,7 @@
     "winnerNum" : 230
   }, {
     "generation" : 2,
+    "id" : 34,
     "letter" : "L",
     "open" : false,
     "startDateString" : "2017-03-07T00:00:00.000+01:00",
@@ -212,6 +247,7 @@
     "winnerNum" : 246
   }, {
     "generation" : 2,
+    "id" : 35,
     "letter" : "M",
     "open" : false,
     "startDateString" : "2017-03-28T00:00:00.000+02:00",
@@ -219,6 +255,7 @@
     "winnerNum" : 200
   }, {
     "generation" : 2,
+    "id" : 36,
     "letter" : "N",
     "open" : false,
     "startDateString" : "2017-04-11T00:00:00.000+02:00",
@@ -226,6 +263,7 @@
     "winnerNum" : 164
   }, {
     "generation" : 2,
+    "id" : 37,
     "letter" : "O",
     "open" : false,
     "startDateString" : "2017-04-25T00:00:00.000+02:00",
@@ -233,6 +271,7 @@
     "winnerNum" : 224
   }, {
     "generation" : 2,
+    "id" : 38,
     "letter" : "P",
     "open" : false,
     "startDateString" : "2017-05-09T00:00:00.000+02:00",
@@ -240,6 +279,7 @@
     "winnerNum" : 186
   }, {
     "generation" : 2,
+    "id" : 39,
     "letter" : "Q",
     "open" : false,
     "startDateString" : "2017-05-23T00:00:00.000+02:00",
@@ -247,6 +287,7 @@
     "winnerNum" : 156
   }, {
     "generation" : 2,
+    "id" : 40,
     "letter" : "R",
     "open" : false,
     "startDateString" : "2017-06-07T00:00:00.000+02:00",
@@ -254,6 +295,7 @@
     "winnerNum" : 243
   }, {
     "generation" : 2,
+    "id" : 41,
     "letter" : "S",
     "open" : false,
     "startDateString" : "2017-06-20T00:00:00.000+02:00",
@@ -261,6 +303,7 @@
     "winnerNum" : 208
   }, {
     "generation" : 2,
+    "id" : 42,
     "letter" : "T",
     "open" : false,
     "startDateString" : "2017-07-04T00:00:00.000+02:00",
@@ -268,6 +311,7 @@
     "winnerNum" : 157
   }, {
     "generation" : 2,
+    "id" : 43,
     "letter" : "U",
     "open" : false,
     "startDateString" : "2017-07-18T00:00:00.000+02:00",
@@ -275,6 +319,7 @@
     "winnerNum" : 197
   }, {
     "generation" : 2,
+    "id" : 44,
     "letter" : "W",
     "open" : false,
     "startDateString" : "2017-08-02T00:00:00.000+02:00",
@@ -282,6 +327,7 @@
     "winnerNum" : 202
   }, {
     "generation" : 2,
+    "id" : 45,
     "letter" : "X",
     "open" : false,
     "startDateString" : "2017-08-15T00:00:00.000+02:00",
@@ -289,6 +335,7 @@
     "winnerNum" : 178
   }, {
     "generation" : 2,
+    "id" : 46,
     "letter" : "Y",
     "open" : false,
     "startDateString" : "2017-08-29T00:00:00.000+02:00",
@@ -296,6 +343,7 @@
     "winnerNum" : 193
   }, {
     "generation" : 3,
+    "id" : 47,
     "letter" : "A",
     "open" : false,
     "startDateString" : "2017-09-12T00:00:00.000+02:00",
@@ -303,6 +351,7 @@
     "winnerNum" : 306
   }, {
     "generation" : 3,
+    "id" : 48,
     "letter" : "B",
     "open" : false,
     "startDateString" : "2017-09-26T00:00:00.000+02:00",
@@ -310,6 +359,7 @@
     "winnerNum" : 257
   }, {
     "generation" : 3,
+    "id" : 49,
     "letter" : "C",
     "open" : false,
     "startDateString" : "2017-10-10T00:00:00.000+02:00",
@@ -317,6 +367,7 @@
     "winnerNum" : 332
   }, {
     "generation" : 3,
+    "id" : 50,
     "letter" : "D",
     "open" : false,
     "startDateString" : "2017-10-24T00:00:00.000+01:00",
@@ -324,6 +375,7 @@
     "winnerNum" : 386
   }, {
     "generation" : 3,
+    "id" : 51,
     "letter" : "E",
     "open" : false,
     "startDateString" : "2017-11-07T00:00:00.000+01:00",
@@ -331,6 +383,7 @@
     "winnerNum" : 295
   }, {
     "generation" : 3,
+    "id" : 52,
     "letter" : "F",
     "open" : false,
     "startDateString" : "2017-11-21T00:00:00.000+01:00",
@@ -338,6 +391,7 @@
     "winnerNum" : 330
   }, {
     "generation" : 3,
+    "id" : 53,
     "letter" : "G",
     "open" : false,
     "startDateString" : "2017-12-05T00:00:00.000+01:00",
@@ -345,6 +399,7 @@
     "winnerNum" : 253
   }, {
     "generation" : 3,
+    "id" : 54,
     "letter" : "H",
     "open" : false,
     "startDateString" : "2017-12-19T00:00:00.000+01:00",
@@ -352,6 +407,7 @@
     "winnerNum" : 297
   }, {
     "generation" : 3,
+    "id" : 55,
     "letter" : "I",
     "open" : false,
     "startDateString" : "2018-01-09T00:00:00.000+01:00",
@@ -359,6 +415,7 @@
     "winnerNum" : 314
   }, {
     "generation" : 3,
+    "id" : 56,
     "letter" : "J",
     "open" : false,
     "startDateString" : "2018-01-23T00:00:00.000+01:00",
@@ -366,6 +423,7 @@
     "winnerNum" : 385
   }, {
     "generation" : 3,
+    "id" : 57,
     "letter" : "K",
     "open" : false,
     "startDateString" : "2018-02-06T00:00:00.000+01:00",
@@ -373,6 +431,7 @@
     "winnerNum" : 382
   }, {
     "generation" : 3,
+    "id" : 58,
     "letter" : "L",
     "open" : false,
     "startDateString" : "2018-02-20T00:00:00.000+01:00",
@@ -380,6 +439,7 @@
     "winnerNum" : 381
   }, {
     "generation" : 3,
+    "id" : 59,
     "letter" : "M",
     "open" : false,
     "startDateString" : "2018-03-06T00:00:00.000+01:00",
@@ -387,6 +447,7 @@
     "winnerNum" : 376
   }, {
     "generation" : 3,
+    "id" : 60,
     "letter" : "N",
     "open" : false,
     "startDateString" : "2018-03-20T00:00:00.000+01:00",
@@ -394,6 +455,7 @@
     "winnerNum" : 274
   }, {
     "generation" : 3,
+    "id" : 61,
     "letter" : "P",
     "open" : false,
     "startDateString" : "2018-04-03T00:00:00.000+02:00",
@@ -401,6 +463,7 @@
     "winnerNum" : 261
   }, {
     "generation" : 3,
+    "id" : 62,
     "letter" : "R",
     "open" : false,
     "startDateString" : "2018-04-17T00:00:00.000+02:00",
@@ -408,6 +471,7 @@
     "winnerNum" : 384
   }, {
     "generation" : 3,
+    "id" : 63,
     "letter" : "S",
     "open" : false,
     "startDateString" : "2018-05-01T00:00:00.000+02:00",
@@ -415,6 +479,7 @@
     "winnerNum" : 289
   }, {
     "generation" : 3,
+    "id" : 64,
     "letter" : "T",
     "open" : false,
     "startDateString" : "2018-05-15T00:00:00.000+02:00",
@@ -422,6 +487,7 @@
     "winnerNum" : 357
   }, {
     "generation" : 3,
+    "id" : 65,
     "letter" : "V",
     "open" : false,
     "startDateString" : "2018-05-29T00:00:00.000+02:00",
@@ -429,6 +495,7 @@
     "winnerNum" : 288
   }, {
     "generation" : 3,
+    "id" : 66,
     "letter" : "W",
     "open" : false,
     "startDateString" : "2018-06-12T00:00:00.000+02:00",
@@ -436,6 +503,7 @@
     "winnerNum" : 321
   }, {
     "generation" : 3,
+    "id" : 67,
     "letter" : "Z",
     "open" : false,
     "startDateString" : "2018-06-26T00:00:00.000+02:00",
@@ -443,6 +511,7 @@
     "winnerNum" : 335
   }, {
     "generation" : 4,
+    "id" : 68,
     "letter" : "A",
     "open" : false,
     "startDateString" : "2018-07-10T00:00:00.000+02:00",
@@ -450,6 +519,7 @@
     "winnerNum" : 460
   }, {
     "generation" : 4,
+    "id" : 69,
     "letter" : "B",
     "open" : false,
     "startDateString" : "2018-07-24T00:00:00.000+02:00",
@@ -457,6 +527,7 @@
     "winnerNum" : 418
   }, {
     "generation" : 4,
+    "id" : 70,
     "letter" : "C",
     "open" : false,
     "startDateString" : "2018-08-07T00:00:00.000+02:00",
@@ -464,6 +535,7 @@
     "winnerNum" : 390
   }, {
     "generation" : 4,
+    "id" : 71,
     "letter" : "D",
     "open" : false,
     "startDateString" : "2018-08-21T00:00:00.000+02:00",
@@ -471,6 +543,7 @@
     "winnerNum" : 483
   }, {
     "generation" : 4,
+    "id" : 72,
     "letter" : "E",
     "open" : false,
     "startDateString" : "2018-09-04T00:00:00.000+02:00",
@@ -478,6 +551,7 @@
     "winnerNum" : 466
   }, {
     "generation" : 4,
+    "id" : 73,
     "letter" : "F",
     "open" : false,
     "startDateString" : "2018-09-18T00:00:00.000+02:00",
@@ -485,6 +559,7 @@
     "winnerNum" : 478
   }, {
     "generation" : 4,
+    "id" : 74,
     "letter" : "G",
     "open" : false,
     "startDateString" : "2018-10-02T00:00:00.000+02:00",
@@ -492,6 +567,7 @@
     "winnerNum" : 388
   }, {
     "generation" : 4,
+    "id" : 75,
     "letter" : "H",
     "open" : false,
     "startDateString" : "2018-10-16T00:00:00.000+02:00",
@@ -499,6 +575,7 @@
     "winnerNum" : 485
   }, {
     "generation" : 4,
+    "id" : 76,
     "letter" : "I",
     "open" : false,
     "startDateString" : "2018-10-30T00:00:00.000+01:00",
@@ -506,6 +583,7 @@
     "winnerNum" : 392
   }, {
     "generation" : 4,
+    "id" : 77,
     "letter" : "K",
     "open" : false,
     "startDateString" : "2018-11-13T00:00:00.000+01:00",
@@ -513,6 +591,7 @@
     "winnerNum" : 402
   }, {
     "generation" : 4,
+    "id" : 78,
     "letter" : "L",
     "open" : false,
     "startDateString" : "2018-11-27T00:00:00.000+01:00",
@@ -520,6 +599,7 @@
     "winnerNum" : 405
   }, {
     "generation" : 4,
+    "id" : 79,
     "letter" : "M",
     "open" : false,
     "startDateString" : "2018-12-11T00:00:00.000+01:00",
@@ -527,6 +607,7 @@
     "winnerNum" : 446
   }, {
     "generation" : 4,
+    "id" : 80,
     "letter" : "P",
     "open" : false,
     "startDateString" : "2018-12-25T00:00:00.000+01:00",
@@ -534,6 +615,7 @@
     "winnerNum" : 484
   }, {
     "generation" : 4,
+    "id" : 81,
     "letter" : "R",
     "open" : false,
     "startDateString" : "2019-01-08T00:00:00.000+01:00",
@@ -541,6 +623,7 @@
     "winnerNum" : 447
   }, {
     "generation" : 4,
+    "id" : 82,
     "letter" : "S",
     "open" : false,
     "startDateString" : "2019-01-22T00:00:00.000+01:00",
@@ -548,6 +631,7 @@
     "winnerNum" : 459
   }, {
     "generation" : 4,
+    "id" : 83,
     "letter" : "T",
     "open" : false,
     "startDateString" : "2019-02-05T00:00:00.000+01:00",
@@ -555,6 +639,7 @@
     "winnerNum" : 389
   }, {
     "generation" : 4,
+    "id" : 84,
     "letter" : "U",
     "open" : false,
     "startDateString" : "2019-02-19T00:00:00.000+01:00",
@@ -562,6 +647,7 @@
     "winnerNum" : 480
   }, {
     "generation" : 4,
+    "id" : 85,
     "letter" : "V",
     "open" : false,
     "startDateString" : "2019-03-05T00:00:00.000+01:00",
@@ -569,6 +655,7 @@
     "winnerNum" : 416
   }, {
     "generation" : 4,
+    "id" : 86,
     "letter" : "W",
     "open" : false,
     "startDateString" : "2019-03-19T00:00:00.000+01:00",
@@ -576,6 +663,7 @@
     "winnerNum" : 461
   }, {
     "generation" : 4,
+    "id" : 87,
     "letter" : "Y",
     "open" : false,
     "startDateString" : "2019-04-02T00:00:00.000+02:00",
@@ -583,6 +671,7 @@
     "winnerNum" : 469
   }, {
     "generation" : 5,
+    "id" : 88,
     "letter" : "A",
     "open" : false,
     "startDateString" : "2019-04-16T00:00:00.000+02:00",
@@ -590,6 +679,7 @@
     "winnerNum" : 567
   }, {
     "generation" : 5,
+    "id" : 89,
     "letter" : "B",
     "open" : false,
     "startDateString" : "2019-04-30T00:00:00.000+02:00",
@@ -597,6 +687,7 @@
     "winnerNum" : 614
   }, {
     "generation" : 5,
+    "id" : 90,
     "letter" : "C",
     "open" : false,
     "startDateString" : "2019-05-14T00:00:00.000+02:00",
@@ -604,6 +695,7 @@
     "winnerNum" : 565
   }, {
     "generation" : 5,
+    "id" : 91,
     "letter" : "D",
     "open" : false,
     "startDateString" : "2019-05-28T00:00:00.000+02:00",
@@ -611,6 +703,7 @@
     "winnerNum" : 580
   }, {
     "generation" : 5,
+    "id" : 92,
     "letter" : "E",
     "open" : false,
     "startDateString" : "2019-06-11T00:00:00.000+02:00",
@@ -618,6 +711,7 @@
     "winnerNum" : 587
   }, {
     "generation" : 5,
+    "id" : 93,
     "letter" : "F",
     "open" : false,
     "startDateString" : "2019-06-25T00:00:00.000+02:00",
@@ -625,6 +719,7 @@
     "winnerNum" : 611
   }, {
     "generation" : 5,
+    "id" : 94,
     "letter" : "G",
     "open" : false,
     "startDateString" : "2019-07-09T00:00:00.000+02:00",
@@ -632,6 +727,7 @@
     "winnerNum" : 526
   }, {
     "generation" : 5,
+    "id" : 95,
     "letter" : "H",
     "open" : false,
     "startDateString" : "2019-07-23T00:00:00.000+02:00",
@@ -639,6 +735,7 @@
     "winnerNum" : 635
   }, {
     "generation" : 5,
+    "id" : 96,
     "letter" : "J",
     "open" : false,
     "startDateString" : "2019-08-06T00:00:00.000+02:00",
@@ -646,6 +743,7 @@
     "winnerNum" : 595
   }, {
     "generation" : 5,
+    "id" : 97,
     "letter" : "K",
     "open" : false,
     "startDateString" : "2019-08-20T00:00:00.000+02:00",
@@ -653,6 +751,7 @@
     "winnerNum" : 552
   }, {
     "generation" : 5,
+    "id" : 98,
     "letter" : "L",
     "open" : false,
     "startDateString" : "2019-09-03T00:00:00.000+02:00",
@@ -660,6 +759,7 @@
     "winnerNum" : 506
   }, {
     "generation" : 5,
+    "id" : 99,
     "letter" : "M",
     "open" : false,
     "startDateString" : "2019-09-17T00:00:00.000+02:00",
@@ -667,271 +767,325 @@
     "winnerNum" : 619
   }, {
     "generation" : 5,
+    "id" : 100,
     "letter" : "O",
     "open" : true,
     "startDateString" : "2019-10-01T00:00:00.000+02:00"
   }, {
     "generation" : 5,
+    "id" : 101,
     "letter" : "P",
     "open" : true,
     "startDateString" : "2019-10-15T00:00:00.000+02:00"
   }, {
     "generation" : 5,
+    "id" : 102,
     "letter" : "R",
     "open" : true,
     "startDateString" : "2019-10-29T00:00:00.000+01:00"
   }, {
     "generation" : 5,
+    "id" : 103,
     "letter" : "S",
     "open" : true,
     "startDateString" : "2019-11-12T00:00:00.000+01:00"
   }, {
     "generation" : 5,
+    "id" : 104,
     "letter" : "T",
     "open" : true,
     "startDateString" : "2019-11-26T00:00:00.000+01:00"
   }, {
     "generation" : 5,
+    "id" : 105,
     "letter" : "U",
     "open" : true,
     "startDateString" : "2019-12-10T00:00:00.000+01:00"
   }, {
     "generation" : 5,
+    "id" : 106,
     "letter" : "V",
     "open" : true,
     "startDateString" : "2019-12-24T00:00:00.000+01:00"
   }, {
     "generation" : 5,
+    "id" : 107,
     "letter" : "W",
     "open" : true,
     "startDateString" : "2020-01-07T00:00:00.000+01:00"
   }, {
     "generation" : 5,
+    "id" : 108,
     "letter" : "Y",
     "open" : true,
     "startDateString" : "2020-01-21T00:00:00.000+01:00"
   }, {
     "generation" : 5,
+    "id" : 109,
     "letter" : "Z",
     "open" : true,
     "startDateString" : "2020-02-04T00:00:00.000+01:00"
   }, {
     "generation" : 6,
+    "id" : 110,
     "letter" : "A",
     "open" : true,
     "startDateString" : "2020-02-18T00:00:00.000+01:00"
   }, {
     "generation" : 6,
+    "id" : 111,
     "letter" : "B",
     "open" : true,
     "startDateString" : "2020-03-03T00:00:00.000+01:00"
   }, {
     "generation" : 6,
+    "id" : 112,
     "letter" : "C",
     "open" : true,
     "startDateString" : "2020-03-17T00:00:00.000+01:00"
   }, {
     "generation" : 6,
+    "id" : 113,
     "letter" : "D",
     "open" : true,
     "startDateString" : "2020-03-31T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 114,
     "letter" : "E",
     "open" : true,
     "startDateString" : "2020-04-14T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 115,
     "letter" : "F",
     "open" : true,
     "startDateString" : "2020-04-28T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 116,
     "letter" : "G",
     "open" : true,
     "startDateString" : "2020-05-12T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 117,
     "letter" : "H",
     "open" : true,
     "startDateString" : "2020-05-26T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 118,
     "letter" : "I",
     "open" : true,
     "startDateString" : "2020-06-09T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 119,
     "letter" : "K",
     "open" : true,
     "startDateString" : "2020-06-23T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 120,
     "letter" : "L",
     "open" : true,
     "startDateString" : "2020-07-07T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 121,
     "letter" : "M",
     "open" : true,
     "startDateString" : "2020-07-21T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 122,
     "letter" : "N",
     "open" : true,
     "startDateString" : "2020-08-04T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 123,
     "letter" : "P",
     "open" : true,
     "startDateString" : "2020-08-18T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 124,
     "letter" : "Q",
     "open" : true,
     "startDateString" : "2020-09-01T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 125,
     "letter" : "S",
     "open" : true,
     "startDateString" : "2020-09-15T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 126,
     "letter" : "T",
     "open" : true,
     "startDateString" : "2020-09-29T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 127,
     "letter" : "V",
     "open" : true,
     "startDateString" : "2020-10-13T00:00:00.000+02:00"
   }, {
     "generation" : 6,
+    "id" : 128,
     "letter" : "X",
     "open" : true,
     "startDateString" : "2020-10-27T00:00:00.000+01:00"
   }, {
     "generation" : 6,
+    "id" : 129,
     "letter" : "Y",
     "open" : true,
     "startDateString" : "2020-11-10T00:00:00.000+01:00"
   }, {
     "generation" : 6,
+    "id" : 130,
     "letter" : "Z",
     "open" : true,
     "startDateString" : "2020-11-24T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 131,
     "letter" : "A",
     "open" : true,
     "startDateString" : "2020-12-08T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 132,
     "letter" : "B",
     "open" : true,
     "startDateString" : "2020-12-22T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 133,
     "letter" : "C",
     "open" : true,
     "startDateString" : "2021-01-05T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 134,
     "letter" : "D",
     "open" : true,
     "startDateString" : "2021-01-19T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 135,
     "letter" : "F",
     "open" : true,
     "startDateString" : "2021-02-02T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 136,
     "letter" : "G",
     "open" : true,
     "startDateString" : "2021-02-16T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 137,
     "letter" : "H",
     "open" : true,
     "startDateString" : "2021-03-02T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 138,
     "letter" : "I",
     "open" : true,
     "startDateString" : "2021-03-16T00:00:00.000+01:00"
   }, {
     "generation" : 7,
+    "id" : 139,
     "letter" : "J",
     "open" : true,
     "startDateString" : "2021-03-30T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 140,
     "letter" : "K",
     "open" : true,
     "startDateString" : "2021-04-13T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 141,
     "letter" : "L",
     "open" : true,
     "startDateString" : "2021-04-27T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 142,
     "letter" : "M",
     "open" : true,
     "startDateString" : "2021-05-11T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 143,
     "letter" : "N",
     "open" : true,
     "startDateString" : "2021-05-25T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 144,
     "letter" : "O",
     "open" : true,
     "startDateString" : "2021-06-08T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 145,
     "letter" : "P",
     "open" : true,
     "startDateString" : "2021-06-22T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 146,
     "letter" : "R",
     "open" : true,
     "startDateString" : "2021-07-06T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 147,
     "letter" : "S",
     "open" : true,
     "startDateString" : "2021-07-20T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 148,
     "letter" : "T",
     "open" : true,
     "startDateString" : "2021-08-03T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 149,
     "letter" : "V",
     "open" : true,
     "startDateString" : "2021-08-17T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 150,
     "letter" : "W",
     "open" : true,
     "startDateString" : "2021-08-31T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 151,
     "letter" : "X",
     "open" : true,
     "startDateString" : "2021-09-14T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 152,
     "letter" : "Y",
     "open" : true,
     "startDateString" : "2021-09-28T00:00:00.000+02:00"
   }, {
     "generation" : 7,
+    "id" : 153,
     "letter" : "Z",
     "open" : true,
     "startDateString" : "2021-10-12T00:00:00.000+02:00"

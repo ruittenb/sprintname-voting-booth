@@ -55,7 +55,7 @@ module.exports = (function (jQuery, firebase)
             settings: firebase.database().ref('settings'),
             pokedex : firebase.database().ref('pokedex'),
             pages   : firebase.database().ref('pages'),
-            users   : firebase.database().ref('users')
+            users   : firebase.database().ref('usersByEmail')
         };
 
         this.initListeners();
@@ -94,7 +94,7 @@ module.exports = (function (jQuery, firebase)
 
         // when user ratings load (initially: entire team)
         this.votingDb.users.once('value', (data) => {
-            const team = data.val();
+            const team = Object.values(data.val());
             this.elmClient.ports.onLoadTeamRatings.send(team);
         });
 
@@ -158,7 +158,10 @@ module.exports = (function (jQuery, firebase)
         // id === null would correspond to a delete request.
         // id should not be null, but let's be defensive here.
         if (userRatings.id !== null) {
-            let userRef = this.votingDb.users.child(userRatings.id);
+            let userRef = this.votingDb.users.child(
+                // dots are not allowed in keys
+                userRatings.email.replace(/\./g, '_')
+            );
             // Database rules ensure that votes cannot be cast if the
             // application is in maintenance mode, so we don't check that here.
             userRef.set(userRatings);
