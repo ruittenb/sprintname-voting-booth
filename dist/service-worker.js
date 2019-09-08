@@ -3,11 +3,11 @@
  * Serviceworker for Pokémon Sprint Name Voting Booth
  */
 
-var version = 'v10.9.0';
-var cacheName = 'sprintname-voting-booth-' + version;
-var imageDir = '/pokeart/'
-var placeHolder = 'silhouette.png';
-var filesToCache = [
+const version = 'v10.9.0';
+const cacheName = 'sprintname-voting-booth-' + version;
+const imageDir = '/pokeart/'
+const placeHolder = 'silhouette.png';
+const filesToCache = [
     '/',
     '/index.html',
     '/bundle.js',
