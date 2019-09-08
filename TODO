@@ -6,11 +6,7 @@ missing:
  - Uncaught Error: Trying to send an unexpected type of value through port `onFirebaseLoginFailed`:
    Expecting an Int at _.status but instead got: undefined
  - if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
- - rules: add check for admin users: see https://firebase.google.com/docs/auth/admin/custom-claims
-
-pages:
- - publish changes to pages (lock button)
- - change lock button to <a> or <span> according to admin
+ - use date object to calculate default page?
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
@@ -23,7 +19,6 @@ improvements:
 
 consider:
  - replace tooltips with jQuery.Tooltip ?
- - use date object to calculate default page?
  - LocalStorage? https://package.elm-lang.org/packages/billstclair/elm-localstorage/4.0.2/LocalStorage-SharedTypes
  - shake to display random pokemon? :)
  - swipe images in lightbox?
