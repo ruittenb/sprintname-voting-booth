@@ -170,7 +170,10 @@ module.exports = (function (jQuery, firebase)
      */
     Database.prototype.savePage = function (page)
     {
-        console.log(page); // TODO
+        let pageRef = this.votingDb.pages.child(page.id);
+        // Database rules ensure that votes cannot be cast if the
+        // application is in maintenance mode, so we don't check that here.
+        pageRef.set(page);
     };
 
     return Database;
