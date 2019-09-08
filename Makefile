@@ -178,7 +178,7 @@ docker-start: ## start the docker container
 		docker start $(DOCKER_REPO);                         \
 	else                                                         \
 		docker run --name $(DOCKER_REPO) $(DOCKERPORTS) -d   \
-			-t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest  \
+			-t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest; \
 	fi
 
 .PHONY: docker-build-start
