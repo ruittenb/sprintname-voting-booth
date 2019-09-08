@@ -30,7 +30,7 @@ maxStars =
 
 maxGeneration : Int
 maxGeneration =
-    7
+    8
 
 
 totalPokemon : Int

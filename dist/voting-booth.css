@@ -58,11 +58,6 @@ button.user-button,
     color: black;
 }
 
-.button.maintenance-button {
-    background-color: #f8f8f8;
-    border: 1px solid black;
-}
-
 span.button.show-voters,
 span.button.show-rankings,
 span.button.lock-button {
@@ -70,19 +65,21 @@ span.button.lock-button {
     border-color: #777;
 }
 
+.button.show-voters {
+    width: 128px;
+}
+
+.button.show-rankings {
+    width: 172px;
+}
+
 button.user-button {
     width: 84px;
 }
 
-.button.show-voters,
-.button.show-rankings {
-    width: 128px;
-}
-
 .button.maintenance-button {
-    background-image: url(icons/maintenance.png);
-    background-repeat: no-repeat;
-    background-position: center center;
+    border: 1px solid black;
+    background: #f8f8f8 url(icons/maintenance.png) no-repeat center center;
 }
 
 .button.maintenance-button.maintenance-mode {
@@ -278,7 +275,7 @@ button.user-button.current,
 #user-name {
     display: inline-block;
     height: 30px;
-    width: 216px;
+    width: 260px;
     margin-right: 4px;
     margin-bottom: 4px;
     float: left;
