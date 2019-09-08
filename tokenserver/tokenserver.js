@@ -253,7 +253,9 @@ module.exports = (function () {
      */
     FirebaseTokenServer.prototype.issueFirebaseToken = function (userData)
     {
-        return this.firebaseAdmin.auth().createCustomToken(userData.email);
+        return this.firebaseAdmin.auth().createCustomToken(
+            userData.email.replace(/\./g, '_')
+        );
     };
 
     return FirebaseTokenServer;
