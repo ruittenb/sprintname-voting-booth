@@ -7,7 +7,7 @@ import Html.Events exposing (onClick, onInput, onSubmit)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
 import Helpers exposing (romanNumeral)
-import Helpers.Pokemon exposing (filterPokedex)
+import Helpers.Pokemon exposing (filterPokedex, extractOneUserFromRatings)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Authentication exposing (tryGetUserProfile, isLoggedIn)
 import Msgs exposing (Msg(..))
@@ -226,18 +226,14 @@ loginLogoutButton authModel currentUser =
             ]
 
 
-lockButton: Route -> RemotePages -> Int -> Char -> Html Msg
-lockButton currentRoute remotePages generation letter =
+lockButton: Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
+lockButton currentRoute remotePages isCurrentUserAdmin generation letter =
     let
         currentPage =
             getCurrentPage remotePages generation letter
 
         isLocked =
             isPageLocked currentRoute currentPage
-
-        isCurrentUserAdmin =
-            -- TODO determine
-            False
 
         isRouteBrowse =
             case currentRoute of
@@ -264,8 +260,8 @@ lockButton currentRoute remotePages generation letter =
             span classProps []
 
 
-calculationButtons : Route -> RemotePages -> Int -> Char -> Html Msg
-calculationButtons route remotePages generation letter =
+calculationButtons : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
+calculationButtons route remotePages isCurrentUserAdmin generation letter =
     let
         calculationButtonElement =
             case route of
@@ -294,7 +290,7 @@ calculationButtons route remotePages generation letter =
                 , href (createShowRankingsPath generation letter)
                 ]
                 [ text "Show Rankings" ]
-            , lockButton route remotePages generation letter
+            , lockButton route remotePages isCurrentUserAdmin generation letter
             ]
 
 
@@ -391,31 +387,46 @@ tableMask route =
 
 functionPane : ApplicationState -> Html Msg
 functionPane state =
-    div [ id "function-buttons" ]
-        [ generationButtons
-            state.currentRoute
-            state.generation
-            state.letter
-        , searchBox
-            state.currentRoute
-            state.query
-        , letterButtons
-            state.currentRoute
-            state.pokedex
-            state.generation
-            state.letter
-        , calculationButtons
-            state.currentRoute
-            state.pages
-            state.generation
-            state.letter
-        , tableMask
-            state.currentRoute
-        , votersTable
-            state
-        , rankingsTable
-            state
-        ]
+    let
+        ( currentUserDataList, _ ) =
+            state.ratings
+                |> RemoteData.map
+                    (\ratings -> extractOneUserFromRatings ratings state.currentUser)
+                |> RemoteData.withDefault
+                    ( [], [] )
+
+        isCurrentUserAdmin =
+            List.head currentUserDataList
+                |> Maybe.map .admin
+                |> Maybe.withDefault False
+
+    in
+        div [ id "function-buttons" ]
+            [ generationButtons
+                state.currentRoute
+                state.generation
+                state.letter
+            , searchBox
+                state.currentRoute
+                state.query
+            , letterButtons
+                state.currentRoute
+                state.pokedex
+                state.generation
+                state.letter
+            , calculationButtons
+                state.currentRoute
+                state.pages
+                isCurrentUserAdmin
+                state.generation
+                state.letter
+            , tableMask
+                state.currentRoute
+            , votersTable
+                state
+            , rankingsTable
+                state
+            ]
 
 
 applicationPane : ApplicationState -> Html Msg

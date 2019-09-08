@@ -25,12 +25,11 @@
           && newData.child('letter').val() == data.child('letter').val() /* same letter */
         ",
         ".validate": "
-          newData.hasChildren(['id', 'generation', 'letter', 'open', 'dateString'])
+          newData.hasChildren(['id', 'generation', 'letter', 'open'])
           && newData.child('id').isNumber()
           && newData.child('generation').isNumber()
           && newData.child('letter').isString()
           && newData.child('open').isBoolean()
-          && newData.child('dateString').isString()
         "
       }
     },

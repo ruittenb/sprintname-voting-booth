@@ -8,8 +8,12 @@ import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (maxStars, imageDir, noBreakingSpace)
 import Helpers exposing (romanNumeral)
-import Helpers.Pokemon exposing (filterPokedex, searchPokedex)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
+import Helpers.Pokemon exposing
+    ( filterPokedex
+    , searchPokedex
+    , extractOneUserFromRating
+    )
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokemon exposing (..)
@@ -173,16 +177,6 @@ extractOnePokemonFromRatings ratings pokemon =
             []
 
 
-extractOneUserFromRatings : TeamRating -> User -> ( TeamRating, TeamRating )
-extractOneUserFromRatings ratings currentUser =
-    case currentUser of
-        Nothing ->
-            ( [], ratings )
-
-        Just simpleUserName ->
-            List.partition (.userName >> (==) simpleUserName) ratings
-
-
 variantLink : String -> String -> PokemonVariant -> Html Msg
 variantLink pokemonName description variant =
     let
@@ -245,7 +239,7 @@ pokemonTile currentRoute locked winner ratings currentUser pokemon =
             else
                 let
                     ( currentUserRating, otherUsersRating ) =
-                        extractOneUserFromRatings teamRating currentUser
+                        extractOneUserFromRating teamRating currentUser
 
                     voteWidgetElement =
                         case currentUser of
