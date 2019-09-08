@@ -7164,8 +7164,12 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Hippopotas_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "449.png",
-        "vname": ""
+        "image": "449-male.png",
+        "vname": "Male"
+      },
+      {
+        "image": "449-female.png",
+        "vname": "Female"
       }
     ]
   },
@@ -7179,8 +7183,12 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Hippowdon_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "450.png",
-        "vname": ""
+        "image": "450-male.png",
+        "vname": "Male"
+      },
+      {
+        "image": "450-female.png",
+        "vname": "Female"
       }
     ]
   },
