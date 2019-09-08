@@ -421,8 +421,9 @@ button.user-button.current,
     /* box-shadow: inset 0 0 10px #fde80b; /* yellow shaded border inside */
     /* box-shadow: inset 0 0 30px #e6c6e6; /* purple shaded border inside */
     /* background-image: linear-gradient(white 60%, #e6c6e6); /* white-to-purple gradient  */
-    /* background-image: linear-gradient(#e6c6e6 17%, white 17%, white 72%, #e6c6e6 72%); /* purple header and footer */
-    background-image: linear-gradient(135deg, #e6c6e6 12%, white 22%, white 67%, #e6c6e6 77%); /* diagonal gradient purple-white-purple */
+    /* background-image: linear-gradient(#e6c6e6 17%, white 17%, white 72%, #e6c6e6 72%); /* vertically purple-white-purple */
+    background-image: linear-gradient(135deg, #e6c6e6 17%, white 17%, white 72%, #e6c6e6 72%); /* diagonally segmented purple-white-purple */
+    /* background-image: linear-gradient(135deg, #e6c6e6 12%, white 22%, white 67%, #e6c6e6 77%); /* diagonal gradient purple-white-purple */
 }
 
 .poketile.winner::after {
