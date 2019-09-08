@@ -41,18 +41,18 @@ split: ## split 'total' into 'settings', 'pages', 'pokedex' and 'users'
 	jq '.pokedex'  $(COMBINED) > $(POKEDEX)
 	jq '.users'    $(COMBINED) > $(USERS)
 
-.PHONY: replace-settings
-replace-settings: ## update 'total' with the data from 'settings'
+.PHONY: replace-pokedex
+replace-pokedex: ## update 'total' with the data from 'pokedex'
 	{                                    \
 		printf "{\n"               ; \
-		printf '"settings":'       ; \
-		cat $(SETTINGS)            ; \
-		printf ",\n"               ; \
 		printf '"pages":'          ; \
 		jq '.pages' $(COMBINED)    ; \
 		printf ",\n"               ; \
 		printf '"pokedex":'        ; \
-		jq '.pokedex' $(COMBINED)  ; \
+		cat $(POKEDEX)             ; \
+		printf ",\n"               ; \
+		printf '"settings":'       ; \
+		jq '.settings' $(COMBINED) ; \
 		printf ",\n"               ; \
 		printf '"users":'          ; \
 		jq '.users' $(COMBINED)    ; \
@@ -60,18 +60,18 @@ replace-settings: ## update 'total' with the data from 'settings'
 	} | jq . > $(COMBINED).new
 	mv $(COMBINED).new $(COMBINED)
 
-.PHONY: replace-pokedex
-replace-pokedex: ## update 'total' with the data from 'pokedex'
+.PHONY: replace-settings
+replace-settings: ## update 'total' with the data from 'settings'
 	{                                    \
 		printf "{\n"               ; \
-		printf '"settings":'       ; \
-		jq '.settings' $(COMBINED) ; \
-		printf ",\n"               ; \
 		printf '"pages":'          ; \
 		jq '.pages' $(COMBINED)    ; \
 		printf ",\n"               ; \
 		printf '"pokedex":'        ; \
-		cat $(POKEDEX)             ; \
+		jq '.pokedex' $(COMBINED)  ; \
+		printf ",\n"               ; \
+		printf '"settings":'       ; \
+		cat $(SETTINGS)            ; \
 		printf ",\n"               ; \
 		printf '"users":'          ; \
 		jq '.users' $(COMBINED)    ; \
@@ -83,14 +83,14 @@ replace-pokedex: ## update 'total' with the data from 'pokedex'
 replace-users: ## update 'total' with the data from 'users'
 	{                                    \
 		printf "{\n"               ; \
-		printf '"settings":'       ; \
-		jq '.settings' $(COMBINED) ; \
-		printf ",\n"               ; \
 		printf '"pages":'          ; \
 		jq '.pages' $(COMBINED)    ; \
 		printf ",\n"               ; \
 		printf '"pokedex":'        ; \
 		jq '.pokedex' $(COMBINED)  ; \
+		printf ",\n"               ; \
+		printf '"settings":'       ; \
+		jq '.settings' $(COMBINED) ; \
 		printf ",\n"               ; \
 		printf '"users":'          ; \
 		cat $(USERS)               ; \
