@@ -1,6 +1,12 @@
-module Models.Pages exposing (..)
+module Models.Pages exposing
+    ( Winner
+    , RemotePages
+    , RemotePage
+    , Pages
+    , Page
+    , PortCompatiblePage
+    )
 
-import Date exposing (Date)
 import RemoteData exposing (RemoteData)
 
 
@@ -10,10 +16,21 @@ type alias Winner =
         , name : String
         }
 
-
 type alias Page =
-    { generation : Int
+    { id: Int
+    , generation : Int
     , letter : Char
+    , open : Bool
+    , winnerNum : Maybe Int
+    , winnerName : Maybe String
+    , startDate : Maybe String
+    }
+
+
+type alias PortCompatiblePage =
+    { id: Int
+    , generation : Int
+    , letter : String
     , open : Bool
     , winnerNum : Maybe Int
     , winnerName : Maybe String
@@ -27,3 +44,6 @@ type alias Pages =
 
 type alias RemotePages =
     RemoteData String Pages
+
+type alias RemotePage =
+    RemoteData String Page

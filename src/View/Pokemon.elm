@@ -6,9 +6,14 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
-import Constants exposing (maxStars, imageDir)
+import Constants exposing (maxStars, imageDir, noBreakingSpace)
 import Helpers exposing (romanNumeral)
-import Helpers.Pokemon exposing (filterPokedex, searchPokedex)
+import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
+import Helpers.Pokemon exposing
+    ( filterPokedex
+    , searchPokedex
+    , extractOneUserFromRating
+    )
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokemon exposing (..)
@@ -31,42 +36,6 @@ loadingErrorIcon =
 unknownUserIcon : Html Msg
 unknownUserIcon =
     div [ class "unknown-user" ] []
-
-
-getCurrentPage : RemotePages -> Int -> Char -> Page
-getCurrentPage remotePages generation letter =
-    let
-        defaultPage =
-            { generation = generation
-            , letter = letter
-            , open = False
-            , winnerName = Nothing
-            , winnerNum = Nothing
-            , startDate = Nothing
-            }
-    in
-    remotePages
-        |> RemoteData.map
-            (\pages ->
-                pages
-                    |> List.filter (\page -> page.generation == generation)
-                    |> List.filter (\page -> page.letter == letter)
-                    |> List.head
-                    |> Maybe.withDefault defaultPage
-            )
-        |> RemoteData.withDefault defaultPage
-
-
-getWinner : Page -> Winner
-getWinner page =
-    Maybe.map2
-        (\name number ->
-            { name = name
-            , number = number
-            }
-        )
-        page.winnerName
-        page.winnerNum
 
 
 linkTo : String -> Html Msg -> Html Msg
@@ -111,7 +80,7 @@ voteWidgetStar pokemonNumber currentUserName rating stars =
             , ( "selected", rating >= stars )
             ]
         , onClick (Msgs.PokemonVoteCast { pokemonNumber = pokemonNumber, vote = stars })
-        , title <| currentUserName ++ ": " ++ (toString stars)
+        , title <| currentUserName ++ ": " ++ toString stars
         ]
         []
 
@@ -133,6 +102,11 @@ voteWidget currentUserRating pokemonNumber currentUserName =
             List.map
                 (voteWidgetStar pokemonNumber currentUserName rating)
                 (List.range 1 maxStars)
+
+
+noVoteWidgetElement : Html Msg
+noVoteWidgetElement =
+    text ""
 
 
 ratingNode : UserRating -> Html Msg
@@ -163,7 +137,7 @@ ratingWidget : TeamRating -> Html Msg -> Html Msg
 ratingWidget otherUsersRating voteWidgetElement =
     let
         ratingNodes =
-            (List.map ratingNode otherUsersRating)
+            List.map ratingNode otherUsersRating
     in
         div
             [ class "rating-nodes"
@@ -203,22 +177,13 @@ extractOnePokemonFromRatings ratings pokemon =
             []
 
 
-extractOneUserFromRatings : TeamRating -> User -> ( TeamRating, TeamRating )
-extractOneUserFromRatings ratings currentUser =
-    case currentUser of
-        Nothing ->
-            ( [], ratings )
-
-        Just simpleUserName ->
-            List.partition (.userName >> (==) simpleUserName) ratings
-
-
 variantLink : String -> String -> PokemonVariant -> Html Msg
 variantLink pokemonName description variant =
     let
         title =
             if String.length variant.vname > 0 then
                 pokemonName ++ " (" ++ variant.vname ++ ")"
+
             else
                 pokemonName
 
@@ -234,19 +199,14 @@ variantLinks pokemonName description variants =
     List.map (variantLink pokemonName description) variants
 
 
-pokemonTile : Route -> Winner -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
-pokemonTile currentRoute winner ratings currentUser pokemon =
+pokemonTile : Route -> Bool -> Winner -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
+pokemonTile currentRoute locked winner ratings currentUser pokemon =
     let
-        isWinner = winner
-            |> Maybe.map .number
-            |> Maybe.map ((==) pokemon.number)
-            |> Maybe.withDefault False
-
-        teamRating =
-            extractOnePokemonFromRatings ratings pokemon
-
-        ( currentUserRating, otherUsersRating ) =
-            extractOneUserFromRatings teamRating currentUser
+        isWinner =
+            winner
+                |> Maybe.map .number
+                |> Maybe.map ((==) pokemon.number)
+                |> Maybe.withDefault False
 
         leftMargin =
             toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
@@ -264,19 +224,32 @@ pokemonTile currentRoute winner ratings currentUser pokemon =
                         ]
                         [ text (romanNumeral gen)
                         ]
-                    , text " " -- no-breaking space
+                    , text noBreakingSpace
                     ]
 
                 _ ->
                     [ text "" ]
 
-        voteWidgetElement =
-            case currentUser of
-                Nothing ->
-                    text ""
+        teamRating =
+            extractOnePokemonFromRatings ratings pokemon
 
-                Just actualUserName ->
-                    voteWidget currentUserRating pokemon.number actualUserName
+        formattedRating =
+            if locked then
+                [ ratingWidget teamRating noVoteWidgetElement ]
+            else
+                let
+                    ( currentUserRating, otherUsersRating ) =
+                        extractOneUserFromRating teamRating currentUser
+
+                    voteWidgetElement =
+                        case currentUser of
+                            Nothing ->
+                                text ""
+
+                            Just actualUserName ->
+                                voteWidget currentUserRating pokemon.number actualUserName
+                in
+                    [ ratingWidget otherUsersRating voteWidgetElement ]
     in
         div
             [ classList
@@ -287,7 +260,7 @@ pokemonTile currentRoute winner ratings currentUser pokemon =
         <|
             [ p []
                 [ span [] <|
-                    (generationElement pokemon.generation)
+                    generationElement pokemon.generation
                         ++ [ toString pokemon.number |> text ]
                 , text pokemon.name |> linkTo pokemon.url
                 ]
@@ -319,29 +292,35 @@ pokemonTile currentRoute winner ratings currentUser pokemon =
                     []
                 ]
             ]
-                ++ case ratings of
-                    Success _ ->
-                        [ ratingWidget otherUsersRating voteWidgetElement ]
+                ++ (case ratings of
+                        Success _ ->
+                            formattedRating
 
-                    Failure _ ->
-                        [ loadingErrorIcon ]
+                        Failure _ ->
+                            [ loadingErrorIcon ]
 
-                    _ ->
-                        [ loadingBusyIcon ]
+                        _ ->
+                            [ loadingBusyIcon ]
+                   )
 
 
 pokemonTiles : Route -> Page -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
 pokemonTiles currentRoute currentPage pokelist ratings currentUser =
     let
-        winner = getWinner currentPage
+        winner =
+            getWinner currentPage
+
+        locked =
+            isPageLocked currentRoute currentPage
     in
-        List.map (pokemonTile currentRoute winner ratings currentUser) pokelist
+        List.map (pokemonTile currentRoute locked winner ratings currentUser) pokelist
 
 
 pokemonCanvas : ApplicationState -> Html Msg
 pokemonCanvas state =
     let
-        currentPage = getCurrentPage state.pages state.generation state.letter
+        currentPage =
+            getCurrentPage state.pages state.generation state.letter
 
         pokeList =
             case state.currentRoute of

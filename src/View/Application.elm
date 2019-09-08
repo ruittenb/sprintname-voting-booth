@@ -7,13 +7,15 @@ import Html.Events exposing (onClick, onInput, onSubmit)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
 import Helpers exposing (romanNumeral)
-import Helpers.Pokemon exposing (filterPokedex)
+import Helpers.Pokemon exposing (filterPokedex, extractOneUserFromRatings)
+import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Authentication exposing (tryGetUserProfile, isLoggedIn)
 import Msgs exposing (Msg(..))
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
+import Models.Pages exposing (..)
 import Models.Ratings exposing (..)
 import Constants exposing (..)
 import Routing
@@ -130,13 +132,13 @@ letterButton currentRoute pokedex currentGen currentLetter letter =
         hash =
             createBrowsePath currentGen letter
 
-        linkElem =
+        letterButtonElement =
             if List.isEmpty pokeList then
                 span
             else
                 a
     in
-        linkElem
+        letterButtonElement
             [ classList
                 [ ( "button", True )
                 , ( "letter-button", True )
@@ -224,10 +226,44 @@ loginLogoutButton authModel currentUser =
             ]
 
 
-calculationButtons : Route -> Int -> Char -> Html Msg
-calculationButtons route gen letter =
+lockButton: Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
+lockButton currentRoute remotePages isCurrentUserAdmin generation letter =
     let
-        linkElem =
+        currentPage =
+            getCurrentPage remotePages generation letter
+
+        isLocked =
+            isPageLocked currentRoute currentPage
+
+        isRouteBrowse =
+            case currentRoute of
+                Search _ ->
+                    False
+
+                _ ->
+                    True
+
+        classProps =
+            [ classList
+                [ ( "button", True )
+                , ( "lock-button", True )
+                , ( "locked", isLocked )
+                ]
+            ]
+
+        eventProps =
+            [ onClick (PageLockClicked currentPage) ]
+    in
+        if isRouteBrowse && isCurrentUserAdmin then
+            a (classProps ++ eventProps) []
+        else
+            span classProps []
+
+
+calculationButtons : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
+calculationButtons route remotePages isCurrentUserAdmin generation letter =
+    let
+        calculationButtonElement =
             case route of
                 Search _ ->
                     span
@@ -238,22 +274,23 @@ calculationButtons route gen letter =
         div
             [ id "calculation-buttons"
             ]
-            [ linkElem
+            [ calculationButtonElement
                 [ classList
                     [ ( "show-voters", True )
                     , ( "button", True )
                     ]
-                , href (createShowVotersPath gen letter)
+                , href (createShowVotersPath generation letter)
                 ]
                 [ text "Show Voters" ]
-            , linkElem
+            , calculationButtonElement
                 [ classList
                     [ ( "show-rankings", True )
                     , ( "button", True )
                     ]
-                , href (createShowRankingsPath gen letter)
+                , href (createShowRankingsPath generation letter)
                 ]
                 [ text "Show Rankings" ]
+            , lockButton route remotePages isCurrentUserAdmin generation letter
             ]
 
 
@@ -348,6 +385,50 @@ tableMask route =
                 span [] []
 
 
+functionPane : ApplicationState -> Html Msg
+functionPane state =
+    let
+        ( currentUserDataList, _ ) =
+            state.ratings
+                |> RemoteData.map
+                    (\ratings -> extractOneUserFromRatings ratings state.currentUser)
+                |> RemoteData.withDefault
+                    ( [], [] )
+
+        isCurrentUserAdmin =
+            List.head currentUserDataList
+                |> Maybe.map .admin
+                |> Maybe.withDefault False
+
+    in
+        div [ id "function-buttons" ]
+            [ generationButtons
+                state.currentRoute
+                state.generation
+                state.letter
+            , searchBox
+                state.currentRoute
+                state.query
+            , letterButtons
+                state.currentRoute
+                state.pokedex
+                state.generation
+                state.letter
+            , calculationButtons
+                state.currentRoute
+                state.pages
+                isCurrentUserAdmin
+                state.generation
+                state.letter
+            , tableMask
+                state.currentRoute
+            , votersTable
+                state
+            , rankingsTable
+                state
+            ]
+
+
 applicationPane : ApplicationState -> Html Msg
 applicationPane state =
     div [ id "main-buttons" ]
@@ -357,34 +438,6 @@ applicationPane state =
         , messageBox
             state.statusMessage
             state.statusLevel
-        ]
-
-
-functionPane : ApplicationState -> Html Msg
-functionPane state =
-    div [ id "function-buttons" ]
-        [ generationButtons
-            state.currentRoute
-            state.generation
-            state.letter
-        , searchBox
-            state.currentRoute
-            state.query
-        , letterButtons
-            state.currentRoute
-            state.pokedex
-            state.generation
-            state.letter
-        , calculationButtons
-            state.currentRoute
-            state.generation
-            state.letter
-        , tableMask
-            state.currentRoute
-        , votersTable
-            state
-        , rankingsTable
-            state
         ]
 
 

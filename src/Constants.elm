@@ -44,6 +44,11 @@ imageDir =
     "pokeart/"
 
 
+noBreakingSpace: String
+noBreakingSpace =
+    "\x00A0"
+
+
 allGenerations : List Int
 allGenerations =
     List.range 1 maxGeneration

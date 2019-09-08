@@ -4,6 +4,7 @@ module Helpers.Pokemon
         , searchPokedex
         , extractOnePokemonFromRatingString
         , extractOneUserFromRatings
+        , extractOneUserFromRating
         )
 
 import Regex exposing (regex, caseInsensitive)
@@ -71,3 +72,14 @@ extractOneUserFromRatings ratings currentUser =
 
         Just simpleUserName ->
             List.partition (.userName >> (==) simpleUserName) ratings
+
+
+extractOneUserFromRating : TeamRating -> User -> ( TeamRating, TeamRating )
+extractOneUserFromRating ratings currentUser =
+    case currentUser of
+        Nothing ->
+            ( [], ratings )
+
+        Just simpleUserName ->
+            List.partition (.userName >> (==) simpleUserName) ratings
+

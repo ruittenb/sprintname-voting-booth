@@ -18,7 +18,7 @@ import Commands.Authentication exposing (decodeUser)
 import Commands.Database exposing (firebaseInit, firebaseLoginWithJwtToken)
 import Commands.Settings exposing (decodeSettings)
 import Commands.Pokemon exposing (decodePokedex)
-import Commands.Pages exposing (decodePages)
+import Commands.Pages exposing (decodePages, decodePage)
 import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
 import Ports
     exposing
@@ -28,6 +28,7 @@ import Ports
         , onLoadSettings
         , onLoadPokedex
         , onLoadPages
+        , onLoadPage
         , onLoadTeamRatings
         , onLoadUserRatings
         )
@@ -113,6 +114,7 @@ subscriptions _ =
         , onLoadSettings (decodeSettings >> Msgs.SettingsLoaded)
         , onLoadPokedex (decodePokedex >> Msgs.PokedexLoaded)
         , onLoadPages (decodePages >> Msgs.PagesLoaded)
+        , onLoadPage (decodePage >> Msgs.PageLoaded)
         , onLoadTeamRatings (decodeTeamRatings >> Msgs.TeamRatingsLoaded)
         , onLoadUserRatings (decodeUserRatings >> Msgs.UserRatingsLoaded)
         , Time.every (500 * millisecond) Tick
