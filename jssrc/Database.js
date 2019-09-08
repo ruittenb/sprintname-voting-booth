@@ -55,7 +55,7 @@ module.exports = (function (jQuery, firebase)
             settings: firebase.database().ref('settings'),
             pokedex : firebase.database().ref('pokedex'),
             pages   : firebase.database().ref('pages'),
-            users   : firebase.database().ref('users2')
+            users   : firebase.database().ref('usersByEmail')
         };
 
         this.initListeners();

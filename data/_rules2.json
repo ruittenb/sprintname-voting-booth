@@ -2,11 +2,11 @@
   "rules": {
     ".read": "true",
     "settings": {
-      /**
-       * Only allow writing through firebase console. By changing the "users" object, we could
-       * change it to: "root.child('users').child(auth.uid).child('admin').val() == true"
-       */
-      ".write": "false"
+      ".write": "
+        auth != null /* user must be logged in */
+        && root.child('usersByEmail').child(auth.uid).child('admin').val() == true /* user must be admin */
+        && root.child('usersByEmail').child(auth.uid).child('active').val() == true /* user must be active */
+      "
     },
     "pokedex": {
       ".write": "false"
@@ -14,15 +14,19 @@
     "pages": {
       "$page_id": {
         ".write": "
-          auth != null /* user must be logged in */
+          root.child('settings').child('maintenanceMode').val() == false /* app not in maintenance mode */
+          && auth != null /* user must be logged in */
+          && root.child('usersByEmail').child(auth.uid).child('admin').val() == true /* user must be admin */
+          && root.child('usersByEmail').child(auth.uid).child('active').val() == true /* user must be active */
           && data.exists() /* no inserting */
           && newData.exists() /* no deleting */
+          && newData.child('id').val() == data.child('id').val() /* same id */
           && newData.child('generation').val() == data.child('generation').val() /* same gen */
           && newData.child('letter').val() == data.child('letter').val() /* same letter */
-          /* This should also contain a check that admin == true */
         ",
         ".validate": "
-          newData.hasChildren(['generation', 'letter', 'open', 'dateString'])
+          newData.hasChildren(['id', 'generation', 'letter', 'open', 'dateString'])
+          && newData.child('id').isNumber()
           && newData.child('generation').isNumber()
           && newData.child('letter').isString()
           && newData.child('open').isBoolean()
@@ -54,7 +58,7 @@
         "
       }
     },
-    "users2": {
+    "usersByEmail": {
       "$user_id": {
         ".write": "
           root.child('settings').child('maintenanceMode').val() == false /* app not in maintenance mode */
