@@ -228,6 +228,9 @@ button.user-button.current,
  * and move the search box above both.
  */
 @media (max-width: 455px) {
+    #main-buttons {
+        display: flex;
+    }
     #function-buttons {
         display: flex;
         flex-direction: column;
