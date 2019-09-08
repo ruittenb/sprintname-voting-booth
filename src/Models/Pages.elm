@@ -1,6 +1,7 @@
 module Models.Pages exposing
     ( Winner
     , RemotePages
+    , RemotePage
     , Pages
     , Page
     , PortCompatiblePage
@@ -43,3 +44,6 @@ type alias Pages =
 
 type alias RemotePages =
     RemoteData String Pages
+
+type alias RemotePage =
+    RemoteData String Page

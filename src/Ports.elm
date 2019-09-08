@@ -15,6 +15,7 @@ port module Ports
         , onLoadSettings
         , onLoadPokedex
         , onLoadPages
+        , onLoadPage
         , onLoadTeamRatings
         , onLoadUserRatings
         )
@@ -76,6 +77,9 @@ port onLoadPokedex : (Value -> msg) -> Sub msg
 
 
 port onLoadPages : (Value -> msg) -> Sub msg
+
+
+port onLoadPage : (Value -> msg) -> Sub msg
 
 
 port onLoadTeamRatings : (Value -> msg) -> Sub msg

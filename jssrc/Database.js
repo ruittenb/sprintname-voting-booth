@@ -89,7 +89,7 @@ module.exports = (function (jQuery, firebase)
         // when pages information changes (when a page is closed)
         this.votingDb.pages.on('child_changed', (data) => {
             const page = data.val();
-            // this.elmClient.ports.onLoadPage.send(page);
+            this.elmClient.ports.onLoadPage.send(page);
         });
 
         // when user ratings load (initially: entire team)

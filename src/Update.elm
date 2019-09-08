@@ -112,6 +112,25 @@ update msg oldState =
         PagesLoaded _ ->
             ( oldState, Cmd.none )
 
+        PageLoaded (Success page) ->
+            let
+                newPages =
+                    RemoteData.map
+                        (replaceIf (.id >> (==) page.id) page)
+                        oldState.pages
+
+                newState =
+                    { oldState | pages = newPages }
+            in
+                ( newState, Cmd.none )
+
+        PageLoaded (Failure message) ->
+            ( oldState, Cmd.none )
+                |> setStatusMessage Error (toString message)
+
+        PageLoaded _ ->
+            ( oldState, Cmd.none )
+
         TeamRatingsLoaded (Success ratings) ->
             let
                 newRatings =

@@ -1,4 +1,4 @@
-module Commands.Pages exposing (savePageLockState, decodePages)
+module Commands.Pages exposing (savePageLockState, decodePages, decodePage)
 
 import RemoteData exposing (fromResult)
 import Json.Encode as Encode exposing (Value)
@@ -20,6 +20,12 @@ savePageLockState page =
 decodePages : Value -> RemotePages
 decodePages val =
     decodeValue (Decode.list pageDecoder) val
+        |> RemoteData.fromResult
+
+
+decodePage : Value -> RemotePage
+decodePage val =
+    decodeValue pageDecoder val
         |> RemoteData.fromResult
 
 
