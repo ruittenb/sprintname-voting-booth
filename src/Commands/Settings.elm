@@ -1,4 +1,4 @@
-module Commands.Settings exposing (decodeSettings)
+module Commands.Settings exposing (decodeSettings, saveMaintenanceMode)
 
 import RemoteData exposing (fromResult)
 import Json.Encode as Encode exposing (Value)
@@ -8,8 +8,8 @@ import Models.Settings exposing (..)
 import Ports exposing (saveSettings)
 
 
-saveSettings : Settings -> Cmd msg
-saveSettings settings =
+saveMaintenanceMode : Settings -> Cmd msg
+saveMaintenanceMode settings =
     saveSettings settings
 
 

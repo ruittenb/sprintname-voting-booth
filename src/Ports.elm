@@ -9,6 +9,7 @@ port module Ports
         , preloadImages
         , saveUserRatings
         , savePage
+        , saveSettings
         , onAuthenticationReceived
         , onAuthenticationFailed
         , onFirebaseLoginFailed
