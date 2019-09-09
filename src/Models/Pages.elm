@@ -1,11 +1,12 @@
-module Models.Pages exposing
-    ( Winner
-    , RemotePages
-    , RemotePage
-    , Pages
-    , Page
-    , PortCompatiblePage
-    )
+module Models.Pages
+    exposing
+        ( Winner
+        , RemotePages
+        , RemotePage
+        , Pages
+        , Page
+        , PortCompatiblePage
+        )
 
 import RemoteData exposing (RemoteData)
 
@@ -16,8 +17,9 @@ type alias Winner =
         , name : String
         }
 
+
 type alias Page =
-    { id: Int
+    { id : Int
     , generation : Int
     , letter : Char
     , open : Bool
@@ -28,7 +30,7 @@ type alias Page =
 
 
 type alias PortCompatiblePage =
-    { id: Int
+    { id : Int
     , generation : Int
     , letter : String
     , open : Bool
@@ -44,6 +46,7 @@ type alias Pages =
 
 type alias RemotePages =
     RemoteData String Pages
+
 
 type alias RemotePage =
     RemoteData String Page

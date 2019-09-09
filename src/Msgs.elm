@@ -33,6 +33,7 @@ type Msg
     | UrlChanged (Maybe Route)
     | CloseMaskClicked
     | PageLockClicked Page
+    | MaintenanceModeClicked
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | PokemonVoteCast UserVote

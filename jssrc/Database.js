@@ -41,6 +41,9 @@ module.exports = (function (jQuery, firebase)
 
         // save page updates to firebase
         this.elmClient.ports.savePage.subscribe(this.savePage.bind(this));
+
+        // save page updates to firebase
+        this.elmClient.ports.saveSettings.subscribe(this.saveSettings.bind(this));
     };
 
     /** **********************************************************************
@@ -174,9 +177,19 @@ module.exports = (function (jQuery, firebase)
     Database.prototype.savePage = function (page)
     {
         let pageRef = this.votingDb.pages.child(page.id);
-        // Database rules ensure that votes cannot be cast if the
-        // application is in maintenance mode, so we don't check that here.
+        // Database rules check the different scenarios (e.g. authorizations),
+        // so we don't check that here.
         pageRef.set(page);
+    };
+
+    /** **********************************************************************
+     * database action: save settings
+     */
+    Database.prototype.saveSettings = function (settings)
+    {
+        // Database rules check the different scenarios (e.g. authorizations),
+        // so we don't check that here.
+        this.votingDb.settings.set(settings);
     };
 
     return Database;

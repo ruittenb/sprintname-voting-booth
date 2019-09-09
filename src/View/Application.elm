@@ -7,11 +7,13 @@ import Html.Events exposing (onClick, onInput, onSubmit)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
 import Helpers exposing (romanNumeral)
-import Helpers.Pokemon exposing (filterPokedex, extractOneUserFromRatings)
+import Helpers.Pokemon exposing (filterPokedex)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Authentication exposing (tryGetUserProfile, isLoggedIn)
+import Helpers.Application exposing (getIsCurrentUserAdmin)
 import Msgs exposing (Msg(..))
 import Models exposing (..)
+import Models.Settings exposing (RemoteSettings)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Pokemon exposing (..)
@@ -220,13 +222,38 @@ loginLogoutButton authModel currentUser =
                     ]
                 ]
                 [ text userName ]
-            , div
-                [ class "button button-spacer" ]
-                []
             ]
 
 
-lockButton: Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
+maintenanceButton : RemoteSettings -> Bool -> Html Msg
+maintenanceButton remoteSettings isCurrentUserAdmin =
+    let
+        placeHolder =
+            div [ class "button button-spacer" ] []
+
+        buttonHtml =
+            remoteSettings
+                |> RemoteData.map
+                    (\settings ->
+                        a
+                            [ classList
+                                [ ( "button", True )
+                                , ( "maintenance-button", True )
+                                , ( "maintenance-mode", settings.maintenanceMode )
+                                ]
+                            , onClick MaintenanceModeClicked
+                            ]
+                            []
+                    )
+                |> RemoteData.withDefault placeHolder
+    in
+        if isCurrentUserAdmin then
+            buttonHtml
+        else
+            placeHolder
+
+
+lockButton : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
 lockButton currentRoute remotePages isCurrentUserAdmin generation letter =
     let
         currentPage =
@@ -389,18 +416,8 @@ tableMask route =
 functionPane : ApplicationState -> Html Msg
 functionPane state =
     let
-        ( currentUserDataList, _ ) =
-            state.ratings
-                |> RemoteData.map
-                    (\ratings -> extractOneUserFromRatings ratings state.currentUser)
-                |> RemoteData.withDefault
-                    ( [], [] )
-
         isCurrentUserAdmin =
-            List.head currentUserDataList
-                |> Maybe.map .admin
-                |> Maybe.withDefault False
-
+            getIsCurrentUserAdmin state
     in
         div [ id "function-buttons" ]
             [ generationButtons
@@ -432,14 +449,21 @@ functionPane state =
 
 applicationPane : ApplicationState -> Html Msg
 applicationPane state =
-    div [ id "main-buttons" ]
-        [ loginLogoutButton
-            state.authModel
-            state.currentUser
-        , messageBox
-            state.statusMessage
-            state.statusLevel
-        ]
+    let
+        isCurrentUserAdmin =
+            getIsCurrentUserAdmin state
+    in
+        div [ id "main-buttons" ]
+            [ loginLogoutButton
+                state.authModel
+                state.currentUser
+            , maintenanceButton
+                state.settings
+                isCurrentUserAdmin
+            , messageBox
+                state.statusMessage
+                state.statusLevel
+            ]
 
 
 title : Html msg

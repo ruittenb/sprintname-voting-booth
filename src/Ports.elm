@@ -9,6 +9,7 @@ port module Ports
         , preloadImages
         , saveUserRatings
         , savePage
+        , saveSettings
         , onAuthenticationReceived
         , onAuthenticationFailed
         , onFirebaseLoginFailed
@@ -22,6 +23,7 @@ port module Ports
 
 import Models.Auth exposing (LockParameters, Token)
 import Models.Database exposing (FirebaseConfig, Diagnostics)
+import Models.Settings exposing (Settings)
 import Models.Pokemon exposing (PortCompatiblePreloadCandidate)
 import Models.Ratings exposing (UserRatings)
 import Models.Pages exposing (PortCompatiblePage)
@@ -56,6 +58,10 @@ port saveUserRatings : UserRatings -> Cmd msg
 
 
 port savePage : PortCompatiblePage -> Cmd msg
+
+
+port saveSettings : Settings -> Cmd msg
+
 
 
 -- Subscriptions (incoming)

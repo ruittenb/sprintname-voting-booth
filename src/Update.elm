@@ -25,6 +25,7 @@ import Helpers.Pokemon
         , extractOnePokemonFromRatingString
         )
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
+import Update.Settings exposing (updateMaintenanceMode)
 import Update.Ratings exposing (updateVoteForPokemon)
 import Update.Pages exposing (updatePageLockState)
 import Update.Pokemon
@@ -201,6 +202,9 @@ update msg oldState =
 
         PageLockClicked page ->
             updatePageLockState oldState page
+
+        MaintenanceModeClicked ->
+            updateMaintenanceMode oldState
 
         VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction

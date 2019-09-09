@@ -24,7 +24,6 @@ updatePageLockState oldState page =
                                     && (oldPage.letter == page.letter)
                             then
                                 newPage
-
                             else
                                 oldPage
                         )

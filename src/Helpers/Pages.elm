@@ -54,4 +54,3 @@ getWinner page =
         )
         page.winnerName
         page.winnerNum
-
