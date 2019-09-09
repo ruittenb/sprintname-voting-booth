@@ -41,6 +41,9 @@ module.exports = (function (jQuery, firebase)
 
         // save page updates to firebase
         this.elmClient.ports.savePage.subscribe(this.savePage.bind(this));
+
+        // save page updates to firebase
+        this.elmClient.ports.saveSettings.subscribe(this.saveSettings.bind(this));
     };
 
     /** **********************************************************************
@@ -186,8 +189,7 @@ module.exports = (function (jQuery, firebase)
     {
         // Database rules check the different scenarios (e.g. authorizations),
         // so we don't check that here.
-        console.log('Settings to write: ', settings); // TODO
-        // this.votingDb.settings.set(settings);
+        this.votingDb.settings.set(settings);
     };
 
     return Database;
