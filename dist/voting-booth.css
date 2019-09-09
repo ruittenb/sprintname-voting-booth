@@ -52,11 +52,15 @@ button.user-button,
 .button.show-rankings,
 .button.letter-button,
 .button.generation-button,
-.button.maintenance-button,
 .button.lock-button {
     background-color: white;
     border: 1px solid black;
     color: black;
+}
+
+.button.maintenance-button {
+    background-color: #f8f8f8;
+    border: 1px solid black;
 }
 
 span.button.show-voters,
