@@ -7,6 +7,9 @@ missing:
    Expecting an Int at _.status but instead got: undefined
  - if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
  - use date object to calculate default page?
+ - add maintenance button to toggle maintenance mode
+ - placement of winner badge on mobile is off
+ - examine scaling on mobile for gen8
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
