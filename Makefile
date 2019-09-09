@@ -198,7 +198,7 @@ docker-shell: ## shell into the running docker container
 	docker exec -it $(DOCKER_REPO) /bin/bash
 
 .PHONY: docker-clean
-docker-clean:
+docker-clean: ## remove all voting-booth docker images that are not :latest or current version
 	docker images | awk -v current_version=$(CURRENT_VERSION) -v docker_repo=$(DOCKER_REPO) ' \
 		$$0 ~ docker_repo && $$2 != "latest" && $$2 != current_version { print $$3 }      \
 	' | xargs docker rmi
