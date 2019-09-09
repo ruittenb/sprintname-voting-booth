@@ -66,15 +66,15 @@ span.button.lock-button {
 }
 
 .button.show-voters {
-    width: 128px;
+    width: 125px;
 }
 
 .button.show-rankings {
-    width: 172px;
+    width: 168px;
 }
 
 button.user-button {
-    width: 84px;
+    width: 82px;
 }
 
 .button.maintenance-button {
@@ -113,14 +113,14 @@ button.user-button,
 }
 
 .button.letter-button {
-    width: 40px;
+    width: 39px;
 }
 
 .button.button-spacer,
 .button.lock-button,
 .button.generation-button,
 .button.maintenance-button {
-    width: 40px;
+    width: 39px;
     display: block;
     float: left;
 }
@@ -275,7 +275,7 @@ button.user-button.current,
 #user-name {
     display: inline-block;
     height: 30px;
-    width: 260px;
+    width: 254px;
     margin-right: 4px;
     margin-bottom: 4px;
     float: left;
@@ -284,6 +284,12 @@ button.user-button.current,
     color: black;
     text-align: center;
     line-height: 28px;
+}
+
+@media (max-width: 455px) {
+    #user-name {
+        width: 211px;
+    }
 }
 
 #message-box {
