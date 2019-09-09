@@ -18,6 +18,7 @@ const filesToCache = [
     '/lightbox.min.js',
     '/fonts/fontawesome-webfont.woff',
     '/icons/cross.png',
+    '/icons/find-bw.png',
     '/icons/lock-bw.png',
     '/icons/lock-open-bw.png',
     '/images/lb-close.png',

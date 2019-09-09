@@ -208,18 +208,18 @@ loginLogoutButton authModel currentUser =
                 AuthenticationLoginClicked
     in
         div [ id "user-buttons" ]
-            [ div
+            [ button
+                [ class "user-button"
+                , onClick buttonMsg
+                ]
+                [ text buttonText ]
+            , div
                 [ id "user-name"
                 , classList
                     [ ( "current", loggedIn )
                     ]
                 ]
                 [ text userName ]
-            , button
-                [ class "user-button"
-                , onClick buttonMsg
-                ]
-                [ text buttonText ]
             , div
                 [ class "button button-spacer" ]
                 []
@@ -248,6 +248,7 @@ lockButton currentRoute remotePages isCurrentUserAdmin generation letter =
                 [ ( "button", True )
                 , ( "lock-button", True )
                 , ( "locked", isLocked )
+                , ( "search", not isRouteBrowse )
                 ]
             ]
 
