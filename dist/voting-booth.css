@@ -254,7 +254,6 @@ button.user-button.current,
         display: flex;
         flex-direction: column;
     }
-    #user-buttons         { order: 10; }
     #search-box-container { order: 20; }
     #generation-buttons   { order: 30; }
     #letter-buttons       { order: 40; }
