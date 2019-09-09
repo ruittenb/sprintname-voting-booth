@@ -226,7 +226,7 @@ loginLogoutButton authModel currentUser =
             ]
 
 
-lockButton: Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
+lockButton : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
 lockButton currentRoute remotePages isCurrentUserAdmin generation letter =
     let
         currentPage =
@@ -400,7 +400,6 @@ functionPane state =
             List.head currentUserDataList
                 |> Maybe.map .admin
                 |> Maybe.withDefault False
-
     in
         div [ id "function-buttons" ]
             [ generationButtons

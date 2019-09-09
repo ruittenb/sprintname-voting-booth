@@ -9,11 +9,12 @@ import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (maxStars, imageDir, noBreakingSpace)
 import Helpers exposing (romanNumeral)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
-import Helpers.Pokemon exposing
-    ( filterPokedex
-    , searchPokedex
-    , extractOneUserFromRating
-    )
+import Helpers.Pokemon
+    exposing
+        ( filterPokedex
+        , searchPokedex
+        , extractOneUserFromRating
+        )
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokemon exposing (..)
@@ -183,7 +184,6 @@ variantLink pokemonName description variant =
         title =
             if String.length variant.vname > 0 then
                 pokemonName ++ " (" ++ variant.vname ++ ")"
-
             else
                 pokemonName
 

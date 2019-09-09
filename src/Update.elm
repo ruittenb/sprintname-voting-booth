@@ -202,6 +202,18 @@ update msg oldState =
         PageLockClicked page ->
             updatePageLockState oldState page
 
+        MaintenanceModeClicked ->
+            let
+                oldSettings =
+                    oldState.settings
+
+                newSettings =
+                    { oldSettings
+                        | maintenanceMode = not oldSettings.maintenanceMode
+                    }
+            in
+                saveSettings newSettings
+
         VariantChanged pokemonNumber direction ->
             updateChangeVariant oldState pokemonNumber direction
 
