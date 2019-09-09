@@ -440,7 +440,7 @@ button.user-button.current,
     position: relative;
     display: block;
     top: -200px;
-    left: 94px;
+    left: calc(50% - 16px);
 }
 
 .poketile p {
