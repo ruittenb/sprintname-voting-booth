@@ -290,6 +290,7 @@ lockButton currentRoute currentPage isCurrentUserAdmin generation letter =
 calculationButtons : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
 calculationButtons route remotePages isCurrentUserAdmin generation letter =
     let
+        currentPage : Maybe Page
         currentPage =
             getCurrentPage remotePages generation letter
 

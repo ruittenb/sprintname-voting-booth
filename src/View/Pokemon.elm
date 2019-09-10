@@ -319,6 +319,7 @@ pokemonTiles currentRoute currentPage pokelist ratings currentUser =
 pokemonCanvas : ApplicationState -> Html Msg
 pokemonCanvas state =
     let
+        currentPage : Maybe Page
         currentPage =
             getCurrentPage state.pages state.generation state.letter
 
