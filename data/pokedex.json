@@ -12764,5 +12764,20 @@
         "vname": ""
       }
     ]
+  },
+  {
+    "description": "Chimp Pokémon",
+    "generation": 8,
+    "id": 810,
+    "letter": "G",
+    "name": "Grookey",
+    "number": 810,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Grookey_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "810.png",
+        "vname": ""
+      }
+    ]
   }
 ]

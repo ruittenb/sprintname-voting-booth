@@ -253,12 +253,9 @@ maintenanceButton remoteSettings isCurrentUserAdmin =
             placeHolder
 
 
-lockButton : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
-lockButton currentRoute remotePages isCurrentUserAdmin generation letter =
+lockButton : Route -> Maybe Page -> Bool -> Int -> Char -> Html Msg
+lockButton currentRoute currentPage isCurrentUserAdmin generation letter =
     let
-        currentPage =
-            getCurrentPage remotePages generation letter
-
         isLocked =
             isPageLocked currentRoute currentPage
 
@@ -280,9 +277,11 @@ lockButton currentRoute remotePages isCurrentUserAdmin generation letter =
             ]
 
         eventProps =
-            [ onClick (PageLockClicked currentPage) ]
+            currentPage
+                |> Maybe.map (\page -> [ onClick (PageLockClicked page) ])
+                |> Maybe.withDefault []
     in
-        if isRouteBrowse && isCurrentUserAdmin then
+        if isRouteBrowse && isCurrentUserAdmin && currentPage /= Nothing then
             a (classProps ++ eventProps) []
         else
             span classProps []
@@ -291,13 +290,19 @@ lockButton currentRoute remotePages isCurrentUserAdmin generation letter =
 calculationButtons : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
 calculationButtons route remotePages isCurrentUserAdmin generation letter =
     let
+        currentPage =
+            getCurrentPage remotePages generation letter
+
         calculationButtonElement =
             case route of
                 Search _ ->
                     span
 
                 _ ->
-                    a
+                    if currentPage == Nothing then
+                        span
+                    else
+                        a
     in
         div
             [ id "calculation-buttons"
@@ -318,7 +323,7 @@ calculationButtons route remotePages isCurrentUserAdmin generation letter =
                 , href (createShowRankingsPath generation letter)
                 ]
                 [ text "Show Rankings" ]
-            , lockButton route remotePages isCurrentUserAdmin generation letter
+            , lockButton route currentPage isCurrentUserAdmin generation letter
             ]
 
 
