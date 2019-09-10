@@ -200,7 +200,7 @@ variantLinks pokemonName description variants =
 
 
 pokemonTile : Route -> Bool -> Winner -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
-pokemonTile currentRoute locked winner ratings currentUser pokemon =
+pokemonTile currentRoute isLocked winner ratings currentUser pokemon =
     let
         isWinner =
             winner
@@ -234,7 +234,7 @@ pokemonTile currentRoute locked winner ratings currentUser pokemon =
             extractOnePokemonFromRatings ratings pokemon
 
         formattedRating =
-            if locked then
+            if isLocked then
                 [ ratingWidget teamRating noVoteWidgetElement ]
             else
                 let
@@ -304,16 +304,16 @@ pokemonTile currentRoute locked winner ratings currentUser pokemon =
                    )
 
 
-pokemonTiles : Route -> Page -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
+pokemonTiles : Route -> Maybe Page -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
 pokemonTiles currentRoute currentPage pokelist ratings currentUser =
     let
         winner =
             getWinner currentPage
 
-        locked =
+        isLocked =
             isPageLocked currentRoute currentPage
     in
-        List.map (pokemonTile currentRoute locked winner ratings currentUser) pokelist
+        List.map (pokemonTile currentRoute isLocked winner ratings currentUser) pokelist
 
 
 pokemonCanvas : ApplicationState -> Html Msg

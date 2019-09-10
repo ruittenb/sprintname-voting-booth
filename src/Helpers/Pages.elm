@@ -7,8 +7,8 @@ import Models.Types exposing (..)
 import Models.Pages exposing (..)
 
 
-isPageLocked : Route -> Page -> Bool
-isPageLocked route page =
+isPageLocked : Route -> Maybe Page -> Bool
+isPageLocked route maybePage =
     case route of
         Search _ ->
             -- in Search mode, the view is always locked
@@ -16,41 +16,38 @@ isPageLocked route page =
 
         _ ->
             -- in Browse mode: consider whether the current page is open
-            not page.open
+            Maybe.map (.open >> not) maybePage
+                |> Maybe.withDefault True
 
 
-getCurrentPage : RemotePages -> Int -> Char -> Page
+getCurrentPage : RemotePages -> Int -> Char -> Maybe Page
 getCurrentPage remotePages generation letter =
-    let
-        defaultPage =
-            { id = -1
-            , generation = generation
-            , letter = letter
-            , open = False
-            , winnerName = Nothing
-            , winnerNum = Nothing
-            , startDate = Nothing
-            }
-    in
-        remotePages
-            |> RemoteData.map
-                (\pages ->
-                    pages
-                        |> List.filter (\page -> page.generation == generation)
-                        |> List.filter (\page -> page.letter == letter)
-                        |> List.head
-                        |> Maybe.withDefault defaultPage
-                )
-            |> RemoteData.withDefault defaultPage
+    remotePages
+        |> RemoteData.toMaybe
+        |> Maybe.map
+            (\pages ->
+                pages
+                    |> List.filter (\page -> page.generation == generation)
+                    |> List.filter (\page -> page.letter == letter)
+                    |> List.head
+            )
+        -- we might not have a current page.
+        |> Maybe.withDefault Nothing
 
 
-getWinner : Page -> Winner
+getWinner : Maybe Page -> Winner
 getWinner page =
-    Maybe.map2
-        (\name number ->
-            { name = name
-            , number = number
-            }
-        )
-        page.winnerName
-        page.winnerNum
+    page
+        |> Maybe.map
+            (\page ->
+                (Maybe.map2
+                    (\name number ->
+                        { name = name
+                        , number = number
+                        }
+                    )
+                    page.winnerName
+                    page.winnerNum
+                )
+            )
+        |> Maybe.withDefault Nothing
