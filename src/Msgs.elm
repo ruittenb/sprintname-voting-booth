@@ -38,5 +38,6 @@ type Msg
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | PokemonVoteCast UserVote
+    | TodayReceived Time
     | StatusMessageExpiryTimeReceived Time
     | Tick Time

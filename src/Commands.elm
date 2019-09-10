@@ -14,6 +14,11 @@ andThenCmd secondCmd ( model, firstCmd ) =
     )
 
 
+getTodayTime : Cmd Msg
+getTodayTime =
+    perform TodayReceived now
+
+
 getStatusMessageExpiryTime : StatusLevel -> Cmd Msg
 getStatusMessageExpiryTime statusLevel =
     let

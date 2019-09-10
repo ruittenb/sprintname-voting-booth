@@ -1,5 +1,6 @@
 module Update exposing (update)
 
+import Date exposing (fromTime)
 import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
 import Navigation exposing (newUrl)
@@ -19,6 +20,7 @@ import Commands.Database
         )
 import Helpers exposing (setStatusMessage, clearStatusMessage)
 import Helpers.Authentication exposing (getUserNameForAuthModel)
+import Helpers.Pages exposing (getDefaultPageForToday)
 import Helpers.Pokemon
     exposing
         ( extractOneUserFromRatings
@@ -232,11 +234,17 @@ update msg oldState =
         UserRatingsSaved _ ->
             ( oldState, Cmd.none )
 
-        Tick time ->
-            if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
-                ( oldState, Cmd.none )
-                    |> clearStatusMessage
-            else
+        TodayReceived time ->
+            let
+                todayDate =
+                    Date.fromTime time
+
+                newCurrentPage =
+                    getDefaultPageForToday oldState.pages todayDate
+
+                -- TODO
+            in
+                -- TODO
                 ( oldState, Cmd.none )
 
         StatusMessageExpiryTimeReceived time ->
@@ -245,3 +253,10 @@ update msg oldState =
                     { oldState | statusExpiryTime = Just time }
             in
                 ( newState, Cmd.none )
+
+        Tick time ->
+            if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
+                ( oldState, Cmd.none )
+                    |> clearStatusMessage
+            else
+                ( oldState, Cmd.none )

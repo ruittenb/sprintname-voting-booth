@@ -1,10 +1,43 @@
-module Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
+module Helpers.Pages exposing (isPageLocked, getDefaultPageForToday, getCurrentPage, getWinner)
 
 import List
 import Maybe
+import Date exposing (Date)
+import Date.Extra exposing (toIsoString)
 import RemoteData exposing (WebData, RemoteData(..))
 import Models.Types exposing (..)
 import Models.Pages exposing (..)
+
+
+getFirstOpenPage : RemotePages -> String -> Maybe Page
+getFirstOpenPage remotePages referenceDate =
+    remotePages
+        |> RemoteData.toMaybe
+        |> Maybe.map
+            (\pages ->
+                pages
+                    |> List.filter
+                        (.startDate
+                            -- find pages with startdate in future. comparing as strings is
+                            -- probably faster than comparing dates and is good enough as we
+                            -- are only interested in a 1-day resolution
+                            >> Maybe.map ((<) referenceDate)
+                            -- the page must have a startdate
+                            >> Maybe.withDefault False
+                        )
+                    |> List.sortBy (.startDate >> Maybe.withDefault "")
+                    |> List.head
+            )
+        |> Maybe.withDefault Nothing
+
+
+getDefaultPageForToday : RemotePages -> Date -> Maybe Page
+getDefaultPageForToday remotePages today =
+    let
+        todayAsIsoString =
+            toIsoString today
+    in
+        getFirstOpenPage remotePages todayAsIsoString
 
 
 isPageLocked : Route -> Maybe Page -> Bool
