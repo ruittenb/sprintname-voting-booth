@@ -18,9 +18,9 @@ getFirstOpenPage remotePages referenceDate =
                 pages
                     |> List.filter
                         (.startDate
-                            -- find pages with startdate in future. comparing as strings is
-                            -- probably faster than comparing dates and is good enough as we
-                            -- are only interested in a 1-day resolution
+                            -- find pages with startdate in future. comparing as strings
+                            -- is probably faster than comparing dates and is good enough
+                            -- as we are only interested in a 1-day resolution
                             >> Maybe.map ((<) referenceDate)
                             -- the page must have a startdate
                             >> Maybe.withDefault False

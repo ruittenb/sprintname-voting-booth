@@ -1,11 +1,13 @@
 module Update exposing (update)
 
 import Date exposing (fromTime)
+import Date.Extra exposing (toIsoString)
 import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
 import Navigation exposing (newUrl)
 import Control exposing (update)
 import Constants exposing (maintenanceApology)
+import Constants.Pages exposing (defaultPage)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
@@ -241,11 +243,14 @@ update msg oldState =
 
                 newCurrentPage =
                     getDefaultPageForToday oldState.pages todayDate
+                        |> Maybe.withDefault defaultPage
 
-                -- TODO
+                -- We don't want to overwrite page parameters that came to us in the URL.
+                -- See Main.elm. FIXME.
             in
-                -- TODO
                 ( oldState, Cmd.none )
+                    -- TODO
+                    |> setStatusMessage Notice (toIsoString todayDate)
 
         StatusMessageExpiryTimeReceived time ->
             let

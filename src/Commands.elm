@@ -14,6 +14,13 @@ andThenCmd secondCmd ( model, firstCmd ) =
     )
 
 
+butFirstCmd : Cmd msg -> ( ApplicationState, Cmd msg ) -> ( ApplicationState, Cmd msg )
+butFirstCmd firstCmd ( model, secondCmd ) =
+    ( model
+    , Cmd.batch [ firstCmd, secondCmd ]
+    )
+
+
 getTodayTime : Cmd Msg
 getTodayTime =
     perform TodayReceived now
