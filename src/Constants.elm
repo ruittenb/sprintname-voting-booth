@@ -33,18 +33,12 @@ maxGeneration =
     8
 
 
-totalPokemon : Int
-totalPokemon =
-    -- zero included
-    809
-
-
 imageDir : String
 imageDir =
     "pokeart/"
 
 
-noBreakingSpace: String
+noBreakingSpace : String
 noBreakingSpace =
     "\x00A0"
 
