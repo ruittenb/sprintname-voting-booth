@@ -87,6 +87,24 @@ version: ## update the version file with the current git tag name
 bump: ## increment the version in the serviceworker by 0.0.1
 	perl -i'' -pe 's/^(const version = .v\d+\.\d\.)(\d+)(.;)/$$1 . ($$2 + 1) . $$3/e' $(SERVICE_WORKER)
 
+.PHONY: service-worker-only-bumped
+service-worker-only-bumped: # tests changes in service worker: (0 == only bumped version, 1 == other changes)
+	@git diff $(SERVICE_WORKER) | awk '                                              \
+		BEGIN { apies=0; pluses=0; pluslines="expected" }                        \
+		/^@/ { apies++ }                                                         \
+		/^+/ {                                                                   \
+			pluses++;                                                        \
+			if (!/^+const version =/ && !/^+++ .*service-worker.js/) {       \
+				pluslines = "unexpected"                                 \
+			}                                                                \
+		}                                                                        \
+		END { exit !(apies == 1 && pluses == 2 && pluslines == "expected") }     \
+	'
+
+.PHONY: unbump
+unbump: service-worker-only-bumped ## restore service-worker to 'un-bumped' version
+	git co $(SERVICE_WORKER)
+
 .PHONY: tag
 tag: ## create git tag, next in line (with 0.1 increments) and push to repo
 	sed $(SED_OPTS) "s/^(const version = ')v[^']*(';)/\1$(NEXT_TAG).0\2/" $(SERVICE_WORKER)

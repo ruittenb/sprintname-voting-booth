@@ -12779,5 +12779,95 @@
         "vname": ""
       }
     ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 811,
+    "letter": " ",
+    "name": "",
+    "number": 811,
+    "url": "",
+    "variants": [
+      {
+        "image": "811.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 812,
+    "letter": " ",
+    "name": "",
+    "number": 812,
+    "url": "",
+    "variants": [
+      {
+        "image": "812.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "Rabbit Pokémon",
+    "generation": 8,
+    "id": 813,
+    "letter": "S",
+    "name": "Scorbunny",
+    "number": 813,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Scorbunny_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "813.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 814,
+    "letter": " ",
+    "name": "",
+    "number": 814,
+    "url": "",
+    "variants": [
+      {
+        "image": "814.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 815,
+    "letter": " ",
+    "name": "",
+    "number": 815,
+    "url": "",
+    "variants": [
+      {
+        "image": "815.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "Water Lizard Pokémon",
+    "generation": 8,
+    "id": 816,
+    "letter": "S",
+    "name": "Sobble",
+    "number": 816,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sobble_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "816.png",
+        "vname": ""
+      }
+    ]
   }
 ]

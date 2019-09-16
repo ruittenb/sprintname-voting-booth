@@ -3,8 +3,7 @@
     "generation": 0,
     "id": 0,
     "letter": "M",
-    "open": false,
-    "startDate": "2015-09-22T00:00:00.000+01:00"
+    "open": true
   },
   {
     "generation": 1,
@@ -1277,5 +1276,12 @@
     "letter": "G",
     "open": true,
     "startDate": "2021-10-26T00:00:00.000+02:00"
+  },
+  {
+    "generation": 8,
+    "id": 155,
+    "letter": "S",
+    "open": true,
+    "startDate": "2021-11-09T00:00:00.000+01:00"
   }
 ]
