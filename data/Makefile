@@ -20,14 +20,14 @@ cleanup: ## cleanup the formatting of 'total'
 combine: ## combine 'settings', 'pages', 'pokedex' and 'users' to 'total'
 	{                              \
 		printf "{\n"         ; \
-		printf '"settings":' ; \
-		cat $(SETTINGS)      ; \
-		printf ",\n"         ; \
 		printf '"pages":'    ; \
 		cat $(PAGES)         ; \
 		printf ",\n"         ; \
 		printf '"pokedex":'  ; \
 		cat $(POKEDEX)       ; \
+		printf ",\n"         ; \
+		printf '"settings":' ; \
+		cat $(SETTINGS)      ; \
 		printf ",\n"         ; \
 		printf '"users":'    ; \
 		cat $(USERS)         ; \
