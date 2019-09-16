@@ -44,6 +44,35 @@ isValidVote newPokeRating otherPokemonRatings =
     newPokeRating == 0 || not (Set.member newPokeRating otherPokemonRatings)
 
 
+registerVote : ApplicationState -> TeamRatings -> TeamRatings -> String -> Int -> Int -> Int -> ( ApplicationState, Cmd Msg )
+registerVote oldState otherUsersRatings oldCurrentUserRatings oldUserRatingString totalPokemon pokemonNumber newPokeRating =
+    List.head oldCurrentUserRatings
+        |> Maybe.Extra.unwrap
+            -- default value
+            ( oldState, Cmd.none )
+            -- map function
+            (\actualUserRatings ->
+                let
+                    -- store new vote in rating string
+                    newUserRatingString =
+                        (String.slice 0 pokemonNumber oldUserRatingString)
+                            ++ (toString newPokeRating)
+                            ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
+
+                    -- insert into new state
+                    newCurrentUserRatings =
+                        { actualUserRatings | ratings = newUserRatingString }
+
+                    newStateRatings =
+                        newCurrentUserRatings :: otherUsersRatings
+                in
+                    ( { oldState | ratings = Success newStateRatings }
+                    , saveRatings newCurrentUserRatings
+                    )
+                        |> clearStatusMessage
+            )
+
+
 updateVoteForPokemon : ApplicationState -> UserVote -> ( ApplicationState, Cmd Msg )
 updateVoteForPokemon oldState userVote =
     let
@@ -52,99 +81,88 @@ updateVoteForPokemon oldState userVote =
                 |> RemoteData.map List.length
                 |> RemoteData.withDefault 0
     in
-        case oldState.ratings of
-            Success oldRatings ->
-                let
-                    -- GET THE REQUIRED DATA
-                    pokemonNumber =
-                        userVote.pokemonNumber
-
-                    -- extract one user
-                    ( oldCurrentUserRatings, otherUsersRatings ) =
-                        extractOneUserFromRatings oldRatings oldState.currentUser
-
-                    -- extract user rating string, or create one
-                    oldUserRatingString =
-                        List.head oldCurrentUserRatings
-                            |> Maybe.map .ratings
-                            |> Maybe.withDefault ""
-                            |> ensureRatingStringLength totalPokemon
-
-                    -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
-                    ( newState, newCmd ) =
-                        case oldState.pokedex of
-                            Success actualPokedex ->
-                                -- find pokemon category (generation and letter):
-                                let
-                                    ( generation, letter ) =
-                                        case oldState.currentRoute of
-                                            Search _ ->
-                                                List.filter (.number >> (==) pokemonNumber) actualPokedex
-                                                    |> List.map (\p -> ( p.generation, p.letter ))
-                                                    |> List.head
-                                                    |> Maybe.withDefault ( 0, '?' )
-
-                                            _ ->
-                                                -- currentRoute == browse*
-                                                ( oldState.generation, oldState.letter )
-
-                                    pokeList =
-                                        filterPokedex oldState.pokedex generation letter
-
-                                    -- extract one pokemon rating
-                                    oldPokeRating =
-                                        extractOnePokemonFromRatingString oldUserRatingString pokemonNumber
-
-                                    -- find new vote. If the same as old vote, then 'unvote' this pokemon.
-                                    newPokeRating =
-                                        if oldPokeRating == userVote.vote then
-                                            0
-                                        else
-                                            userVote.vote
-
-                                    otherPokemonRatings =
-                                        pokeList
-                                            |> List.map (.number >> extractOnePokemonFromRatingString oldUserRatingString)
-                                            |> Set.fromList
-                                in
-                                    -- REGISTER NEW VOTE
-                                    if isValidVote newPokeRating otherPokemonRatings then
-                                        List.head oldCurrentUserRatings
-                                            |> Maybe.Extra.unwrap
-                                                -- default value
-                                                ( oldState, Cmd.none )
-                                                -- map function
-                                                (\actualUserRatings ->
-                                                    let
-                                                        -- store new vote in rating string
-                                                        newUserRatingString =
-                                                            (String.slice 0 pokemonNumber oldUserRatingString)
-                                                                ++ (toString newPokeRating)
-                                                                ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
-
-                                                        -- insert into new state
-                                                        newCurrentUserRatings =
-                                                            { actualUserRatings | ratings = newUserRatingString }
-
-                                                        newStateRatings =
-                                                            newCurrentUserRatings :: otherUsersRatings
-                                                    in
-                                                        ( { oldState | ratings = Success newStateRatings }
-                                                        , saveRatings newCurrentUserRatings
-                                                        )
-                                                            |> clearStatusMessage
-                                                )
-                                    else
-                                        -- vote already cast
-                                        ( oldState, Cmd.none )
-                                            |> setStatusMessage Warning
-                                                ("You already voted " ++ toString newPokeRating ++ " in this category")
-
-                            _ ->
-                                -- no pokedex
-                                ( oldState, Cmd.none )
-                in
-                    ( newState, newCmd )
-
-            _ ->
+        oldState.ratings
+            |> RemoteData.toMaybe
+            |> Maybe.Extra.unwrap
+                -- default value
                 ( oldState, Cmd.none )
+                -- map function
+                (\oldRatings ->
+                    let
+                        -- GET THE REQUIRED DATA
+                        pokemonNumber =
+                            userVote.pokemonNumber
+
+                        -- extract one user
+                        ( oldCurrentUserRatings, otherUsersRatings ) =
+                            extractOneUserFromRatings oldRatings oldState.currentUser
+
+                        -- extract user rating string, or create one
+                        oldUserRatingString =
+                            List.head oldCurrentUserRatings
+                                |> Maybe.map .ratings
+                                |> Maybe.withDefault ""
+                                |> ensureRatingStringLength totalPokemon
+
+                        -- CHECK IF VOTE HAS NOT ALREADY BEEN CAST
+                        ( newState, newCmd ) =
+                            oldState.pokedex
+                                |> RemoteData.toMaybe
+                                |> Maybe.Extra.unwrap
+                                    -- default value (no pokedex)
+                                    ( oldState, Cmd.none )
+                                    -- map function
+                                    (\actualPokedex ->
+                                        -- find pokemon category (generation and letter):
+                                        let
+                                            ( generation, letter ) =
+                                                case oldState.currentRoute of
+                                                    -- TODO don't support voting in search mode!
+                                                    Search _ ->
+                                                        List.filter (.number >> (==) pokemonNumber) actualPokedex
+                                                            |> List.map (\p -> ( p.generation, p.letter ))
+                                                            |> List.head
+                                                            |> Maybe.withDefault ( 0, '?' )
+
+                                                    _ ->
+                                                        -- currentRoute == any browse mode
+                                                        ( oldState.generation, oldState.letter )
+
+                                            -- extract one pokemon rating
+                                            oldPokeRating =
+                                                extractOnePokemonFromRatingString oldUserRatingString pokemonNumber
+
+                                            -- fetch the new vote. If it is the same as old vote, then 'unvote' this pokemon.
+                                            newPokeRating =
+                                                if oldPokeRating == userVote.vote then
+                                                    0
+                                                else
+                                                    userVote.vote
+
+                                            pokeList =
+                                                filterPokedex oldState.pokedex generation letter
+
+                                            otherPokemonRatings =
+                                                pokeList
+                                                    |> List.map (.number >> extractOnePokemonFromRatingString oldUserRatingString)
+                                                    |> Set.fromList
+                                        in
+                                            if isValidVote newPokeRating otherPokemonRatings then
+                                                -- register new vote
+                                                registerVote
+                                                    oldState
+                                                    otherUsersRatings
+                                                    oldCurrentUserRatings
+                                                    oldUserRatingString
+                                                    totalPokemon
+                                                    pokemonNumber
+                                                    newPokeRating
+                                            else
+                                                -- vote already cast
+                                                ( oldState, Cmd.none )
+                                                    |> setStatusMessage Warning
+                                                        ("You already voted " ++ toString newPokeRating ++ " in this category")
+                                    )
+                    in
+                        ( newState, newCmd )
+                )
