@@ -4,8 +4,7 @@
       "generation": 0,
       "id": 0,
       "letter": "M",
-      "open": false,
-      "startDate": "2015-09-22T00:00:00.000+01:00"
+      "open": true
     },
     {
       "generation": 1,
@@ -1271,6 +1270,20 @@
       "letter": "Z",
       "open": true,
       "startDate": "2021-10-12T00:00:00.000+02:00"
+    },
+    {
+      "generation": 8,
+      "id": 154,
+      "letter": "G",
+      "open": true,
+      "startDate": "2021-10-26T00:00:00.000+02:00"
+    },
+    {
+      "generation": 8,
+      "id": 155,
+      "letter": "S",
+      "open": true,
+      "startDate": "2021-11-09T00:00:00.000+01:00"
     }
   ],
   "pokedex": [
@@ -14036,6 +14049,111 @@
       "variants": [
         {
           "image": "809.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "Chimp Pokémon",
+      "generation": 8,
+      "id": 810,
+      "letter": "G",
+      "name": "Grookey",
+      "number": 810,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Grookey_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "810.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "",
+      "generation": 8,
+      "id": 811,
+      "letter": " ",
+      "name": "",
+      "number": 811,
+      "url": "",
+      "variants": [
+        {
+          "image": "811.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "",
+      "generation": 8,
+      "id": 812,
+      "letter": " ",
+      "name": "",
+      "number": 812,
+      "url": "",
+      "variants": [
+        {
+          "image": "812.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "Rabbit Pokémon",
+      "generation": 8,
+      "id": 813,
+      "letter": "S",
+      "name": "Scorbunny",
+      "number": 813,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Scorbunny_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "813.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "",
+      "generation": 8,
+      "id": 814,
+      "letter": " ",
+      "name": "",
+      "number": 814,
+      "url": "",
+      "variants": [
+        {
+          "image": "814.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "",
+      "generation": 8,
+      "id": 815,
+      "letter": " ",
+      "name": "",
+      "number": 815,
+      "url": "",
+      "variants": [
+        {
+          "image": "815.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "Water Lizard Pokémon",
+      "generation": 8,
+      "id": 816,
+      "letter": "S",
+      "name": "Sobble",
+      "number": 816,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Sobble_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "816.png",
           "vname": ""
         }
       ]
