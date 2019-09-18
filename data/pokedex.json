@@ -1773,6 +1773,10 @@
       {
         "image": "110.png",
         "vname": ""
+      },
+      {
+        "image": "110-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
@@ -4236,6 +4240,10 @@
       {
         "image": "263.png",
         "vname": ""
+      },
+      {
+        "image": "263-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
@@ -4251,6 +4259,10 @@
       {
         "image": "264.png",
         "vname": ""
+      },
+      {
+        "image": "264-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
