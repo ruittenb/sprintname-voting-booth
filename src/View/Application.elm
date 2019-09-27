@@ -242,6 +242,7 @@ maintenanceButton remoteSettings isCurrentUserAdmin =
                                 , ( "maintenance-mode", settings.maintenanceMode )
                                 ]
                             , onClick MaintenanceModeClicked
+                            , Html.Attributes.title "maintenance mode"
                             ]
                             []
                     )
@@ -276,15 +277,27 @@ lockButton currentRoute currentPage isCurrentUserAdmin generation letter =
                 ]
             ]
 
+        titleProps =
+            [ Html.Attributes.title <|
+                if isCurrentUserAdmin && isLocked then
+                    "voting has closed (click to open)"
+                else if isCurrentUserAdmin then
+                    "open for voting (click to close)"
+                else if isLocked then
+                    "voting has closed"
+                else
+                    "open for voting"
+            ]
+
         eventProps =
             currentPage
                 |> Maybe.map (\page -> [ onClick (PageLockClicked page) ])
                 |> Maybe.withDefault []
     in
         if isRouteBrowse && isCurrentUserAdmin && currentPage /= Nothing then
-            a (classProps ++ eventProps) []
+            a (classProps ++ titleProps ++ eventProps) []
         else
-            span classProps []
+            span (classProps ++ titleProps) []
 
 
 calculationButtons : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
