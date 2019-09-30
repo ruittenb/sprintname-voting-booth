@@ -10,7 +10,7 @@ initialGeneration =
 
 initialLetter : Char
 initialLetter =
-    'M'
+    'P'
 
 
 maintenanceApology : String
@@ -44,9 +44,9 @@ imageDir =
     "pokeart/"
 
 
-noBreakingSpace: String
+noBreakingSpace : String
 noBreakingSpace =
-    "\x00A0"
+    " "
 
 
 allGenerations : List Int
