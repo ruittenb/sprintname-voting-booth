@@ -34,6 +34,12 @@ type alias PokeRankings =
     List PokeRanking
 
 
+type alias PokeWinner =
+    { number : Int
+    , name : String
+    }
+
+
 type alias Pokemon =
     { id : Int
     , number : Int
