@@ -27,7 +27,7 @@ import Helpers.Pokemon
 import Update.Authentication exposing (updateAuthWithProfile, updateAuthWithNoProfile)
 import Update.Settings exposing (updateMaintenanceMode)
 import Update.Ratings exposing (updateVoteForPokemon)
-import Update.Pages exposing (updatePageLockState)
+import Update.Pages exposing (updatePageLockState, updatePageWithWinner)
 import Update.Pokemon
     exposing
         ( updateOnLoadPokedex
@@ -202,6 +202,9 @@ update msg oldState =
 
         PageLockClicked page ->
             updatePageLockState oldState page
+
+        WinnerElected page winner ->
+            updatePageWithWinner oldState page winner
 
         MaintenanceModeClicked ->
             updateMaintenanceMode oldState
