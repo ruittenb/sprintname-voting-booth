@@ -300,13 +300,9 @@ lockButton currentRoute currentPage isCurrentUserAdmin generation letter =
             span (classProps ++ titleProps) []
 
 
-calculationButtons : Route -> RemotePages -> Bool -> Int -> Char -> Html Msg
-calculationButtons route remotePages isCurrentUserAdmin generation letter =
+calculationButtons : Route -> RemotePages -> Maybe Page -> Bool -> Int -> Char -> Html Msg
+calculationButtons route remotePages currentPage isCurrentUserAdmin generation letter =
     let
-        currentPage : Maybe Page
-        currentPage =
-            getCurrentPage remotePages generation letter
-
         calculationButtonElement =
             case route of
                 Search _ ->
@@ -341,8 +337,8 @@ calculationButtons route remotePages isCurrentUserAdmin generation letter =
             ]
 
 
-rankingsTable : ApplicationState -> Html Msg
-rankingsTable state =
+rankingsTable : ApplicationState -> Maybe Page -> Bool -> Html Msg
+rankingsTable state currentPage isCurrentUserAdmin =
     case state.currentRoute of
         BrowseWithPokemonRankings _ ->
             let
@@ -358,6 +354,28 @@ rankingsTable state =
 
                         Nothing ->
                             0
+
+                winButtonCell : Int -> String -> List (Html Msg)
+                winButtonCell number name =
+                    case currentPage of
+                        Nothing ->
+                            []
+
+                        Just page ->
+                            if isCurrentUserAdmin then
+                                [ td []
+                                    [ button
+                                        [ onClick (WinnerElected page (PokeWinner number name))
+                                        , classList
+                                            [ ( "elect-button", True )
+                                            , ( "winner", page.winnerNum == Just number )
+                                            ]
+                                        ]
+                                        [ text "win" ]
+                                    ]
+                                ]
+                            else
+                                []
             in
                 div
                     [ class "rankings-table-wrapper" ]
@@ -368,9 +386,11 @@ rankingsTable state =
                                     [ classList
                                         [ ( "winner-rating", r.totalVotes == winnerRating && r.totalVotes > 0 ) ]
                                     ]
-                                    [ td [] [ text r.name ]
-                                    , td [] [ text (toString r.totalVotes) ]
-                                    ]
+                                    ([ td [] [ text r.name ]
+                                     , td [] [ text (toString r.totalVotes) ]
+                                     ]
+                                        ++ winButtonCell r.number r.name
+                                    )
                             )
                             rankingsToShow
                     ]
@@ -435,6 +455,10 @@ tableMask route =
 functionPane : ApplicationState -> Html Msg
 functionPane state =
     let
+        currentPage : Maybe Page
+        currentPage =
+            getCurrentPage state.pages state.generation state.letter
+
         isCurrentUserAdmin =
             getIsCurrentUserAdmin state
     in
@@ -454,6 +478,7 @@ functionPane state =
             , calculationButtons
                 state.currentRoute
                 state.pages
+                currentPage
                 isCurrentUserAdmin
                 state.generation
                 state.letter
@@ -463,6 +488,8 @@ functionPane state =
                 state
             , rankingsTable
                 state
+                currentPage
+                isCurrentUserAdmin
             ]
 
 

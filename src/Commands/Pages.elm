@@ -1,4 +1,4 @@
-module Commands.Pages exposing (savePageLockState, decodePages, decodePage)
+module Commands.Pages exposing (savePageState, decodePages, decodePage)
 
 import RemoteData exposing (fromResult)
 import Json.Encode as Encode exposing (Value)
@@ -7,8 +7,9 @@ import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Models.Pages exposing (..)
 import Ports exposing (savePage)
 
-savePageLockState : Page -> Cmd msg
-savePageLockState page =
+
+savePageState : Page -> Cmd msg
+savePageState page =
     let
         -- ports don't support Char types
         portCompatiblePage =

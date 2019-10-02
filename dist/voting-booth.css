@@ -663,6 +663,21 @@ button.user-button.current,
     padding: 1px 10px;
 }
 
+.rankings-table .elect-button {
+    line-height: 16px;
+    width: 40px;
+    border: 1px solid #777;
+    outline: none;
+}
+
+.rankings-table .elect-button.winner {
+    background-color: #e6c6e6; /* purple */
+}
+
+.rankings-table .elect-button:hover {
+    background-color: #f8f0f8; /* light purple */
+}
+
 .rankings-table tr.winner-rating {
     color: #b768b7; /* dark purple */
     font-weight: bold;

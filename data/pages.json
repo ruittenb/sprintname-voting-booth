@@ -896,8 +896,10 @@
     "generation": 5,
     "id": 100,
     "letter": "O",
-    "open": true,
-    "startDate": "2019-10-01T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2019-10-01T00:00:00.000+02:00",
+    "winnerName": "Oshawott",
+    "winnerNum": 501
   },
   {
     "generation": 5,

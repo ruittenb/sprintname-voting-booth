@@ -10,7 +10,7 @@ initialGeneration =
 
 initialLetter : Char
 initialLetter =
-    'M'
+    'P'
 
 
 maintenanceApology : String
@@ -40,7 +40,7 @@ imageDir =
 
 noBreakingSpace : String
 noBreakingSpace =
-    "\x00A0"
+    " "
 
 
 allGenerations : List Int
