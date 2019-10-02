@@ -47,11 +47,16 @@ updatePageWithWinner : ApplicationState -> Page -> PokeWinner -> ( ApplicationSt
 updatePageWithWinner oldState page winner =
     let
         newPage =
-            { page
-                | winnerName = Just winner.name
-                , winnerNum = Just winner.number
-                , open = False
-            }
+            if page.winnerNum == Just winner.number then
+                { page
+                    | winnerName = Nothing
+                    , winnerNum = Nothing
+                }
+            else
+                { page
+                    | winnerName = Just winner.name
+                    , winnerNum = Just winner.number
+                }
 
         newPages =
             updatePageData oldState.pages newPage

@@ -362,9 +362,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
                             []
 
                         Just page ->
-                            -- current user needs to be admin.
-                            -- current page must be open OR no winner known.
-                            if isCurrentUserAdmin && (page.open || page.winnerNum == Nothing) then
+                            if isCurrentUserAdmin then
                                 [ td []
                                     [ button
                                         [ onClick (WinnerElected page (PokeWinner number name))
