@@ -679,6 +679,10 @@ button.user-button.current,
     background-color: #f8f0f8; /* light purple */
 }
 
+.rankings-table .elect-button.winner:hover {
+    background-color: #f0d8f0; /* medium purple */
+}
+
 .rankings-table tr.winner-rating {
     color: #b768b7; /* dark purple */
     font-weight: bold;
