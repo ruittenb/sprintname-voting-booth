@@ -3,6 +3,7 @@ module Update.Ratings exposing (updateVoteForPokemon)
 import Task
 import Time exposing (now)
 import Set exposing (Set)
+import String.Extra exposing (replaceSlice)
 import Maybe.Extra exposing (unwrap)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (..)
@@ -55,9 +56,11 @@ registerVote oldState otherUsersRatings oldCurrentUserRatings oldUserRatingStrin
                 let
                     -- store new vote in rating string
                     newUserRatingString =
-                        (String.slice 0 pokemonNumber oldUserRatingString)
-                            ++ (toString newPokeRating)
-                            ++ (String.slice (pokemonNumber + 1) (totalPokemon + 1) oldUserRatingString)
+                        replaceSlice
+                            (toString newPokeRating)
+                            pokemonNumber
+                            (pokemonNumber + 1)
+                            oldUserRatingString
 
                     -- insert into new state
                     newCurrentUserRatings =
