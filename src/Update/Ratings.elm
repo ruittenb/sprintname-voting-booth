@@ -21,7 +21,7 @@ import Commands.Ratings exposing (saveRatings)
 
 
 {-
-   See if the ratings string is long enough to accommodate all pokemon.
+   See if the ratings string is long enough to accommodate all pokemon in the pokedex.
    If not, expand it.
 -}
 
@@ -84,7 +84,7 @@ updateVoteForPokemon oldState userVote =
         oldState.ratings
             |> RemoteData.toMaybe
             |> Maybe.Extra.unwrap
-                -- default value
+                -- default value (no ratings)
                 ( oldState, Cmd.none )
                 -- map function
                 (\oldRatings ->
