@@ -340,7 +340,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin generation l
 rankingsTable : ApplicationState -> Maybe Page -> Bool -> Html Msg
 rankingsTable state currentPage isCurrentUserAdmin =
     case state.currentRoute of
-        BrowseWithPokemonRankings _ ->
+        Browse WithPokemonRankings _ ->
             let
                 rankingsToShow =
                     calculatePokemonVotes state
@@ -402,7 +402,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
 votersTable : ApplicationState -> Html Msg
 votersTable state =
     case state.currentRoute of
-        BrowseWithPeopleVotes _ ->
+        Browse WithPeopleVotes _ ->
             let
                 votersToShow =
                     calculatePeopleVotes state
@@ -442,10 +442,10 @@ tableMask route =
                 []
     in
         case route of
-            BrowseWithPokemonRankings _ ->
+            Browse WithPokemonRankings _ ->
                 maskDiv
 
-            BrowseWithPeopleVotes _ ->
+            Browse WithPeopleVotes _ ->
                 maskDiv
 
             _ ->

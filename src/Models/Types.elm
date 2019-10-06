@@ -17,10 +17,14 @@ type alias Subpage =
     }
 
 
+type Mask
+    = WithoutMask
+    | WithPeopleVotes
+    | WithPokemonRankings
+
+
 type Route
-    = Browse Subpage
-    | BrowseWithPeopleVotes Subpage
-    | BrowseWithPokemonRankings Subpage
+    = Browse Mask Subpage
     | Search String
 
 

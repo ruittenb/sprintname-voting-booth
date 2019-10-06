@@ -194,7 +194,7 @@ update msg oldState =
         CloseMaskClicked ->
             let
                 browseSubpage =
-                    Browse
+                    Browse WithoutMask
                         { generation = oldState.generation
                         , letter = oldState.letter
                         }

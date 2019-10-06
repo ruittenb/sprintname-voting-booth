@@ -153,7 +153,7 @@ updateSearchPokemon oldState query =
 
         newRoute =
             if query == "" then
-                Browse newSubpage
+                Browse WithoutMask newSubpage
             else
                 Search query
 
@@ -179,13 +179,7 @@ updateChangeGenerationAndLetter oldState newRoute =
                 Search _ ->
                     ( oldState.generation, oldState.letter )
 
-                Browse newSubpage ->
-                    ( newSubpage.generation, newSubpage.letter )
-
-                BrowseWithPeopleVotes newSubpage ->
-                    ( newSubpage.generation, newSubpage.letter )
-
-                BrowseWithPokemonRankings newSubpage ->
+                Browse _ newSubpage ->
                     ( newSubpage.generation, newSubpage.letter )
 
         command =

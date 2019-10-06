@@ -10,7 +10,7 @@ module Routing
 import Char
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
-import Models.Types exposing (Route(..), Subpage)
+import Models.Types exposing (Route(..), Mask(..), Subpage)
 
 
 searchPathSegment : String
@@ -83,9 +83,9 @@ subPageParser =
 routeParser : Parser (Route -> a) a
 routeParser =
     UrlParser.oneOf
-        [ UrlParser.map BrowseWithPeopleVotes (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
-        , UrlParser.map BrowseWithPokemonRankings (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
-        , UrlParser.map Browse (s browsePathSegment </> subPageParser)
+        [ UrlParser.map (Browse WithPeopleVotes) (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
+        , UrlParser.map (Browse WithPokemonRankings) (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
+        , UrlParser.map (Browse WithoutMask) (s browsePathSegment </> subPageParser)
         , UrlParser.map Search (s searchPathSegment </> string)
         ]
 

@@ -10,7 +10,7 @@ import Constants exposing (initialGeneration, initialLetter)
 import Msgs exposing (Msg(..))
 import Routing exposing (parseLocation, createBrowsePath)
 import Models exposing (ApplicationState)
-import Models.Types exposing (StatusLevel(None), Route(..))
+import Models.Types exposing (StatusLevel(None), Route(..), Mask(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
 import View exposing (view)
 import Update exposing (update)
@@ -66,20 +66,14 @@ init credentials location =
 
         currentRoute =
             parseLocation location
-                |> Maybe.withDefault (Browse defaultSubpage)
+                |> Maybe.withDefault (Browse WithoutMask defaultSubpage)
 
         ( initialSubpage, initialQuery, urlCmd ) =
             case currentRoute of
                 Search query ->
                     ( defaultSubpage, query, Cmd.none )
 
-                Browse subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
-
-                BrowseWithPeopleVotes subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
-
-                BrowseWithPokemonRankings subpage ->
+                Browse _ subpage ->
                     ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
 
         initialState : ApplicationState
