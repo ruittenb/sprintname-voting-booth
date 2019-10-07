@@ -8,6 +8,7 @@ module Update.Pokemon
 
 import RemoteData exposing (WebData, RemoteData(..))
 import List.Extra exposing (unique, notMember)
+import Maybe.Extra exposing (unwrap)
 import Navigation exposing (modifyUrl)
 import Constants exposing (..)
 import Models exposing (..)
@@ -241,20 +242,17 @@ updateChangeVariant oldState pokemonNumber direction =
         newState =
             oldState.pokedex
                 |> remoteDataUnwrap
-                    -- default
+                    -- defaultValue
                     oldState
-                    -- map function
+                    -- mapFunction
                     (\pokedex ->
-                        let
-                            maybePokemon =
-                                List.filter (.number >> (==) pokemonNumber) pokedex
-                                    |> List.head
-                        in
-                            case maybePokemon of
-                                Nothing ->
-                                    oldState
-
-                                Just pokemon ->
+                        List.filter (.number >> (==) pokemonNumber) pokedex
+                            |> List.head
+                            |> Maybe.Extra.unwrap
+                                -- defaultValue
+                                oldState
+                                -- mapFunction
+                                (\pokemon ->
                                     let
                                         proposedNewVariant =
                                             if direction == Next then
@@ -284,6 +282,7 @@ updateChangeVariant oldState pokemonNumber direction =
                                                 pokedex
                                     in
                                         { oldState | pokedex = RemoteData.succeed newPokedex }
+                                )
                     )
     in
         ( newState, Cmd.none )
