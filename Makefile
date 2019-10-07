@@ -176,7 +176,7 @@ watch: ## start the webserver. rebuild and restart if the source changes
 ##@ Building and running in docker locally:
 
 .PHONY: docker-build
-docker-build: ## build the docker image
+docker-build: build ## build the docker image
 	nice docker build -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
 
 .PHONY: docker-status
