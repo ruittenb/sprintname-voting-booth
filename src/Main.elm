@@ -10,7 +10,7 @@ import Constants exposing (initialGeneration, initialLetter)
 import Msgs exposing (Msg(..))
 import Routing exposing (parseLocation, createBrowsePath)
 import Models exposing (ApplicationState)
-import Models.Types exposing (StatusLevel(None), Route(..), Mask(..))
+import Models.Types exposing (StatusLevel(None), Route(..), BrowseMode(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
 import View exposing (view)
 import Update exposing (update)
@@ -66,7 +66,6 @@ init credentials location =
 
         currentRoute =
             parseLocation location
-                |> Maybe.withDefault (Browse WithoutMask defaultSubpage)
 
         ( initialSubpage, initialQuery, urlCmd ) =
             case currentRoute of

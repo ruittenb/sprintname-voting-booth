@@ -180,16 +180,17 @@ update msg oldState =
         PokedexLoaded pokedex ->
             updateOnLoadPokedex oldState pokedex
 
-        UrlChanged (Just newRoute) ->
+        UrlChanged newRoute ->
             case newRoute of
+                Default ->
+                    -- FIXME get currentDate etc.
+                    ( oldState, Cmd.none )
+
                 Search query ->
                     updateSearchPokemon oldState query
 
                 _ ->
                     updateChangeGenerationAndLetter oldState newRoute
-
-        UrlChanged Nothing ->
-            ( oldState, Cmd.none )
 
         CloseMaskClicked ->
             let

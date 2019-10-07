@@ -10,7 +10,7 @@ module Routing
 import Char
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
-import Models.Types exposing (Route(..), Mask(..), Subpage)
+import Models.Types exposing (Route(..), BrowseMode(..), Subpage)
 
 
 searchPathSegment : String
@@ -62,6 +62,7 @@ extractSubpage pathSegment =
                 String.toUpper letter
                     |> String.toList
                     |> List.head
+                    -- FIXME magical value
                     |> Maybe.withDefault '_'
             }
         )
@@ -90,6 +91,7 @@ routeParser =
         ]
 
 
-parseLocation : Location -> Maybe Route
+parseLocation : Location -> Route
 parseLocation location =
     parseHash routeParser location
+        |> Maybe.withDefault Default

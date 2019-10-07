@@ -17,15 +17,27 @@ type alias Subpage =
     }
 
 
-type Mask
+{-|
+
+    The currentRoute can be of type:
+    - Default: uninitialized because an invalid route was encountered (should redirect to Browse)
+    - Search : a string has been entered in the search box, search results are shown;
+    - Browse : generation and letter have been selected, a page of results is shown.
+      This type is subdivided into:
+      - WithPeopleVotes    : displays a mask and popup with user votes;
+      - WithPokemonRankings: displays a mask and popup with pokemon rankings;
+      - WithoutMask        : no mask or popup (free browsing).
+-}
+type BrowseMode
     = WithoutMask
     | WithPeopleVotes
     | WithPokemonRankings
 
 
 type Route
-    = Browse Mask Subpage
+    = Default
     | Search String
+    | Browse BrowseMode Subpage
 
 
 type BrowseDirection

@@ -176,6 +176,9 @@ updateChangeGenerationAndLetter oldState newRoute =
     let
         ( newGen, newLetter ) =
             case newRoute of
+                Default ->
+                    ( oldState.generation, oldState.letter )
+
                 Search _ ->
                     ( oldState.generation, oldState.letter )
 

@@ -30,7 +30,7 @@ type Msg
     | UserRatingsLoaded RemoteUserRatings
     | UserRatingsSaved RemoteUserRatings
     | VariantChanged Int BrowseDirection
-    | UrlChanged (Maybe Route)
+    | UrlChanged Route
     | CloseMaskClicked
     | PageLockClicked Page
     | WinnerElected Page PokeWinner
