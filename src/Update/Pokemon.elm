@@ -27,6 +27,11 @@ import Helpers
 -- some helper functions specific to update
 
 
+remoteDataUnwrap : b -> (a -> b) -> RemoteData e a -> b
+remoteDataUnwrap defaultValue mapFunction =
+    RemoteData.map mapFunction >> RemoteData.withDefault defaultValue
+
+
 filterCurrentSubpage : Int -> Char -> List PreloadCandidate -> List PreloadCandidate
 filterCurrentSubpage gen letter imgList =
     List.filter (\i -> i.generation == gen || i.letter == letter) imgList
@@ -234,49 +239,51 @@ updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( Applicatio
 updateChangeVariant oldState pokemonNumber direction =
     let
         newState =
-            case oldState.pokedex of
-                Success pokedex ->
-                    let
-                        maybePokemon =
-                            List.filter (.number >> (==) pokemonNumber) pokedex
-                                |> List.head
-                    in
-                        case maybePokemon of
-                            Nothing ->
-                                oldState
-
-                            Just pokemon ->
-                                let
-                                    proposedNewVariant =
-                                        if direction == Next then
-                                            pokemon.currentVariant + 1
-                                        else
-                                            pokemon.currentVariant - 1
-
-                                    newVariant =
-                                        if proposedNewVariant < 1 then
-                                            List.length pokemon.variants
-                                        else if proposedNewVariant > List.length pokemon.variants then
-                                            1
-                                        else
-                                            proposedNewVariant
-
-                                    newPokemon =
-                                        { pokemon | currentVariant = newVariant }
-
-                                    newPokedex =
-                                        List.map
-                                            (\p ->
-                                                if p.number == pokemonNumber then
-                                                    newPokemon
-                                                else
-                                                    p
-                                            )
-                                            pokedex
-                                in
-                                    { oldState | pokedex = RemoteData.succeed newPokedex }
-
-                _ ->
+            oldState.pokedex
+                |> remoteDataUnwrap
+                    -- default
                     oldState
+                    -- map function
+                    (\pokedex ->
+                        let
+                            maybePokemon =
+                                List.filter (.number >> (==) pokemonNumber) pokedex
+                                    |> List.head
+                        in
+                            case maybePokemon of
+                                Nothing ->
+                                    oldState
+
+                                Just pokemon ->
+                                    let
+                                        proposedNewVariant =
+                                            if direction == Next then
+                                                pokemon.currentVariant + 1
+                                            else
+                                                pokemon.currentVariant - 1
+
+                                        newVariant =
+                                            if proposedNewVariant < 1 then
+                                                List.length pokemon.variants
+                                            else if proposedNewVariant > List.length pokemon.variants then
+                                                1
+                                            else
+                                                proposedNewVariant
+
+                                        newPokemon =
+                                            { pokemon | currentVariant = newVariant }
+
+                                        newPokedex =
+                                            List.map
+                                                (\p ->
+                                                    if p.number == pokemonNumber then
+                                                        newPokemon
+                                                    else
+                                                        p
+                                                )
+                                                pokedex
+                                    in
+                                        { oldState | pokedex = RemoteData.succeed newPokedex }
+                    )
     in
         ( newState, Cmd.none )
