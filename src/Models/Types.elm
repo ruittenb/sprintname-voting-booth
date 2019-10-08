@@ -11,16 +11,16 @@ module Models.Types exposing (..)
 -}
 
 
-type alias Subpage =
+type alias SubPage =
     { generation : Int
     , letter : Char
     }
 
 
 type Route
-    = Browse Subpage
-    | BrowseWithPeopleVotes Subpage
-    | BrowseWithPokemonRankings Subpage
+    = Browse SubPage
+    | BrowseWithPeopleVotes SubPage
+    | BrowseWithPokemonRankings SubPage
     | Search String
 
 

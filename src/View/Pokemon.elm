@@ -321,7 +321,7 @@ pokemonCanvas state =
     let
         currentPage : Maybe Page
         currentPage =
-            getCurrentPage state.pages state.generation state.letter
+            getCurrentPage state.pages state.subPage
 
         pokeList =
             case state.currentRoute of
@@ -330,7 +330,7 @@ pokemonCanvas state =
 
                 _ ->
                     -- Browse*
-                    filterPokedex state.pokedex state.generation state.letter
+                    filterPokedex state.pokedex state.subPage
     in
         pokemonTiles state.currentRoute currentPage pokeList state.ratings state.currentUser
             |> div [ class "pokecanvas" ]

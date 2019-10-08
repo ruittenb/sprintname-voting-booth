@@ -8,7 +8,7 @@ import Constants exposing (maintenanceApology)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
-import Routing exposing (createSearchPath, createBrowsePath)
+import Routing exposing (createSearchPath, createBrowsePath, createDefaultPath)
 import Commands exposing (andThenCmd)
 import Commands.Database
     exposing
@@ -189,15 +189,27 @@ update msg oldState =
 
         CloseMaskClicked ->
             let
-                browseSubpage =
-                    Browse
-                        { generation = oldState.generation
-                        , letter = oldState.letter
-                        }
+                ( browsePath, browseSubPage ) =
+                    case oldState.subPage of
+                        Just subPage ->
+                            ( createBrowsePath subPage.generation subPage.letter
+                            , Browse
+                                { generation = subPage.generation
+                                , letter = subPage.letter
+                                }
+                            )
+
+                        Nothing ->
+                            ( createDefaultPath
+                              -- TODO should be Default route
+                            , Browse
+                                { generation = 1
+                                , letter = 'B'
+                                }
+                            )
             in
-                ( { oldState | currentRoute = browseSubpage }
-                , newUrl <|
-                    createBrowsePath oldState.generation oldState.letter
+                ( { oldState | currentRoute = browseSubPage }
+                , newUrl browsePath
                 )
 
         PageLockClicked page ->

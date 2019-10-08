@@ -65,21 +65,22 @@ init credentials location =
 
         currentRoute =
             parseLocation location
+                -- TODO should be defaultRoute
                 |> Maybe.withDefault (Browse defaultSubpage)
 
         ( initialSubpage, initialQuery, urlCmd ) =
             case currentRoute of
                 Search query ->
-                    ( defaultSubpage, query, Cmd.none )
+                    ( Nothing, query, Cmd.none )
 
-                Browse subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
+                Browse subPage ->
+                    ( Just subPage, "", newUrl <| createBrowsePath subPage.generation subPage.letter )
 
-                BrowseWithPeopleVotes subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
+                BrowseWithPeopleVotes subPage ->
+                    ( Just subPage, "", newUrl <| createBrowsePath subPage.generation subPage.letter )
 
-                BrowseWithPokemonRankings subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
+                BrowseWithPokemonRankings subPage ->
+                    ( Just subPage, "", newUrl <| createBrowsePath subPage.generation subPage.letter )
 
         initialState : ApplicationState
         initialState =
@@ -90,8 +91,7 @@ init credentials location =
             , statusExpiryTime = Nothing
             , debounceState = Control.initialState
             , currentRoute = currentRoute
-            , generation = initialSubpage.generation
-            , letter = initialSubpage.letter
+            , subPage = initialSubpage
             , preloaded = emptyPreloaded
             , query = initialQuery
             , settings = RemoteData.NotAsked

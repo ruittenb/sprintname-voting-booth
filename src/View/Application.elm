@@ -7,7 +7,7 @@ import Html.Events exposing (onClick, onInput, onSubmit)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
 import Helpers exposing (romanNumeral)
-import Helpers.Pokemon exposing (filterPokedex)
+import Helpers.Pokemon exposing (slicePokedex)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Authentication exposing (tryGetUserProfile, isLoggedIn)
 import Helpers.Application exposing (getIsCurrentUserAdmin)
@@ -23,6 +23,7 @@ import Constants exposing (..)
 import Routing
     exposing
         ( createBrowsePath
+        , createDefaultPath
         , createShowRankingsPath
         , createShowVotersPath
         )
@@ -47,19 +48,23 @@ messageBox message level =
         [ text message ]
 
 
-generationButton : Route -> Int -> Char -> Int -> Html Msg
-generationButton currentRoute currentGen currentLetter gen =
+generationButton : Route -> Maybe SubPage -> Int -> Html Msg
+generationButton currentRoute currentSubPage gen =
     let
         currentHighLight =
             case currentRoute of
-                Search _ ->
-                    False
+                Browse _ ->
+                    currentSubPage
+                        |> Maybe.map (.generation >> (==) gen)
+                        |> Maybe.withDefault False
 
                 _ ->
-                    gen == currentGen
+                    False
 
         hash =
-            createBrowsePath gen currentLetter
+            currentSubPage
+                |> Maybe.map (.letter >> createBrowsePath gen)
+                |> Maybe.withDefault createDefaultPath
     in
         a
             [ classList
@@ -108,31 +113,37 @@ searchBox currentRoute modelQuery =
             ]
 
 
-generationButtons : Route -> Int -> Char -> Html Msg
-generationButtons currentRoute currentGen currentLetter =
+generationButtons : Route -> Maybe SubPage -> Html Msg
+generationButtons currentRoute subPage =
     div [ id "generation-buttons" ] <|
         (List.map
-            (generationButton currentRoute currentGen currentLetter)
+            (generationButton currentRoute subPage)
             allGenerations
         )
 
 
-letterButton : Route -> RemotePokedex -> Int -> Char -> Char -> Html Msg
-letterButton currentRoute pokedex currentGen currentLetter letter =
+letterButton : Route -> RemotePokedex -> Maybe SubPage -> Char -> Html Msg
+letterButton currentRoute pokedex currentSubPage letter =
     let
         currentHighLight =
             case currentRoute of
-                Search _ ->
-                    False
+                Browse _ ->
+                    currentSubPage
+                        |> Maybe.map (.letter >> (==) letter)
+                        |> Maybe.withDefault False
 
                 _ ->
-                    letter == currentLetter
-
-        pokeList =
-            filterPokedex pokedex currentGen letter
+                    False
 
         hash =
-            createBrowsePath currentGen letter
+            currentSubPage
+                |> Maybe.map (\subPage -> createBrowsePath subPage.generation letter)
+                |> Maybe.withDefault createDefaultPath
+
+        pokeList =
+            currentSubPage
+                |> Maybe.map (\subPage -> slicePokedex pokedex subPage.generation letter)
+                |> Maybe.withDefault []
 
         letterButtonElement =
             if List.isEmpty pokeList then
@@ -152,14 +163,14 @@ letterButton currentRoute pokedex currentGen currentLetter letter =
             [ String.fromChar letter |> text ]
 
 
-letterButtons : Route -> RemotePokedex -> Int -> Char -> Html Msg
-letterButtons currentRoute pokedex currentGen currentLetter =
+letterButtons : Route -> RemotePokedex -> Maybe SubPage -> Html Msg
+letterButtons currentRoute pokedex subPage =
     let
         buttonList =
             case pokedex of
                 Success _ ->
                     List.map
-                        (letterButton currentRoute pokedex currentGen currentLetter)
+                        (letterButton currentRoute pokedex subPage)
                         allLetters
 
                 Failure _ ->
@@ -254,8 +265,8 @@ maintenanceButton remoteSettings isCurrentUserAdmin =
             placeHolder
 
 
-lockButton : Route -> Maybe Page -> Bool -> Int -> Char -> Html Msg
-lockButton currentRoute currentPage isCurrentUserAdmin generation letter =
+lockButton : Route -> Maybe Page -> Bool -> Html Msg
+lockButton currentRoute currentPage isCurrentUserAdmin =
     let
         isLocked =
             isPageLocked currentRoute currentPage
@@ -300,8 +311,8 @@ lockButton currentRoute currentPage isCurrentUserAdmin generation letter =
             span (classProps ++ titleProps) []
 
 
-calculationButtons : Route -> RemotePages -> Maybe Page -> Bool -> Int -> Char -> Html Msg
-calculationButtons route remotePages currentPage isCurrentUserAdmin generation letter =
+calculationButtons : Route -> RemotePages -> Maybe Page -> Bool -> Maybe SubPage -> Html Msg
+calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPage =
     let
         calculationButtonElement =
             case route of
@@ -313,6 +324,16 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin generation l
                         span
                     else
                         a
+
+        showVotersHash =
+            currentSubPage
+                |> Maybe.map (\subPage -> createShowVotersPath subPage.generation subPage.letter)
+                |> Maybe.withDefault createDefaultPath
+
+        showRankingsHash =
+            currentSubPage
+                |> Maybe.map (\subPage -> createShowRankingsPath subPage.generation subPage.letter)
+                |> Maybe.withDefault createDefaultPath
     in
         div
             [ id "calculation-buttons"
@@ -322,7 +343,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin generation l
                     [ ( "show-voters", True )
                     , ( "button", True )
                     ]
-                , href (createShowVotersPath generation letter)
+                , href showVotersHash
                 ]
                 [ text "Show Voters" ]
             , calculationButtonElement
@@ -330,10 +351,10 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin generation l
                     [ ( "show-rankings", True )
                     , ( "button", True )
                     ]
-                , href (createShowRankingsPath generation letter)
+                , href showRankingsHash
                 ]
                 [ text "Show Rankings" ]
-            , lockButton route currentPage isCurrentUserAdmin generation letter
+            , lockButton route currentPage isCurrentUserAdmin
             ]
 
 
@@ -402,7 +423,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
 votersTable : ApplicationState -> Html Msg
 votersTable state =
     case state.currentRoute of
-        BrowseWithPeopleVotes _ ->
+        BrowseWithPeopleVotes subPage ->
             let
                 votersToShow =
                     calculatePeopleVotes state
@@ -457,7 +478,7 @@ functionPane state =
     let
         currentPage : Maybe Page
         currentPage =
-            getCurrentPage state.pages state.generation state.letter
+            getCurrentPage state.pages state.subPage
 
         isCurrentUserAdmin =
             getIsCurrentUserAdmin state
@@ -465,23 +486,20 @@ functionPane state =
         div [ id "function-buttons" ]
             [ generationButtons
                 state.currentRoute
-                state.generation
-                state.letter
+                state.subPage
             , searchBox
                 state.currentRoute
                 state.query
             , letterButtons
                 state.currentRoute
                 state.pokedex
-                state.generation
-                state.letter
+                state.subPage
             , calculationButtons
                 state.currentRoute
                 state.pages
                 currentPage
                 isCurrentUserAdmin
-                state.generation
-                state.letter
+                state.subPage
             , tableMask
                 state.currentRoute
             , votersTable

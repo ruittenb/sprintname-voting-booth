@@ -1,6 +1,7 @@
 module Routing
     exposing
         ( parseLocation
+        , createDefaultPath
         , createBrowsePath
         , createSearchPath
         , createShowRankingsPath
@@ -10,7 +11,7 @@ module Routing
 import Char
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
-import Models.Types exposing (Route(..), Subpage)
+import Models.Types exposing (Route(..), SubPage)
 
 
 searchPathSegment : String
@@ -33,6 +34,11 @@ showRankingsPathSegment =
     "show-rankings"
 
 
+createDefaultPath : String
+createDefaultPath =
+    "#/"
+
+
 createSearchPath : String -> String
 createSearchPath query =
     "#/" ++ searchPathSegment ++ "/" ++ query
@@ -53,7 +59,17 @@ createShowVotersPath gen letter =
     (createBrowsePath gen letter) ++ "/" ++ showVotersPathSegment
 
 
-extractSubpage : String -> Maybe Subpage
+unwrap : a -> (SubPage -> a) -> Route -> a
+unwrap defaultValue mapFunction route =
+    case route of
+        Browse subPage ->
+            mapFunction subPage
+
+        _ ->
+            defaultValue
+
+
+extractSubpage : String -> Maybe SubPage
 extractSubpage pathSegment =
     Maybe.map
         (\( gen, letter ) ->
@@ -68,7 +84,7 @@ extractSubpage pathSegment =
         (String.uncons pathSegment)
 
 
-subPageParser : Parser (Subpage -> a) a
+subPageParser : Parser (SubPage -> a) a
 subPageParser =
     custom "SUBPAGE" <|
         \pathSegment ->
