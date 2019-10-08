@@ -1,6 +1,7 @@
 module Routing
     exposing
         ( parseLocation
+        , createDefaultPath
         , createBrowsePath
         , createSearchPath
         , createShowRankingsPath
@@ -10,7 +11,7 @@ module Routing
 import Char
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
-import Models.Types exposing (Route(..), BrowseMode(..), Subpage)
+import Models.Types exposing (Route(..), BrowseMode(..), SubPage)
 
 
 searchPathSegment : String
@@ -33,6 +34,11 @@ showRankingsPathSegment =
     "show-rankings"
 
 
+createDefaultPath : String
+createDefaultPath =
+    "#/"
+
+
 createSearchPath : String -> String
 createSearchPath query =
     "#/" ++ searchPathSegment ++ "/" ++ query
@@ -53,23 +59,33 @@ createShowVotersPath gen letter =
     (createBrowsePath gen letter) ++ "/" ++ showVotersPathSegment
 
 
-extractSubpage : String -> Maybe Subpage
+unwrap : a -> (SubPage -> a) -> Route -> a
+unwrap defaultValue mapFunction route =
+    case route of
+        Browse _ subPage ->
+            mapFunction subPage
+
+        _ ->
+            defaultValue
+
+
+extractSubpage : String -> Maybe SubPage
 extractSubpage pathSegment =
-    Maybe.map
-        (\( gen, letter ) ->
-            { generation = Char.toCode gen - 48
-            , letter =
-                String.toUpper letter
-                    |> String.toList
-                    |> List.head
-                    -- FIXME magical value
-                    |> Maybe.withDefault '_'
-            }
-        )
-        (String.uncons pathSegment)
+    String.uncons pathSegment
+        |> Maybe.map
+            (\( gen, letter ) ->
+                { generation = Char.toCode gen - 48
+                , letter =
+                    String.toUpper letter
+                        |> String.toList
+                        |> List.head
+                        -- FIXME magical value
+                        |> Maybe.withDefault '_'
+                }
+            )
 
 
-subPageParser : Parser (Subpage -> a) a
+subPageParser : Parser (SubPage -> a) a
 subPageParser =
     custom "SUBPAGE" <|
         \pathSegment ->
@@ -86,7 +102,7 @@ routeParser =
     UrlParser.oneOf
         [ UrlParser.map (Browse WithPeopleVotes) (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
         , UrlParser.map (Browse WithPokemonRankings) (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
-        , UrlParser.map (Browse WithoutMask) (s browsePathSegment </> subPageParser)
+        , UrlParser.map (Browse Free) (s browsePathSegment </> subPageParser)
         , UrlParser.map Search (s searchPathSegment </> string)
         ]
 

@@ -7,8 +7,8 @@ import Models.Pages exposing (Page)
 defaultPage : Page
 defaultPage =
     { id = -1
-    , generation = initialGeneration
-    , letter = initialLetter
+    , generation = 1
+    , letter = 'A'
     , open = False
     , winnerNum = Nothing
     , winnerName = Nothing

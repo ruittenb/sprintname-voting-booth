@@ -11,7 +11,7 @@ module Models.Types exposing (..)
 -}
 
 
-type alias Subpage =
+type alias SubPage =
     { generation : Int
     , letter : Char
     }
@@ -26,10 +26,10 @@ type alias Subpage =
       This type is subdivided into:
       - WithPeopleVotes    : displays a mask and popup with user votes;
       - WithPokemonRankings: displays a mask and popup with pokemon rankings;
-      - WithoutMask        : no mask or popup (free browsing).
+      - Free               : free browsing (no mask or popup).
 -}
 type BrowseMode
-    = WithoutMask
+    = Free
     | WithPeopleVotes
     | WithPokemonRankings
 
@@ -37,7 +37,7 @@ type BrowseMode
 type Route
     = Default
     | Search String
-    | Browse BrowseMode Subpage
+    | Browse BrowseMode SubPage
 
 
 type BrowseDirection

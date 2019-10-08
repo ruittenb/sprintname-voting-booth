@@ -32,8 +32,7 @@ type alias ApplicationStateNoMessage =
     , currentUser : User
     , debounceState : Control.State Msg
     , currentRoute : Route
-    , generation : Int
-    , letter : Char
+    , subPage : Maybe SubPage
     , preloaded : PreloadedSets
     , query : String
     , settings : RemoteSettings

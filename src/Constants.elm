@@ -3,16 +3,6 @@ module Constants exposing (..)
 import Char
 
 
-initialGeneration : Int
-initialGeneration =
-    5
-
-
-initialLetter : Char
-initialLetter =
-    'P'
-
-
 maintenanceApology : String
 maintenanceApology =
     "The application is in maintenance mode. We apologize for the inconvenience."

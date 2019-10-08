@@ -6,6 +6,7 @@ missing:
    Expecting an Int at _.status but instead got: undefined
  - if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
  - use date object to calculate default page?
+ - View/Application: move 'generationButton' to just above 'generationButtons'
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:

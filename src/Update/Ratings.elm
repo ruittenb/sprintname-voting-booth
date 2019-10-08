@@ -118,19 +118,6 @@ updateVoteForPokemon oldState userVote =
                                     (\actualPokedex ->
                                         -- find pokemon category (generation and letter):
                                         let
-                                            ( generation, letter ) =
-                                                case oldState.currentRoute of
-                                                    -- TODO don't support voting in search mode!
-                                                    Search _ ->
-                                                        List.filter (.number >> (==) pokemonNumber) actualPokedex
-                                                            |> List.map (\p -> ( p.generation, p.letter ))
-                                                            |> List.head
-                                                            |> Maybe.withDefault ( 0, '?' )
-
-                                                    _ ->
-                                                        -- currentRoute == any browse mode
-                                                        ( oldState.generation, oldState.letter )
-
                                             -- extract one pokemon rating
                                             oldPokeRating =
                                                 extractOnePokemonFromRatingString oldUserRatingString pokemonNumber
@@ -143,7 +130,7 @@ updateVoteForPokemon oldState userVote =
                                                     userVote.vote
 
                                             pokeList =
-                                                filterPokedex oldState.pokedex generation letter
+                                                filterPokedex oldState.pokedex oldState.subPage
 
                                             otherPokemonRatings =
                                                 pokeList

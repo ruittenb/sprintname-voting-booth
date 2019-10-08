@@ -6,7 +6,6 @@ import Time exposing (millisecond)
 import Navigation exposing (programWithFlags, Location, newUrl)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
-import Constants exposing (initialGeneration, initialLetter)
 import Msgs exposing (Msg(..))
 import Routing exposing (parseLocation, createBrowsePath)
 import Models exposing (ApplicationState)
@@ -59,21 +58,19 @@ init credentials location =
             , letters = []
             }
 
-        defaultSubpage =
-            { generation = initialGeneration
-            , letter = initialLetter
-            }
-
         currentRoute =
             parseLocation location
 
         ( initialSubpage, initialQuery, urlCmd ) =
             case currentRoute of
                 Search query ->
-                    ( defaultSubpage, query, Cmd.none )
+                    ( Nothing, query, Cmd.none )
 
-                Browse _ subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
+                Browse _ subPage ->
+                    ( Just subPage, "", newUrl <| createBrowsePath subPage.generation subPage.letter )
+
+                Default ->
+                    ( Nothing, "", Cmd.none )
 
         initialState : ApplicationState
         initialState =
@@ -84,8 +81,7 @@ init credentials location =
             , statusExpiryTime = Nothing
             , debounceState = Control.initialState
             , currentRoute = currentRoute
-            , generation = initialSubpage.generation
-            , letter = initialSubpage.letter
+            , subPage = initialSubpage
             , preloaded = emptyPreloaded
             , query = initialQuery
             , settings = RemoteData.NotAsked

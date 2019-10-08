@@ -53,17 +53,17 @@ isPageLocked route maybePage =
                 |> Maybe.withDefault True
 
 
-getCurrentPage : RemotePages -> Int -> Char -> Maybe Page
-getCurrentPage remotePages generation letter =
-    remotePages
-        |> RemoteData.toMaybe
-        |> Maybe.map
-            (\pages ->
-                pages
-                    |> List.filter (\page -> page.generation == generation)
-                    |> List.filter (\page -> page.letter == letter)
-                    |> List.head
-            )
+getCurrentPage : RemotePages -> Maybe SubPage -> Maybe Page
+getCurrentPage remotePages maybeSubPage =
+    Maybe.map2
+        (\pages subPage ->
+            pages
+                |> List.filter (\page -> page.generation == subPage.generation)
+                |> List.filter (\page -> page.letter == subPage.letter)
+                |> List.head
+        )
+        (RemoteData.toMaybe remotePages)
+        maybeSubPage
         -- we might not have a current page.
         |> Maybe.withDefault Nothing
 
