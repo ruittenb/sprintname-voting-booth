@@ -3,16 +3,6 @@ module Constants exposing (..)
 import Char
 
 
-initialGeneration : Int
-initialGeneration =
-    5
-
-
-initialLetter : Char
-initialLetter =
-    'P'
-
-
 maintenanceApology : String
 maintenanceApology =
     "The application is in maintenance mode. We apologize for the inconvenience."
@@ -51,5 +41,5 @@ allGenerations =
 
 allLetters : List Char
 allLetters =
-    List.map Char.fromCode <|
-        List.range (Char.toCode 'A') (Char.toCode 'Z')
+    List.range (Char.toCode 'A') (Char.toCode 'Z')
+        |> List.map Char.fromCode

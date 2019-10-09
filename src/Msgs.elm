@@ -30,7 +30,7 @@ type Msg
     | UserRatingsLoaded RemoteUserRatings
     | UserRatingsSaved RemoteUserRatings
     | VariantChanged Int BrowseDirection
-    | UrlChanged (Maybe Route)
+    | UrlChanged Route
     | CloseMaskClicked
     | PageLockClicked Page
     | WinnerElected Page PokeWinner
@@ -38,5 +38,6 @@ type Msg
     | SearchPokemon String
     | DebounceSearchPokemon (Control Msg)
     | PokemonVoteCast UserVote
+    | TodayReceived Time
     | StatusMessageExpiryTimeReceived Time
     | Tick Time

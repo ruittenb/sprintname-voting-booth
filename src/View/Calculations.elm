@@ -63,8 +63,7 @@ calculatePeopleVotes model =
         pokelist =
             filterPokedex
                 model.pokedex
-                model.generation
-                model.letter
+                model.subPage
 
         teamRatings =
             case model.ratings of
@@ -110,8 +109,7 @@ calculatePokemonVotes model =
         pokelist =
             filterPokedex
                 model.pokedex
-                model.generation
-                model.letter
+                model.subPage
 
         teamRatings =
             case model.ratings of

@@ -6,14 +6,14 @@ import Time exposing (millisecond)
 import Navigation exposing (programWithFlags, Location, newUrl)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
-import Constants exposing (initialGeneration, initialLetter)
 import Msgs exposing (Msg(..))
-import Routing exposing (parseLocation, createBrowsePath)
+import Routing exposing (parseLocation, createBrowseModePath)
 import Models exposing (ApplicationState)
-import Models.Types exposing (StatusLevel(None), Route(..))
+import Models.Types exposing (StatusLevel(None), Route(..), BrowseMode(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
 import View exposing (view)
 import Update exposing (update)
+import Commands exposing (getTodayTimeCmd)
 import Commands.Authentication exposing (decodeUser)
 import Commands.Database exposing (firebaseInit, firebaseLoginWithJwtToken)
 import Commands.Settings exposing (decodeSettings)
@@ -58,46 +58,37 @@ init credentials location =
             , letters = []
             }
 
-        defaultSubpage =
-            { generation = initialGeneration
-            , letter = initialLetter
-            }
-
         currentRoute =
             parseLocation location
-                |> Maybe.withDefault (Browse defaultSubpage)
 
         ( initialSubpage, initialQuery, urlCmd ) =
             case currentRoute of
+                Browse mode subPage ->
+                    ( Just subPage, "", newUrl <| createBrowseModePath mode subPage.generation subPage.letter )
+
                 Search query ->
-                    ( defaultSubpage, query, Cmd.none )
+                    ( Nothing, query, getTodayTimeCmd )
 
-                Browse subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
-
-                BrowseWithPeopleVotes subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
-
-                BrowseWithPokemonRankings subpage ->
-                    ( subpage, "", newUrl <| createBrowsePath subpage.generation subpage.letter )
+                Default ->
+                    ( Nothing, "", getTodayTimeCmd )
 
         initialState : ApplicationState
         initialState =
             { authModel = authModel
             , currentUser = Nothing
-            , statusMessage = ""
-            , statusLevel = None
-            , statusExpiryTime = Nothing
-            , debounceState = Control.initialState
             , currentRoute = currentRoute
-            , generation = initialSubpage.generation
-            , letter = initialSubpage.letter
-            , preloaded = emptyPreloaded
+            , subPage = initialSubpage
             , query = initialQuery
+            , todayDate = Nothing
+            , preloaded = emptyPreloaded
             , settings = RemoteData.NotAsked
             , pokedex = RemoteData.NotAsked
             , pages = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked
+            , debounceState = Control.initialState
+            , statusMessage = ""
+            , statusLevel = None
+            , statusExpiryTime = Nothing
             }
     in
         ( initialState

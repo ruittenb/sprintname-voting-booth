@@ -90,14 +90,18 @@ getPreloadCommandForPokedexCrossSection preloaded generation letter pokedex =
                 Cmd.none
 
 
-addCurrentSubpageToPreloaded : PreloadedSets -> Int -> Char -> PreloadedSets
-addCurrentSubpageToPreloaded preloaded generation letter =
+addCurrentSubpageToPreloaded : PreloadedSets -> Maybe SubPage -> PreloadedSets
+addCurrentSubpageToPreloaded preloaded subPage =
     let
-        newGenerations =
-            generation :: preloaded.generations
-
-        newLetters =
-            letter :: preloaded.letters
+        ( newGenerations, newLetters ) =
+            subPage
+                |> Maybe.map
+                    (\actualSubPage ->
+                        ( actualSubPage.generation :: preloaded.generations
+                        , actualSubPage.letter :: preloaded.letters
+                        )
+                    )
+                |> Maybe.withDefault ( preloaded.generations, preloaded.letters )
     in
         { preloaded
             | generations = unique newGenerations
@@ -127,17 +131,21 @@ updateOnLoadPokedex oldState pokedex =
                     (\x -> x)
 
         command =
-            getPreloadCommandForPokedexCrossSection
-                oldState.preloaded
-                oldState.generation
-                oldState.letter
-                pokedex
+            oldState.subPage
+                |> Maybe.map
+                    (\subPage ->
+                        getPreloadCommandForPokedexCrossSection
+                            oldState.preloaded
+                            subPage.generation
+                            subPage.letter
+                            pokedex
+                    )
+                |> Maybe.withDefault Cmd.none
 
         newPreloaded =
             addCurrentSubpageToPreloaded
                 oldState.preloaded
-                oldState.generation
-                oldState.letter
+                oldState.subPage
 
         newState =
             { oldState
@@ -152,21 +160,26 @@ updateOnLoadPokedex oldState pokedex =
 updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
 updateSearchPokemon oldState query =
     let
-        newSubpage =
-            { generation = oldState.generation
-            , letter = oldState.letter
-            }
+        newSubPage =
+            oldState.subPage
 
         newRoute =
             if query == "" then
-                Browse newSubpage
+                newSubPage
+                    |> Maybe.map (Browse Freely)
+                    |> Maybe.withDefault Default
             else
                 Search query
 
         newCmd =
             if query == "" then
-                createBrowsePath newSubpage.generation newSubpage.letter
-                    |> modifyUrl
+                newSubPage
+                    |> Maybe.map
+                        (\actualSubPage ->
+                            createBrowsePath actualSubPage.generation actualSubPage.letter
+                                |> modifyUrl
+                        )
+                    |> Maybe.withDefault Cmd.none
             else
                 Cmd.none
 
@@ -180,52 +193,50 @@ updateSearchPokemon oldState query =
 updateChangeGenerationAndLetter : ApplicationState -> Route -> ( ApplicationState, Cmd Msg )
 updateChangeGenerationAndLetter oldState newRoute =
     let
-        ( newGen, newLetter ) =
+        newSubPage =
             case newRoute of
-                Search _ ->
-                    ( oldState.generation, oldState.letter )
+                Browse _ newRouteSubPage ->
+                    Just { generation = newRouteSubPage.generation, letter = newRouteSubPage.letter }
 
-                Browse newSubpage ->
-                    ( newSubpage.generation, newSubpage.letter )
+                _ ->
+                    oldState.subPage
 
-                BrowseWithPeopleVotes newSubpage ->
-                    ( newSubpage.generation, newSubpage.letter )
-
-                BrowseWithPokemonRankings newSubpage ->
-                    ( newSubpage.generation, newSubpage.letter )
+        isNewPageValid =
+            newSubPage
+                |> Maybe.map
+                    (\subPage ->
+                        List.member subPage.generation allGenerations
+                            && List.member subPage.letter allLetters
+                    )
+                |> Maybe.withDefault False
 
         command =
-            getPreloadCommandForPokedexCrossSection
-                oldState.preloaded
-                newGen
-                newLetter
-                oldState.pokedex
+            newSubPage
+                |> Maybe.map
+                    (\subPage ->
+                        getPreloadCommandForPokedexCrossSection
+                            oldState.preloaded
+                            subPage.generation
+                            subPage.letter
+                            oldState.pokedex
+                    )
+                |> Maybe.withDefault Cmd.none
 
         newPreloaded =
             case oldState.pokedex of
                 Success _ ->
                     addCurrentSubpageToPreloaded
                         oldState.preloaded
-                        newGen
-                        newLetter
+                        newSubPage
 
                 _ ->
                     -- if the pokedex has not been loaded yet.
-                    -- don't mark anything as 'already preloaded'
+                    -- don't mark any images as 'already preloaded'
                     oldState.preloaded
-
-        newBrowseRoute =
-            { generation = newGen
-            , letter = newLetter
-            }
     in
-        if
-            List.member newGen allGenerations
-                && List.member newLetter allLetters
-        then
+        if isNewPageValid then
             ( { oldState
-                | generation = newGen
-                , letter = newLetter
+                | subPage = newSubPage
                 , preloaded = newPreloaded
                 , currentRoute = newRoute
               }

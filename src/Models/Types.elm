@@ -11,17 +11,33 @@ module Models.Types exposing (..)
 -}
 
 
-type alias Subpage =
+type alias SubPage =
     { generation : Int
     , letter : Char
     }
 
 
+{-|
+
+    The currentRoute can be of type:
+    - Default: uninitialized because an invalid route was encountered (should redirect to Browse)
+    - Search : a string has been entered in the search box, search results are shown;
+    - Browse : generation and letter have been selected, a page of results is shown.
+      This type is subdivided into:
+      - WithPeopleVotes    : displays a mask and popup with user votes;
+      - WithPokemonRankings: displays a mask and popup with pokemon rankings;
+      - Freely             : free browsing (no mask or popup).
+-}
+type BrowseMode
+    = Freely
+    | WithPeopleVotes
+    | WithPokemonRankings
+
+
 type Route
-    = Browse Subpage
-    | BrowseWithPeopleVotes Subpage
-    | BrowseWithPokemonRankings Subpage
+    = Default
     | Search String
+    | Browse BrowseMode SubPage
 
 
 type BrowseDirection

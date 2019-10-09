@@ -1,6 +1,7 @@
 module Helpers.Pokemon
     exposing
         ( filterPokedex
+        , slicePokedex
         , searchPokedex
         , extractOnePokemonFromRatingString
         , extractOneUserFromRatings
@@ -11,6 +12,7 @@ import Regex exposing (regex, caseInsensitive)
 import RemoteData exposing (WebData, RemoteData(..))
 import Models exposing (User)
 import Models.Authentication exposing (AuthenticationModel)
+import Models.Types exposing (SubPage)
 import Models.Pokemon exposing (..)
 import Models.Ratings exposing (..)
 import Helpers.Authentication exposing (tryGetUserProfile)
@@ -21,40 +23,53 @@ isNumeric str =
     Regex.contains (regex "^[0-9]+$") str
 
 
-filterPokedex : RemotePokedex -> Int -> Char -> List Pokemon
-filterPokedex pokedex generation letter =
+slicePokedex : RemotePokedex -> Int -> Char -> List Pokemon
+slicePokedex pokedex generation letter =
+    RemoteData.toMaybe pokedex
+        |> Maybe.map
+            (\pokeList ->
+                pokeList
+                    |> List.filter (.letter >> (==) letter)
+                    |> List.filter (.generation >> (==) generation)
+            )
+        |> Maybe.withDefault []
+
+
+filterPokedex : RemotePokedex -> Maybe SubPage -> List Pokemon
+filterPokedex pokedex maybeSubPage =
     let
         selection =
-            case pokedex of
-                Success pokeList ->
+            Maybe.map2
+                (\pokeList subPage ->
                     pokeList
-                        |> List.filter (.letter >> (==) letter)
-                        |> List.filter (.generation >> (==) generation)
-
-                _ ->
-                    []
+                        |> List.filter (.letter >> (==) subPage.letter)
+                        |> List.filter (.generation >> (==) subPage.generation)
+                )
+                (RemoteData.toMaybe pokedex)
+                maybeSubPage
+                |> Maybe.withDefault []
     in
         List.sortBy .name selection
 
 
 searchPokedex : RemotePokedex -> String -> List Pokemon
-searchPokedex pokedex query =
-    case pokedex of
-        Success pokedex ->
-            let
-                queryPattern =
-                    caseInsensitive (regex query)
+searchPokedex remotePokedex query =
+    remotePokedex
+        |> RemoteData.map
+            (\pokedex ->
+                let
+                    queryPattern =
+                        caseInsensitive (regex query)
 
-                pokeList =
-                    if isNumeric query then
-                        List.filter (.number >> toString >> (==) query) pokedex
-                    else
-                        List.filter (.name >> Regex.contains queryPattern) pokedex
-            in
-                pokeList
-
-        _ ->
-            []
+                    pokeList =
+                        if isNumeric query then
+                            List.filter (.number >> toString >> (==) query) pokedex
+                        else
+                            List.filter (.name >> Regex.contains queryPattern) pokedex
+                in
+                    pokeList
+            )
+        |> RemoteData.withDefault []
 
 
 extractOnePokemonFromRatingString : String -> Int -> Int
@@ -82,4 +97,3 @@ extractOneUserFromRating ratings currentUser =
 
         Just simpleUserName ->
             List.partition (.userName >> (==) simpleUserName) ratings
-

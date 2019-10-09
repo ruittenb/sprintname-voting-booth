@@ -32,9 +32,9 @@ KUBE_RESTART_PATCH=$(shell node kubernetes/restartdate_patch.js)
 ##@ Generic:
 
 # automatic self-documentation
-.PHONY: help # See https://gist.github.com/ruittenb/5d2d281237385276f49652b9b9f6d5a1
+.PHONY: help # See https://tinyurl.com/makefile-autohelp
 help: ## display this help
-	@awk -v tab=24 'BEGIN { FS = ":.*## "; buffer = ""; color = "\033[36m"; nocolor = "\033[0m"; indent = "  "; usage(); } function trim(str) { gsub(/[ \t]+$$/, "", str); gsub(/^[ \t]+/, "", str); return str; } function spout(target, desc) { split(trim(target), fields, " "); for (i in fields) printf "%s%s%-" tab "s%s%s\n", indent, color, trim(fields[i]), nocolor, desc; } function usage() { printf "\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n", indent, color, nocolor; } /\\$$/ { gsub(/\\$$/, ""); buffer = buffer $$0; next; } buffer { $$0 = buffer $$0; buffer = ""; } /^[-a-zA-Z0-9*%_. ]+:.*## / { pad = sprintf("\n%" tab "s" indent, ""); gsub(/\\n/, pad); spout($$1, $$2); } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.53
+	@awk -v tab=24 'BEGIN { FS = ":.*## "; buffer = ""; color = "\033[36m"; nocolor = "\033[0m"; indent = "  "; usage(); } function trim(str) { gsub(/[ \t]+$$/, "", str); gsub(/^[ \t]+/, "", str); return str; } function spout(target, desc) { split(trim(target), fields, " "); for (i in fields) printf "%s%s%-" tab "s%s%s\n", indent, color, trim(fields[i]), nocolor, desc; } function usage() { printf "\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n", indent, color, nocolor; } /\\$$/ { gsub(/\\$$/, ""); buffer = buffer $$0; next; } buffer { $$0 = buffer $$0; buffer = ""; } /^[-a-zA-Z0-9*/%_. ]+:.*## / { pad = sprintf("\n%" tab "s" indent, ""); gsub(/\\n/, pad); spout($$1, $$2); } /^##@ / { gsub(/\\n/, "\n"); printf "\n%s\n", substr($$0, 5) } END { print "" }' $(MAKEFILE_LIST) # v1.54
 
 ############################################################################
 ##@ Development:
@@ -103,7 +103,7 @@ service-worker-only-bumped: # tests changes in service worker: (0 == only bumped
 
 .PHONY: unbump
 unbump: service-worker-only-bumped ## restore service-worker to 'un-bumped' version
-	git co $(SERVICE_WORKER)
+	git checkout $(SERVICE_WORKER)
 
 .PHONY: tag
 tag: ## create git tag, next in line (with 0.1 increments) and push to repo

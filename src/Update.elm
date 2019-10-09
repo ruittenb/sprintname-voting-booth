@@ -1,15 +1,19 @@
 module Update exposing (update)
 
+import Date exposing (Date, fromTime)
+import Date.Extra exposing (toIsoString)
 import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
 import Navigation exposing (newUrl)
 import Control exposing (update)
 import Constants exposing (maintenanceApology)
+import Constants.Pages exposing (defaultPage)
 import Models exposing (..)
+import Models.Pages exposing (RemotePages)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
-import Routing exposing (createSearchPath, createBrowsePath)
-import Commands exposing (andThenCmd)
+import Routing exposing (createSearchPath, createBrowsePath, createDefaultPath)
+import Commands exposing (andThenCmd, getTodayTimeCmd)
 import Commands.Database
     exposing
         ( firebaseInit
@@ -19,6 +23,7 @@ import Commands.Database
         )
 import Helpers exposing (setStatusMessage, clearStatusMessage)
 import Helpers.Authentication exposing (getUserNameForAuthModel)
+import Helpers.Pages exposing (getDefaultPageForToday)
 import Helpers.Pokemon
     exposing
         ( extractOneUserFromRatings
@@ -35,6 +40,47 @@ import Update.Pokemon
         , updateSearchPokemon
         , updateChangeVariant
         )
+
+
+resolveDefaultPage : Route -> Maybe SubPage -> RemotePages -> Date -> ( Maybe SubPage, Cmd Msg )
+resolveDefaultPage currentRoute oldSubPage pages todayDate =
+    -- if    currentRoute == Default or Search
+    -- and   pages == Success x
+    -- and   a page can be found for this todayDate
+    -- then  set the subpage
+    -- and   if Default then navigate to a Browse page.
+    let
+        maybeDefaultPageForToday =
+            getDefaultPageForToday pages todayDate
+
+        ( maybeDefaultSubPageForToday, hash ) =
+            maybeDefaultPageForToday
+                |> Maybe.map
+                    (\page ->
+                        ( Just
+                            { generation = page.generation
+                            , letter = page.letter
+                            }
+                        , createBrowsePath page.generation page.letter
+                        )
+                    )
+                |> Maybe.withDefault
+                    ( oldSubPage, "" )
+    in
+        case currentRoute of
+            Default ->
+                if maybeDefaultPageForToday == Nothing then
+                    ( oldSubPage, Cmd.none )
+                else
+                    ( maybeDefaultSubPageForToday
+                    , newUrl hash
+                    )
+
+            Search _ ->
+                ( maybeDefaultSubPageForToday, Cmd.none )
+
+            _ ->
+                ( oldSubPage, Cmd.none )
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -95,10 +141,20 @@ update msg oldState =
 
         PagesLoaded (Success pages) ->
             let
+                -- Check if the current route needs replacing with a browse route.
+                ( newSubPage, urlCommand ) =
+                    oldState.todayDate
+                        |> Maybe.map
+                            (resolveDefaultPage oldState.currentRoute oldState.subPage (Success pages))
+                        |> Maybe.withDefault ( oldState.subPage, Cmd.none )
+
                 newState =
-                    { oldState | pages = RemoteData.succeed pages }
+                    { oldState
+                        | pages = RemoteData.succeed pages
+                        , subPage = newSubPage
+                    }
             in
-                ( newState, Cmd.none )
+                ( newState, urlCommand )
 
         PagesLoaded (Failure message) ->
             let
@@ -176,28 +232,39 @@ update msg oldState =
         PokedexLoaded pokedex ->
             updateOnLoadPokedex oldState pokedex
 
-        UrlChanged (Just newRoute) ->
+        UrlChanged newRoute ->
             case newRoute of
+                Default ->
+                    -- invalid URL? fetch today's date, which will reload the default page
+                    ( { oldState | currentRoute = newRoute }
+                    , getTodayTimeCmd
+                    )
+
                 Search query ->
                     updateSearchPokemon oldState query
 
                 _ ->
                     updateChangeGenerationAndLetter oldState newRoute
 
-        UrlChanged Nothing ->
-            ( oldState, Cmd.none )
-
         CloseMaskClicked ->
             let
-                browseSubpage =
-                    Browse
-                        { generation = oldState.generation
-                        , letter = oldState.letter
-                        }
+                ( browsePath, browseSubPage ) =
+                    case oldState.subPage of
+                        Just subPage ->
+                            ( createBrowsePath subPage.generation subPage.letter
+                            , Browse Freely
+                                { generation = subPage.generation
+                                , letter = subPage.letter
+                                }
+                            )
+
+                        Nothing ->
+                            ( createDefaultPath
+                            , Default
+                            )
             in
-                ( { oldState | currentRoute = browseSubpage }
-                , newUrl <|
-                    createBrowsePath oldState.generation oldState.letter
+                ( { oldState | currentRoute = browseSubPage }
+                , newUrl browsePath
                 )
 
         PageLockClicked page ->
@@ -232,12 +299,22 @@ update msg oldState =
         UserRatingsSaved _ ->
             ( oldState, Cmd.none )
 
-        Tick time ->
-            if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
-                ( oldState, Cmd.none )
-                    |> clearStatusMessage
-            else
-                ( oldState, Cmd.none )
+        TodayReceived time ->
+            let
+                todayDate =
+                    Date.fromTime time
+
+                -- Check if the current route needs replacing with a browse route.
+                ( newSubPage, urlCommand ) =
+                    resolveDefaultPage oldState.currentRoute oldState.subPage oldState.pages todayDate
+
+                newState =
+                    { oldState
+                        | todayDate = Just todayDate
+                        , subPage = newSubPage
+                    }
+            in
+                ( newState, urlCommand )
 
         StatusMessageExpiryTimeReceived time ->
             let
@@ -245,3 +322,10 @@ update msg oldState =
                     { oldState | statusExpiryTime = Just time }
             in
                 ( newState, Cmd.none )
+
+        Tick time ->
+            if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
+                ( oldState, Cmd.none )
+                    |> clearStatusMessage
+            else
+                ( oldState, Cmd.none )

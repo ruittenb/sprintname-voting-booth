@@ -1,8 +1,10 @@
 module Routing
     exposing
         ( parseLocation
-        , createBrowsePath
+        , createDefaultPath
         , createSearchPath
+        , createBrowseModePath
+        , createBrowsePath
         , createShowRankingsPath
         , createShowVotersPath
         )
@@ -10,7 +12,8 @@ module Routing
 import Char
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
-import Models.Types exposing (Route(..), Subpage)
+import Constants exposing (allLetters, allGenerations)
+import Models.Types exposing (Route(..), BrowseMode(..), SubPage)
 
 
 searchPathSegment : String
@@ -33,6 +36,11 @@ showRankingsPathSegment =
     "show-rankings"
 
 
+createDefaultPath : String
+createDefaultPath =
+    "#/"
+
+
 createSearchPath : String -> String
 createSearchPath query =
     "#/" ++ searchPathSegment ++ "/" ++ query
@@ -53,22 +61,58 @@ createShowVotersPath gen letter =
     (createBrowsePath gen letter) ++ "/" ++ showVotersPathSegment
 
 
-extractSubpage : String -> Maybe Subpage
+createBrowseModePath : BrowseMode -> Int -> Char -> String
+createBrowseModePath mode gen letter =
+    case mode of
+        Freely ->
+            createBrowsePath gen letter
+
+        WithPeopleVotes ->
+            createShowVotersPath gen letter
+
+        WithPokemonRankings ->
+            createShowRankingsPath gen letter
+
+
+unwrap : a -> (SubPage -> a) -> Route -> a
+unwrap defaultValue mapFunction route =
+    case route of
+        Browse _ subPage ->
+            mapFunction subPage
+
+        _ ->
+            defaultValue
+
+
+extractSubpage : String -> Maybe SubPage
 extractSubpage pathSegment =
-    Maybe.map
-        (\( gen, letter ) ->
-            { generation = Char.toCode gen - 48
-            , letter =
-                String.toUpper letter
-                    |> String.toList
-                    |> List.head
-                    |> Maybe.withDefault '_'
-            }
-        )
-        (String.uncons pathSegment)
+    String.uncons pathSegment
+        |> Maybe.andThen
+            (\( gen, rest ) ->
+                let
+                    generation =
+                        Char.toCode gen - 48
+                in
+                    String.toUpper rest
+                        |> String.toList
+                        |> List.head
+                        |> Maybe.andThen
+                            (\letter ->
+                                if
+                                    List.member letter allLetters
+                                        && List.member generation allGenerations
+                                then
+                                    Just
+                                        { generation = generation
+                                        , letter = letter
+                                        }
+                                else
+                                    Nothing
+                            )
+            )
 
 
-subPageParser : Parser (Subpage -> a) a
+subPageParser : Parser (SubPage -> a) a
 subPageParser =
     custom "SUBPAGE" <|
         \pathSegment ->
@@ -83,13 +127,14 @@ subPageParser =
 routeParser : Parser (Route -> a) a
 routeParser =
     UrlParser.oneOf
-        [ UrlParser.map BrowseWithPeopleVotes (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
-        , UrlParser.map BrowseWithPokemonRankings (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
-        , UrlParser.map Browse (s browsePathSegment </> subPageParser)
+        [ UrlParser.map (Browse WithPeopleVotes) (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
+        , UrlParser.map (Browse WithPokemonRankings) (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
+        , UrlParser.map (Browse Freely) (s browsePathSegment </> subPageParser)
         , UrlParser.map Search (s searchPathSegment </> string)
         ]
 
 
-parseLocation : Location -> Maybe Route
+parseLocation : Location -> Route
 parseLocation location =
     parseHash routeParser location
+        |> Maybe.withDefault Default

@@ -10,6 +10,7 @@ import Msgs exposing (Msg)
 
 alwaysPanes : ApplicationState -> List (Html Msg)
 alwaysPanes state =
+    -- panes always visible
     [ title
     , applicationPane state
     ]
@@ -17,6 +18,7 @@ alwaysPanes state =
 
 onlinePanes : ApplicationState -> List (Html Msg)
 onlinePanes state =
+    -- panes only visible when not in maintenance mode
     [ functionPane state
     , pokemonCanvas state
     ]

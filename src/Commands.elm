@@ -14,6 +14,18 @@ andThenCmd secondCmd ( model, firstCmd ) =
     )
 
 
+butFirstCmd : Cmd msg -> ( ApplicationState, Cmd msg ) -> ( ApplicationState, Cmd msg )
+butFirstCmd firstCmd ( model, secondCmd ) =
+    ( model
+    , Cmd.batch [ firstCmd, secondCmd ]
+    )
+
+
+getTodayTimeCmd : Cmd Msg
+getTodayTimeCmd =
+    perform TodayReceived now
+
+
 getStatusMessageExpiryTime : StatusLevel -> Cmd Msg
 getStatusMessageExpiryTime statusLevel =
     let
