@@ -5,8 +5,6 @@ missing:
  - Uncaught Error: Trying to send an unexpected type of value through port `onFirebaseLoginFailed`:
    Expecting an Int at _.status but instead got: undefined
  - if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
- - use date object to calculate default page?
- - fix all the TODO's and FIXME's
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
