@@ -44,31 +44,43 @@ import Update.Pokemon
 
 resolveDefaultPage : Route -> Maybe SubPage -> RemotePages -> Date -> ( Maybe SubPage, Cmd Msg )
 resolveDefaultPage currentRoute oldSubPage pages todayDate =
-    -- if    currentRoute == Default
+    -- if    currentRoute == Default or Search
     -- and   pages == Success x
     -- and   a page can be found for this todayDate
-    -- then  navigate to a Browse page.
-    case currentRoute of
-        Default ->
+    -- then  set the subpage
+    -- and   if Default then navigate to a Browse page.
+    let
+        maybeDefaultPageForToday =
             getDefaultPageForToday pages todayDate
+
+        ( maybeDefaultSubPageForToday, hash ) =
+            maybeDefaultPageForToday
                 |> Maybe.map
                     (\page ->
-                        let
-                            subPage =
-                                { generation = page.generation
-                                , letter = page.letter
-                                }
-
-                            urlCmd =
-                                newUrl <| createBrowsePath page.generation page.letter
-                        in
-                            ( Just subPage, urlCmd )
+                        ( Just
+                            { generation = page.generation
+                            , letter = page.letter
+                            }
+                        , createBrowsePath page.generation page.letter
+                        )
                     )
                 |> Maybe.withDefault
+                    ( oldSubPage, "" )
+    in
+        case currentRoute of
+            Default ->
+                if maybeDefaultPageForToday == Nothing then
                     ( oldSubPage, Cmd.none )
+                else
+                    ( maybeDefaultSubPageForToday
+                    , newUrl hash
+                    )
 
-        _ ->
-            ( oldSubPage, Cmd.none )
+            Search _ ->
+                ( maybeDefaultSubPageForToday, Cmd.none )
+
+            _ ->
+                ( oldSubPage, Cmd.none )
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )

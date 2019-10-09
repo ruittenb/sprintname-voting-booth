@@ -2,14 +2,14 @@ module Routing
     exposing
         ( parseLocation
         , createDefaultPath
-        , createBrowsePath
         , createSearchPath
+        , createBrowseModePath
+        , createBrowsePath
         , createShowRankingsPath
         , createShowVotersPath
         )
 
 import Char
-import Maybe.Extra exposing (join)
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
 import Constants exposing (allLetters, allGenerations)
@@ -59,6 +59,19 @@ createShowRankingsPath gen letter =
 createShowVotersPath : Int -> Char -> String
 createShowVotersPath gen letter =
     (createBrowsePath gen letter) ++ "/" ++ showVotersPathSegment
+
+
+createBrowseModePath : BrowseMode -> Int -> Char -> String
+createBrowseModePath mode gen letter =
+    case mode of
+        Freely ->
+            createBrowsePath gen letter
+
+        WithPeopleVotes ->
+            createShowVotersPath gen letter
+
+        WithPokemonRankings ->
+            createShowRankingsPath gen letter
 
 
 unwrap : a -> (SubPage -> a) -> Route -> a

@@ -7,7 +7,7 @@ import Navigation exposing (programWithFlags, Location, newUrl)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
 import Msgs exposing (Msg(..))
-import Routing exposing (parseLocation, createBrowsePath)
+import Routing exposing (parseLocation, createBrowseModePath)
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(None), Route(..), BrowseMode(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
@@ -63,11 +63,11 @@ init credentials location =
 
         ( initialSubpage, initialQuery, urlCmd ) =
             case currentRoute of
-                Search query ->
-                    ( Nothing, query, Cmd.none )
+                Browse mode subPage ->
+                    ( Just subPage, "", newUrl <| createBrowseModePath mode subPage.generation subPage.letter )
 
-                Browse _ subPage ->
-                    ( Just subPage, "", newUrl <| createBrowsePath subPage.generation subPage.letter )
+                Search query ->
+                    ( Nothing, query, getTodayTimeCmd )
 
                 Default ->
                     ( Nothing, "", getTodayTimeCmd )
