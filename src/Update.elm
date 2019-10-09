@@ -42,17 +42,14 @@ import Update.Pokemon
         )
 
 
-updateBrowsePage : Route -> Maybe SubPage -> RemotePages -> Date -> ( Maybe SubPage, Cmd Msg )
-updateBrowsePage currentRoute oldSubPage pages todayDate =
+resolveDefaultPage : Route -> Maybe SubPage -> RemotePages -> Date -> ( Maybe SubPage, Cmd Msg )
+resolveDefaultPage currentRoute oldSubPage pages todayDate =
+    -- if    currentRoute == Default
+    -- and   pages == Success x
+    -- and   a page can be found for this todayDate
+    -- then  navigate to a Browse page.
     case currentRoute of
         Default ->
-            -- if
-            --     currentRoute == Default
-            -- we're going to try if
-            --     pages == RemoteData.Success x
-            -- and if
-            --     a page can be found for this todayDate
-            -- then navigate to a Browse page.
             getDefaultPageForToday pages todayDate
                 |> Maybe.map
                     (\page ->
@@ -136,7 +133,7 @@ update msg oldState =
                 ( newSubPage, urlCommand ) =
                     oldState.todayDate
                         |> Maybe.map
-                            (updateBrowsePage oldState.currentRoute oldState.subPage (Success pages))
+                            (resolveDefaultPage oldState.currentRoute oldState.subPage (Success pages))
                         |> Maybe.withDefault ( oldState.subPage, Cmd.none )
 
                 newState =
@@ -297,7 +294,7 @@ update msg oldState =
 
                 -- Check if the current route needs replacing with a browse route.
                 ( newSubPage, urlCommand ) =
-                    updateBrowsePage oldState.currentRoute oldState.subPage oldState.pages todayDate
+                    resolveDefaultPage oldState.currentRoute oldState.subPage oldState.pages todayDate
 
                 newState =
                     { oldState

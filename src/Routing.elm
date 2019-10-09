@@ -96,9 +96,7 @@ extractSubpage pathSegment =
                                 else
                                     Nothing
                             )
-             -- TODO don't return seemingly-valid subpage when not in range
             )
-        |> Debug.log "extracted subpage"
 
 
 subPageParser : Parser (SubPage -> a) a

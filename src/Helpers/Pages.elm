@@ -13,7 +13,7 @@ getFirstOpenPage : RemotePages -> String -> Maybe Page
 getFirstOpenPage remotePages referenceDate =
     remotePages
         |> RemoteData.toMaybe
-        |> Maybe.map
+        |> Maybe.andThen
             (\pages ->
                 pages
                     |> List.filter
@@ -28,7 +28,6 @@ getFirstOpenPage remotePages referenceDate =
                     |> List.sortBy (.startDate >> Maybe.withDefault "")
                     |> List.head
             )
-        |> Maybe.withDefault Nothing
 
 
 getDefaultPageForToday : RemotePages -> Date -> Maybe Page
@@ -43,44 +42,45 @@ getDefaultPageForToday remotePages today =
 isPageLocked : Route -> Maybe Page -> Bool
 isPageLocked route maybePage =
     case route of
-        Search _ ->
-            -- in Search mode, the view is always locked
-            True
-
-        _ ->
+        Browse _ _ ->
             -- in Browse mode: consider whether the current page is open
             Maybe.map (.open >> not) maybePage
                 |> Maybe.withDefault True
 
+        _ ->
+            -- in Search and Default mode, the view is always locked
+            True
+
 
 getCurrentPage : RemotePages -> Maybe SubPage -> Maybe Page
 getCurrentPage remotePages maybeSubPage =
-    Maybe.map2
-        (\pages subPage ->
-            pages
-                |> List.filter (\page -> page.generation == subPage.generation)
-                |> List.filter (\page -> page.letter == subPage.letter)
-                |> List.head
-        )
-        (RemoteData.toMaybe remotePages)
-        maybeSubPage
-        -- we might not have a current page.
-        |> Maybe.withDefault Nothing
+    remotePages
+        |> RemoteData.toMaybe
+        |> Maybe.andThen
+            (\pages ->
+                maybeSubPage
+                    |> Maybe.andThen
+                        (\subPage ->
+                            pages
+                                |> List.filter (\page -> page.generation == subPage.generation)
+                                |> List.filter (\page -> page.letter == subPage.letter)
+                                |> List.head
+                        )
+            )
 
 
 getWinner : Maybe Page -> Winner
 getWinner page =
     page
-        |> Maybe.map
-            (\page ->
+        |> Maybe.andThen
+            (\actualPage ->
                 (Maybe.map2
                     (\name number ->
                         { name = name
                         , number = number
                         }
                     )
-                    page.winnerName
-                    page.winnerNum
+                    actualPage.winnerName
+                    actualPage.winnerNum
                 )
             )
-        |> Maybe.withDefault Nothing
