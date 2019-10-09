@@ -12,6 +12,7 @@ import Char
 import Maybe.Extra exposing (join)
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
+import Constants exposing (allLetters, allGenerations)
 import Models.Types exposing (Route(..), BrowseMode(..), SubPage)
 
 
@@ -73,24 +74,31 @@ unwrap defaultValue mapFunction route =
 extractSubpage : String -> Maybe SubPage
 extractSubpage pathSegment =
     String.uncons pathSegment
-        |> Maybe.map
-            (\( gen, letter ) ->
+        |> Maybe.andThen
+            (\( gen, rest ) ->
                 let
-                    candidateLetter : Maybe Char
-                    candidateLetter =
-                        String.toUpper letter
-                            |> String.toList
-                            |> List.head
+                    generation =
+                        Char.toCode gen - 48
                 in
-                    candidateLetter
-                        |> Maybe.map
-                            (\validLetter ->
-                                { generation = Char.toCode gen - 48
-                                , letter = validLetter
-                                }
+                    String.toUpper rest
+                        |> String.toList
+                        |> List.head
+                        |> Maybe.andThen
+                            (\letter ->
+                                if
+                                    List.member letter allLetters
+                                        && List.member generation allGenerations
+                                then
+                                    Just
+                                        { generation = generation
+                                        , letter = letter
+                                        }
+                                else
+                                    Nothing
                             )
+             -- TODO don't return seemingly-valid subpage when not in range
             )
-        |> Maybe.Extra.join
+        |> Debug.log "extracted subpage"
 
 
 subPageParser : Parser (SubPage -> a) a

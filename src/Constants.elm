@@ -41,5 +41,5 @@ allGenerations =
 
 allLetters : List Char
 allLetters =
-    List.map Char.fromCode <|
-        List.range (Char.toCode 'A') (Char.toCode 'Z')
+    List.range (Char.toCode 'A') (Char.toCode 'Z')
+        |> List.map Char.fromCode

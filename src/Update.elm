@@ -1,6 +1,6 @@
 module Update exposing (update)
 
-import Date exposing (fromTime)
+import Date exposing (Date, fromTime)
 import Date.Extra exposing (toIsoString)
 import List.Extra exposing (replaceIf)
 import RemoteData exposing (WebData, RemoteData(..))
@@ -9,10 +9,11 @@ import Control exposing (update)
 import Constants exposing (maintenanceApology)
 import Constants.Pages exposing (defaultPage)
 import Models exposing (..)
+import Models.Pages exposing (RemotePages)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
 import Routing exposing (createSearchPath, createBrowsePath, createDefaultPath)
-import Commands exposing (andThenCmd)
+import Commands exposing (andThenCmd, getTodayTimeCmd)
 import Commands.Database
     exposing
         ( firebaseInit
@@ -39,6 +40,38 @@ import Update.Pokemon
         , updateSearchPokemon
         , updateChangeVariant
         )
+
+
+updateBrowsePage : Route -> Maybe SubPage -> RemotePages -> Date -> ( Maybe SubPage, Cmd Msg )
+updateBrowsePage currentRoute oldSubPage pages todayDate =
+    case currentRoute of
+        Default ->
+            -- if
+            --     currentRoute == Default
+            -- we're going to try if
+            --     pages == RemoteData.Success x
+            -- and if
+            --     a page can be found for this todayDate
+            -- then navigate to a Browse page.
+            getDefaultPageForToday pages todayDate
+                |> Maybe.map
+                    (\page ->
+                        let
+                            subPage =
+                                { generation = page.generation
+                                , letter = page.letter
+                                }
+
+                            urlCmd =
+                                newUrl <| createBrowsePath page.generation page.letter
+                        in
+                            ( Just subPage, urlCmd )
+                    )
+                |> Maybe.withDefault
+                    ( oldSubPage, Cmd.none )
+
+        _ ->
+            ( oldSubPage, Cmd.none )
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -99,10 +132,20 @@ update msg oldState =
 
         PagesLoaded (Success pages) ->
             let
+                -- Check if the current route needs replacing with a browse route.
+                ( newSubPage, urlCommand ) =
+                    oldState.todayDate
+                        |> Maybe.map
+                            (updateBrowsePage oldState.currentRoute oldState.subPage (Success pages))
+                        |> Maybe.withDefault ( oldState.subPage, Cmd.none )
+
                 newState =
-                    { oldState | pages = RemoteData.succeed pages }
+                    { oldState
+                        | pages = RemoteData.succeed pages
+                        , subPage = newSubPage
+                    }
             in
-                ( newState, Cmd.none )
+                ( newState, urlCommand )
 
         PagesLoaded (Failure message) ->
             let
@@ -183,8 +226,10 @@ update msg oldState =
         UrlChanged newRoute ->
             case newRoute of
                 Default ->
-                    -- FIXME get currentDate etc.
-                    ( oldState, Cmd.none )
+                    -- invalid URL? fetch today's date, which will reload the default page
+                    ( { oldState | currentRoute = newRoute }
+                    , getTodayTimeCmd
+                    )
 
                 Search query ->
                     updateSearchPokemon oldState query
@@ -250,17 +295,17 @@ update msg oldState =
                 todayDate =
                     Date.fromTime time
 
-                newCurrentPage =
-                    getDefaultPageForToday oldState.pages todayDate
-                        |> Maybe.withDefault defaultPage
+                -- Check if the current route needs replacing with a browse route.
+                ( newSubPage, urlCommand ) =
+                    updateBrowsePage oldState.currentRoute oldState.subPage oldState.pages todayDate
 
-                -- FIXME:  only set currentSubPage if currentRoute == Default.
-                -- pages might still be RemoteData.NotLoaded => store "today" in model member
-                -- and check for presence of "today" in (PagesLoaded Success _)
+                newState =
+                    { oldState
+                        | todayDate = Just todayDate
+                        , subPage = newSubPage
+                    }
             in
-                ( oldState, Cmd.none )
-                    -- TODO
-                    |> setStatusMessage Notice (toIsoString todayDate)
+                ( newState, urlCommand )
 
         StatusMessageExpiryTimeReceived time ->
             let

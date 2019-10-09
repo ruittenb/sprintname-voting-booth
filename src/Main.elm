@@ -76,18 +76,19 @@ init credentials location =
         initialState =
             { authModel = authModel
             , currentUser = Nothing
-            , statusMessage = ""
-            , statusLevel = None
-            , statusExpiryTime = Nothing
-            , debounceState = Control.initialState
             , currentRoute = currentRoute
             , subPage = initialSubpage
-            , preloaded = emptyPreloaded
             , query = initialQuery
+            , todayDate = Nothing
+            , preloaded = emptyPreloaded
             , settings = RemoteData.NotAsked
             , pokedex = RemoteData.NotAsked
             , pages = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked
+            , debounceState = Control.initialState
+            , statusMessage = ""
+            , statusLevel = None
+            , statusExpiryTime = Nothing
             }
     in
         ( initialState

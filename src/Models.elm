@@ -1,6 +1,7 @@
 module Models exposing (..)
 
 import Time exposing (Time)
+import Date exposing (Date)
 import Models.Types exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
 import Models.Settings exposing (RemoteSettings)
@@ -30,15 +31,16 @@ type alias PreloadedSets =
 type alias ApplicationStateNoMessage =
     { authModel : AuthenticationModel
     , currentUser : User
-    , debounceState : Control.State Msg
     , currentRoute : Route
     , subPage : Maybe SubPage
-    , preloaded : PreloadedSets
     , query : String
+    , todayDate : Maybe Date
+    , preloaded : PreloadedSets
     , settings : RemoteSettings
     , pokedex : RemotePokedex
     , pages : RemotePages
     , ratings : RemoteTeamRatings
+    , debounceState : Control.State Msg
     }
 
 
