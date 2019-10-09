@@ -166,7 +166,7 @@ updateSearchPokemon oldState query =
         newRoute =
             if query == "" then
                 newSubPage
-                    |> Maybe.map (Browse Free)
+                    |> Maybe.map (Browse Freely)
                     |> Maybe.withDefault Default
             else
                 Search query

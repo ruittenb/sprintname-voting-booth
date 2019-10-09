@@ -48,36 +48,6 @@ messageBox message level =
         [ text message ]
 
 
-generationButton : Route -> Maybe SubPage -> Int -> Html Msg
-generationButton currentRoute currentSubPage gen =
-    let
-        currentHighLight =
-            case currentRoute of
-                Browse _ _ ->
-                    currentSubPage
-                        |> Maybe.map (.generation >> (==) gen)
-                        |> Maybe.withDefault False
-
-                _ ->
-                    False
-
-        hash =
-            currentSubPage
-                |> Maybe.map (.letter >> createBrowsePath gen)
-                |> Maybe.withDefault createDefaultPath
-    in
-        a
-            [ classList
-                [ ( "button", True )
-                , ( "generation-button", True )
-                , ( "current", currentHighLight )
-                , ( "transparent", gen == 0 )
-                ]
-            , href hash
-            ]
-            [ text <| romanNumeral gen ]
-
-
 debounce : Msg -> Msg
 debounce =
     Control.Debounce.trailing
@@ -111,6 +81,36 @@ searchBox currentRoute modelQuery =
                 ]
                 []
             ]
+
+
+generationButton : Route -> Maybe SubPage -> Int -> Html Msg
+generationButton currentRoute currentSubPage gen =
+    let
+        currentHighLight =
+            case currentRoute of
+                Browse _ _ ->
+                    currentSubPage
+                        |> Maybe.map (.generation >> (==) gen)
+                        |> Maybe.withDefault False
+
+                _ ->
+                    False
+
+        hash =
+            currentSubPage
+                |> Maybe.map (.letter >> createBrowsePath gen)
+                |> Maybe.withDefault createDefaultPath
+    in
+        a
+            [ classList
+                [ ( "button", True )
+                , ( "generation-button", True )
+                , ( "current", currentHighLight )
+                , ( "transparent", gen == 0 )
+                ]
+            , href hash
+            ]
+            [ text <| romanNumeral gen ]
 
 
 generationButtons : Route -> Maybe SubPage -> Html Msg

@@ -21,8 +21,8 @@ butFirstCmd firstCmd ( model, secondCmd ) =
     )
 
 
-getTodayTime : Cmd Msg
-getTodayTime =
+getTodayTimeCmd : Cmd Msg
+getTodayTimeCmd =
     perform TodayReceived now
 
 

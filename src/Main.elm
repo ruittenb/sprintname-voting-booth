@@ -13,7 +13,7 @@ import Models.Types exposing (StatusLevel(None), Route(..), BrowseMode(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
 import View exposing (view)
 import Update exposing (update)
-import Commands exposing (getTodayTime)
+import Commands exposing (getTodayTimeCmd)
 import Commands.Authentication exposing (decodeUser)
 import Commands.Database exposing (firebaseInit, firebaseLoginWithJwtToken)
 import Commands.Settings exposing (decodeSettings)
@@ -70,7 +70,7 @@ init credentials location =
                     ( Just subPage, "", newUrl <| createBrowsePath subPage.generation subPage.letter )
 
                 Default ->
-                    ( Nothing, "", Cmd.none )
+                    ( Nothing, "", getTodayTimeCmd )
 
         initialState : ApplicationState
         initialState =
@@ -91,10 +91,7 @@ init credentials location =
             }
     in
         ( initialState
-          -- FIXME calling getTodayTime first will (possibly) update subpage.{letter,generation}.
-          -- The urlCmd is not equipped to handle that. Furthermore, we don't want to overwrite page
-          -- parameters that came to us in the URL. Think.
-        , Cmd.batch [ getTodayTime, authCmd, urlCmd ]
+        , Cmd.batch [ authCmd, urlCmd ]
         )
 
 

@@ -9,6 +9,7 @@ module Routing
         )
 
 import Char
+import Maybe.Extra exposing (join)
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
 import Models.Types exposing (Route(..), BrowseMode(..), SubPage)
@@ -74,15 +75,22 @@ extractSubpage pathSegment =
     String.uncons pathSegment
         |> Maybe.map
             (\( gen, letter ) ->
-                { generation = Char.toCode gen - 48
-                , letter =
-                    String.toUpper letter
-                        |> String.toList
-                        |> List.head
-                        -- FIXME magical value
-                        |> Maybe.withDefault '_'
-                }
+                let
+                    candidateLetter : Maybe Char
+                    candidateLetter =
+                        String.toUpper letter
+                            |> String.toList
+                            |> List.head
+                in
+                    candidateLetter
+                        |> Maybe.map
+                            (\validLetter ->
+                                { generation = Char.toCode gen - 48
+                                , letter = validLetter
+                                }
+                            )
             )
+        |> Maybe.Extra.join
 
 
 subPageParser : Parser (SubPage -> a) a
@@ -102,7 +110,7 @@ routeParser =
     UrlParser.oneOf
         [ UrlParser.map (Browse WithPeopleVotes) (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
         , UrlParser.map (Browse WithPokemonRankings) (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
-        , UrlParser.map (Browse Free) (s browsePathSegment </> subPageParser)
+        , UrlParser.map (Browse Freely) (s browsePathSegment </> subPageParser)
         , UrlParser.map Search (s searchPathSegment </> string)
         ]
 

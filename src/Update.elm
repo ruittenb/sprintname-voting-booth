@@ -198,7 +198,7 @@ update msg oldState =
                     case oldState.subPage of
                         Just subPage ->
                             ( createBrowsePath subPage.generation subPage.letter
-                            , Browse Free
+                            , Browse Freely
                                 { generation = subPage.generation
                                 , letter = subPage.letter
                                 }
@@ -254,8 +254,9 @@ update msg oldState =
                     getDefaultPageForToday oldState.pages todayDate
                         |> Maybe.withDefault defaultPage
 
-                -- We don't want to overwrite page parameters that came to us in the URL.
-                -- See Main.elm. FIXME.
+                -- FIXME:  only set currentSubPage if currentRoute == Default.
+                -- pages might still be RemoteData.NotLoaded => store "today" in model member
+                -- and check for presence of "today" in (PagesLoaded Success _)
             in
                 ( oldState, Cmd.none )
                     -- TODO

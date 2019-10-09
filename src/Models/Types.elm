@@ -26,10 +26,10 @@ type alias SubPage =
       This type is subdivided into:
       - WithPeopleVotes    : displays a mask and popup with user votes;
       - WithPokemonRankings: displays a mask and popup with pokemon rankings;
-      - Free               : free browsing (no mask or popup).
+      - Freely             : free browsing (no mask or popup).
 -}
 type BrowseMode
-    = Free
+    = Freely
     | WithPeopleVotes
     | WithPokemonRankings
 
