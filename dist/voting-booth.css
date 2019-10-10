@@ -247,6 +247,7 @@ button.user-button.current,
 
 .button.lock-button:after {
     right: 100px;
+    width: 100px;
     content: 'open for voting';
 }
 
@@ -260,6 +261,10 @@ button.user-button.current,
 
 .button.lock-button.for-admin.locked:after {
     content: 'voting has closed (click to open)';
+}
+
+.button.lock-button.with-tooltip.locked.search:after { /* heighten prio */
+    content: 'search mode';
 }
 
 @keyframes loading {
