@@ -236,7 +236,17 @@ button.user-button.current,
     display: block;
 }
 
+.button.generation-button.loading:after {
+    content: 'loading images...';
+}
+
+.button.maintenance-button:after {
+    right: 100px;
+    content: 'maintenance mode';
+}
+
 .button.lock-button:after {
+    right: 100px;
     content: 'open for voting';
 }
 
@@ -250,14 +260,6 @@ button.user-button.current,
 
 .button.lock-button.for-admin.locked:after {
     content: 'voting has closed (click to open)';
-}
-
-.button.generation-button.loading:after {
-    content: 'loading images...';
-}
-
-.button.maintenance-button:after {
-    content: 'maintenance mode';
 }
 
 @keyframes loading {

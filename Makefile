@@ -90,15 +90,15 @@ bump: ## increment the version in the serviceworker by 0.0.1
 .PHONY: service-worker-only-bumped
 service-worker-only-bumped: # tests changes in service worker: (0 == only bumped version, 1 == other changes)
 	@git diff $(SERVICE_WORKER) | awk '                                              \
-		BEGIN { apies=0; pluses=0; pluslines="expected" }                        \
-		/^@/ { apies++ }                                                         \
+		BEGIN { ats = 0; pluses = 0; pluslines = "expected" }                    \
+		/^@/ { ats++ }                                                           \
 		/^+/ {                                                                   \
 			pluses++;                                                        \
 			if (!/^+const version =/ && !/^+++ .*service-worker.js/) {       \
 				pluslines = "unexpected"                                 \
 			}                                                                \
 		}                                                                        \
-		END { exit !(apies == 1 && pluses == 2 && pluslines == "expected") }     \
+		END { exit !(ats == 1 && pluses == 2 && pluslines == "expected") }       \
 	'
 
 .PHONY: unbump
