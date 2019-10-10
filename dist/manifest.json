@@ -1,6 +1,10 @@
 {
   "name": "Pokémon Sprint Name Voting Booth",
   "short_name": "Pokémon Voting",
+  "description": "Voting app for naming Agile Scrum Sprints with Pokémon names",
+  "display": "standalone",
+  "orientation": "any",
+  "start_url": "/?utm_source=pwa",
   "icons": [{
     "src": "favicons/favicon-128x128.png",
       "sizes": "128x128",
@@ -26,8 +30,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }],
-  "start_url": "/?utm_source=pwa",
-  "display": "standalone",
   "background_color": "#F8F0F8",
   "theme_color": "#E6C6E6"
 }
