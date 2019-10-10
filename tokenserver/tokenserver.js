@@ -205,7 +205,7 @@ module.exports = (function () {
      */
     FirebaseTokenServer.prototype.validateOrigin = function (referer, response)
     {
-        let origin = referer.replace(/\/(index\.html)?$/, '');
+        let origin = referer.replace(/\/(index\.html)?(\?utm_source=pwa)?$/, '');
         response.header('X-Debug-Origin', origin);
         let valid = VALID_REFERERS.includes(origin);
         if (valid) {
