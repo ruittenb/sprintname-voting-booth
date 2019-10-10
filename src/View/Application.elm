@@ -105,6 +105,7 @@ generationButton currentRoute currentSubPage gen =
             [ classList
                 [ ( "button", True )
                 , ( "generation-button", True )
+                , ( "with-tooltip", True )
                 , ( "current", currentHighLight )
                 , ( "transparent", gen == 0 )
                 ]
@@ -251,9 +252,9 @@ maintenanceButton remoteSettings isCurrentUserAdmin =
                                 [ ( "button", True )
                                 , ( "maintenance-button", True )
                                 , ( "maintenance-mode", settings.maintenanceMode )
+                                , ( "with-tooltip", True )
                                 ]
                             , onClick MaintenanceModeClicked
-                            , Html.Attributes.title "maintenance mode"
                             ]
                             []
                     )
@@ -283,21 +284,11 @@ lockButton currentRoute currentPage isCurrentUserAdmin =
             [ classList
                 [ ( "button", True )
                 , ( "lock-button", True )
+                , ( "with-tooltip", True )
+                , ( "for-admin", isCurrentUserAdmin )
                 , ( "locked", isLocked )
                 , ( "search", not isRouteBrowse )
                 ]
-            ]
-
-        titleProps =
-            [ Html.Attributes.title <|
-                if isCurrentUserAdmin && isLocked then
-                    "voting has closed (click to open)"
-                else if isCurrentUserAdmin then
-                    "open for voting (click to close)"
-                else if isLocked then
-                    "voting has closed"
-                else
-                    "open for voting"
             ]
 
         eventProps =
@@ -306,9 +297,9 @@ lockButton currentRoute currentPage isCurrentUserAdmin =
                 |> Maybe.withDefault []
     in
         if isRouteBrowse && isCurrentUserAdmin && currentPage /= Nothing then
-            a (classProps ++ titleProps ++ eventProps) []
+            a (classProps ++ eventProps) []
         else
-            span (classProps ++ titleProps) []
+            span classProps []
 
 
 calculationButtons : Route -> RemotePages -> Maybe Page -> Bool -> Maybe SubPage -> Html Msg

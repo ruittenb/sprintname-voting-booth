@@ -78,8 +78,9 @@ button.user-button {
 }
 
 .button.maintenance-button {
-    border: 1px solid black;
     background: #f8f8f8 url(icons/maintenance.png) no-repeat center center;
+    border: 1px solid black;
+    color: black;
 }
 
 .button.maintenance-button.maintenance-mode {
@@ -208,10 +209,14 @@ button.user-button.current,
     animation: loading 2s linear 0s infinite;
 }
 
-.button.generation-button.loading:after {
+/**
+ * CSS tooltips on buttons
+ */
+.button.with-tooltip:after {
+    font-size: 12px;
     top: -15px;
     right: -20px;
-    height: 17px;
+/*  height: 17px; */ /* some tooltips require two lines */
     width: 110px;
     display: none;
     position: relative;
@@ -219,17 +224,40 @@ button.user-button.current,
     padding: 2px;
     text-align: center;
     line-height: 17px;
-    background-color: #fef4c5;
-    border: 1px solid #d4b943;
+    background-color: #fef4c5; /* light yellow */
+    border: 1px solid #d4b943; /* dark yellow */
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -ms-border-radius: 5px;
     border-radius: 5px;
+}
+
+.button.with-tooltip:hover:after {
+    display: block;
+}
+
+.button.lock-button:after {
+    content: 'open for voting';
+}
+
+.button.lock-button.locked:after {
+    content: 'voting has closed';
+}
+
+.button.lock-button.for-admin:after {
+    content: 'open for voting (click to close)';
+}
+
+.button.lock-button.for-admin.locked:after {
+    content: 'voting has closed (click to open)';
+}
+
+.button.generation-button.loading:after {
     content: 'loading images...';
 }
 
-.button.generation-button.loading:hover:after {
-    display: block;
+.button.maintenance-button:after {
+    content: 'maintenance mode';
 }
 
 @keyframes loading {
