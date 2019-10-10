@@ -5,6 +5,7 @@ missing:
  - Uncaught Error: Trying to send an unexpected type of value through port `onFirebaseLoginFailed`:
    Expecting an Int at _.status but instead got: undefined
  - if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
+ - manifest start_url with hash causes automatic "add to home screen" prompt to disappear on android/chrome
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
