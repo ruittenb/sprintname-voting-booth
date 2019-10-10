@@ -37,19 +37,19 @@ slicePokedex remotePokedex generation letter =
 
 filterPokedex : RemotePokedex -> Maybe SubPage -> List Pokemon
 filterPokedex remotePokedex maybeSubPage =
-    let
-        selection =
-            Maybe.map2
-                (\pokedex subPage ->
-                    pokedex
-                        |> List.filter (.letter >> (==) subPage.letter)
-                        |> List.filter (.generation >> (==) subPage.generation)
-                )
-                (RemoteData.toMaybe remotePokedex)
-                maybeSubPage
-                |> Maybe.withDefault []
-    in
-        List.sortBy .name selection
+    maybeSubPage
+        |> Maybe.andThen
+            (\subPage ->
+                RemoteData.toMaybe remotePokedex
+                    |> Maybe.map
+                        (\pokedex ->
+                            pokedex
+                                |> List.filter (.letter >> (==) subPage.letter)
+                                |> List.filter (.generation >> (==) subPage.generation)
+                        )
+            )
+        |> Maybe.withDefault []
+        |> List.sortBy .name
 
 
 searchPokedex : RemotePokedex -> String -> List Pokemon

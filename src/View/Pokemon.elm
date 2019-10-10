@@ -27,7 +27,7 @@ emptyCanvas : List (Html Msg)
 emptyCanvas =
     [ br [] []
     , br [] []
-    , text "No pokemon for this page"
+    , text "No pokémon in this page"
     ]
 
 loadingBusyIcon : Html Msg
