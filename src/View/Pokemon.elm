@@ -49,13 +49,14 @@ linkTo url content =
         [ content ]
 
 
-linkToLighthouse : String -> String -> String -> Html Msg -> Html Msg
-linkToLighthouse imageUrl title caption content =
+linkToLightbox : String -> String -> String -> Html Msg -> Html Msg
+linkToLightbox imageUrl title caption content =
     a
         [ href imageUrl
         , attribute "data-lightbox" "pokemon"
         , attribute "data-title" title
         , attribute "data-caption" caption
+        , attribute "aria-label" "image"
         ]
         [ content ]
 
@@ -192,7 +193,7 @@ variantLink pokemonName description variant =
             imageDir ++ variant.image
     in
         pokemonImg url variant.vname
-            |> linkToLighthouse url title description
+            |> linkToLightbox url title description
 
 
 variantLinks : String -> String -> List PokemonVariant -> List (Html Msg)

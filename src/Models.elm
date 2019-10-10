@@ -12,12 +12,6 @@ import Msgs exposing (Msg)
 import Control
 
 
-type alias LighthouseData =
-    { name : String
-    , caption : String
-    }
-
-
 type alias User =
     Maybe String
 
