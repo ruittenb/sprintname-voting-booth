@@ -1,7 +1,9 @@
 module Helpers.Pokemon
     exposing
-        ( filterPokedex
-        , slicePokedex
+        ( filterPokedexByPage
+        , filterPokedexIfReady
+        , filterPokedex
+        , searchPokedexIfReady
         , searchPokedex
         , extractOnePokemonFromRatingString
         , extractOneUserFromRatings
@@ -23,39 +25,41 @@ isNumeric str =
     Regex.contains (regex "^[0-9]+$") str
 
 
-slicePokedex : RemotePokedex -> Int -> Char -> List Pokemon
-slicePokedex remotePokedex generation letter =
+filterPokedexByPage : RemotePokedex -> Int -> Char -> Maybe (List Pokemon)
+filterPokedexByPage remotePokedex generation letter =
+    -- filters the pokedex by SubPage (generation and letter)
     RemoteData.toMaybe remotePokedex
         |> Maybe.map
             (\pokedex ->
                 pokedex
-                    |> List.filter (.letter >> (==) letter)
                     |> List.filter (.generation >> (==) generation)
+                    |> List.filter (.letter >> (==) letter)
+                    |> List.sortBy .name
             )
-        |> Maybe.withDefault []
+
+
+filterPokedexIfReady : RemotePokedex -> Maybe SubPage -> Maybe (List Pokemon)
+filterPokedexIfReady remotePokedex maybeSubPage =
+    -- filters the pokedex by (Maybe SubPage), returns Nothing if anything is not loaded
+    maybeSubPage
+        |> Maybe.andThen
+            (\subPage ->
+                filterPokedexByPage remotePokedex subPage.generation subPage.letter
+            )
 
 
 filterPokedex : RemotePokedex -> Maybe SubPage -> List Pokemon
 filterPokedex remotePokedex maybeSubPage =
-    maybeSubPage
-        |> Maybe.andThen
-            (\subPage ->
-                RemoteData.toMaybe remotePokedex
-                    |> Maybe.map
-                        (\pokedex ->
-                            pokedex
-                                |> List.filter (.letter >> (==) subPage.letter)
-                                |> List.filter (.generation >> (==) subPage.generation)
-                        )
-            )
+    -- filters the pokedex by (Maybe SubPage), returns [] if anything is not loaded
+    filterPokedexIfReady remotePokedex maybeSubPage
         |> Maybe.withDefault []
-        |> List.sortBy .name
 
 
-searchPokedex : RemotePokedex -> String -> List Pokemon
-searchPokedex remotePokedex query =
-    remotePokedex
-        |> RemoteData.map
+searchPokedexIfReady : RemotePokedex -> String -> Maybe (List Pokemon)
+searchPokedexIfReady remotePokedex query =
+    -- search the pokedex by regex, returns Nothing if anything is not loaded
+    RemoteData.toMaybe remotePokedex
+        |> Maybe.map
             (\pokedex ->
                 let
                     queryPattern =
@@ -66,7 +70,13 @@ searchPokedex remotePokedex query =
                     else
                         List.filter (.name >> Regex.contains queryPattern) pokedex
             )
-        |> RemoteData.withDefault []
+
+
+searchPokedex : RemotePokedex -> String -> List Pokemon
+searchPokedex remotePokedex query =
+    -- search the pokedex by regex, returns [] if anything is not loaded
+    searchPokedexIfReady remotePokedex query
+        |> Maybe.withDefault []
 
 
 extractOnePokemonFromRatingString : String -> Int -> Int

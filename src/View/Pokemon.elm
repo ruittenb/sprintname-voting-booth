@@ -11,8 +11,8 @@ import Helpers exposing (romanNumeral)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Pokemon
     exposing
-        ( filterPokedex
-        , searchPokedex
+        ( filterPokedexIfReady
+        , searchPokedexIfReady
         , extractOneUserFromRating
         )
 import Models exposing (..)
@@ -334,16 +334,25 @@ pokemonCanvas state =
         pokeList =
             case state.currentRoute of
                 Search _ ->
-                    searchPokedex state.pokedex state.query
+                    searchPokedexIfReady state.pokedex state.query
 
                 Browse _ _ ->
-                    filterPokedex state.pokedex state.subPage
+                    filterPokedexIfReady state.pokedex state.subPage
 
                 Default ->
+                    Nothing
+
+        canvasElements : List (Html Msg)
+        canvasElements =
+            pokeList
+                |> Maybe.map
+                    (\list ->
+                        if List.length list == 0 then
+                            emptyCanvas
+                        else
+                            pokemonTiles state.currentRoute currentPage list state.ratings state.currentUser
+                    )
+                |> Maybe.withDefault
                     []
     in
-        div [ class "pokecanvas" ] <|
-            if List.length pokeList == 0 then
-                emptyCanvas
-            else
-                pokemonTiles state.currentRoute currentPage pokeList state.ratings state.currentUser
+        div [ class "pokecanvas" ] canvasElements
