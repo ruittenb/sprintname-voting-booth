@@ -40,8 +40,21 @@ help: ## display this help
 ##@ Development:
 
 .PHONY: install
-install: ## install all npm dependencies
+install: npm-install elm-install ## install all dependencies
+
+node_modules: package.json
 	npm install
+	touch $@
+
+.PHONY: npm-install
+npm-install: node_modules ## install all npm dependencies
+
+elm-stuff: elm-package.json
+	elm package install
+	touch $@
+
+.PHONY: elm-install
+elm-install: elm-stuff ## install all elm dependencies
 
 .PHONY: build-elm
 build-elm: ## compile elm files to javascript

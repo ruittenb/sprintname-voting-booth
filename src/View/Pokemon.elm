@@ -23,6 +23,12 @@ import Models.Ratings exposing (..)
 import Msgs exposing (Msg)
 import Routing exposing (createBrowsePath)
 
+emptyCanvas : List (Html Msg)
+emptyCanvas =
+    [ br [] []
+    , br [] []
+    , text "No pokemon for this page"
+    ]
 
 loadingBusyIcon : Html Msg
 loadingBusyIcon =
@@ -330,9 +336,14 @@ pokemonCanvas state =
                 Search _ ->
                     searchPokedex state.pokedex state.query
 
-                _ ->
-                    -- Browse*
+                Browse _ _ ->
                     filterPokedex state.pokedex state.subPage
+
+                Default ->
+                    []
     in
-        pokemonTiles state.currentRoute currentPage pokeList state.ratings state.currentUser
-            |> div [ class "pokecanvas" ]
+        div [ class "pokecanvas" ] <|
+            if List.length pokeList == 0 then
+                emptyCanvas
+            else
+                pokemonTiles state.currentRoute currentPage pokeList state.ratings state.currentUser

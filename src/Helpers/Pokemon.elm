@@ -24,11 +24,11 @@ isNumeric str =
 
 
 slicePokedex : RemotePokedex -> Int -> Char -> List Pokemon
-slicePokedex pokedex generation letter =
-    RemoteData.toMaybe pokedex
+slicePokedex remotePokedex generation letter =
+    RemoteData.toMaybe remotePokedex
         |> Maybe.map
-            (\pokeList ->
-                pokeList
+            (\pokedex ->
+                pokedex
                     |> List.filter (.letter >> (==) letter)
                     |> List.filter (.generation >> (==) generation)
             )
@@ -36,16 +36,16 @@ slicePokedex pokedex generation letter =
 
 
 filterPokedex : RemotePokedex -> Maybe SubPage -> List Pokemon
-filterPokedex pokedex maybeSubPage =
+filterPokedex remotePokedex maybeSubPage =
     let
         selection =
             Maybe.map2
-                (\pokeList subPage ->
-                    pokeList
+                (\pokedex subPage ->
+                    pokedex
                         |> List.filter (.letter >> (==) subPage.letter)
                         |> List.filter (.generation >> (==) subPage.generation)
                 )
-                (RemoteData.toMaybe pokedex)
+                (RemoteData.toMaybe remotePokedex)
                 maybeSubPage
                 |> Maybe.withDefault []
     in
@@ -60,14 +60,11 @@ searchPokedex remotePokedex query =
                 let
                     queryPattern =
                         caseInsensitive (regex query)
-
-                    pokeList =
-                        if isNumeric query then
-                            List.filter (.number >> toString >> (==) query) pokedex
-                        else
-                            List.filter (.name >> Regex.contains queryPattern) pokedex
                 in
-                    pokeList
+                    if isNumeric query then
+                        List.filter (.number >> toString >> (==) query) pokedex
+                    else
+                        List.filter (.name >> Regex.contains queryPattern) pokedex
             )
         |> RemoteData.withDefault []
 
