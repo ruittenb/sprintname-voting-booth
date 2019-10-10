@@ -4,7 +4,7 @@
   "description": "Voting app for naming Agile Scrum Sprints with Pokémon names",
   "display": "standalone",
   "orientation": "any",
-  "start_url": "/?utm_source=pwa",
+  "start_url": "/index.html?utm_source=pwa",
   "icons": [{
     "src": "favicons/favicon-128x128.png",
       "sizes": "128x128",
