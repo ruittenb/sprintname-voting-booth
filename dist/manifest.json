@@ -21,8 +21,12 @@
       "src": "favicons/favicon-256x256.png",
       "sizes": "256x256",
       "type": "image/png"
+    }, {
+      "src": "favicons/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }],
-  "start_url": "/index.html",
+  "start_url": "/index.html#/",
   "display": "standalone",
   "background_color": "#F8F0F8",
   "theme_color": "#E6C6E6"
