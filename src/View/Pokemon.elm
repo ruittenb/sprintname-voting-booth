@@ -44,6 +44,7 @@ linkTo url content =
     a
         [ href url
         , target "_blank"
+        , rel "noopener"
         ]
         [ content ]
 
