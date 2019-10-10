@@ -11,8 +11,8 @@ import Helpers exposing (romanNumeral)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Pokemon
     exposing
-        ( filterPokedex
-        , searchPokedex
+        ( filterPokedexIfReady
+        , searchPokedexIfReady
         , extractOneUserFromRating
         )
 import Models exposing (..)
@@ -23,6 +23,12 @@ import Models.Ratings exposing (..)
 import Msgs exposing (Msg)
 import Routing exposing (createBrowsePath)
 
+emptyCanvas : List (Html Msg)
+emptyCanvas =
+    [ br [] []
+    , br [] []
+    , text "No pokémon in this page"
+    ]
 
 loadingBusyIcon : Html Msg
 loadingBusyIcon =
@@ -328,11 +334,25 @@ pokemonCanvas state =
         pokeList =
             case state.currentRoute of
                 Search _ ->
-                    searchPokedex state.pokedex state.query
+                    searchPokedexIfReady state.pokedex state.query
 
-                _ ->
-                    -- Browse*
-                    filterPokedex state.pokedex state.subPage
+                Browse _ _ ->
+                    filterPokedexIfReady state.pokedex state.subPage
+
+                Default ->
+                    Nothing
+
+        canvasElements : List (Html Msg)
+        canvasElements =
+            pokeList
+                |> Maybe.map
+                    (\list ->
+                        if List.length list == 0 then
+                            emptyCanvas
+                        else
+                            pokemonTiles state.currentRoute currentPage list state.ratings state.currentUser
+                    )
+                |> Maybe.withDefault
+                    []
     in
-        pokemonTiles state.currentRoute currentPage pokeList state.ratings state.currentUser
-            |> div [ class "pokecanvas" ]
+        div [ class "pokecanvas" ] canvasElements

@@ -7,7 +7,7 @@ import Html.Events exposing (onClick, onInput, onSubmit)
 import RemoteData exposing (WebData, RemoteData(..))
 import Control.Debounce exposing (trailing)
 import Helpers exposing (romanNumeral)
-import Helpers.Pokemon exposing (slicePokedex)
+import Helpers.Pokemon exposing (filterPokedexByPage)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Authentication exposing (tryGetUserProfile, isLoggedIn)
 import Helpers.Application exposing (getIsCurrentUserAdmin)
@@ -143,7 +143,7 @@ letterButton currentRoute pokedex currentSubPage letter =
 
         pokeList =
             currentSubPage
-                |> Maybe.map (\subPage -> slicePokedex pokedex subPage.generation letter)
+                |> Maybe.andThen (\subPage -> filterPokedexByPage pokedex subPage.generation letter)
                 |> Maybe.withDefault []
 
         letterButtonElement =
