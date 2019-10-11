@@ -76,6 +76,7 @@ searchBox currentRoute modelQuery =
                 , defaultValue modelQuery
                 , classList [ ( "current", searching ) ]
                 , placeholder "Search in pokédex"
+                , attribute "aria-label" "Search in pokédex"
                 , onInput Msgs.SearchPokemon
                     |> Html.Attributes.map debounce
                 ]

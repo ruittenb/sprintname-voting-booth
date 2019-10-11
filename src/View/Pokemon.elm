@@ -23,12 +23,14 @@ import Models.Ratings exposing (..)
 import Msgs exposing (Msg)
 import Routing exposing (createBrowsePath)
 
+
 emptyCanvas : List (Html Msg)
 emptyCanvas =
     [ br [] []
     , br [] []
     , text "No pokémon in this page"
     ]
+
 
 loadingBusyIcon : Html Msg
 loadingBusyIcon =

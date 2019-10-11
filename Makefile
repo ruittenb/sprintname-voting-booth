@@ -247,7 +247,7 @@ kube-switch-context: ## switch kubernetes context to voting-booth
 
 .PHONY: kube-edit-deployment
 kube-edit-deployment: ## edit the deployment in an editor, to increment version number
-	@echo "Please increment the version number in the deployment to $(CURRENT_VERSION)"
+	@echo "For redeployment, please replace the version number with: $(CURRENT_VERSION)"
 	@read -p "Press Enter now to start your editor: " ans
 	kubectl edit deployment $(KUBE_DEPLOYMENT) -n $(KUBE_NAMESPACE)
 
