@@ -94,7 +94,7 @@ devel: ## mark environment as 'development'
 .PHONY: version
 version: ## update the version file with the current git tag name
 	-which git >/dev/null 2>&1 \
-		&& echo "jQuery(document).ready(function () { jQuery('#version').prepend('$(CURRENT_TAG)'); });" > $(JS_SOURCE)/version.js
+		&& echo "document.addEventListener('DOMContentLoaded', function () { var versionNode = document.getElementById('version'); versionNode.innerHTML = '$(CURRENT_TAG)' + versionNode.innerHTML; });" > $(JS_SOURCE)/version.js
 
 .PHONY: bump
 bump: ## increment the version in the serviceworker by 0.0.1
