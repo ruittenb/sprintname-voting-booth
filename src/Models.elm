@@ -16,12 +16,6 @@ type alias User =
     Maybe String
 
 
-type alias PreloadedSets =
-    { generations : List Int
-    , letters : List Char
-    }
-
-
 type alias ApplicationStateNoMessage =
     { authModel : AuthenticationModel
     , currentUser : User
@@ -29,7 +23,6 @@ type alias ApplicationStateNoMessage =
     , subPage : Maybe SubPage
     , query : String
     , todayDate : Maybe Date
-    , preloaded : PreloadedSets
     , settings : RemoteSettings
     , pokedex : RemotePokedex
     , pages : RemotePages

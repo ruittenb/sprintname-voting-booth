@@ -53,11 +53,6 @@ init credentials location =
                 LoggedOut ->
                     firebaseInit
 
-        emptyPreloaded =
-            { generations = []
-            , letters = []
-            }
-
         currentRoute =
             parseLocation location
 
@@ -80,7 +75,6 @@ init credentials location =
             , subPage = initialSubpage
             , query = initialQuery
             , todayDate = Nothing
-            , preloaded = emptyPreloaded
             , settings = RemoteData.NotAsked
             , pokedex = RemoteData.NotAsked
             , pages = RemoteData.NotAsked
