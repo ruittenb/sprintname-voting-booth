@@ -35,17 +35,19 @@ remoteDataUnwrap defaultValue mapFunction =
 
 filterCurrentSubpage : Int -> Char -> List PreloadCandidate -> List PreloadCandidate
 filterCurrentSubpage gen letter imgList =
-    List.filter (\i -> i.generation == gen || i.letter == letter) imgList
+    List.filter (\i -> i.generation == gen && i.letter == letter) imgList
 
 
 filterNotAlreadyPreloaded : PreloadedSets -> Int -> Char -> List PreloadCandidate -> List PreloadCandidate
 filterNotAlreadyPreloaded preloaded gen letter imgList =
-    List.filter
-        (\i ->
-            notMember i.generation preloaded.generations
-                && notMember i.letter preloaded.letters
-        )
-        imgList
+    {-
+       List.filter
+           (\i ->
+               notMember i.generation preloaded.generations
+                   && notMember i.letter preloaded.letters
+           )
+    -}
+    imgList
 
 
 putCurrentGenFirst : Int -> List PreloadCandidate -> List PreloadCandidate
