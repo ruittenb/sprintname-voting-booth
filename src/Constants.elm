@@ -28,9 +28,14 @@ imageDir =
     "pokeart/"
 
 
+thumbnailDir : String
+thumbnailDir =
+    imageDir ++ "thumbs/"
+
+
 noBreakingSpace : String
 noBreakingSpace =
-    " "
+    "\x00A0"
 
 
 allGenerations : List Int

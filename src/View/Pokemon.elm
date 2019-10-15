@@ -6,7 +6,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
-import Constants exposing (maxStars, imageDir, noBreakingSpace)
+import Constants exposing (maxStars, imageDir, thumbnailDir, noBreakingSpace)
 import Helpers exposing (romanNumeral)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Pokemon
@@ -197,11 +197,14 @@ variantLink pokemonName description variant =
             else
                 pokemonName
 
-        url =
+        imageUrl =
             imageDir ++ variant.image
+
+        thumbnailUrl =
+            thumbnailDir ++ variant.image
     in
-        pokemonImg url variant.vname
-            |> linkToLightbox url title description
+        pokemonImg thumbnailUrl variant.vname
+            |> linkToLightbox imageUrl title description
 
 
 variantLinks : String -> String -> List PokemonVariant -> List (Html Msg)

@@ -35,26 +35,7 @@ remoteDataUnwrap defaultValue mapFunction =
 
 filterCurrentSubpage : Int -> Char -> List PreloadCandidate -> List PreloadCandidate
 filterCurrentSubpage gen letter imgList =
-    List.filter (\i -> i.generation == gen || i.letter == letter) imgList
-
-
-filterNotAlreadyPreloaded : PreloadedSets -> Int -> Char -> List PreloadCandidate -> List PreloadCandidate
-filterNotAlreadyPreloaded preloaded gen letter imgList =
-    List.filter
-        (\i ->
-            notMember i.generation preloaded.generations
-                && notMember i.letter preloaded.letters
-        )
-        imgList
-
-
-putCurrentGenFirst : Int -> List PreloadCandidate -> List PreloadCandidate
-putCurrentGenFirst gen imgList =
-    let
-        ( head, tail ) =
-            List.partition (.generation >> (>) gen) imgList
-    in
-        tail ++ head
+    List.filter (\i -> i.generation == gen && i.letter == letter) imgList
 
 
 mapCharLettersToString : List PreloadCandidate -> List PortCompatiblePreloadCandidate
@@ -62,8 +43,8 @@ mapCharLettersToString imgList =
     List.map (\i -> { i | letter = toString i.letter }) imgList
 
 
-getPreloadCommandForPokedexCrossSection : PreloadedSets -> Int -> Char -> RemotePokedex -> Cmd msg
-getPreloadCommandForPokedexCrossSection preloaded generation letter pokedex =
+getPreloadCommandForPokedexCrossSection : Int -> Char -> RemotePokedex -> Cmd msg
+getPreloadCommandForPokedexCrossSection generation letter pokedex =
     let
         generationLetterAndImageUrl pokemon =
             List.map
@@ -81,32 +62,11 @@ getPreloadCommandForPokedexCrossSection preloaded generation letter pokedex =
                     |> List.map generationLetterAndImageUrl
                     |> List.concat
                     |> filterCurrentSubpage generation letter
-                    |> filterNotAlreadyPreloaded preloaded generation letter
-                    |> putCurrentGenFirst generation
                     |> mapCharLettersToString
                     |> preloadImages
 
             _ ->
                 Cmd.none
-
-
-addCurrentSubpageToPreloaded : PreloadedSets -> Maybe SubPage -> PreloadedSets
-addCurrentSubpageToPreloaded preloaded subPage =
-    let
-        ( newGenerations, newLetters ) =
-            subPage
-                |> Maybe.map
-                    (\actualSubPage ->
-                        ( actualSubPage.generation :: preloaded.generations
-                        , actualSubPage.letter :: preloaded.letters
-                        )
-                    )
-                |> Maybe.withDefault ( preloaded.generations, preloaded.letters )
-    in
-        { preloaded
-            | generations = unique newGenerations
-            , letters = unique newLetters
-        }
 
 
 
@@ -135,23 +95,14 @@ updateOnLoadPokedex oldState pokedex =
                 |> Maybe.map
                     (\subPage ->
                         getPreloadCommandForPokedexCrossSection
-                            oldState.preloaded
                             subPage.generation
                             subPage.letter
                             pokedex
                     )
                 |> Maybe.withDefault Cmd.none
 
-        newPreloaded =
-            addCurrentSubpageToPreloaded
-                oldState.preloaded
-                oldState.subPage
-
         newState =
-            { oldState
-                | pokedex = pokedex
-                , preloaded = newPreloaded
-            }
+            { oldState | pokedex = pokedex }
     in
         ( newState, command )
             |> updateStatusMessage
@@ -215,29 +166,15 @@ updateChangeGenerationAndLetter oldState newRoute =
                 |> Maybe.map
                     (\subPage ->
                         getPreloadCommandForPokedexCrossSection
-                            oldState.preloaded
                             subPage.generation
                             subPage.letter
                             oldState.pokedex
                     )
                 |> Maybe.withDefault Cmd.none
-
-        newPreloaded =
-            case oldState.pokedex of
-                Success _ ->
-                    addCurrentSubpageToPreloaded
-                        oldState.preloaded
-                        newSubPage
-
-                _ ->
-                    -- if the pokedex has not been loaded yet.
-                    -- don't mark any images as 'already preloaded'
-                    oldState.preloaded
     in
         if isNewPageValid then
             ( { oldState
                 | subPage = newSubPage
-                , preloaded = newPreloaded
                 , currentRoute = newRoute
               }
             , command
