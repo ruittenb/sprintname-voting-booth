@@ -139,11 +139,15 @@ module.exports = (function (jQuery, firebase)
                     message = e.responseJSON.message;
                 } else if (e.message) {
                     message = e.message;
-                } else if (!status) {
+                } else if (status === 0) {
                     // A Status Code of 0 means "The browser refused to honor the request."
                     // @see https://salesforce.stackexchange.com/questions/158448/response-status-is-0-in-jquery-ajax
                     message = "The browser refused to honor the request (is the tokenserver reachable?)";
-                } else {
+                }
+                if (!status) {
+                    status = 0;
+                }
+                if (!message) {
                     message = String(status) + " Server error";
                 }
                 setTimeout(function () {
