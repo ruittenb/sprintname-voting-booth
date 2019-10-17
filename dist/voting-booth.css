@@ -154,6 +154,7 @@ a.button.lock-button:active,
 #user-name.current,
 button.user-button.current,
 .button.letter-button.current,
+.button.letter-button.current.loading,
 .button.generation-button.current,
 .button.generation-button.current.loading,
 .button.generation-button.current.transparent {
@@ -202,7 +203,7 @@ button.user-button.current,
     background: #e6c6e6 /* purple */ url(images/loading-error.png) 0 0 repeat;
 }
 
-.button.letter-button-placeholder.loading,
+.button.letter-button.loading,
 .button.generation-button.loading {
     background: url(images/loading-shade.png) 0 0 repeat;
     -webkit-animation: loading 2s linear 0s infinite;

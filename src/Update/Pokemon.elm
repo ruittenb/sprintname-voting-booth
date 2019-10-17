@@ -40,7 +40,7 @@ filterCurrentSubpage gen letter imgList =
 
 mapCharLettersToString : List PreloadCandidate -> List PortCompatiblePreloadCandidate
 mapCharLettersToString imgList =
-    List.map (\i -> { i | letter = toString i.letter }) imgList
+    List.map (\i -> { i | letter = String.fromChar i.letter }) imgList
 
 
 getPreloadCommandForPokedexCrossSection : Int -> Char -> RemotePokedex -> Cmd msg

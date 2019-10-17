@@ -26,6 +26,7 @@ module.exports = (function (jQuery) {
         this.timer = null;
         this.images = [];
         this.generation = 1;
+        this.letter = 'A';
         this.queue(list);
         this.installButton(buttonParentNode);
     };
@@ -79,7 +80,7 @@ module.exports = (function (jQuery) {
     {
         if (this.timer) {
             clearTimeout(this.timer);
-            jQuery('.generation-button').removeClass('loading');
+            jQuery('.generation-button, .letter_button').removeClass('loading');
             this.timer = null;
             this.setButton('play');
         }
@@ -94,25 +95,31 @@ module.exports = (function (jQuery) {
         }
     };
 
-    Preloader.prototype.highlightGenerationButton = function (state, gen)
+    Preloader.prototype.highlightGenerationAndLetterButton = function (state, gen, letter)
     {
-        const $button = jQuery('.generation-button:nth-child('+String(gen)+')');
-        $button.toggleClass('loading', state);
+        const letterChildIndex = letter.charCodeAt(0) - 64;
+        const $buttons = jQuery(
+            '.letter-button:nth-child(' + String(letterChildIndex) + '), ' +
+            '.generation-button:nth-child(' + String(gen) + ')'
+        );
+        $buttons.toggleClass('loading', state);
     };
 
     Preloader.prototype.preloadImages = function ()
     {
         const prevGeneration = this.generation;
+        const prevLetter = this.letter;
         for (let i = 0; i < Math.min(batchSize, this.list.length); i += 1) {
             let nextImg = this.list.shift();
             this.generation = nextImg.generation;
+            this.letter = nextImg.letter;
             this.images[i] = new Image();
             this.images[i].src = imageDir + nextImg.imageUrl;
         }
-        this.highlightGenerationButton(false, prevGeneration);
+        this.highlightGenerationAndLetterButton(false, prevGeneration, prevLetter);
         this.timer = null;
         if (this.list.length) {
-            this.highlightGenerationButton(true, this.generation);
+            this.highlightGenerationAndLetterButton(true, this.generation, this.letter);
             this.schedule();
         } else {
             this.setButton('hide');
