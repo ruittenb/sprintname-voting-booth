@@ -157,6 +157,7 @@ letterButton currentRoute pokedex currentSubPage letter =
             [ classList
                 [ ( "button", True )
                 , ( "letter-button", True )
+                , ( "with-tooltip", True )
                 , ( "current", currentHighLight )
                 , ( "disabled", List.isEmpty pokeList )
                 ]

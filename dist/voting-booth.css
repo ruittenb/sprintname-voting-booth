@@ -113,14 +113,11 @@ button.user-button,
     font-family: inherit;
 }
 
-.button.letter-button {
-    width: 39px;
-}
-
 .button.button-spacer,
 .button.lock-button,
+.button.maintenance-button,
 .button.generation-button,
-.button.maintenance-button {
+.button.letter-button {
     width: 39px;
     display: block;
     float: left;
@@ -136,8 +133,8 @@ button.user-button:hover,
 a.button.show-voters:hover,
 a.button.show-rankings:hover,
 a.button.lock-button:hover,
-.button.generation-button:hover,
 .button.maintenance-button:hover,
+.button.generation-button:hover,
 .button.letter-button:hover,
 .poketile .button:hover {
     background-color: #f8f0f8; /* light purple */
@@ -193,7 +190,7 @@ button.user-button.current,
  * and its presence is dependent on the length of the page.
  * Therefore, allow for a big margin of error.
  */
-@media (min-width: 328px) and (max-width: 416px) {
+@media (min-width: 363px) and (max-width: 423px) {
     .button.generation-button.transparent {
         display: none;
     }
@@ -237,6 +234,7 @@ button.user-button.current,
     display: block;
 }
 
+.button.letter-button.loading:after,
 .button.generation-button.loading:after {
     content: 'loading images...';
 }
@@ -264,7 +262,7 @@ button.user-button.current,
     content: 'voting has closed (click to open)';
 }
 
-.button.lock-button.with-tooltip.locked.search:after { /* heighten prio */
+.button.lock-button.with-tooltip.locked.search:after { /* increase css precedence */
     content: 'search mode';
 }
 
@@ -304,7 +302,8 @@ button.user-button.current,
     clear: left;
 }
 
-#letter-buttons {
+#letter-buttons,
+#calculation-buttons {
     clear: left;
 }
 
