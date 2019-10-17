@@ -200,6 +200,7 @@ button.user-button.current,
     background: #e6c6e6 /* purple */ url(images/loading-error.png) 0 0 repeat;
 }
 
+#message-box.loading,
 .button.letter-button.loading,
 .button.generation-button.loading {
     background: url(images/loading-shade.png) 0 0 repeat;
