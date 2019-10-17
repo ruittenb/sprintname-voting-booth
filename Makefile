@@ -253,8 +253,8 @@ kube-edit-deployment: ## edit the deployment in an editor, to increment version 
 
 .PHONY: kube-advance-deployment
 kube-advance-deployment: ## automatically update the deployment in kubernetes. replaces 'make kube-edit-deployment'
-	env VISUAL= EDITOR="perl -i -wple 's{(image: eu.gcr.io/proforto-team-sso/voting-booth):[.\d]+}{\$$1:$(CURRENT_VERSION)}'" \
-		kubectl edit deployment voting-booth -n voting-booth
+	env VISUAL= EDITOR="perl -i -wple 's{(image: $(DOCKER_REGISTRY)/$(DOCKER_REPO)):[.\d]+}{\$$1:$(CURRENT_VERSION)}'" \
+		kubectl edit deployment $(KUBE_DEPLOYMENT) -n $(KUBE_NAMESPACE)
 
 .PHONY: kube-restart-production
 kube-restart-production: ## gracefully restart kubernetes pod
