@@ -24,6 +24,7 @@ button,
     text-decoration: none;
     text-align: center;
     line-height: 28px;
+    outline: none;
     cursor: default;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -34,8 +35,8 @@ button,
 }
 
 button.user-button,
-.button.show-rankings,
 .button.show-voters,
+.button.show-rankings,
 .button.button-spacer,
 .button.letter-button,
 .button.generation-button,
@@ -106,7 +107,6 @@ button.user-button,
 .button.show-voters,
 .button.show-rankings,
 .button.lock-button {
-    outline: none;
     display: block;
     float: left;
     font-size: 14px;
