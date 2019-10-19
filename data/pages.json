@@ -905,8 +905,10 @@
     "generation": 5,
     "id": 101,
     "letter": "P",
-    "open": true,
-    "startDate": "2019-10-15T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2019-10-15T00:00:00.000+02:00",
+    "winnerName": "Pidove",
+    "winnerNum": 519
   },
   {
     "generation": 5,
