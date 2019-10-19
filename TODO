@@ -4,14 +4,6 @@ missing:
    - runs into difficulties with checkSession() which seems to attempt to validate wrong email address
  - if 'JWT token expired' appears, shouldn't the tokens be deleted from localStorage?
 
-<a> elements that are buttons:
- - change focus style
- - make clickable using space:
-     $('a').keyup(function (ev) {
-         if (ev.keyCode == 32) {
-             ev.target.click();
-         }
-     });
 
 improvements:
  - Use Firebase objects when they have been ported to 0.18:
@@ -72,6 +64,14 @@ consider:
 		-webkit-filter: invert(90%);
 		filter: invert(90%);
 	}
+   }}}
+ - make buttons clickable using space?
+   {{{ /* space clicks button */
+     $('a').keyup(function (ev) {
+         if (ev.keyCode == 32) {
+             ev.target.click();
+         }
+     });
    }}}
 
 # vim: set fdm=marker foldenable:

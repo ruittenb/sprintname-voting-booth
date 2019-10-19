@@ -465,6 +465,12 @@ button.user-button.current,
     flex-wrap: wrap;
 }
 
+.pokecanvas .empty-canvas {
+    width: 100%;
+    padding-top: 100px;
+    text-align: center;
+}
+
 .poketile {
     height: 220px;
     width: 220px;

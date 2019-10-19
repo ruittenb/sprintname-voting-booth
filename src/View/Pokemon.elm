@@ -26,9 +26,9 @@ import Routing exposing (createBrowsePath)
 
 emptyCanvas : List (Html Msg)
 emptyCanvas =
-    [ br [] []
-    , br [] []
-    , text "No pokémon in this page"
+    [ div [ class "empty-canvas" ]
+        [ span [] [ text "No Pokémon in this page" ]
+        ]
     ]
 
 
