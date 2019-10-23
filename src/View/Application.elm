@@ -73,10 +73,12 @@ searchBox currentRoute modelQuery =
             [ input
                 [ id "search-box"
                 , type_ "search"
-                , defaultValue modelQuery
                 , classList [ ( "current", searching ) ]
+                , defaultValue modelQuery
                 , placeholder "Search in pokédex"
                 , attribute "aria-label" "Search in pokédex"
+                , attribute "results" "5"
+                , attribute "autosave" "pokemon-voting-booth"
                 , onInput Msgs.SearchPokemon
                     |> Html.Attributes.map debounce
                 ]
