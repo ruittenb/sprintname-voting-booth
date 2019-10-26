@@ -179,10 +179,27 @@ button.user-button.current,
     width: calc(100% - 4px);
     height: 30px;
     border: 1px solid black;
+    margin-bottom: 6px;
 }
 
-.button.letter-button-placeholder:nth-child(1) {
-    margin-bottom: 6px;
+.button.letter-button-placeholder:nth-child(1),
+.button.letter-button-placeholder:nth-child(4) {
+    display: none;
+}
+
+@media (max-width: 455px) {
+    .button.letter-button-placeholder {
+        width: calc(100% - 8px);
+    }
+    .button.letter-button-placeholder:nth-child(1),
+    .button.letter-button-placeholder:nth-child(4) {
+        display: block;
+    }
+}
+@media (min-width: 1145px) {
+    .button.letter-button-placeholder:nth-child(3) {
+        display: none;
+    }
 }
 
 .button.generation-button.transparent {
@@ -212,7 +229,6 @@ button.user-button.current,
     font-size: 12px;
     top: -15px;
     right: -20px;
-/*  height: 17px; */ /* some tooltips require two lines */
     width: 110px;
     display: none;
     position: relative;
@@ -283,6 +299,10 @@ button.user-button.current,
     white-space: nowrap;
     display: block;
     clear: left;
+}
+
+#letter-buttons {
+    line-height: 0.5;
 }
 
 #letter-buttons,

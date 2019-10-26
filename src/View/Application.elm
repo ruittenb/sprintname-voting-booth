@@ -183,6 +183,7 @@ letterButtons currentRoute pokedex subPage =
 
                 _ ->
                     let
+                        placeholder : List (Html Msg) -> Html Msg
                         placeholder =
                             div
                                 [ classList
@@ -193,7 +194,9 @@ letterButtons currentRoute pokedex subPage =
                                     ]
                                 ]
                     in
-                        [ placeholder [ text "Loading..." ]
+                        [ placeholder []
+                        , placeholder [ text "Loading..." ]
+                        , placeholder []
                         , placeholder []
                         ]
     in
