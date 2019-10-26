@@ -403,6 +403,12 @@ button.user-button.current,
     font-size: 14px;
 }
 
+@media (max-width: 455px) {
+    #search-box {
+        width: calc(100% - 8px);
+    }
+}
+
 #search-box:hover,
 #search-box:focus {
     background-color: #f8f0f8; /* light purple */
