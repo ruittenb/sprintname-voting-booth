@@ -12,6 +12,12 @@ body#voting-app-body {
     font-size: 14px;
 }
 
+@media (max-width: 455px) {
+    body#voting-app-body {
+        padding: 8px 2px 8px 10px;
+    }
+}
+
 h1#page-title {
     font-style: italic;
     font-size: 17.5px;
@@ -467,6 +473,7 @@ button.user-button.current,
 @media (max-width: 455px) {
     .poketile {
         width: 100%;
+        margin-right: 8px;
     }
 }
 
