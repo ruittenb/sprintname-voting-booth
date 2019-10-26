@@ -152,9 +152,7 @@ a.button.lock-button:active,
 #user-name.current,
 button.user-button.current,
 .button.letter-button.current,
-.button.letter-button.current.loading,
 .button.generation-button.current,
-.button.generation-button.current.loading,
 .button.generation-button.current.transparent {
     background-color: #e6c6e6; /* purple */
     opacity: 1;
@@ -201,14 +199,6 @@ button.user-button.current,
     background: #e6c6e6 /* purple */ url(images/loading-error.png) 0 0 repeat;
 }
 
-#message-box.loading,
-.button.letter-button.loading,
-.button.generation-button.loading {
-    background: url(images/loading-shade.png) 0 0 repeat;
-    -webkit-animation: loading 2s linear 0s infinite;
-    animation: loading 2s linear 0s infinite;
-}
-
 /**
  * CSS tooltips on buttons
  */
@@ -236,11 +226,6 @@ button.user-button.current,
     display: block;
 }
 
-.button.letter-button.loading:after,
-.button.generation-button.loading:after {
-    content: 'loading images...';
-}
-
 .button.maintenance-button:after {
     right: 100px;
     content: 'maintenance mode';
@@ -266,16 +251,6 @@ button.user-button.current,
 
 .button.lock-button.with-tooltip.locked.search:after { /* increase css precedence */
     content: 'search mode';
-}
-
-@keyframes loading {
-    0%   { background-position-x: 20px; }
-    100% { background-position-x: 0; }
-}
-
-@-webkit-keyframes loading {
-    0%   { background-position-x: 20px; }
-    100% { background-position-x: 0; }
 }
 
 /**

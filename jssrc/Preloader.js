@@ -80,7 +80,6 @@ module.exports = (function (jQuery) {
     {
         if (this.timer) {
             clearTimeout(this.timer);
-            jQuery('.generation-button, .letter_button').removeClass('loading');
             this.timer = null;
             this.setButton('play');
         }
@@ -95,16 +94,6 @@ module.exports = (function (jQuery) {
         }
     };
 
-    Preloader.prototype.highlightGenerationAndLetterButton = function (state, gen, letter)
-    {
-        const letterChildIndex = letter.charCodeAt(0) - 64;
-        const $buttons = jQuery(
-            '.letter-button:nth-child(' + String(letterChildIndex) + '), ' +
-            '.generation-button:nth-child(' + String(gen) + ')'
-        );
-        $buttons.toggleClass('loading', state);
-    };
-
     Preloader.prototype.preloadImages = function ()
     {
         const prevGeneration = this.generation;
@@ -116,10 +105,8 @@ module.exports = (function (jQuery) {
             this.images[i] = new Image();
             this.images[i].src = imageDir + nextImg.imageUrl;
         }
-        this.highlightGenerationAndLetterButton(false, prevGeneration, prevLetter);
         this.timer = null;
         if (this.list.length) {
-            this.highlightGenerationAndLetterButton(true, this.generation, this.letter);
             this.schedule();
         } else {
             this.setButton('hide');
