@@ -165,10 +165,9 @@ module.exports = (function (jQuery, firebase)
         // id === null would correspond to a delete request.
         // id should not be null, but let's be defensive here.
         if (userRatings.id !== null) {
-            let userRef = this.votingDb.users.child(
-                // dots are not allowed in keys
-                userRatings.email.replace(/\./g, '_')
-            );
+            // dots are not allowed in keys
+            let userId = userRatings.email.replace(/\./g, '_');
+            let userRef = this.votingDb.users.child(userId);
             // Database rules ensure that votes cannot be cast if the
             // application is in maintenance mode, so we don't check that here.
             userRef.set(userRatings);
@@ -180,10 +179,14 @@ module.exports = (function (jQuery, firebase)
      */
     Database.prototype.savePage = function (page)
     {
-        let pageRef = this.votingDb.pages.child(page.id);
-        // Database rules check the different scenarios (e.g. authorizations),
-        // so we don't check that here.
-        pageRef.set(page);
+        // id === null would correspond to a delete request.
+        // id should not be null, but let's be defensive here.
+        if (page.id !== null) {
+            let pageRef = this.votingDb.pages.child(page.id);
+            // Database rules will check the different authorizations etc.,
+            // so we don't check those here.
+            pageRef.set(page);
+        }
     };
 
     /** **********************************************************************
@@ -191,8 +194,8 @@ module.exports = (function (jQuery, firebase)
      */
     Database.prototype.saveSettings = function (settings)
     {
-        // Database rules check the different scenarios (e.g. authorizations),
-        // so we don't check that here.
+        // Database rules will check the different authorizations etc.,
+        // so we don't check those here.
         this.votingDb.settings.set(settings);
     };
 
