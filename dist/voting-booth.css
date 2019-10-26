@@ -189,7 +189,7 @@ button.user-button.current,
  * and its presence is dependent on the length of the page.
  * Therefore, allow for a big margin of error.
  */
-@media (min-width: 363px) and (max-width: 423px) {
+@media (min-width: 360px) and (max-width: 423px) {
     .button.generation-button.transparent {
         display: none;
     }
@@ -405,7 +405,7 @@ button.user-button.current,
 
 @media (max-width: 455px) {
     #search-box {
-        width: calc(100% - 8px);
+        width: calc(100% - 4px);
     }
 }
 
