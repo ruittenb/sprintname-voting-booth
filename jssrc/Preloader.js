@@ -27,8 +27,8 @@ module.exports = (function (jQuery) {
         this.images = [];
         this.generation = 1;
         this.letter = 'A';
-        this.queue(list);
         this.installButton(buttonParentNode);
+        this.queue(list);
     };
 
     Preloader.prototype.installButton = function (parentNode)
@@ -36,13 +36,12 @@ module.exports = (function (jQuery) {
         let me = this;
         jQuery(document).ready(function () {
             me.$button = jQuery(parentNode)
-                .append('<span id="preload-controls" class="fa"></span>')
+                .append('<span id="preload-controls" class="fa" style="display:none"></span>')
                 .children()
                 .first()
                 .on('click', function (e) {
                     me.toggle();
                 });
-            me.setButton(me.timer ? 'pause' : 'play');
         });
     };
 
@@ -70,6 +69,22 @@ module.exports = (function (jQuery) {
     Preloader.prototype.schedule = function () {
         if (this.doPreload && !this.timer && this.list.length) {
             this.timer = setTimeout(this.preloadImages.bind(this), batchTime);
+        }
+        this.updateButton();
+    };
+
+    Preloader.prototype.updateButton = function () {
+        if (!this.doPreload) {
+            // no preloading whatsoever.
+            this.setButton('hide');
+        } else if (!this.list.length) {
+            // nothing to preload.
+            this.setButton('hide');
+        } else if (!this.timer) {
+            // not preloading right now.
+            this.setButton('play');
+        } else {
+            // we are preloading right now.
             this.setButton('pause');
         }
     };
@@ -81,7 +96,7 @@ module.exports = (function (jQuery) {
         if (this.timer) {
             clearTimeout(this.timer);
             this.timer = null;
-            this.setButton('play');
+            this.updateButton();
         }
     };
 
@@ -109,7 +124,7 @@ module.exports = (function (jQuery) {
         if (this.list.length) {
             this.schedule();
         } else {
-            this.setButton('hide');
+            this.updateButton();
         }
     };
 
