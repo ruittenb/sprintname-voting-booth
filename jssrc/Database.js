@@ -115,47 +115,73 @@ module.exports = (function (jQuery, firebase)
     Database.prototype.login = function (jwtToken)
     {
         let me = this;
-
-        jQuery
-            .post({
-                url: tokenserverUrl,
-                data: { jwtToken }
-            })
-            .then(function (tokenData) {
-                if (tokenData.success) {
-                    return Promise.resolve(tokenData.firebaseToken);
+        let request = new XMLHttpRequest();
+        request.onerror = function (e) {
+            me.loginError({
+                status: e.target.status,
+                statusText: e.target.statusText
+            }); // passes { status, statusText }
+        }
+        request.onreadystatechange = function () {
+            // only take action when request is completely done (readyState == 4)
+            if (this.readyState == 4) {
+                if (!this.responseText) {
+                    // didn't get responseText: probably AJAX error
+                    return me.loginError(this); // passes { status, statusText }
+                }
+                if (this.responseText.charAt(0) === '<') {
+                    // got responseText, but it was HTML
+                    return me.loginError({
+                        status: this.status,
+                        statusText: Number(this.status) + ' ' + this.statusText
+                    }); // passes { status, statusText }
+                }
+                let responseJson;
+                try {
+                    responseJson = JSON.parse(this.responseText);
+                } catch (e) {
+                    // JSON.parse error
+                    return me.loginError({ status: 0, message: e.message }); // passes { status, message }
+                }
+                if (this.status != 200 || !responseJson.success) {
+                    // got responseText, but status !== 200: tokenserver error
+                    return me.loginError(responseJson); // passes { status, message }
                 } else {
-                    return Promise.reject(tokenData);
+                    // got responseText and success: should contain firebaseToken
+                    const firebaseToken = responseJson.firebaseToken;
+                    localStorage.setItem(firebaseTokenKey, firebaseToken);
+                    return firebase.auth().signInWithCustomToken(firebaseToken);
                 }
-            })
-            .then(function (firebaseToken) {
-                localStorage.setItem(firebaseTokenKey, firebaseToken);
-                return firebase.auth().signInWithCustomToken(firebaseToken);
-            })
-            .catch(function (e) {
-                let status = e.status;
-                let message;
-                if (e.responseJSON) {
-                    message = e.responseJSON.message;
-                } else if (e.message) {
-                    message = e.message;
-                } else if (status === 0) {
-                    // A Status Code of 0 means "The browser refused to honor the request."
-                    // @see https://salesforce.stackexchange.com/questions/158448/response-status-is-0-in-jquery-ajax
-                    message = "The browser refused to honor the request (is the tokenserver reachable?)";
-                }
-                if (!status) {
-                    status = 0;
-                }
-                if (!message) {
-                    message = String(status) + " Server error";
-                }
-                setTimeout(function () {
-                    me.elmClient.ports.onFirebaseLoginFailed.send({ message, status });
-                }, 100);
-            });
-        return;
+            }
+        };
+        request.open('POST', tokenserverUrl, true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        request.send(`jwtToken=${jwtToken}`);
     };
+
+    /** **********************************************************************
+     * handle errors during login
+     */
+    Database.prototype.loginError = function (e) {
+        let me = this;
+        let status = e.status;
+        let message = e.message || e.statusText;
+        if (!status && !message) {
+            // A Status Code of 0 means "The browser refused to honor the request."
+            // @see https://salesforce.stackexchange.com/questions/158448/response-status-is-0-in-jquery-ajax
+            message = "The browser refused to honor the request (is the tokenserver reachable?)";
+        }
+        // Safety net
+        if (!status) {
+            status = 0;
+        }
+        if (!message) {
+            message = String(status) + " Server error";
+        }
+        setTimeout(function () {
+            me.elmClient.ports.onFirebaseLoginFailed.send({ message, status });
+        }, 100);
+    }
 
     /** **********************************************************************
      * database action: casting votes
