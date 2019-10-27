@@ -1,6 +1,7 @@
 module View.Application exposing (title, applicationPane, functionPane)
 
 import Time exposing (Time, second)
+import Maybe.Extra exposing (unwrap)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput, onSubmit)
@@ -367,34 +368,51 @@ rankingsTable state currentPage isCurrentUserAdmin =
                         |> List.reverse
 
                 winnerRating =
-                    case List.head rankingsToShow of
-                        Just winner ->
-                            winner.totalVotes
+                    List.head rankingsToShow
+                        |> Maybe.map .totalVotes
+                        |> Maybe.withDefault 0
 
-                        Nothing ->
-                            0
+                isWinner : Int -> Bool
+                isWinner num =
+                    currentPage
+                        |> Maybe.map (\page -> page.winnerNum == Just num)
+                        |> Maybe.withDefault False
+
+                winnerBadge : Int -> List (Html Msg)
+                winnerBadge num =
+                    if isWinner num then
+                        [ img
+                            [ class "ribbon"
+                            , src "/images/ribbon.png"
+                            ]
+                            []
+                        ]
+                    else
+                        []
 
                 winButtonCell : Int -> String -> List (Html Msg)
                 winButtonCell number name =
-                    case currentPage of
-                        Nothing ->
-                            []
-
-                        Just page ->
-                            if isCurrentUserAdmin then
-                                [ td []
-                                    [ button
-                                        [ onClick (WinnerElected page (PokeWinner number name))
-                                        , classList
-                                            [ ( "elect-button", True )
-                                            , ( "winner", page.winnerNum == Just number )
-                                            ]
-                                        ]
-                                        [ text "win" ]
-                                    ]
-                                ]
-                            else
+                    if not isCurrentUserAdmin then
+                        []
+                    else
+                        currentPage
+                            |> Maybe.Extra.unwrap
+                                -- defaultValue
                                 []
+                                -- mapFunction
+                                (\page ->
+                                    [ td []
+                                        [ button
+                                            [ onClick (WinnerElected page (PokeWinner number name))
+                                            , classList
+                                                [ ( "elect-button", True )
+                                                , ( "winner", page.winnerNum == Just number )
+                                                ]
+                                            ]
+                                            [ text "win" ]
+                                        ]
+                                    ]
+                                )
             in
                 div
                     [ class "rankings-table-wrapper" ]
@@ -405,7 +423,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
                                     [ classList
                                         [ ( "winner-rating", r.totalVotes == winnerRating && r.totalVotes > 0 ) ]
                                     ]
-                                    ([ td [] [ text r.name ]
+                                    ([ td [] ([ text r.name ] ++ winnerBadge r.number)
                                      , td [] [ text (toString r.totalVotes) ]
                                      ]
                                         ++ winButtonCell r.number r.name

@@ -687,7 +687,7 @@ button.user-button.current,
     /* box-shadow: 5px 10px 8px #888; */
     position: fixed;
     z-index: 60;
-    width: 240px;
+    width: 250px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -713,6 +713,13 @@ button.user-button.current,
 .voters-table td,
 .rankings-table td {
     padding: 1px 10px;
+    white-space: nowrap;
+}
+
+.rankings-table .ribbon {
+    height: 18px;
+    margin-left: 5px;
+    vertical-align: middle;
 }
 
 .rankings-table .elect-button {
