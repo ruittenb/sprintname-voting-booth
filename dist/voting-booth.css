@@ -182,18 +182,19 @@ button.user-button.current,
     margin-bottom: 6px;
 }
 
-.button.letter-button-placeholder:nth-child(1),
-.button.letter-button-placeholder:nth-child(4) {
-    display: none;
-}
-
 @media (max-width: 455px) {
     .button.letter-button-placeholder {
         width: calc(100% - 8px);
     }
-    .button.letter-button-placeholder:nth-child(1),
+}
+@media (min-width: 400px) {
     .button.letter-button-placeholder:nth-child(4) {
-        display: block;
+        display: none;
+    }
+}
+@media (min-width: 572px) {
+    .button.letter-button-placeholder:nth-child(1) {
+        display: none;
     }
 }
 @media (min-width: 1145px) {
