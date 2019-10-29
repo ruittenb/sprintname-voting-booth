@@ -60,6 +60,7 @@ button.user-button,
 .button.show-rankings,
 .button.letter-button,
 .button.generation-button,
+.button.maintenance-button,
 .button.lock-button {
     background-color: white;
     border: 1px solid black;
@@ -86,9 +87,7 @@ button.user-button {
 }
 
 .button.maintenance-button {
-    background: #f8f8f8 url(icons/maintenance.png) no-repeat center center;
-    border: 1px solid black;
-    color: black;
+    background: white url(icons/maintenance.png) no-repeat center center;
 }
 
 .button.maintenance-button.maintenance-mode {
@@ -140,9 +139,9 @@ button.user-button:hover,
 a.button.show-voters:hover,
 a.button.show-rankings:hover,
 a.button.lock-button:hover,
-.button.maintenance-button:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
+.button.maintenance-button:hover,
 .poketile .button:hover {
     background-color: #f8f0f8; /* light purple */
 }
@@ -229,9 +228,11 @@ button.user-button.current,
 .button.with-tooltip:after {
     font-size: 12px;
     top: -15px;
-    right: -20px;
+    right: 100px;
     width: 110px;
-    display: none;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
     position: relative;
     z-index: 2;
     padding: 2px;
@@ -239,24 +240,25 @@ button.user-button.current,
     line-height: 17px;
     background-color: #fef4c5; /* light yellow */
     border: 1px solid #d4b943; /* dark yellow */
-    -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     border-radius: 5px;
+    transition: opacity 0.5s ease-out, visibility 0.5s linear;
 }
 
 .button.with-tooltip:hover:after {
-    display: block;
+    visibility: visible;
+    opacity: 1;
 }
 
 .button.maintenance-button:after {
-    right: 100px;
     content: 'maintenance mode';
 }
 
 .button.lock-button:after {
-    right: 100px;
     width: 100px;
+    right: 90px;
     content: 'open for voting';
 }
 
