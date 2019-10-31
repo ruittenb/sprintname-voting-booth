@@ -62,11 +62,13 @@ build-elm: ## compile elm files to javascript
 
 .PHONY: build-bundle
 build-bundle: ## bundle javascript files
-	test "$(ENVIRONMENT)" = development &&                               \
-		browserify $(JS_SOURCE)/app.js -o $(JS_SOURCE)/bundle.js ||  \
+	if [ "$(ENVIRONMENT)" = development ]; then                          \
+		browserify $(JS_SOURCE)/app.js -o $(JS_SOURCE)/bundle.js;    \
+	else                                                                 \
 		browserify $(JS_SOURCE)/app.js                               \
 			-g [ envify --NODE_ENV $${ENVIRONMENT:-production} ] \
-			-g uglifyify -o $(JS_SOURCE)/bundle.js
+			-g uglifyify -o $(JS_SOURCE)/bundle.js;              \
+	fi
 
 .PHONY: build-do-minify
 build-do-minify:
@@ -76,9 +78,11 @@ build-do-minify:
 
 .PHONY: build-minify
 build-minify: ## minify javascript bundle (unless on development)
-	test "$(ENVIRONMENT)" = development &&                 \
-		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js || \
-		make build-do-minify
+	if [ "$(ENVIRONMENT)" = development ]; then            \
+		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js;   \
+	else                                                   \
+		make build-do-minify;                          \
+	fi
 
 .PHONY: build
 build: version build-elm build-bundle build-minify ## all of the build steps above
