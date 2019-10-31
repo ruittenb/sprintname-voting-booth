@@ -125,6 +125,10 @@
       {
         "image": "006-mega-y.png",
         "vname": "Mega Y"
+      },
+      {
+        "image": "006-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -219,6 +223,10 @@
       {
         "image": "012.png",
         "vname": ""
+      },
+      {
+        "image": "012-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -430,6 +438,10 @@
       {
         "image": "025.png",
         "vname": ""
+      },
+      {
+        "image": "025-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -867,6 +879,10 @@
       {
         "image": "052-alola.png",
         "vname": "Alola Form"
+      },
+      {
+        "image": "052-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -1262,6 +1278,10 @@
       {
         "image": "077.png",
         "vname": ""
+      },
+      {
+        "image": "077-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
@@ -2134,6 +2154,10 @@
       {
         "image": "133.png",
         "vname": ""
+      },
+      {
+        "image": "133-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
