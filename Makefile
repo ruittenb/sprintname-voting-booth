@@ -2,6 +2,9 @@
 export PATH:=$(PATH):$(shell npm bin)
 SHELL:=bash
 
+CSS_FILES=$(wildcard dist/*[!n].css) # *.css, but not *.min.css
+MIN_CSS_FILES=$(CSS_FILES:.css=.min.css)
+
 ENVIRONMENT=$(shell if test -r .env && which jq >/dev/null 2>&1; then jq -r .environment .env; fi)
 NEXT_VERSION=$(shell git tag | awk '{ sub(/^v/, ""); if (0 + $$1 > max) max = $$1; } END { printf "%.1f", max + 0.1 }')
 NEXT_TAG=v$(NEXT_VERSION)
@@ -70,22 +73,29 @@ build-bundle: ## bundle javascript files
 			-g uglifyify -o $(JS_SOURCE)/bundle.js;              \
 	fi
 
-.PHONY: build-do-minify
-build-do-minify:
+.PHONY: build-js-minify
+build-js-minify:
 	uglifyjs $(JS_SOURCE)/bundle.js                                           \
 		--compress "pure_funcs=['F2','F3','F4','F5','F6','F7','F8','F9']" \
 		--mangle --output $(DIST)/bundle.js
 
-.PHONY: build-minify
-build-minify: ## minify javascript bundle (unless on development)
+.PHONY: build-js-minify-prod
+build-js-minify-prod: ## minify javascript bundle (unless on development)
 	if [ "$(ENVIRONMENT)" = development ]; then            \
 		cp $(JS_SOURCE)/bundle.js $(DIST)/bundle.js;   \
 	else                                                   \
-		make build-do-minify;                          \
+		make build-js-minify;                          \
 	fi
 
+%.min.css: %.css
+	@# descend into the directory in order to prevent corrupting URLs in CSS
+	cd $(<D); cleancss $(<F) > $(@F)
+
+.PHONY: build-css-minify
+build-css-minify: $(MIN_CSS_FILES) ## minify all css files
+
 .PHONY: build
-build: version build-elm build-bundle build-minify ## all of the build steps above
+build: version build-elm build-bundle build-js-minify-prod build-css-minify ## all of the build steps above
 
 .PHONY: prod
 prod: ## mark environment as 'production'
