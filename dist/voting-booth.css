@@ -35,10 +35,10 @@ button,
     cursor: default;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Chrome and Opera */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Chrome and Opera */
 }
 
 button.user-button,
@@ -367,28 +367,6 @@ button.user-button.current,
     background-color: #fef0b3; /* light yellow */
 }
 
-/*
-#message-box.maintenance {
-    background: repeating-linear-gradient(
-        135deg,
-        yellow,
-        yellow 10px,
-        black 10px,
-        black 20px
-    );
-}
-
-#message-box.maintenance span {
-    background-color: yellow;
-    padding: 0px 8px;
-    width: 100%;
-    display: block;
-    height: 20px;
-    margin-top: 4px;
-    line-height: 20px;
-}
-*/
-
 #message-box.error {
     visibility: visible;
     border-color: #a90f1b; /* red */
@@ -444,10 +422,6 @@ button.user-button.current,
 }
 #search-box:focus {
     outline: none;
-    /*
-    outline-color: rgb(59, 153, 252);
-    outline-width: 5px;
-    */
 }
 #search-box.current {
     background-color: #e6c6e6; /* purple */
@@ -501,9 +475,6 @@ button.user-button.current,
 }
 
 .poketile.winner {
-    /* background-image: linear-gradient(#e6c6e6 17%, white 17%, white 72%, #e6c6e6 72%); /* vertically purple-white-purple */
-    /* background-image: linear-gradient(135deg, #e6c6e6 12%, white 22%, white 67%, #e6c6e6 77%); /* diagonal gradient purple-white-purple */
-    /* background-image: linear-gradient(135deg, #e6c6e6 17%, white 17%, white 72%, #e6c6e6 72%); /* diagonally segmented purple-white-purple */
     background-image: linear-gradient(135deg, #e6c6e6 17%, white 17%, white 83%, #e6c6e6 83%); /* diagonally equally segmented purple-white-purple */
 }
 
