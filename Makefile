@@ -204,7 +204,7 @@ watch: ## start the webserver. rebuild and restart if the source changes
 
 .PHONY: docker-build
 docker-build: build ## build the docker image
-	nice docker build -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
+	nice -n20 docker build -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
 
 .PHONY: docker-status
 docker-status: ## show the status of the docker image and containers
