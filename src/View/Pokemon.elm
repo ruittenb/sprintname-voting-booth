@@ -138,6 +138,7 @@ ratingNode rating =
     in
         span
             [ title userTitle
+            , attribute "data-voter" (toString rating.id)
             , style [ ( "color", rating.color ) ]
             ]
         <|
