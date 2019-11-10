@@ -19,6 +19,7 @@ type alias User =
 type alias ApplicationStateNoMessage =
     { authModel : AuthenticationModel
     , currentUser : User
+    , highlightedUserId : Maybe Int
     , currentRoute : Route
     , subPage : Maybe SubPage
     , query : String
