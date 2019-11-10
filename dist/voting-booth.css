@@ -556,13 +556,23 @@ button.user-button.current,
     height: 26px;
 }
 
+.rating-nodes > span.highlight {
+    text-shadow: 0 0 12px #d02ad0;
+    /*
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 3px;
+    */
+}
+
 .rating-nodes span.star,
 .voting-node span.star {
     font: normal normal normal 20px/1 FontAwesome;
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     text-decoration: none;
-    margin-right: 2px;
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
 .voting-node span.star {
