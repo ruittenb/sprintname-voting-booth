@@ -346,6 +346,10 @@ button.user-button.current,
     line-height: 30px;
 }
 
+#message-box.notice {
+    font-style: italic;
+}
+
 #message-box.debug {
     visibility: visible;
     border-color: #345485; /* dark blue */
