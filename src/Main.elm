@@ -71,6 +71,7 @@ init credentials location =
         initialState =
             { authModel = authModel
             , currentUser = Nothing
+            , highlightedUserId = Nothing
             , currentRoute = currentRoute
             , subPage = initialSubpage
             , query = initialQuery

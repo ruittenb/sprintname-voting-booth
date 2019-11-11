@@ -29,6 +29,7 @@ type Msg
     | TeamRatingsLoaded RemoteTeamRatings
     | UserRatingsLoaded RemoteUserRatings
     | UserRatingsSaved RemoteUserRatings
+    | UserHighlightClicked Int
     | VariantChanged Int BrowseDirection
     | UrlChanged Route
     | CloseMaskClicked

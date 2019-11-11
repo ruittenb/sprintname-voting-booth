@@ -84,248 +84,264 @@ resolveDefaultPage currentRoute oldSubPage pages todayDate =
 
 
 update : Msg -> ApplicationState -> ( ApplicationState, Cmd Msg )
-update msg oldState =
-    case msg of
-        AuthenticationReceived (Ok credentials) ->
-            updateAuthWithProfile oldState credentials
-                |> andThenCmd (firebaseLoginWithJwtToken credentials.idToken)
-
-        AuthenticationReceived (Err error) ->
-            updateAuthWithNoProfile oldState (Just error)
-                |> andThenCmd firebaseLogout
-
-        AuthenticationFailed reason ->
-            updateAuthWithNoProfile oldState (Just reason)
-                |> andThenCmd firebaseLogout
-
-        AuthenticationLogoutClicked ->
-            updateAuthWithNoProfile oldState Nothing
-                |> andThenCmd firebaseLogout
-
-        AuthenticationLoginClicked ->
-            ( oldState
-            , oldState.authModel.showLock oldState.authModel.lockParameters
-            )
-
-        FirebaseLoginFailed reason ->
-            updateAuthWithNoProfile oldState (Just reason)
-                |> andThenCmd firebaseLogout
-
-        SettingsLoaded (Success settings) ->
-            let
-                newState =
-                    { oldState | settings = RemoteData.succeed settings }
-
-                newTuple =
-                    if not settings.maintenanceMode then
-                        ( newState, Cmd.none )
-                            |> clearStatusMessage
-                    else
-                        ( newState, Cmd.none )
-                            |> setStatusMessage Maintenance maintenanceApology
-            in
-                newTuple
-
-        SettingsLoaded (Failure message) ->
-            let
-                newState =
-                    { oldState
-                        | ratings = RemoteData.Failure message
-                    }
-            in
-                ( newState, Cmd.none )
-                    |> setStatusMessage Error (toString message)
-
-        SettingsLoaded _ ->
-            ( oldState, Cmd.none )
-
-        PagesLoaded (Success pages) ->
-            let
-                -- Check if the current route needs replacing with a browse route.
-                ( newSubPage, urlCommand ) =
-                    oldState.todayDate
-                        |> Maybe.map
-                            (resolveDefaultPage oldState.currentRoute oldState.subPage (Success pages))
-                        |> Maybe.withDefault ( oldState.subPage, Cmd.none )
-
-                newState =
-                    { oldState
-                        | pages = RemoteData.succeed pages
-                        , subPage = newSubPage
-                    }
-            in
-                ( newState, urlCommand )
-
-        PagesLoaded (Failure message) ->
-            let
-                newState =
-                    { oldState
-                        | pages = RemoteData.Failure message
-                    }
-            in
-                ( newState, Cmd.none )
-                    |> setStatusMessage Error (toString message)
-
-        PagesLoaded _ ->
-            ( oldState, Cmd.none )
-
-        PageLoaded (Success page) ->
-            let
-                newPages =
-                    RemoteData.map
-                        (replaceIf (.id >> (==) page.id) page)
-                        oldState.pages
-
-                newState =
-                    { oldState | pages = newPages }
-            in
-                ( newState, Cmd.none )
-
-        PageLoaded (Failure message) ->
-            ( oldState, Cmd.none )
-                |> setStatusMessage Error (toString message)
-
-        PageLoaded _ ->
-            ( oldState, Cmd.none )
-
-        TeamRatingsLoaded (Success ratings) ->
-            let
-                newRatings =
-                    RemoteData.succeed ratings
-
-                userName =
-                    getUserNameForAuthModel newRatings oldState.authModel
-
-                newState =
-                    { oldState | ratings = newRatings, currentUser = userName }
-            in
-                ( newState, Cmd.none )
-
-        TeamRatingsLoaded (Failure message) ->
-            let
-                newState =
-                    { oldState
-                        | ratings = RemoteData.Failure message
-                    }
-            in
-                ( newState, Cmd.none )
-                    |> setStatusMessage Error (toString message)
-
-        TeamRatingsLoaded _ ->
-            ( oldState, Cmd.none )
-
-        UserRatingsLoaded (Success userRatings) ->
-            let
-                newRatings =
-                    RemoteData.map
-                        (replaceIf (.id >> (==) userRatings.id) userRatings)
-                        oldState.ratings
-
-                newState =
-                    { oldState | ratings = newRatings }
-            in
-                ( newState, Cmd.none )
-
-        UserRatingsLoaded _ ->
-            ( oldState, Cmd.none )
-
-        PokedexLoaded pokedex ->
-            updateOnLoadPokedex oldState pokedex
-
-        UrlChanged newRoute ->
-            case newRoute of
-                Default ->
-                    -- invalid URL? fetch today's date, which will reload the default page
-                    ( { oldState | currentRoute = newRoute }
-                    , getTodayTimeCmd
-                    )
-
-                Search query ->
-                    updateSearchPokemon oldState query
+update msg maybeHighlightedState =
+    let
+        oldState =
+            case msg of
+                Tick _ ->
+                    maybeHighlightedState
 
                 _ ->
-                    updateChangeGenerationAndLetter oldState newRoute
+                    { maybeHighlightedState | highlightedUserId = Nothing }
+    in
+        case msg of
+            AuthenticationReceived (Ok credentials) ->
+                updateAuthWithProfile oldState credentials
+                    |> andThenCmd (firebaseLoginWithJwtToken credentials.idToken)
 
-        CloseMaskClicked ->
-            let
-                ( browsePath, browseSubPage ) =
-                    case oldState.subPage of
-                        Just subPage ->
-                            ( createBrowsePath subPage.generation subPage.letter
-                            , Browse Freely
-                                { generation = subPage.generation
-                                , letter = subPage.letter
-                                }
-                            )
+            AuthenticationReceived (Err error) ->
+                updateAuthWithNoProfile oldState (Just error)
+                    |> andThenCmd firebaseLogout
 
-                        Nothing ->
-                            ( createDefaultPath
-                            , Default
-                            )
-            in
-                ( { oldState | currentRoute = browseSubPage }
-                , newUrl browsePath
+            AuthenticationFailed reason ->
+                updateAuthWithNoProfile oldState (Just reason)
+                    |> andThenCmd firebaseLogout
+
+            AuthenticationLogoutClicked ->
+                updateAuthWithNoProfile oldState Nothing
+                    |> andThenCmd firebaseLogout
+
+            AuthenticationLoginClicked ->
+                ( oldState
+                , oldState.authModel.showLock oldState.authModel.lockParameters
                 )
 
-        PageLockClicked page ->
-            updatePageLockState oldState page
+            FirebaseLoginFailed reason ->
+                updateAuthWithNoProfile oldState (Just reason)
+                    |> andThenCmd firebaseLogout
 
-        WinnerElected page winner ->
-            updatePageWithWinner oldState page winner
+            SettingsLoaded (Success settings) ->
+                let
+                    newState =
+                        { oldState | settings = RemoteData.succeed settings }
 
-        MaintenanceModeClicked ->
-            updateMaintenanceMode oldState
+                    newTuple =
+                        if not settings.maintenanceMode then
+                            ( newState, Cmd.none )
+                                |> clearStatusMessage
+                        else
+                            ( newState, Cmd.none )
+                                |> setStatusMessage Maintenance maintenanceApology
+                in
+                    newTuple
 
-        VariantChanged pokemonNumber direction ->
-            updateChangeVariant oldState pokemonNumber direction
+            SettingsLoaded (Failure message) ->
+                let
+                    newState =
+                        { oldState
+                            | ratings = RemoteData.Failure message
+                        }
+                in
+                    ( newState, Cmd.none )
+                        |> setStatusMessage Error (toString message)
 
-        SearchPokemon query ->
-            updateSearchPokemon oldState query
-                |> andThenCmd (newUrl <| createSearchPath query)
-
-        DebounceSearchPokemon debMsg ->
-            Control.update
-                (\s -> { oldState | debounceState = s })
-                oldState.debounceState
-                debMsg
-
-        PokemonVoteCast userVote ->
-            updateVoteForPokemon oldState userVote
-
-        UserRatingsSaved (Failure message) ->
-            ( oldState, Cmd.none )
-                |> setStatusMessage Error (toString message)
-
-        UserRatingsSaved _ ->
-            ( oldState, Cmd.none )
-
-        TodayReceived time ->
-            let
-                todayDate =
-                    Date.fromTime time
-
-                -- Check if the current route needs replacing with a browse route.
-                ( newSubPage, urlCommand ) =
-                    resolveDefaultPage oldState.currentRoute oldState.subPage oldState.pages todayDate
-
-                newState =
-                    { oldState
-                        | todayDate = Just todayDate
-                        , subPage = newSubPage
-                    }
-            in
-                ( newState, urlCommand )
-
-        StatusMessageExpiryTimeReceived time ->
-            let
-                newState =
-                    { oldState | statusExpiryTime = Just time }
-            in
-                ( newState, Cmd.none )
-
-        Tick time ->
-            if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
+            SettingsLoaded _ ->
                 ( oldState, Cmd.none )
-                    |> clearStatusMessage
-            else
+
+            PagesLoaded (Success pages) ->
+                let
+                    -- Check if the current route needs replacing with a browse route.
+                    ( newSubPage, urlCommand ) =
+                        oldState.todayDate
+                            |> Maybe.map
+                                (resolveDefaultPage oldState.currentRoute oldState.subPage (Success pages))
+                            |> Maybe.withDefault ( oldState.subPage, Cmd.none )
+
+                    newState =
+                        { oldState
+                            | pages = RemoteData.succeed pages
+                            , subPage = newSubPage
+                        }
+                in
+                    ( newState, urlCommand )
+
+            PagesLoaded (Failure message) ->
+                let
+                    newState =
+                        { oldState
+                            | pages = RemoteData.Failure message
+                        }
+                in
+                    ( newState, Cmd.none )
+                        |> setStatusMessage Error (toString message)
+
+            PagesLoaded _ ->
                 ( oldState, Cmd.none )
+
+            PageLoaded (Success page) ->
+                let
+                    newPages =
+                        RemoteData.map
+                            (replaceIf (.id >> (==) page.id) page)
+                            oldState.pages
+
+                    newState =
+                        { oldState | pages = newPages }
+                in
+                    ( newState, Cmd.none )
+
+            PageLoaded (Failure message) ->
+                ( oldState, Cmd.none )
+                    |> setStatusMessage Error (toString message)
+
+            PageLoaded _ ->
+                ( oldState, Cmd.none )
+
+            TeamRatingsLoaded (Success ratings) ->
+                let
+                    newRatings =
+                        RemoteData.succeed ratings
+
+                    userName =
+                        getUserNameForAuthModel newRatings oldState.authModel
+
+                    newState =
+                        { oldState | ratings = newRatings, currentUser = userName }
+                in
+                    ( newState, Cmd.none )
+
+            TeamRatingsLoaded (Failure message) ->
+                let
+                    newState =
+                        { oldState
+                            | ratings = RemoteData.Failure message
+                        }
+                in
+                    ( newState, Cmd.none )
+                        |> setStatusMessage Error (toString message)
+
+            TeamRatingsLoaded _ ->
+                ( oldState, Cmd.none )
+
+            UserRatingsLoaded (Success userRatings) ->
+                let
+                    newRatings =
+                        RemoteData.map
+                            (replaceIf (.id >> (==) userRatings.id) userRatings)
+                            oldState.ratings
+
+                    newState =
+                        { oldState | ratings = newRatings }
+                in
+                    ( newState, Cmd.none )
+
+            UserRatingsLoaded _ ->
+                ( oldState, Cmd.none )
+
+            PokedexLoaded pokedex ->
+                updateOnLoadPokedex oldState pokedex
+
+            UserHighlightClicked id ->
+                let
+                    newState =
+                        { oldState | highlightedUserId = Just id }
+                in
+                    ( newState, Cmd.none )
+
+            UrlChanged newRoute ->
+                case newRoute of
+                    Default ->
+                        -- invalid URL? fetch today's date, which will reload the default page
+                        ( { oldState | currentRoute = newRoute }
+                        , getTodayTimeCmd
+                        )
+
+                    Search query ->
+                        updateSearchPokemon oldState query
+
+                    _ ->
+                        updateChangeGenerationAndLetter oldState newRoute
+
+            CloseMaskClicked ->
+                let
+                    ( browsePath, browseSubPage ) =
+                        case oldState.subPage of
+                            Just subPage ->
+                                ( createBrowsePath subPage.generation subPage.letter
+                                , Browse Freely
+                                    { generation = subPage.generation
+                                    , letter = subPage.letter
+                                    }
+                                )
+
+                            Nothing ->
+                                ( createDefaultPath
+                                , Default
+                                )
+                in
+                    ( { oldState | currentRoute = browseSubPage }
+                    , newUrl browsePath
+                    )
+
+            PageLockClicked page ->
+                updatePageLockState oldState page
+
+            WinnerElected page winner ->
+                updatePageWithWinner oldState page winner
+
+            MaintenanceModeClicked ->
+                updateMaintenanceMode oldState
+
+            VariantChanged pokemonNumber direction ->
+                updateChangeVariant oldState pokemonNumber direction
+
+            SearchPokemon query ->
+                updateSearchPokemon oldState query
+                    |> andThenCmd (newUrl <| createSearchPath query)
+
+            DebounceSearchPokemon debMsg ->
+                Control.update
+                    (\s -> { oldState | debounceState = s })
+                    oldState.debounceState
+                    debMsg
+
+            PokemonVoteCast userVote ->
+                updateVoteForPokemon oldState userVote
+
+            UserRatingsSaved (Failure message) ->
+                ( oldState, Cmd.none )
+                    |> setStatusMessage Error (toString message)
+
+            UserRatingsSaved _ ->
+                ( oldState, Cmd.none )
+
+            TodayReceived time ->
+                let
+                    todayDate =
+                        Date.fromTime time
+
+                    -- Check if the current route needs replacing with a browse route.
+                    ( newSubPage, urlCommand ) =
+                        resolveDefaultPage oldState.currentRoute oldState.subPage oldState.pages todayDate
+
+                    newState =
+                        { oldState
+                            | todayDate = Just todayDate
+                            , subPage = newSubPage
+                        }
+                in
+                    ( newState, urlCommand )
+
+            StatusMessageExpiryTimeReceived time ->
+                let
+                    newState =
+                        { oldState | statusExpiryTime = Just time }
+                in
+                    ( newState, Cmd.none )
+
+            Tick time ->
+                if Maybe.map ((>) time) oldState.statusExpiryTime == Just True then
+                    ( oldState, Cmd.none )
+                        |> clearStatusMessage
+                else
+                    ( oldState, Cmd.none )

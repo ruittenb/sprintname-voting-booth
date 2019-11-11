@@ -20,7 +20,7 @@ import Models.Types exposing (..)
 import Models.Pokemon exposing (..)
 import Models.Pages exposing (..)
 import Models.Ratings exposing (..)
-import Msgs exposing (Msg)
+import Msgs exposing (Msg(..))
 import Routing exposing (createBrowsePath)
 
 
@@ -90,7 +90,7 @@ voteWidgetStar pokemonNumber currentUserName rating stars =
             , ( "fa-star", rating >= stars )
             , ( "selected", rating >= stars )
             ]
-        , onClick (Msgs.PokemonVoteCast { pokemonNumber = pokemonNumber, vote = stars })
+        , onClick (PokemonVoteCast { pokemonNumber = pokemonNumber, vote = stars })
         , title <| currentUserName ++ ": " ++ toString stars
         ]
         []
@@ -120,8 +120,8 @@ noVoteWidgetElement =
     text ""
 
 
-ratingNode : UserRating -> Html Msg
-ratingNode rating =
+ratingNode : Maybe Int -> UserRating -> Html Msg
+ratingNode highlightedUserId rating =
     let
         star =
             span
@@ -139,17 +139,21 @@ ratingNode rating =
         span
             [ title userTitle
             , attribute "data-voter" (toString rating.id)
+            , classList
+                [ ( "highlight", highlightedUserId == Just rating.id )
+                ]
             , style [ ( "color", rating.color ) ]
+            , onClick (UserHighlightClicked rating.id)
             ]
         <|
             List.repeat rating.rating star
 
 
-ratingWidget : TeamRating -> Html Msg -> Html Msg
-ratingWidget otherUsersRating voteWidgetElement =
+ratingWidget : TeamRating -> Html Msg -> Maybe Int -> Html Msg
+ratingWidget otherUsersRating voteWidgetElement highlightedUserId =
     let
         ratingNodes =
-            List.map ratingNode otherUsersRating
+            List.map (ratingNode highlightedUserId) otherUsersRating
     in
         div
             [ class "rating-nodes"
@@ -213,8 +217,8 @@ variantLinks pokemonName description variants =
     List.map (variantLink pokemonName description) variants
 
 
-pokemonTile : Route -> Bool -> Winner -> RemoteTeamRatings -> User -> Pokemon -> Html Msg
-pokemonTile currentRoute isLocked winner ratings currentUser pokemon =
+pokemonTile : Route -> Bool -> Winner -> RemoteTeamRatings -> User -> Maybe Int -> Pokemon -> Html Msg
+pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId pokemon =
     let
         isWinner =
             winner
@@ -249,7 +253,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser pokemon =
 
         formattedRating =
             if isLocked then
-                [ ratingWidget teamRating noVoteWidgetElement ]
+                [ ratingWidget teamRating noVoteWidgetElement highlightedUserId ]
             else
                 let
                     ( currentUserRating, otherUsersRating ) =
@@ -263,7 +267,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser pokemon =
                             Just actualUserName ->
                                 voteWidget currentUserRating pokemon.number actualUserName
                 in
-                    [ ratingWidget otherUsersRating voteWidgetElement ]
+                    [ ratingWidget otherUsersRating voteWidgetElement highlightedUserId ]
     in
         div
             [ classList
@@ -283,7 +287,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser pokemon =
                     [ classList
                         [ ( "left-arrow", List.length pokemon.variants > 1 )
                         ]
-                    , onClick (Msgs.VariantChanged pokemon.number Prev)
+                    , onClick (VariantChanged pokemon.number Prev)
                     ]
                     []
                 , div [ class "pokemon-image-box" ]
@@ -301,7 +305,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser pokemon =
                     [ classList
                         [ ( "right-arrow", List.length pokemon.variants > 1 )
                         ]
-                    , onClick (Msgs.VariantChanged pokemon.number Next)
+                    , onClick (VariantChanged pokemon.number Next)
                     ]
                     []
                 ]
@@ -318,8 +322,8 @@ pokemonTile currentRoute isLocked winner ratings currentUser pokemon =
                    )
 
 
-pokemonTiles : Route -> Maybe Page -> List Pokemon -> RemoteTeamRatings -> User -> List (Html Msg)
-pokemonTiles currentRoute currentPage pokelist ratings currentUser =
+pokemonTiles : Route -> Maybe Page -> List Pokemon -> RemoteTeamRatings -> User -> Maybe Int -> List (Html Msg)
+pokemonTiles currentRoute currentPage pokelist ratings currentUser highlightedUserId =
     let
         winner =
             getWinner currentPage
@@ -327,7 +331,7 @@ pokemonTiles currentRoute currentPage pokelist ratings currentUser =
         isLocked =
             isPageLocked currentRoute currentPage
     in
-        List.map (pokemonTile currentRoute isLocked winner ratings currentUser) pokelist
+        List.map (pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId) pokelist
 
 
 pokemonCanvas : ApplicationState -> Html Msg
@@ -356,7 +360,13 @@ pokemonCanvas state =
                         if List.length list == 0 then
                             emptyCanvas
                         else
-                            pokemonTiles state.currentRoute currentPage list state.ratings state.currentUser
+                            pokemonTiles
+                                state.currentRoute
+                                currentPage
+                                list
+                                state.ratings
+                                state.currentUser
+                                state.highlightedUserId
                     )
                 |> Maybe.withDefault
                     []
