@@ -2,14 +2,14 @@ module Main exposing (main)
 
 import Control
 import Result
-import Time exposing (millisecond)
+import Time exposing (millisecond, second)
 import Navigation exposing (programWithFlags, Location, newUrl)
 import RemoteData exposing (RemoteData(..))
 import Json.Encode as Encode exposing (Value)
 import Msgs exposing (Msg(..))
 import Routing exposing (parseLocation, createBrowseModePath)
 import Models exposing (ApplicationState)
-import Models.Types exposing (StatusLevel(None), Route(..), BrowseMode(..))
+import Models.Types exposing (StatusLevel(..), Route(..), BrowseMode(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
 import View exposing (view)
 import Update exposing (update)
@@ -59,7 +59,11 @@ init credentials location =
         ( initialSubpage, initialQuery, urlCmd ) =
             case currentRoute of
                 Browse mode subPage ->
-                    ( Just subPage, "", newUrl <| createBrowseModePath mode subPage.generation subPage.letter )
+                    let
+                        urlString =
+                            createBrowseModePath mode subPage.generation subPage.letter
+                    in
+                        ( Just subPage, "", newUrl urlString )
 
                 Search query ->
                     ( Nothing, query, getTodayTimeCmd )
@@ -81,8 +85,8 @@ init credentials location =
             , pages = RemoteData.NotAsked
             , ratings = RemoteData.NotAsked
             , debounceState = Control.initialState
-            , statusMessage = ""
-            , statusLevel = None
+            , statusMessage = "Loading..."
+            , statusLevel = Notice
             , statusExpiryTime = Nothing
             }
     in

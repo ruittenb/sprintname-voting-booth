@@ -173,33 +173,9 @@ letterButtons : Route -> RemotePokedex -> Maybe SubPage -> Html Msg
 letterButtons currentRoute pokedex subPage =
     let
         buttonList =
-            case pokedex of
-                Success _ ->
-                    List.map
-                        (letterButton currentRoute pokedex subPage)
-                        allLetters
-
-                Failure _ ->
-                    []
-
-                _ ->
-                    let
-                        placeholder : List (Html Msg) -> Html Msg
-                        placeholder =
-                            div
-                                [ classList
-                                    [ ( "button", True )
-                                    , ( "letter-button-placeholder", True )
-                                    , ( "loading", False )
-                                    , ( "disabled", True )
-                                    ]
-                                ]
-                    in
-                        [ placeholder []
-                        , placeholder [ text "Loading..." ]
-                        , placeholder []
-                        , placeholder []
-                        ]
+            List.map
+                (letterButton currentRoute pokedex subPage)
+                allLetters
     in
         div [ id "letter-buttons" ] buttonList
 
