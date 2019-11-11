@@ -914,15 +914,19 @@
     "generation": 5,
     "id": 102,
     "letter": "R",
-    "open": true,
-    "startDate": "2019-10-29T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2019-10-29T00:00:00.000+01:00",
+    "winnerName": "Reshiram",
+    "winnerNum": 643
   },
   {
     "generation": 5,
     "id": 103,
     "letter": "S",
-    "open": true,
-    "startDate": "2019-11-12T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2019-11-12T00:00:00.000+01:00",
+    "winnerName": "Simisage",
+    "winnerNum": 512
   },
   {
     "generation": 5,
