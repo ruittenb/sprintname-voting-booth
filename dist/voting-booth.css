@@ -163,7 +163,6 @@ button.user-button.current,
     opacity: 1;
 }
 
-.button.letter-button-placeholder.disabled,
 .button.letter-button.disabled {
     border-color: #777;
     background-color: #eee;
@@ -171,35 +170,6 @@ button.user-button.current,
 
 .button.letter-button.disabled.current {
     background-color: rgba(230, 198, 230, 0.5); /* #e6c6e680; */
-}
-
-.button.letter-button-placeholder {
-    font-style: italic;
-    width: calc(100% - 4px);
-    height: 30px;
-    border: 1px solid black;
-    margin-bottom: 6px;
-}
-
-@media (max-width: 455px) {
-    .button.letter-button-placeholder {
-        width: calc(100% - 8px);
-    }
-}
-@media (min-width: 400px) {
-    .button.letter-button-placeholder:nth-child(4) {
-        display: none;
-    }
-}
-@media (min-width: 572px) {
-    .button.letter-button-placeholder:nth-child(1) {
-        display: none;
-    }
-}
-@media (min-width: 1145px) {
-    .button.letter-button-placeholder:nth-child(3) {
-        display: none;
-    }
 }
 
 .button.generation-button.transparent {
