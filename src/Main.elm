@@ -13,7 +13,7 @@ import Models.Types exposing (StatusLevel(..), Route(..), BrowseMode(..))
 import Models.Authentication as Authentication exposing (AuthenticationState(..))
 import View exposing (view)
 import Update exposing (update)
-import Commands exposing (getTodayTimeCmd)
+import Commands exposing (getTodayTimeCmd, getStatusMessageExpiryTime)
 import Commands.Authentication exposing (decodeUser)
 import Commands.Database exposing (firebaseInit, firebaseLoginWithJwtToken)
 import Commands.Settings exposing (decodeSettings)
@@ -89,9 +89,12 @@ init credentials location =
             , statusLevel = Notice
             , statusExpiryTime = Nothing
             }
+
+        statusExpiryCmd =
+            getStatusMessageExpiryTime Notice
     in
         ( initialState
-        , Cmd.batch [ authCmd, urlCmd ]
+        , Cmd.batch [ authCmd, urlCmd, statusExpiryCmd ]
         )
 
 

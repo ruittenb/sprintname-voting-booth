@@ -32,11 +32,16 @@ type alias ApplicationStateNoMessage =
     }
 
 
+type alias StatusMessage =
+    { message : String
+    , level : StatusLevel
+    , expiryTime : Maybe Time
+    }
+
+
 type alias StatusReporter x =
     { x
-        | statusMessage : String
-        , statusLevel : StatusLevel
-        , statusExpiryTime : Maybe Time
+        | statusMessageStack : List StatusMessage
     }
 
 

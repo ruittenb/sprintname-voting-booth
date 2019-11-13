@@ -35,11 +35,18 @@ setStatusMessage statusLevel statusMessage ( state, cmd ) =
                     [ cmd
                     , getStatusMessageExpiryTime statusLevel
                     ]
-    in
-        ( { state
-            | statusLevel = statusLevel
+
+        nextMsg =
+            { statusLevel = statusLevel
             , statusMessage = statusMessage
             , statusExpiryTime = Nothing
+            }
+
+        nextMsgStack =
+            nextMsg :: state.statusMessageStack
+    in
+        ( { state
+            | messageStack = nextMsgStack
           }
         , nextCmd
         )
