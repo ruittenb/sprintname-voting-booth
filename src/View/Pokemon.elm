@@ -334,6 +334,17 @@ pokemonTiles currentRoute currentPage pokelist ratings currentUser highlightedUs
         List.map (pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId) pokelist
 
 
+pageTitle : Maybe Page -> Html Msg
+pageTitle currentPage =
+    let
+        startDate =
+            currentPage
+                |> Maybe.andThen .startDate
+                |> Maybe.withDefault ""
+    in
+        h2 [] [ text <| "Sprint start: " ++ startDate ]
+
+
 pokemonCanvas : ApplicationState -> Html Msg
 pokemonCanvas state =
     let
@@ -371,4 +382,4 @@ pokemonCanvas state =
                 |> Maybe.withDefault
                     []
     in
-        div [ class "pokecanvas" ] canvasElements
+        div [ class "pokecanvas" ] (pageTitle currentPage :: canvasElements)
