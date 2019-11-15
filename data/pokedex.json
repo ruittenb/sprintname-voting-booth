@@ -13008,6 +13008,10 @@
       {
         "image": "823.png",
         "vname": ""
+      },
+      {
+        "image": "823-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13173,6 +13177,10 @@
       {
         "image": "834.png",
         "vname": ""
+      },
+      {
+        "image": "834-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13698,6 +13706,10 @@
       {
         "image": "869.png",
         "vname": ""
+      },
+      {
+        "image": "869-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13816,8 +13828,12 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Morpeko_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "877.png",
-        "vname": ""
+        "image": "877-full.png",
+        "vname": "Full"
+      },
+      {
+        "image": "877-hangry.png",
+        "vname": "Hangry"
       }
     ]
   },
