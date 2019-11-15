@@ -1,0 +1,29 @@
+#!/usr/bin/env bash 
+
+# Input file should contain two tab-separated columns, with number and name
+
+IFS=$'\t'
+
+cat list | while read num name; do
+
+letter=${name:0:1}
+
+cat <<_endJson_
+  {
+    "description": "",
+    "generation": 8,
+    "id": $num,
+    "letter": "$letter",
+    "name": "$name",
+    "number": $num,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/${name}_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "$num.png",
+        "vname": ""
+      }
+    ]
+  },
+_endJson_
+
+done > gen8.json

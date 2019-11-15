@@ -12820,10 +12820,10 @@
     "description": "",
     "generation": 8,
     "id": 811,
-    "letter": " ",
-    "name": "",
+    "letter": "T",
+    "name": "Thwackey",
     "number": 811,
-    "url": "",
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Thwackey_(Pok%C3%A9mon)",
     "variants": [
       {
         "image": "811.png",
@@ -12835,10 +12835,10 @@
     "description": "",
     "generation": 8,
     "id": 812,
-    "letter": " ",
-    "name": "",
+    "letter": "R",
+    "name": "Rillaboom",
     "number": 812,
-    "url": "",
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Rillaboom_(Pok%C3%A9mon)",
     "variants": [
       {
         "image": "812.png",
@@ -12865,10 +12865,10 @@
     "description": "",
     "generation": 8,
     "id": 814,
-    "letter": " ",
-    "name": "",
+    "letter": "R",
+    "name": "Raboot",
     "number": 814,
-    "url": "",
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Raboot_(Pok%C3%A9mon)",
     "variants": [
       {
         "image": "814.png",
@@ -12880,10 +12880,10 @@
     "description": "",
     "generation": 8,
     "id": 815,
-    "letter": " ",
-    "name": "",
+    "letter": "C",
+    "name": "Cinderace",
     "number": 815,
-    "url": "",
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cinderace_(Pok%C3%A9mon)",
     "variants": [
       {
         "image": "815.png",
@@ -12902,6 +12902,1132 @@
     "variants": [
       {
         "image": "816.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 817,
+    "letter": "D",
+    "name": "Drizzile",
+    "number": 817,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Drizzile_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "817.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 818,
+    "letter": "I",
+    "name": "Inteleon",
+    "number": 818,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Inteleon_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "818.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 819,
+    "letter": "S",
+    "name": "Skwovet",
+    "number": 819,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Skwovet_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "819.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 820,
+    "letter": "G",
+    "name": "Greedent",
+    "number": 820,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Greedent_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "820.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 821,
+    "letter": "R",
+    "name": "Rookidee",
+    "number": 821,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Rookidee_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "821.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 822,
+    "letter": "C",
+    "name": "Corvisquire",
+    "number": 822,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Corvisquire_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "822.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 823,
+    "letter": "C",
+    "name": "Corviknight",
+    "number": 823,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Corviknight_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "823.png",
+        "vname": ""
+      },
+      {
+        "image": "823-gigantamax.png",
+        "vname": "Gigantamax"
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 824,
+    "letter": "B",
+    "name": "Blipbug",
+    "number": 824,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Blipbug_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "824.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 825,
+    "letter": "D",
+    "name": "Dottler",
+    "number": 825,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dottler_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "825.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 826,
+    "letter": "O",
+    "name": "Orbeetle",
+    "number": 826,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Orbeetle_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "826.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 827,
+    "letter": "N",
+    "name": "Nickit",
+    "number": 827,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Nickit_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "827.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 828,
+    "letter": "T",
+    "name": "Thievul",
+    "number": 828,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Thievul_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "828.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 829,
+    "letter": "G",
+    "name": "Gossifleur",
+    "number": 829,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Gossifleur_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "829.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 830,
+    "letter": "E",
+    "name": "Eldegoss",
+    "number": 830,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Eldegoss_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "830.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 831,
+    "letter": "W",
+    "name": "Wooloo",
+    "number": 831,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wooloo_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "831.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 832,
+    "letter": "D",
+    "name": "Dubwool",
+    "number": 832,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dubwool_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "832.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 833,
+    "letter": "C",
+    "name": "Chewtle",
+    "number": 833,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Chewtle_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "833.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 834,
+    "letter": "D",
+    "name": "Drednaw",
+    "number": 834,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Drednaw_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "834.png",
+        "vname": ""
+      },
+      {
+        "image": "834-gigantamax.png",
+        "vname": "Gigantamax"
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 835,
+    "letter": "Y",
+    "name": "Yamper",
+    "number": 835,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Yamper_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "835.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 836,
+    "letter": "B",
+    "name": "Boltund",
+    "number": 836,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Boltund_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "836.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 837,
+    "letter": "R",
+    "name": "Rolycoly",
+    "number": 837,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Rolycoly_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "837.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 838,
+    "letter": "C",
+    "name": "Carkol",
+    "number": 838,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Carkol_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "838.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 839,
+    "letter": "C",
+    "name": "Coalossal",
+    "number": 839,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Coalossal_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "839.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 840,
+    "letter": "A",
+    "name": "Applin",
+    "number": 840,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Applin_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "840.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 841,
+    "letter": "F",
+    "name": "Flapple",
+    "number": 841,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Flapple_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "841.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 842,
+    "letter": "A",
+    "name": "Appletun",
+    "number": 842,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Appletun_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "842.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 843,
+    "letter": "S",
+    "name": "Silicobra",
+    "number": 843,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Silicobra_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "843.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 844,
+    "letter": "S",
+    "name": "Sandaconda",
+    "number": 844,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sandaconda_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "844.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 845,
+    "letter": "C",
+    "name": "Cramorant",
+    "number": 845,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cramorant_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "845.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 846,
+    "letter": "A",
+    "name": "Arrokuda",
+    "number": 846,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Arrokuda_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "846.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 847,
+    "letter": "B",
+    "name": "Barraskewda",
+    "number": 847,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Barraskewda_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "847.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 848,
+    "letter": "T",
+    "name": "Toxel",
+    "number": 848,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Toxel_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "848.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 849,
+    "letter": "T",
+    "name": "Toxtricity",
+    "number": 849,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Toxtricity_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "849.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 850,
+    "letter": "S",
+    "name": "Sizzlipede",
+    "number": 850,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sizzlipede_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "850.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 851,
+    "letter": "C",
+    "name": "Centiskorch",
+    "number": 851,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Centiskorch_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "851.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 852,
+    "letter": "C",
+    "name": "Clobbopus",
+    "number": 852,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Clobbopus_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "852.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 853,
+    "letter": "G",
+    "name": "Grapploct",
+    "number": 853,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Grapploct_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "853.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 854,
+    "letter": "S",
+    "name": "Sinistea",
+    "number": 854,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sinistea_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "854.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 855,
+    "letter": "P",
+    "name": "Polteageist",
+    "number": 855,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Polteageist_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "855.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 856,
+    "letter": "H",
+    "name": "Hatenna",
+    "number": 856,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Hatenna_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "856.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 857,
+    "letter": "H",
+    "name": "Hattrem",
+    "number": 857,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Hattrem_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "857.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 858,
+    "letter": "H",
+    "name": "Hatterene",
+    "number": 858,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Hatterene_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "858.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 859,
+    "letter": "I",
+    "name": "Impidimp",
+    "number": 859,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Impidimp_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "859.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 860,
+    "letter": "M",
+    "name": "Morgrem",
+    "number": 860,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Morgrem_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "860.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 861,
+    "letter": "G",
+    "name": "Grimmsnarl",
+    "number": 861,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Grimmsnarl_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "861.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 862,
+    "letter": "O",
+    "name": "Obstagoon",
+    "number": 862,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Obstagoon_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "862.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 863,
+    "letter": "P",
+    "name": "Perrserker",
+    "number": 863,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Perrserker_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "863.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 864,
+    "letter": "C",
+    "name": "Cursola",
+    "number": 864,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cursola_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "864.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 865,
+    "letter": "S",
+    "name": "Sirfetch'd",
+    "number": 865,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sirfetch'd_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "865.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 866,
+    "letter": "M",
+    "name": "Mr. Rime",
+    "number": 866,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Mr._Rime_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "866.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 867,
+    "letter": "R",
+    "name": "Runerigus",
+    "number": 867,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Runerigus_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "867.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 868,
+    "letter": "M",
+    "name": "Milcery",
+    "number": 868,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Milcery_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "868.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 869,
+    "letter": "A",
+    "name": "Alcremie",
+    "number": 869,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Alcremie_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "869.png",
+        "vname": ""
+      },
+      {
+        "image": "869-gigantamax.png",
+        "vname": "Gigantamax"
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 870,
+    "letter": "F",
+    "name": "Falinks",
+    "number": 870,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Falinks_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "870.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 871,
+    "letter": "P",
+    "name": "Pincurchin",
+    "number": 871,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Pincurchin_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "871.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 872,
+    "letter": "S",
+    "name": "Snom",
+    "number": 872,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Snom_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "872.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 873,
+    "letter": "F",
+    "name": "Frosmoth",
+    "number": 873,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Frosmoth_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "873.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 874,
+    "letter": "S",
+    "name": "Stonjourner",
+    "number": 874,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Stonjourner_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "874.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 875,
+    "letter": "E",
+    "name": "Eiscue",
+    "number": 875,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Eiscue_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "875.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 876,
+    "letter": "I",
+    "name": "Indeedee",
+    "number": 876,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Indeedee_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "876.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 877,
+    "letter": "M",
+    "name": "Morpeko",
+    "number": 877,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Morpeko_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "877-full.png",
+        "vname": "Full"
+      },
+      {
+        "image": "877-hangry.png",
+        "vname": "Hangry"
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 878,
+    "letter": "C",
+    "name": "Cufant",
+    "number": 878,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Cufant_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "878.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 879,
+    "letter": "C",
+    "name": "Copperajah",
+    "number": 879,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Copperajah_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "879.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 880,
+    "letter": "D",
+    "name": "Dracozolt",
+    "number": 880,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dracozolt_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "880.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 881,
+    "letter": "A",
+    "name": "Arctozolt",
+    "number": 881,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Arctozolt_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "881.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 882,
+    "letter": "D",
+    "name": "Dracovish",
+    "number": 882,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dracovish_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "882.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 883,
+    "letter": "A",
+    "name": "Arctovish",
+    "number": 883,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Arctovish_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "883.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 884,
+    "letter": "D",
+    "name": "Duraludon",
+    "number": 884,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Duraludon_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "884.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 885,
+    "letter": "D",
+    "name": "Dreepy",
+    "number": 885,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dreepy_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "885.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 886,
+    "letter": "D",
+    "name": "Drakloak",
+    "number": 886,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Drakloak_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "886.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 887,
+    "letter": "D",
+    "name": "Dragapult",
+    "number": 887,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Dragapult_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "887.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 888,
+    "letter": "Z",
+    "name": "Zacian",
+    "number": 888,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Zacian_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "888.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 889,
+    "letter": "Z",
+    "name": "Zamazenta",
+    "number": 889,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Zamazenta_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "889.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": 8,
+    "id": 890,
+    "letter": "E",
+    "name": "Eternatus",
+    "number": 890,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Eternatus_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "890.png",
         "vname": ""
       }
     ]
