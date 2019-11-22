@@ -38,6 +38,11 @@ noBreakingSpace =
     "\x00A0"
 
 
+dateTemplate : String
+dateTemplate =
+    "EEEE, MMMM d, y"
+
+
 allGenerations : List Int
 allGenerations =
     List.range 1 maxGeneration

@@ -2,11 +2,13 @@ module View.Pokemon exposing (pokemonCanvas)
 
 import List
 import Maybe
+import Date
+import Date.Extra
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
-import Constants exposing (maxStars, imageDir, thumbnailDir, noBreakingSpace)
+import Constants exposing (maxStars, imageDir, thumbnailDir, noBreakingSpace, dateTemplate)
 import Helpers exposing (romanNumeral)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Pokemon
@@ -334,15 +336,23 @@ pokemonTiles currentRoute currentPage pokelist ratings currentUser highlightedUs
         List.map (pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId) pokelist
 
 
-pageTitle : Maybe Page -> Html Msg
-pageTitle currentPage =
+getDateTitle : String -> String
+getDateTitle startDate =
+    Date.fromString startDate
+        |> Result.map (Date.Extra.toFormattedString dateTemplate)
+        |> Result.map ((++) "Sprint start: ")
+        |> Result.withDefault ""
+
+
+dateTitle : Maybe Page -> Html Msg
+dateTitle currentPage =
     let
         startDate =
             currentPage
                 |> Maybe.andThen .startDate
                 |> Maybe.withDefault ""
     in
-        h2 [] [ text <| "Sprint start: " ++ startDate ]
+        h2 [ class "date-heading" ] [ getDateTitle startDate |> text ]
 
 
 pokemonCanvas : ApplicationState -> Html Msg
@@ -382,4 +392,4 @@ pokemonCanvas state =
                 |> Maybe.withDefault
                     []
     in
-        div [ class "pokecanvas" ] (pageTitle currentPage :: canvasElements)
+        div [ class "pokecanvas" ] (dateTitle currentPage :: canvasElements)
