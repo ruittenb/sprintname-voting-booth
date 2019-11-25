@@ -1131,6 +1131,10 @@
       {
         "image": "068.png",
         "vname": ""
+      },
+      {
+        "image": "068-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -1545,6 +1549,10 @@
       {
         "image": "094-mega.png",
         "vname": "Mega Form"
+      },
+      {
+        "image": "094-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -1620,6 +1628,10 @@
       {
         "image": "099.png",
         "vname": ""
+      },
+      {
+        "image": "099-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -2124,6 +2136,10 @@
       {
         "image": "131.png",
         "vname": ""
+      },
+      {
+        "image": "131-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -9062,6 +9078,10 @@
       {
         "image": "569.png",
         "vname": ""
+      },
+      {
+        "image": "569-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13057,6 +13077,10 @@
       {
         "image": "826.png",
         "vname": ""
+      },
+      {
+        "image": "826-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13256,6 +13280,10 @@
       {
         "image": "839.png",
         "vname": ""
+      },
+      {
+        "image": "839-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13286,6 +13314,10 @@
       {
         "image": "841.png",
         "vname": ""
+      },
+      {
+        "image": "841-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13331,6 +13363,10 @@
       {
         "image": "844.png",
         "vname": ""
+      },
+      {
+        "image": "844-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13436,6 +13472,10 @@
       {
         "image": "851.png",
         "vname": ""
+      },
+      {
+        "image": "851-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13541,6 +13581,10 @@
       {
         "image": "858.png",
         "vname": ""
+      },
+      {
+        "image": "858-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13586,6 +13630,10 @@
       {
         "image": "861.png",
         "vname": ""
+      },
+      {
+        "image": "861-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13864,6 +13912,10 @@
       {
         "image": "879.png",
         "vname": ""
+      },
+      {
+        "image": "879-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13939,6 +13991,10 @@
       {
         "image": "884.png",
         "vname": ""
+      },
+      {
+        "image": "884-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
@@ -13997,8 +14053,12 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Zacian_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "888.png",
-        "vname": ""
+        "image": "888-crowned.png",
+        "vname": "Crowned Sword"
+      },
+      {
+        "image": "888-hero.png",
+        "vname": "Hero of Many Battles"
       }
     ]
   },
@@ -14012,8 +14072,12 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Zamazenta_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "889.png",
-        "vname": ""
+        "image": "889-crowned.png",
+        "vname": "Crowned Shield"
+      },
+      {
+        "image": "889-hero.png",
+        "vname": "Hero of Many Battles"
       }
     ]
   },
