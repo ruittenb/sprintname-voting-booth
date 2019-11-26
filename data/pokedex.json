@@ -1993,6 +1993,10 @@
       {
         "image": "122.png",
         "vname": ""
+      },
+      {
+        "image": "122-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
@@ -8849,6 +8853,10 @@
       {
         "image": "554.png",
         "vname": ""
+      },
+      {
+        "image": "554-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
@@ -8868,6 +8876,10 @@
       {
         "image": "555-zen.png",
         "vname": "Zen Mode"
+      },
+      {
+        "image": "555-galarian-normal.png",
+        "vname": "Galarian Normal Mode"
       }
     ]
   },
@@ -8973,6 +8985,10 @@
       {
         "image": "562.png",
         "vname": ""
+      },
+      {
+        "image": "562-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
@@ -9849,6 +9865,10 @@
       {
         "image": "618.png",
         "vname": ""
+      },
+      {
+        "image": "618-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
