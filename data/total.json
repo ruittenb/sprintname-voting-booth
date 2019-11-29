@@ -2298,6 +2298,10 @@
           "vname": "Alola Form"
         },
         {
+          "image": "052-galarian.png",
+          "vname": "Galarian"
+        },
+        {
           "image": "052-gigantamax.png",
           "vname": "Gigantamax"
         }
@@ -5066,6 +5070,10 @@
         {
           "image": "222.png",
           "vname": ""
+        },
+        {
+          "image": "222-galarian.png",
+          "vname": "Galarian"
         }
       ]
     },
@@ -15285,6 +15293,10 @@
         {
           "image": "875.png",
           "vname": ""
+        },
+        {
+          "image": "875-no-ice.png",
+          "vname": "No Ice Form"
         }
       ]
     },
