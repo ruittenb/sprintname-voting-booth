@@ -344,15 +344,24 @@ getDateTitle startDate =
         |> Result.withDefault ""
 
 
-dateTitle : Maybe Page -> Html Msg
-dateTitle currentPage =
+dateTitle : Route -> Maybe Page -> Html Msg
+dateTitle currentRoute currentPage =
     let
-        startDate =
-            currentPage
-                |> Maybe.andThen .startDate
-                |> Maybe.withDefault ""
+        dateTitleString =
+            case currentRoute of
+                Browse _ _ ->
+                    currentPage
+                        |> Maybe.andThen .startDate
+                        |> Maybe.withDefault ""
+                        |> getDateTitle
+
+                Search _ ->
+                    "Search results:"
+
+                _ ->
+                    ""
     in
-        h2 [ class "date-heading" ] [ getDateTitle startDate |> text ]
+        h2 [ class "date-heading" ] [ text dateTitleString ]
 
 
 pokemonCanvas : ApplicationState -> Html Msg
@@ -391,5 +400,8 @@ pokemonCanvas state =
                     )
                 |> Maybe.withDefault
                     []
+
+        pageTitleElement =
+            dateTitle state.currentRoute currentPage
     in
-        div [ class "pokecanvas" ] (dateTitle currentPage :: canvasElements)
+        div [ class "pokecanvas" ] (pageTitleElement :: canvasElements)
