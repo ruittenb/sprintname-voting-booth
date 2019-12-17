@@ -13468,8 +13468,16 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Toxtricity_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "849.png",
-        "vname": ""
+        "image": "849-amped.png",
+        "vname": "Amped Form"
+      },
+      {
+        "image": "849-low-key.png",
+        "vname": "Low Key Form"
+      },
+      {
+        "image": "849-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
