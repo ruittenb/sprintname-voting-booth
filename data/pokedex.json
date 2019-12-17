@@ -13874,12 +13874,12 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Eiscue_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "875.png",
-        "vname": ""
+        "image": "875-ice.png",
+        "vname": "Ice Face"
       },
       {
         "image": "875-no-ice.png",
-        "vname": "No Ice Form"
+        "vname": "No Ice Face"
       }
     ]
   },
