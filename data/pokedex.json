@@ -2336,6 +2336,10 @@
       {
         "image": "143.png",
         "vname": ""
+      },
+      {
+        "image": "143-gigantamax.png",
+        "vname": "Gigantamax"
       }
     ]
   },
