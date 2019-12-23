@@ -950,8 +950,10 @@
     "generation": 5,
     "id": 106,
     "letter": "V",
-    "open": true,
-    "startDate": "2019-12-24T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2019-12-24T00:00:00.000+01:00",
+    "winnerName": "Victini",
+    "winnerNum": 494
   },
   {
     "generation": 5,
