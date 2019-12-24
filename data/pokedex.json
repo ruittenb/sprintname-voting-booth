@@ -8356,11 +8356,11 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Unfezant_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "521-m.png",
+        "image": "521-male.png",
         "vname": "Male"
       },
       {
-        "image": "521-f.png",
+        "image": "521-female.png",
         "vname": "Female"
       }
     ]
@@ -9477,11 +9477,11 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Frillish_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "592-m.png",
+        "image": "592-male.png",
         "vname": "Male"
       },
       {
-        "image": "592-f.png",
+        "image": "592-female.png",
         "vname": "Female"
       }
     ]
@@ -9496,11 +9496,11 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Jellicent_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "593-m.png",
+        "image": "593-male.png",
         "vname": "Male"
       },
       {
-        "image": "593-f.png",
+        "image": "593-female.png",
         "vname": "Female"
       }
     ]
@@ -10661,11 +10661,11 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Pyroar_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "668-m.png",
+        "image": "668-male.png",
         "vname": "Male"
       },
       {
-        "image": "668-f.png",
+        "image": "668-female.png",
         "vname": "Female"
       }
     ]
@@ -10815,11 +10815,11 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Meowstic_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "678-m.png",
+        "image": "678-male.png",
         "vname": "Male"
       },
       {
-        "image": "678-f.png",
+        "image": "678-female.png",
         "vname": "Female"
       }
     ]
@@ -13905,8 +13905,12 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Indeedee_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "876.png",
-        "vname": ""
+        "image": "876-male.png",
+        "vname": "Male"
+      },
+      {
+        "image": "876-female.png",
+        "vname": "Female"
       }
     ]
   },
