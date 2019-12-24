@@ -952,7 +952,7 @@
       "id": 106,
       "letter": "V",
       "open": false,
-      "startDate": "2019-12-24T00:00:00.000+01:00",
+      "startDate": "2020-01-07T00:00:00.000+01:00",
       "winnerName": "Victini",
       "winnerNum": 494
     },
@@ -961,462 +961,462 @@
       "id": 107,
       "letter": "W",
       "open": true,
-      "startDate": "2020-01-07T00:00:00.000+01:00"
+      "startDate": "2020-01-21T00:00:00.000+01:00"
     },
     {
       "generation": 5,
       "id": 108,
       "letter": "Y",
       "open": true,
-      "startDate": "2020-01-21T00:00:00.000+01:00"
+      "startDate": "2020-02-04T00:00:00.000+01:00"
     },
     {
       "generation": 5,
       "id": 109,
       "letter": "Z",
       "open": true,
-      "startDate": "2020-02-04T00:00:00.000+01:00"
+      "startDate": "2020-02-18T00:00:00.000+01:00"
     },
     {
       "generation": 6,
       "id": 110,
       "letter": "A",
       "open": true,
-      "startDate": "2020-02-18T00:00:00.000+01:00"
+      "startDate": "2020-03-03T00:00:00.000+01:00"
     },
     {
       "generation": 6,
       "id": 111,
       "letter": "B",
       "open": true,
-      "startDate": "2020-03-03T00:00:00.000+01:00"
+      "startDate": "2020-03-17T00:00:00.000+01:00"
     },
     {
       "generation": 6,
       "id": 112,
       "letter": "C",
       "open": true,
-      "startDate": "2020-03-17T00:00:00.000+01:00"
+      "startDate": "2020-03-31T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 113,
       "letter": "D",
       "open": true,
-      "startDate": "2020-03-31T00:00:00.000+02:00"
+      "startDate": "2020-04-14T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 114,
       "letter": "E",
       "open": true,
-      "startDate": "2020-04-14T00:00:00.000+02:00"
+      "startDate": "2020-04-28T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 115,
       "letter": "F",
       "open": true,
-      "startDate": "2020-04-28T00:00:00.000+02:00"
+      "startDate": "2020-05-12T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 116,
       "letter": "G",
       "open": true,
-      "startDate": "2020-05-12T00:00:00.000+02:00"
+      "startDate": "2020-05-26T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 117,
       "letter": "H",
       "open": true,
-      "startDate": "2020-05-26T00:00:00.000+02:00"
+      "startDate": "2020-06-09T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 118,
       "letter": "I",
       "open": true,
-      "startDate": "2020-06-09T00:00:00.000+02:00"
+      "startDate": "2020-06-23T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 119,
       "letter": "K",
       "open": true,
-      "startDate": "2020-06-23T00:00:00.000+02:00"
+      "startDate": "2020-07-07T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 120,
       "letter": "L",
       "open": true,
-      "startDate": "2020-07-07T00:00:00.000+02:00"
+      "startDate": "2020-07-21T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 121,
       "letter": "M",
       "open": true,
-      "startDate": "2020-07-21T00:00:00.000+02:00"
+      "startDate": "2020-08-04T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 122,
       "letter": "N",
       "open": true,
-      "startDate": "2020-08-04T00:00:00.000+02:00"
+      "startDate": "2020-08-18T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 123,
       "letter": "P",
       "open": true,
-      "startDate": "2020-08-18T00:00:00.000+02:00"
+      "startDate": "2020-09-01T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 124,
       "letter": "Q",
       "open": true,
-      "startDate": "2020-09-01T00:00:00.000+02:00"
+      "startDate": "2020-09-15T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 125,
       "letter": "S",
       "open": true,
-      "startDate": "2020-09-15T00:00:00.000+02:00"
+      "startDate": "2020-09-29T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 126,
       "letter": "T",
       "open": true,
-      "startDate": "2020-09-29T00:00:00.000+02:00"
+      "startDate": "2020-10-13T00:00:00.000+02:00"
     },
     {
       "generation": 6,
       "id": 127,
       "letter": "V",
       "open": true,
-      "startDate": "2020-10-13T00:00:00.000+02:00"
+      "startDate": "2020-10-27T00:00:00.000+01:00"
     },
     {
       "generation": 6,
       "id": 128,
       "letter": "X",
       "open": true,
-      "startDate": "2020-10-27T00:00:00.000+01:00"
+      "startDate": "2020-11-10T00:00:00.000+01:00"
     },
     {
       "generation": 6,
       "id": 129,
       "letter": "Y",
       "open": true,
-      "startDate": "2020-11-10T00:00:00.000+01:00"
+      "startDate": "2020-11-24T00:00:00.000+01:00"
     },
     {
       "generation": 6,
       "id": 130,
       "letter": "Z",
       "open": true,
-      "startDate": "2020-11-24T00:00:00.000+01:00"
+      "startDate": "2020-12-08T00:00:00.000+01:00"
     },
     {
       "generation": 7,
       "id": 131,
       "letter": "A",
       "open": true,
-      "startDate": "2020-12-08T00:00:00.000+01:00"
+      "startDate": "2020-12-22T00:00:00.000+01:00"
     },
     {
       "generation": 7,
       "id": 132,
       "letter": "B",
       "open": true,
-      "startDate": "2020-12-22T00:00:00.000+01:00"
+      "startDate": "2021-01-05T00:00:00.000+01:00"
     },
     {
       "generation": 7,
       "id": 133,
       "letter": "C",
       "open": true,
-      "startDate": "2021-01-05T00:00:00.000+01:00"
+      "startDate": "2021-01-19T00:00:00.000+01:00"
     },
     {
       "generation": 7,
       "id": 134,
       "letter": "D",
       "open": true,
-      "startDate": "2021-01-19T00:00:00.000+01:00"
+      "startDate": "2021-02-02T00:00:00.000+01:00"
     },
     {
       "generation": 7,
       "id": 135,
       "letter": "F",
       "open": true,
-      "startDate": "2021-02-02T00:00:00.000+01:00"
+      "startDate": "2021-02-16T00:00:00.000+01:00"
     },
     {
       "generation": 7,
       "id": 136,
       "letter": "G",
       "open": true,
-      "startDate": "2021-02-16T00:00:00.000+01:00"
+      "startDate": "2021-03-02T00:00:00.000+01:00"
     },
     {
       "generation": 7,
       "id": 137,
       "letter": "H",
       "open": true,
-      "startDate": "2021-03-02T00:00:00.000+01:00"
+      "startDate": "2021-03-16T00:00:00.000+01:00"
     },
     {
       "generation": 7,
       "id": 138,
       "letter": "I",
       "open": true,
-      "startDate": "2021-03-16T00:00:00.000+01:00"
+      "startDate": "2021-03-30T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 139,
       "letter": "J",
       "open": true,
-      "startDate": "2021-03-30T00:00:00.000+02:00"
+      "startDate": "2021-04-13T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 140,
       "letter": "K",
       "open": true,
-      "startDate": "2021-04-13T00:00:00.000+02:00"
+      "startDate": "2021-04-27T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 141,
       "letter": "L",
       "open": true,
-      "startDate": "2021-04-27T00:00:00.000+02:00"
+      "startDate": "2021-05-11T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 142,
       "letter": "M",
       "open": true,
-      "startDate": "2021-05-11T00:00:00.000+02:00"
+      "startDate": "2021-05-25T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 143,
       "letter": "N",
       "open": true,
-      "startDate": "2021-05-25T00:00:00.000+02:00"
+      "startDate": "2021-06-08T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 144,
       "letter": "O",
       "open": true,
-      "startDate": "2021-06-08T00:00:00.000+02:00"
+      "startDate": "2021-06-22T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 145,
       "letter": "P",
       "open": true,
-      "startDate": "2021-06-22T00:00:00.000+02:00"
+      "startDate": "2021-07-06T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 146,
       "letter": "R",
       "open": true,
-      "startDate": "2021-07-06T00:00:00.000+02:00"
+      "startDate": "2021-07-20T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 147,
       "letter": "S",
       "open": true,
-      "startDate": "2021-07-20T00:00:00.000+02:00"
+      "startDate": "2021-08-03T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 148,
       "letter": "T",
       "open": true,
-      "startDate": "2021-08-03T00:00:00.000+02:00"
+      "startDate": "2021-08-17T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 149,
       "letter": "V",
       "open": true,
-      "startDate": "2021-08-17T00:00:00.000+02:00"
+      "startDate": "2021-08-31T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 150,
       "letter": "W",
       "open": true,
-      "startDate": "2021-08-31T00:00:00.000+02:00"
+      "startDate": "2021-09-14T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 151,
       "letter": "X",
       "open": true,
-      "startDate": "2021-09-14T00:00:00.000+02:00"
+      "startDate": "2021-09-28T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 152,
       "letter": "Y",
       "open": true,
-      "startDate": "2021-09-28T00:00:00.000+02:00"
+      "startDate": "2021-10-12T00:00:00.000+02:00"
     },
     {
       "generation": 7,
       "id": 153,
       "letter": "Z",
       "open": true,
-      "startDate": "2021-10-12T00:00:00.000+02:00"
+      "startDate": "2021-10-26T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 154,
       "letter": "A",
       "open": true,
-      "startDate": "2021-10-26T00:00:00.000+02:00"
+      "startDate": "2021-11-09T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 155,
       "letter": "B",
       "open": true,
-      "startDate": "2021-11-09T00:00:00.000+01:00"
+      "startDate": "2021-11-23T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 156,
       "letter": "C",
       "open": true,
-      "startDate": "2021-11-23T00:00:00.000+01:00"
+      "startDate": "2021-12-07T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 157,
       "letter": "D",
       "open": true,
-      "startDate": "2021-12-07T00:00:00.000+01:00"
+      "startDate": "2021-12-21T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 158,
       "letter": "E",
       "open": true,
-      "startDate": "2021-12-21T00:00:00.000+01:00"
+      "startDate": "2022-01-04T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 159,
       "letter": "F",
       "open": true,
-      "startDate": "2022-01-04T00:00:00.000+01:00"
+      "startDate": "2022-01-18T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 160,
       "letter": "G",
       "open": true,
-      "startDate": "2022-01-18T00:00:00.000+01:00"
+      "startDate": "2022-02-01T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 161,
       "letter": "H",
       "open": true,
-      "startDate": "2022-02-01T00:00:00.000+01:00"
+      "startDate": "2022-02-15T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 162,
       "letter": "I",
       "open": true,
-      "startDate": "2022-02-15T00:00:00.000+01:00"
+      "startDate": "2022-03-01T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 163,
       "letter": "M",
       "open": true,
-      "startDate": "2022-03-01T00:00:00.000+01:00"
+      "startDate": "2022-03-15T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 164,
       "letter": "N",
       "open": true,
-      "startDate": "2022-03-15T00:00:00.000+01:00"
+      "startDate": "2022-03-29T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 165,
       "letter": "O",
       "open": true,
-      "startDate": "2022-03-29T00:00:00.000+02:00"
+      "startDate": "2022-04-12T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 166,
       "letter": "P",
       "open": true,
-      "startDate": "2022-04-12T00:00:00.000+02:00"
+      "startDate": "2022-04-26T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 167,
       "letter": "R",
       "open": true,
-      "startDate": "2022-04-26T00:00:00.000+02:00"
+      "startDate": "2022-05-10T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 168,
       "letter": "S",
       "open": true,
-      "startDate": "2022-05-10T00:00:00.000+02:00"
+      "startDate": "2022-05-24T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 169,
       "letter": "T",
       "open": true,
-      "startDate": "2022-05-24T00:00:00.000+02:00"
+      "startDate": "2022-06-07T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 170,
       "letter": "W",
       "open": true,
-      "startDate": "2022-06-07T00:00:00.000+02:00"
+      "startDate": "2022-06-21T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 171,
       "letter": "Y",
       "open": true,
-      "startDate": "2022-06-21T00:00:00.000+02:00"
+      "startDate": "2022-07-05T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 172,
       "letter": "Z",
       "open": true,
-      "startDate": "2022-07-05T00:00:00.000+02:00"
+      "startDate": "2022-07-19T00:00:00.000+02:00"
     }
   ],
   "pokedex": [
