@@ -35,6 +35,11 @@ import View.Calculations
         )
 
 
+blurOnEnterPressed : String
+blurOnEnterPressed =
+    "if (event.keyCode===13) { this.blur(); return false; }"
+
+
 messageBox : String -> StatusLevel -> Html Msg
 messageBox message level =
     div
@@ -80,6 +85,7 @@ searchBox currentRoute modelQuery =
                 , attribute "aria-label" "Search in pokédex"
                 , attribute "results" "5"
                 , attribute "autosave" "pokemon-voting-booth"
+                , attribute "onkeypress" blurOnEnterPressed -- collapse the keyboard on mobile devices
                 , onInput Msgs.SearchPokemon
                     |> Html.Attributes.map debounce
                 ]
