@@ -235,10 +235,30 @@ button.user-button.current,
     content: 'maintenance mode';
 }
 
+@media (min-width: 361px) {
+    .button.maintenance-button:after {
+        left: 24px;
+    }
+}
+
 .button.lock-button:after {
-    width: 100px;
-    right: 90px;
     content: 'open for voting';
+    width: 100px;
+}
+
+/*
+@media (max-width: 360px) {
+    .button.lock-button:after {
+        right: 90px;
+    }
+}
+*/
+
+@media (min-width: 361px) {
+    .button.lock-button:after {
+        left: 28px;
+        top: 8px;
+    }
 }
 
 .button.lock-button.locked:after {
