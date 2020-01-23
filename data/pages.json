@@ -959,8 +959,10 @@
     "generation": 5,
     "id": 107,
     "letter": "W",
-    "open": true,
-    "startDate": "2020-01-21T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2020-01-21T00:00:00.000+01:00",
+    "winnerName": "Watchog",
+    "winnerNum": 505
   },
   {
     "generation": 5,
