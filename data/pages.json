@@ -968,8 +968,10 @@
     "generation": 5,
     "id": 108,
     "letter": "Y",
-    "open": true,
-    "startDate": "2020-02-04T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2020-02-04T00:00:00.000+01:00",
+    "winnerName": "Yamask",
+    "winnerNum": 562
   },
   {
     "generation": 5,
