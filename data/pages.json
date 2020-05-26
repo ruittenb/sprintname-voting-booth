@@ -1004,36 +1004,46 @@
     "generation": 6,
     "id": 112,
     "letter": "C",
-    "open": true,
-    "startDate": "2020-03-31T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-03-31T00:00:00.000+02:00",
+    "winnerName": "Chespin",
+    "winnerNum": 650
   },
   {
     "generation": 6,
     "id": 113,
     "letter": "D",
-    "open": true,
-    "startDate": "2020-04-14T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-04-14T00:00:00.000+02:00",
+    "winnerName": "Delphox",
+    "winnerNum": 655
   },
   {
     "generation": 6,
     "id": 114,
     "letter": "E",
-    "open": true,
-    "startDate": "2020-04-28T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-04-28T00:00:00.000+02:00",
+    "winnerName": "Espurr",
+    "winnerNum": 677
   },
   {
     "generation": 6,
     "id": 115,
     "letter": "F",
-    "open": true,
-    "startDate": "2020-05-12T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-05-12T00:00:00.000+02:00",
+    "winnerName": "Fletchinder",
+    "winnerNum": 662
   },
   {
     "generation": 6,
     "id": 116,
     "letter": "G",
-    "open": true,
-    "startDate": "2020-05-26T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-05-26T00:00:00.000+02:00",
+    "winnerName": "Gogoat",
+    "winnerNum": 673
   },
   {
     "generation": 6,
