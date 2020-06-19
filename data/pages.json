@@ -1049,15 +1049,19 @@
     "generation": 6,
     "id": 117,
     "letter": "H",
-    "open": true,
-    "startDate": "2020-06-09T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-06-09T00:00:00.000+02:00",
+    "winnerName": "Hawlucha",
+    "winnerNum": 701
   },
   {
     "generation": 6,
     "id": 118,
     "letter": "I",
-    "open": true,
-    "startDate": "2020-06-23T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-06-23T00:00:00.000+02:00",
+    "winnerName": "Inkay",
+    "winnerNum": 686
   },
   {
     "generation": 6,
