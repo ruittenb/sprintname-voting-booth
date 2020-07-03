@@ -108,7 +108,7 @@
     "userName": "Stef"
   },
   "tom_vermeer@proforto_nl": {
-    "active": true,
+    "active": false,
     "admin": false,
     "color": "#89ccff",
     "email": "tom.vermeer@proforto.nl",
