@@ -1067,15 +1067,19 @@
     "generation": 6,
     "id": 119,
     "letter": "K",
-    "open": true,
-    "startDate": "2020-07-07T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-07-07T00:00:00.000+02:00",
+    "winnerName": "Klefki",
+    "winnerNum": 707
   },
   {
     "generation": 6,
     "id": 120,
     "letter": "L",
-    "open": true,
-    "startDate": "2020-07-21T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-07-21T00:00:00.000+02:00",
+    "winnerName": "Litleo",
+    "winnerNum": 667
   },
   {
     "generation": 6,
