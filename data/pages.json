@@ -1085,8 +1085,10 @@
     "generation": 6,
     "id": 121,
     "letter": "M",
-    "open": true,
-    "startDate": "2020-08-04T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-08-04T00:00:00.000+02:00",
+    "winnerName": "Meowstic",
+    "winnerNum": 678
   },
   {
     "generation": 6,
