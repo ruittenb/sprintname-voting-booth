@@ -11829,6 +11829,22 @@
         {
           "image": "649.png",
           "vname": ""
+        },
+        {
+          "image": "649-burn.png",
+          "vname": "Burn Drive"
+        },
+        {
+          "image": "649-chill.png",
+          "vname": "Chill Drive"
+        },
+        {
+          "image": "649-douse.png",
+          "vname": "Douse Drive"
+        },
+        {
+          "image": "649-shock.png",
+          "vname": "Shock Drive"
         }
       ]
     },
