@@ -1335,6 +1335,14 @@
       {
         "image": "080.png",
         "vname": ""
+      },
+      {
+        "image": "080-galarian.png",
+        "vname": "Galarian"
+      },
+      {
+        "image": "080-mega.png",
+        "vname": "Mega Form"
       }
     ]
   },
