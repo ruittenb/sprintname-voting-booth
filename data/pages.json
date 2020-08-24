@@ -1094,8 +1094,10 @@
     "generation": 6,
     "id": 122,
     "letter": "N",
-    "open": true,
-    "startDate": "2020-08-18T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-08-18T00:00:00.000+02:00",
+    "winnerName": "Noivern",
+    "winnerNum": 715
   },
   {
     "generation": 6,
