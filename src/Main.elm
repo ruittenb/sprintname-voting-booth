@@ -1,37 +1,37 @@
 module Main exposing (main)
 
-import Control
-import Result
-import Time exposing (millisecond, second)
-import Navigation exposing (programWithFlags, Location, newUrl)
-import RemoteData exposing (RemoteData(..))
-import Json.Encode as Encode exposing (Value)
-import Msgs exposing (Msg(..))
-import Routing exposing (parseLocation, createBrowseModePath)
-import Models exposing (ApplicationState)
-import Models.Types exposing (StatusLevel(..), Route(..), BrowseMode(..))
-import Models.Authentication as Authentication exposing (AuthenticationState(..))
-import View exposing (view)
-import Update exposing (update)
 import Commands exposing (getTodayTimeCmd)
 import Commands.Authentication exposing (decodeUser)
 import Commands.Database exposing (firebaseInit, firebaseLoginWithJwtToken)
-import Commands.Settings exposing (decodeSettings)
+import Commands.Pages exposing (decodePage, decodePages)
 import Commands.Pokemon exposing (decodePokedex)
-import Commands.Pages exposing (decodePages, decodePage)
 import Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings)
+import Commands.Settings exposing (decodeSettings)
+import Control
+import Json.Encode as Encode exposing (Value)
+import Models exposing (ApplicationState)
+import Models.Authentication as Authentication exposing (AuthenticationState(..))
+import Models.Types exposing (BrowseMode(..), Route(..), StatusLevel(..))
+import Msgs exposing (Msg(..))
+import Navigation exposing (Location, newUrl, programWithFlags)
 import Ports
     exposing
-        ( onAuthenticationReceived
-        , onAuthenticationFailed
+        ( onAuthenticationFailed
+        , onAuthenticationReceived
         , onFirebaseLoginFailed
-        , onLoadSettings
-        , onLoadPokedex
-        , onLoadPages
         , onLoadPage
+        , onLoadPages
+        , onLoadPokedex
+        , onLoadSettings
         , onLoadTeamRatings
         , onLoadUserRatings
         )
+import RemoteData exposing (RemoteData(..))
+import Result
+import Routing exposing (createBrowseModePath, parseLocation)
+import Time exposing (millisecond, second)
+import Update exposing (update)
+import View exposing (view)
 
 
 init : Value -> Location -> ( ApplicationState, Cmd Msg )
@@ -63,7 +63,7 @@ init credentials location =
                         urlString =
                             createBrowseModePath mode subPage.generation subPage.letter
                     in
-                        ( Just subPage, "", newUrl urlString )
+                    ( Just subPage, "", newUrl urlString )
 
                 Search query ->
                     ( Nothing, query, getTodayTimeCmd )
@@ -90,9 +90,9 @@ init credentials location =
             , statusExpiryTime = Nothing
             }
     in
-        ( initialState
-        , Cmd.batch [ authCmd, urlCmd ]
-        )
+    ( initialState
+    , Cmd.batch [ authCmd, urlCmd ]
+    )
 
 
 subscriptions : ApplicationState -> Sub Msg

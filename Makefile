@@ -53,7 +53,7 @@ node_modules: package.json
 npm-install: node_modules ## install all npm dependencies
 
 elm-stuff: elm-package.json
-	elm package install
+	npx elm package install
 	touch $@
 
 .PHONY: elm-install
@@ -61,7 +61,7 @@ elm-install: elm-stuff ## install all elm dependencies
 
 .PHONY: build-elm
 build-elm: ## compile elm files to javascript
-	elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
+	npx elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
 
 .PHONY: build-bundle
 build-bundle: ## bundle javascript files
