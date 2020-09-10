@@ -2,6 +2,7 @@
 export PATH:=$(PATH):$(shell npm bin)
 SHELL:=bash
 
+SCSS_FILES=$(wildcard scss/*.scss)
 CSS_FILES=$(wildcard dist/*[!n].css) # *.css, but not *.min.css
 MIN_CSS_FILES=$(CSS_FILES:.css=.min.css)
 
@@ -37,8 +38,7 @@ KUBE_RESTART_PATCH=$(shell node kubernetes/restartdate_patch.js)
 # automatic self-documentation
 .PHONY: help # See https://tinyurl.com/makefile-autohelp
 help: ## display this help
-	@awk -v tab=24 'BEGIN{FS=":.*## ";c="\033[36m";m="\033[0m";y="  ";a=2;h()}function t(s){gsub(/[ \t]+$$/,"",s);gsub(/^[ \t]+/,"",s);return s}function u(g,d){split(t(g),f," ");for(j in f)printf"%s%s%-"tab"s%s%s\n",y,c,t(f[j]),m,d}function h(){printf"\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n",y,c,m}/\\$$/{gsub(/\\$$/,"");b=b$$0;next}b{$$0=b$$0;b=""}/^[-a-zA-Z0-9*/%_. ]+:.*## /{p=sprintf("\n%"(tab+a)"s"y,"");gsub(/\\n/,p);if($$1~/%/&&$$2~/^%:/){n=split($$2,q,/%:|:% */);for(i=2;i<n;i+=2){g=$$1;sub(/%/,q[i],g);u(g,q[i+1])}}else if($$1~/%/&&$$2~/%:[^%]+:[^%]+:%/){d=$$2;sub(/^.*%:/,"",d);sub(/:%.*/,"",d);n=split(d,q,/:/);for(i=1;i <= n;i++){g=$$1;d=$$2;sub(/%/,q[i],g);sub(/%:[^%]+:%/,q[i],d);u(g,d)}}else u($$1,$$2)}/^##@ /{gsub(/\\n/,"\n");printf"\n%s\n",substr($$0,5)}END{print""}' $(MAKEFILE_LIST) # v1.58
-
+	@awk -v tab=24 'BEGIN{FS="(:.*## |##@ )";c="\033[36m";m="\033[0m";y="  ";a=2;h()}function t(s){gsub(/[ \t]+$$/,"",s);gsub(/^[ \t]+/,"",s);return s}function u(g,d){split(t(g),f," ");for(j in f)printf"%s%s%-"tab"s%s%s\n",y,c,t(f[j]),m,d}function h(){printf"\nUsage:\n%smake %s<target>%s\n\nRecognized targets:\n",y,c,m}/\\$$/{gsub(/\\$$/,"");b=b$$0;next}b{$$0=b$$0;b=""}/^[-a-zA-Z0-9*\/%_. ]+:.*## /{p=sprintf("\n%"(tab+a)"s"y,"");gsub(/\\n/,p);if($$1~/%/&&$$2~/^%:/){n=split($$2,q,/%:|:% */);for(i=2;i<n;i+=2){g=$$1;sub(/%/,q[i],g);u(g,q[i+1])}}else if($$1~/%/&&$$2~/%:[^%]+:[^%]+:%/){d=$$2;sub(/^.*%:/,"",d);sub(/:%.*/,"",d);n=split(d,q,/:/);for(i=1;i<=n;i++){g=$$1;d=$$2;sub(/%/,q[i],g);sub(/%:[^%]+:%/,q[i],d);u(g,d)}}else u($$1,$$2)}/^##@ /{gsub(/\\n/,"\n");if(NF==3)tab=$$2;printf"\n%s\n",$$NF}END{print""}' $(MAKEFILE_LIST) # v1.61
 
 ############################################################################
 ##@ Development:
@@ -92,11 +92,23 @@ build-js-minify-prod: ## minify javascript bundle (unless on development)
 	@# descend into the directory in order to prevent corrupting URLs in CSS
 	cd $(<D); cleancss $(<F) > $(@F)
 
+.PHONY: build-css
+build-css: $(SCSS_FILES) ## compile scss files to css files
+	for i in $(SCSS_FILES); do sass $$i > dist/`basename $${i%.scss}.css`; done
+
 .PHONY: build-css-minify
-build-css-minify: $(MIN_CSS_FILES) ## minify all css files
+build-css-minify: build-css $(MIN_CSS_FILES) ## minify all css files
+
+.PHONY: build-images
+build-images: ## create thumbnails for all pokemon images
+	$(MAKE) -C dist/pokeart thumbnails
+
+# all of the build steps above, except compiling elm. internal use only. Does not check if the compiled elm is up-to-date.
+.PHONY: build-non-elm
+build-non-elm: build-bundle build-js-minify-prod build-css-minify build-images
 
 .PHONY: build
-build: version build-elm build-bundle build-js-minify-prod build-css-minify ## all of the build steps above
+build: version build-elm build-non-elm ## all of the build steps above
 
 .PHONY: prod
 prod: ## mark environment as 'production'
@@ -193,7 +205,8 @@ watch: ## start the webserver. rebuild and restart if the source changes
 			npm start &                                             \
 			rm $(JS_SOURCE)/bundle.js.tmp-browserify-* 2>/dev/null; \
 			fswatch --one-event $(ELM_SOURCE) $(JS_SOURCE)          \
-				$(SERVICE_WORKER) $(CSS_FILES) tokenserver;     \
+				$(SERVICE_WORKER) tokenserver                   \
+				$(SCSS_FILES) $(CSS_FILES);                     \
 			make show-busy;                                         \
 			echo 'Changes detected, rebuilding...';                 \
 			npm stop;                                               \
