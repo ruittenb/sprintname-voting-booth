@@ -55,6 +55,9 @@ Icon
 # Thumbnails
 ._*
 
+# sass
+.sass-cache/
+
 # vim swapfiles
 *.swp
 *.swo
