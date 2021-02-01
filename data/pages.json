@@ -1103,85 +1103,107 @@
     "generation": 6,
     "id": 123,
     "letter": "P",
-    "open": true,
-    "startDate": "2020-09-01T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-09-01T00:00:00.000+02:00",
+    "winnerName": "Pancham",
+    "winnerNum": 674
   },
   {
     "generation": 6,
     "id": 124,
     "letter": "Q",
-    "open": true,
-    "startDate": "2020-09-15T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-09-15T00:00:00.000+02:00",
+    "winnerName": "Quilladin",
+    "winnerNum": 651
   },
   {
     "generation": 6,
     "id": 125,
     "letter": "S",
-    "open": true,
-    "startDate": "2020-09-29T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-09-29T00:00:00.000+02:00",
+    "winnerName": "Skiddo",
+    "winnerNum": 672
   },
   {
     "generation": 6,
     "id": 126,
     "letter": "T",
-    "open": true,
-    "startDate": "2020-10-13T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2020-10-13T00:00:00.000+02:00",
+    "winnerName": "Talonflame",
+    "winnerNum": 663
   },
   {
     "generation": 6,
     "id": 127,
     "letter": "V",
-    "open": true,
-    "startDate": "2020-10-27T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2020-10-27T00:00:00.000+01:00",
+    "winnerName": "Volcanion",
+    "winnerNum": 721
   },
   {
     "generation": 6,
     "id": 128,
     "letter": "X",
-    "open": true,
-    "startDate": "2020-11-10T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2020-11-10T00:00:00.000+01:00",
+    "winnerName": "Xerneas",
+    "winnerNum": 716
   },
   {
     "generation": 6,
     "id": 129,
     "letter": "Y",
-    "open": true,
-    "startDate": "2020-11-24T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2020-11-24T00:00:00.000+01:00",
+    "winnerName": "Yveltal",
+    "winnerNum": 717
   },
   {
     "generation": 6,
     "id": 130,
     "letter": "Z",
-    "open": true,
-    "startDate": "2020-12-08T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2020-12-08T00:00:00.000+01:00",
+    "winnerName": "Zygarde",
+    "winnerNum": 718
   },
   {
     "generation": 7,
     "id": 131,
     "letter": "A",
-    "open": true,
-    "startDate": "2020-12-22T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2020-12-22T00:00:00.000+01:00",
+    "winnerName": "Araquanid",
+    "winnerNum": 752
   },
   {
     "generation": 7,
     "id": 132,
     "letter": "B",
-    "open": true,
-    "startDate": "2021-01-05T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2021-01-05T00:00:00.000+01:00",
+    "winnerName": "Buzzwole",
+    "winnerNum": 794
   },
   {
     "generation": 7,
     "id": 133,
     "letter": "C",
-    "open": true,
+    "open": false,
     "startDate": "2021-01-19T00:00:00.000+01:00"
   },
   {
     "generation": 7,
     "id": 134,
     "letter": "D",
-    "open": true,
-    "startDate": "2021-02-02T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2021-02-02T00:00:00.000+01:00",
+    "winnerName": "Drampa",
+    "winnerNum": 780
   },
   {
     "generation": 7,

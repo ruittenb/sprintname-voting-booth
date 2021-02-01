@@ -1305,6 +1305,9 @@
       {
         "image": "078.png",
         "vname": ""
+      }, {
+        "image": "078-galarian.png",
+        "vname": "Galarian"
       }
     ]
   },
