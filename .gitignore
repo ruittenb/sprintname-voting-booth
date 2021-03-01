@@ -55,9 +55,13 @@ Icon
 # Thumbnails
 ._*
 
+# sass scratchpad
+/.sass-cache/**
+
 # vim swapfiles
 *.swp
 *.swo
+
 # environment file
 /.env
 # ruittenb scratchpad
