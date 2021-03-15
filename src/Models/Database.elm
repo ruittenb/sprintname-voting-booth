@@ -1,4 +1,4 @@
-module Models.Database exposing (FirebaseConfig, FirebaseLoginParameters, Diagnostics)
+module Models.Database exposing (Diagnostics, FirebaseConfig, FirebaseLoginParameters)
 
 import Models.Auth exposing (Token)
 

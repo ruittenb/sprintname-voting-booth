@@ -1,10 +1,9 @@
-module Commands.Database
-    exposing
-        ( firebaseInit
-        , firebaseLoginWithJwtToken
-        , firebaseLoginWithFirebaseToken
-        , firebaseLogout
-        )
+module Commands.Database exposing
+    ( firebaseInit
+    , firebaseLoginWithFirebaseToken
+    , firebaseLoginWithJwtToken
+    , firebaseLogout
+    )
 
 import Constants.Database exposing (..)
 import Models.Auth exposing (Token)

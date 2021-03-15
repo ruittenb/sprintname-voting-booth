@@ -1,6 +1,6 @@
 module Constants.Authentication exposing (lockParameters)
 
-import Models.Auth exposing (LockParameters, LockOptions, LockAuthenticationParameters)
+import Models.Auth exposing (LockAuthenticationParameters, LockOptions, LockParameters)
 
 
 clientId : String

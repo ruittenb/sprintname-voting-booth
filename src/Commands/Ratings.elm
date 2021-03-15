@@ -1,11 +1,11 @@
-module Commands.Ratings exposing (saveRatings, decodeTeamRatings, decodeUserRatings)
+module Commands.Ratings exposing (decodeTeamRatings, decodeUserRatings, saveRatings)
 
-import RemoteData exposing (WebData, sendRequest)
-import Json.Encode as Encode exposing (Value)
 import Json.Decode as Decode exposing (Decoder, decodeValue)
-import Json.Decode.Pipeline exposing (decode, required, optional)
-import Models.Ratings exposing (RemoteUserRatings, RemoteTeamRatings, UserRatings, TeamRatings)
+import Json.Decode.Pipeline exposing (decode, optional, required)
+import Json.Encode as Encode exposing (Value)
+import Models.Ratings exposing (RemoteTeamRatings, RemoteUserRatings, TeamRatings, UserRatings)
 import Ports exposing (saveUserRatings)
+import RemoteData exposing (WebData, sendRequest)
 
 
 saveRatings : UserRatings -> Cmd msg

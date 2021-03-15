@@ -1,12 +1,12 @@
 module Update.Pages exposing (updatePageLockState, updatePageWithWinner)
 
-import RemoteData exposing (RemoteData(..))
+import Commands.Pages exposing (savePageState)
 import Constants exposing (..)
 import Models exposing (..)
 import Models.Pages exposing (..)
 import Models.Pokemon exposing (PokeWinner)
 import Msgs exposing (Msg(..))
-import Commands.Pages exposing (savePageState)
+import RemoteData exposing (RemoteData(..))
 
 
 updatePageData : RemotePages -> Page -> RemotePages
@@ -20,6 +20,7 @@ updatePageData pages newPage =
                             && (oldPage.letter == newPage.letter)
                     then
                         newPage
+
                     else
                         oldPage
                 )
@@ -38,9 +39,9 @@ updatePageLockState oldState page =
         newState =
             { oldState | pages = newPages }
     in
-        ( newState
-        , savePageState newPage
-        )
+    ( newState
+    , savePageState newPage
+    )
 
 
 updatePageWithWinner : ApplicationState -> Page -> PokeWinner -> ( ApplicationState, Cmd Msg )
@@ -52,6 +53,7 @@ updatePageWithWinner oldState page winner =
                     | winnerName = Nothing
                     , winnerId = Nothing
                 }
+
             else
                 { page
                     | winnerName = Just winner.name
@@ -64,6 +66,6 @@ updatePageWithWinner oldState page winner =
         newState =
             { oldState | pages = newPages }
     in
-        ( newState
-        , savePageState newPage
-        )
+    ( newState
+    , savePageState newPage
+    )

@@ -39,6 +39,7 @@ getDefaultPageForToday remotePages today =
     getFirstOpenPage remotePages todayAsIsoString
 
 
+
 -- in Search and Default mode, the view is always locked.
 -- in Browse mode: consider whether the current page is open
 

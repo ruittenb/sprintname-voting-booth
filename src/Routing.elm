@@ -1,28 +1,29 @@
-module Routing
-    exposing
-        ( parseLocation
-        , createDefaultPath
-        , createBrowsePath
-        , createBrowseFreelyPath
-        , createBrowseWithRankingsPath
-        , createBrowseWithVotersPath
-        , createBrowseWithCopyrightPath
-        , createSearchPath
-        , createSearchFreelyPath
-        , createSearchWithCopyrightPath
-        )
+module Routing exposing
+    ( createBrowseFreelyPath
+    , createBrowsePath
+    , createBrowseWithCopyrightPath
+    , createBrowseWithRankingsPath
+    , createBrowseWithVotersPath
+    , createDefaultPath
+    , createSearchFreelyPath
+    , createSearchPath
+    , createSearchWithCopyrightPath
+    , parseLocation
+    )
 
-import Char
 import Array
+import Char
+import Constants exposing (allGenerations, allLetters, genLetterUrlSeparator)
 import Helpers exposing (andThen2)
+import Models.Types exposing (BrowseMode(..), Route(..), SearchMode(..), SubPage)
 import Navigation exposing (Location)
-import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
-import Constants exposing (allLetters, allGenerations, genLetterUrlSeparator)
-import Models.Types exposing (Route(..), BrowseMode(..), SearchMode(..), SubPage)
+import UrlParser exposing ((</>), Parser, custom, parseHash, s, string)
+
 
 defaultPathSegment : String
 defaultPathSegment =
     "#/"
+
 
 searchPathSegment : String
 searchPathSegment =
@@ -49,14 +50,18 @@ showCopyrightPathSegment =
     "show-copyright"
 
 
+
 -- Default path
+
 
 createDefaultPath : String
 createDefaultPath =
     defaultPathSegment
 
 
+
 -- Search paths
+
 
 createSearchFreelyPath : String -> String
 createSearchFreelyPath query =
@@ -65,7 +70,7 @@ createSearchFreelyPath query =
 
 createSearchWithCopyrightPath : String -> String
 createSearchWithCopyrightPath query =
-    (createSearchFreelyPath query) ++ "/" ++ showCopyrightPathSegment
+    createSearchFreelyPath query ++ "/" ++ showCopyrightPathSegment
 
 
 createSearchPath : SearchMode -> String -> String
@@ -78,26 +83,33 @@ createSearchPath searchmode query =
             createSearchFreelyPath query
 
 
+createShowRankingsPath : Int -> Char -> String
+createShowRankingsPath gen letter =
+    createBrowsePath gen letter ++ "/" ++ showRankingsPathSegment
+
+
+
 -- Browse paths
+
 
 createBrowseFreelyPath : String -> Char -> String
 createBrowseFreelyPath gen letter =
-    defaultPathSegment ++ browsePathSegment ++ "/" ++ gen ++ genLetterUrlSeparator ++ (String.fromChar letter)
+    defaultPathSegment ++ browsePathSegment ++ "/" ++ gen ++ genLetterUrlSeparator ++ String.fromChar letter
 
 
 createBrowseWithRankingsPath : String -> Char -> String
 createBrowseWithRankingsPath gen letter =
-    (createBrowseFreelyPath gen letter) ++ "/" ++ showRankingsPathSegment
+    createBrowseFreelyPath gen letter ++ "/" ++ showRankingsPathSegment
 
 
 createBrowseWithVotersPath : String -> Char -> String
 createBrowseWithVotersPath gen letter =
-    (createBrowseFreelyPath gen letter) ++ "/" ++ showVotersPathSegment
+    createBrowseFreelyPath gen letter ++ "/" ++ showVotersPathSegment
 
 
 createBrowseWithCopyrightPath : String -> Char -> String
 createBrowseWithCopyrightPath gen letter =
-    (createBrowseFreelyPath gen letter) ++ "/" ++ showCopyrightPathSegment
+    createBrowseFreelyPath gen letter ++ "/" ++ showCopyrightPathSegment
 
 
 createBrowsePath : BrowseMode -> String -> Char -> String
@@ -125,6 +137,7 @@ unwrap defaultValue mapFunction route =
         _ ->
             defaultValue
 
+
 composeValidSubPage : String -> String -> Maybe SubPage
 composeValidSubPage generation rawLetter =
     rawLetter
@@ -135,27 +148,32 @@ composeValidSubPage generation rawLetter =
             (\letter ->
                 if
                     List.member letter allLetters
-                    && List.member generation allGenerations
+                        && List.member generation allGenerations
                 then
                     Just
                         { generation = generation
                         , letter = letter
                         }
+
                 else
                     Nothing
             )
+
 
 extractSubpage : String -> Maybe SubPage
 extractSubpage pathSegment =
     String.split genLetterUrlSeparator pathSegment
         |> Array.fromList
         |> (\segments ->
-            let
-                generation = Array.get 0 segments
-                letter = Array.get 1 segments
-            in
+                let
+                    generation =
+                        Array.get 0 segments
+
+                    letter =
+                        Array.get 1 segments
+                in
                 andThen2 composeValidSubPage generation letter
-            )
+           )
 
 
 subPageParser : Parser (SubPage -> a) a

@@ -1,12 +1,11 @@
-module Models.Pages
-    exposing
-        ( Winner
-        , RemotePages
-        , RemotePage
-        , Pages
-        , Page
-        , PortCompatiblePage
-        )
+module Models.Pages exposing
+    ( Page
+    , Pages
+    , PortCompatiblePage
+    , RemotePage
+    , RemotePages
+    , Winner
+    )
 
 import RemoteData exposing (RemoteData)
 

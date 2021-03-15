@@ -22,11 +22,11 @@ import Msgs exposing (Msg(..))
 import RemoteData exposing (RemoteData(..), WebData)
 import Routing
     exposing
-        ( createDefaultPath
-        , createBrowseFreelyPath
+        ( createBrowseFreelyPath
+        , createBrowseWithCopyrightPath
         , createBrowseWithRankingsPath
         , createBrowseWithVotersPath
-        , createBrowseWithCopyrightPath
+        , createDefaultPath
         , createSearchFreelyPath
         , createSearchWithCopyrightPath
         )
@@ -152,6 +152,7 @@ pokeGenerationButtons currentRoute pokedex subPage =
         List.map
             (generationButton currentRoute pokedex subPage)
             pokeGenerations
+
 
 rdawGenerationButtons : Route -> RemotePokedex -> Maybe SubPage -> Html Msg
 rdawGenerationButtons currentRoute pokedex subPage =
@@ -291,9 +292,9 @@ maintenanceButton remoteSettings isCurrentUserAdmin =
 
 copyrightButton : Route -> Maybe SubPage -> Html Msg
 copyrightButton route currentSubPage =
-    let 
+    let
         subPageToHash =
-            (\subPage ->
+            \subPage ->
                 case route of
                     Search _ query ->
                         createSearchWithCopyrightPath query
@@ -303,23 +304,23 @@ copyrightButton route currentSubPage =
 
                     Default ->
                         ""
-            )
 
         showCopyrightHash =
             currentSubPage
-            |> Maybe.map subPageToHash
-            |> Maybe.withDefault createDefaultPath
+                |> Maybe.map subPageToHash
+                |> Maybe.withDefault createDefaultPath
     in
-    a 
+    a
         [ classList
             [ ( "button", True )
             , ( "copyright-button", True )
             ]
-            , href showCopyrightHash
+        , href showCopyrightHash
         ]
         [
             text "©"
         ]
+
 
 
 homeButton : Html Msg
@@ -535,6 +536,7 @@ votersTable state =
         _ ->
             span [] []
 
+
 copyRightTableHtml : Html Msg
 copyRightTableHtml =
     div
@@ -577,7 +579,8 @@ copyRightTableHtml =
                     [ href "https://www.deviantart.com/reallydarkandwindie/gallery"
                     , target "_blank"
                     , rel "noopener"
-                    ] [ text "DeviantArt" ]
+                    ]
+                    [ text "DeviantArt" ]
                 , br [] []
                 , text " Fakemon descriptions: "
                 , img [ src "icons/creativecommons.svg" ] []
@@ -586,7 +589,8 @@ copyRightTableHtml =
                     [ href "https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki"
                     , target "_blank"
                     , rel "noopener"
-                    ] [ text "Fakemon Wiki" ]
+                    ]
+                    [ text "Fakemon Wiki" ]
                 ]
             ]
         ]

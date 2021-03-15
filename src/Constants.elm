@@ -7,13 +7,16 @@ maintenanceApology : String
 maintenanceApology =
     "The application is in maintenance mode. We apologize for the inconvenience."
 
+
 pokemonCopyright : String
 pokemonCopyright =
     "Pokémon © 1995–2022 Nintendo/ Creatures Inc./ Game Freak Inc. Pokémon and Pokémon character names are trademarks of Nintendo."
 
+
 rdawCopyright : String
 rdawCopyright =
     "The Fakemon presented here are © ReallyDarkandWindie"
+
 
 debounceDelay : Float
 debounceDelay =
@@ -34,9 +37,11 @@ rdawGenerations : List String
 rdawGenerations =
     [ "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx" ]
 
+
 genLetterUrlSeparator : String
 genLetterUrlSeparator =
     "."
+
 
 imageDir : String
 imageDir =
@@ -50,7 +55,7 @@ thumbnailDir =
 
 noBreakingSpace : String
 noBreakingSpace =
-    " "
+    "\u{00A0}"
 
 
 dateTemplate : String

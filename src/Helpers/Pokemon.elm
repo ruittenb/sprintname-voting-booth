@@ -1,23 +1,22 @@
-module Helpers.Pokemon
-    exposing
-        ( filterPokedexByPage
-        , filterPokedexIfReady
-        , filterPokedex
-        , searchPokedexIfReady
-        , searchPokedex
-        , extractOnePokemonFromRatingString
-        , extractOneUserFromRatings
-        , extractOneUserFromRating
-        )
+module Helpers.Pokemon exposing
+    ( extractOnePokemonFromRatingString
+    , extractOneUserFromRating
+    , extractOneUserFromRatings
+    , filterPokedex
+    , filterPokedexByPage
+    , filterPokedexIfReady
+    , searchPokedex
+    , searchPokedexIfReady
+    )
 
-import Regex exposing (regex, caseInsensitive)
-import RemoteData exposing (WebData, RemoteData(..))
+import Helpers.Authentication exposing (tryGetUserProfile)
 import Models exposing (User)
 import Models.Authentication exposing (AuthenticationModel)
-import Models.Types exposing (SubPage)
 import Models.Pokemon exposing (..)
 import Models.Ratings exposing (..)
-import Helpers.Authentication exposing (tryGetUserProfile)
+import Models.Types exposing (SubPage)
+import Regex exposing (caseInsensitive, regex)
+import RemoteData exposing (RemoteData(..), WebData)
 
 
 isNumeric : String -> Bool
@@ -65,10 +64,11 @@ searchPokedexIfReady remotePokedex query =
                     queryPattern =
                         caseInsensitive (regex query)
                 in
-                    if isNumeric query then
-                        List.filter (.number >> toString >> (==) query) pokedex
-                    else
-                        List.filter (.name >> Regex.contains queryPattern) pokedex
+                if isNumeric query then
+                    List.filter (.number >> String.fromInt >> (==) query) pokedex
+
+                else
+                    List.filter (.name >> Regex.contains queryPattern) pokedex
             )
 
 

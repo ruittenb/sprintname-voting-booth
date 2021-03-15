@@ -2,10 +2,10 @@ module Commands.Authentication exposing (decodeUser)
 
 --import RemoteData exposing (WebData, sendRequest)
 
-import Models.Auth exposing (RemoteLoggedInUser, LoggedInUser, UserProfile)
+import Json.Decode as Decode exposing (Decoder, bool, decodeValue, int, string)
+import Json.Decode.Pipeline exposing (decode, optional, required)
 import Json.Encode as Encode exposing (Value)
-import Json.Decode as Decode exposing (Decoder, decodeValue, string, int, bool)
-import Json.Decode.Pipeline exposing (decode, required, optional)
+import Models.Auth exposing (LoggedInUser, RemoteLoggedInUser, UserProfile)
 
 
 decodeUser : Value -> RemoteLoggedInUser

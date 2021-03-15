@@ -1,28 +1,28 @@
-module Update.Pokemon
-    exposing
-        ( updateOnLoadPokedex
-        , updateSearchPokemon
-        , updateChangeGenerationAndLetter
-        , updateChangeVariant
-        )
+module Update.Pokemon exposing
+    ( updateChangeGenerationAndLetter
+    , updateChangeVariant
+    , updateOnLoadPokedex
+    , updateSearchPokemon
+    )
 
-import RemoteData exposing (WebData, RemoteData(..))
-import List.Extra exposing (unique, notMember)
-import Maybe.Extra exposing (unwrap)
-import Navigation exposing (modifyUrl)
 import Constants exposing (..)
-import Models exposing (..)
-import Models.Types exposing (..)
-import Models.Pokemon exposing (..)
-import Routing exposing (createBrowseFreelyPath)
-import Msgs exposing (Msg)
-import Ports exposing (preloadImages)
 import Helpers
     exposing
-        ( setStatusMessage
-        , clearStatusMessage
+        ( clearStatusMessage
         , clearWarningMessage
+        , setStatusMessage
         )
+import List.Extra exposing (notMember, unique)
+import Maybe.Extra exposing (unwrap)
+import Models exposing (..)
+import Models.Pokemon exposing (..)
+import Models.Types exposing (..)
+import Msgs exposing (Msg)
+import Navigation exposing (modifyUrl)
+import Ports exposing (preloadImages)
+import RemoteData exposing (RemoteData(..), WebData)
+import Routing exposing (createBrowseFreelyPath, createBrowsePath)
+
 
 
 -- some helper functions specific to update
@@ -56,17 +56,17 @@ getPreloadCommandForPokedexCrossSection generation letter pokedex =
                 )
                 pokemon.variants
     in
-        case pokedex of
-            Success actualPokedex ->
-                actualPokedex
-                    |> List.map generationLetterAndImageUrl
-                    |> List.concat
-                    |> filterCurrentSubpage generation letter
-                    |> mapCharLettersToString
-                    |> preloadImages
+    case pokedex of
+        Success actualPokedex ->
+            actualPokedex
+                |> List.map generationLetterAndImageUrl
+                |> List.concat
+                |> filterCurrentSubpage generation letter
+                |> mapCharLettersToString
+                |> preloadImages
 
-            _ ->
-                Cmd.none
+        _ ->
+            Cmd.none
 
 
 
@@ -88,7 +88,7 @@ updateOnLoadPokedex oldState pokedex =
                     setStatusMessage Error (toString mess)
 
                 Success _ ->
-                    (\x -> x)
+                    \x -> x
 
         command =
             oldState.subPage
@@ -104,8 +104,8 @@ updateOnLoadPokedex oldState pokedex =
         newState =
             { oldState | pokedex = pokedex }
     in
-        ( newState, command )
-            |> updateStatusMessage
+    ( newState, command )
+        |> updateStatusMessage
 
 
 updateSearchPokemon : ApplicationState -> SearchMode -> String -> ( ApplicationState, Cmd Msg )
@@ -119,6 +119,7 @@ updateSearchPokemon oldState newSearchMode query =
                 newSubPage
                     |> Maybe.map (Browse BFreely)
                     |> Maybe.withDefault Default
+
             else
                 Search newSearchMode query
 
@@ -131,14 +132,15 @@ updateSearchPokemon oldState newSearchMode query =
                                 |> modifyUrl
                         )
                     |> Maybe.withDefault Cmd.none
+
             else
                 Cmd.none
 
         newState =
             { oldState | query = query, currentRoute = newRoute }
     in
-        ( newState, newCmd )
-            |> clearWarningMessage
+    ( newState, newCmd )
+        |> clearWarningMessage
 
 
 updateChangeGenerationAndLetter : ApplicationState -> Route -> ( ApplicationState, Cmd Msg )
@@ -172,16 +174,17 @@ updateChangeGenerationAndLetter oldState newRoute =
                     )
                 |> Maybe.withDefault Cmd.none
     in
-        if isNewPageValid then
-            ( { oldState
-                | subPage = newSubPage
-                , currentRoute = newRoute
-              }
-            , command
-            )
-                |> clearWarningMessage
-        else
-            ( oldState, command )
+    if isNewPageValid then
+        ( { oldState
+            | subPage = newSubPage
+            , currentRoute = newRoute
+          }
+        , command
+        )
+            |> clearWarningMessage
+
+    else
+        ( oldState, command )
 
 
 updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )
@@ -205,14 +208,17 @@ updateChangeVariant oldState pokemonId direction =
                                         proposedNewVariant =
                                             if direction == Next then
                                                 pokemon.currentVariant + 1
+
                                             else
                                                 pokemon.currentVariant - 1
 
                                         newVariant =
                                             if proposedNewVariant < 1 then
                                                 List.length pokemon.variants
+
                                             else if proposedNewVariant > List.length pokemon.variants then
                                                 1
+
                                             else
                                                 proposedNewVariant
 
@@ -224,13 +230,14 @@ updateChangeVariant oldState pokemonId direction =
                                                 (\p ->
                                                     if p.id == pokemonId then
                                                         newPokemon
+
                                                     else
                                                         p
                                                 )
                                                 pokedex
                                     in
-                                        { oldState | pokedex = RemoteData.succeed newPokedex }
+                                    { oldState | pokedex = RemoteData.succeed newPokedex }
                                 )
                     )
     in
-        ( newState, Cmd.none )
+    ( newState, Cmd.none )

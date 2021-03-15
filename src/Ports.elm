@@ -1,33 +1,33 @@
-port module Ports
-    exposing
-        ( auth0ShowLock
-        , auth0Logout
-        , firebaseInit
-        , firebaseLoginWithJwtToken
-        , firebaseLoginWithFirebaseToken
-        , firebaseLogout
-        , preloadImages
-        , saveUserRatings
-        , savePage
-        , saveSettings
-        , onAuthenticationReceived
-        , onAuthenticationFailed
-        , onFirebaseLoginFailed
-        , onLoadSettings
-        , onLoadPokedex
-        , onLoadPages
-        , onLoadPage
-        , onLoadTeamRatings
-        , onLoadUserRatings
-        )
+port module Ports exposing
+    ( auth0Logout
+    , auth0ShowLock
+    , firebaseInit
+    , firebaseLoginWithFirebaseToken
+    , firebaseLoginWithJwtToken
+    , firebaseLogout
+    , onAuthenticationFailed
+    , onAuthenticationReceived
+    , onFirebaseLoginFailed
+    , onLoadPage
+    , onLoadPages
+    , onLoadPokedex
+    , onLoadSettings
+    , onLoadTeamRatings
+    , onLoadUserRatings
+    , preloadImages
+    , savePage
+    , saveSettings
+    , saveUserRatings
+    )
 
+import Json.Encode exposing (Value)
 import Models.Auth exposing (LockParameters, Token)
-import Models.Database exposing (FirebaseConfig, Diagnostics)
-import Models.Settings exposing (Settings)
+import Models.Database exposing (Diagnostics, FirebaseConfig)
+import Models.Pages exposing (PortCompatiblePage)
 import Models.Pokemon exposing (PortCompatiblePreloadCandidate)
 import Models.Ratings exposing (UserRatings)
-import Models.Pages exposing (PortCompatiblePage)
-import Json.Encode exposing (Value)
+import Models.Settings exposing (Settings)
+
 
 
 -- Commands (outgoing)

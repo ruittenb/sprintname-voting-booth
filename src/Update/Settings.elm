@@ -1,9 +1,9 @@
 module Update.Settings exposing (updateMaintenanceMode)
 
-import RemoteData exposing (RemoteData(..))
+import Commands.Settings exposing (saveMaintenanceMode)
 import Models exposing (..)
 import Msgs exposing (Msg(..))
-import Commands.Settings exposing (saveMaintenanceMode)
+import RemoteData exposing (RemoteData(..))
 
 
 updateMaintenanceMode : ApplicationState -> ( ApplicationState, Cmd Msg )
@@ -22,4 +22,4 @@ updateMaintenanceMode oldState =
                 |> RemoteData.map saveMaintenanceMode
                 |> RemoteData.withDefault Cmd.none
     in
-        ( newState, newCmd )
+    ( newState, newCmd )

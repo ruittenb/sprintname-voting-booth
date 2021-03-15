@@ -1,11 +1,11 @@
 module View exposing (view)
 
 import Html exposing (Html, div)
-import RemoteData exposing (..)
-import View.Application exposing (title, applicationPane, functionPane)
-import View.Pokemon exposing (pokemonCanvas)
 import Models exposing (ApplicationState)
 import Msgs exposing (Msg)
+import RemoteData exposing (..)
+import View.Application exposing (applicationPane, functionPane, title)
+import View.Pokemon exposing (pokemonCanvas)
 
 
 alwaysPanes : ApplicationState -> List (Html Msg)
@@ -28,9 +28,10 @@ getPanes : ApplicationState -> List (Html Msg)
 getPanes state =
     case state.settings of
         RemoteData.Success settings ->
-            if (settings.maintenanceMode) then
+            if settings.maintenanceMode then
                 -- Success, maintenance mode
                 []
+
             else
                 -- Success, no maintenance mode
                 onlinePanes state

@@ -17,6 +17,8 @@ import Msgs exposing (Msg(..))
 import RemoteData exposing (RemoteData(..), WebData)
 import Set exposing (Set)
 import String.Extra exposing (replaceSlice)
+import Task
+import Time exposing (now)
 
 
 
@@ -59,7 +61,7 @@ registerVote oldState otherUsersRatings oldCurrentUserRatings oldUserRatingStrin
                     -- store new vote in rating string
                     newUserRatingString =
                         replaceSlice
-                            (toString newPokeRating)
+                            (String.fromInt newPokeRating)
                             pokemonId
                             (pokemonId + 1)
                             oldUserRatingString
@@ -91,10 +93,12 @@ updateVoteForPokemon oldState userVote =
                 maxPokemonId =
                     actualPokedex
                         |> List.foldl
-                            (\pokemon maxId -> if pokemon.id > maxId then
-                                pokemon.id
-                            else
-                                maxId
+                            (\pokemon maxId ->
+                                if pokemon.id > maxId then
+                                    pokemon.id
+
+                                else
+                                    maxId
                             )
                             0
 
@@ -109,30 +113,31 @@ updateVoteForPokemon oldState userVote =
                         |> Maybe.withDefault ""
                         |> ensureRatingStringLength maxPokemonId
 
-                -- extract one pokemon rating
-                oldPokeRating =
-                    extractOnePokemonFromRatingString oldUserRatingString pokemonId
-
-                -- fetch the new vote. If it is the same as old vote, then 'unvote' this pokemon.
-                newPokeRating =
-                    if oldPokeRating == userVote.vote then
-                        0
-
-                    else
-                        userVote.vote
-
-                -- find all the other pokemon on this page (generation and letter)
-                otherPokemonList =
-                    filterPokedex oldState.pokedex oldState.subPage
-
-                -- find the ratings for these
-                otherPokemonRatings =
-                    otherPokemonList
-                        |> List.map (.id >> extractOnePokemonFromRatingString oldUserRatingString)
-                        |> Set.fromList
-
+                -- check if vote has not already been cast
                 ( newState, newCmd ) =
-                    -- check if vote has not already been cast
+                    let
+                        -- find all the other pokemon on this page (generation and letter)
+                        otherPokemonList =
+                            filterPokedex actualPokedex oldState.subPage
+
+                        -- find the ratings for these
+                        otherPokemonRatings =
+                            otherPokemonList
+                                |> List.map (.id >> extractOnePokemonFromRatingString oldUserRatingString)
+                                |> Set.fromList
+
+                        -- extract one pokemon rating
+                        oldPokeRating =
+                            extractOnePokemonFromRatingString oldUserRatingString pokemonId
+
+                        -- fetch the new vote. If it is the same as old vote, then 'unvote' this pokemon.
+                        newPokeRating =
+                            if oldPokeRating == userVote.vote then
+                                0
+
+                            else
+                                userVote.vote
+                    in
                     if isValidVote newPokeRating otherPokemonRatings then
                         -- if not already cast, register new vote
                         registerVote
@@ -147,7 +152,7 @@ updateVoteForPokemon oldState userVote =
                         -- vote already cast: abort
                         ( oldState, Cmd.none )
                             |> setStatusMessage Warning
-                                ("You already voted " ++ toString newPokeRating ++ " in this category")
+                                ("You already voted " ++ String.fromInt newPokeRating ++ " in this category")
             in
             ( newState, newCmd )
         )

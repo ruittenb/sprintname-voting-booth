@@ -8,6 +8,7 @@ module Models.Types exposing (..)
     By taking these apart, the dependencies are now
     - Models -> Msgs -> Models.Types
     - Models -> Models.Types
+
 -}
 
 
@@ -27,13 +28,14 @@ type alias SubPage =
     - Browse BWithCopyright      : browse mode with mask and popup with copyright messages;
     - Search SFreely             : a string has been entered in the search box, search results are shown;
     - Search SWithCopyright      : search mode with mask and popup with copyright messages.
--}
 
+-}
 type BrowseMode
     = BFreely
     | BWithPeopleVotes
     | BWithPokemonRankings
     | BWithCopyright
+
 
 type SearchMode
     = SFreely

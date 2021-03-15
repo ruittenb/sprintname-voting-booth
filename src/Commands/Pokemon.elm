@@ -1,10 +1,10 @@
 module Commands.Pokemon exposing (decodePokedex)
 
-import RemoteData exposing (fromResult)
+import Json.Decode as Decode exposing (Decoder, decodeValue, int, nullable, string)
+import Json.Decode.Pipeline exposing (decode, optional, required, resolve)
 import Json.Encode as Encode exposing (Value)
-import Json.Decode as Decode exposing (Decoder, decodeValue, int, string, nullable)
-import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Models.Pokemon exposing (..)
+import RemoteData exposing (fromResult)
 
 
 decodePokedex : Value -> RemotePokedex
@@ -26,18 +26,18 @@ pokemonDecoder =
                         |> Maybe.map Tuple.first
                         |> Maybe.withDefault '?'
             in
-                Decode.succeed (Pokemon id number generation description letterChar name url currentVariant variants)
+            Decode.succeed (Pokemon id number generation description letterChar name url currentVariant variants)
     in
-        decode toDecoder
-            |> required "id" int
-            |> required "number" int
-            |> required "generation" string
-            |> required "description" string
-            |> required "letter" string
-            |> required "name" string
-            |> required "url" string
-            |> required "variants" pokemonVariantsDecoder
-            |> resolve
+    decode toDecoder
+        |> required "id" int
+        |> required "number" int
+        |> required "generation" string
+        |> required "description" string
+        |> required "letter" string
+        |> required "name" string
+        |> required "url" string
+        |> required "variants" pokemonVariantsDecoder
+        |> resolve
 
 
 pokemonVariantsDecoder : Decoder (List PokemonVariant)

@@ -1,12 +1,12 @@
 module Update.Authentication exposing (updateAuthWithNoProfile, updateAuthWithProfile)
 
-import Models.Types exposing (StatusLevel(..))
+import Helpers exposing (clearWarningMessage, setStatusMessage)
+import Helpers.Authentication exposing (getUserNameForAuthModel)
+import Models exposing (..)
 import Models.Auth exposing (LoggedInUser)
 import Models.Authentication exposing (AuthenticationModel, AuthenticationState(..))
-import Models exposing (..)
+import Models.Types exposing (StatusLevel(..))
 import Msgs exposing (Msg)
-import Helpers exposing (setStatusMessage, clearWarningMessage)
-import Helpers.Authentication exposing (getUserNameForAuthModel)
 
 
 login : AuthenticationModel -> LoggedInUser -> ( AuthenticationModel, Cmd Msg )
@@ -35,8 +35,8 @@ updateAuthWithProfile oldState userData =
                 , currentUser = getUserNameForAuthModel oldState.ratings newAuthModel
             }
     in
-        ( newState, cmd )
-            |> clearWarningMessage
+    ( newState, cmd )
+        |> clearWarningMessage
 
 
 updateAuthWithNoProfile : ApplicationState -> Maybe String -> ( ApplicationState, Cmd Msg )
@@ -51,11 +51,11 @@ updateAuthWithNoProfile oldState possibleError =
                 , currentUser = Nothing
             }
     in
-        case possibleError of
-            Just error ->
-                ( newState, cmd )
-                    |> setStatusMessage Error error
+    case possibleError of
+        Just error ->
+            ( newState, cmd )
+                |> setStatusMessage Error error
 
-            Nothing ->
-                ( newState, cmd )
-                    |> clearWarningMessage
+        Nothing ->
+            ( newState, cmd )
+                |> clearWarningMessage

@@ -1,11 +1,11 @@
 module Commands.Settings exposing (decodeSettings, saveMaintenanceMode)
 
-import RemoteData exposing (fromResult)
+import Json.Decode as Decode exposing (Decoder, bool, decodeValue)
+import Json.Decode.Pipeline exposing (decode, optional, required, resolve)
 import Json.Encode as Encode exposing (Value)
-import Json.Decode as Decode exposing (Decoder, decodeValue, bool)
-import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Models.Settings exposing (..)
 import Ports exposing (saveSettings)
+import RemoteData exposing (fromResult)
 
 
 saveMaintenanceMode : Settings -> Cmd msg
@@ -25,6 +25,6 @@ settingsDecoder =
         toDecoder maintenanceMode =
             Decode.succeed (Settings maintenanceMode)
     in
-        decode toDecoder
-            |> required "maintenanceMode" bool
-            |> resolve
+    decode toDecoder
+        |> required "maintenanceMode" bool
+        |> resolve

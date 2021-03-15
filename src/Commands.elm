@@ -1,10 +1,10 @@
 module Commands exposing (..)
 
-import Task exposing (perform)
-import Time exposing (now, hour, second)
 import Models exposing (ApplicationState)
 import Models.Types exposing (StatusLevel(..))
 import Msgs exposing (Msg(..))
+import Task exposing (perform)
+import Time exposing (hour, now, second)
 
 
 andThenCmd : Cmd msg -> ( ApplicationState, Cmd msg ) -> ( ApplicationState, Cmd msg )
@@ -49,4 +49,4 @@ getStatusMessageExpiryTime statusLevel =
                 Error ->
                     10 * second
     in
-        perform (\time -> StatusMessageExpiryTimeReceived (time + duration)) now
+    perform (\time -> StatusMessageExpiryTimeReceived (time + duration)) now

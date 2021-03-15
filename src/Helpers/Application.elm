@@ -1,8 +1,8 @@
 module Helpers.Application exposing (getIsCurrentUserAdmin)
 
-import RemoteData exposing (WebData, RemoteData(..))
 import Helpers.Pokemon exposing (extractOneUserFromRatings)
 import Models exposing (..)
+import RemoteData exposing (RemoteData(..), WebData)
 
 
 getIsCurrentUserAdmin : ApplicationState -> Bool
@@ -15,6 +15,6 @@ getIsCurrentUserAdmin state =
                 |> RemoteData.withDefault
                     ( [], [] )
     in
-        List.head currentUserDataList
-            |> Maybe.map .admin
-            |> Maybe.withDefault False
+    List.head currentUserDataList
+        |> Maybe.map .admin
+        |> Maybe.withDefault False

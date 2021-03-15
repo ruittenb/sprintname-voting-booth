@@ -1,27 +1,27 @@
 module View.Pokemon exposing (pokemonCanvas)
 
-import List
-import Maybe
+import Constants exposing (dateTemplate, imageDir, maxStars, noBreakingSpace, thumbnailDir)
 import Date
 import Date.Extra
+import Helpers.Pages exposing (getCurrentPage, getWinner, isPageLocked)
+import Helpers.Pokemon
+    exposing
+        ( extractOneUserFromRating
+        , filterPokedexIfReady
+        , searchPokedexIfReady
+        )
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
-import RemoteData exposing (WebData, RemoteData(..))
-import Constants exposing (maxStars, imageDir, thumbnailDir, noBreakingSpace, dateTemplate)
-import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
-import Helpers.Pokemon
-    exposing
-        ( filterPokedexIfReady
-        , searchPokedexIfReady
-        , extractOneUserFromRating
-        )
+import List
+import Maybe
 import Models exposing (..)
-import Models.Types exposing (..)
-import Models.Pokemon exposing (..)
 import Models.Pages exposing (..)
+import Models.Pokemon exposing (..)
 import Models.Ratings exposing (..)
+import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
+import RemoteData exposing (RemoteData(..), WebData)
 import Routing exposing (createBrowseFreelyPath)
 
 
@@ -110,10 +110,10 @@ voteWidget currentUserRating pokemonId currentUserName =
                 |> Maybe.map .rating
                 |> Maybe.withDefault 0
     in
-        span [ class "voting-node" ] <|
-            List.map
-                (voteWidgetStar pokemonId currentUserName rating)
-                (List.range 1 maxStars)
+    span [ class "voting-node" ] <|
+        List.map
+            (voteWidgetStar pokemonId currentUserName rating)
+            (List.range 1 maxStars)
 
 
 noVoteWidgetElement : Html Msg
@@ -137,17 +137,17 @@ ratingNode highlightedUserId rating =
         userTitle =
             rating.userName ++ ": " ++ toString rating.rating
     in
-        span
-            [ title userTitle
-            , attribute "data-voter" (toString rating.id)
-            , classList
-                [ ( "highlight", highlightedUserId == Just rating.id )
-                ]
-            , style [ ( "color", rating.color ) ]
-            , onClick (UserHighlightClicked rating.id)
+    span
+        [ title userTitle
+        , attribute "data-voter" (toString rating.id)
+        , classList
+            [ ( "highlight", highlightedUserId == Just rating.id )
             ]
-        <|
-            List.repeat rating.rating star
+        , style "color" rating.color
+        , onClick (UserHighlightClicked rating.id)
+        ]
+    <|
+        List.repeat rating.rating star
 
 
 ratingWidget : TeamRating -> Html Msg -> Maybe Int -> Html Msg
@@ -156,12 +156,12 @@ ratingWidget otherUsersRating voteWidgetElement highlightedUserId =
         ratingNodes =
             List.map (ratingNode highlightedUserId) otherUsersRating
     in
-        div
-            [ class "rating-nodes"
-            ]
-        <|
-            ratingNodes
-                ++ [ voteWidgetElement ]
+    div
+        [ class "rating-nodes"
+        ]
+    <|
+        ratingNodes
+            ++ [ voteWidgetElement ]
 
 
 
@@ -200,6 +200,7 @@ variantLink pokemonName description variant =
         title =
             if String.length variant.vname > 0 then
                 pokemonName ++ " (" ++ variant.vname ++ ")"
+
             else
                 pokemonName
 
@@ -213,8 +214,8 @@ variantLink pokemonName description variant =
         thumbnailUrl =
             thumbnailDir ++ variant.image
     in
-        pokemonImg thumbnailUrl variant.vname
-            |> linkToLightbox imageUrl title variantDescription
+    pokemonImg thumbnailUrl variant.vname
+        |> linkToLightbox imageUrl title variantDescription
 
 
 variantLinks : String -> String -> List PokemonVariant -> List (Html Msg)
@@ -262,6 +263,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
         formattedRating =
             if isLocked then
                 [ ratingWidget teamRating noVoteWidgetElement highlightedUserId ]
+
             else
                 let
                     ( currentUserRating, otherUsersRating ) =
@@ -275,15 +277,14 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
                             Just actualUserName ->
                                 voteWidget currentUserRating pokemon.id actualUserName
                 in
-                    [ ratingWidget otherUsersRating voteWidgetElement highlightedUserId ]
+                [ ratingWidget otherUsersRating voteWidgetElement highlightedUserId ]
     in
-        div
-            [ classList
-                [ ( "poketile", True )
-                , ( "winner", isWinner )
-                ]
+    div
+        [ classList
+            [ ( "poketile", True )
+            , ( "winner", isWinner )
             ]
-        <|
+          <|
             [ p []
                 [ span [] <|
                     generationElement pokemon.generation
@@ -318,16 +319,17 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
                     []
                 ]
             ]
-                ++ (case ratings of
-                        Success _ ->
-                            formattedRating
+        ]
+        ++ (case ratings of
+                Success _ ->
+                    formattedRating
 
-                        Failure _ ->
-                            [ loadingErrorIcon ]
+                Failure _ ->
+                    [ loadingErrorIcon ]
 
-                        _ ->
-                            [ loadingBusyIcon ]
-                   )
+                _ ->
+                    [ loadingBusyIcon ]
+           )
 
 
 pokemonTiles : Route -> Maybe Page -> List Pokemon -> RemoteTeamRatings -> User -> Maybe Int -> List (Html Msg)
@@ -339,7 +341,7 @@ pokemonTiles currentRoute currentPage pokelist ratings currentUser highlightedUs
         isLocked =
             isPageLocked currentRoute currentPage
     in
-        List.map (pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId) pokelist
+    List.map (pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId) pokelist
 
 
 getDateTitle : String -> String
@@ -367,7 +369,7 @@ dateTitle currentRoute currentPage =
                 Default ->
                     ""
     in
-        h2 [ class "date-heading" ] [ text dateTitleString ]
+    h2 [ class "date-heading" ] [ text dateTitleString ]
 
 
 pokemonCanvas : ApplicationState -> Html Msg
@@ -395,6 +397,7 @@ pokemonCanvas state =
                     (\list ->
                         if List.length list == 0 then
                             emptyCanvas
+
                         else
                             pokemonTiles
                                 state.currentRoute
@@ -410,4 +413,4 @@ pokemonCanvas state =
         pageTitleElement =
             dateTitle state.currentRoute currentPage
     in
-        div [ class "pokecanvas" ] (pageTitleElement :: canvasElements)
+    div [ class "pokecanvas" ] (pageTitleElement :: canvasElements)

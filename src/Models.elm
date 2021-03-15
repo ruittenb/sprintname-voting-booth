@@ -1,15 +1,15 @@
 module Models exposing (..)
 
-import Time exposing (Time)
-import Date exposing (Date)
-import Models.Types exposing (..)
-import Models.Authentication exposing (AuthenticationModel)
-import Models.Settings exposing (RemoteSettings)
-import Models.Pokemon exposing (RemotePokedex)
-import Models.Pages exposing (RemotePages)
-import Models.Ratings exposing (RemoteTeamRatings)
-import Msgs exposing (Msg)
 import Control
+import Date exposing (Date)
+import Models.Authentication exposing (AuthenticationModel)
+import Models.Pages exposing (RemotePages)
+import Models.Pokemon exposing (RemotePokedex)
+import Models.Ratings exposing (RemoteTeamRatings)
+import Models.Settings exposing (RemoteSettings)
+import Models.Types exposing (..)
+import Msgs exposing (Msg)
+import Time exposing (Time)
 
 
 type alias User =

@@ -1,11 +1,11 @@
-module Commands.Pages exposing (savePageState, decodePages, decodePage)
+module Commands.Pages exposing (decodePage, decodePages, savePageState)
 
-import RemoteData exposing (fromResult)
+import Json.Decode as Decode exposing (Decoder, bool, decodeValue, int, nullable, string)
+import Json.Decode.Pipeline exposing (decode, optional, required, resolve)
 import Json.Encode as Encode exposing (Value)
-import Json.Decode as Decode exposing (Decoder, decodeValue, int, string, bool, nullable)
-import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Models.Pages exposing (..)
 import Ports exposing (savePage)
+import RemoteData exposing (fromResult)
 
 
 savePageState : Page -> Cmd msg
@@ -15,7 +15,7 @@ savePageState page =
         portCompatiblePage =
             { page | letter = String.fromChar page.letter }
     in
-        savePage portCompatiblePage
+    savePage portCompatiblePage
 
 
 decodePages : Value -> RemotePages
@@ -39,14 +39,14 @@ pageDecoder =
                     String.uncons letter
                         |> Maybe.withDefault ( '?', "" )
             in
-                Decode.succeed (Page id generation letterChar open winnerId winnerName startDate)
+            Decode.succeed (Page id generation letterChar open winnerId winnerName startDate)
     in
-        decode toDecoder
-            |> required "id" int
-            |> required "generation" string
-            |> required "letter" string
-            |> required "open" bool
-            |> optional "winnerId" (nullable int) Nothing
-            |> optional "winnerName" (nullable string) Nothing
-            |> optional "startDate" (nullable string) Nothing
-            |> resolve
+    decode toDecoder
+        |> required "id" int
+        |> required "generation" string
+        |> required "letter" string
+        |> required "open" bool
+        |> optional "winnerId" (nullable int) Nothing
+        |> optional "winnerName" (nullable string) Nothing
+        |> optional "startDate" (nullable string) Nothing
+        |> resolve

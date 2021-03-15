@@ -3,7 +3,7 @@ module Models.Authentication exposing (..)
 import Constants.Authentication exposing (lockParameters)
 import Models.Auth as Auth exposing (..)
 import Msgs exposing (Msg)
-import Ports exposing (auth0ShowLock, auth0Logout)
+import Ports exposing (auth0Logout, auth0ShowLock)
 
 
 type AuthenticationState
@@ -31,9 +31,9 @@ init initialData =
                 Nothing ->
                     LoggedOut
     in
-        { state = state
-        , lastError = Nothing
-        , lockParameters = lockParameters
-        , showLock = auth0ShowLock
-        , logOut = auth0Logout
-        }
+    { state = state
+    , lastError = Nothing
+    , lockParameters = lockParameters
+    , showLock = auth0ShowLock
+    , logOut = auth0Logout
+    }
