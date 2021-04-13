@@ -84,12 +84,9 @@ span.button.lock-button {
     background-color: #eee;
 }
 
-.button.show-voters {
-    width: 125px;
-}
-
+.button.show-voters,
 .button.show-rankings {
-    width: 168px;
+    width: 125px;
 }
 
 button.user-button {
@@ -156,6 +153,7 @@ button.user-button:hover,
 a.button.show-voters:hover,
 a.button.show-rankings:hover,
 a.button.lock-button:hover,
+a.button.home-button:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
 .button.maintenance-button:hover,
@@ -167,6 +165,7 @@ button.user-button:active,
 a.button.show-voters:active,
 a.button.show-rankings:active,
 a.button.lock-button:active,
+a.button.home-button:active,
 .poketile .button:active {
     background-color: #f0d8f0; /* medium purple */
 }
