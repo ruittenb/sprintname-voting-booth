@@ -1236,15 +1236,19 @@
     "generation": 7,
     "id": 138,
     "letter": "I",
-    "open": true,
-    "startDate": "2021-03-30T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-03-30T00:00:00.000+02:00",
+    "winnerName": "Incineroar",
+    "winnerNum": 727
   },
   {
     "generation": 7,
     "id": 139,
     "letter": "J",
-    "open": true,
-    "startDate": "2021-04-13T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-04-13T00:00:00.000+02:00",
+    "winnerName": "Jangmo-o",
+    "winnerNum": 782
   },
   {
     "generation": 7,
