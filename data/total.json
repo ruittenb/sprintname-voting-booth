@@ -1415,72 +1415,86 @@
     {
       "generation": 8,
       "id": 163,
-      "letter": "M",
+      "letter": "K",
       "open": true,
       "startDate": "2022-03-15T00:00:00.000+01:00"
     },
     {
       "generation": 8,
       "id": 164,
-      "letter": "N",
+      "letter": "M",
       "open": true,
       "startDate": "2022-03-29T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 165,
-      "letter": "O",
+      "letter": "N",
       "open": true,
       "startDate": "2022-04-12T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 166,
-      "letter": "P",
+      "letter": "O",
       "open": true,
       "startDate": "2022-04-26T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 167,
-      "letter": "R",
+      "letter": "P",
       "open": true,
       "startDate": "2022-05-10T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 168,
-      "letter": "S",
+      "letter": "R",
       "open": true,
       "startDate": "2022-05-24T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 169,
-      "letter": "T",
+      "letter": "S",
       "open": true,
       "startDate": "2022-06-07T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 170,
-      "letter": "W",
+      "letter": "T",
       "open": true,
       "startDate": "2022-06-21T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 171,
-      "letter": "Y",
+      "letter": "U",
       "open": true,
       "startDate": "2022-07-05T00:00:00.000+02:00"
     },
     {
       "generation": 8,
       "id": 172,
-      "letter": "Z",
+      "letter": "W",
       "open": true,
       "startDate": "2022-07-19T00:00:00.000+02:00"
+    },
+    {
+      "generation": 8,
+      "id": 173,
+      "letter": "Y",
+      "open": true,
+      "startDate": "2022-08-02T00:00:00.000+02:00"
+    },
+    {
+      "generation": 8,
+      "id": 174,
+      "letter": "Z",
+      "open": true,
+      "startDate": "2022-08-16T00:00:00.000+02:00"
     }
   ],
   "pokedex": [
