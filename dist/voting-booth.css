@@ -54,6 +54,7 @@ button.user-button,
 .button.letter-button,
 .button.generation-button,
 .button.maintenance-button,
+.button.home-button,
 .button.lock-button {
     height: 30px;
     margin-right: 4px;
@@ -67,6 +68,7 @@ button.user-button,
 .button.letter-button,
 .button.generation-button,
 .button.maintenance-button,
+.button.home-button,
 .button.lock-button {
     background-color: white;
     border: 1px solid black;
@@ -102,6 +104,12 @@ button.user-button {
     background-color: #e6c6e6; /* purple */
 }
 
+.button.home-button {
+    background-image: url(icons/house.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 .button.lock-button {
     background-image: url(icons/lock-open-bw.png);
     background-repeat: no-repeat;
@@ -129,6 +137,7 @@ button.user-button,
 
 .button.button-spacer,
 .button.lock-button,
+.button.home-button,
 .button.maintenance-button,
 .button.generation-button,
 .button.letter-button {

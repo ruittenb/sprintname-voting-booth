@@ -1,26 +1,25 @@
-module View.Application exposing (title, applicationPane, functionPane)
+module View.Application exposing (applicationPane, functionPane, title)
 
-import Time exposing (Time, second)
-import Maybe.Extra exposing (unwrap)
+import Constants exposing (..)
+import Control.Debounce exposing (trailing)
+import Helpers exposing (romanNumeral)
+import Helpers.Application exposing (getIsCurrentUserAdmin)
+import Helpers.Authentication exposing (isLoggedIn, tryGetUserProfile)
+import Helpers.Pages exposing (getCurrentPage, getWinner, isPageLocked)
+import Helpers.Pokemon exposing (filterPokedexByPage)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput, onSubmit)
-import RemoteData exposing (WebData, RemoteData(..))
-import Control.Debounce exposing (trailing)
-import Helpers exposing (romanNumeral)
-import Helpers.Pokemon exposing (filterPokedexByPage)
-import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
-import Helpers.Authentication exposing (tryGetUserProfile, isLoggedIn)
-import Helpers.Application exposing (getIsCurrentUserAdmin)
-import Msgs exposing (Msg(..))
+import Maybe.Extra exposing (unwrap)
 import Models exposing (..)
+import Models.Authentication exposing (AuthenticationModel)
+import Models.Pages exposing (..)
+import Models.Pokemon exposing (..)
+import Models.Ratings exposing (..)
 import Models.Settings exposing (RemoteSettings)
 import Models.Types exposing (..)
-import Models.Authentication exposing (AuthenticationModel)
-import Models.Pokemon exposing (..)
-import Models.Pages exposing (..)
-import Models.Ratings exposing (..)
-import Constants exposing (..)
+import Msgs exposing (Msg(..))
+import RemoteData exposing (RemoteData(..), WebData)
 import Routing
     exposing
         ( createBrowsePath
@@ -28,6 +27,7 @@ import Routing
         , createShowRankingsPath
         , createShowVotersPath
         )
+import Time exposing (Time, second)
 import View.Calculations
     exposing
         ( calculatePeopleVotes
@@ -72,25 +72,25 @@ searchBox currentRoute modelQuery =
                 _ ->
                     False
     in
-        div
-            [ id "search-box-container"
-            , classList [ ( "focus", searching ) ]
+    div
+        [ id "search-box-container"
+        , classList [ ( "focus", searching ) ]
+        ]
+        [ input
+            [ id "search-box"
+            , type_ "search"
+            , classList [ ( "current", searching ) ]
+            , defaultValue modelQuery
+            , placeholder "Search in pokédex"
+            , attribute "aria-label" "Search in pokédex"
+            , attribute "results" "5"
+            , attribute "autosave" "pokemon-voting-booth"
+            , attribute "onkeypress" blurOnEnterPressed -- collapse the keyboard on mobile devices
+            , onInput Msgs.SearchPokemon
+                |> Html.Attributes.map debounce
             ]
-            [ input
-                [ id "search-box"
-                , type_ "search"
-                , classList [ ( "current", searching ) ]
-                , defaultValue modelQuery
-                , placeholder "Search in pokédex"
-                , attribute "aria-label" "Search in pokédex"
-                , attribute "results" "5"
-                , attribute "autosave" "pokemon-voting-booth"
-                , attribute "onkeypress" blurOnEnterPressed -- collapse the keyboard on mobile devices
-                , onInput Msgs.SearchPokemon
-                    |> Html.Attributes.map debounce
-                ]
-                []
-            ]
+            []
+        ]
 
 
 generationButton : Route -> Maybe SubPage -> Int -> Html Msg
@@ -111,26 +111,25 @@ generationButton currentRoute currentSubPage gen =
                 |> Maybe.map (.letter >> createBrowsePath gen)
                 |> Maybe.withDefault createDefaultPath
     in
-        a
-            [ classList
-                [ ( "button", True )
-                , ( "generation-button", True )
-                , ( "with-tooltip", True )
-                , ( "current", currentHighLight )
-                , ( "transparent", gen == 0 )
-                ]
-            , href hash
+    a
+        [ classList
+            [ ( "button", True )
+            , ( "generation-button", True )
+            , ( "with-tooltip", True )
+            , ( "current", currentHighLight )
+            , ( "transparent", gen == 0 )
             ]
-            [ text <| romanNumeral gen ]
+        , href hash
+        ]
+        [ text <| romanNumeral gen ]
 
 
 generationButtons : Route -> Maybe SubPage -> Html Msg
 generationButtons currentRoute subPage =
     div [ id "generation-buttons" ] <|
-        (List.map
+        List.map
             (generationButton currentRoute subPage)
             allGenerations
-        )
 
 
 letterButton : Route -> RemotePokedex -> Maybe SubPage -> Char -> Html Msg
@@ -159,20 +158,21 @@ letterButton currentRoute pokedex currentSubPage letter =
         letterButtonElement =
             if List.isEmpty pokeList then
                 span
+
             else
                 a
     in
-        letterButtonElement
-            [ classList
-                [ ( "button", True )
-                , ( "letter-button", True )
-                , ( "with-tooltip", True )
-                , ( "current", currentHighLight )
-                , ( "disabled", List.isEmpty pokeList )
-                ]
-            , href hash
+    letterButtonElement
+        [ classList
+            [ ( "button", True )
+            , ( "letter-button", True )
+            , ( "with-tooltip", True )
+            , ( "current", currentHighLight )
+            , ( "disabled", List.isEmpty pokeList )
             ]
-            [ String.fromChar letter |> text ]
+        , href hash
+        ]
+        [ String.fromChar letter |> text ]
 
 
 letterButtons : Route -> RemotePokedex -> Maybe SubPage -> Html Msg
@@ -183,7 +183,7 @@ letterButtons currentRoute pokedex subPage =
                 (letterButton currentRoute pokedex subPage)
                 allLetters
     in
-        div [ id "letter-buttons" ] buttonList
+    div [ id "letter-buttons" ] buttonList
 
 
 loginLogoutButton : AuthenticationModel -> User -> Html Msg
@@ -195,6 +195,7 @@ loginLogoutButton authModel currentUser =
         userName =
             if not loggedIn then
                 "Not logged in"
+
             else
                 Maybe.map ((++) "Logged in as ") currentUser
                     |> Maybe.withDefault "Not authorized"
@@ -202,29 +203,31 @@ loginLogoutButton authModel currentUser =
         buttonText =
             if loggedIn then
                 "Logout"
+
             else
                 "Login"
 
         buttonMsg =
             if loggedIn then
                 AuthenticationLogoutClicked
+
             else
                 AuthenticationLoginClicked
     in
-        div [ id "user-buttons" ]
-            [ button
-                [ class "user-button"
-                , onClick buttonMsg
-                ]
-                [ text buttonText ]
-            , div
-                [ id "user-name"
-                , classList
-                    [ ( "current", loggedIn )
-                    ]
-                ]
-                [ text userName ]
+    div [ id "user-buttons" ]
+        [ button
+            [ class "user-button"
+            , onClick buttonMsg
             ]
+            [ text buttonText ]
+        , div
+            [ id "user-name"
+            , classList
+                [ ( "current", loggedIn )
+                ]
+            ]
+            [ text userName ]
+        ]
 
 
 maintenanceButton : RemoteSettings -> Bool -> Html Msg
@@ -250,10 +253,25 @@ maintenanceButton remoteSettings isCurrentUserAdmin =
                     )
                 |> RemoteData.withDefault placeHolder
     in
-        if isCurrentUserAdmin then
-            buttonHtml
-        else
-            placeHolder
+    if isCurrentUserAdmin then
+        buttonHtml
+
+    else
+        placeHolder
+
+
+homeButton : Html Msg
+homeButton =
+    let
+        props =
+            [ classList
+                [ ( "button", True )
+                , ( "home-button", True )
+                ]
+            , attribute "href" "#"
+            ]
+    in
+    a props []
 
 
 lockButton : Route -> Maybe Page -> Bool -> Html Msg
@@ -286,10 +304,11 @@ lockButton currentRoute currentPage isCurrentUserAdmin =
                 |> Maybe.map (\page -> [ onClick (PageLockClicked page) ])
                 |> Maybe.withDefault []
     in
-        if isRouteBrowse && isCurrentUserAdmin && currentPage /= Nothing then
-            a (classProps ++ eventProps) []
-        else
-            span classProps []
+    if isRouteBrowse && isCurrentUserAdmin && currentPage /= Nothing then
+        a (classProps ++ eventProps) []
+
+    else
+        span classProps []
 
 
 calculationButtons : Route -> RemotePages -> Maybe Page -> Bool -> Maybe SubPage -> Html Msg
@@ -303,6 +322,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
                 _ ->
                     if currentPage == Nothing then
                         span
+
                     else
                         a
 
@@ -316,27 +336,28 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
                 |> Maybe.map (\subPage -> createShowRankingsPath subPage.generation subPage.letter)
                 |> Maybe.withDefault createDefaultPath
     in
-        div
-            [ id "calculation-buttons"
-            ]
-            [ calculationButtonElement
-                [ classList
-                    [ ( "show-voters", True )
-                    , ( "button", True )
-                    ]
-                , href showVotersHash
+    div
+        [ id "calculation-buttons"
+        ]
+        [ calculationButtonElement
+            [ classList
+                [ ( "show-voters", True )
+                , ( "button", True )
                 ]
-                [ text "Show Voters" ]
-            , calculationButtonElement
-                [ classList
-                    [ ( "show-rankings", True )
-                    , ( "button", True )
-                    ]
-                , href showRankingsHash
-                ]
-                [ text "Show Rankings" ]
-            , lockButton route currentPage isCurrentUserAdmin
+            , href showVotersHash
             ]
+            [ text "Show Voters" ]
+        , calculationButtonElement
+            [ classList
+                [ ( "show-rankings", True )
+                , ( "button", True )
+                ]
+            , href showRankingsHash
+            ]
+            [ text "Show Rankings" ]
+        , homeButton
+        , lockButton route currentPage isCurrentUserAdmin
+        ]
 
 
 rankingsTable : ApplicationState -> Maybe Page -> Bool -> Html Msg
@@ -369,6 +390,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
                             ]
                             []
                         ]
+
                     else
                         []
 
@@ -376,6 +398,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
                 winButtonCell number name =
                     if not isCurrentUserAdmin then
                         []
+
                     else
                         currentPage
                             |> Maybe.Extra.unwrap
@@ -396,23 +419,23 @@ rankingsTable state currentPage isCurrentUserAdmin =
                                     ]
                                 )
             in
-                div
-                    [ class "rankings-table-wrapper" ]
-                    [ table [ class "rankings-table" ] <|
-                        List.map
-                            (\r ->
-                                tr
-                                    [ classList
-                                        [ ( "winner-rating", r.totalVotes == winnerRating && r.totalVotes > 0 ) ]
-                                    ]
-                                    ([ td [] ([ text r.name ] ++ winnerBadge r.number)
-                                     , td [] [ text (toString r.totalVotes) ]
-                                     ]
-                                        ++ winButtonCell r.number r.name
-                                    )
-                            )
-                            rankingsToShow
-                    ]
+            div
+                [ class "rankings-table-wrapper" ]
+                [ table [ class "rankings-table" ] <|
+                    List.map
+                        (\r ->
+                            tr
+                                [ classList
+                                    [ ( "winner-rating", r.totalVotes == winnerRating && r.totalVotes > 0 ) ]
+                                ]
+                                ([ td [] ([ text r.name ] ++ winnerBadge r.number)
+                                 , td [] [ text (toString r.totalVotes) ]
+                                 ]
+                                    ++ winButtonCell r.number r.name
+                                )
+                        )
+                        rankingsToShow
+                ]
 
         _ ->
             span [] []
@@ -427,24 +450,24 @@ votersTable state =
                     calculatePeopleVotes state
                         |> List.sortBy .userId
             in
-                div
-                    [ class "voters-table-wrapper" ]
-                    [ table [ class "voters-table" ] <|
-                        List.map
-                            (\v ->
-                                tr
-                                    [ classList
-                                        [ ( "complete", v.completionLevel == Complete )
-                                        , ( "incomplete", v.completionLevel == Incomplete )
-                                        , ( "absent", v.completionLevel == Absent )
-                                        ]
+            div
+                [ class "voters-table-wrapper" ]
+                [ table [ class "voters-table" ] <|
+                    List.map
+                        (\v ->
+                            tr
+                                [ classList
+                                    [ ( "complete", v.completionLevel == Complete )
+                                    , ( "incomplete", v.completionLevel == Incomplete )
+                                    , ( "absent", v.completionLevel == Absent )
                                     ]
-                                    [ td [] [ text v.userName ]
-                                    , td [] [ text (toString v.totalVotes) ]
-                                    ]
-                            )
-                            votersToShow
-                    ]
+                                ]
+                                [ td [] [ text v.userName ]
+                                , td [] [ text (toString v.totalVotes) ]
+                                ]
+                        )
+                        votersToShow
+                ]
 
         _ ->
             span [] []
@@ -460,15 +483,15 @@ tableMask route =
                 ]
                 []
     in
-        case route of
-            Browse WithPokemonRankings _ ->
-                maskDiv
+    case route of
+        Browse WithPokemonRankings _ ->
+            maskDiv
 
-            Browse WithPeopleVotes _ ->
-                maskDiv
+        Browse WithPeopleVotes _ ->
+            maskDiv
 
-            _ ->
-                span [] []
+        _ ->
+            span [] []
 
 
 functionPane : ApplicationState -> Html Msg
@@ -481,32 +504,32 @@ functionPane state =
         isCurrentUserAdmin =
             getIsCurrentUserAdmin state
     in
-        div [ id "function-buttons" ]
-            [ generationButtons
-                state.currentRoute
-                state.subPage
-            , searchBox
-                state.currentRoute
-                state.query
-            , letterButtons
-                state.currentRoute
-                state.pokedex
-                state.subPage
-            , calculationButtons
-                state.currentRoute
-                state.pages
-                currentPage
-                isCurrentUserAdmin
-                state.subPage
-            , tableMask
-                state.currentRoute
-            , votersTable
-                state
-            , rankingsTable
-                state
-                currentPage
-                isCurrentUserAdmin
-            ]
+    div [ id "function-buttons" ]
+        [ generationButtons
+            state.currentRoute
+            state.subPage
+        , searchBox
+            state.currentRoute
+            state.query
+        , letterButtons
+            state.currentRoute
+            state.pokedex
+            state.subPage
+        , calculationButtons
+            state.currentRoute
+            state.pages
+            currentPage
+            isCurrentUserAdmin
+            state.subPage
+        , tableMask
+            state.currentRoute
+        , votersTable
+            state
+        , rankingsTable
+            state
+            currentPage
+            isCurrentUserAdmin
+        ]
 
 
 applicationPane : ApplicationState -> Html Msg
@@ -515,17 +538,17 @@ applicationPane state =
         isCurrentUserAdmin =
             getIsCurrentUserAdmin state
     in
-        div [ id "main-buttons" ]
-            [ loginLogoutButton
-                state.authModel
-                state.currentUser
-            , maintenanceButton
-                state.settings
-                isCurrentUserAdmin
-            , messageBox
-                state.statusMessage
-                state.statusLevel
-            ]
+    div [ id "main-buttons" ]
+        [ loginLogoutButton
+            state.authModel
+            state.currentUser
+        , maintenanceButton
+            state.settings
+            isCurrentUserAdmin
+        , messageBox
+            state.statusMessage
+            state.statusLevel
+        ]
 
 
 title : Html msg
