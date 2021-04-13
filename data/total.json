@@ -1557,6 +1557,10 @@
         {
           "image": "003-mega.png",
           "vname": "Mega Form"
+        },
+        {
+          "image": "003-gigantamax.png",
+          "vname": "Gigantamax"
         }
       ]
     },
@@ -1663,6 +1667,10 @@
         {
           "image": "009-mega.png",
           "vname": "Mega Form"
+        },
+        {
+          "image": "009-gigantamax.png",
+          "vname": "Gigantamax"
         }
       ]
     },
@@ -2809,6 +2817,10 @@
         {
           "image": "079.png",
           "vname": ""
+        },
+        {
+          "image": "079-galarian.png",
+          "vname": "Galarian"
         }
       ]
     },
@@ -3856,6 +3868,10 @@
         {
           "image": "144.png",
           "vname": ""
+        },
+        {
+          "image": "144-galarian.png",
+          "vname": "Galarian"
         }
       ]
     },
@@ -3871,6 +3887,10 @@
         {
           "image": "145.png",
           "vname": ""
+        },
+        {
+          "image": "145-galarian.png",
+          "vname": "Galarian"
         }
       ]
     },
@@ -3886,6 +3906,10 @@
         {
           "image": "146.png",
           "vname": ""
+        },
+        {
+          "image": "146-galarian.png",
+          "vname": "Galarian"
         }
       ]
     },
@@ -4693,6 +4717,10 @@
         {
           "image": "199.png",
           "vname": ""
+        },
+        {
+          "image": "199-galarian.png",
+          "vname": "Galarian"
         }
       ]
     },
@@ -14367,6 +14395,10 @@
         {
           "image": "809.png",
           "vname": ""
+        },
+        {
+          "image": "809-gigantamax.png",
+          "vname": "Gigantamax"
         }
       ]
     },
@@ -14412,6 +14444,10 @@
         {
           "image": "812.png",
           "vname": ""
+        },
+        {
+          "image": "812-gigantamax.png",
+          "vname": "Gigantamax"
         }
       ]
     },
@@ -14457,6 +14493,10 @@
         {
           "image": "815.png",
           "vname": ""
+        },
+        {
+          "image": "815-gigantamax.png",
+          "vname": "Gigantamax"
         }
       ]
     },
@@ -14502,6 +14542,10 @@
         {
           "image": "818.png",
           "vname": ""
+        },
+        {
+          "image": "818-gigantamax.png",
+          "vname": "Gigantamax"
         }
       ]
     },
@@ -15662,6 +15706,150 @@
         {
           "image": "890-externamax.png",
           "vname": "Externamax"
+        }
+      ]
+    },
+    {
+      "description": "Kubfu trains hard to perfect its moves. The moves it masters will determine which form it takes when it evolves.  If Kubfu pulls the long white hair on its head, its fighting spirit heightens and power wells up from the depths of its belly.",
+      "generation": 8,
+      "id": 891,
+      "letter": "K",
+      "name": "Kubfu",
+      "number": 891,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Kubfu_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "891.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "Inhabiting the mountains of a distant region, this Pokémon races across sheer cliffs, training its legs and refining its moves.  The Single Strike form of Urshifu is a strong believer in the one-hit KO. Its strategy is to leap in close to foes and land a devastating blow with a hardened fist.  The Rapid Strike form of Urshifu is a strong believer in defeating foes by raining many blows down on them. Its strikes are nonstop, flowing like a river.",
+      "generation": 8,
+      "id": 892,
+      "letter": "U",
+      "name": "Urshifu",
+      "number": 892,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Urshifu_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "892-single.png",
+          "vname": "Single Strike Style"
+        },
+        {
+          "image": "892-rapid.png",
+          "vname": "Rapid Strike Style"
+        },
+        {
+          "image": "892-single-gigantamax.png",
+          "vname": "Gigantamax / Single Strike"
+        },
+        {
+          "image": "892-rapid-gigantamax.png",
+          "vname": "Gigantamax / Rapid Strike"
+        }
+      ]
+    },
+    {
+      "description": "Within dense forests, this Pokémon lives in a pack with others of its kind. It's incredibly aggressive, and the other Pokémon of the forest fear it. Once the vines on Zarude's body tear off, they become nutrients in the soil. This helps the plants of the forest grow.",
+      "generation": 8,
+      "id": 893,
+      "letter": "Z",
+      "name": "Zarude",
+      "number": 893,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Zarude_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "893.png",
+          "vname": ""
+        },
+        {
+          "image": "893-dada.png",
+          "vname": "Dada"
+        }
+      ]
+    },
+    {
+      "description": "This Pokémon is a cluster of electrical energy. It's said that removing the rings on Regieleki's body will unleash the Pokémon's latent power. Its entire body is made up of a single organ that generates electrical energy. Regieleki is capable of creating all Galar's electricity.",
+      "generation": 8,
+      "id": 894,
+      "letter": "R",
+      "name": "Regieleki",
+      "number": 894,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Regieleki_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "894.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "An academic theory proposes that Regidrago's arms were once the head of an ancient dragon Pokémon. The theory remains unproven.  Its body is composed of crystallized dragon energy. Regidrago is said to have the powers of every dragon Pokémon.",
+      "generation": 8,
+      "id": 895,
+      "letter": "R",
+      "name": "Regidrago",
+      "number": 895,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Regidrago_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "895.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "Glastrier emits intense cold from its hooves. It's also a belligerent Pokémon—anything it wants, it takes by force.  Glastrier has tremendous physical strength, and the mask of ice covering its face is 100 times harder than diamond.",
+      "generation": 8,
+      "id": 896,
+      "letter": "G",
+      "name": "Glastrier",
+      "number": 896,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Glastrier_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "896.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "It probes its surroundings with all its senses save one - it doesn't use its sense of sight. Spectrier's kicks are said to separate soul from body. As it dashes through the night, Spectrier absorbs the life-force of sleeping creatures. It craves silence and solitude.",
+      "generation": 8,
+      "id": 897,
+      "letter": "S",
+      "name": "Spectrier",
+      "number": 897,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Spectrier_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "897.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "description": "Calyrex is a merciful Pokémon, capable of providing healing and blessings. It reigned over the Galar region in times of yore. Calyrex is known in legend as a king that ruled over Galar in ancient times. It has the power to cause hearts to mend and plants to spring forth.",
+      "generation": 8,
+      "id": 898,
+      "letter": "C",
+      "name": "Calyrex",
+      "number": 898,
+      "url": "https://bulbapedia.bulbagarden.net/wiki/Calyrex_(Pok%C3%A9mon)",
+      "variants": [
+        {
+          "image": "898.png",
+          "vname": ""
+        },
+        {
+          "image": "898-ice-rider.png",
+          "vname": "Ice Rider"
+        },
+        {
+          "image": "898-shadow-rider.png",
+          "vname": "Shadow Rider"
         }
       ]
     }
