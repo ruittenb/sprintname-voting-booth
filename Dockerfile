@@ -10,7 +10,7 @@ COPY . .
 
 ENV PATH="$PATH:./node_modules/.bin"
 RUN apk add --update make bash && \
-    make prod build-bundle build-js-minify-prod build-css-minify
+    make prod build-non-elm
 
 ############################################################################
 # main
