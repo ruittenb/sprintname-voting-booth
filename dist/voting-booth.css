@@ -192,6 +192,9 @@ button.user-button.current,
 .button.generation-button.transparent {
     opacity: 0.01;
 }
+.button.generation-button.transparent:hover {
+    opacity: 0.04;
+}
 
 /**
  * Hide the generation 0 button if it would be on one line (looking empty).
