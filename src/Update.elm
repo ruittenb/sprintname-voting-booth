@@ -235,6 +235,9 @@ update msg maybeHighlightedState =
                 in
                     ( newState, Cmd.none )
 
+            UserRatingsLoaded _ ->
+                ( oldState, Cmd.none )
+
             NotificationsClicked ->
                 -- TODO
                 ( oldState, Cmd.none )

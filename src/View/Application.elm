@@ -227,9 +227,8 @@ loginLogoutButton authModel currentUser isCurrentUserAdmin =
                     , ( "admin", isCurrentUserAdmin )
                     ]
                 ]
+                [ text userName ]
             ]
-            [ text userName ]
-        ]
 
 
 maintenanceButton : RemoteSettings -> Bool -> Html Msg
