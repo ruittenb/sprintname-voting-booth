@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "auth0-js": "^9.11.3",
-    "auth0-lock": "^11.26.3",
+    "auth0-lock": "^11.30.1",
     "browserify": "^16.5.0",
     "cached-path-relative": "^1.0.2",
     "clean-css": "^4.2.1",
