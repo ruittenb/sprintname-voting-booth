@@ -2,22 +2,13 @@
 # and an empty file will abort the edit. If an error occurs while saving this file will be
 # reopened with the relevant failures.
 #
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    deployment.kubernetes.io/revision: "2"
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"extensions/v1beta1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"12"},"creationTimestamp":"2018-10-27T07:56:13Z","generation":13,"labels":{"app":"voting-booth"},"name":"voting-booth","namespace":"voting-booth","selfLink":"/apis/extensions/v1beta1/namespaces/voting-booth/deployments/voting-booth","uid":"c662d30f-d9bd-11e8-ac8e-42010aa40119"},"spec":{"replicas":1,"selector":{"matchLabels":{"app":"voting-booth"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":1},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"voting-booth"}},"spec":{"containers":[{"image":"eu.gcr.io/proforto-team-sso/voting-booth:10.4","imagePullPolicy":"Always","name":"voting-booth","resources":{"limits":{"memory":"1Gi"},"requests":{"memory":"1Gi"}},"terminationMessagePath":"/dev/termination-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":30}}}}
-  creationTimestamp: 2019-05-14T07:21:16Z
-  generation: 2
   labels:
     app: voting-booth
   name: voting-booth
   namespace: voting-booth
-  resourceVersion: "26517757"
-  selfLink: /apis/extensions/v1beta1/namespaces/voting-booth/deployments/voting-booth
-  uid: dcb90ff7-7618-11e9-988d-b222746eef45
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -32,12 +23,11 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: voting-booth
     spec:
       containers:
-      - image: eu.gcr.io/proforto-team-sso/voting-booth:10.5
+      - image: eu.gcr.io/proforto-team-sso/voting-booth:16.5
         imagePullPolicy: Always
         name: voting-booth
         resources:
@@ -45,29 +35,4 @@ spec:
             memory: 1Gi
           requests:
             memory: 1Gi
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
       restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: 2019-05-14T07:21:16Z
-    lastUpdateTime: 2019-05-14T07:21:16Z
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: 2019-05-14T07:21:16Z
-    lastUpdateTime: 2019-05-15T15:03:47Z
-    message: ReplicaSet "voting-booth-55f65f5d65" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  observedGeneration: 2
-  readyReplicas: 1
-  replicas: 1
-  updatedReplicas: 1

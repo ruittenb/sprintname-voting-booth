@@ -1,16 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: 2018-10-27T08:01:44Z
   labels:
     app: voting-booth
   name: voting-booth-service
   namespace: voting-booth
-  resourceVersion: "6417318"
-  selfLink: /api/v1/namespaces/voting-booth/services/voting-booth-service
-  uid: 8bda00f9-d9be-11e8-ac8e-42010aa40119
 spec:
-  clusterIP: 10.15.254.235
   ports:
   - name: 4201-to-4201-tcp
     port: 4201
@@ -18,5 +13,4 @@ spec:
     targetPort: 4201
   selector:
     app: voting-booth
-  sessionAffinity: None
   type: ClusterIP
