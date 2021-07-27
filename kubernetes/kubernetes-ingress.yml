@@ -15,7 +15,7 @@ spec:
     serviceName: voting-booth-service
     servicePort: 4201
   rules:
-  - host: voting-booth.kube.profortool.com
+  - host: voting-booth.dokube.profortool.com
     http:
       paths:
       - backend:
@@ -24,4 +24,4 @@ spec:
   tls:
   - secretName: voting-booth-certificate
     hosts:
-    - voting-booth.kube.profortool.com
+    - voting-booth.dokube.profortool.com
