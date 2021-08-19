@@ -1254,64 +1254,82 @@
     "generation": 7,
     "id": 140,
     "letter": "K",
-    "open": true,
-    "startDate": "2021-04-27T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-04-27T00:00:00.000+02:00",
+    "winnerName": "Komala",
+    "winnerNum": 775
   },
   {
     "generation": 7,
     "id": 141,
     "letter": "L",
-    "open": true,
-    "startDate": "2021-05-11T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-05-11T00:00:00.000+02:00",
+    "winnerName": "Lycanroc",
+    "winnerNum": 745
   },
   {
     "generation": 7,
     "id": 142,
     "letter": "M",
-    "open": true,
-    "startDate": "2021-05-25T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-05-25T00:00:00.000+02:00",
+    "winnerName": "Mudbray",
+    "winnerNum": 749
   },
   {
     "generation": 7,
     "id": 143,
     "letter": "N",
-    "open": true,
-    "startDate": "2021-06-08T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-06-08T00:00:00.000+02:00",
+    "winnerName": "Nihilego",
+    "winnerNum": 793
   },
   {
     "generation": 7,
     "id": 144,
     "letter": "O",
-    "open": true,
-    "startDate": "2021-06-22T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-06-22T00:00:00.000+02:00",
+    "winnerName": "Oricorio",
+    "winnerNum": 741
   },
   {
     "generation": 7,
     "id": 145,
     "letter": "P",
-    "open": true,
-    "startDate": "2021-07-06T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-07-06T00:00:00.000+02:00",
+    "winnerName": "Passimian",
+    "winnerNum": 766
   },
   {
     "generation": 7,
     "id": 146,
     "letter": "R",
-    "open": true,
-    "startDate": "2021-07-20T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-07-20T00:00:00.000+02:00",
+    "winnerName": "Rockruff",
+    "winnerNum": 744
   },
   {
     "generation": 7,
     "id": 147,
     "letter": "S",
-    "open": true,
-    "startDate": "2021-08-03T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-08-03T00:00:00.000+02:00",
+    "winnerName": "Solgaleo",
+    "winnerNum": 791
   },
   {
     "generation": 7,
     "id": 148,
     "letter": "T",
-    "open": true,
-    "startDate": "2021-08-17T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-08-17T00:00:00.000+02:00",
+    "winnerName": "Type: Null",
+    "winnerNum": 772
   },
   {
     "generation": 7,

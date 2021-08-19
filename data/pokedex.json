@@ -1313,7 +1313,8 @@
       {
         "image": "078.png",
         "vname": ""
-      }, {
+      },
+      {
         "image": "078-galarian.png",
         "vname": "Galarian"
       }
@@ -8935,6 +8936,10 @@
       {
         "image": "555-galarian-normal.png",
         "vname": "Galarian Normal Mode"
+      },
+      {
+        "image": "555-galarian-zen.png",
+        "vname": "Galarian Zen Mode"
       }
     ]
   },
