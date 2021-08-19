@@ -26,7 +26,7 @@ DOCKER_REPO=voting-booth
 DOCKERPORTS=-p 4201:4201
 
 KUBE_NAMESPACE=voting-booth
-KUBE_CONTEXT=voting-booth
+KUBE_CONTEXT=pr118-voting-booth
 KUBE_DEPLOYMENT=voting-booth
 KUBE_RESTART_PATCH=$(shell node kubernetes/restartdate_patch.js)
 
