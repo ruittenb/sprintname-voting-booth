@@ -12,6 +12,10 @@
       ".read": "true",
       ".write": "false"
     },
+    "rdawdex": {
+      ".read": "true",
+      ".write": "false"
+    },
     "pages": {
       ".read": "true",
       "$page_id": {

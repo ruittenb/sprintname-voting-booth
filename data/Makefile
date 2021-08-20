@@ -1,6 +1,7 @@
 COMBINED=total.json
 SETTINGS=settings.json
 POKEDEX=pokedex.json
+RDAWDEX=rdawdex.json
 USERS=users.json
 PAGES=pages.json
 
@@ -27,6 +28,9 @@ combine: ## combine 'settings', 'pages', 'pokedex' and 'users' to 'total'
 		printf '"pokedex":'  ; \
 		cat $(POKEDEX)       ; \
 		printf ",\n"         ; \
+		printf '"rdawdex":'  ; \
+		cat $(RDAWDEX)       ; \
+		printf ",\n"         ; \
 		printf '"settings":' ; \
 		cat $(SETTINGS)      ; \
 		printf ",\n"         ; \
@@ -40,6 +44,7 @@ split: ## split 'total' into 'settings', 'pages', 'pokedex' and 'users'
 	jq '.settings' $(COMBINED) > $(SETTINGS)
 	jq '.pages'    $(COMBINED) > $(PAGES)
 	jq '.pokedex'  $(COMBINED) > $(POKEDEX)
+	jq '.rdawdex'  $(COMBINED) > $(RDAWDEX)
 	jq '.users'    $(COMBINED) > $(USERS)
 
 ##@ Note: the above commands require the jq(1) command
