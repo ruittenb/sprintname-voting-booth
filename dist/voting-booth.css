@@ -154,7 +154,8 @@ a.button.lock-button:active,
 button.user-button.current,
 .button.letter-button.current,
 .button.generation-button.current,
-.button.generation-button.current.transparent {
+.button.generation-button.current.transparent,
+.button.generation-button.current.transparent:hover {
   background-color: #e6c6e6;
   opacity: 1; }
 

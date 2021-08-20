@@ -15,7 +15,11 @@ import Commands exposing (getStatusMessageExpiryTime)
 
 romanNumerals : Array String
 romanNumerals =
-    Array.fromList [ "O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X" ]
+    Array.fromList [
+        "O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX",
+        "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX",
+        "XX", "XXI", "XXII", "XXIII", "XXIV", "XV"
+    ]
 
 
 romanNumeral : Int -> String

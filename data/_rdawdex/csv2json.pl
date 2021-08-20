@@ -28,18 +28,18 @@ my @records = ();
 
 try {
     foreach (@csvdata) {
-        my $num = $_->[$NUM];
+        my $num = 0 + $_->[$NUM];
         my $record = {
             description => $_->[$DESC],
-            generation => $_->[$GEN],
+            generation => 0 + $_->[$GEN],
             id => $num,
             letter => $_->[$LETTER],
             name => $_->[$NAME],
-            number => $_->[$NUM],
+            number => $num,
             url => $URL . $_->[$NAME],
             variants => [
                 {
-                    image => sprintf("%04d", 0+$num) . "-" . $_->[$IMAGE],
+                    image => sprintf("%04d", $num) . "-" . $_->[$IMAGE],
                     vname => ""
                 },
             ]
