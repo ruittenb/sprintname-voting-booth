@@ -18,3 +18,10 @@ $(THUMBSDIR):
 $(THUMBSDIR)/%.png: %.png
 	convert $< -resize 120x120 $@
 
+.PHONY: to-475
+to-475: ## resize all images to 475x475
+	for i in *png; do convert $$i -resize 475x475 new-$$i; done
+
+replace-475:
+	for i in new*png; do mv $$i $${i#new-}; done
+
