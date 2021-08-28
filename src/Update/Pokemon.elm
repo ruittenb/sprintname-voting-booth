@@ -33,7 +33,7 @@ remoteDataUnwrap defaultValue mapFunction =
     RemoteData.map mapFunction >> RemoteData.withDefault defaultValue
 
 
-filterCurrentSubpage : Int -> Char -> List PreloadCandidate -> List PreloadCandidate
+filterCurrentSubpage : String -> Char -> List PreloadCandidate -> List PreloadCandidate
 filterCurrentSubpage gen letter imgList =
     List.filter (\i -> i.generation == gen && i.letter == letter) imgList
 
@@ -43,7 +43,7 @@ mapCharLettersToString imgList =
     List.map (\i -> { i | letter = String.fromChar i.letter }) imgList
 
 
-getPreloadCommandForPokedexCrossSection : Int -> Char -> RemotePokedex -> Cmd msg
+getPreloadCommandForPokedexCrossSection : String -> Char -> RemotePokedex -> Cmd msg
 getPreloadCommandForPokedexCrossSection generation letter pokedex =
     let
         generationLetterAndImageUrl pokemon =

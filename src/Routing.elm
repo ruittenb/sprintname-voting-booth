@@ -10,6 +10,8 @@ module Routing
         )
 
 import Char
+import Array
+import Helpers exposing (andThen2)
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
 import Constants exposing (allLetters, allGenerations)
@@ -46,22 +48,22 @@ createSearchPath query =
     "#/" ++ searchPathSegment ++ "/" ++ query
 
 
-createBrowsePath : Int -> Char -> String
+createBrowsePath : String -> Char -> String
 createBrowsePath gen letter =
-    "#/" ++ browsePathSegment ++ "/" ++ (toString gen) ++ (String.fromChar letter)
+    "#/" ++ browsePathSegment ++ "/" ++ gen ++ "." ++ (String.fromChar letter)
 
 
-createShowRankingsPath : Int -> Char -> String
+createShowRankingsPath : String -> Char -> String
 createShowRankingsPath gen letter =
     (createBrowsePath gen letter) ++ "/" ++ showRankingsPathSegment
 
 
-createShowVotersPath : Int -> Char -> String
+createShowVotersPath : String -> Char -> String
 createShowVotersPath gen letter =
     (createBrowsePath gen letter) ++ "/" ++ showVotersPathSegment
 
 
-createBrowseModePath : BrowseMode -> Int -> Char -> String
+createBrowseModePath : BrowseMode -> String -> Char -> String
 createBrowseModePath mode gen letter =
     case mode of
         Freely ->
@@ -83,32 +85,36 @@ unwrap defaultValue mapFunction route =
         _ ->
             defaultValue
 
+composeValidSubPage : String -> String -> Maybe SubPage
+composeValidSubPage generation rawLetter =
+    rawLetter
+        |> String.toUpper
+        |> String.toList
+        |> List.head
+        |> Maybe.andThen
+            (\letter ->
+                if
+                    List.member letter allLetters
+                    && List.member generation allGenerations
+                then
+                    Just
+                        { generation = generation
+                        , letter = letter
+                        }
+                else
+                    Nothing
+            )
 
 extractSubpage : String -> Maybe SubPage
 extractSubpage pathSegment =
-    String.uncons pathSegment
-        |> Maybe.andThen
-            (\( gen, rest ) ->
-                let
-                    generation =
-                        Char.toCode gen - 48
-                in
-                    String.toUpper rest
-                        |> String.toList
-                        |> List.head
-                        |> Maybe.andThen
-                            (\letter ->
-                                if
-                                    List.member letter allLetters
-                                        && List.member generation allGenerations
-                                then
-                                    Just
-                                        { generation = generation
-                                        , letter = letter
-                                        }
-                                else
-                                    Nothing
-                            )
+    String.split "." pathSegment
+        |> Array.fromList
+        |> (\segments ->
+            let
+                generation = Array.get 0 segments
+                letter = Array.get 1 segments
+            in
+                andThen2 composeValidSubPage generation letter
             )
 
 

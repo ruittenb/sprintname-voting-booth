@@ -1,6 +1,6 @@
 module Helpers
     exposing
-        ( romanNumeral
+        ( andThen2
         , setStatusMessage
         , clearStatusMessage
         , clearWarningMessage
@@ -13,20 +13,14 @@ import Models.Types exposing (StatusLevel(..))
 import Commands exposing (getStatusMessageExpiryTime)
 
 
-romanNumerals : Array String
-romanNumerals =
-    Array.fromList [
-        "O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX",
-        "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX",
-        "XX", "XXI", "XXII", "XXIII", "XXIV", "XV"
-    ]
-
-
-romanNumeral : Int -> String
-romanNumeral i =
-    Array.get i romanNumerals
-        |> Maybe.withDefault "?"
-
+andThen2 : (a -> b -> Maybe c) -> Maybe a -> Maybe b -> Maybe c
+andThen2 fn ma mb =
+    case
+        (ma, mb)
+    of
+        (Nothing, _) -> Nothing
+        (_, Nothing) -> Nothing
+        (Just a, Just b) -> fn a b
 
 setStatusMessage : StatusLevel -> String -> ( StatusReporter x, Cmd Msg ) -> ( StatusReporter x, Cmd Msg )
 setStatusMessage statusLevel statusMessage ( state, cmd ) =

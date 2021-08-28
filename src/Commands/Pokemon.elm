@@ -31,7 +31,7 @@ pokemonDecoder =
         decode toDecoder
             |> required "id" int
             |> required "number" int
-            |> required "generation" int
+            |> required "generation" string
             |> required "description" string
             |> required "letter" string
             |> required "name" string

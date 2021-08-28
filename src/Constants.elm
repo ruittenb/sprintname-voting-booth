@@ -18,9 +18,14 @@ maxStars =
     3
 
 
-maxGeneration : Int
-maxGeneration =
-    8
+pokeGenerations : List String
+pokeGenerations =
+    [ "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "O" ]
+
+
+rdawGenerations : List String
+rdawGenerations =
+    [ "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx" ]
 
 
 imageDir : String
@@ -35,7 +40,7 @@ thumbnailDir =
 
 noBreakingSpace : String
 noBreakingSpace =
-    "\x00A0"
+    " "
 
 
 dateTemplate : String
@@ -43,10 +48,9 @@ dateTemplate =
     "EEEE, MMMM d, y"
 
 
-allGenerations : List Int
+allGenerations : List String
 allGenerations =
-    List.range 1 maxGeneration
-        ++ [ 0 ]
+    pokeGenerations ++ rdawGenerations
 
 
 allLetters : List Char

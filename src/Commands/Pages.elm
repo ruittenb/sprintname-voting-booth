@@ -43,7 +43,7 @@ pageDecoder =
     in
         decode toDecoder
             |> required "id" int
-            |> required "generation" int
+            |> required "generation" string
             |> required "letter" string
             |> required "open" bool
             |> optional "winnerNum" (nullable int) Nothing

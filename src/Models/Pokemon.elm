@@ -4,14 +4,14 @@ import RemoteData exposing (RemoteData)
 
 
 type alias PreloadCandidate =
-    { generation : Int
+    { generation : String
     , letter : Char
     , imageUrl : String
     }
 
 
 type alias PortCompatiblePreloadCandidate =
-    { generation : Int
+    { generation : String
     , letter : String
     , imageUrl : String
     }
@@ -43,7 +43,7 @@ type alias PokeWinner =
 type alias Pokemon =
     { id : Int
     , number : Int
-    , generation : Int
+    , generation : String
     , description : String
     , letter : Char
     , name : String

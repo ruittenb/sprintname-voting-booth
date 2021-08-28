@@ -9,7 +9,6 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (maxStars, imageDir, thumbnailDir, noBreakingSpace, dateTemplate)
-import Helpers exposing (romanNumeral)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Pokemon
     exposing
@@ -234,7 +233,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
         hash =
             createBrowsePath pokemon.generation pokemon.letter
 
-        generationElement : Int -> List (Html Msg)
+        generationElement : String -> List (Html Msg)
         generationElement gen =
             case currentRoute of
                 Search _ ->
@@ -242,7 +241,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
                         [ href hash
                         , classList [ ( "button", True ) ]
                         ]
-                        [ text (romanNumeral gen)
+                        [ text gen
                         ]
                     , text noBreakingSpace
                     ]

@@ -2,7 +2,6 @@ module View.Application exposing (applicationPane, functionPane, title)
 
 import Constants exposing (..)
 import Control.Debounce exposing (trailing)
-import Helpers exposing (romanNumeral)
 import Helpers.Application exposing (getIsCurrentUserAdmin)
 import Helpers.Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Helpers.Pages exposing (getCurrentPage, getWinner, isPageLocked)
@@ -93,7 +92,7 @@ searchBox currentRoute modelQuery =
         ]
 
 
-generationButton : Route -> Maybe SubPage -> Int -> Html Msg
+generationButton : Route -> Maybe SubPage -> String -> Html Msg
 generationButton currentRoute currentSubPage gen =
     let
         currentHighLight =
@@ -117,11 +116,11 @@ generationButton currentRoute currentSubPage gen =
             , ( "generation-button", True )
             , ( "with-tooltip", True )
             , ( "current", currentHighLight )
-            , ( "transparent", gen == 0 )
+            , ( "transparent", gen == "O" )
             ]
         , href hash
         ]
-        [ text <| romanNumeral gen ]
+        [ text gen ]
 
 
 generationButtons : Route -> Maybe SubPage -> Html Msg
