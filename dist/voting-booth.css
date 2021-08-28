@@ -173,6 +173,9 @@ button.user-button.current,
 .button.generation-button.transparent:hover {
   opacity: 0.04; }
 
+#rdaw-generation-buttons .generation-button {
+  font-style: italic; }
+
 /**
  * Hide the generation 0 button if it would be on one line (looking empty).
  * The scrollbar width messes this up, because its width is browser-dependent
@@ -263,16 +266,20 @@ button.user-button.current,
   #search-box-container {
     order: 20; }
 
-  #generation-buttons {
+  #poke-generation-buttons {
     order: 30; }
 
-  #letter-buttons {
+  #rdaw-generation-buttons {
     order: 40; }
 
+  #letter-buttons {
+    order: 50; }
+
   #calculation-buttons {
-    order: 50; } }
+    order: 60; } }
 #user-buttons,
-#generation-buttons {
+#poke-generation-buttons,
+#rdaw-generation-buttons {
   white-space: nowrap;
   display: block;
   clear: left; }

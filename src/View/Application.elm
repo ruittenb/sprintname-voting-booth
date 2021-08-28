@@ -123,12 +123,19 @@ generationButton currentRoute currentSubPage gen =
         [ text gen ]
 
 
-generationButtons : Route -> Maybe SubPage -> Html Msg
-generationButtons currentRoute subPage =
-    div [ id "generation-buttons" ] <|
+pokeGenerationButtons : Route -> Maybe SubPage -> Html Msg
+pokeGenerationButtons currentRoute subPage =
+    div [ id "poke-generation-buttons" ] <|
         List.map
             (generationButton currentRoute subPage)
-            allGenerations
+            pokeGenerations
+
+rdawGenerationButtons : Route -> Maybe SubPage -> Html Msg
+rdawGenerationButtons currentRoute subPage =
+    div [ id "rdaw-generation-buttons" ] <|
+        List.map
+            (generationButton currentRoute subPage)
+            rdawGenerations
 
 
 letterButton : Route -> RemotePokedex -> Maybe SubPage -> Char -> Html Msg
@@ -504,12 +511,15 @@ functionPane state =
             getIsCurrentUserAdmin state
     in
     div [ id "function-buttons" ]
-        [ generationButtons
+        [ pokeGenerationButtons
             state.currentRoute
             state.subPage
         , searchBox
             state.currentRoute
             state.query
+        , rdawGenerationButtons
+            state.currentRoute
+            state.subPage
         , letterButtons
             state.currentRoute
             state.pokedex
