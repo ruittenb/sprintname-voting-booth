@@ -1,6 +1,7 @@
 module Helpers.Pokemon
     exposing
         ( filterPokedexByPage
+        , filterPokedexByGeneration
         , filterPokedexIfReady
         , filterPokedex
         , searchPokedexIfReady
@@ -36,6 +37,17 @@ filterPokedexByPage remotePokedex generation letter =
                     |> List.filter (.letter >> (==) letter)
                     |> List.sortBy .name
             )
+
+filterPokedexByGeneration : RemotePokedex -> String -> Maybe (List Pokemon)
+filterPokedexByGeneration remotePokedex generation =
+    -- filters the pokedex by generation
+    RemoteData.toMaybe remotePokedex
+        |> Maybe.map
+            (\pokedex ->
+                pokedex
+                    |> List.filter (.generation >> (==) generation)
+            )
+
 
 
 filterPokedexIfReady : RemotePokedex -> Maybe SubPage -> Maybe (List Pokemon)

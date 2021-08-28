@@ -27,6 +27,9 @@ rdawGenerations : List String
 rdawGenerations =
     [ "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx" ]
 
+genLetterUrlSeparator : String
+genLetterUrlSeparator =
+    "."
 
 imageDir : String
 imageDir =

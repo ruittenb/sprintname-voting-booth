@@ -14,7 +14,7 @@ import Array
 import Helpers exposing (andThen2)
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
-import Constants exposing (allLetters, allGenerations)
+import Constants exposing (allLetters, allGenerations, genLetterUrlSeparator)
 import Models.Types exposing (Route(..), BrowseMode(..), SubPage)
 
 
@@ -50,7 +50,7 @@ createSearchPath query =
 
 createBrowsePath : String -> Char -> String
 createBrowsePath gen letter =
-    "#/" ++ browsePathSegment ++ "/" ++ gen ++ "." ++ (String.fromChar letter)
+    "#/" ++ browsePathSegment ++ "/" ++ gen ++ genLetterUrlSeparator ++ (String.fromChar letter)
 
 
 createShowRankingsPath : String -> Char -> String
@@ -107,7 +107,7 @@ composeValidSubPage generation rawLetter =
 
 extractSubpage : String -> Maybe SubPage
 extractSubpage pathSegment =
-    String.split "." pathSegment
+    String.split genLetterUrlSeparator pathSegment
         |> Array.fromList
         |> (\segments ->
             let

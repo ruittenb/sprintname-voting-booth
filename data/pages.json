@@ -1,26 +1,26 @@
 [
   {
-    "generation": 0,
+    "generation": "O",
     "id": 0,
     "letter": "M",
     "open": true
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 1,
     "letter": "A",
     "open": false,
     "startDate": "2015-10-06T00:00:00.000+01:00"
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 2,
     "letter": "B",
     "open": false,
     "startDate": "2015-10-20T00:00:00.000+01:00"
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 3,
     "letter": "C",
     "open": false,
@@ -29,7 +29,7 @@
     "winnerNum": 6
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 4,
     "letter": "D",
     "open": false,
@@ -38,7 +38,7 @@
     "winnerNum": 149
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 5,
     "letter": "E",
     "open": false,
@@ -47,7 +47,7 @@
     "winnerNum": 125
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 6,
     "letter": "F",
     "open": false,
@@ -56,7 +56,7 @@
     "winnerNum": 83
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 7,
     "letter": "G",
     "open": false,
@@ -65,7 +65,7 @@
     "winnerNum": 94
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 8,
     "letter": "H",
     "open": false,
@@ -74,7 +74,7 @@
     "winnerNum": 116
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 9,
     "letter": "I",
     "open": false,
@@ -83,7 +83,7 @@
     "winnerNum": 2
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 10,
     "letter": "J",
     "open": false,
@@ -92,7 +92,7 @@
     "winnerNum": 135
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 11,
     "letter": "K",
     "open": false,
@@ -101,7 +101,7 @@
     "winnerNum": 141
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 12,
     "letter": "L",
     "open": false,
@@ -110,7 +110,7 @@
     "winnerNum": 131
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 13,
     "letter": "M",
     "open": false,
@@ -119,7 +119,7 @@
     "winnerNum": 151
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 14,
     "letter": "N",
     "open": false,
@@ -128,7 +128,7 @@
     "winnerNum": 38
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 15,
     "letter": "O",
     "open": false,
@@ -137,7 +137,7 @@
     "winnerNum": 139
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 16,
     "letter": "P",
     "open": false,
@@ -146,7 +146,7 @@
     "winnerNum": 137
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 17,
     "letter": "R",
     "open": false,
@@ -155,7 +155,7 @@
     "winnerNum": 26
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 18,
     "letter": "S",
     "open": false,
@@ -164,7 +164,7 @@
     "winnerNum": 123
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 19,
     "letter": "T",
     "open": false,
@@ -173,7 +173,7 @@
     "winnerNum": 114
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 20,
     "letter": "V",
     "open": false,
@@ -182,7 +182,7 @@
     "winnerNum": 134
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 21,
     "letter": "W",
     "open": false,
@@ -191,7 +191,7 @@
     "winnerNum": 8
   },
   {
-    "generation": 1,
+    "generation": "I",
     "id": 22,
     "letter": "Z",
     "open": false,
@@ -200,7 +200,7 @@
     "winnerNum": 145
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 23,
     "letter": "A",
     "open": false,
@@ -209,7 +209,7 @@
     "winnerNum": 181
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 24,
     "letter": "B",
     "open": false,
@@ -218,7 +218,7 @@
     "winnerNum": 242
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 25,
     "letter": "C",
     "open": false,
@@ -227,7 +227,7 @@
     "winnerNum": 169
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 26,
     "letter": "D",
     "open": false,
@@ -236,7 +236,7 @@
     "winnerNum": 232
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 27,
     "letter": "E",
     "open": false,
@@ -245,7 +245,7 @@
     "winnerNum": 244
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 28,
     "letter": "F",
     "open": false,
@@ -254,7 +254,7 @@
     "winnerNum": 160
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 29,
     "letter": "G",
     "open": false,
@@ -263,7 +263,7 @@
     "winnerNum": 207
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 30,
     "letter": "H",
     "open": false,
@@ -272,7 +272,7 @@
     "winnerNum": 214
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 31,
     "letter": "I",
     "open": false,
@@ -281,7 +281,7 @@
     "winnerNum": 174
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 32,
     "letter": "J",
     "open": false,
@@ -290,7 +290,7 @@
     "winnerNum": 189
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 33,
     "letter": "K",
     "open": false,
@@ -299,7 +299,7 @@
     "winnerNum": 230
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 34,
     "letter": "L",
     "open": false,
@@ -308,7 +308,7 @@
     "winnerNum": 246
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 35,
     "letter": "M",
     "open": false,
@@ -317,7 +317,7 @@
     "winnerNum": 200
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 36,
     "letter": "N",
     "open": false,
@@ -326,7 +326,7 @@
     "winnerNum": 164
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 37,
     "letter": "O",
     "open": false,
@@ -335,7 +335,7 @@
     "winnerNum": 224
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 38,
     "letter": "P",
     "open": false,
@@ -344,7 +344,7 @@
     "winnerNum": 186
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 39,
     "letter": "Q",
     "open": false,
@@ -353,7 +353,7 @@
     "winnerNum": 156
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 40,
     "letter": "R",
     "open": false,
@@ -362,7 +362,7 @@
     "winnerNum": 243
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 41,
     "letter": "S",
     "open": false,
@@ -371,7 +371,7 @@
     "winnerNum": 208
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 42,
     "letter": "T",
     "open": false,
@@ -380,7 +380,7 @@
     "winnerNum": 157
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 43,
     "letter": "U",
     "open": false,
@@ -389,7 +389,7 @@
     "winnerNum": 197
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 44,
     "letter": "W",
     "open": false,
@@ -398,7 +398,7 @@
     "winnerNum": 202
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 45,
     "letter": "X",
     "open": false,
@@ -407,7 +407,7 @@
     "winnerNum": 178
   },
   {
-    "generation": 2,
+    "generation": "II",
     "id": 46,
     "letter": "Y",
     "open": false,
@@ -416,7 +416,7 @@
     "winnerNum": 193
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 47,
     "letter": "A",
     "open": false,
@@ -425,7 +425,7 @@
     "winnerNum": 306
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 48,
     "letter": "B",
     "open": false,
@@ -434,7 +434,7 @@
     "winnerNum": 257
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 49,
     "letter": "C",
     "open": false,
@@ -443,7 +443,7 @@
     "winnerNum": 332
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 50,
     "letter": "D",
     "open": false,
@@ -452,7 +452,7 @@
     "winnerNum": 386
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 51,
     "letter": "E",
     "open": false,
@@ -461,7 +461,7 @@
     "winnerNum": 295
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 52,
     "letter": "F",
     "open": false,
@@ -470,7 +470,7 @@
     "winnerNum": 330
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 53,
     "letter": "G",
     "open": false,
@@ -479,7 +479,7 @@
     "winnerNum": 253
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 54,
     "letter": "H",
     "open": false,
@@ -488,7 +488,7 @@
     "winnerNum": 297
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 55,
     "letter": "I",
     "open": false,
@@ -497,7 +497,7 @@
     "winnerNum": 314
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 56,
     "letter": "J",
     "open": false,
@@ -506,7 +506,7 @@
     "winnerNum": 385
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 57,
     "letter": "K",
     "open": false,
@@ -515,7 +515,7 @@
     "winnerNum": 382
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 58,
     "letter": "L",
     "open": false,
@@ -524,7 +524,7 @@
     "winnerNum": 381
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 59,
     "letter": "M",
     "open": false,
@@ -533,7 +533,7 @@
     "winnerNum": 376
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 60,
     "letter": "N",
     "open": false,
@@ -542,7 +542,7 @@
     "winnerNum": 274
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 61,
     "letter": "P",
     "open": false,
@@ -551,7 +551,7 @@
     "winnerNum": 261
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 62,
     "letter": "R",
     "open": false,
@@ -560,7 +560,7 @@
     "winnerNum": 384
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 63,
     "letter": "S",
     "open": false,
@@ -569,7 +569,7 @@
     "winnerNum": 289
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 64,
     "letter": "T",
     "open": false,
@@ -578,7 +578,7 @@
     "winnerNum": 357
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 65,
     "letter": "V",
     "open": false,
@@ -587,7 +587,7 @@
     "winnerNum": 288
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 66,
     "letter": "W",
     "open": false,
@@ -596,7 +596,7 @@
     "winnerNum": 321
   },
   {
-    "generation": 3,
+    "generation": "III",
     "id": 67,
     "letter": "Z",
     "open": false,
@@ -605,7 +605,7 @@
     "winnerNum": 335
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 68,
     "letter": "A",
     "open": false,
@@ -614,7 +614,7 @@
     "winnerNum": 460
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 69,
     "letter": "B",
     "open": false,
@@ -623,7 +623,7 @@
     "winnerNum": 418
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 70,
     "letter": "C",
     "open": false,
@@ -632,7 +632,7 @@
     "winnerNum": 390
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 71,
     "letter": "D",
     "open": false,
@@ -641,7 +641,7 @@
     "winnerNum": 483
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 72,
     "letter": "E",
     "open": false,
@@ -650,7 +650,7 @@
     "winnerNum": 466
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 73,
     "letter": "F",
     "open": false,
@@ -659,7 +659,7 @@
     "winnerNum": 478
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 74,
     "letter": "G",
     "open": false,
@@ -668,7 +668,7 @@
     "winnerNum": 388
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 75,
     "letter": "H",
     "open": false,
@@ -677,7 +677,7 @@
     "winnerNum": 485
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 76,
     "letter": "I",
     "open": false,
@@ -686,7 +686,7 @@
     "winnerNum": 392
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 77,
     "letter": "K",
     "open": false,
@@ -695,7 +695,7 @@
     "winnerNum": 402
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 78,
     "letter": "L",
     "open": false,
@@ -704,7 +704,7 @@
     "winnerNum": 405
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 79,
     "letter": "M",
     "open": false,
@@ -713,7 +713,7 @@
     "winnerNum": 446
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 80,
     "letter": "P",
     "open": false,
@@ -722,7 +722,7 @@
     "winnerNum": 484
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 81,
     "letter": "R",
     "open": false,
@@ -731,7 +731,7 @@
     "winnerNum": 447
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 82,
     "letter": "S",
     "open": false,
@@ -740,7 +740,7 @@
     "winnerNum": 459
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 83,
     "letter": "T",
     "open": false,
@@ -749,7 +749,7 @@
     "winnerNum": 389
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 84,
     "letter": "U",
     "open": false,
@@ -758,7 +758,7 @@
     "winnerNum": 480
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 85,
     "letter": "V",
     "open": false,
@@ -767,7 +767,7 @@
     "winnerNum": 416
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 86,
     "letter": "W",
     "open": false,
@@ -776,7 +776,7 @@
     "winnerNum": 461
   },
   {
-    "generation": 4,
+    "generation": "IV",
     "id": 87,
     "letter": "Y",
     "open": false,
@@ -785,7 +785,7 @@
     "winnerNum": 469
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 88,
     "letter": "A",
     "open": false,
@@ -794,7 +794,7 @@
     "winnerNum": 567
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 89,
     "letter": "B",
     "open": false,
@@ -803,7 +803,7 @@
     "winnerNum": 614
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 90,
     "letter": "C",
     "open": false,
@@ -812,7 +812,7 @@
     "winnerNum": 565
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 91,
     "letter": "D",
     "open": false,
@@ -821,7 +821,7 @@
     "winnerNum": 580
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 92,
     "letter": "E",
     "open": false,
@@ -830,7 +830,7 @@
     "winnerNum": 587
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 93,
     "letter": "F",
     "open": false,
@@ -839,7 +839,7 @@
     "winnerNum": 611
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 94,
     "letter": "G",
     "open": false,
@@ -848,7 +848,7 @@
     "winnerNum": 526
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 95,
     "letter": "H",
     "open": false,
@@ -857,7 +857,7 @@
     "winnerNum": 635
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 96,
     "letter": "J",
     "open": false,
@@ -866,7 +866,7 @@
     "winnerNum": 595
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 97,
     "letter": "K",
     "open": false,
@@ -875,7 +875,7 @@
     "winnerNum": 552
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 98,
     "letter": "L",
     "open": false,
@@ -884,7 +884,7 @@
     "winnerNum": 506
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 99,
     "letter": "M",
     "open": false,
@@ -893,7 +893,7 @@
     "winnerNum": 619
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 100,
     "letter": "O",
     "open": false,
@@ -902,7 +902,7 @@
     "winnerNum": 501
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 101,
     "letter": "P",
     "open": false,
@@ -911,7 +911,7 @@
     "winnerNum": 519
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 102,
     "letter": "R",
     "open": false,
@@ -920,7 +920,7 @@
     "winnerNum": 643
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 103,
     "letter": "S",
     "open": false,
@@ -929,7 +929,7 @@
     "winnerNum": 512
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 104,
     "letter": "T",
     "open": false,
@@ -938,7 +938,7 @@
     "winnerNum": 532
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 105,
     "letter": "U",
     "open": false,
@@ -947,7 +947,7 @@
     "winnerNum": 521
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 106,
     "letter": "V",
     "open": false,
@@ -956,7 +956,7 @@
     "winnerNum": 494
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 107,
     "letter": "W",
     "open": false,
@@ -965,7 +965,7 @@
     "winnerNum": 505
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 108,
     "letter": "Y",
     "open": false,
@@ -974,7 +974,7 @@
     "winnerNum": 562
   },
   {
-    "generation": 5,
+    "generation": "V",
     "id": 109,
     "letter": "Z",
     "open": false,
@@ -983,7 +983,7 @@
     "winnerNum": 644
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 110,
     "letter": "A",
     "open": false,
@@ -992,7 +992,7 @@
     "winnerNum": 699
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 111,
     "letter": "B",
     "open": false,
@@ -1001,7 +1001,7 @@
     "winnerNum": 654
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 112,
     "letter": "C",
     "open": false,
@@ -1010,7 +1010,7 @@
     "winnerNum": 650
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 113,
     "letter": "D",
     "open": false,
@@ -1019,7 +1019,7 @@
     "winnerNum": 655
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 114,
     "letter": "E",
     "open": false,
@@ -1028,7 +1028,7 @@
     "winnerNum": 677
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 115,
     "letter": "F",
     "open": false,
@@ -1037,7 +1037,7 @@
     "winnerNum": 662
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 116,
     "letter": "G",
     "open": false,
@@ -1046,7 +1046,7 @@
     "winnerNum": 673
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 117,
     "letter": "H",
     "open": false,
@@ -1055,7 +1055,7 @@
     "winnerNum": 701
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 118,
     "letter": "I",
     "open": false,
@@ -1064,7 +1064,7 @@
     "winnerNum": 686
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 119,
     "letter": "K",
     "open": false,
@@ -1073,7 +1073,7 @@
     "winnerNum": 707
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 120,
     "letter": "L",
     "open": false,
@@ -1082,7 +1082,7 @@
     "winnerNum": 667
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 121,
     "letter": "M",
     "open": false,
@@ -1091,7 +1091,7 @@
     "winnerNum": 678
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 122,
     "letter": "N",
     "open": false,
@@ -1100,7 +1100,7 @@
     "winnerNum": 715
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 123,
     "letter": "P",
     "open": false,
@@ -1109,7 +1109,7 @@
     "winnerNum": 674
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 124,
     "letter": "Q",
     "open": false,
@@ -1118,7 +1118,7 @@
     "winnerNum": 651
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 125,
     "letter": "S",
     "open": false,
@@ -1127,7 +1127,7 @@
     "winnerNum": 672
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 126,
     "letter": "T",
     "open": false,
@@ -1136,7 +1136,7 @@
     "winnerNum": 663
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 127,
     "letter": "V",
     "open": false,
@@ -1145,7 +1145,7 @@
     "winnerNum": 721
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 128,
     "letter": "X",
     "open": false,
@@ -1154,7 +1154,7 @@
     "winnerNum": 716
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 129,
     "letter": "Y",
     "open": false,
@@ -1163,7 +1163,7 @@
     "winnerNum": 717
   },
   {
-    "generation": 6,
+    "generation": "VI",
     "id": 130,
     "letter": "Z",
     "open": false,
@@ -1172,7 +1172,7 @@
     "winnerNum": 718
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 131,
     "letter": "A",
     "open": false,
@@ -1181,7 +1181,7 @@
     "winnerNum": 752
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 132,
     "letter": "B",
     "open": false,
@@ -1190,14 +1190,14 @@
     "winnerNum": 794
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 133,
     "letter": "C",
     "open": false,
     "startDate": "2021-01-19T00:00:00.000+01:00"
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 134,
     "letter": "D",
     "open": false,
@@ -1206,7 +1206,7 @@
     "winnerNum": 780
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 135,
     "letter": "F",
     "open": false,
@@ -1215,7 +1215,7 @@
     "winnerNum": 753
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 136,
     "letter": "G",
     "open": false,
@@ -1224,7 +1224,7 @@
     "winnerNum": 799
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 137,
     "letter": "H",
     "open": false,
@@ -1233,7 +1233,7 @@
     "winnerNum": 783
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 138,
     "letter": "I",
     "open": false,
@@ -1242,7 +1242,7 @@
     "winnerNum": 727
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 139,
     "letter": "J",
     "open": false,
@@ -1251,7 +1251,7 @@
     "winnerNum": 782
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 140,
     "letter": "K",
     "open": false,
@@ -1260,7 +1260,7 @@
     "winnerNum": 775
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 141,
     "letter": "L",
     "open": false,
@@ -1269,7 +1269,7 @@
     "winnerNum": 745
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 142,
     "letter": "M",
     "open": false,
@@ -1278,7 +1278,7 @@
     "winnerNum": 749
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 143,
     "letter": "N",
     "open": false,
@@ -1287,7 +1287,7 @@
     "winnerNum": 793
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 144,
     "letter": "O",
     "open": false,
@@ -1296,7 +1296,7 @@
     "winnerNum": 741
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 145,
     "letter": "P",
     "open": false,
@@ -1305,7 +1305,7 @@
     "winnerNum": 766
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 146,
     "letter": "R",
     "open": false,
@@ -1314,7 +1314,7 @@
     "winnerNum": 744
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 147,
     "letter": "S",
     "open": false,
@@ -1323,7 +1323,7 @@
     "winnerNum": 791
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 148,
     "letter": "T",
     "open": false,
@@ -1332,182 +1332,182 @@
     "winnerNum": 772
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 149,
     "letter": "V",
     "open": true,
     "startDate": "2021-08-31T00:00:00.000+02:00"
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 150,
     "letter": "W",
     "open": true,
     "startDate": "2021-09-14T00:00:00.000+02:00"
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 151,
     "letter": "X",
     "open": true,
     "startDate": "2021-09-28T00:00:00.000+02:00"
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 152,
     "letter": "Y",
     "open": true,
     "startDate": "2021-10-12T00:00:00.000+02:00"
   },
   {
-    "generation": 7,
+    "generation": "VII",
     "id": 153,
     "letter": "Z",
     "open": true,
     "startDate": "2021-10-26T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 154,
     "letter": "A",
     "open": true,
     "startDate": "2021-11-09T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 155,
     "letter": "B",
     "open": true,
     "startDate": "2021-11-23T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 156,
     "letter": "C",
     "open": true,
     "startDate": "2021-12-07T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 157,
     "letter": "D",
     "open": true,
     "startDate": "2021-12-21T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 158,
     "letter": "E",
     "open": true,
     "startDate": "2022-01-04T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 159,
     "letter": "F",
     "open": true,
     "startDate": "2022-01-18T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 160,
     "letter": "G",
     "open": true,
     "startDate": "2022-02-01T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 161,
     "letter": "H",
     "open": true,
     "startDate": "2022-02-15T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 162,
     "letter": "I",
     "open": true,
     "startDate": "2022-03-01T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 163,
     "letter": "K",
     "open": true,
     "startDate": "2022-03-15T00:00:00.000+01:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 164,
     "letter": "M",
     "open": true,
     "startDate": "2022-03-29T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 165,
     "letter": "N",
     "open": true,
     "startDate": "2022-04-12T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 166,
     "letter": "O",
     "open": true,
     "startDate": "2022-04-26T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 167,
     "letter": "P",
     "open": true,
     "startDate": "2022-05-10T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 168,
     "letter": "R",
     "open": true,
     "startDate": "2022-05-24T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 169,
     "letter": "S",
     "open": true,
     "startDate": "2022-06-07T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 170,
     "letter": "T",
     "open": true,
     "startDate": "2022-06-21T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 171,
     "letter": "U",
     "open": true,
     "startDate": "2022-07-05T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 172,
     "letter": "W",
     "open": true,
     "startDate": "2022-07-19T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 173,
     "letter": "Y",
     "open": true,
     "startDate": "2022-08-02T00:00:00.000+02:00"
   },
   {
-    "generation": 8,
+    "generation": "VIII",
     "id": 174,
     "letter": "Z",
     "open": true,

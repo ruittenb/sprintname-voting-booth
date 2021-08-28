@@ -5,7 +5,7 @@ import Control.Debounce exposing (trailing)
 import Helpers.Application exposing (getIsCurrentUserAdmin)
 import Helpers.Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Helpers.Pages exposing (getCurrentPage, getWinner, isPageLocked)
-import Helpers.Pokemon exposing (filterPokedexByPage)
+import Helpers.Pokemon exposing (filterPokedexByPage, filterPokedexByGeneration)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput, onSubmit)
@@ -92,8 +92,8 @@ searchBox currentRoute modelQuery =
         ]
 
 
-generationButton : Route -> Maybe SubPage -> String -> Html Msg
-generationButton currentRoute currentSubPage gen =
+generationButton : Route -> RemotePokedex -> Maybe SubPage -> String -> Html Msg
+generationButton currentRoute pokedex currentSubPage gen =
     let
         currentHighLight =
             case currentRoute of
@@ -109,32 +109,44 @@ generationButton currentRoute currentSubPage gen =
             currentSubPage
                 |> Maybe.map (.letter >> createBrowsePath gen)
                 |> Maybe.withDefault createDefaultPath
+
+        pokeList =
+            filterPokedexByGeneration pokedex gen
+                |> Maybe.withDefault []
+
+        genButtonElement =
+            if List.isEmpty pokeList then
+                span
+
+            else
+                a
     in
-    a
+    genButtonElement
         [ classList
             [ ( "button", True )
             , ( "generation-button", True )
             , ( "with-tooltip", True )
             , ( "current", currentHighLight )
             , ( "transparent", gen == "O" )
+            , ( "disabled", List.isEmpty pokeList )
             ]
         , href hash
         ]
         [ text gen ]
 
 
-pokeGenerationButtons : Route -> Maybe SubPage -> Html Msg
-pokeGenerationButtons currentRoute subPage =
+pokeGenerationButtons : Route -> RemotePokedex -> Maybe SubPage -> Html Msg
+pokeGenerationButtons currentRoute pokedex subPage =
     div [ id "poke-generation-buttons" ] <|
         List.map
-            (generationButton currentRoute subPage)
+            (generationButton currentRoute pokedex subPage)
             pokeGenerations
 
-rdawGenerationButtons : Route -> Maybe SubPage -> Html Msg
-rdawGenerationButtons currentRoute subPage =
+rdawGenerationButtons : Route -> RemotePokedex -> Maybe SubPage -> Html Msg
+rdawGenerationButtons currentRoute pokedex subPage =
     div [ id "rdaw-generation-buttons" ] <|
         List.map
-            (generationButton currentRoute subPage)
+            (generationButton currentRoute pokedex subPage)
             rdawGenerations
 
 
@@ -513,12 +525,14 @@ functionPane state =
     div [ id "function-buttons" ]
         [ pokeGenerationButtons
             state.currentRoute
+            state.pokedex
             state.subPage
         , searchBox
             state.currentRoute
             state.query
         , rdawGenerationButtons
             state.currentRoute
+            state.pokedex
             state.subPage
         , letterButtons
             state.currentRoute
