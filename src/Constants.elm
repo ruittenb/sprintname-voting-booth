@@ -7,6 +7,13 @@ maintenanceApology : String
 maintenanceApology =
     "The application is in maintenance mode. We apologize for the inconvenience."
 
+pokemonCopyright : String
+pokemonCopyright =
+    "© 2021 Pokémon. © 1995–2021 Nintendo/Creatures Inc./GAME FREAK inc. Pokémon and Pokémon character names are trademarks of Nintendo."
+
+rdawCopyright : String
+rdawCopyright =
+    "The Fakemon presented here are © ReallyDarkandWindie"
 
 debounceDelay : Float
 debounceDelay =
