@@ -20,11 +20,12 @@ type alias PortCompatiblePreloadCandidate =
 type alias PokemonVariant =
     { image : String
     , vname : String
+    , description : Maybe String
     }
 
 
 type alias PokeRanking =
-    { number : Int
+    { pokemonId : Int
     , name : String
     , totalVotes : Int
     }
@@ -35,7 +36,7 @@ type alias PokeRankings =
 
 
 type alias PokeWinner =
-    { number : Int
+    { pokemonId : Int
     , name : String
     }
 

@@ -47,7 +47,7 @@ isValidVote newPokeRating otherPokemonRatings =
 
 
 registerVote : ApplicationState -> TeamRatings -> TeamRatings -> String -> Int -> Int -> Int -> ( ApplicationState, Cmd Msg )
-registerVote oldState otherUsersRatings oldCurrentUserRatings oldUserRatingString totalPokemon pokemonNumber newPokeRating =
+registerVote oldState otherUsersRatings oldCurrentUserRatings oldUserRatingString totalPokemon pokemonId newPokeRating =
     List.head oldCurrentUserRatings
         |> Maybe.Extra.unwrap
             -- default value
@@ -59,8 +59,8 @@ registerVote oldState otherUsersRatings oldCurrentUserRatings oldUserRatingStrin
                     newUserRatingString =
                         replaceSlice
                             (toString newPokeRating)
-                            pokemonNumber
-                            (pokemonNumber + 1)
+                            pokemonId
+                            (pokemonId + 1)
                             oldUserRatingString
 
                     -- insert into new state
@@ -83,8 +83,8 @@ updateVoteForPokemon oldState userVote =
         (\oldRatings actualPokedex ->
             let
                 -- find info about the user's vote
-                pokemonNumber =
-                    userVote.pokemonNumber
+                pokemonId =
+                    userVote.pokemonId
 
                 -- find how many pokemon there are in the pokedex
                 totalPokemon =
@@ -103,7 +103,7 @@ updateVoteForPokemon oldState userVote =
 
                 -- extract one pokemon rating
                 oldPokeRating =
-                    extractOnePokemonFromRatingString oldUserRatingString pokemonNumber
+                    extractOnePokemonFromRatingString oldUserRatingString pokemonId
 
                 -- fetch the new vote. If it is the same as old vote, then 'unvote' this pokemon.
                 newPokeRating =
@@ -120,7 +120,7 @@ updateVoteForPokemon oldState userVote =
                 -- find the ratings for these
                 otherPokemonRatings =
                     otherPokemonList
-                        |> List.map (.number >> extractOnePokemonFromRatingString oldUserRatingString)
+                        |> List.map (.id >> extractOnePokemonFromRatingString oldUserRatingString)
                         |> Set.fromList
 
                 ( newState, newCmd ) =
@@ -133,7 +133,7 @@ updateVoteForPokemon oldState userVote =
                             oldCurrentUserRatings
                             oldUserRatingString
                             totalPokemon
-                            pokemonNumber
+                            pokemonId
                             newPokeRating
 
                     else

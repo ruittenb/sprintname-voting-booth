@@ -292,8 +292,8 @@ update msg maybeHighlightedState =
             MaintenanceModeClicked ->
                 updateMaintenanceMode oldState
 
-            VariantChanged pokemonNumber direction ->
-                updateChangeVariant oldState pokemonNumber direction
+            VariantChanged pokemonId direction ->
+                updateChangeVariant oldState pokemonId direction
 
             SearchPokemon query ->
                 updateSearchPokemon oldState query

@@ -10,7 +10,7 @@ defaultPage =
     , generation = "I"
     , letter = 'A'
     , open = False
-    , winnerNum = Nothing
+    , winnerId = Nothing
     , winnerName = Nothing
     , startDate = Nothing
     }

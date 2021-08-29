@@ -75,12 +75,12 @@ getWinner page =
         |> Maybe.andThen
             (\actualPage ->
                 (Maybe.map2
-                    (\name number ->
+                    (\name pokemonId -> -- TODO replace this function with PokeWinner constructor?
                         { name = name
-                        , number = number
+                        , pokemonId = pokemonId
                         }
                     )
                     actualPage.winnerName
-                    actualPage.winnerNum
+                    actualPage.winnerId
                 )
             )

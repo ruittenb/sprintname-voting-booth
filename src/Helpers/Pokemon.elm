@@ -92,8 +92,8 @@ searchPokedex remotePokedex query =
 
 
 extractOnePokemonFromRatingString : String -> Int -> Int
-extractOnePokemonFromRatingString ratingString pokemonNumber =
-    String.slice pokemonNumber (pokemonNumber + 1) ratingString
+extractOnePokemonFromRatingString ratingString pokemonId =
+    String.slice pokemonId (pokemonId + 1) ratingString
         |> String.toInt
         |> Result.withDefault 0
 

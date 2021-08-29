@@ -394,14 +394,14 @@ rankingsTable state currentPage isCurrentUserAdmin =
                         |> Maybe.withDefault 0
 
                 isWinner : Int -> Bool
-                isWinner num =
+                isWinner pokemonId =
                     currentPage
-                        |> Maybe.map (\page -> page.winnerNum == Just num)
+                        |> Maybe.map (\page -> page.winnerId == Just pokemonId)
                         |> Maybe.withDefault False
 
                 winnerBadge : Int -> List (Html Msg)
-                winnerBadge num =
-                    if isWinner num then
+                winnerBadge pokemonId =
+                    if isWinner pokemonId then
                         [ img
                             [ class "ribbon"
                             , src "/images/ribbon.png"
@@ -413,7 +413,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
                         []
 
                 winButtonCell : Int -> String -> List (Html Msg)
-                winButtonCell number name =
+                winButtonCell pokemonId name =
                     if not isCurrentUserAdmin then
                         []
 
@@ -426,10 +426,10 @@ rankingsTable state currentPage isCurrentUserAdmin =
                                 (\page ->
                                     [ td []
                                         [ button
-                                            [ onClick (WinnerElected page (PokeWinner number name))
+                                            [ onClick (WinnerElected page (PokeWinner pokemonId name))
                                             , classList
                                                 [ ( "elect-button", True )
-                                                , ( "winner", page.winnerNum == Just number )
+                                                , ( "winner", page.winnerId == Just pokemonId )
                                                 ]
                                             ]
                                             [ text "win" ]
@@ -446,10 +446,10 @@ rankingsTable state currentPage isCurrentUserAdmin =
                                 [ classList
                                     [ ( "winner-rating", r.totalVotes == winnerRating && r.totalVotes > 0 ) ]
                                 ]
-                                ([ td [] ([ text r.name ] ++ winnerBadge r.number)
+                                ([ td [] ([ text r.name ] ++ winnerBadge r.pokemonId)
                                  , td [] [ text (toString r.totalVotes) ]
                                  ]
-                                    ++ winButtonCell r.number r.name
+                                    ++ winButtonCell r.pokemonId r.name
                                 )
                         )
                         rankingsToShow
