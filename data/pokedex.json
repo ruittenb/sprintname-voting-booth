@@ -14375,7 +14375,7 @@
   {
     "description": "Cuboo cherishes the bamboo stalk it carries dearly; if it loses it, it grows extremely depressed. It uses the bamboo as a weapon, as well as a food source, whacking opponents with it before taking a bite from it moments later.",
     "generation": "i",
-    "id": 10001,
+    "id": 2001,
     "letter": "C",
     "name": "Cuboo",
     "number": 1,
@@ -14390,7 +14390,7 @@
   {
     "description": "It uses its bamboo stalk both as a weapon and as a source of nourishmment. Surprisingly nimble, it attacks swiftly with its bamboo stalk. Even if its stalk snaps, it will continue to use the broken halves.",
     "generation": "i",
-    "id": 10002,
+    "id": 2002,
     "letter": "N",
     "name": "Ninda",
     "number": 2,
@@ -14405,7 +14405,7 @@
   {
     "description": "Its bamboo stalk is its most prized possession. If it is damaged, it flies into a rage until it gets a new one. Its skills with its stalk is unmatched. It is able to single-handedly take down six opponents at once with little effort.",
     "generation": "i",
-    "id": 10003,
+    "id": 2003,
     "letter": "P",
     "name": "Pandaolin",
     "number": 3,
@@ -14420,7 +14420,7 @@
   {
     "description": "Sizzabre's mane is very warm to the touch. They snuggle close to their trainers and other Pokémon to help warm them up when it's cold. Their fangs can snap easily if they are not careful in battle. Ehen this happens, they run off to find hard objects in order to sharpen them again.",
     "generation": "i",
-    "id": 10004,
+    "id": 2004,
     "letter": "S",
     "name": "Sizzabre",
     "number": 4,
@@ -14435,7 +14435,7 @@
   {
     "description": "They have a very belligerent nature. It takes a long time for them to trust others. After sinking their fangs into opponents, they heat up their teeth, causing excruciating pain.",
     "generation": "i",
-    "id": 10005,
+    "id": 2005,
     "letter": "S",
     "name": "Saburn",
     "number": 5,
@@ -14450,7 +14450,7 @@
   {
     "description": "Extremely aggressive and temperamental, it takes an extremely talented trainer to successfully gain its trust. It never forgets who has wronged it. Their saliva is very hot, as are their large teeth, so a bite from it can cause severe burns in an instant.",
     "generation": "i",
-    "id": 10006,
+    "id": 2006,
     "letter": "B",
     "name": "Blazabre",
     "number": 6,
@@ -14465,7 +14465,7 @@
   {
     "description": "Platyke prefer water that is at a very low temperature; warm water makes them very uncomfortable. You can look at it fin to determine its mood. If its fin is drooping, it is either sad or sick, while it is upright when it is angry.",
     "generation": "i",
-    "id": 10007,
+    "id": 2007,
     "letter": "P",
     "name": "Platyke",
     "number": 7,
@@ -14480,7 +14480,7 @@
   {
     "description": "This Pokémon enjoys swimming deep below sea level and absorbing the frigid, salty water through the gills on its fin. The icicle in its chest is connected to its heart, which allows its body to survive for months in extremely frigid water.",
     "generation": "i",
-    "id": 10008,
+    "id": 2008,
     "letter": "P",
     "name": "Platypund",
     "number": 8,
@@ -14495,7 +14495,7 @@
   {
     "description": "This Pokémon can freeze an entire pond with one touch. Its entire body is covered in substance that allows it to live in very frigid conditions.",
     "generation": "i",
-    "id": 10009,
+    "id": 2009,
     "letter": "P",
     "name": "Platygue",
     "number": 9,
@@ -14510,7 +14510,7 @@
   {
     "description": "These Pokémon love digging for things underground. They have internal ears that they use to listen far away.",
     "generation": "i",
-    "id": 10010,
+    "id": 2010,
     "letter": "Z",
     "name": "Zokorode",
     "number": 10,
@@ -14525,7 +14525,7 @@
   {
     "description": "Its body is very bulky, allowing it to protect itself from injury while battling or digging. They use their single tooth to dig at high speeds.",
     "generation": "i",
-    "id": 10011,
+    "id": 2011,
     "letter": "R",
     "name": "Rokozin",
     "number": 11,
@@ -14540,7 +14540,7 @@
   {
     "description": "Bulbloom spend majority of their time hanging from trees, absorbing the nutrients needed for their evolution. They inhabit gardens and help plants grow by prodding them with their vines, sharing the nutrients.",
     "generation": "i",
-    "id": 10012,
+    "id": 2012,
     "letter": "B",
     "name": "Bulbloom",
     "number": 12,
@@ -14555,7 +14555,7 @@
   {
     "description": "It dances around gardens and plains, spreading pollen that aids in the growth of flowers. When it sees a dying plant, it uses its vine to completely revitalize it.",
     "generation": "i",
-    "id": 10013,
+    "id": 2013,
     "letter": "B",
     "name": "Blossunia",
     "number": 13,
@@ -14570,7 +14570,7 @@
   {
     "description": "This Pokémon glides using the single wing on its back that also acts as a warning sign. Its colors tell predators to stay away although it is not poisonous.",
     "generation": "i",
-    "id": 10014,
+    "id": 2014,
     "letter": "G",
     "name": "Glydar",
     "number": 14,
@@ -14585,7 +14585,7 @@
   {
     "description": "Using its eerie wing, this Pokémon spends its time gliding throughout the night, devouring other bugs. It is able to shoot webs from its front and back ends.",
     "generation": "i",
-    "id": 10015,
+    "id": 2015,
     "letter": "A",
     "name": "Airaknid",
     "number": 15,
@@ -14600,7 +14600,7 @@
   {
     "description": "They are able to manipulate their bodies on a molecular level in order to transform into other Pokémon and even humans! Their powers are very weak, so their transformations tend to not last that long.",
     "generation": "i",
-    "id": 10016,
+    "id": 2016,
     "letter": "M",
     "name": "Mimadge",
     "number": 16,
@@ -14615,7 +14615,7 @@
   {
     "description": "These Pokémon are known for their unique ability to change their bodies, at a molecular structure, at will. They change into different Pokémon, and even humans, and lie to unsuspecting victims, usually leading to the victim's bodily harm.",
     "generation": "i",
-    "id": 10017,
+    "id": 2017,
     "letter": "B",
     "name": "Badgeange",
     "number": 17,
@@ -14630,7 +14630,7 @@
   {
     "description": "Kwarzite are highly recognized by the crystal on its head. They receive their energy by eating large amounts of minerals.",
     "generation": "i",
-    "id": 10018,
+    "id": 2018,
     "letter": "K",
     "name": "Kwarzite",
     "number": 18,
@@ -14645,7 +14645,7 @@
   {
     "description": "These Pokémon's crystals are extremely valuable, as they glow white according to emotion. They are sought by miners because they are known to know where the rarest minerals are located.",
     "generation": "i",
-    "id": 10019,
+    "id": 2019,
     "letter": "M",
     "name": "Mortierok",
     "number": 19,
@@ -14660,7 +14660,7 @@
   {
     "description": "These Pokémon are known to guard precious and valuable crystals in caves and mountains by firing rocks at intruders. Their durable, sturdy bodies are able to deflect different attacks.",
     "generation": "i",
-    "id": 10020,
+    "id": 2020,
     "letter": "C",
     "name": "Cragmodon",
     "number": 20,
@@ -14675,7 +14675,7 @@
   {
     "description": "It creates its own energy by absorbing sunlight through the leaves on its back and tail. They typically reside at the tops of trees so that they are able to blend in with their surroundings and be closer to the sun.",
     "generation": "i",
-    "id": 10021,
+    "id": 2021,
     "letter": "E",
     "name": "Eftini",
     "number": 21,
@@ -14690,7 +14690,7 @@
   {
     "description": "Their tails are so long that in order to not be grabbed or caught by something, it wraps it around its neck like a scarf. Their tails are extremely strong, being able to cause small tremors with a single slam.",
     "generation": "i",
-    "id": 10022,
+    "id": 2022,
     "letter": "S",
     "name": "Sireft",
     "number": 22,
@@ -14705,7 +14705,7 @@
   {
     "description": "If the crust on its back vibrates, it is a sign that an earthquake is going to occur. They are sometimes called 'Forest Facilitators' because of their authoritative personalities.",
     "generation": "i",
-    "id": 10023,
+    "id": 2023,
     "letter": "T",
     "name": "Tefrin",
     "number": 23,
@@ -14720,7 +14720,7 @@
   {
     "description": "They spend most of their times playfully wrestling each other in tree tops.  They love to snack on leaves that grow from special trees.  The Eukawala in Cotue are much more aggressive, picking fights with any other Pokemon that crosses their path.  They are mostly nocturnal, raiding the dens of sleeping Pokemon for food.",
     "generation": "i",
-    "id": 10024,
+    "id": 2024,
     "letter": "E",
     "name": "Eukawala",
     "number": 24,
@@ -14741,7 +14741,7 @@
   {
     "description": "They train themselves daily by punching trees and rocks. They are excitable Pokémon that enjoy the thrill of fighting and snack on shrubs for nutrition.",
     "generation": "i",
-    "id": 10025,
+    "id": 2025,
     "letter": "K",
     "name": "Kowallop",
     "number": 25,
@@ -14756,7 +14756,7 @@
   {
     "description": "They are often seen flying around power plants at night. It can cause electronic devices to malfunction just by flying next to them.",
     "generation": "i",
-    "id": 10026,
+    "id": 2026,
     "letter": "B",
     "name": "Blitzat",
     "number": 26,
@@ -14771,7 +14771,7 @@
   {
     "description": "They are able to electrify their claws in order to paralyze opponents with slashes. It apparently has the ability to drain the electrons from your atoms.",
     "generation": "i",
-    "id": 10027,
+    "id": 2027,
     "letter": "T",
     "name": "Thudat",
     "number": 27,
@@ -14786,7 +14786,7 @@
   {
     "description": "If you breathe in the spores emitted from this Pokémon, you will have excruciating headaches. After breathing in the spores, you experience many hallucinations.",
     "generation": "i",
-    "id": 10028,
+    "id": 2028,
     "letter": "S",
     "name": "Sporish",
     "number": 28,
@@ -14801,7 +14801,7 @@
   {
     "description": "Their spores are known to cause hallucinations. They are sometimes used by therapists in order to usher patients into expressing their problems.",
     "generation": "i",
-    "id": 10029,
+    "id": 2029,
     "letter": "G",
     "name": "Guspore",
     "number": 29,
@@ -14816,7 +14816,7 @@
   {
     "description": "They use their strong back legs to leap at high altitudes. They use camouflage to blend in with the grass and avoid predators.",
     "generation": "i",
-    "id": 10030,
+    "id": 2030,
     "letter": "C",
     "name": "Camopper",
     "number": 30,
@@ -14831,7 +14831,7 @@
   {
     "description": "This Pokémon flies at speeds of over 40 mph and skewers prey with its sharp beak. TWEETUM love to hum and sing and always travel looking for others, people and Pokemon alike, to serenade.",
     "generation": "i",
-    "id": 10031,
+    "id": 2031,
     "letter": "T",
     "name": "Tweetum",
     "number": 31,
@@ -14846,7 +14846,7 @@
   {
     "description": "This Pokémon can fly as fast as a jet. Its extremely sharp beak can reduce a boulder to gravel with just three pecks.",
     "generation": "i",
-    "id": 10032,
+    "id": 2032,
     "letter": "D",
     "name": "Dartum",
     "number": 32,
@@ -14861,7 +14861,7 @@
   {
     "description": "This Pokémon's beak can skewer straight through a boulder. It flies at Mach II speeds and pierces prey and enemies with its beak.",
     "generation": "i",
-    "id": 10033,
+    "id": 2033,
     "letter": "H",
     "name": "Hummidar",
     "number": 33,
@@ -14876,7 +14876,7 @@
   {
     "description": "It loves to drink blood. It latches onto unsuspecting people and Pokemon and drain them of their bodily fluids.",
     "generation": "i",
-    "id": 10034,
+    "id": 2034,
     "letter": "B",
     "name": "Bloatea",
     "number": 34,
@@ -14891,7 +14891,7 @@
   {
     "description": "Its body stays encased in a clear shell as it awaits evolution. It is still capable of attacking despite being in its shell.",
     "generation": "i",
-    "id": 10035,
+    "id": 2035,
     "letter": "D",
     "name": "Damsegg",
     "number": 35,
@@ -14906,7 +14906,7 @@
   {
     "description": "After evolving from its shell, its body had more room to develop fully. Its feathery tail acts as a sensor, alerting it if danger is near.",
     "generation": "i",
-    "id": 10036,
+    "id": 2036,
     "letter": "L",
     "name": "Lamsil",
     "number": 36,
@@ -14921,7 +14921,7 @@
   {
     "description": "Selefly and Odonyxpa often get into fights over food, as they both target Feemosk on a daily basis. It is said to have a connection to outer space due to the patterns on its wings.",
     "generation": "i",
-    "id": 10037,
+    "id": 2037,
     "letter": "S",
     "name": "Selefly",
     "number": 37,
@@ -14936,7 +14936,7 @@
   {
     "description": "These Pokémon are said to be the spirits of kids who died by drowning. It pretends to be in danger by flailing in water. Once someone is close, it drags them down deep into the water, never to be seen again.",
     "generation": "i",
-    "id": 10038,
+    "id": 2038,
     "letter": "F",
     "name": "Foobay",
     "number": 38,
@@ -14951,7 +14951,7 @@
   {
     "description": "Groups of them inhabit ponds and lakes and skate across the surface. They can reach speeds of over 40 mph while on water, but are unusually slow on land.",
     "generation": "i",
-    "id": 10039,
+    "id": 2039,
     "letter": "S",
     "name": "Stiltream",
     "number": 39,
@@ -14966,7 +14966,7 @@
   {
     "description": "Using their long legs, they glide elegantly across the surface of water with ease. There are often competitions between Skiisect to see which of them is able to ski across a body of water the quickest and smoothest.",
     "generation": "i",
-    "id": 10040,
+    "id": 2040,
     "letter": "S",
     "name": "Skiisect",
     "number": 40,
@@ -14981,7 +14981,7 @@
   {
     "description": "This Pokémon's drool is full of vitamins and nutrients that are able to heal any injury. It constantly drools on itself in order to keep its wool healthy.",
     "generation": "i",
-    "id": 10041,
+    "id": 2041,
     "letter": "A",
     "name": "Alpacott",
     "number": 41,
@@ -14996,7 +14996,7 @@
   {
     "description": "Alpaking have rather arrogant tendencies; Sylvungra are their main rivals. If they have too much fluid stored in their bodies, they drool profusely; this causes them to become very embarrassed.",
     "generation": "i",
-    "id": 10042,
+    "id": 2042,
     "letter": "A",
     "name": "Alpaking",
     "number": 42,
@@ -15011,7 +15011,7 @@
   {
     "description": "Storing electricity in its legs allows it to jump 20 feet in the air. With their pronged tails, they drain electricity from outlets to store in their cheek pouches.",
     "generation": "i",
-    "id": 10043,
+    "id": 2043,
     "letter": "J",
     "name": "Jerblitz",
     "number": 43,
@@ -15026,7 +15026,7 @@
   {
     "description": "This Pokémon's yawn can cause anyone in a city to fall asleep simultaneously. Its mouth has special glands inside of it that amplifies its yawn.",
     "generation": "i",
-    "id": 10044,
+    "id": 2044,
     "letter": "E",
     "name": "Echawn",
     "number": 44,
@@ -15041,7 +15041,7 @@
   {
     "description": "This Pokémon can amplify its yawn across a 500 meter radius. Simply looking at this Pokemon for too long could cause disorientation and a feeling of drowsiness.",
     "generation": "i",
-    "id": 10045,
+    "id": 2045,
     "letter": "Z",
     "name": "Zeeyawn",
     "number": 45,
@@ -15056,7 +15056,7 @@
   {
     "description": "This Pokémon has an extreme obsession with coins. Its tail acts like a bag, allowing it to store all of the items it takes.",
     "generation": "i",
-    "id": 10046,
+    "id": 2046,
     "letter": "C",
     "name": "Crookoin",
     "number": 46,
@@ -15071,7 +15071,7 @@
   {
     "description": "This Pokémon is mostly active during nighttime. It breaks into people's home silently and steal all of their coins without making a single sound.",
     "generation": "i",
-    "id": 10047,
+    "id": 2047,
     "letter": "R",
     "name": "Raccoin",
     "number": 47,
@@ -15086,7 +15086,7 @@
   {
     "description": "It breaks into banks and houses, stealing every coin that they see silently. It orders CROOKOIN and RACCOIN to steal from the innocent and bring the valuables to it when it is tired.",
     "generation": "i",
-    "id": 10048,
+    "id": 2048,
     "letter": "T",
     "name": "Thievoin",
     "number": 48,
@@ -15101,7 +15101,7 @@
   {
     "description": "It burrows underground in order to shield itself from harsh sunlight. Its lower body is encased in soil, but it is still able to move above the ground by hopping on its single white foot.",
     "generation": "i",
-    "id": 10049,
+    "id": 2049,
     "letter": "W",
     "name": "Wormound",
     "number": 49,
@@ -15116,7 +15116,7 @@
   {
     "description": "Their hard, durable bodies are covered in a metal alloy that can deflect any attack that doesn't effect it. They drill tunnels for hours on end to entertain themselves and make their own homes.",
     "generation": "i",
-    "id": 10050,
+    "id": 2050,
     "letter": "D",
     "name": "Drillurm",
     "number": 50,
@@ -15131,7 +15131,7 @@
   {
     "description": "They use their fins to help them swim faster underwater. They are able to inhale and extract salt from water using their big nose.",
     "generation": "i",
-    "id": 10051,
+    "id": 2051,
     "letter": "B",
     "name": "Babara",
     "number": 51,
@@ -15146,7 +15146,7 @@
   {
     "description": "Their fins allow them to swim at unimaginable speeds. They use their tooth to crack open nuts and eat them.",
     "generation": "i",
-    "id": 10052,
+    "id": 2052,
     "letter": "B",
     "name": "Baraqua",
     "number": 52,
@@ -15161,7 +15161,7 @@
   {
     "description": "For some odd reason, this Pokemon are hatched from nuts as opposed to eggs. Because their wings are merged with the nut they were hatched from, and they are not strong enough to fully break out of their shell, they keep them on for protection.",
     "generation": "i",
-    "id": 10053,
+    "id": 2053,
     "letter": "N",
     "name": "Nutchir",
     "number": 53,
@@ -15176,7 +15176,7 @@
   {
     "description": "It is able to retreat into its nut shell to defend itself and also camouflage itself. Its body parts have been freed, allowing it to fly and walk better.",
     "generation": "i",
-    "id": 10054,
+    "id": 2054,
     "letter": "W",
     "name": "Wingorn",
     "number": 54,
@@ -15191,7 +15191,7 @@
   {
     "description": "Staring into its eyes is said to put you in a trance. During thunderstorms, it follows humans that are wandering in the mountains and once asleep, they steal the electrons from their body.",
     "generation": "i",
-    "id": 10055,
+    "id": 2055,
     "letter": "L",
     "name": "Leerup",
     "number": 55,
@@ -15206,7 +15206,7 @@
   {
     "description": "Its eyes are said to be able to control anyone who looks into them. Their howls can summon thunderstorms.",
     "generation": "i",
-    "id": 10056,
+    "id": 2056,
     "letter": "H",
     "name": "Howlurk",
     "number": 56,
@@ -15221,7 +15221,7 @@
   {
     "description": "Born from smoke, this Pokemon enjoys being around fires. Their smoky bodies are so thick that they are able to knock out a Yongoro in a single hit.",
     "generation": "i",
-    "id": 10057,
+    "id": 2057,
     "letter": "S",
     "name": "Smokauf",
     "number": 57,
@@ -15236,7 +15236,7 @@
   {
     "description": "They use their arms to punch bricks and concrete. Their bodies are comprised of a potent gas that can kill anyone just by having them inhale it.",
     "generation": "i",
-    "id": 10058,
+    "id": 2058,
     "letter": "K",
     "name": "Kaufite",
     "number": 58,
@@ -15251,7 +15251,7 @@
   {
     "description": "Its tongue is covered in over 100 potent toxins. If a NIBBID bites you, you have 24 hours to get healed or its poison will kill you.",
     "generation": "i",
-    "id": 10059,
+    "id": 2059,
     "letter": "N",
     "name": "Nibbid",
     "number": 59,
@@ -15266,7 +15266,7 @@
   {
     "description": "One lick from it is the equivalent to 1,000 doses of Princada venom. Its poison is toxic enough to melt the skin off of a human in two minutes.",
     "generation": "i",
-    "id": 10060,
+    "id": 2060,
     "letter": "C",
     "name": "Chomodo",
     "number": 60,
@@ -15281,7 +15281,7 @@
   {
     "description": "Its poisonous jaws are able to melt through metal and bones. Its markings are warning signs to everything that approaches it.",
     "generation": "i",
-    "id": 10061,
+    "id": 2061,
     "letter": "T",
     "name": "Toxila",
     "number": 61,
@@ -15296,7 +15296,7 @@
   {
     "description": "They run across the branches of trees with great speed and agility. It has a rivalry with Eftini over territory.",
     "generation": "i",
-    "id": 10062,
+    "id": 2062,
     "letter": "L",
     "name": "Liskid",
     "number": 62,
@@ -15311,7 +15311,7 @@
   {
     "description": "The black leaves on its body contain a potent mold that can infect other plants, making them inedible. Lisking and Tefrin are related species.",
     "generation": "i",
-    "id": 10063,
+    "id": 2063,
     "letter": "L",
     "name": "Lisking",
     "number": 63,
@@ -15326,7 +15326,7 @@
   {
     "description": "Using its drill-like tail, it burrows underground for shelter. If spotted, they bury themselves in sand to remain unnoticed.",
     "generation": "i",
-    "id": 10064,
+    "id": 2064,
     "letter": "D",
     "name": "Dryvern",
     "number": 64,
@@ -15341,7 +15341,7 @@
   {
     "description": "By spinning its body at high speeds, it can burrow underground. They are one of the main reasons that there are holes in the desert.",
     "generation": "i",
-    "id": 10065,
+    "id": 2065,
     "letter": "W",
     "name": "Wyvast",
     "number": 65,
@@ -15356,7 +15356,7 @@
   {
     "description": "Its wings are full of sand. When it feels threatened, they dispel an extreme amount to disguise itself and escape. They spend majority of their time underground, so they have no real urge to eat anything; they only eat when food comes close to them.",
     "generation": "i",
-    "id": 10066,
+    "id": 2066,
     "letter": "V",
     "name": "Vyrnound",
     "number": 66,
@@ -15371,7 +15371,7 @@
   {
     "description": "Jarotion once lived alongside humans, having the unique ability to transform stones into delicious beverages. They thrive by drinking mud and water inside of damp caves.",
     "generation": "i",
-    "id": 10067,
+    "id": 2067,
     "letter": "J",
     "name": "Jarotion",
     "number": 67,
@@ -15386,7 +15386,7 @@
   {
     "description": "They stand motionless in caves, observing everything that happens inside. They are mostly nocturnal and will travel at night in order to eat cold sand.",
     "generation": "i",
-    "id": 10068,
+    "id": 2068,
     "letter": "S",
     "name": "Stalloway",
     "number": 68,
@@ -15401,7 +15401,7 @@
   {
     "description": "They hang from cave ceilings, blending in with their environment to avoid detection. Lagmine maintain a steady diet gravel and rock in order to keep their rocky shells strong.",
     "generation": "i",
-    "id": 10069,
+    "id": 2069,
     "letter": "L",
     "name": "Lagmine",
     "number": 69,
@@ -15416,7 +15416,7 @@
   {
     "description": "Their noses all have an internal pouch under their nasal cavities that allow them to breathe and absorb water through their nostrils simultaneously. They like to jump into water and splash those around them.",
     "generation": "i",
-    "id": 10070,
+    "id": 2070,
     "letter": "H",
     "name": "Hiplash",
     "number": 70,
@@ -15431,7 +15431,7 @@
   {
     "description": "They jump into water from a great height, creating a massive wave that soaks everything around it. They blast high pressured water from their nasal cavities.",
     "generation": "i",
-    "id": 10071,
+    "id": 2071,
     "letter": "H",
     "name": "Hiphoon",
     "number": 71,
@@ -15446,7 +15446,7 @@
   {
     "description": "It is said to have existed 20,000 years ago. Their spikes were once used for weapons, as they could never shatter or bend.",
     "generation": "i",
-    "id": 10072,
+    "id": 2072,
     "letter": "S",
     "name": "Spinorus",
     "number": 72,
@@ -15461,7 +15461,7 @@
   {
     "description": "It is able to fire its spikes at high speeds and they always instantly grow back. Their bodies are covered in piercing sharp spikes.",
     "generation": "i",
-    "id": 10073,
+    "id": 2073,
     "letter": "K",
     "name": "Kentrike",
     "number": 73,
@@ -15476,7 +15476,7 @@
   {
     "description": "The fins on its head and back helps it sense ocean currents over 30,000 years ago. Their fins gave them a scary illusion of it being a dangerous creature.",
     "generation": "i",
-    "id": 10074,
+    "id": 2074,
     "letter": "D",
     "name": "Dimeno",
     "number": 74,
@@ -15491,7 +15491,7 @@
   {
     "description": "Said to have lived over 30,000 years ago, this Pokémon relied on its fins for survival. It blends into water in order to catch prey.",
     "generation": "i",
-    "id": 10075,
+    "id": 2075,
     "letter": "D",
     "name": "Dimoiston",
     "number": 75,
@@ -15506,7 +15506,7 @@
   {
     "description": "The coin on its back is extremely valuable, as it is said to give its owner strange and otherworldly power. It was highly worshiped by Egyptians.",
     "generation": "i",
-    "id": 10076,
+    "id": 2076,
     "letter": "S",
     "name": "Scarabea",
     "number": 76,
@@ -15521,7 +15521,7 @@
   {
     "description": "These Pokémon carry treasures inside of their bodies that are extremely valuable. The coins on its body are able to be launched like bullets.",
     "generation": "i",
-    "id": 10077,
+    "id": 2077,
     "letter": "B",
     "name": "Beatroph",
     "number": 77,
@@ -15536,7 +15536,7 @@
   {
     "description": "It runs across the desert roads so fast that you can't see it. It neglects using its wings due to the fact that its legs are more powerful.",
     "generation": "i",
-    "id": 10078,
+    "id": 2078,
     "letter": "D",
     "name": "Dirrun",
     "number": 78,
@@ -15551,7 +15551,7 @@
   {
     "description": "You rarely ever see these \"Desert Blurs\" because they run so fast that you only see dust. They can cause sand whirls by continuously running in a circle.",
     "generation": "i",
-    "id": 10079,
+    "id": 2079,
     "letter": "B",
     "name": "Blurrun",
     "number": 79,
@@ -15566,7 +15566,7 @@
   {
     "description": "These Pokémon live in mountains and hate travelers who invade their territory. They are very vicious towards other LYNOBCA that they encounter, especially if there is food involved.",
     "generation": "i",
-    "id": 10080,
+    "id": 2080,
     "letter": "L",
     "name": "Lynobca",
     "number": 80,
@@ -15581,7 +15581,7 @@
   {
     "description": "These Pokémon live in the desert and use their feathery crests to find prey. If they find suitable prey, they inject them with a paralyzing poison, and bury them in the sand, waiting for them to die.",
     "generation": "i",
-    "id": 10081,
+    "id": 2081,
     "letter": "P",
     "name": "Princada",
     "number": 81,
@@ -15596,7 +15596,7 @@
   {
     "description": "This devious Pokémon uses its body to hypnotize prey; while hypnotized, the victim will feel no pain as KINANG eats it alive. It buries whatever is left in the ground and comes back for it the next day.",
     "generation": "i",
-    "id": 10082,
+    "id": 2082,
     "letter": "K",
     "name": "Kinang",
     "number": 82,
@@ -15611,7 +15611,7 @@
   {
     "description": "They are said to have come to Earth from an asteroid. Their crescent markings glow brightly when in danger.",
     "generation": "i",
-    "id": 10083,
+    "id": 2083,
     "letter": "B",
     "name": "Bunnoon",
     "number": 83,
@@ -15626,7 +15626,7 @@
   {
     "description": "Its body's unable to withstand even a gentle punch. It swims at high speeds underwater and eats the kelp and algae that grows on the bottom.",
     "generation": "i",
-    "id": 10084,
+    "id": 2084,
     "letter": "S",
     "name": "Shrimpy",
     "number": 84,
@@ -15641,7 +15641,7 @@
   {
     "description": "It travels in groups in order to defend itself better because of its weak exterior. Its sharp claws and frills make it a force to be reckoned with.",
     "generation": "i",
-    "id": 10085,
+    "id": 2085,
     "letter": "P",
     "name": "Prawnip",
     "number": 85,
@@ -15656,7 +15656,7 @@
   {
     "description": "It lives underwater, using the water currents to move it from place to place Moving past each other often causes them to get tangled up.",
     "generation": "i",
-    "id": 10086,
+    "id": 2086,
     "letter": "K",
     "name": "Kelgae",
     "number": 86,
@@ -15671,7 +15671,7 @@
   {
     "description": "It drifts along ocean currents, winding up in strange locations. It is so agile that it can swim across an entire lake in less than a minute.",
     "generation": "i",
-    "id": 10087,
+    "id": 2087,
     "letter": "K",
     "name": "Kelphlow",
     "number": 87,
@@ -15686,7 +15686,7 @@
   {
     "description": "The band around its body allows the water inside of it to move freely. If its band is removed, it goes back to being a regular sphere.",
     "generation": "i",
-    "id": 10088,
+    "id": 2088,
     "letter": "O",
     "name": "Osmomso",
     "number": 88,
@@ -15701,7 +15701,7 @@
   {
     "description": "The bands on its body allow liquid to flow into each section, forming its appendages. The liquid that makes up its body is closely related to water, but scientists have yet to prove what it is.",
     "generation": "i",
-    "id": 10089,
+    "id": 2089,
     "letter": "D",
     "name": "Difflow",
     "number": 89,
@@ -15716,7 +15716,7 @@
   {
     "description": "Its bands block the fluid flowing throughout its body, forming its muscles. It is able to move using its huge arms instead of using its petite legs.",
     "generation": "i",
-    "id": 10090,
+    "id": 2090,
     "letter": "O",
     "name": "Osmodon",
     "number": 90,
@@ -15731,7 +15731,7 @@
   {
     "description": "Its feathers are often used as an alternate light source, replacing lanterns and light bulbs. The water that they produce has an effect that causes your body to glow for a limited amount of time.",
     "generation": "i",
-    "id": 10091,
+    "id": 2091,
     "letter": "A",
     "name": "Azuron",
     "number": 91,
@@ -15746,7 +15746,7 @@
   {
     "description": "Their jaws are strong enough to chew through metal. Their shells are made of solidified sand and dirt that is extremely hard to break.",
     "generation": "i",
-    "id": 10092,
+    "id": 2092,
     "letter": "C",
     "name": "Chompurt",
     "number": 92,
@@ -15761,7 +15761,7 @@
   {
     "description": "Their shells are comprised of a strong metal that can't be dented or melted. Their powerful jaws are strong enough to rip cars apart.",
     "generation": "i",
-    "id": 10093,
+    "id": 2093,
     "letter": "J",
     "name": "Jawtle",
     "number": 93,
@@ -15776,7 +15776,7 @@
   {
     "description": "Its body sweats out spicy juices when it is tired. Its flames are extremely hot and are often used to help cook spicy foods.",
     "generation": "i",
-    "id": 10094,
+    "id": 2094,
     "letter": "P",
     "name": "Peppaur",
     "number": 94,
@@ -15791,7 +15791,7 @@
   {
     "description": "Its bodily fluids can be harvested, heated, hardened and ground into fine spices. It often hunts Warmild and Fuegold for food.",
     "generation": "i",
-    "id": 10095,
+    "id": 2095,
     "letter": "J",
     "name": "Jalausaur",
     "number": 95,
@@ -15806,7 +15806,7 @@
   {
     "description": "It has the ability to melt into water, as well as vanish into thin air. They enjoy swimming and get startled very easily.",
     "generation": "i",
-    "id": 10096,
+    "id": 2096,
     "letter": "S",
     "name": "Stripeleon",
     "number": 96,
@@ -15821,7 +15821,7 @@
   {
     "description": "This Pokémon is admired because of its adorable appearance and cheery personality. The peppermint on top of its head is very sweet and can be used as a medicine.",
     "generation": "i",
-    "id": 10097,
+    "id": 2097,
     "letter": "M",
     "name": "Mintot",
     "number": 97,
@@ -15836,7 +15836,7 @@
   {
     "description": "The peppermints they produce are considered to be better than ones manufactured. They attack on MINTRIL's command.",
     "generation": "i",
-    "id": 10098,
+    "id": 2098,
     "letter": "M",
     "name": "Marqint",
     "number": 98,
@@ -15851,7 +15851,7 @@
   {
     "description": "They use their indestructible peppermint canes as weapons against foes. Its cries make MINTOT and MARQINT follow their every command.",
     "generation": "i",
-    "id": 10099,
+    "id": 2099,
     "letter": "M",
     "name": "Mintril",
     "number": 99,
@@ -15866,7 +15866,7 @@
   {
     "description": "They are often seen during stormy days, devouring and absorbing other clouds to add to its body. It can cause terrible cyclones by blowing out large volumes of air.",
     "generation": "i",
-    "id": 10100,
+    "id": 2100,
     "letter": "C",
     "name": "Cumulite",
     "number": 100,
@@ -15881,7 +15881,7 @@
   {
     "description": "They skewer berries with their fork-like tail and roast them on their backs before eating them. Their main prey consists of Scarabea, Wormound, and Prosuture, but they often resort to dirt or berries if none are around.",
     "generation": "i",
-    "id": 10101,
+    "id": 2101,
     "letter": "V",
     "name": "Vaarkin",
     "number": 101,
@@ -15896,7 +15896,7 @@
   {
     "description": "By dancing, it can summon rain clouds that drench the surrounding area. The water it produces is said to be full of nutrients that strengthen the mind and body.",
     "generation": "i",
-    "id": 10102,
+    "id": 2102,
     "letter": "D",
     "name": "Droprin",
     "number": 102,
@@ -15911,7 +15911,7 @@
   {
     "description": "The raindrops on their heads act as helmets, deflecting every attack that comes toward them. They can summon and control storm clouds with their fingers.",
     "generation": "i",
-    "id": 10103,
+    "id": 2103,
     "letter": "D",
     "name": "Donpour",
     "number": 103,
@@ -15926,7 +15926,7 @@
   {
     "description": "Wastox is the outcome of a experiment gone horribly wrong in which a group of scientists attempted to artificially create a new, radioactive mineral. Prolonged exposure to this Pokemon can cause terminal illnesses.",
     "generation": "i",
-    "id": 10104,
+    "id": 2104,
     "letter": "W",
     "name": "Wastox",
     "number": 104,
@@ -15941,7 +15941,7 @@
   {
     "description": "These playful Pokémon love using their paws to shock people. They are able to absorb electricity through the horns on their heads.",
     "generation": "i",
-    "id": 10105,
+    "id": 2105,
     "letter": "Z",
     "name": "Zapour",
     "number": 105,
@@ -15956,7 +15956,7 @@
   {
     "description": "They hide in water, waiting for others to unknowingly approach it; once they are close, they shock them. Absorbing electricity through its horns, it is able to discharge more than 450,000 volts of electricity.",
     "generation": "i",
-    "id": 10106,
+    "id": 2106,
     "letter": "X",
     "name": "Xolect",
     "number": 106,
@@ -15971,7 +15971,7 @@
   {
     "description": "By rubbing its hands together quickly, it can produce thick smokescreens that allow it to escape. The pattern on its belly heats up when it eager for a battle.",
     "generation": "i",
-    "id": 10107,
+    "id": 2107,
     "letter": "S",
     "name": "Sweltoad",
     "number": 107,
@@ -15986,7 +15986,7 @@
   {
     "description": "It incinerates trees and fallen logs in order to eat the ashes that are left behind. It can create flamethrowers with its hands by snapping its fingers and blowing out a flammable gas.",
     "generation": "i",
-    "id": 10108,
+    "id": 2108,
     "letter": "T",
     "name": "Toadaze",
     "number": 108,
@@ -16001,7 +16001,7 @@
   {
     "description": "By blowing out air from the holes in their beaks, they can create a plethora of different sounds. Their green feathers allow them to blend in well with the leaves of trees.",
     "generation": "i",
-    "id": 10109,
+    "id": 2109,
     "letter": "T",
     "name": "Toucaw",
     "number": 109,
@@ -16016,7 +16016,7 @@
   {
     "description": "In a flock, the one with the brightest crest is considered the leader. Despite its size, its beak is weak and extremely sensitive. This makes its beak a weak point in battle, but it also allows it to detect incoming danger.",
     "generation": "i",
-    "id": 10110,
+    "id": 2110,
     "letter": "M",
     "name": "Macawlur",
     "number": 110,
@@ -16031,7 +16031,7 @@
   {
     "description": "They wander around forests and marshes, causing sadness all around; their mere presence causes flowers to droop. It is said that if you look into its eyes, you will be cursed with eternal sorrow.",
     "generation": "i",
-    "id": 10111,
+    "id": 2111,
     "letter": "G",
     "name": "Grovaunt",
     "number": 111,
@@ -16046,7 +16046,7 @@
   {
     "description": "Its honey is extremely sticky and hard to get out of. It dangles from tree branches, drooling the sweet nectar on the ground in order to attract prey.",
     "generation": "i",
-    "id": 10112,
+    "id": 2112,
     "letter": "H",
     "name": "Honicras",
     "number": 112,
@@ -16061,7 +16061,7 @@
   {
     "description": "Their two heads are always oozing sweet honey from their maws, making it easy to lure small insects to them. They are often attacked by groups of Honoger, who want nothing more than to eat their entire, honey-soaked bodies.",
     "generation": "i",
-    "id": 10113,
+    "id": 2113,
     "letter": "D",
     "name": "Drooluny",
     "number": 113,
@@ -16076,7 +16076,7 @@
   {
     "description": "They gallop in silence, catching friends and foes off-guard with their sudden appearances. It is thought that the chains around its legs restrict its power and keep its malicious urges in check.",
     "generation": "i",
-    "id": 10114,
+    "id": 2114,
     "letter": "C",
     "name": "Coltergeist",
     "number": 114,
@@ -16091,7 +16091,7 @@
   {
     "description": "It is imperative that you keep an eye on it at all times; stories of it devouring trainers have been told for centuries. It absorbs the spirits of those that cross it, storing them its is bright mane.",
     "generation": "i",
-    "id": 10115,
+    "id": 2115,
     "letter": "P",
     "name": "Phanteke",
     "number": 115,
@@ -16106,7 +16106,7 @@
   {
     "description": "Avoid staring at its face, as your facial features will start to slowly disappear if you linger too long. The special leaf on its face allows it to both shapeshift into and possess humans in order to get high-quality food for itself.",
     "generation": "i",
-    "id": 10116,
+    "id": 2116,
     "letter": "M",
     "name": "Maskoon",
     "number": 116,
@@ -16121,7 +16121,7 @@
   {
     "description": "This Pokemon was said to have been born from the spirits of those who died by fire. They silently absorb the spirits of sleeping children at night, making their flames glow brighter.",
     "generation": "i",
-    "id": 10117,
+    "id": 2117,
     "letter": "W",
     "name": "Wispur",
     "number": 117,
@@ -16136,7 +16136,7 @@
   {
     "description": "The heat of its flame has caused its jar to crack and expand, allowing the fire to escape. It is able to burn an entire body to pieces while also stealing the soul of the person it kills.",
     "generation": "i",
-    "id": 10118,
+    "id": 2118,
     "letter": "W",
     "name": "Wisphlare",
     "number": 118,
@@ -16151,7 +16151,7 @@
   {
     "description": "Because it was confined so long inside of it, its body is unable to leave through the opening. Its six flaming arms can absorb a human's body and burn them from the inside out, feeding on its soul's pain and agony...",
     "generation": "i",
-    "id": 10119,
+    "id": 2119,
     "letter": "F",
     "name": "Flarispur",
     "number": 119,
@@ -16166,7 +16166,7 @@
   {
     "description": "It came to life from a fortune teller's old rag doll. It lurks in haunted houses and is the cause of the weird occurrences that effect any, if not all, household objects.",
     "generation": "i",
-    "id": 10120,
+    "id": 2120,
     "letter": "E",
     "name": "Ecalpsim",
     "number": 120,
@@ -16181,7 +16181,7 @@
   {
     "description": "Groups of them are known to take down large prey and devour them while they are still alive. Their razor sharp teeth and claws can cut through bones like butter. Very voracious, they are able to eat up to double their body weight in food at any given time. This comes at a cost, as this leaves them very sluggish and unable to fully defend themselves.",
     "generation": "i",
-    "id": 10121,
+    "id": 2121,
     "letter": "S",
     "name": "Shreverine",
     "number": 121,
@@ -16196,7 +16196,7 @@
   {
     "description": "With its razor sharp claws and teeth, it tears its prey to shreds. It has been observed taking down Frigiox and Yaking with minimum effort. They are extremely stubborn, never backing down from a fight, no matter the size of the opponent. Even if its back is against the wall, it will keep fighting until it can no longer move.",
     "generation": "i",
-    "id": 10122,
+    "id": 2122,
     "letter": "W",
     "name": "Wolvered",
     "number": 122,
@@ -16211,7 +16211,7 @@
   {
     "description": "These Pokémon float around ancient ruins, pretending to be rare artifacts. Grave robbers find these Pokémon, expecting them to be artifacts, but they are actually living beings.",
     "generation": "i",
-    "id": 10123,
+    "id": 2123,
     "letter": "G",
     "name": "Glystone",
     "number": 123,
@@ -16226,7 +16226,7 @@
   {
     "description": "These Pokémon use their antennae on their faces to sense their surroundings. The number of cracks on their body determines how old they are.",
     "generation": "i",
-    "id": 10124,
+    "id": 2124,
     "letter": "S",
     "name": "Stonivate",
     "number": 124,
@@ -16241,7 +16241,7 @@
   {
     "description": "These Pokémon gather in groups during full moons and absorb energy in their antennae. When angered, their antennae glow and they fling people into the air as if they're weightless.",
     "generation": "i",
-    "id": 10125,
+    "id": 2125,
     "letter": "G",
     "name": "Gravonevis",
     "number": 125,
@@ -16256,7 +16256,7 @@
   {
     "description": "These Pokémon cannot see, so they use the sensor on their heads to navigate. They ram into opponents with great force, knocking the wind out of them.",
     "generation": "i",
-    "id": 10126,
+    "id": 2126,
     "letter": "T",
     "name": "Tyram",
     "number": 126,
@@ -16271,7 +16271,7 @@
   {
     "description": "They have been known to devour boulders and mountains when they are hungry. With their mighty jaws, they can snap a semi in half. Their eyesight is very poor, so they rely on their sense of smell in order to track their prey. They will eat anything that they manage to find.",
     "generation": "i",
-    "id": 10127,
+    "id": 2127,
     "letter": "T",
     "name": "Tantyra",
     "number": 127,
@@ -16286,7 +16286,7 @@
   {
     "description": "Acored came to be when an old acorn absorbed the light of the moon. Its entire body is hollow; it is said that if you stare into an Acored's body, your spirit vanishes forever.",
     "generation": "i",
-    "id": 10128,
+    "id": 2128,
     "letter": "A",
     "name": "Acored",
     "number": 128,
@@ -16301,7 +16301,7 @@
   {
     "description": "Hollark are said to be old trees possessed by wayward spirits. They stand motionless in forests waiting for others to walk by before grabbing them and draining them of their life energy.",
     "generation": "i",
-    "id": 10129,
+    "id": 2129,
     "letter": "H",
     "name": "Hollark",
     "number": 129,
@@ -16316,7 +16316,7 @@
   {
     "description": "Pupreez entertain themselves by wresting in the snow. By freezing moisture in the air around it, it is able to pronounce snow for a short while.",
     "generation": "i",
-    "id": 10130,
+    "id": 2130,
     "letter": "P",
     "name": "Pupreez",
     "number": 130,
@@ -16331,7 +16331,7 @@
   {
     "description": "Its howl can send chills down the spines of the innocent. A group of them can cause an avalanche just by howling at the same time.",
     "generation": "i",
-    "id": 10131,
+    "id": 2131,
     "letter": "W",
     "name": "Wulfreeze",
     "number": 131,
@@ -16346,7 +16346,7 @@
   {
     "description": "Packs of them are known to destroy villages and devour everything in sight. Their howls can create blizzards and hailstorms that last for 2 whole months.",
     "generation": "i",
-    "id": 10132,
+    "id": 2132,
     "letter": "S",
     "name": "Snokami",
     "number": 132,
@@ -16361,7 +16361,7 @@
   {
     "description": "Its large hump on its back is actually a cloak it is born with. CALFRID is able to shed its cloak in favor of a new one, which is then able to be worn by humans.",
     "generation": "i",
-    "id": 10133,
+    "id": 2133,
     "letter": "C",
     "name": "Calfrid",
     "number": 133,
@@ -16376,7 +16376,7 @@
   {
     "description": "This Pokémon is known for helping people stuck in mountains and avalanches. They tread in snowy mountains, looking for adequate places to create burrows for smaller Pokemon that get stranded or lost.",
     "generation": "i",
-    "id": 10134,
+    "id": 2134,
     "letter": "F",
     "name": "Frigiox",
     "number": 134,
@@ -16391,7 +16391,7 @@
   {
     "description": "It wanders the snowy mountains looking for others to play with. When it sees other Pokémon or humans, it excitedly approaches them, but it ends up looking threatening. This causes others to flee from it, making it sadder.",
     "generation": "i",
-    "id": 10135,
+    "id": 2135,
     "letter": "L",
     "name": "Loneti",
     "number": 135,
@@ -16406,7 +16406,7 @@
   {
     "description": "It has a very abrasive and independent personality. It will always avoid contact with other humans and Pokémon.",
     "generation": "i",
-    "id": 10136,
+    "id": 2136,
     "letter": "B",
     "name": "Brawleti",
     "number": 136,
@@ -16421,7 +16421,7 @@
   {
     "description": "It is very sluggish, making it easy prey for bird Pokemon; it spits out a beam of ice in order to protect itself. When it sleeps, it creates a small icy dome for protection.",
     "generation": "i",
-    "id": 10137,
+    "id": 2137,
     "letter": "G",
     "name": "Grubrr",
     "number": 137,
@@ -16436,7 +16436,7 @@
   {
     "description": "It hangs in icy caves and mountains like an icicle as it awaits evolution, and once that time is near, it falls. The inside of its body is very cold and rocky.",
     "generation": "i",
-    "id": 10138,
+    "id": 2138,
     "letter": "C",
     "name": "Cryoon",
     "number": 138,
@@ -16451,7 +16451,7 @@
   {
     "description": "By flapping its icy wings, it can create a snowstorm in a matter of seconds. They are said to be the reincarnations of ancient ice gods who died while trying to save their people.",
     "generation": "i",
-    "id": 10139,
+    "id": 2139,
     "letter": "H",
     "name": "Himalayoth",
     "number": 139,
@@ -16466,7 +16466,7 @@
   {
     "description": "They bury themselves in the ground, using their snowman-like plant, in order to evade capture. When they sense a human's presence, they will follow them, making them extremely uncomfortable until they leave the area.",
     "generation": "i",
-    "id": 10140,
+    "id": 2140,
     "letter": "S",
     "name": "Snoseed",
     "number": 140,
@@ -16481,7 +16481,7 @@
   {
     "description": "The sharp blade at the end of its tail is actually a bone. It uses this blade to slice prey apart. It is mostly active at night. They will sneak into the homes of other Pokémon while they are sleeping and steal their rations.",
     "generation": "i",
-    "id": 10141,
+    "id": 2141,
     "letter": "W",
     "name": "Weashar",
     "number": 141,
@@ -16496,7 +16496,7 @@
   {
     "description": "It is thought that their appearance is a sign of bad things to come. They are often found lurking around cemeteries. With its sharp blades, it can slice an entire pickup truck in half. It moves swiftly and silently, making people believe that it was a ghost.",
     "generation": "i",
-    "id": 10142,
+    "id": 2142,
     "letter": "B",
     "name": "Bladinski",
     "number": 142,
@@ -16511,7 +16511,7 @@
   {
     "description": "When they swim, their fins remain above water, giving them the appearance of a larger creature. They are often depicted in children's books as kindhearted water spirits.",
     "generation": "i",
-    "id": 10143,
+    "id": 2143,
     "letter": "R",
     "name": "Rivard",
     "number": 143,
@@ -16526,7 +16526,7 @@
   {
     "description": "It slithers through the sea looking for prey. Its slim body allows it to slip through cracks in rocks and reefs.",
     "generation": "i",
-    "id": 10144,
+    "id": 2144,
     "letter": "S",
     "name": "Serpond",
     "number": 144,
@@ -16541,7 +16541,7 @@
   {
     "description": "Its noble, yet dangerous appearance make it an amazing sight to see. These Pokémon were once hated all around Xenioh because of the destruction they caused, but are now loved because of their chivalrous and graceful abilities.",
     "generation": "i",
-    "id": 10145,
+    "id": 2145,
     "letter": "S",
     "name": "Sergalak",
     "number": 145,
@@ -16556,7 +16556,7 @@
   {
     "description": "This Pokémon roams around Power Plants, absorbing electricity through its thunderbolt-shaped arm. It loves short-circuiting electronic devices and scaring innocent people and Pokémon.",
     "generation": "i",
-    "id": 10146,
+    "id": 2146,
     "letter": "S",
     "name": "Shockris",
     "number": 146,
@@ -16571,7 +16571,7 @@
   {
     "description": "It shoots through electronics and causes them to explode. They feed off of the screams and static from people they prank.",
     "generation": "i",
-    "id": 10147,
+    "id": 2147,
     "letter": "G",
     "name": "Glitzap",
     "number": 147,
@@ -16586,7 +16586,7 @@
   {
     "description": "It is able to use its long thunderbolt shaped arm to travel inside power wires and short them out, causing blackouts. It enjoys pulling pranks on people and Pokémon.",
     "generation": "i",
-    "id": 10148,
+    "id": 2148,
     "letter": "Z",
     "name": "Zapris",
     "number": 148,
@@ -16601,7 +16601,7 @@
   {
     "description": "These Pokémon are often seen during funerals, letting out horrifying shrieks in order to scare those in attendance. Shrievil reside around cemeteries, absorbing wandering spirits into their bodies while singing happily.",
     "generation": "i",
-    "id": 10149,
+    "id": 2149,
     "letter": "S",
     "name": "Shrievil",
     "number": 149,
@@ -16616,7 +16616,7 @@
   {
     "description": "They love sneaking behind people and Pokémon and making loud noises to startle them. There was one case where a Demariek was blamed for the demise of an elderly woman.",
     "generation": "i",
-    "id": 10150,
+    "id": 2150,
     "letter": "D",
     "name": "Demariek",
     "number": 150,
@@ -16631,7 +16631,7 @@
   {
     "description": "They spin opposite of each other in order to generate electricity. They are able to function individually if they generate enough power in their bodies.",
     "generation": "i",
-    "id": 10151,
+    "id": 2151,
     "letter": "D",
     "name": "Duorb",
     "number": 151,
@@ -16646,7 +16646,7 @@
   {
     "description": "Its 'arms' are actually separate heads that each have their own brain and personality. It generates electricity by rotating the heads against its body.",
     "generation": "i",
-    "id": 10152,
+    "id": 2152,
     "letter": "M",
     "name": "Matonic",
     "number": 152,
@@ -16661,7 +16661,7 @@
   {
     "description": "Its three heads use electromagnetic signals to communicate with each other. Its lower half spins at over 60 mph in order to generate over 1,000 megavolts of electricity.",
     "generation": "i",
-    "id": 10153,
+    "id": 2153,
     "letter": "A",
     "name": "Autogenate",
     "number": 153,
@@ -16676,7 +16676,7 @@
   {
     "description": "It can generate electricity by spinning its tail around. They are able to communicate by touching the tips of their tails together, causing an array of buzzing sounds.",
     "generation": "i",
-    "id": 10154,
+    "id": 2154,
     "letter": "M",
     "name": "Monkurren",
     "number": 154,
@@ -16691,7 +16691,7 @@
   {
     "description": "A special organ located around its rear allows it to absorb large amounts of electricity at a single time. Electricity crackles through their fur when they're angry.",
     "generation": "i",
-    "id": 10155,
+    "id": 2155,
     "letter": "M",
     "name": "Monkilo",
     "number": 155,
@@ -16706,7 +16706,7 @@
   {
     "description": "By rapidly banging its chest, it generates vast amounts of electricity. When it gets excited, it emits powerful sparks from its body that can rip the bark off of trees.",
     "generation": "i",
-    "id": 10156,
+    "id": 2156,
     "letter": "G",
     "name": "Gorillect",
     "number": 156,
@@ -16721,7 +16721,7 @@
   {
     "description": "Huntear are remarkably resilient and persistent. When it begins chasing you, there is no chance of escaping. Its darker fur allows it to blend in with the forest surroundings. It uses its powerful jaws to tear prey apart.",
     "generation": "i",
-    "id": 10157,
+    "id": 2157,
     "letter": "H",
     "name": "Huntear",
     "number": 157,
@@ -16736,7 +16736,7 @@
   {
     "description": "They walk on the water's surface as if they are looking for something. Their green eyes are said to project images that only it can see.",
     "generation": "i",
-    "id": 10158,
+    "id": 2158,
     "letter": "A",
     "name": "Aqusus",
     "number": 158,
@@ -16751,7 +16751,7 @@
   {
     "description": "They run on the water's surface at high speeds and disappear from view. It is believed that they travel to an alternate dimension when they disappear.",
     "generation": "i",
-    "id": 10159,
+    "id": 2159,
     "letter": "S",
     "name": "Susparill",
     "number": 159,
@@ -16766,7 +16766,7 @@
   {
     "description": "Their flames can reach temperatures of up to 100,000 degrees Fahrenheit. They were worshiped as deities in ancient times for their ability to devour metals and create new ones.",
     "generation": "i",
-    "id": 10160,
+    "id": 2160,
     "letter": "M",
     "name": "Metaurost",
     "number": 160,
@@ -16781,7 +16781,7 @@
   {
     "description": "If you step on one of its spikes, a burning sensation courses through your body. This Pokémon's spikes are very hot despite it living underwater.",
     "generation": "i",
-    "id": 10161,
+    "id": 2161,
     "letter": "H",
     "name": "Hurchin",
     "number": 161,
@@ -16796,7 +16796,7 @@
   {
     "description": "If you were to step on one of these Pokémon's spikes, your foot would melt from the inside out. When flames erupt from the ends of their spikes underwater, it means that they are about to explode.",
     "generation": "i",
-    "id": 10162,
+    "id": 2162,
     "letter": "U",
     "name": "Urchar",
     "number": 162,
@@ -16811,7 +16811,7 @@
   {
     "description": "They lie at the bottom of the ocean with their sharp, poison-filled tail hung out in the open in order to lure prey. When prey is near, it jabs it with its tail, delivering poison and electricity into its system.",
     "generation": "i",
-    "id": 10163,
+    "id": 2163,
     "letter": "E",
     "name": "Electray",
     "number": 163,
@@ -16826,7 +16826,7 @@
   {
     "description": "These Pokémon live under the sea and use the pores on their bodies to absorb freshwater in order to gain nutrients. Their bodies are torn easily, but they regenerate quickly.",
     "generation": "i",
-    "id": 10164,
+    "id": 2164,
     "letter": "A",
     "name": "Absorage",
     "number": 164,
@@ -16841,7 +16841,7 @@
   {
     "description": "These Pokémon's pores are powerful enough to absorb anything into its body. Its body is comparable to a black hole, as few things that go in hardly ever come back out.",
     "generation": "i",
-    "id": 10165,
+    "id": 2165,
     "letter": "S",
     "name": "Sorbunge",
     "number": 165,
@@ -16856,7 +16856,7 @@
   {
     "description": "They use their sharp, elongated canine to pierce berries for their juice. They can run across any surface, water or land, because their hooves are fully insulated.",
     "generation": "i",
-    "id": 10166,
+    "id": 2166,
     "letter": "R",
     "name": "Reefawn",
     "number": 166,
@@ -16871,7 +16871,7 @@
   {
     "description": "They are highly aggressive and will often attack each other with their icy horns to assert dominance. They roam in Arctic areas, using their teeth and antlers to skewer berries.",
     "generation": "i",
-    "id": 10167,
+    "id": 2167,
     "letter": "F",
     "name": "Frigeer",
     "number": 167,
@@ -16886,7 +16886,7 @@
   {
     "description": "They often test each other's strength by ramming into each other with their icy horns. To assert dominance, they charge at weaker members of their herd.",
     "generation": "i",
-    "id": 10168,
+    "id": 2168,
     "letter": "S",
     "name": "Staglacie",
     "number": 168,
@@ -16901,7 +16901,7 @@
   {
     "description": "They are extremely clumsy and slow because of their large tusk. They usually have to crawl on all fours in order to keep balance across slippery surfaces.",
     "generation": "i",
-    "id": 10169,
+    "id": 2169,
     "letter": "T",
     "name": "Tuskria",
     "number": 169,
@@ -16916,7 +16916,7 @@
   {
     "description": "These Pokémon often beach themselves in order to play with children. They are nicknamed \"Balloons of the Sea\" because of their cute, chubby appearances and the way their tails' ribbon-like ends sway while they swim.",
     "generation": "i",
-    "id": 10170,
+    "id": 2170,
     "letter": "T",
     "name": "Teenee",
     "number": 170,
@@ -16931,7 +16931,7 @@
   {
     "description": "It floats across the surface of water for fun. It can twirl its tail's ends like a propeller in order to move quickly underwater.",
     "generation": "i",
-    "id": 10171,
+    "id": 2171,
     "letter": "B",
     "name": "Ballatee",
     "number": 171,
@@ -16946,7 +16946,7 @@
   {
     "description": "By boiling water inside of its body, it is able to produce enough pressurized steam to fly. They ingest large amounts of water through their gills and burn it all inside to let it speed up while swimming.",
     "generation": "i",
-    "id": 10172,
+    "id": 2172,
     "letter": "S",
     "name": "Salift",
     "number": 172,
@@ -16961,7 +16961,7 @@
   {
     "description": "They shoot out of water like rockets. Many of them have been discovered flying in outer space because their great speed and velocity.",
     "generation": "i",
-    "id": 10173,
+    "id": 2173,
     "letter": "S",
     "name": "Shiphlon",
     "number": 173,
@@ -16976,7 +16976,7 @@
   {
     "description": "This Pokémon pretends to be an ancient artifact in order to lure grave robbers; once they pick it up, the markings on its body glow and the person is cursed forever. The markings are different on each one; it is said that the markings are actually words that can release an evil spirit unto the world if it is read correctly.",
     "generation": "i",
-    "id": 10174,
+    "id": 2174,
     "letter": "T",
     "name": "Tabex",
     "number": 174,
@@ -16991,7 +16991,7 @@
   {
     "description": "Their wings don't allow flight, so their bodies enable them to levitate subconsciously. They take pleasure in destroying the homes of smaller Pokemon.",
     "generation": "i",
-    "id": 10175,
+    "id": 2175,
     "letter": "A",
     "name": "Amphlight",
     "number": 175,
@@ -17006,7 +17006,7 @@
   {
     "description": "These Pokémon roam the skies, destroying everything in its path. It has a sadistic personality and will always watch its prey suffer before devouring it.",
     "generation": "i",
-    "id": 10176,
+    "id": 2176,
     "letter": "P",
     "name": "Phiteragon",
     "number": 176,
@@ -17021,7 +17021,7 @@
   {
     "description": "Their skin is as rough as sandpaper. They have 50 razor sharp teeth that are considered extremely valuable by islanders.",
     "generation": "i",
-    "id": 10177,
+    "id": 2177,
     "letter": "J",
     "name": "Jawark",
     "number": 177,
@@ -17036,7 +17036,7 @@
   {
     "description": "Scraping against these Pokemon causes you to lose skin. Despite only four being seen, they have over 100 teeth in their maws that are able to crush anything from concrete to tempered steel.",
     "generation": "i",
-    "id": 10178,
+    "id": 2178,
     "letter": "P",
     "name": "Pierciark",
     "number": 178,
@@ -17051,7 +17051,7 @@
   {
     "description": "They have over 300 teeth that are powerful enough to crush a semi. Their extremely rough skin is able to rip skin from bone.",
     "generation": "i",
-    "id": 10179,
+    "id": 2179,
     "letter": "M",
     "name": "Maliciark",
     "number": 179,
@@ -17066,7 +17066,7 @@
   {
     "description": "It uses the floating orbs around it to amplify its Psychic-type power. Its body is as hard as diamond and can't be scratched.",
     "generation": "i",
-    "id": 10180,
+    "id": 2180,
     "letter": "O",
     "name": "Orbro",
     "number": 180,
@@ -17081,7 +17081,7 @@
   {
     "description": "These Pokémon can frighten its opponents because if both heads are aligned, they can give the appearance of being eyeballs with arms. This Pokémon is formed when one of ORBRO's floating orbs attaches itself to its tail.",
     "generation": "i",
-    "id": 10181,
+    "id": 2181,
     "letter": "D",
     "name": "Doublorb",
     "number": 181,
@@ -17096,7 +17096,7 @@
   {
     "description": "This Pokémon is formed when the orbs floating in the palms of DOUBLORB attach to them. They are able to blast beams from each eye and the opening between them.",
     "generation": "i",
-    "id": 10182,
+    "id": 2182,
     "letter": "Q",
     "name": "Quadross",
     "number": 182,
@@ -17111,7 +17111,7 @@
   {
     "description": "They spend most of their time running into trees and tearing them down to eat their leaves and fruit. These Pokémon often travel in large groups.",
     "generation": "i",
-    "id": 10183,
+    "id": 2183,
     "letter": "H",
     "name": "Hournbyl",
     "number": 183,
@@ -17126,7 +17126,7 @@
   {
     "description": "They reside in mountainous areas, heating up their surroundings with their high temperature flames. Kindlyth are said to be stone statues that were mysteriously brought to life. Whether this is true or not is still up for debate...",
     "generation": "i",
-    "id": 10184,
+    "id": 2184,
     "letter": "K",
     "name": "Kindlyth",
     "number": 184,
@@ -17141,7 +17141,7 @@
   {
     "description": "They are extremely aggressive, attacking anything that they see moving with flames of up to 15,000 degrees F. Each head has a brain and a different personality, but they all act the same way, regardless.",
     "generation": "i",
-    "id": 10185,
+    "id": 2185,
     "letter": "C",
     "name": "Cerberok",
     "number": 185,
@@ -17156,7 +17156,7 @@
   {
     "description": "These Pokémon enjoy biting their own tails because the sweet tasting nectar in the end of it strengthens their Psychic-type moves. They spend hours on end playfully chasing and gnawing on their tails.",
     "generation": "i",
-    "id": 10186,
+    "id": 2186,
     "letter": "O",
     "name": "Omnomon",
     "number": 186,
@@ -17171,7 +17171,7 @@
   {
     "description": "By gnawing on its long tail, it increases its mental power. It can use its tail as a shield from dangerous attacks and it will not have any effect.",
     "generation": "i",
-    "id": 10187,
+    "id": 2187,
     "letter": "N",
     "name": "Nomogon",
     "number": 187,
@@ -17186,7 +17186,7 @@
   {
     "description": "It is able to clamp down on its tail and continuously gnaw on it while it is battling. The nectar at the end of its tail is far more concentrated, making its Psychic-type moves even stronger.",
     "generation": "i",
-    "id": 10188,
+    "id": 2188,
     "letter": "M",
     "name": "Munchanon",
     "number": 188,
@@ -17201,7 +17201,7 @@
   {
     "description": "Said to be a ruler of the night, it is thought that its cry can cause day to immediately turn to night. For a long time, it was thought to be nothing more than a myth, as its body blends in with the night sky.",
     "generation": "i",
-    "id": 10189,
+    "id": 2189,
     "letter": "T",
     "name": "Tezcapanas",
     "number": 189,
@@ -17216,7 +17216,7 @@
   {
     "description": "A legendary bird of Xenioh folklore, it is said to appear during intense battles and wars. It is known to cause chaos every so often and will spectate its work from a distance.",
     "generation": "i",
-    "id": 10190,
+    "id": 2190,
     "letter": "D",
     "name": "Dattapoch",
     "number": 190,
@@ -17231,7 +17231,7 @@
   {
     "description": "Legends of it roaming the plains of Xenioh have existed for centuries. Its intense flames glow as bright as the sun.",
     "generation": "i",
-    "id": 10191,
+    "id": 2191,
     "letter": "T",
     "name": "Taikin",
     "number": 191,
@@ -17246,7 +17246,7 @@
   {
     "description": "It is said that it can cause torrential downpours when it howls. Tales of it swimming all over the world have been told for centuries.",
     "generation": "i",
-    "id": 10192,
+    "id": 2192,
     "letter": "K",
     "name": "Kamikazin",
     "number": 192,
@@ -17261,7 +17261,7 @@
   {
     "description": "Although they are related, Lunaporin has never been mentioned alongside Taikin nor Kamikazin in any legends. It is thought to be due to very few sightings or encounters, leading to it fading into obscurity. It lets out a a spine-chilling howl when the moon is at its highest point in the sky.",
     "generation": "i",
-    "id": 10193,
+    "id": 2193,
     "letter": "L",
     "name": "Lunaporin",
     "number": 193,
@@ -17276,7 +17276,7 @@
   {
     "description": "This legendary bird of Xenioh lore was said to have the ability to make crops grow by shedding its feathers over fields. There is an old myth that states that peering into its eyes will remove all of the toxins from your body.",
     "generation": "i",
-    "id": 10194,
+    "id": 2194,
     "letter": "X",
     "name": "Xipenagor",
     "number": 194,
@@ -17291,7 +17291,7 @@
   {
     "description": "Known as the Lord of Purity in mythology, it embodies positivity, kindness, and innocence. The winner of continuous feuds with Tawartagun, it ensures that the region remains stable.",
     "generation": "i",
-    "id": 10195,
+    "id": 2195,
     "letter": "F",
     "name": "Fasutagon",
     "number": 195,
@@ -17306,7 +17306,7 @@
   {
     "description": "An embodiment of malice and hate, it sleeps within a shard, only being awakened when its rage boils over. In mythology, it is known as the Dark Lord. It battled against Fasutagon and lost, but repeatedly seeks vengeance.",
     "generation": "i",
-    "id": 10196,
+    "id": 2196,
     "letter": "T",
     "name": "Tawartagun",
     "number": 196,
@@ -17321,7 +17321,7 @@
   {
     "description": "Mercotical is thought to have the ability to control all living plants, as well as bring deceased plants back to life. Being in possession of one of its many leaf-like feathers is said to give one the ability to communicate with Grass-type Pokemon with ease.",
     "generation": "i",
-    "id": 10197,
+    "id": 2197,
     "letter": "M",
     "name": "Mercotical",
     "number": 197,

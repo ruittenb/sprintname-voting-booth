@@ -1,6 +1,5 @@
 
  - variant descriptions
- - optimizations: find first pokemon in generation
 
 missing:
  - refresh auth0 token when it expires

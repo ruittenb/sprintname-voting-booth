@@ -25,8 +25,8 @@
     "letter": "C",
     "open": false,
     "startDate": "2015-11-03T00:00:00.000+01:00",
-    "winnerName": "Charizard",
-    "winnerId": 6
+    "winnerId": 6,
+    "winnerName": "Charizard"
   },
   {
     "generation": "I",
@@ -34,8 +34,8 @@
     "letter": "D",
     "open": false,
     "startDate": "2015-11-17T00:00:00.000+01:00",
-    "winnerName": "Dragonite",
-    "winnerId": 149
+    "winnerId": 149,
+    "winnerName": "Dragonite"
   },
   {
     "generation": "I",
@@ -43,8 +43,8 @@
     "letter": "E",
     "open": false,
     "startDate": "2015-12-01T00:00:00.000+01:00",
-    "winnerName": "Electabuzz",
-    "winnerId": 125
+    "winnerId": 125,
+    "winnerName": "Electabuzz"
   },
   {
     "generation": "I",
@@ -52,8 +52,8 @@
     "letter": "F",
     "open": false,
     "startDate": "2015-12-15T00:00:00.000+01:00",
-    "winnerName": "Farfetch'd",
-    "winnerId": 83
+    "winnerId": 83,
+    "winnerName": "Farfetch'd"
   },
   {
     "generation": "I",
@@ -61,8 +61,8 @@
     "letter": "G",
     "open": false,
     "startDate": "2016-01-05T00:00:00.000+01:00",
-    "winnerName": "Gengar",
-    "winnerId": 94
+    "winnerId": 94,
+    "winnerName": "Gengar"
   },
   {
     "generation": "I",
@@ -70,8 +70,8 @@
     "letter": "H",
     "open": false,
     "startDate": "2016-01-19T00:00:00.000+01:00",
-    "winnerName": "Horsea",
-    "winnerId": 116
+    "winnerId": 116,
+    "winnerName": "Horsea"
   },
   {
     "generation": "I",
@@ -79,8 +79,8 @@
     "letter": "I",
     "open": false,
     "startDate": "2016-02-02T00:00:00.000+01:00",
-    "winnerName": "Ivysaur",
-    "winnerId": 2
+    "winnerId": 2,
+    "winnerName": "Ivysaur"
   },
   {
     "generation": "I",
@@ -88,8 +88,8 @@
     "letter": "J",
     "open": false,
     "startDate": "2016-02-16T00:00:00.000+01:00",
-    "winnerName": "Jolteon",
-    "winnerId": 135
+    "winnerId": 135,
+    "winnerName": "Jolteon"
   },
   {
     "generation": "I",
@@ -97,8 +97,8 @@
     "letter": "K",
     "open": false,
     "startDate": "2016-03-01T00:00:00.000+02:00",
-    "winnerName": "Kabutops",
-    "winnerId": 141
+    "winnerId": 141,
+    "winnerName": "Kabutops"
   },
   {
     "generation": "I",
@@ -106,8 +106,8 @@
     "letter": "L",
     "open": false,
     "startDate": "2016-03-15T00:00:00.000+02:00",
-    "winnerName": "Lapras",
-    "winnerId": 131
+    "winnerId": 131,
+    "winnerName": "Lapras"
   },
   {
     "generation": "I",
@@ -115,8 +115,8 @@
     "letter": "M",
     "open": false,
     "startDate": "2016-04-06T00:00:00.000+02:00",
-    "winnerName": "Mew",
-    "winnerId": 151
+    "winnerId": 151,
+    "winnerName": "Mew"
   },
   {
     "generation": "I",
@@ -124,8 +124,8 @@
     "letter": "N",
     "open": false,
     "startDate": "2016-04-19T00:00:00.000+02:00",
-    "winnerName": "Ninetales",
-    "winnerId": 38
+    "winnerId": 38,
+    "winnerName": "Ninetales"
   },
   {
     "generation": "I",
@@ -133,8 +133,8 @@
     "letter": "O",
     "open": false,
     "startDate": "2016-05-10T00:00:00.000+02:00",
-    "winnerName": "Omastar",
-    "winnerId": 139
+    "winnerId": 139,
+    "winnerName": "Omastar"
   },
   {
     "generation": "I",
@@ -142,8 +142,8 @@
     "letter": "P",
     "open": false,
     "startDate": "2016-05-24T00:00:00.000+02:00",
-    "winnerName": "Porygon",
-    "winnerId": 137
+    "winnerId": 137,
+    "winnerName": "Porygon"
   },
   {
     "generation": "I",
@@ -151,8 +151,8 @@
     "letter": "R",
     "open": false,
     "startDate": "2016-06-07T00:00:00.000+02:00",
-    "winnerName": "Raichu",
-    "winnerId": 26
+    "winnerId": 26,
+    "winnerName": "Raichu"
   },
   {
     "generation": "I",
@@ -160,8 +160,8 @@
     "letter": "S",
     "open": false,
     "startDate": "2016-06-21T00:00:00.000+02:00",
-    "winnerName": "Scyther",
-    "winnerId": 123
+    "winnerId": 123,
+    "winnerName": "Scyther"
   },
   {
     "generation": "I",
@@ -169,8 +169,8 @@
     "letter": "T",
     "open": false,
     "startDate": "2016-07-05T00:00:00.000+02:00",
-    "winnerName": "Tangela",
-    "winnerId": 114
+    "winnerId": 114,
+    "winnerName": "Tangela"
   },
   {
     "generation": "I",
@@ -178,8 +178,8 @@
     "letter": "V",
     "open": false,
     "startDate": "2016-07-19T00:00:00.000+02:00",
-    "winnerName": "Vaporeon",
-    "winnerId": 134
+    "winnerId": 134,
+    "winnerName": "Vaporeon"
   },
   {
     "generation": "I",
@@ -187,8 +187,8 @@
     "letter": "W",
     "open": false,
     "startDate": "2016-08-09T00:00:00.000+02:00",
-    "winnerName": "Wartortle",
-    "winnerId": 8
+    "winnerId": 8,
+    "winnerName": "Wartortle"
   },
   {
     "generation": "I",
@@ -196,8 +196,8 @@
     "letter": "Z",
     "open": false,
     "startDate": "2016-08-23T00:00:00.000+02:00",
-    "winnerName": "Zapdos",
-    "winnerId": 145
+    "winnerId": 145,
+    "winnerName": "Zapdos"
   },
   {
     "generation": "II",
@@ -205,8 +205,8 @@
     "letter": "A",
     "open": false,
     "startDate": "2016-09-05T00:00:00.000+02:00",
-    "winnerName": "Ampharos",
-    "winnerId": 181
+    "winnerId": 181,
+    "winnerName": "Ampharos"
   },
   {
     "generation": "II",
@@ -214,8 +214,8 @@
     "letter": "B",
     "open": false,
     "startDate": "2016-09-19T00:00:00.000+01:00",
-    "winnerName": "Blissey",
-    "winnerId": 242
+    "winnerId": 242,
+    "winnerName": "Blissey"
   },
   {
     "generation": "II",
@@ -223,8 +223,8 @@
     "letter": "C",
     "open": false,
     "startDate": "2016-10-03T00:00:00.000+01:00",
-    "winnerName": "Crobat",
-    "winnerId": 169
+    "winnerId": 169,
+    "winnerName": "Crobat"
   },
   {
     "generation": "II",
@@ -232,8 +232,8 @@
     "letter": "D",
     "open": false,
     "startDate": "2016-10-18T00:00:00.000+01:00",
-    "winnerName": "Donphan",
-    "winnerId": 232
+    "winnerId": 232,
+    "winnerName": "Donphan"
   },
   {
     "generation": "II",
@@ -241,8 +241,8 @@
     "letter": "E",
     "open": false,
     "startDate": "2016-11-09T00:00:00.000+01:00",
-    "winnerName": "Entei",
-    "winnerId": 244
+    "winnerId": 244,
+    "winnerName": "Entei"
   },
   {
     "generation": "II",
@@ -250,8 +250,8 @@
     "letter": "F",
     "open": false,
     "startDate": "2016-11-23T00:00:00.000+01:00",
-    "winnerName": "Feraligatr",
-    "winnerId": 160
+    "winnerId": 160,
+    "winnerName": "Feraligatr"
   },
   {
     "generation": "II",
@@ -259,8 +259,8 @@
     "letter": "G",
     "open": false,
     "startDate": "2016-12-07T00:00:00.000+01:00",
-    "winnerName": "Gligar",
-    "winnerId": 207
+    "winnerId": 207,
+    "winnerName": "Gligar"
   },
   {
     "generation": "II",
@@ -268,8 +268,8 @@
     "letter": "H",
     "open": false,
     "startDate": "2017-01-04T00:00:00.000+01:00",
-    "winnerName": "Heracross",
-    "winnerId": 214
+    "winnerId": 214,
+    "winnerName": "Heracross"
   },
   {
     "generation": "II",
@@ -277,8 +277,8 @@
     "letter": "I",
     "open": false,
     "startDate": "2017-01-18T00:00:00.000+01:00",
-    "winnerName": "Igglybuff",
-    "winnerId": 174
+    "winnerId": 174,
+    "winnerName": "Igglybuff"
   },
   {
     "generation": "II",
@@ -286,8 +286,8 @@
     "letter": "J",
     "open": false,
     "startDate": "2017-02-07T00:00:00.000+01:00",
-    "winnerName": "Jumpluff",
-    "winnerId": 189
+    "winnerId": 189,
+    "winnerName": "Jumpluff"
   },
   {
     "generation": "II",
@@ -295,8 +295,8 @@
     "letter": "K",
     "open": false,
     "startDate": "2017-02-21T00:00:00.000+01:00",
-    "winnerName": "Kingdra",
-    "winnerId": 230
+    "winnerId": 230,
+    "winnerName": "Kingdra"
   },
   {
     "generation": "II",
@@ -304,8 +304,8 @@
     "letter": "L",
     "open": false,
     "startDate": "2017-03-07T00:00:00.000+01:00",
-    "winnerName": "Larvitar",
-    "winnerId": 246
+    "winnerId": 246,
+    "winnerName": "Larvitar"
   },
   {
     "generation": "II",
@@ -313,8 +313,8 @@
     "letter": "M",
     "open": false,
     "startDate": "2017-03-28T00:00:00.000+02:00",
-    "winnerName": "Misdreavus",
-    "winnerId": 200
+    "winnerId": 200,
+    "winnerName": "Misdreavus"
   },
   {
     "generation": "II",
@@ -322,8 +322,8 @@
     "letter": "N",
     "open": false,
     "startDate": "2017-04-11T00:00:00.000+02:00",
-    "winnerName": "Noctowl",
-    "winnerId": 164
+    "winnerId": 164,
+    "winnerName": "Noctowl"
   },
   {
     "generation": "II",
@@ -331,8 +331,8 @@
     "letter": "O",
     "open": false,
     "startDate": "2017-04-25T00:00:00.000+02:00",
-    "winnerName": "Octillery",
-    "winnerId": 224
+    "winnerId": 224,
+    "winnerName": "Octillery"
   },
   {
     "generation": "II",
@@ -340,8 +340,8 @@
     "letter": "P",
     "open": false,
     "startDate": "2017-05-09T00:00:00.000+02:00",
-    "winnerName": "Politoed",
-    "winnerId": 186
+    "winnerId": 186,
+    "winnerName": "Politoed"
   },
   {
     "generation": "II",
@@ -349,8 +349,8 @@
     "letter": "Q",
     "open": false,
     "startDate": "2017-05-23T00:00:00.000+02:00",
-    "winnerName": "Quilava",
-    "winnerId": 156
+    "winnerId": 156,
+    "winnerName": "Quilava"
   },
   {
     "generation": "II",
@@ -358,8 +358,8 @@
     "letter": "R",
     "open": false,
     "startDate": "2017-06-07T00:00:00.000+02:00",
-    "winnerName": "Raikou",
-    "winnerId": 243
+    "winnerId": 243,
+    "winnerName": "Raikou"
   },
   {
     "generation": "II",
@@ -367,8 +367,8 @@
     "letter": "S",
     "open": false,
     "startDate": "2017-06-20T00:00:00.000+02:00",
-    "winnerName": "Steelix",
-    "winnerId": 208
+    "winnerId": 208,
+    "winnerName": "Steelix"
   },
   {
     "generation": "II",
@@ -376,8 +376,8 @@
     "letter": "T",
     "open": false,
     "startDate": "2017-07-04T00:00:00.000+02:00",
-    "winnerName": "Typhlosion",
-    "winnerId": 157
+    "winnerId": 157,
+    "winnerName": "Typhlosion"
   },
   {
     "generation": "II",
@@ -385,8 +385,8 @@
     "letter": "U",
     "open": false,
     "startDate": "2017-07-18T00:00:00.000+02:00",
-    "winnerName": "Umbreon",
-    "winnerId": 197
+    "winnerId": 197,
+    "winnerName": "Umbreon"
   },
   {
     "generation": "II",
@@ -394,8 +394,8 @@
     "letter": "W",
     "open": false,
     "startDate": "2017-08-02T00:00:00.000+02:00",
-    "winnerName": "Wobbuffet",
-    "winnerId": 202
+    "winnerId": 202,
+    "winnerName": "Wobbuffet"
   },
   {
     "generation": "II",
@@ -403,8 +403,8 @@
     "letter": "X",
     "open": false,
     "startDate": "2017-08-15T00:00:00.000+02:00",
-    "winnerName": "Xatu",
-    "winnerId": 178
+    "winnerId": 178,
+    "winnerName": "Xatu"
   },
   {
     "generation": "II",
@@ -412,8 +412,8 @@
     "letter": "Y",
     "open": false,
     "startDate": "2017-08-29T00:00:00.000+02:00",
-    "winnerName": "Yanma",
-    "winnerId": 193
+    "winnerId": 193,
+    "winnerName": "Yanma"
   },
   {
     "generation": "III",
@@ -421,8 +421,8 @@
     "letter": "A",
     "open": false,
     "startDate": "2017-09-12T00:00:00.000+02:00",
-    "winnerName": "Aggron",
-    "winnerId": 306
+    "winnerId": 306,
+    "winnerName": "Aggron"
   },
   {
     "generation": "III",
@@ -430,8 +430,8 @@
     "letter": "B",
     "open": false,
     "startDate": "2017-09-26T00:00:00.000+02:00",
-    "winnerName": "Blaziken",
-    "winnerId": 257
+    "winnerId": 257,
+    "winnerName": "Blaziken"
   },
   {
     "generation": "III",
@@ -439,8 +439,8 @@
     "letter": "C",
     "open": false,
     "startDate": "2017-10-10T00:00:00.000+02:00",
-    "winnerName": "Cacturne",
-    "winnerId": 332
+    "winnerId": 332,
+    "winnerName": "Cacturne"
   },
   {
     "generation": "III",
@@ -448,8 +448,8 @@
     "letter": "D",
     "open": false,
     "startDate": "2017-10-24T00:00:00.000+01:00",
-    "winnerName": "Deoxys",
-    "winnerId": 386
+    "winnerId": 386,
+    "winnerName": "Deoxys"
   },
   {
     "generation": "III",
@@ -457,8 +457,8 @@
     "letter": "E",
     "open": false,
     "startDate": "2017-11-07T00:00:00.000+01:00",
-    "winnerName": "Exploud",
-    "winnerId": 295
+    "winnerId": 295,
+    "winnerName": "Exploud"
   },
   {
     "generation": "III",
@@ -466,8 +466,8 @@
     "letter": "F",
     "open": false,
     "startDate": "2017-11-21T00:00:00.000+01:00",
-    "winnerName": "Flygon",
-    "winnerId": 330
+    "winnerId": 330,
+    "winnerName": "Flygon"
   },
   {
     "generation": "III",
@@ -475,8 +475,8 @@
     "letter": "G",
     "open": false,
     "startDate": "2017-12-05T00:00:00.000+01:00",
-    "winnerName": "Grovyle",
-    "winnerId": 253
+    "winnerId": 253,
+    "winnerName": "Grovyle"
   },
   {
     "generation": "III",
@@ -484,8 +484,8 @@
     "letter": "H",
     "open": false,
     "startDate": "2017-12-19T00:00:00.000+01:00",
-    "winnerName": "Hariyama",
-    "winnerId": 297
+    "winnerId": 297,
+    "winnerName": "Hariyama"
   },
   {
     "generation": "III",
@@ -493,8 +493,8 @@
     "letter": "I",
     "open": false,
     "startDate": "2018-01-09T00:00:00.000+01:00",
-    "winnerName": "Illumise",
-    "winnerId": 314
+    "winnerId": 314,
+    "winnerName": "Illumise"
   },
   {
     "generation": "III",
@@ -502,8 +502,8 @@
     "letter": "J",
     "open": false,
     "startDate": "2018-01-23T00:00:00.000+01:00",
-    "winnerName": "Jirachi",
-    "winnerId": 385
+    "winnerId": 385,
+    "winnerName": "Jirachi"
   },
   {
     "generation": "III",
@@ -511,8 +511,8 @@
     "letter": "K",
     "open": false,
     "startDate": "2018-02-06T00:00:00.000+01:00",
-    "winnerName": "Kyogre",
-    "winnerId": 382
+    "winnerId": 382,
+    "winnerName": "Kyogre"
   },
   {
     "generation": "III",
@@ -520,8 +520,8 @@
     "letter": "L",
     "open": false,
     "startDate": "2018-02-20T00:00:00.000+01:00",
-    "winnerName": "Latios",
-    "winnerId": 381
+    "winnerId": 381,
+    "winnerName": "Latios"
   },
   {
     "generation": "III",
@@ -529,8 +529,8 @@
     "letter": "M",
     "open": false,
     "startDate": "2018-03-06T00:00:00.000+01:00",
-    "winnerName": "Metagross",
-    "winnerId": 376
+    "winnerId": 376,
+    "winnerName": "Metagross"
   },
   {
     "generation": "III",
@@ -538,8 +538,8 @@
     "letter": "N",
     "open": false,
     "startDate": "2018-03-20T00:00:00.000+01:00",
-    "winnerName": "Nuzleaf",
-    "winnerId": 274
+    "winnerId": 274,
+    "winnerName": "Nuzleaf"
   },
   {
     "generation": "III",
@@ -547,8 +547,8 @@
     "letter": "P",
     "open": false,
     "startDate": "2018-04-03T00:00:00.000+02:00",
-    "winnerName": "Poochyena",
-    "winnerId": 261
+    "winnerId": 261,
+    "winnerName": "Poochyena"
   },
   {
     "generation": "III",
@@ -556,8 +556,8 @@
     "letter": "R",
     "open": false,
     "startDate": "2018-04-17T00:00:00.000+02:00",
-    "winnerName": "Rayquaza",
-    "winnerId": 384
+    "winnerId": 384,
+    "winnerName": "Rayquaza"
   },
   {
     "generation": "III",
@@ -565,8 +565,8 @@
     "letter": "S",
     "open": false,
     "startDate": "2018-05-01T00:00:00.000+02:00",
-    "winnerName": "Slaking",
-    "winnerId": 289
+    "winnerId": 289,
+    "winnerName": "Slaking"
   },
   {
     "generation": "III",
@@ -574,8 +574,8 @@
     "letter": "T",
     "open": false,
     "startDate": "2018-05-15T00:00:00.000+02:00",
-    "winnerName": "Tropius",
-    "winnerId": 357
+    "winnerId": 357,
+    "winnerName": "Tropius"
   },
   {
     "generation": "III",
@@ -583,8 +583,8 @@
     "letter": "V",
     "open": false,
     "startDate": "2018-05-29T00:00:00.000+02:00",
-    "winnerName": "Vigoroth",
-    "winnerId": 288
+    "winnerId": 288,
+    "winnerName": "Vigoroth"
   },
   {
     "generation": "III",
@@ -592,8 +592,8 @@
     "letter": "W",
     "open": false,
     "startDate": "2018-06-12T00:00:00.000+02:00",
-    "winnerName": "Wailord",
-    "winnerId": 321
+    "winnerId": 321,
+    "winnerName": "Wailord"
   },
   {
     "generation": "III",
@@ -601,8 +601,8 @@
     "letter": "Z",
     "open": false,
     "startDate": "2018-06-26T00:00:00.000+02:00",
-    "winnerName": "Zangoose",
-    "winnerId": 335
+    "winnerId": 335,
+    "winnerName": "Zangoose"
   },
   {
     "generation": "IV",
@@ -610,8 +610,8 @@
     "letter": "A",
     "open": false,
     "startDate": "2018-07-10T00:00:00.000+02:00",
-    "winnerName": "Abomasnow",
-    "winnerId": 460
+    "winnerId": 460,
+    "winnerName": "Abomasnow"
   },
   {
     "generation": "IV",
@@ -619,8 +619,8 @@
     "letter": "B",
     "open": false,
     "startDate": "2018-07-24T00:00:00.000+02:00",
-    "winnerName": "Buizel",
-    "winnerId": 418
+    "winnerId": 418,
+    "winnerName": "Buizel"
   },
   {
     "generation": "IV",
@@ -628,8 +628,8 @@
     "letter": "C",
     "open": false,
     "startDate": "2018-08-07T00:00:00.000+02:00",
-    "winnerName": "Chimchar",
-    "winnerId": 390
+    "winnerId": 390,
+    "winnerName": "Chimchar"
   },
   {
     "generation": "IV",
@@ -637,8 +637,8 @@
     "letter": "D",
     "open": false,
     "startDate": "2018-08-21T00:00:00.000+02:00",
-    "winnerName": "Dialga",
-    "winnerId": 483
+    "winnerId": 483,
+    "winnerName": "Dialga"
   },
   {
     "generation": "IV",
@@ -646,8 +646,8 @@
     "letter": "E",
     "open": false,
     "startDate": "2018-09-04T00:00:00.000+02:00",
-    "winnerName": "Electivire",
-    "winnerId": 466
+    "winnerId": 466,
+    "winnerName": "Electivire"
   },
   {
     "generation": "IV",
@@ -655,8 +655,8 @@
     "letter": "F",
     "open": false,
     "startDate": "2018-09-18T00:00:00.000+02:00",
-    "winnerName": "Froslass",
-    "winnerId": 478
+    "winnerId": 478,
+    "winnerName": "Froslass"
   },
   {
     "generation": "IV",
@@ -664,8 +664,8 @@
     "letter": "G",
     "open": false,
     "startDate": "2018-10-02T00:00:00.000+02:00",
-    "winnerName": "Grotle",
-    "winnerId": 388
+    "winnerId": 388,
+    "winnerName": "Grotle"
   },
   {
     "generation": "IV",
@@ -673,8 +673,8 @@
     "letter": "H",
     "open": false,
     "startDate": "2018-10-16T00:00:00.000+02:00",
-    "winnerName": "Heatran",
-    "winnerId": 485
+    "winnerId": 485,
+    "winnerName": "Heatran"
   },
   {
     "generation": "IV",
@@ -682,8 +682,8 @@
     "letter": "I",
     "open": false,
     "startDate": "2018-10-30T00:00:00.000+01:00",
-    "winnerName": "Infernape",
-    "winnerId": 392
+    "winnerId": 392,
+    "winnerName": "Infernape"
   },
   {
     "generation": "IV",
@@ -691,8 +691,8 @@
     "letter": "K",
     "open": false,
     "startDate": "2018-11-13T00:00:00.000+01:00",
-    "winnerName": "Kricketune",
-    "winnerId": 402
+    "winnerId": 402,
+    "winnerName": "Kricketune"
   },
   {
     "generation": "IV",
@@ -700,8 +700,8 @@
     "letter": "L",
     "open": false,
     "startDate": "2018-11-27T00:00:00.000+01:00",
-    "winnerName": "Luxray",
-    "winnerId": 405
+    "winnerId": 405,
+    "winnerName": "Luxray"
   },
   {
     "generation": "IV",
@@ -709,8 +709,8 @@
     "letter": "M",
     "open": false,
     "startDate": "2018-12-11T00:00:00.000+01:00",
-    "winnerName": "Munchlax",
-    "winnerId": 446
+    "winnerId": 446,
+    "winnerName": "Munchlax"
   },
   {
     "generation": "IV",
@@ -718,8 +718,8 @@
     "letter": "P",
     "open": false,
     "startDate": "2018-12-25T00:00:00.000+01:00",
-    "winnerName": "Palkia",
-    "winnerId": 484
+    "winnerId": 484,
+    "winnerName": "Palkia"
   },
   {
     "generation": "IV",
@@ -727,8 +727,8 @@
     "letter": "R",
     "open": false,
     "startDate": "2019-01-08T00:00:00.000+01:00",
-    "winnerName": "Riolu",
-    "winnerId": 447
+    "winnerId": 447,
+    "winnerName": "Riolu"
   },
   {
     "generation": "IV",
@@ -736,8 +736,8 @@
     "letter": "S",
     "open": false,
     "startDate": "2019-01-22T00:00:00.000+01:00",
-    "winnerName": "Snover",
-    "winnerId": 459
+    "winnerId": 459,
+    "winnerName": "Snover"
   },
   {
     "generation": "IV",
@@ -745,8 +745,8 @@
     "letter": "T",
     "open": false,
     "startDate": "2019-02-05T00:00:00.000+01:00",
-    "winnerName": "Torterra",
-    "winnerId": 389
+    "winnerId": 389,
+    "winnerName": "Torterra"
   },
   {
     "generation": "IV",
@@ -754,8 +754,8 @@
     "letter": "U",
     "open": false,
     "startDate": "2019-02-19T00:00:00.000+01:00",
-    "winnerName": "Uxie",
-    "winnerId": 480
+    "winnerId": 480,
+    "winnerName": "Uxie"
   },
   {
     "generation": "IV",
@@ -763,8 +763,8 @@
     "letter": "V",
     "open": false,
     "startDate": "2019-03-05T00:00:00.000+01:00",
-    "winnerName": "Vespiquen",
-    "winnerId": 416
+    "winnerId": 416,
+    "winnerName": "Vespiquen"
   },
   {
     "generation": "IV",
@@ -772,8 +772,8 @@
     "letter": "W",
     "open": false,
     "startDate": "2019-03-19T00:00:00.000+01:00",
-    "winnerName": "Weavile",
-    "winnerId": 461
+    "winnerId": 461,
+    "winnerName": "Weavile"
   },
   {
     "generation": "IV",
@@ -781,8 +781,8 @@
     "letter": "Y",
     "open": false,
     "startDate": "2019-04-02T00:00:00.000+02:00",
-    "winnerName": "Yanmega",
-    "winnerId": 469
+    "winnerId": 469,
+    "winnerName": "Yanmega"
   },
   {
     "generation": "V",
@@ -790,8 +790,8 @@
     "letter": "A",
     "open": false,
     "startDate": "2019-04-16T00:00:00.000+02:00",
-    "winnerName": "Archeops",
-    "winnerId": 567
+    "winnerId": 567,
+    "winnerName": "Archeops"
   },
   {
     "generation": "V",
@@ -799,8 +799,8 @@
     "letter": "B",
     "open": false,
     "startDate": "2019-04-30T00:00:00.000+02:00",
-    "winnerName": "Beartic",
-    "winnerId": 614
+    "winnerId": 614,
+    "winnerName": "Beartic"
   },
   {
     "generation": "V",
@@ -808,8 +808,8 @@
     "letter": "C",
     "open": false,
     "startDate": "2019-05-14T00:00:00.000+02:00",
-    "winnerName": "Carracosta",
-    "winnerId": 565
+    "winnerId": 565,
+    "winnerName": "Carracosta"
   },
   {
     "generation": "V",
@@ -817,8 +817,8 @@
     "letter": "D",
     "open": false,
     "startDate": "2019-05-28T00:00:00.000+02:00",
-    "winnerName": "Ducklett",
-    "winnerId": 580
+    "winnerId": 580,
+    "winnerName": "Ducklett"
   },
   {
     "generation": "V",
@@ -826,8 +826,8 @@
     "letter": "E",
     "open": false,
     "startDate": "2019-06-11T00:00:00.000+02:00",
-    "winnerName": "Emolga",
-    "winnerId": 587
+    "winnerId": 587,
+    "winnerName": "Emolga"
   },
   {
     "generation": "V",
@@ -835,8 +835,8 @@
     "letter": "F",
     "open": false,
     "startDate": "2019-06-25T00:00:00.000+02:00",
-    "winnerName": "Fraxure",
-    "winnerId": 611
+    "winnerId": 611,
+    "winnerName": "Fraxure"
   },
   {
     "generation": "V",
@@ -844,8 +844,8 @@
     "letter": "G",
     "open": false,
     "startDate": "2019-07-09T00:00:00.000+02:00",
-    "winnerName": "Gigalith",
-    "winnerId": 526
+    "winnerId": 526,
+    "winnerName": "Gigalith"
   },
   {
     "generation": "V",
@@ -853,8 +853,8 @@
     "letter": "H",
     "open": false,
     "startDate": "2019-07-23T00:00:00.000+02:00",
-    "winnerName": "Hydreigon",
-    "winnerId": 635
+    "winnerId": 635,
+    "winnerName": "Hydreigon"
   },
   {
     "generation": "V",
@@ -862,8 +862,8 @@
     "letter": "J",
     "open": false,
     "startDate": "2019-08-06T00:00:00.000+02:00",
-    "winnerName": "Joltik",
-    "winnerId": 595
+    "winnerId": 595,
+    "winnerName": "Joltik"
   },
   {
     "generation": "V",
@@ -871,8 +871,8 @@
     "letter": "K",
     "open": false,
     "startDate": "2019-08-20T00:00:00.000+02:00",
-    "winnerName": "Krokorok",
-    "winnerId": 552
+    "winnerId": 552,
+    "winnerName": "Krokorok"
   },
   {
     "generation": "V",
@@ -880,8 +880,8 @@
     "letter": "L",
     "open": false,
     "startDate": "2019-09-03T00:00:00.000+02:00",
-    "winnerName": "Lillipup",
-    "winnerId": 506
+    "winnerId": 506,
+    "winnerName": "Lillipup"
   },
   {
     "generation": "V",
@@ -889,8 +889,8 @@
     "letter": "M",
     "open": false,
     "startDate": "2019-09-17T00:00:00.000+02:00",
-    "winnerName": "Mienfoo",
-    "winnerId": 619
+    "winnerId": 619,
+    "winnerName": "Mienfoo"
   },
   {
     "generation": "V",
@@ -898,8 +898,8 @@
     "letter": "O",
     "open": false,
     "startDate": "2019-10-01T00:00:00.000+02:00",
-    "winnerName": "Oshawott",
-    "winnerId": 501
+    "winnerId": 501,
+    "winnerName": "Oshawott"
   },
   {
     "generation": "V",
@@ -907,8 +907,8 @@
     "letter": "P",
     "open": false,
     "startDate": "2019-10-15T00:00:00.000+02:00",
-    "winnerName": "Pidove",
-    "winnerId": 519
+    "winnerId": 519,
+    "winnerName": "Pidove"
   },
   {
     "generation": "V",
@@ -916,8 +916,8 @@
     "letter": "R",
     "open": false,
     "startDate": "2019-10-29T00:00:00.000+01:00",
-    "winnerName": "Reshiram",
-    "winnerId": 643
+    "winnerId": 643,
+    "winnerName": "Reshiram"
   },
   {
     "generation": "V",
@@ -925,8 +925,8 @@
     "letter": "S",
     "open": false,
     "startDate": "2019-11-12T00:00:00.000+01:00",
-    "winnerName": "Simisage",
-    "winnerId": 512
+    "winnerId": 512,
+    "winnerName": "Simisage"
   },
   {
     "generation": "V",
@@ -934,8 +934,8 @@
     "letter": "T",
     "open": false,
     "startDate": "2019-11-26T00:00:00.000+01:00",
-    "winnerName": "Timburr",
-    "winnerId": 532
+    "winnerId": 532,
+    "winnerName": "Timburr"
   },
   {
     "generation": "V",
@@ -943,8 +943,8 @@
     "letter": "U",
     "open": false,
     "startDate": "2019-12-10T00:00:00.000+01:00",
-    "winnerName": "Unfezant",
-    "winnerId": 521
+    "winnerId": 521,
+    "winnerName": "Unfezant"
   },
   {
     "generation": "V",
@@ -952,8 +952,8 @@
     "letter": "V",
     "open": false,
     "startDate": "2020-01-07T00:00:00.000+01:00",
-    "winnerName": "Victini",
-    "winnerId": 494
+    "winnerId": 494,
+    "winnerName": "Victini"
   },
   {
     "generation": "V",
@@ -961,8 +961,8 @@
     "letter": "W",
     "open": false,
     "startDate": "2020-01-21T00:00:00.000+01:00",
-    "winnerName": "Watchog",
-    "winnerId": 505
+    "winnerId": 505,
+    "winnerName": "Watchog"
   },
   {
     "generation": "V",
@@ -970,8 +970,8 @@
     "letter": "Y",
     "open": false,
     "startDate": "2020-02-04T00:00:00.000+01:00",
-    "winnerName": "Yamask",
-    "winnerId": 562
+    "winnerId": 562,
+    "winnerName": "Yamask"
   },
   {
     "generation": "V",
@@ -979,8 +979,8 @@
     "letter": "Z",
     "open": false,
     "startDate": "2020-02-18T00:00:00.000+01:00",
-    "winnerName": "Zekrom",
-    "winnerId": 644
+    "winnerId": 644,
+    "winnerName": "Zekrom"
   },
   {
     "generation": "VI",
@@ -988,8 +988,8 @@
     "letter": "A",
     "open": false,
     "startDate": "2020-03-03T00:00:00.000+01:00",
-    "winnerName": "Aurorus",
-    "winnerId": 699
+    "winnerId": 699,
+    "winnerName": "Aurorus"
   },
   {
     "generation": "VI",
@@ -997,8 +997,8 @@
     "letter": "B",
     "open": false,
     "startDate": "2020-03-17T00:00:00.000+01:00",
-    "winnerName": "Braixen",
-    "winnerId": 654
+    "winnerId": 654,
+    "winnerName": "Braixen"
   },
   {
     "generation": "VI",
@@ -1006,8 +1006,8 @@
     "letter": "C",
     "open": false,
     "startDate": "2020-03-31T00:00:00.000+02:00",
-    "winnerName": "Chespin",
-    "winnerId": 650
+    "winnerId": 650,
+    "winnerName": "Chespin"
   },
   {
     "generation": "VI",
@@ -1015,8 +1015,8 @@
     "letter": "D",
     "open": false,
     "startDate": "2020-04-14T00:00:00.000+02:00",
-    "winnerName": "Delphox",
-    "winnerId": 655
+    "winnerId": 655,
+    "winnerName": "Delphox"
   },
   {
     "generation": "VI",
@@ -1024,8 +1024,8 @@
     "letter": "E",
     "open": false,
     "startDate": "2020-04-28T00:00:00.000+02:00",
-    "winnerName": "Espurr",
-    "winnerId": 677
+    "winnerId": 677,
+    "winnerName": "Espurr"
   },
   {
     "generation": "VI",
@@ -1033,8 +1033,8 @@
     "letter": "F",
     "open": false,
     "startDate": "2020-05-12T00:00:00.000+02:00",
-    "winnerName": "Fletchinder",
-    "winnerId": 662
+    "winnerId": 662,
+    "winnerName": "Fletchinder"
   },
   {
     "generation": "VI",
@@ -1042,8 +1042,8 @@
     "letter": "G",
     "open": false,
     "startDate": "2020-05-26T00:00:00.000+02:00",
-    "winnerName": "Gogoat",
-    "winnerId": 673
+    "winnerId": 673,
+    "winnerName": "Gogoat"
   },
   {
     "generation": "VI",
@@ -1051,8 +1051,8 @@
     "letter": "H",
     "open": false,
     "startDate": "2020-06-09T00:00:00.000+02:00",
-    "winnerName": "Hawlucha",
-    "winnerId": 701
+    "winnerId": 701,
+    "winnerName": "Hawlucha"
   },
   {
     "generation": "VI",
@@ -1060,8 +1060,8 @@
     "letter": "I",
     "open": false,
     "startDate": "2020-06-23T00:00:00.000+02:00",
-    "winnerName": "Inkay",
-    "winnerId": 686
+    "winnerId": 686,
+    "winnerName": "Inkay"
   },
   {
     "generation": "VI",
@@ -1069,8 +1069,8 @@
     "letter": "K",
     "open": false,
     "startDate": "2020-07-07T00:00:00.000+02:00",
-    "winnerName": "Klefki",
-    "winnerId": 707
+    "winnerId": 707,
+    "winnerName": "Klefki"
   },
   {
     "generation": "VI",
@@ -1078,8 +1078,8 @@
     "letter": "L",
     "open": false,
     "startDate": "2020-07-21T00:00:00.000+02:00",
-    "winnerName": "Litleo",
-    "winnerId": 667
+    "winnerId": 667,
+    "winnerName": "Litleo"
   },
   {
     "generation": "VI",
@@ -1087,8 +1087,8 @@
     "letter": "M",
     "open": false,
     "startDate": "2020-08-04T00:00:00.000+02:00",
-    "winnerName": "Meowstic",
-    "winnerId": 678
+    "winnerId": 678,
+    "winnerName": "Meowstic"
   },
   {
     "generation": "VI",
@@ -1096,8 +1096,8 @@
     "letter": "N",
     "open": false,
     "startDate": "2020-08-18T00:00:00.000+02:00",
-    "winnerName": "Noivern",
-    "winnerId": 715
+    "winnerId": 715,
+    "winnerName": "Noivern"
   },
   {
     "generation": "VI",
@@ -1105,8 +1105,8 @@
     "letter": "P",
     "open": false,
     "startDate": "2020-09-01T00:00:00.000+02:00",
-    "winnerName": "Pancham",
-    "winnerId": 674
+    "winnerId": 674,
+    "winnerName": "Pancham"
   },
   {
     "generation": "VI",
@@ -1114,8 +1114,8 @@
     "letter": "Q",
     "open": false,
     "startDate": "2020-09-15T00:00:00.000+02:00",
-    "winnerName": "Quilladin",
-    "winnerId": 651
+    "winnerId": 651,
+    "winnerName": "Quilladin"
   },
   {
     "generation": "VI",
@@ -1123,8 +1123,8 @@
     "letter": "S",
     "open": false,
     "startDate": "2020-09-29T00:00:00.000+02:00",
-    "winnerName": "Skiddo",
-    "winnerId": 672
+    "winnerId": 672,
+    "winnerName": "Skiddo"
   },
   {
     "generation": "VI",
@@ -1132,8 +1132,8 @@
     "letter": "T",
     "open": false,
     "startDate": "2020-10-13T00:00:00.000+02:00",
-    "winnerName": "Talonflame",
-    "winnerId": 663
+    "winnerId": 663,
+    "winnerName": "Talonflame"
   },
   {
     "generation": "VI",
@@ -1141,8 +1141,8 @@
     "letter": "V",
     "open": false,
     "startDate": "2020-10-27T00:00:00.000+01:00",
-    "winnerName": "Volcanion",
-    "winnerId": 721
+    "winnerId": 721,
+    "winnerName": "Volcanion"
   },
   {
     "generation": "VI",
@@ -1150,8 +1150,8 @@
     "letter": "X",
     "open": false,
     "startDate": "2020-11-10T00:00:00.000+01:00",
-    "winnerName": "Xerneas",
-    "winnerId": 716
+    "winnerId": 716,
+    "winnerName": "Xerneas"
   },
   {
     "generation": "VI",
@@ -1159,8 +1159,8 @@
     "letter": "Y",
     "open": false,
     "startDate": "2020-11-24T00:00:00.000+01:00",
-    "winnerName": "Yveltal",
-    "winnerId": 717
+    "winnerId": 717,
+    "winnerName": "Yveltal"
   },
   {
     "generation": "VI",
@@ -1168,8 +1168,8 @@
     "letter": "Z",
     "open": false,
     "startDate": "2020-12-08T00:00:00.000+01:00",
-    "winnerName": "Zygarde",
-    "winnerId": 718
+    "winnerId": 718,
+    "winnerName": "Zygarde"
   },
   {
     "generation": "VII",
@@ -1177,8 +1177,8 @@
     "letter": "A",
     "open": false,
     "startDate": "2020-12-22T00:00:00.000+01:00",
-    "winnerName": "Araquanid",
-    "winnerId": 752
+    "winnerId": 752,
+    "winnerName": "Araquanid"
   },
   {
     "generation": "VII",
@@ -1186,8 +1186,8 @@
     "letter": "B",
     "open": false,
     "startDate": "2021-01-05T00:00:00.000+01:00",
-    "winnerName": "Buzzwole",
-    "winnerId": 794
+    "winnerId": 794,
+    "winnerName": "Buzzwole"
   },
   {
     "generation": "VII",
@@ -1202,8 +1202,8 @@
     "letter": "D",
     "open": false,
     "startDate": "2021-02-02T00:00:00.000+01:00",
-    "winnerName": "Drampa",
-    "winnerId": 780
+    "winnerId": 780,
+    "winnerName": "Drampa"
   },
   {
     "generation": "VII",
@@ -1211,8 +1211,8 @@
     "letter": "F",
     "open": false,
     "startDate": "2021-02-16T00:00:00.000+01:00",
-    "winnerName": "Fomantis",
-    "winnerId": 753
+    "winnerId": 753,
+    "winnerName": "Fomantis"
   },
   {
     "generation": "VII",
@@ -1220,8 +1220,8 @@
     "letter": "G",
     "open": false,
     "startDate": "2021-03-02T00:00:00.000+01:00",
-    "winnerName": "Guzzlord",
-    "winnerId": 799
+    "winnerId": 799,
+    "winnerName": "Guzzlord"
   },
   {
     "generation": "VII",
@@ -1229,8 +1229,8 @@
     "letter": "H",
     "open": false,
     "startDate": "2021-03-16T00:00:00.000+01:00",
-    "winnerName": "Hakamo-o",
-    "winnerId": 783
+    "winnerId": 783,
+    "winnerName": "Hakamo-o"
   },
   {
     "generation": "VII",
@@ -1238,8 +1238,8 @@
     "letter": "I",
     "open": false,
     "startDate": "2021-03-30T00:00:00.000+02:00",
-    "winnerName": "Incineroar",
-    "winnerId": 727
+    "winnerId": 727,
+    "winnerName": "Incineroar"
   },
   {
     "generation": "VII",
@@ -1247,8 +1247,8 @@
     "letter": "J",
     "open": false,
     "startDate": "2021-04-13T00:00:00.000+02:00",
-    "winnerName": "Jangmo-o",
-    "winnerId": 782
+    "winnerId": 782,
+    "winnerName": "Jangmo-o"
   },
   {
     "generation": "VII",
@@ -1256,8 +1256,8 @@
     "letter": "K",
     "open": false,
     "startDate": "2021-04-27T00:00:00.000+02:00",
-    "winnerName": "Komala",
-    "winnerId": 775
+    "winnerId": 775,
+    "winnerName": "Komala"
   },
   {
     "generation": "VII",
@@ -1265,8 +1265,8 @@
     "letter": "L",
     "open": false,
     "startDate": "2021-05-11T00:00:00.000+02:00",
-    "winnerName": "Lycanroc",
-    "winnerId": 745
+    "winnerId": 745,
+    "winnerName": "Lycanroc"
   },
   {
     "generation": "VII",
@@ -1274,8 +1274,8 @@
     "letter": "M",
     "open": false,
     "startDate": "2021-05-25T00:00:00.000+02:00",
-    "winnerName": "Mudbray",
-    "winnerId": 749
+    "winnerId": 749,
+    "winnerName": "Mudbray"
   },
   {
     "generation": "VII",
@@ -1283,8 +1283,8 @@
     "letter": "N",
     "open": false,
     "startDate": "2021-06-08T00:00:00.000+02:00",
-    "winnerName": "Nihilego",
-    "winnerId": 793
+    "winnerId": 793,
+    "winnerName": "Nihilego"
   },
   {
     "generation": "VII",
@@ -1292,8 +1292,8 @@
     "letter": "O",
     "open": false,
     "startDate": "2021-06-22T00:00:00.000+02:00",
-    "winnerName": "Oricorio",
-    "winnerId": 741
+    "winnerId": 741,
+    "winnerName": "Oricorio"
   },
   {
     "generation": "VII",
@@ -1301,8 +1301,8 @@
     "letter": "P",
     "open": false,
     "startDate": "2021-07-06T00:00:00.000+02:00",
-    "winnerName": "Passimian",
-    "winnerId": 766
+    "winnerId": 766,
+    "winnerName": "Passimian"
   },
   {
     "generation": "VII",
@@ -1310,8 +1310,8 @@
     "letter": "R",
     "open": false,
     "startDate": "2021-07-20T00:00:00.000+02:00",
-    "winnerName": "Rockruff",
-    "winnerId": 744
+    "winnerId": 744,
+    "winnerName": "Rockruff"
   },
   {
     "generation": "VII",
@@ -1319,8 +1319,8 @@
     "letter": "S",
     "open": false,
     "startDate": "2021-08-03T00:00:00.000+02:00",
-    "winnerName": "Solgaleo",
-    "winnerId": 791
+    "winnerId": 791,
+    "winnerName": "Solgaleo"
   },
   {
     "generation": "VII",
@@ -1328,8 +1328,8 @@
     "letter": "T",
     "open": false,
     "startDate": "2021-08-17T00:00:00.000+02:00",
-    "winnerName": "Type: Null",
-    "winnerId": 772
+    "winnerId": 772,
+    "winnerName": "Type: Null"
   },
   {
     "generation": "VII",
