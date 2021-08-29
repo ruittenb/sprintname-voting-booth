@@ -1,5 +1,5 @@
 
- - variant descriptions
+ - variant descriptions data (done: rdaw i)
 
 missing:
  - refresh auth0 token when it expires

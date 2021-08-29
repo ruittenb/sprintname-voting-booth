@@ -203,6 +203,10 @@ variantLink pokemonName description variant =
             else
                 pokemonName
 
+        variantDescription =
+            variant.description
+                |> Maybe.withDefault description
+
         imageUrl =
             imageDir ++ variant.image
 
@@ -210,7 +214,7 @@ variantLink pokemonName description variant =
             thumbnailDir ++ variant.image
     in
         pokemonImg thumbnailUrl variant.vname
-            |> linkToLightbox imageUrl title description
+            |> linkToLightbox imageUrl title variantDescription
 
 
 variantLinks : String -> String -> List PokemonVariant -> List (Html Msg)
