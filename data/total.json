@@ -13369,18 +13369,22 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Oricorio_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "It beats its wings together to create fire. As it moves in the steps of its beautiful dance, it bathes opponents in intense flames.  This Oricorio has sipped red nectar. Its passionate dance moves cause its enemies to combust in both body and mind.  It wins the hearts of its enemies with its passionate dancing and then uses the opening it creates to burn them up with blazing flames.  This Oricorio has drunk red nectar. If its Trainer gives the wrong order, this passionate Pokémon becomes fiercely angry.",
           "image": "741-baile.png",
           "vname": "Baile Style"
         },
         {
+          "description": "This Oricorio has sipped bright yellow nectar. Its bright, cheerful dance melts the hearts of its enemies.  It creates an electric charge by rubbing its feathers together. It dances over to its enemies and delivers shocking electrical punches.  It lifts its opponents' spirits with its cheerful dance moves. When they let their guard down, it electrocutes them with a jolt.  This Oricorio has drunk bright yellow nectar. When it sees someone looking glum, it will try to cheer them up with a dance.",
           "image": "741-pom-pom.png",
           "vname": "Pom-Pom Style"
         },
         {
+          "description": "This Oricorio relaxes by swaying gently. This increases its psychic energy, which it then fires at its enemies.  This Oricorio has sipped pink nectar. Its enemies' hearts melt at the sight of its gently swaying hips.  It relaxes its opponents with its elegant dancing. When they let their guard down, it showers them with psychic energy.  This Oricorio has sipped pink nectar. It gets so caught up in its dancing that it sometimes doesn't hear its Trainer's orders.",
           "image": "741-pau.png",
           "vname": "Pa'u Style"
         },
         {
+          "description": "This Oricorio has sipped purple nectar. Its elegant, attractive dance will send the minds and hearts of its enemies to another world.  It summons the dead with its dreamy dancing. From their malice, it draws power with which to curse its enemies.  It charms its opponents with its refined dancing. When they let their guard down, it places a curse on them that will bring on their demise.  This Oricorio has sipped purple nectar. Some dancers use its graceful, elegant dancing as inspiration.",
           "image": "741-sensu.png",
           "vname": "Sensu Style"
         }
@@ -13441,14 +13445,17 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Lycanroc_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Its quick movements confuse its enemies. Well equipped with claws and fangs, it also uses the sharp rocks in its mane as weapons.  When properly raised from a young age, it will become a trustworthy partner that will absolutely never betray its Trainer.  The sharp rocks in its mane can cut like knives. Lycanroc wears its prey down by degrees before finishing them off.  The rocks in its mane are sharper than a knife. Fragments that break off are treasured as good luck charms.",
           "image": "745-midday.png",
           "vname": "Midday Form"
         },
         {
+          "description": "The more intimidating the opponent it faces, the more this Pokémon's blood boils. It will attack with no regard for its own safety.  It goads its enemies into attacking, withstands the hits, and in return, delivers a headbutt, crushing their bones with its rocky mane.  It has no problem ignoring orders it doesn't like. It doesn't seem to mind getting hurt at all—as long as it can finish off its opponent.  They live alone without forming packs. They will only listen to orders from Trainers who can draw out their true power.",
           "image": "745-midnight.png",
           "vname": "Midnight Form"
         },
         {
+          "description": "Bathed in the setting sun of evening, Lycanroc has undergone a special kind of evolution. An intense fighting spirit underlies its calmness.  This strange form is the result of its evolving at dusk. It's very rare in Alola.",
           "image": "745-dusk.png",
           "vname": "Dusk Form"
         }
@@ -13464,10 +13471,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Wishiwashi_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "When it's in trouble, its eyes moisten and begin to shine. The shining light attracts its comrades, and they stand together against their enemies. It’s awfully weak and notably tasty, so everyone is always out to get it. As it happens, anyone trying to bully it receives a painful lesson. They’re weak, so they move in schools. However, they can also often be seen all alone, having strayed from the school. When it's in a jam, its shining eyes attract others of its kind. The light from its eyes is visible almost 25 miles away.",
           "image": "746-solo.png",
           "vname": "Solo Form"
         },
         {
+          "description": "Weak Wishiwashi school together to concentrate their power. Their united force makes them the demon of the sea, feared near and far.  At their appearance, even Gyarados will flee. When they team up to use Water Gun, its power exceeds that of Hydro Pump.  Wishiwashi assemble in this formation to face off against strong foes. It boasts a strength that earned it the name “demon of the sea.” Called “demon of the sea” by some, when Wishiwashi are injured in battle and their numbers dwindle, they become a regular school.",
           "image": "746-school.png",
           "vname": "School Form"
         }
@@ -13879,7 +13888,7 @@
       ]
     },
     {
-      "description": "Strong impacts can knock it out of its shell. This Pokémon was born from mutated nanoparticles. It lives in the ozone layer, where it becomes food for stronger Pokémon. When it tries to run away, it falls to the ground.",
+      "description": "It eats dust in the atmosphere. The composition of the dust determines the color of its core.  If its core stays exposed, it will soon die off. It's possible that it may survive if it's put into a Poké Ball quickly enough.  Places where Minior fall from the night sky are few and far between, with Alola being one of the precious few.  This is its form when its shell has fallen off. The color of its core depends on the materials that made up the food it ate.",
       "generation": "VII",
       "id": 774,
       "letter": "M",
@@ -13888,6 +13897,7 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Minior_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Originally making its home in the ozone layer, it hurtles to the ground when the shell enclosing its body grows too heavy.  Strong impacts can knock it out of its shell. This Pokémon was born from mutated nanoparticles.  It lives in the ozone layer, where it becomes food for stronger Pokémon. When it tries to run away, it falls to the ground.  Although its outer shell is uncommonly durable, the shock of falling to the ground smashes the shell to smithereens.",
           "image": "774-meteor.png",
           "vname": "Meteor Form"
         },
@@ -14282,18 +14292,22 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Necrozma_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Reminiscent of the Ultra Beasts, this life-form, apparently asleep underground, is thought to have come from another world in ancient times.  Light is apparently the source of its energy. It has an extraordinarily vicious disposition and is constantly firing off laser beams.  It looks somehow pained as it rages around in search of light, which serves as its energy. It's apparently from another world.  Light is the source of its energy. If it isn't devouring light, impurities build up in it and on it, and Necrozma darkens and stops moving.",
           "image": "800.png",
           "vname": ""
         },
         {
+          "description": "This is its form while it is devouring the light of Solgaleo. It pounces on foes and then slashes them with the claws on its four limbs and back.  This is Necrozma's form while it's absorbing the power of Solgaleo, making it extremely ferocious and impossible to control.",
           "image": "800-dusk-mane.png",
           "vname": "Dusk Mane"
         },
         {
+          "description": "Lunala no longer has a will of its own. Now under the control of Necrozma, it continuously expels all of its energy.  This is its form while it's devouring the light of Lunala. It grasps foes in its giant claws and rips them apart with brute force.",
           "image": "800-dawn-wings.png",
           "vname": "Dawn Wings"
         },
         {
+          "description": "This is its form when it has absorbed overwhelming light energy. It fires laser beams from all over its body.  The light pouring out from all over its body affects living things and nature, impacting them in various ways.",
           "image": "800-ultra.png",
           "vname": "Ultra Form"
         }
@@ -14429,10 +14443,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Melmetal_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Revered long ago for its capacity to create iron from nothing, for some reason it has come back to life after 3,000 years. At the end of its life-span, Melmetal will rust and fall apart. The small shards left behind will eventually be reborn as Meltan.  Centrifugal force is behind the punches of Melmetal's heavy hex-nut arms. Melmetal is said to deliver the strongest punches of all Pokémon.",
           "image": "809.png",
           "vname": ""
         },
         {
+          "description": "In a distant land, there are legends about a cyclopean giant. In fact, the giant was a Melmetal that was flooded with Gigantamax energy.  It can send electric beams streaking out from the hole in its belly. The beams' tremendous energy can vaporize an opponent in one shot.",
           "image": "809-gigantamax.png",
           "vname": "Gigantamax"
         }
