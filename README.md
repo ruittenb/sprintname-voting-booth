@@ -55,3 +55,10 @@ If you want to install the voting booth app in a docker image, you may do so wit
 make docker-start
 ```
 
+## Sources:
+
+- [Pokémon](https://bulbapedia.bulbagarden.net/wiki/Main_Page).
+- Fakemon by ReallyDarkAndWindie
+  - [DeviantArt](https://www.deviantart.com/reallydarkandwindie/gallery)
+  - [Wiki](https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki)
+

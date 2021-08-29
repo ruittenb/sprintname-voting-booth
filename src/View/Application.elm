@@ -2,7 +2,6 @@ module View.Application exposing (applicationPane, functionPane, title)
 
 import Constants exposing (..)
 import Control.Debounce exposing (trailing)
-import Helpers exposing (romanNumeral)
 import Helpers.Application exposing (getIsCurrentUserAdmin)
 import Helpers.Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Helpers.Pages exposing (getCurrentPage, getWinner, isPageLocked)
@@ -10,6 +9,7 @@ import Helpers.Pokemon exposing (filterPokedexByPage)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput, onSubmit)
+import List.Extra exposing (find)
 import Maybe.Extra exposing (unwrap)
 import Models exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
@@ -93,8 +93,8 @@ searchBox currentRoute modelQuery =
         ]
 
 
-generationButton : Route -> Maybe SubPage -> Int -> Html Msg
-generationButton currentRoute currentSubPage gen =
+generationButton : Route -> RemotePokedex -> Maybe SubPage -> String -> Html Msg
+generationButton currentRoute pokedex currentSubPage gen =
     let
         currentHighLight =
             case currentRoute of
@@ -110,26 +110,52 @@ generationButton currentRoute currentSubPage gen =
             currentSubPage
                 |> Maybe.map (.letter >> createBrowsePath gen)
                 |> Maybe.withDefault createDefaultPath
+
+        disableButton =
+            pokedex
+                |> RemoteData.toMaybe
+                |> Maybe.andThen
+                    (\actualPokedex ->
+                        List.Extra.find
+                            (.generation >> (==) gen)
+                            actualPokedex
+                    )
+                |> (==) Nothing
+
+        genButtonElement =
+            if disableButton then
+                span
+
+            else
+                a
     in
-    a
+    genButtonElement
         [ classList
             [ ( "button", True )
             , ( "generation-button", True )
             , ( "with-tooltip", True )
             , ( "current", currentHighLight )
-            , ( "transparent", gen == 0 )
+            , ( "transparent", gen == "O" )
+            , ( "disabled", disableButton )
             ]
         , href hash
         ]
-        [ text <| romanNumeral gen ]
+        [ text gen ]
 
 
-generationButtons : Route -> Maybe SubPage -> Html Msg
-generationButtons currentRoute subPage =
-    div [ id "generation-buttons" ] <|
+pokeGenerationButtons : Route -> RemotePokedex -> Maybe SubPage -> Html Msg
+pokeGenerationButtons currentRoute pokedex subPage =
+    div [ id "poke-generation-buttons" ] <|
         List.map
-            (generationButton currentRoute subPage)
-            allGenerations
+            (generationButton currentRoute pokedex subPage)
+            pokeGenerations
+
+rdawGenerationButtons : Route -> RemotePokedex -> Maybe SubPage -> Html Msg
+rdawGenerationButtons currentRoute pokedex subPage =
+    div [ id "rdaw-generation-buttons" ] <|
+        List.map
+            (generationButton currentRoute pokedex subPage)
+            rdawGenerations
 
 
 letterButton : Route -> RemotePokedex -> Maybe SubPage -> Char -> Html Msg
@@ -376,14 +402,14 @@ rankingsTable state currentPage isCurrentUserAdmin =
                         |> Maybe.withDefault 0
 
                 isWinner : Int -> Bool
-                isWinner num =
+                isWinner pokemonId =
                     currentPage
-                        |> Maybe.map (\page -> page.winnerNum == Just num)
+                        |> Maybe.map (\page -> page.winnerId == Just pokemonId)
                         |> Maybe.withDefault False
 
                 winnerBadge : Int -> List (Html Msg)
-                winnerBadge num =
-                    if isWinner num then
+                winnerBadge pokemonId =
+                    if isWinner pokemonId then
                         [ img
                             [ class "ribbon"
                             , src "/images/ribbon.png"
@@ -395,7 +421,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
                         []
 
                 winButtonCell : Int -> String -> List (Html Msg)
-                winButtonCell number name =
+                winButtonCell pokemonId name =
                     if not isCurrentUserAdmin then
                         []
 
@@ -408,10 +434,10 @@ rankingsTable state currentPage isCurrentUserAdmin =
                                 (\page ->
                                     [ td []
                                         [ button
-                                            [ onClick (WinnerElected page (PokeWinner number name))
+                                            [ onClick (WinnerElected page (PokeWinner pokemonId name))
                                             , classList
                                                 [ ( "elect-button", True )
-                                                , ( "winner", page.winnerNum == Just number )
+                                                , ( "winner", page.winnerId == Just pokemonId )
                                                 ]
                                             ]
                                             [ text "win" ]
@@ -428,10 +454,10 @@ rankingsTable state currentPage isCurrentUserAdmin =
                                 [ classList
                                     [ ( "winner-rating", r.totalVotes == winnerRating && r.totalVotes > 0 ) ]
                                 ]
-                                ([ td [] ([ text r.name ] ++ winnerBadge r.number)
+                                ([ td [] ([ text r.name ] ++ winnerBadge r.pokemonId)
                                  , td [] [ text (toString r.totalVotes) ]
                                  ]
-                                    ++ winButtonCell r.number r.name
+                                    ++ winButtonCell r.pokemonId r.name
                                 )
                         )
                         rankingsToShow
@@ -505,12 +531,17 @@ functionPane state =
             getIsCurrentUserAdmin state
     in
     div [ id "function-buttons" ]
-        [ generationButtons
+        [ pokeGenerationButtons
             state.currentRoute
+            state.pokedex
             state.subPage
         , searchBox
             state.currentRoute
             state.query
+        , rdawGenerationButtons
+            state.currentRoute
+            state.pokedex
+            state.subPage
         , letterButtons
             state.currentRoute
             state.pokedex

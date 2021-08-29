@@ -65,7 +65,7 @@ Icon
 # environment file
 /.env
 # ruittenb scratchpad
-_fabriek
+/_fabriek
 # ruittenb sensitive data
 serviceAccountKey.json
 private-auth0.key

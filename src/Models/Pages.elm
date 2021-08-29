@@ -13,17 +13,17 @@ import RemoteData exposing (RemoteData)
 
 type alias Winner =
     Maybe
-        { number : Int
+        { pokemonId : Int
         , name : String
         }
 
 
 type alias Page =
     { id : Int
-    , generation : Int
+    , generation : String
     , letter : Char
     , open : Bool
-    , winnerNum : Maybe Int
+    , winnerId : Maybe Int
     , winnerName : Maybe String
     , startDate : Maybe String
     }
@@ -31,10 +31,10 @@ type alias Page =
 
 type alias PortCompatiblePage =
     { id : Int
-    , generation : Int
+    , generation : String
     , letter : String
     , open : Bool
-    , winnerNum : Maybe Int
+    , winnerId : Maybe Int
     , winnerName : Maybe String
     , startDate : Maybe String
     }

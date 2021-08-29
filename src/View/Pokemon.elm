@@ -9,7 +9,6 @@ import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import RemoteData exposing (WebData, RemoteData(..))
 import Constants exposing (maxStars, imageDir, thumbnailDir, noBreakingSpace, dateTemplate)
-import Helpers exposing (romanNumeral)
 import Helpers.Pages exposing (isPageLocked, getCurrentPage, getWinner)
 import Helpers.Pokemon
     exposing
@@ -83,7 +82,7 @@ pokemonImg imageUrl altText =
 
 
 voteWidgetStar : Int -> String -> Int -> Int -> Html Msg
-voteWidgetStar pokemonNumber currentUserName rating stars =
+voteWidgetStar pokemonId currentUserName rating stars =
     span
         [ classList
             [ ( "star", True )
@@ -92,17 +91,17 @@ voteWidgetStar pokemonNumber currentUserName rating stars =
             , ( "fa-star", rating >= stars )
             , ( "selected", rating >= stars )
             ]
-        , onClick (PokemonVoteCast { pokemonNumber = pokemonNumber, vote = stars })
+        , onClick (PokemonVoteCast { pokemonId = pokemonId, vote = stars })
         , title <| currentUserName ++ ": " ++ toString stars
         ]
         []
 
 
 voteWidget : TeamRating -> Int -> String -> Html Msg
-voteWidget currentUserRating pokemonNumber currentUserName =
+voteWidget currentUserRating pokemonId currentUserName =
     let
         userVote =
-            { pokemonNumber = pokemonNumber
+            { pokemonId = pokemonId
             , vote = 0
             }
 
@@ -113,7 +112,7 @@ voteWidget currentUserRating pokemonNumber currentUserName =
     in
         span [ class "voting-node" ] <|
             List.map
-                (voteWidgetStar pokemonNumber currentUserName rating)
+                (voteWidgetStar pokemonId currentUserName rating)
                 (List.range 1 maxStars)
 
 
@@ -184,7 +183,7 @@ extractOnePokemonFromRatings ratings pokemon =
                     , admin = r.admin
                     , color = r.color
                     , rating =
-                        String.slice pokemon.number (pokemon.number + 1) r.ratings
+                        String.slice pokemon.id (pokemon.id + 1) r.ratings
                             |> String.toInt
                             |> Result.withDefault 0
                     }
@@ -204,6 +203,10 @@ variantLink pokemonName description variant =
             else
                 pokemonName
 
+        variantDescription =
+            variant.description
+                |> Maybe.withDefault description
+
         imageUrl =
             imageDir ++ variant.image
 
@@ -211,7 +214,7 @@ variantLink pokemonName description variant =
             thumbnailDir ++ variant.image
     in
         pokemonImg thumbnailUrl variant.vname
-            |> linkToLightbox imageUrl title description
+            |> linkToLightbox imageUrl title variantDescription
 
 
 variantLinks : String -> String -> List PokemonVariant -> List (Html Msg)
@@ -224,8 +227,8 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
     let
         isWinner =
             winner
-                |> Maybe.map .number
-                |> Maybe.map ((==) pokemon.number)
+                |> Maybe.map .pokemonId
+                |> Maybe.map ((==) pokemon.id)
                 |> Maybe.withDefault False
 
         leftMargin =
@@ -234,7 +237,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
         hash =
             createBrowsePath pokemon.generation pokemon.letter
 
-        generationElement : Int -> List (Html Msg)
+        generationElement : String -> List (Html Msg)
         generationElement gen =
             case currentRoute of
                 Search _ ->
@@ -242,7 +245,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
                         [ href hash
                         , classList [ ( "button", True ) ]
                         ]
-                        [ text (romanNumeral gen)
+                        [ text gen
                         ]
                     , text noBreakingSpace
                     ]
@@ -267,7 +270,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
                                 text ""
 
                             Just actualUserName ->
-                                voteWidget currentUserRating pokemon.number actualUserName
+                                voteWidget currentUserRating pokemon.id actualUserName
                 in
                     [ ratingWidget otherUsersRating voteWidgetElement highlightedUserId ]
     in
@@ -289,7 +292,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
                     [ classList
                         [ ( "left-arrow", List.length pokemon.variants > 1 )
                         ]
-                    , onClick (VariantChanged pokemon.number Prev)
+                    , onClick (VariantChanged pokemon.id Prev)
                     ]
                     []
                 , div [ class "pokemon-image-box" ]
@@ -307,7 +310,7 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
                     [ classList
                         [ ( "right-arrow", List.length pokemon.variants > 1 )
                         ]
-                    , onClick (VariantChanged pokemon.number Next)
+                    , onClick (VariantChanged pokemon.id Next)
                     ]
                     []
                 ]

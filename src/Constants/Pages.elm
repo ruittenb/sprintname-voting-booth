@@ -7,10 +7,10 @@ import Models.Pages exposing (Page)
 defaultPage : Page
 defaultPage =
     { id = -1
-    , generation = 1
+    , generation = "I"
     , letter = 'A'
     , open = False
-    , winnerNum = Nothing
+    , winnerId = Nothing
     , winnerName = Nothing
     , startDate = Nothing
     }

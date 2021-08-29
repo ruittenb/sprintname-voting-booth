@@ -29,7 +29,7 @@
         ".validate": "
           newData.hasChildren(['id', 'generation', 'letter', 'open'])
           && newData.child('id').isNumber()
-          && newData.child('generation').isNumber()
+          && newData.child('generation').isString()
           && newData.child('letter').isString()
           && newData.child('open').isBoolean()
         "

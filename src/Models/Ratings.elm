@@ -4,13 +4,13 @@ import RemoteData exposing (RemoteData)
 
 
 type alias UserVote =
-    { pokemonNumber : Int
+    { pokemonId : Int
     , vote : Int
     }
 
 
 type alias UserRating =
-    { id : Int
+    { id : Int -- user id
     , userName : String
     , email : String
     , active : Bool
@@ -25,7 +25,7 @@ type alias TeamRating =
 
 
 type alias UserRatings =
-    { id : Int
+    { id : Int -- user id
     , userName : String
     , email : String
     , active : Bool

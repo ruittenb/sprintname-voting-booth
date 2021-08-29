@@ -2,7 +2,7 @@ module Commands.Pokemon exposing (decodePokedex)
 
 import RemoteData exposing (fromResult)
 import Json.Encode as Encode exposing (Value)
-import Json.Decode as Decode exposing (Decoder, decodeValue, int, string)
+import Json.Decode as Decode exposing (Decoder, decodeValue, int, string, nullable)
 import Json.Decode.Pipeline exposing (decode, required, optional, resolve)
 import Models.Pokemon exposing (..)
 
@@ -31,7 +31,7 @@ pokemonDecoder =
         decode toDecoder
             |> required "id" int
             |> required "number" int
-            |> required "generation" int
+            |> required "generation" string
             |> required "description" string
             |> required "letter" string
             |> required "name" string
@@ -50,3 +50,4 @@ pokemonVariantDecoder =
     decode PokemonVariant
         |> required "image" string
         |> required "vname" string
+        |> optional "description" (nullable string) Nothing

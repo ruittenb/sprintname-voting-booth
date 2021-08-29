@@ -25,7 +25,7 @@ isNumeric str =
     Regex.contains (regex "^[0-9]+$") str
 
 
-filterPokedexByPage : RemotePokedex -> Int -> Char -> Maybe (List Pokemon)
+filterPokedexByPage : RemotePokedex -> String -> Char -> Maybe (List Pokemon)
 filterPokedexByPage remotePokedex generation letter =
     -- filters the pokedex by SubPage (generation and letter)
     RemoteData.toMaybe remotePokedex
@@ -80,8 +80,8 @@ searchPokedex remotePokedex query =
 
 
 extractOnePokemonFromRatingString : String -> Int -> Int
-extractOnePokemonFromRatingString ratingString pokemonNumber =
-    String.slice pokemonNumber (pokemonNumber + 1) ratingString
+extractOnePokemonFromRatingString ratingString pokemonId =
+    String.slice pokemonId (pokemonId + 1) ratingString
         |> String.toInt
         |> Result.withDefault 0
 

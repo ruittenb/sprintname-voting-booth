@@ -7,6 +7,13 @@ maintenanceApology : String
 maintenanceApology =
     "The application is in maintenance mode. We apologize for the inconvenience."
 
+pokemonCopyright : String
+pokemonCopyright =
+    "© 2021 Pokémon. © 1995–2021 Nintendo/Creatures Inc./GAME FREAK inc. Pokémon and Pokémon character names are trademarks of Nintendo."
+
+rdawCopyright : String
+rdawCopyright =
+    "The Fakemon presented here are © ReallyDarkandWindie"
 
 debounceDelay : Float
 debounceDelay =
@@ -18,10 +25,18 @@ maxStars =
     3
 
 
-maxGeneration : Int
-maxGeneration =
-    8
+pokeGenerations : List String
+pokeGenerations =
+    [ "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "O" ]
 
+
+rdawGenerations : List String
+rdawGenerations =
+    [ "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x", "xi", "xii", "xiii", "xiv", "xv", "xvi", "xvii", "xviii", "xix", "xx" ]
+
+genLetterUrlSeparator : String
+genLetterUrlSeparator =
+    "."
 
 imageDir : String
 imageDir =
@@ -35,7 +50,7 @@ thumbnailDir =
 
 noBreakingSpace : String
 noBreakingSpace =
-    "\x00A0"
+    " "
 
 
 dateTemplate : String
@@ -43,10 +58,9 @@ dateTemplate =
     "EEEE, MMMM d, y"
 
 
-allGenerations : List Int
+allGenerations : List String
 allGenerations =
-    List.range 1 maxGeneration
-        ++ [ 0 ]
+    pokeGenerations ++ rdawGenerations
 
 
 allLetters : List Char

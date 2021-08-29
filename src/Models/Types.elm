@@ -12,7 +12,7 @@ module Models.Types exposing (..)
 
 
 type alias SubPage =
-    { generation : Int
+    { generation : String
     , letter : Char
     }
 

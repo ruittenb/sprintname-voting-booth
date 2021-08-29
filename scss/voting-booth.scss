@@ -221,18 +221,21 @@ a.button.lock-button:active,
 button.user-button.current,
 .button.letter-button.current,
 .button.generation-button.current,
-.button.generation-button.current.transparent {
+.button.generation-button.current.transparent,
+.button.generation-button.current.transparent:hover {
     background-color: $theme-main;
     opacity: 1;
 }
 
-.button.letter-button.disabled {
+.button.letter-button.disabled,
+.button.generation-button.disabled {
     color: #777;
     border-color: #777;
     background-color: #eee;
 }
 
-.button.letter-button.disabled.current {
+.button.letter-button.disabled.current,
+.button.generation-button.disabled.current {
     background-color: $theme-medium;
 }
 
@@ -242,6 +245,10 @@ button.user-button.current,
 
 .button.generation-button.transparent:hover {
     opacity: 0.04;
+}
+
+#rdaw-generation-buttons .generation-button {
+    font-style: italic;
 }
 
 /**
@@ -349,14 +356,16 @@ button.user-button.current,
         display: flex;
         flex-direction: column;
     }
-    #search-box-container { order: 20; }
-    #generation-buttons   { order: 30; }
-    #letter-buttons       { order: 40; }
-    #calculation-buttons  { order: 50; }
+    #search-box-container    { order: 20; }
+    #poke-generation-buttons { order: 30; }
+    #rdaw-generation-buttons { order: 40; }
+    #letter-buttons          { order: 50; }
+    #calculation-buttons     { order: 60; }
 }
 
 #user-buttons,
-#generation-buttons {
+#poke-generation-buttons,
+#rdaw-generation-buttons {
     white-space: nowrap;
     display: block;
     clear: left;

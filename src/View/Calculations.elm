@@ -20,7 +20,7 @@ import Helpers.Pokemon
 
 addOneUserVoteByUser : UserRatings -> Pokemon -> Int -> Int
 addOneUserVoteByUser userRatings pokemon total =
-    total + extractOnePokemonFromRatingString userRatings.ratings pokemon.number
+    total + extractOnePokemonFromRatingString userRatings.ratings pokemon.id
 
 
 sumVotesByUser : List Pokemon -> Int -> UserRatings -> TeamGenLetterVotes -> TeamGenLetterVotes
@@ -78,23 +78,23 @@ calculatePeopleVotes model =
 
 {-
    Calculates the number of total votes (for the current generation and letter) by pokemon.
-   This helps to decide which pokemon won this round's votes.
+   This helps to decide which pokemon won this sprint's votes.
 -}
 
 
 addOneUserVoteByPokemon : Int -> UserRatings -> Int -> Int
-addOneUserVoteByPokemon pokeNumber userRatings total =
-    total + extractOnePokemonFromRatingString userRatings.ratings pokeNumber
+addOneUserVoteByPokemon pokemonId userRatings total =
+    total + extractOnePokemonFromRatingString userRatings.ratings pokemonId
 
 
 sumVotesByPokemon : TeamRatings -> Pokemon -> PokeRankings -> PokeRankings
 sumVotesByPokemon teamRatings pokemon rankings =
     let
         totalVotes =
-            List.foldl (addOneUserVoteByPokemon pokemon.number) 0 teamRatings
+            List.foldl (addOneUserVoteByPokemon pokemon.id) 0 teamRatings
 
         ranking =
-            { number = pokemon.number
+            { pokemonId = pokemon.id
             , name = pokemon.name
             , totalVotes = totalVotes
             }
