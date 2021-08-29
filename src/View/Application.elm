@@ -5,10 +5,11 @@ import Control.Debounce exposing (trailing)
 import Helpers.Application exposing (getIsCurrentUserAdmin)
 import Helpers.Authentication exposing (isLoggedIn, tryGetUserProfile)
 import Helpers.Pages exposing (getCurrentPage, getWinner, isPageLocked)
-import Helpers.Pokemon exposing (filterPokedexByPage, filterPokedexByGeneration)
+import Helpers.Pokemon exposing (filterPokedexByPage)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick, onInput, onSubmit)
+import List.Extra exposing (find)
 import Maybe.Extra exposing (unwrap)
 import Models exposing (..)
 import Models.Authentication exposing (AuthenticationModel)
@@ -110,12 +111,19 @@ generationButton currentRoute pokedex currentSubPage gen =
                 |> Maybe.map (.letter >> createBrowsePath gen)
                 |> Maybe.withDefault createDefaultPath
 
-        pokeList =
-            filterPokedexByGeneration pokedex gen
-                |> Maybe.withDefault []
+        disableButton =
+            pokedex
+                |> RemoteData.toMaybe
+                |> Maybe.andThen
+                    (\actualPokedex ->
+                        List.Extra.find
+                            (.generation >> (==) gen)
+                            actualPokedex
+                    )
+                |> (==) Nothing
 
         genButtonElement =
-            if List.isEmpty pokeList then
+            if disableButton then
                 span
 
             else
@@ -128,7 +136,7 @@ generationButton currentRoute pokedex currentSubPage gen =
             , ( "with-tooltip", True )
             , ( "current", currentHighLight )
             , ( "transparent", gen == "O" )
-            , ( "disabled", List.isEmpty pokeList )
+            , ( "disabled", disableButton )
             ]
         , href hash
         ]
