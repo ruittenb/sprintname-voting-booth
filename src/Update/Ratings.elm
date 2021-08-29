@@ -27,10 +27,11 @@ import String.Extra exposing (replaceSlice)
 
 
 ensureRatingStringLength : Int -> String -> String
-ensureRatingStringLength totalPokemon ratingString =
+ensureRatingStringLength maxPokemonId ratingString =
     let
+        -- add one because string indexing starts at 0
         lengthDifference =
-            totalPokemon - String.length ratingString
+            maxPokemonId + 1 - String.length ratingString
     in
     ratingString
         ++ (if lengthDifference <= 0 then
@@ -46,8 +47,8 @@ isValidVote newPokeRating otherPokemonRatings =
     newPokeRating == 0 || not (Set.member newPokeRating otherPokemonRatings)
 
 
-registerVote : ApplicationState -> TeamRatings -> TeamRatings -> String -> Int -> Int -> Int -> ( ApplicationState, Cmd Msg )
-registerVote oldState otherUsersRatings oldCurrentUserRatings oldUserRatingString totalPokemon pokemonId newPokeRating =
+registerVote : ApplicationState -> TeamRatings -> TeamRatings -> String -> Int -> Int -> ( ApplicationState, Cmd Msg )
+registerVote oldState otherUsersRatings oldCurrentUserRatings oldUserRatingString pokemonId newPokeRating =
     List.head oldCurrentUserRatings
         |> Maybe.Extra.unwrap
             -- default value
@@ -86,9 +87,16 @@ updateVoteForPokemon oldState userVote =
                 pokemonId =
                     userVote.pokemonId
 
-                -- find how many pokemon there are in the pokedex
-                totalPokemon =
-                    List.length actualPokedex
+                -- find the maximum id used in the pokedex. each user's ratings string must be long enough.
+                maxPokemonId =
+                    actualPokedex
+                        |> List.foldl
+                            (\pokemon maxId -> if pokemon.id > maxId then
+                                pokemon.id
+                            else
+                                maxId
+                            )
+                            0
 
                 -- extract one user
                 ( oldCurrentUserRatings, otherUsersRatings ) =
@@ -99,7 +107,7 @@ updateVoteForPokemon oldState userVote =
                     List.head oldCurrentUserRatings
                         |> Maybe.map .ratings
                         |> Maybe.withDefault ""
-                        |> ensureRatingStringLength totalPokemon
+                        |> ensureRatingStringLength maxPokemonId
 
                 -- extract one pokemon rating
                 oldPokeRating =
@@ -132,7 +140,6 @@ updateVoteForPokemon oldState userVote =
                             otherUsersRatings
                             oldCurrentUserRatings
                             oldUserRatingString
-                            totalPokemon
                             pokemonId
                             newPokeRating
 
