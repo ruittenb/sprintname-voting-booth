@@ -28,9 +28,9 @@ $(THUMBSDIR)/$(RDAW)/%.png: $(RDAW)/%.png
 
 #.PHONY: to-475
 #to-475: ## resize all images to 475x475
-#	for i in *png; do convert $$i -resize 475x475 new-$$i; done
+#	for i in *png; do convert $$i -resize 475x475 -background transparent -gravity center -extent 475x475 new-$$i; done
 
-#.PHONY: replace-475
-#replace-475:
-#	for i in new*png; do mv $$i $${i#new-}; done
+.PHONY: replace-475
+replace-475:
+	for i in new*png; do mv $$i $${i#new-}; done
 
