@@ -1512,5 +1512,12 @@
     "letter": "Z",
     "open": true,
     "startDate": "2022-08-16T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 175,
+    "letter": "A",
+    "open": true,
+    "startDate": "2022-08-30T00:00:00.000+02:00"
   }
 ]

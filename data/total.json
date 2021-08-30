@@ -1513,6 +1513,13 @@
       "letter": "Z",
       "open": true,
       "startDate": "2022-08-16T00:00:00.000+02:00"
+    },
+    {
+      "generation": "i",
+      "id": 175,
+      "letter": "A",
+      "open": true,
+      "startDate": "2022-08-30T00:00:00.000+02:00"
     }
   ],
   "pokedex": [
@@ -12242,10 +12249,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Pyroar_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "With fiery breath of more than 10,000 degrees Fahrenheit, they viciously threaten any challenger. The male with the largest mane of fire is the leader of the pride. The males are usually lazy, but when attacked by a strong foe, a male will protect its friends with no regard for its own safety.",
           "image": "668-male.png",
           "vname": "Male"
         },
         {
+          "description": "With fiery breath of more than 10,000 degrees Fahrenheit, they viciously threaten any challenger. The females protect the pride's cubs.",
           "image": "668-female.png",
           "vname": "Female"
         }
@@ -12262,7 +12271,23 @@
       "variants": [
         {
           "image": "669-red.png",
-          "vname": ""
+          "vname": "Red Flower"
+        },
+        {
+          "image": "669-orange.png",
+          "vname": "Orange Flower"
+        },
+        {
+          "image": "669-blue.png",
+          "vname": "Blue Flower"
+        },
+        {
+          "image": "669-yellow.png",
+          "vname": "Yellow Flower"
+        },
+        {
+          "image": "669-white.png",
+          "vname": "White Flower"
         }
       ]
     },
@@ -12387,7 +12412,7 @@
       ]
     },
     {
-      "description": "When in danger, it raises its ears and releases enough psychic power to grind a 10-ton truck into dust.",
+      "description": "When in danger, it raises its ears and releases enough psychic power to grind a 10-ton truck into dust. The eyeball patterns on the interior of its ears emit psychic energy. It keeps the patterns tightly covered because that power is too immense.",
       "generation": "VI",
       "id": 678,
       "letter": "M",
@@ -12396,10 +12421,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Meowstic_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "When in danger, it raises its ears and releases enough psychic power to grind a 10-ton truck into dust. The eyeball patterns on the interior of its ears emit psychic energy. It keeps the patterns tightly covered because that power is too immense. Revealing the eyelike patterns on the insides of its ears will unleash its psychic powers. It normally keeps the patterns hidden, however.  The defensive instinct of the males is strong. It's when they're protecting themselves or their partners that they unleash their full power.",
           "image": "678-male.png",
           "vname": "Male"
         },
         {
+          "description": "When in danger, it raises its ears and releases enough psychic power to grind a 10-ton truck into dust. The eyeball patterns on the interior of its ears emit psychic energy. It keeps the patterns tightly covered because that power is too immense. Females are a bit more selfish and aggressive than males. If they don't get what they want, they will torment you with their psychic abilities.  If it doesn't hold back when it unleashes its psychic power, it can tear apart a tanker. Its unfriendliness is part of its charm.",
           "image": "678-female.png",
           "vname": "Female"
         }
@@ -12445,10 +12472,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Aegislash_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Apparently, it can detect the innate qualities of leadership. According to legend, whoever it recognizes is destined to become king.  Generations of kings were attended by these Pokémon, which used their spectral power to manipulate and control people and Pokémon. In this defensive stance, Aegislash uses its steel body and a force field of spectral power to reduce the damage of any attack.  Its potent spectral powers allow it to manipulate others. It once used its powers to force people and Pokémon to build a kingdom to its liking.",
           "image": "681-shield.png",
           "vname": "Shield Forme"
         },
         {
+          "description": "Apparently, it can detect the innate qualities of leadership. According to legend, whoever it recognizes is destined to become king.  Generations of kings were attended by these Pokémon, which used their spectral power to manipulate and control people and Pokémon. This stance is dedicated to offense. It can cleave any opponent with the strength and weight of its steel blade.  Once upon a time, a king with an Aegislash reigned over the land. His Pokémon eventually drained him of life, and his kingdom fell with him.",
           "image": "681-blade.png",
           "vname": "Blade Forme"
         }
@@ -12770,7 +12799,7 @@
       ]
     },
     {
-      "description": "Born from the temperatures and pressures deep underground, it fires beams from the stone in its head. It has slept underground for hundreds of millions of years since its birth. It’s occasionally found during the excavation of caves. Although this Pokémon is not especially rare, its glittering, jewel-draped body draws attention from people. Some say that deep beneath the surface of the world, a pack of Carbink live with their queen in a kingdom of jewels.",
+      "description": "Born from the temperatures and pressures deep underground, it fires beams from the stone in its head. It has slept underground for hundreds of millions of years since its birth. It's occasionally found during the excavation of caves. Although this Pokémon is not especially rare, its glittering, jewel-draped body draws attention from people. Some say that deep beneath the surface of the world, a pack of Carbink live with their queen in a kingdom of jewels.",
       "generation": "VI",
       "id": 703,
       "letter": "C",
@@ -12785,7 +12814,7 @@
       ]
     },
     {
-      "description": "The weakest Dragon-type Pokémon, it lives in damp, shady places, so its body doesn’t dry out. It’s covered in a slimy membrane that makes any punches or kicks slide off it harmlessly. Its source of protection is its slimy, germ-laden mucous membrane. Anyone who touches it needs some thorough hand-washing. It uses its horns to check out its surroundings. They’re very sensitive, so if you grab them, it will feel a strong shock and be unable to move.",
+      "description": "The weakest Dragon-type Pokémon, it lives in damp, shady places, so its body doesn't dry out. It's covered in a slimy membrane that makes any punches or kicks slide off it harmlessly. Its source of protection is its slimy, germ-laden mucous membrane. Anyone who touches it needs some thorough hand-washing. It uses its horns to check out its surroundings. They're very sensitive, so if you grab them, it will feel a strong shock and be unable to move.",
       "generation": "VI",
       "id": 704,
       "letter": "G",
@@ -12800,7 +12829,7 @@
       ]
     },
     {
-      "description": "It drives away opponents by excreting a sticky liquid that can dissolve anything. Its eyes devolved, so it can’t see anything. Its four horns are a high-performance radar system. It uses them to sense sounds and smells, rather than using ears or a nose. This Pokémon’s mucous can dissolve anything. Toothless, it sprays mucous on its prey. Once they’re nicely dissolved, it slurps them up. It crawls along sluggishly. The swirly protrusion on its back is filled with its brain and other organs.",
+      "description": "It drives away opponents by excreting a sticky liquid that can dissolve anything. Its eyes devolved, so it can't see anything. Its four horns are a high-performance radar system. It uses them to sense sounds and smells, rather than using ears or a nose. This Pokémon's mucous can dissolve anything. Toothless, it sprays mucous on its prey. Once they're nicely dissolved, it slurps them up. It crawls along sluggishly. The swirly protrusion on its back is filled with its brain and other organs.",
       "generation": "VI",
       "id": 705,
       "letter": "S",
@@ -12815,7 +12844,7 @@
       ]
     },
     {
-      "description": "This very friendly Dragon-type Pokémon will hug its beloved Trainer, leaving that Trainer covered in sticky slime. It attacks with retractable horns. It throws a punch that’s the equivalent of the force of a hundred pro boxers. It gets picked on because it’s meek. But then, whoever teased it gets to feel the full force of its horns and a good swatting from its thick tail. It’s very friendly toward people. If you grow close to it, Goodra will hug you with its sticky, slime-covered body. Don’t get mad.",
+      "description": "This very friendly Dragon-type Pokémon will hug its beloved Trainer, leaving that Trainer covered in sticky slime. It attacks with retractable horns. It throws a punch that's the equivalent of the force of a hundred pro boxers. It gets picked on because it's meek. But then, whoever teased it gets to feel the full force of its horns and a good swatting from its thick tail. It's very friendly toward people. If you grow close to it, Goodra will hug you with its sticky, slime-covered body. Don't get mad.",
       "generation": "VI",
       "id": 706,
       "letter": "G",
@@ -12830,7 +12859,7 @@
       ]
     },
     {
-      "description": "These key collectors threaten any attackers by fiercely jingling their keys at them. It never lets go of a key that it likes, so people give it the keys to vaults and safes as a way to prevent crime. It inserts its horn into chinks in metal, absorbing metal ions. For some reason, it collects keys. Although it’s unclear why it collects keys, giving it a key makes Klefki very happy. However, it apparently only likes master keys.",
+      "description": "These key collectors threaten any attackers by fiercely jingling their keys at them. It never lets go of a key that it likes, so people give it the keys to vaults and safes as a way to prevent crime. It inserts its horn into chinks in metal, absorbing metal ions. For some reason, it collects keys. Although it's unclear why it collects keys, giving it a key makes Klefki very happy. However, it apparently only likes master keys.",
       "generation": "VI",
       "id": 707,
       "letter": "K",
@@ -12845,7 +12874,7 @@
       ]
     },
     {
-      "description": "These Pokémon are created when spirits possess rotten tree stumps. They prefer to live in abandoned forests. According to old tales, these Pokémon are stumps possessed by the spirits of children who died while lost in the forest. According to legend, medicine to cure any illness can be made by plucking the green leaves on its head, brewing them, and boiling down the liquid. By imitating the voice of a child, it causes people to get hopelessly lost deep in the forest. It’s trying to make friends with them.",
+      "description": "These Pokémon are created when spirits possess rotten tree stumps. They prefer to live in abandoned forests. According to old tales, these Pokémon are stumps possessed by the spirits of children who died while lost in the forest. According to legend, medicine to cure any illness can be made by plucking the green leaves on its head, brewing them, and boiling down the liquid. By imitating the voice of a child, it causes people to get hopelessly lost deep in the forest. It's trying to make friends with them.",
       "generation": "VI",
       "id": 708,
       "letter": "P",
@@ -12860,7 +12889,7 @@
       ]
     },
     {
-      "description": "It can control trees at will. It will trap people who harm the forest, so they can never leave. Using its roots as a nervous system, it controls the trees in the forest. It’s kind to the Pokémon that reside in its body. Through its roots, it exerts control over other trees. A deadly curse falls upon anyone cutting down trees in forests where Trevenant dwell. It’s feared as a ghost of the forest. Lumberjacks bring along Fire types, which Trevenant hates, when they enter the forest.",
+      "description": "It can control trees at will. It will trap people who harm the forest, so they can never leave. Using its roots as a nervous system, it controls the trees in the forest. It's kind to the Pokémon that reside in its body. Through its roots, it exerts control over other trees. A deadly curse falls upon anyone cutting down trees in forests where Trevenant dwell. It's feared as a ghost of the forest. Lumberjacks bring along Fire types, which Trevenant hates, when they enter the forest.",
       "generation": "VI",
       "id": 709,
       "letter": "T",
@@ -12905,7 +12934,7 @@
       ]
     },
     {
-      "description": "It blocks opponents’ attacks with the ice that shields its body. It uses cold air to repair any cracks with new ice. Using air of -150 degrees Fahrenheit, they freeze opponents solid. They live in herds above the snow line on mountains.",
+      "description": "It blocks opponents' attacks with the ice that shields its body. It uses cold air to repair any cracks with new ice. Using air of -150 degrees Fahrenheit, they freeze opponents solid. They live in herds above the snow line on mountains.",
       "generation": "VI",
       "id": 712,
       "letter": "B",
@@ -12984,7 +13013,7 @@
       ]
     },
     {
-      "description": "When this legendary Pokémon’s wings and tail feathers spread wide and glow red, it absorbs the life force of living creatures. When its life comes to an end, it absorbs the life energy of every living thing and turns into a cocoon once more.",
+      "description": "When this legendary Pokémon's wings and tail feathers spread wide and glow red, it absorbs the life force of living creatures. When its life comes to an end, it absorbs the life energy of every living thing and turns into a cocoon once more.",
       "generation": "VI",
       "id": 717,
       "letter": "Y",
@@ -12999,7 +13028,7 @@
       ]
     },
     {
-      "description": "When the Kalos region’s ecosystem falls into disarray, it appears and reveals its secret power. It’s hypothesized that it’s monitoring those who destroy the ecosystem from deep in the cave where it lives. It’s thought to be monitoring the ecosystem. There are rumors that even greater power lies hidden within it. This is Zygarde’s form when about half of its pieces have been assembled. It plays the role of monitoring the ecosystem.",
+      "description": "When the Kalos region's ecosystem falls into disarray, it appears and reveals its secret power. It's hypothesized that it's monitoring those who destroy the ecosystem from deep in the cave where it lives.",
       "generation": "VI",
       "id": 718,
       "letter": "Z",
@@ -13008,14 +13037,17 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Zygarde_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "When the Kalos region's ecosystem falls into disarray, it appears and reveals its secret power. It's hypothesized that it's monitoring those who destroy the ecosystem from deep in the cave where it lives. This is Zygarde's form when it has gathered 50% of its cells. It wipes out all those who oppose it, showing not a shred of mercy.  It's thought to be monitoring the ecosystem. There are rumors that even greater power lies hidden within it.",
           "image": "718-50.png",
           "vname": "50% Form"
         },
         {
+          "description": "When the Kalos region's ecosystem falls into disarray, it appears and reveals its secret power. It's hypothesized that it's monitoring those who destroy the ecosystem from deep in the cave where it lives.  This is Zygarde's form when about 10% of its cells have been gathered. It runs across the land at speeds greater than 60 mph. Its sharp fangs make short work of finishing off its enemies, but it's unable to maintain this body indefinitely. After a period of time, it falls apart.",
           "image": "718-10.png",
           "vname": "10% Form"
         },
         {
+          "description": "When the Kalos region's ecosystem falls into disarray, it appears and reveals its secret power. It's hypothesized that it's monitoring those who destroy the ecosystem from deep in the cave where it lives. This is Zygarde's perfected form. From the orifice on its chest, it radiates high-powered energy that eliminates everything.  Born when all of Zygarde's cells have been gathered together, it uses force to neutralize those who harm the ecosystem.",
           "image": "718-complete.png",
           "vname": "Complete Form"
         }
@@ -13060,7 +13092,7 @@
       ]
     },
     {
-      "description": "It lets out billows of steam and disappears into the dense fog. It’s said to live in mountains where humans do not tread. It expels its internal steam from the arms on its back. It has enough power to blow away a mountain.",
+      "description": "It lets out billows of steam and disappears into the dense fog. It's said to live in mountains where humans do not tread. It expels its internal steam from the arms on its back. It has enough power to blow away a mountain.",
       "generation": "VI",
       "id": 721,
       "letter": "V",
@@ -13090,7 +13122,7 @@
       ]
     },
     {
-      "description": "It throws sharp feathers called blade quills at enemies or prey. It seldom misses. This narcissistic Pokémon is a clean freak. If you don’t groom it diligently, it will stop listening to you.",
+      "description": "It throws sharp feathers called blade quills at enemies or prey. It seldom misses. This narcissistic Pokémon is a clean freak. If you don't groom it diligently, it will stop listening to you.",
       "generation": "VII",
       "id": 723,
       "letter": "D",
@@ -13105,7 +13137,7 @@
       ]
     },
     {
-      "description": "Although basically cool and cautious, when it’s caught by surprise, it’s seized by panic. It nocks its arrow quills and shoots them at opponents. When it simply can’t afford to miss, it tugs the vine on its head to improve its focus.",
+      "description": "Although basically cool and cautious, when it's caught by surprise, it's seized by panic. It nocks its arrow quills and shoots them at opponents. When it simply can't afford to miss, it tugs the vine on its head to improve its focus.",
       "generation": "VII",
       "id": 724,
       "letter": "D",
@@ -13120,7 +13152,7 @@
       ]
     },
     {
-      "description": "It doesn’t allow its emotions to be easily seen. Earning its trust takes time. It prefers solitude. If you try too hard to get close to it, it won’t open up to you. Even if you do grow close, giving it too much affection is still a no-no.",
+      "description": "It doesn't allow its emotions to be easily seen. Earning its trust takes time. It prefers solitude. If you try too hard to get close to it, it won't open up to you. Even if you do grow close, giving it too much affection is still a no-no.",
       "generation": "VII",
       "id": 725,
       "letter": "L",
@@ -13135,7 +13167,7 @@
       ]
     },
     {
-      "description": "It boasts powerful front legs. With a single punch, it can bend an iron bar right over. It can act spoiled if it grows close to its Trainer. A powerful Pokémon, its sharp claws can leave its Trainer’s whole body covered in scratches.",
+      "description": "It boasts powerful front legs. With a single punch, it can bend an iron bar right over. It can act spoiled if it grows close to its Trainer. A powerful Pokémon, its sharp claws can leave its Trainer's whole body covered in scratches.",
       "generation": "VII",
       "id": 726,
       "letter": "T",
@@ -13150,7 +13182,7 @@
       ]
     },
     {
-      "description": "After hurling ferocious punches and flinging furious kicks, it finishes opponents off by spewing fire from around its navel. Although it’s rough mannered and egotistical, it finds beating down unworthy opponents boring. It gets motivated for stronger opponents.",
+      "description": "After hurling ferocious punches and flinging furious kicks, it finishes opponents off by spewing fire from around its navel. Although it's rough mannered and egotistical, it finds beating down unworthy opponents boring. It gets motivated for stronger opponents.",
       "generation": "VII",
       "id": 727,
       "letter": "I",
@@ -13180,7 +13212,7 @@
       ]
     },
     {
-      "description": "It cares deeply for its companions. When its Trainer is feeling down, it performs a cheery dance to try and help. It gets excited when it sees a dance it doesn’t know. This hard worker practices diligently until it can learn that dance.",
+      "description": "It cares deeply for its companions. When its Trainer is feeling down, it performs a cheery dance to try and help. It gets excited when it sees a dance it doesn't know. This hard worker practices diligently until it can learn that dance.",
       "generation": "VII",
       "id": 729,
       "letter": "B",
@@ -13195,7 +13227,7 @@
       ]
     },
     {
-      "description": "Its singing voice is its chief weapon in battle. This Pokémon’s Trainer must prioritize the daily maintenance of its throat at all costs. To Primarina, every battle is a stage. It takes down its prey with beautiful singing and dancing.",
+      "description": "Its singing voice is its chief weapon in battle. This Pokémon's Trainer must prioritize the daily maintenance of its throat at all costs. To Primarina, every battle is a stage. It takes down its prey with beautiful singing and dancing.",
       "generation": "VII",
       "id": 730,
       "letter": "P",
@@ -13255,7 +13287,7 @@
       ]
     },
     {
-      "description": "It wanders around in a never-ending search for food. At dusk, it collapses from exhaustion and falls asleep on the spot. Its stomach takes up most of its long torso. It’s a big eater, so the amount Trainers have to spend on its food is no laughing matter.",
+      "description": "It wanders around in a never-ending search for food. At dusk, it collapses from exhaustion and falls asleep on the spot. Its stomach takes up most of its long torso. It's a big eater, so the amount Trainers have to spend on its food is no laughing matter.",
       "generation": "VII",
       "id": 734,
       "letter": "Y",
@@ -13270,7 +13302,7 @@
       ]
     },
     {
-      "description": "It adores having Rattata and Raticate for dinner, but as it’s diurnal, it never encounters them. This Pokémon boasts incredible patience. Although it wasn’t originally found in Alola, this Pokémon was brought over a long time ago when there was a huge Rattata outbreak.",
+      "description": "It adores having Rattata and Raticate for dinner, but as it's diurnal, it never encounters them. This Pokémon boasts incredible patience. Although it wasn't originally found in Alola, this Pokémon was brought over a long time ago when there was a huge Rattata outbreak.",
       "generation": "VII",
       "id": 735,
       "letter": "G",
@@ -13285,7 +13317,7 @@
       ]
     },
     {
-      "description": "They often gather near places frequented by electric Pokémon in order to avoid being attacked by bird Pokémon. If you find its nest, you shouldn’t stick your hand inside. You’ll get bitten by an irritated Grubbin.",
+      "description": "They often gather near places frequented by electric Pokémon in order to avoid being attacked by bird Pokémon. If you find its nest, you shouldn't stick your hand inside. You'll get bitten by an irritated Grubbin.",
       "generation": "VII",
       "id": 736,
       "letter": "G",
@@ -13300,7 +13332,7 @@
       ]
     },
     {
-      "description": "From the food it digests, it generates electricity, and it stores this energy in its electric sac. It buries itself in fallen leaves and barely moves, munching away on humus. If you accidentally step on one, you’ll get a shock!",
+      "description": "From the food it digests, it generates electricity, and it stores this energy in its electric sac. It buries itself in fallen leaves and barely moves, munching away on humus. If you accidentally step on one, you'll get a shock!",
       "generation": "VII",
       "id": 737,
       "letter": "C",
@@ -13406,7 +13438,7 @@
       ]
     },
     {
-      "description": "Some of Ribombee’s pollen puffs are highly nutritious. They are sometimes sold as supplements. Rain makes pollen damp, so Ribombee hates rain. When it sees ominous clouds, it finds a hollow in a tree, where it waits stock-still.",
+      "description": "Some of Ribombee's pollen puffs are highly nutritious. They are sometimes sold as supplements. Rain makes pollen damp, so Ribombee hates rain. When it sees ominous clouds, it finds a hollow in a tree, where it waits stock-still.",
       "generation": "VII",
       "id": 743,
       "letter": "R",
@@ -13421,7 +13453,7 @@
       ]
     },
     {
-      "description": "This Pokémon has lived with people since times long ago. It can sense when its Trainer is in the dumps and will stick close by its Trainer’s side. As they develop, their disposition grows more violent and aggressive. Many Trainers find them too much to handle and abandon them.",
+      "description": "This Pokémon has lived with people since times long ago. It can sense when its Trainer is in the dumps and will stick close by its Trainer's side. As they develop, their disposition grows more violent and aggressive. Many Trainers find them too much to handle and abandon them.",
       "generation": "VII",
       "id": 744,
       "letter": "R",
@@ -13462,7 +13494,7 @@
       ]
     },
     {
-      "description": "It’s awfully weak and notably tasty, so everyone is always out to get it. As it happens, anyone trying to bully it receives a painful lesson. They’re weak, so they move in schools. However, they can also often be seen all alone, having strayed from the school.",
+      "description": "It's awfully weak and notably tasty, so everyone is always out to get it. As it happens, anyone trying to bully it receives a painful lesson. They're weak, so they move in schools. However, they can also often be seen all alone, having strayed from the school.",
       "generation": "VII",
       "id": 746,
       "letter": "W",
@@ -13471,7 +13503,7 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Wishiwashi_(Pok%C3%A9mon)",
       "variants": [
         {
-          "description": "When it's in trouble, its eyes moisten and begin to shine. The shining light attracts its comrades, and they stand together against their enemies. It’s awfully weak and notably tasty, so everyone is always out to get it. As it happens, anyone trying to bully it receives a painful lesson. They’re weak, so they move in schools. However, they can also often be seen all alone, having strayed from the school. When it's in a jam, its shining eyes attract others of its kind. The light from its eyes is visible almost 25 miles away.",
+          "description": "When it's in trouble, its eyes moisten and begin to shine. The shining light attracts its comrades, and they stand together against their enemies. It's awfully weak and notably tasty, so everyone is always out to get it. As it happens, anyone trying to bully it receives a painful lesson. They're weak, so they move in schools. However, they can also often be seen all alone, having strayed from the school. When it's in a jam, its shining eyes attract others of its kind. The light from its eyes is visible almost 25 miles away.",
           "image": "746-solo.png",
           "vname": "Solo Form"
         },
@@ -13483,7 +13515,7 @@
       ]
     },
     {
-      "description": "It’s found crawling on beaches and seafloors. The coral that grows on Corsola’s head is as good as a five-star banquet to this Pokémon. They eat Corsola branches, so Mareanie are hated by craftsmen who work with Corsola branches that have naturally fallen off.",
+      "description": "It's found crawling on beaches and seafloors. The coral that grows on Corsola's head is as good as a five-star banquet to this Pokémon. They eat Corsola branches, so Mareanie are hated by craftsmen who work with Corsola branches that have naturally fallen off.",
       "generation": "VII",
       "id": 747,
       "letter": "M",
@@ -13498,7 +13530,7 @@
       ]
     },
     {
-      "description": "Those attacked by Toxapex’s poison will suffer intense pain for three days and three nights. Post-recovery, there will be some aftereffects. To attack, this Pokémon sends toxic spikes flying at its enemies. Ones that come close get mown down by the claws on its feet.",
+      "description": "Those attacked by Toxapex's poison will suffer intense pain for three days and three nights. Post-recovery, there will be some aftereffects. To attack, this Pokémon sends toxic spikes flying at its enemies. Ones that come close get mown down by the claws on its feet.",
       "generation": "VII",
       "id": 748,
       "letter": "T",
@@ -13513,7 +13545,7 @@
       ]
     },
     {
-      "description": "It has a stubborn, individualistic disposition. Eating dirt, making mud, and playing in the mire all form part of its daily routine. It loves playing in the mud. If it isn’t showered with mud on a daily basis, it gets stressed out and stops listening to its Trainer.",
+      "description": "It has a stubborn, individualistic disposition. Eating dirt, making mud, and playing in the mire all form part of its daily routine. It loves playing in the mud. If it isn't showered with mud on a daily basis, it gets stressed out and stops listening to its Trainer.",
       "generation": "VII",
       "id": 749,
       "letter": "M",
@@ -13543,7 +13575,7 @@
       ]
     },
     {
-      "description": "When it comes across enemies or potential prey, this Pokémon smashes its water-bubble-covered head into them. When two Dewpider meet, they display their water bubbles to each other. Then the one with the smaller bubble gets out of the other’s way.",
+      "description": "When it comes across enemies or potential prey, this Pokémon smashes its water-bubble-covered head into them. When two Dewpider meet, they display their water bubbles to each other. Then the one with the smaller bubble gets out of the other's way.",
       "generation": "VII",
       "id": 751,
       "letter": "D",
@@ -13603,7 +13635,7 @@
       ]
     },
     {
-      "description": "As it drowses the day away, it nourishes itself by sucking from tree roots. It wakens at the fall of night, wandering off in search of a new tree. It scatters its shining spores around itself. Even though they’re dangerous, nighttime tours of forests where Morelull live are popular.",
+      "description": "As it drowses the day away, it nourishes itself by sucking from tree roots. It wakens at the fall of night, wandering off in search of a new tree. It scatters its shining spores around itself. Even though they're dangerous, nighttime tours of forests where Morelull live are popular.",
       "generation": "VII",
       "id": 755,
       "letter": "M",
@@ -13633,7 +13665,7 @@
       ]
     },
     {
-      "description": "Volcanoes or dry, craggy places are its home. It emanates a sweet-smelling poisonous gas that attracts bug Pokémon, then attacks them. The males will do whatever the females tell them. They give the females most of their food. Due to malnutrition, the males can’t evolve.",
+      "description": "Volcanoes or dry, craggy places are its home. It emanates a sweet-smelling poisonous gas that attracts bug Pokémon, then attacks them. The males will do whatever the females tell them. They give the females most of their food. Due to malnutrition, the males can't evolve.",
       "generation": "VII",
       "id": 757,
       "letter": "S",
@@ -13663,7 +13695,7 @@
       ]
     },
     {
-      "description": "A touch from anyone except a known friend sends it into a surging frenzy. It’s an incredibly dangerous Pokémon. It boasts power enough to split large trees in half. The organ on its rear releases an odor that it uses to communicate with others of its kind.",
+      "description": "A touch from anyone except a known friend sends it into a surging frenzy. It's an incredibly dangerous Pokémon. It boasts power enough to split large trees in half. The organ on its rear releases an odor that it uses to communicate with others of its kind.",
       "generation": "VII",
       "id": 759,
       "letter": "S",
@@ -13678,7 +13710,7 @@
       ]
     },
     {
-      "description": "This Pokémon has the habit of hugging its companions. Many Trainers have left this world after their spines were squashed by its hug. It waves its hands wildly in intimidation and warning. Life is over for anyone who doesn’t run away as fast as possible.",
+      "description": "This Pokémon has the habit of hugging its companions. Many Trainers have left this world after their spines were squashed by its hug. It waves its hands wildly in intimidation and warning. Life is over for anyone who doesn't run away as fast as possible.",
       "generation": "VII",
       "id": 760,
       "letter": "B",
@@ -13693,7 +13725,7 @@
       ]
     },
     {
-      "description": "Although it’s too sugary for human consumption, Bounsweet’s sweat can be watered down into a juice with just the right amount of sweetness. Because of its sweet, delicious aroma, bird Pokémon are always after it, but it’s not intelligent enough to care.",
+      "description": "Although it's too sugary for human consumption, Bounsweet's sweat can be watered down into a juice with just the right amount of sweetness. Because of its sweet, delicious aroma, bird Pokémon are always after it, but it's not intelligent enough to care.",
       "generation": "VII",
       "id": 761,
       "letter": "B",
@@ -13708,7 +13740,7 @@
       ]
     },
     {
-      "description": "This Pokémon is always bouncing around energetically. Other Pokémon are attracted by its lively appearance and pleasant aroma. It’s protected by its hard sepals, so it plays with bird Pokémon without worry. They peck it relentlessly, but it doesn’t care.",
+      "description": "This Pokémon is always bouncing around energetically. Other Pokémon are attracted by its lively appearance and pleasant aroma. It's protected by its hard sepals, so it plays with bird Pokémon without worry. They peck it relentlessly, but it doesn't care.",
       "generation": "VII",
       "id": 762,
       "letter": "S",
@@ -13738,7 +13770,7 @@
       ]
     },
     {
-      "description": "Baths prepared with the flowers from its vine have a relaxing effect, so this Pokémon is a hit with many people. It stretches sticky vines out from its head and picks flowers to adorn itself with. When it doesn’t have any flowers, it feels uneasy.",
+      "description": "Baths prepared with the flowers from its vine have a relaxing effect, so this Pokémon is a hit with many people. It stretches sticky vines out from its head and picks flowers to adorn itself with. When it doesn't have any flowers, it feels uneasy.",
       "generation": "VII",
       "id": 764,
       "letter": "C",
@@ -13828,7 +13860,7 @@
       ]
     },
     {
-      "description": "Buried beneath the castle are masses of dried-up bones from those whose vitality it has drained. Each of its grains of sand has its own will. Palossand eats small Pokémon and siphons away their vital essence while they’re still alive.",
+      "description": "Buried beneath the castle are masses of dried-up bones from those whose vitality it has drained. Each of its grains of sand has its own will. Palossand eats small Pokémon and siphons away their vital essence while they're still alive.",
       "generation": "VII",
       "id": 770,
       "letter": "P",
@@ -13902,13 +13934,37 @@
           "vname": "Meteor Form"
         },
         {
-          "image": "774-core.png",
-          "vname": "Core Form"
+          "image": "774-red-core.png",
+          "vname": "Red Core Form"
+        },
+        {
+          "image": "774-orange-core.png",
+          "vname": "Orange Core Form"
+        },
+        {
+          "image": "774-yellow-core.png",
+          "vname": "Yellow Core Form"
+        },
+        {
+          "image": "774-green-core.png",
+          "vname": "Green Core Form"
+        },
+        {
+          "image": "774-blue-core.png",
+          "vname": "Blue Core Form"
+        },
+        {
+          "image": "774-indigo-core.png",
+          "vname": "Indigo Core Form"
+        },
+        {
+          "image": "774-violet-core.png",
+          "vname": "Violet Core Form"
         }
       ]
     },
     {
-      "description": "The log it holds was given to it by its parents at birth. It has also been known to cling to the arm of a friendly Trainer. It stays asleep from the moment it’s born. When it falls into a deep sleep, it stops moving altogether.",
+      "description": "The log it holds was given to it by its parents at birth. It has also been known to cling to the arm of a friendly Trainer. It stays asleep from the moment it's born. When it falls into a deep sleep, it stops moving altogether.",
       "generation": "VII",
       "id": 775,
       "letter": "K",
@@ -13938,7 +13994,7 @@
       ]
     },
     {
-      "description": "The long hairs on its back act as lightning rods. The bolts of lightning it attracts are stored as energy in its electric sac. When it’s surprised or agitated, the 14 fur spikes on its back will stand up involuntarily.",
+      "description": "The long hairs on its back act as lightning rods. The bolts of lightning it attracts are stored as energy in its electric sac. When it's surprised or agitated, the 14 fur spikes on its back will stand up involuntarily.",
       "generation": "VII",
       "id": 777,
       "letter": "T",
@@ -13953,7 +14009,7 @@
       ]
     },
     {
-      "description": "A lonely Pokémon, it conceals its terrifying appearance beneath an old rag so it can get closer to people and other Pokémon. Although it’s a quiet, lonely Pokémon, if you try to look at what’s under its rag, it will become agitated and resist violently.",
+      "description": "A lonely Pokémon, it conceals its terrifying appearance beneath an old rag so it can get closer to people and other Pokémon. Although it's a quiet, lonely Pokémon, if you try to look at what's under its rag, it will become agitated and resist violently.",
       "generation": "VII",
       "id": 778,
       "letter": "M",
@@ -13968,7 +14024,7 @@
       ]
     },
     {
-      "description": "It stuns its prey with psychokinesis and then grinds them to mush with its strong teeth. Even Shellder’s shell is no match for it. It burrows beneath the sand, radiating psychic power from the protuberance on its head. It waits for prey as it surveys the area.",
+      "description": "It stuns its prey with psychokinesis and then grinds them to mush with its strong teeth. Even Shellder's shell is no match for it. It burrows beneath the sand, radiating psychic power from the protuberance on its head. It waits for prey as it surveys the area.",
       "generation": "VII",
       "id": 779,
       "letter": "B",
@@ -13983,7 +14039,7 @@
       ]
     },
     {
-      "description": "This Pokémon is friendly to people and loves children most of all. It comes from deep in the mountains to play with children it likes in town. If a child it has made friends with is bullied, Drampa will find the bully’s house and burn it to the ground.",
+      "description": "This Pokémon is friendly to people and loves children most of all. It comes from deep in the mountains to play with children it likes in town. If a child it has made friends with is bullied, Drampa will find the bully's house and burn it to the ground.",
       "generation": "VII",
       "id": 780,
       "letter": "D",
@@ -14028,7 +14084,7 @@
       ]
     },
     {
-      "description": "It sheds and regrows its scales on a continuous basis. The scales become harder and sharper each time they’re regrown. It makes noise by clanging its scales together. When the rhythm has reached its peak, Hakamo-o attacks.",
+      "description": "It sheds and regrows its scales on a continuous basis. The scales become harder and sharper each time they're regrown. It makes noise by clanging its scales together. When the rhythm has reached its peak, Hakamo-o attacks.",
       "generation": "VII",
       "id": 783,
       "letter": "H",
@@ -14058,7 +14114,7 @@
       ]
     },
     {
-      "description": "It confuses its enemies by flying too quickly for the eye to follow. It has a hair-trigger temper but forgets what made it angry an instant later. Although it’s called a guardian deity, if a person or Pokémon puts it in a bad mood, it will become a malevolent deity and attack.",
+      "description": "It confuses its enemies by flying too quickly for the eye to follow. It has a hair-trigger temper but forgets what made it angry an instant later. Although it's called a guardian deity, if a person or Pokémon puts it in a bad mood, it will become a malevolent deity and attack.",
       "generation": "VII",
       "id": 785,
       "letter": "T",
@@ -14088,7 +14144,7 @@
       ]
     },
     {
-      "description": "The guardian deity of Ula’ula is a lazy Pokémon. It commands plants to immobilize its foes and then deals them a savage blow with its horns. Although it’s called a guardian deity, it’s violent enough to crush anyone it sees as an enemy.",
+      "description": "The guardian deity of Ula'ula is a lazy Pokémon. It commands plants to immobilize its foes and then deals them a savage blow with its horns. Although it's called a guardian deity, it's violent enough to crush anyone it sees as an enemy.",
       "generation": "VII",
       "id": 787,
       "letter": "T",
@@ -14118,7 +14174,7 @@
       ]
     },
     {
-      "description": "In ages past, it was called the child of the stars. It’s said to be a Pokémon from another world, but no specific details are known. Even though its helpless, gaseous body can be blown away by the slightest breeze, it doesn’t seem to care.",
+      "description": "In ages past, it was called the child of the stars. It's said to be a Pokémon from another world, but no specific details are known. Even though its helpless, gaseous body can be blown away by the slightest breeze, it doesn't seem to care.",
       "generation": "VII",
       "id": 789,
       "letter": "C",
@@ -14133,7 +14189,7 @@
       ]
     },
     {
-      "description": "There’s something accumulating around the black core within its hard shell. People think this Pokémon may come from another world. The king who ruled Alola in times of antiquity called it the “cocoon of the stars” and built an altar to worship it.",
+      "description": "There's something accumulating around the black core within its hard shell. People think this Pokémon may come from another world. The king who ruled Alola in times of antiquity called it the “cocoon of the stars” and built an altar to worship it.",
       "generation": "VII",
       "id": 790,
       "letter": "C",
@@ -14178,7 +14234,7 @@
       ]
     },
     {
-      "description": "One of the Ultra Beasts. It’s unclear whether or not this Pokémon is sentient, but sometimes it can be observed behaving like a young girl. A life-form from another world, it was dubbed a UB and is thought to produce a strong neurotoxin.",
+      "description": "One of the Ultra Beasts. It's unclear whether or not this Pokémon is sentient, but sometimes it can be observed behaving like a young girl. A life-form from another world, it was dubbed a UB and is thought to produce a strong neurotoxin.",
       "generation": "VII",
       "id": 793,
       "letter": "N",
@@ -14193,7 +14249,7 @@
       ]
     },
     {
-      "description": "A mysterious life-form called an Ultra Beast. Witnesses saw it pulverize a dump truck with a single punch. Although it’s alien to this world and a danger here, it’s apparently a common organism in the world where it normally lives.",
+      "description": "A mysterious life-form called an Ultra Beast. Witnesses saw it pulverize a dump truck with a single punch. Although it's alien to this world and a danger here, it's apparently a common organism in the world where it normally lives.",
       "generation": "VII",
       "id": 794,
       "letter": "B",
@@ -14223,7 +14279,7 @@
       ]
     },
     {
-      "description": "It appeared from the Ultra Wormhole. It raided a power plant, so people think it energizes itself with electricity. Although it’s alien to this world and a danger here, it’s apparently a common organism in the world where it normally lives.",
+      "description": "It appeared from the Ultra Wormhole. It raided a power plant, so people think it energizes itself with electricity. Although it's alien to this world and a danger here, it's apparently a common organism in the world where it normally lives.",
       "generation": "VII",
       "id": 796,
       "letter": "X",
@@ -14253,7 +14309,7 @@
       ]
     },
     {
-      "description": "One of the Ultra Beast life-forms, it was observed cutting down a gigantic steel tower with one stroke of its blade. This Ultra Beast’s body, which is as thin as paper, is like a sharpened sword.",
+      "description": "One of the Ultra Beast life-forms, it was observed cutting down a gigantic steel tower with one stroke of its blade. This Ultra Beast's body, which is as thin as paper, is like a sharpened sword.",
       "generation": "VII",
       "id": 798,
       "letter": "K",
@@ -14268,7 +14324,7 @@
       ]
     },
     {
-      "description": "A dangerous Ultra Beast, it appears to be eating constantly, but for some reason its droppings have never been found. Although it’s alien to this world and a danger here, it’s apparently a common organism in the world where it normally lives.",
+      "description": "A dangerous Ultra Beast, it appears to be eating constantly, but for some reason its droppings have never been found. Although it's alien to this world and a danger here, it's apparently a common organism in the world where it normally lives.",
       "generation": "VII",
       "id": 799,
       "letter": "G",
@@ -14283,7 +14339,7 @@
       ]
     },
     {
-      "description": "Light is apparently the source of its energy. It has an extraordinarily vicious disposition and is constantly firing off laser beams. It looks somehow pained as it rages around in search of light, which serves as its energy. It’s apparently from another world.",
+      "description": "Light is apparently the source of its energy. It has an extraordinarily vicious disposition and is constantly firing off laser beams. It looks somehow pained as it rages around in search of light, which serves as its energy. It's apparently from another world.",
       "generation": "VII",
       "id": 800,
       "letter": "N",
@@ -14329,7 +14385,7 @@
       ]
     },
     {
-      "description": "It lurks in the shadows of others, copying their movements and powers. This Pokémon is craven and cowering. It slips into the shadows of others and mimics their powers and movements. As it improves, it becomes stronger than those it’s imitating.",
+      "description": "It lurks in the shadows of others, copying their movements and powers. This Pokémon is craven and cowering. It slips into the shadows of others and mimics their powers and movements. As it improves, it becomes stronger than those it's imitating.",
       "generation": "VII",
       "id": 802,
       "letter": "M",
