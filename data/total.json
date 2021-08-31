@@ -9915,7 +9915,7 @@
       ]
     },
     {
-      "description": "Males have plumage on their heads. They will never let themselves feel close to anyone other than their Trainers.  Males swing their head plumage to threaten opponents. The females' flying abilities surpass those of the males.",
+      "description": "Unfezant are exceptional fliers. The females are known for their stamina, while the males outclass them in terms of speed. This Pokémon is intelligent and intensely proud. People will sit up and take notice if you become the Trainer of one.",
       "generation": "V",
       "id": 521,
       "letter": "U",
@@ -9924,10 +9924,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Unfezant_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Unfezant are exceptional fliers. The females are known for their stamina, while the males outclass them in terms of speed. This Pokémon is intelligent and intensely proud. People will sit up and take notice if you become the Trainer of one. Males have plumage on their heads. They will never let themselves feel close to anyone other than their Trainers.  Males swing their head plumage to threaten opponents.",
           "image": "521-male.png",
           "vname": "Male"
         },
         {
+          "description": "Unfezant are exceptional fliers. The females are known for their stamina, while the males outclass them in terms of speed. This Pokémon is intelligent and intensely proud. People will sit up and take notice if you become the Trainer of one. Females of this species are very capable fliers, particularly notable for their stamina. They also take longer to adjust to people. The females' flying abilities surpass those of the males.",
           "image": "521-female.png",
           "vname": "Female"
         }
@@ -10431,10 +10433,13 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Darumaka_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "When it sleeps, it pulls its limbs into its body and its internal fire goes down to 1,100 degrees Fahrenheit.  Darumaka's droppings are hot, so people used to put them in their clothes to keep themselves warm.",
+          "generation": "V",
           "image": "554.png",
           "vname": ""
         },
         {
+          "description": "It lived in snowy areas for so long that its fire sac cooled off and atrophied. It now has an organ that generates cold instead.  The colder they get, the more energetic they are. They freeze their breath to make snowballs, using them as ammo for playful snowball fights.",
           "image": "554-galarian.png",
           "vname": "Galarian"
         }
@@ -10450,18 +10455,22 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Darmanitan_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Its internal fire burns at 2,500°F, making enough power that it can destroy a dump truck with one punch. When one is injured in a fierce battle, it hardens into a stone-like form. Then it meditates and sharpens its mind. The thick arms of this hot-blooded Pokémon can deliver punches capable of obliterating a dump truck.  This Pokémon's power level rises along with the temperature of its fire, which can reach 2,500 degrees Fahrenheit.",
           "image": "555-normal.png",
           "vname": "Normal Mode"
         },
         {
+          "description": "Its internal fire burns at 2,500°F, making enough power that it can destroy a dump truck with one punch. When one is injured in a fierce battle, it hardens into a stone-like form. Then it meditates and sharpens its mind. Through meditation, it calms its raging spirit and hones its psychic powers.  When wounded, it stops moving. It goes as still as stone to meditate, sharpening its mind and spirit.",
           "image": "555-zen.png",
           "vname": "Zen Mode"
         },
         {
+          "description": "Its internal fire burns at 2,500°F, making enough power that it can destroy a dump truck with one punch. When one is injured in a fierce battle, it hardens into a stone-like form. Then it meditates and sharpens its mind. On days when blizzards blow through, it comes down to where people live. It stashes food in the snowball on its head, taking it home for later.  Though it has a gentle disposition, it's also very strong. It will quickly freeze the snowball on its head before going for a headbutt.",
           "image": "555-galarian-normal.png",
           "vname": "Galarian Normal Mode"
         },
         {
+          "description": "Its internal fire burns at 2,500°F, making enough power that it can destroy a dump truck with one punch. When one is injured in a fierce battle, it hardens into a stone-like form. Then it meditates and sharpens its mind. Anger has reignited its atrophied flame sac. This Pokémon spews fire everywhere as it rampages indiscriminately.  Darmanitan takes this form when enraged. It won't stop spewing flames until its rage has settled, even if its body starts to melt.",
           "image": "555-galarian-zen.png",
           "vname": "Galarian Zen Mode"
         }
@@ -10567,10 +10576,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Yamask_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "It wanders through ruins by night, carrying a mask that's said to have been the face it had when it was still human.  The spirit of a person from a bygone age became this Pokémon. It rambles through ruins, searching for someone who knows its face.",
           "image": "562.png",
           "vname": ""
         },
         {
+          "description": "A clay slab with cursed engravings took possession of a Yamask. The slab is said to be absorbing the Yamask's dark power.  It's said that this Pokémon was formed when an ancient clay tablet was drawn to a vengeful spirit.",
           "image": "562-galarian.png",
           "vname": "Galarian"
         }
@@ -10676,10 +10687,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Garbodor_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "This Pokémon eats trash, which turns into poison inside its body. The main component of the poison depends on what sort of trash was eaten.  The toxic liquid it launches from its right arm is so virulent that it can kill a weakened creature instantly.",
           "image": "569.png",
           "vname": ""
         },
         {
+          "description": "Due to Gigantamax energy, this Pokémon's toxic gas has become much thicker, congealing into masses shaped like discarded toys.  It sprays toxic gas from its mouth and fingers. If the gas engulfs you, the toxins will seep in all the way down to your bones.",
           "image": "569-gigantamax.png",
           "vname": "Gigantamax"
         }
@@ -10938,7 +10951,7 @@
       ]
     },
     {
-      "description": "They migrate according to the seasons, so some people call Sawsbuck the harbingers of spring.  They migrate according to the seasons. People can tell the season by looking at Sawsbuck's horns.",
+      "description": "They migrate according to the seasons, so some people call Sawsbuck the harbingers of spring.  They migrate according to the seasons. People can tell the season by looking at Sawsbuck's horns. The plants growing on its horns change according to the season. The leaders of the herd possess magnificent horns.",
       "generation": "V",
       "id": 586,
       "letter": "S",
@@ -11049,10 +11062,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Frillish_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "If its veil-like arms stun and wrap a foe, that foe will be dragged miles below the surface, never to return.  They paralyze prey with poison, then drag them down to their lairs, five miles below the surface. Legend has it that the residents of a sunken ancient city changed into these Pokémon.",
           "image": "592-male.png",
           "vname": "Male"
         },
         {
+          "description": "If its veil-like arms stun and wrap a foe, that foe will be dragged miles below the surface, never to return.  They paralyze prey with poison, then drag them down to their lairs, five miles below the surface. Its thin, veillike arms have tens of thousands of poisonous stingers. Females have slightly longer stingers.",
           "image": "592-female.png",
           "vname": "Female"
         }
@@ -11068,10 +11083,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Jellicent_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "The fate of the ships and crew that wander into Jellicent's habitat: all sunken, all lost, all vanished.  Its body is mostly seawater. It's said there's a castle of ships Jellicent have sunk on the seafloor. Whenever a full moon hangs in the night sky, schools of Jellicent gather near the surface of the sea, waiting for their prey to appear.",
           "image": "593-male.png",
           "vname": "Male"
         },
         {
+          "description": "The fate of the ships and crew that wander into Jellicent's habitat: all sunken, all lost, all vanished.  Its body is mostly seawater. It's said there's a castle of ships Jellicent have sunk on the seafloor. The crown on its head gets bigger and bigger as it absorbs more and more of the life-force of other creatures.",
           "image": "593-female.png",
           "vname": "Female"
         }
@@ -11447,10 +11464,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Stunfisk_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "It conceals itself in the mud of the seashore. Then it waits. When prey touch it, it delivers a jolt of electricity.  Its skin is very hard, so it is unhurt even if stepped on by sumo wrestlers. It smiles when transmitting electricity. Thanks to bacteria that lived in the mud flats with it, this Pokémon developed the organs it uses to generate electricity.",
           "image": "618.png",
           "vname": ""
         },
         {
+          "description": "It conceals itself in the mud of the seashore. Then it waits. When prey touch it, it delivers a jolt of electricity.  Its skin is very hard, so it is unhurt even if stepped on by sumo wrestlers. It smiles when transmitting electricity. Living in mud with a high iron content has given it a strong steel body.  Its conspicuous lips lure prey in as it lies in wait in the mud. When prey gets close, Stunfisk clamps its jagged steel fins down on them.",
           "image": "618-galarian.png",
           "vname": "Galarian"
         }
@@ -11787,7 +11806,7 @@
       ]
     },
     {
-      "description": "The lower half of its body is wrapped in a cloud of energy. It zooms through the sky at 200 mph.",
+      "description": "Tornadus expels massive energy from its tail, causing severe storms. Its power is great enough to blow houses away. The lower half of its body is wrapped in a cloud of energy. It zooms through the sky at 200 mph. In every direction it flies, creating winds so powerful, they blow everything away.",
       "generation": "V",
       "id": 641,
       "letter": "T",
@@ -11806,7 +11825,7 @@
       ]
     },
     {
-      "description": "The spikes on its tail discharge immense bolts of lightning. It flies around the Unova region firing off lightning bolts.",
+      "description": "Countless charred remains mar the landscape of places through which Thundurus has passed. The spikes on its tail discharge immense bolts of lightning. It flies around the Unova region firing off lightning bolts.  As it flies around, it shoots lightning all over the place and causes forest fires. It is therefore disliked.",
       "generation": "V",
       "id": 642,
       "letter": "T",
@@ -11855,7 +11874,7 @@
       ]
     },
     {
-      "description": "Lands visited by Landorus grant such bountiful crops that it has been hailed as “The Guardian of the Fields.”",
+      "description": "Lands visited by Landorus grant such bountiful crops that it has been hailed as “The Guardian of the Fields.” From the forces of lightning and wind, it creates energy to give nutrients to the soil and make the land abundant.",
       "generation": "V",
       "id": 645,
       "letter": "L",
@@ -11883,14 +11902,17 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Kyurem_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "This legendary ice Pokémon waits for a hero to fill in the missing parts of its body with truth or ideals. It generates a powerful, freezing energy inside itself, but its body became frozen when the energy leaked out. Dwelling within it is a power even greater than that of Reshiram or Zekrom, but the extreme cold keeps that power bound.  It appears that this Pokémon uses its powers over ice to freeze its own body in order to stabilize its cellular structure.",
           "image": "646.png",
           "vname": ""
         },
         {
+          "description": "This legendary ice Pokémon waits for a hero to fill in the missing parts of its body with truth or ideals. It generates a powerful, freezing energy inside itself, but its body became frozen when the energy leaked out. The sameness of Reshiram's and Kyurem's genes allowed Kyurem to absorb Reshiram. Kyurem can now use the power of both fire and ice.  It has foreseen that a world of truth will arrive for people and Pokémon. It strives to protect that future.",
           "image": "646-white.png",
           "vname": "White"
         },
         {
+          "description": "This legendary ice Pokémon waits for a hero to fill in the missing parts of its body with truth or ideals. It generates a powerful, freezing energy inside itself, but its body became frozen when the energy leaked out. The sameness of Zekrom's and Kyurem's genes allowed Kyurem to absorb Zekrom. Kyurem can now use the power of both electricity and ice. It's said that this Pokémon battles in order to protect the ideal world that will exist in the future for people and Pokémon.",
           "image": "646-black.png",
           "vname": "Black"
         }
@@ -11906,17 +11928,19 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Keldeo_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "It crosses the world, running over the surfaces of oceans and rivers. It appears at scenic waterfronts. Cobalion, Terrakion, and Virizion taught this Pokémon how to fight. It dashes across the world, seeking more opportunities to further its training.  They say that Keldeo must survive harsh battles and fully develop the horn on its forehead before this Pokémon's true power will awaken.",
           "image": "647-ordinary.png",
           "vname": "Ordinary Form"
         },
         {
+          "description": "It crosses the world, running over the surfaces of oceans and rivers. It appears at scenic waterfronts. Keldeo has strengthened its resolve for battle, filling its body with power and changing its form.  The power that lay hidden in its body now covers its horn, turning it into a sword that can slice through anything.",
           "image": "647-resolute.png",
           "vname": "Resolute Form"
         }
       ]
     },
     {
-      "description": "The melodies sung by Meloetta have the power to make Pokémon that hear them happy or sad.",
+      "description": "Its melodies are sung with a special vocalization method that can control the feelings of those who hear it. The melodies sung by Meloetta have the power to make Pokémon that hear them happy or sad. Many famous songs have been inspired by the melodies that Meloetta plays.",
       "generation": "V",
       "id": 648,
       "letter": "M",
