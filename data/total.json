@@ -8219,7 +8219,7 @@
       ]
     },
     {
-      "description": "Its appearance changes depending on where it evolved. The materials on hand become a part of its body.",
+      "description": "Its appearance changes depending on where it evolved. The materials on hand become a part of its body. When Burmy evolved, its cloak became a part of this Pokémon's body. The cloak is never shed.",
       "generation": "IV",
       "id": 413,
       "letter": "W",
@@ -8356,10 +8356,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Cherrim_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "As a bud, it barely moves. It sits still, placidly waiting for sunlight to appear.  Its folded petals are pretty tough. Bird Pokémon can peck at them all they want, and Cherrim won't be bothered at all.",
           "image": "421-overcast.png",
           "vname": "Overcast Form"
         },
         {
+          "description": "After absorbing plenty of sunlight, Cherrim takes this form. It's full of energy while it's like this, and its liveliness will go on until sundown.  The faint scent that emanates from its full blossom entices bug Pokémon to it.",
           "image": "421-sunshine.png",
           "vname": "Sunshine Form"
         }
@@ -8375,17 +8377,19 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Shellos_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Shellos lives in the sea and feasts on plankton. The lovelier the ocean where Shellos resides, the more vibrant its color becomes.  The difference in color from one Shellos to another seems to be a result of their diet. No large changes can be seen in their capabilities.  When it senses danger, it gushes a purple liquid. Some theories suggest this liquid is a greasy sweat induced by stress.  Scientists interested in its great regenerative capabilities are currently analyzing the materials from which its cells are made.",
           "image": "422-west.png",
           "vname": "West Sea"
         },
         {
+          "description": "For the most part, it makes its home along the seashore. Its color and form differ according to its habitat and the quality of its food.  Purple mucus sticks to the hands of anyone who touches it. Take care, as the substance is troublesome to wash off.  While they normally live in the sea, they can function on land, too, until their skin dries out.  When it senses danger, a purple liquid oozes out of it. The liquid is thought to be something like greasy sweat.",
           "image": "422-east.png",
           "vname": "East Sea"
         }
       ]
     },
     {
-      "description": "It apparently had a huge shell for protection in ancient times. It lives in shallow tidal pools.  When its natural enemy attacks, it oozes purple fluid and escapes.",
+      "description": "It apparently had a huge shell for protection in ancient times. It lives in shallow tidal pools.  When it's attacked, it gushes a purple liquid that's not poisonous but makes Gastrodon's meat bitter and inedible.",
       "generation": "IV",
       "id": 423,
       "letter": "G",
@@ -8473,10 +8477,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Lopunny_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "The ears appear to be delicate. If they are touched roughly, it kicks with its graceful legs.  Extremely cautious, it quickly bounds off when it senses danger. Lopunny regrows its coat twice a year. Mufflers and hats made from its fur are really warm.  It's notably wary and has a dislike of fighting, but at the same time, it can deliver powerful kicks with its lithe legs.",
           "image": "428.png",
           "vname": ""
         },
         {
+          "description": "The ears appear to be delicate. If they are touched roughly, it kicks with its graceful legs.  Extremely cautious, it quickly bounds off when it senses danger. It swings its ears like whips and strikes its enemies with them. It has an intensely combative disposition.  Mega Evolution awakens its combative instincts. It has shed any fur that got in the way of its attacks.",
           "image": "428-mega.png",
           "vname": "Mega Form"
         }
@@ -8732,10 +8738,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Garchomp_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "It can fly at speeds rivaling jet planes. It dives into flocks of bird Pokémon and gulps the entire flock down whole.  The protuberances on its head serve as sensors. It can even detect distant prey.  It flies at the speed of sound while searching for prey, and it has midair battles with Salamence as the two compete for food.  Its fine scales don't just reduce wind resistance—their sharp edges also cause injury to any opponent who attacks it.",
           "image": "445.png",
           "vname": ""
         },
         {
+          "description": "Excess energy melted its arms and wings, transforming them into giant scythes.  Its vaunted wings become scythes, sending it mad with rage. It swings its scythes wildly and slices the ground to pieces.  Its arms and wings melted into something like scythes. Mad with rage, it rampages on and on.  Its disposition is more vicious than before its Mega Evolution. Garchomp carves its opponents up with the scythes on both arms.",
           "image": "445-mega.png",
           "vname": "Mega Form"
         }
@@ -8781,10 +8789,12 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Lucario_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "Not only does it perceive auras, but it has also gained the power to control them. It employs them in battle.  They can detect the species of a living being—and its emotions—from over half a mile away. They control auras and hunt their prey in packs.  It concentrates its mental energy and fires off mysterious waves called auras, which can crush boulders of large size to dust.  Lucario reads its opponent's feelings with its aura waves. It finds out things it would rather not know, so it gets stressed out easily.",
           "image": "448.png",
           "vname": ""
         },
         {
+          "description": "Black streaks all over its body show where its auras and the energy of Mega Evolution intermingled and raced through it.  It readies itself to face its enemies by focusing its mental energies. Its fighting style can be summed up in a single word: heartless.  Its aura has expanded due to Mega Evolution. Governed only by its combative instincts, it strikes enemies without mercy.  Bathed in explosive energy, its combative instincts have awakened. For its enemies, it has no mercy whatsoever.",
           "image": "448-mega.png",
           "vname": "Mega Form"
         }
@@ -9193,7 +9203,7 @@
       ]
     },
     {
-      "description": "A master of courtesy and swordsmanship, it fights using extending swords on its elbows.  Because it can sense what its foe is thinking, its attacks burst out first, fast, and fierce.",
+      "description": "A master of courtesy and swordsmanship, it fights using extending swords on its elbows.  Because it can sense what its foe is thinking, its attacks burst out first, fast, and fierce. When protecting someone, it extends its elbows as if they were swords and fights savagely.",
       "generation": "IV",
       "id": 475,
       "letter": "G",
@@ -9266,26 +9276,32 @@
       "url": "https://bulbapedia.bulbagarden.net/wiki/Rotom_(Pok%C3%A9mon)",
       "variants": [
         {
+          "description": "One boy's invention led to the development of many different machines that take advantage of Rotom's unique capabilities.  With a body made of plasma, it can inhabit all sorts of machines. It loves to surprise others.",
           "image": "479-normal.png",
           "vname": "Normal Form"
         },
         {
+          "description": "This Rotom has possessed a convection microwave oven that uses a special motor. It also has a flair for manipulating flames.  This form of Rotom enjoys making mischief by turning up the heat. It will gleefully burn your favorite outfit.",
           "image": "479-heat.png",
           "vname": "Heat Form"
         },
         {
+          "description": "This form of Rotom enjoys coming up with water-based pranks. Be careful with it if you don't want your room flooded.  This Rotom has possessed a washing machine that uses a special motor. It blasts out water to get enemies to back down.",
           "image": "479-wash.png",
           "vname": "Wash Form"
         },
         {
+          "description": "Rotom assumes this form when it takes over a refrigerator powered by a special motor. It battles by spewing cold air.  When it's like this, Rotom likes to play pranks that are freezing cold. You may find it's turned the bath you just filled to solid ice!",
           "image": "479-frost.png",
           "vname": "Frost Form"
         },
         {
+          "description": "In this form, Rotom applies its new power over wind to its love of pranks. It will happily blow away any important documents it can find.  This Rotom has taken over a fan that has a special motor. Its gusts of wind blow its opponents away!",
           "image": "479-fan.png",
           "vname": "Fan Form"
         },
         {
+          "description": "This is Rotom after it's seized control of a lawn mower that has a special motor. As it mows down grass, it scatters the clippings everywhere.  In this form, Rotom focuses its antics on plants. Any flowers you were growing are going to get mowed down.",
           "image": "479-mow.png",
           "vname": "Mow Form"
         }
@@ -9397,7 +9413,7 @@
       ]
     },
     {
-      "description": "This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange.",
+      "description": "This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange. It was banished for its violence. It silently gazed upon the old world from the Distortion World.",
       "generation": "IV",
       "id": 487,
       "letter": "G",
@@ -9476,7 +9492,7 @@
       ]
     },
     {
-      "description": "It can dissolve toxins in the air to instantly transform ruined land into a lush field of flowers.",
+      "description": "It can dissolve toxins in the air to instantly transform ruined land into a lush field of flowers. The flowers all over its body burst into bloom if it is lovingly hugged and senses gratitude.",
       "generation": "IV",
       "id": 492,
       "letter": "S",
