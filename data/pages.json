@@ -1519,5 +1519,166 @@
     "letter": "A",
     "open": true,
     "startDate": "2022-08-30T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 176,
+    "letter": "B",
+    "open": true,
+    "startDate": "2022-09-13T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 177,
+    "letter": "C",
+    "open": true,
+    "startDate": "2022-09-27T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 178,
+    "letter": "D",
+    "open": true,
+    "startDate": "2022-10-11T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 179,
+    "letter": "E",
+    "open": true,
+    "startDate": "2022-10-25T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 180,
+    "letter": "F",
+    "open": true,
+    "startDate": "2022-11-07T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 181,
+    "letter": "G",
+    "open": true,
+    "startDate": "2022-11-21T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 182,
+    "letter": "H",
+    "open": true,
+    "startDate": "2022-12-05T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 183,
+    "letter": "J",
+    "open": true,
+    "startDate": "2022-12-19T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 184,
+    "letter": "K",
+    "open": true,
+    "startDate": "2023-01-02T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 185,
+    "letter": "L",
+    "open": true,
+    "startDate": "2023-01-16T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 186,
+    "letter": "M",
+    "open": true,
+    "startDate": "2023-01-30T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 187,
+    "letter": "N",
+    "open": true,
+    "startDate": "2023-02-13T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 188,
+    "letter": "O",
+    "open": true,
+    "startDate": "2023-02-27T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 189,
+    "letter": "P",
+    "open": true,
+    "startDate": "2023-03-13T00:00:00.000+01:00"
+  },
+  {
+    "generation": "i",
+    "id": 190,
+    "letter": "Q",
+    "open": true,
+    "startDate": "2023-03-28T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 191,
+    "letter": "R",
+    "open": true,
+    "startDate": "2023-04-11T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 192,
+    "letter": "S",
+    "open": true,
+    "startDate": "2023-04-25T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 193,
+    "letter": "T",
+    "open": true,
+    "startDate": "2023-05-09T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 194,
+    "letter": "U",
+    "open": true,
+    "startDate": "2023-05-23T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 195,
+    "letter": "V",
+    "open": true,
+    "startDate": "2023-06-06T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 196,
+    "letter": "W",
+    "open": true,
+    "startDate": "2023-06-20T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 197,
+    "letter": "X",
+    "open": true,
+    "startDate": "2023-07-04T00:00:00.000+02:00"
+  },
+  {
+    "generation": "i",
+    "id": 198,
+    "letter": "Z",
+    "open": true,
+    "startDate": "2023-07-18T00:00:00.000+02:00"
   }
 ]
