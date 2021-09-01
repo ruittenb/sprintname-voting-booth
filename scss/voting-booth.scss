@@ -135,7 +135,7 @@ span.button.lock-button {
 
 .button.show-voters,
 .button.show-rankings {
-    width: 125px;
+    width: 82px;
 }
 
 button.user-button {
@@ -756,12 +756,19 @@ button.user-button.current,
     /* box-shadow: 5px 10px 8px #888; */
     position: fixed;
     z-index: 60;
-    width: 250px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     max-height: 90vh;
     overflow-y: auto;
+}
+
+.voters-table-wrapper,
+.rankings-table-wrapper {
+    width: 250px;
+}
+.copyright-table-wrapper {
+    width: 350px;
 }
 
 .voters-table,

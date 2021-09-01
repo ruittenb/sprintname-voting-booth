@@ -390,7 +390,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
                 ]
             , href showVotersHash
             ]
-            [ text "Show Voters" ]
+            [ text "Voters" ]
         , calculationButtonElement
             [ classList
                 [ ( "show-rankings", True )
@@ -398,7 +398,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
                 ]
             , href showRankingsHash
             ]
-            [ text "Show Rankings" ]
+            [ text "Rankings" ]
         , copyrightButton currentSubPage
         , homeButton
         , lockButton route currentPage isCurrentUserAdmin
@@ -528,8 +528,8 @@ copyrightTable state =
                     [ class "copyright-table" ]
                     [ p
                         []
-                        [ text "Pokémon © 1995-2021 Nintendo/Creatures Inc./GAME FREAK inc. "
-                        , text "TM, ® and Pokémon character names are trademarks of Nintendo."
+                        [ text "Pokémon © 1995-2021 Nintendo/Creatures Inc./Game Freak Inc. "
+                        , text "Pokémon and Pokémon character names are trademarks of Nintendo."
                         ]
                     , p
                         []
@@ -544,12 +544,14 @@ copyrightTable state =
                         []
                         [ text "Fakemon presented here:"
                         , br [] []
-                        , text "© ReallyDarkandWindie"
-                        , br [] []
+                        , text "© ReallyDarkandWindie "
                         , a
                             [ href "https://www.deviantart.com/reallydarkandwindie/gallery"
                             , target "_blank"
                             ] [ text "DeviantArt" ]
+                        , br [] []
+                        , text " Fakemon descriptions: "
+                        , img [ src "icons/creativecommons.png" ] []
                         , text " "
                         , a
                             [ href "https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki"
