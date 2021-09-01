@@ -1,5 +1,5 @@
 
-$theme: 'lilac';
+$theme: 'olive';
 
 $lilac-light   : #f8f0f8;
 $lilac-medium  : #f0daf0;
@@ -101,6 +101,7 @@ button.user-button,
 .button.letter-button,
 .button.generation-button,
 .button.maintenance-button,
+.button.copyright-button,
 .button.home-button,
 .button.lock-button {
     height: 30px;
@@ -115,6 +116,7 @@ button.user-button,
 .button.letter-button,
 .button.generation-button,
 .button.maintenance-button,
+.button.copyright-button,
 .button.home-button,
 .button.lock-button {
     background-color: white;
@@ -146,6 +148,12 @@ button.user-button {
 
 .button.maintenance-button.maintenance-mode {
     background-color: $theme-main;
+}
+
+.button.copyright-button {
+    background-image: url(icons/copyright.png);
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .button.home-button {
@@ -183,6 +191,7 @@ button.user-button,
 .button.home-button,
 .button.lock-button,
 .button.maintenance-button,
+.button.copyright-button,
 .button.generation-button,
 .button.letter-button {
     width: 39px;
@@ -204,6 +213,7 @@ a.button.lock-button:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
 .button.maintenance-button:hover,
+.button.copyright-button:hover,
 .poketile .button:hover {
     background-color: $theme-light;
 }
@@ -213,6 +223,10 @@ a.button.show-voters:active,
 a.button.show-rankings:active,
 a.button.home-button:active,
 a.button.lock-button:active,
+a.button.generation-button:active,
+a.button.letter-button:active,
+a.button.maintenance-button:active,
+a.button.copyright-button:active,
 .poketile .button:active {
     background-color: $theme-medium;
 }
@@ -734,7 +748,8 @@ button.user-button.current,
 }
 
 .voters-table-wrapper,
-.rankings-table-wrapper {
+.rankings-table-wrapper,
+.copyright-table-wrapper {
     margin: 0 auto;
     border: 1px solid black;
     background-color: white;
@@ -750,7 +765,8 @@ button.user-button.current,
 }
 
 .voters-table,
-.rankings-table {
+.rankings-table,
+.copyright-table {
     border-width: 1px 0;
     border-top-style: solid;
     border-bottom-style: solid;

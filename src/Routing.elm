@@ -7,6 +7,7 @@ module Routing
         , createBrowsePath
         , createShowRankingsPath
         , createShowVotersPath
+        , createShowCopyrightPath
         )
 
 import Char
@@ -38,6 +39,10 @@ showRankingsPathSegment =
     "show-rankings"
 
 
+showCopyrightPathSegment : String
+showCopyrightPathSegment =
+    "show-copyright"
+
 createDefaultPath : String
 createDefaultPath =
     "#/"
@@ -63,6 +68,11 @@ createShowVotersPath gen letter =
     (createBrowsePath gen letter) ++ "/" ++ showVotersPathSegment
 
 
+createShowCopyrightPath : String -> Char -> String
+createShowCopyrightPath gen letter =
+    (createBrowsePath gen letter) ++ "/" ++ showCopyrightPathSegment
+
+
 createBrowseModePath : BrowseMode -> String -> Char -> String
 createBrowseModePath mode gen letter =
     case mode of
@@ -74,6 +84,9 @@ createBrowseModePath mode gen letter =
 
         WithPokemonRankings ->
             createShowRankingsPath gen letter
+
+        WithCopyright ->
+            createShowCopyrightPath gen letter
 
 
 unwrap : a -> (SubPage -> a) -> Route -> a
@@ -135,6 +148,7 @@ routeParser =
     UrlParser.oneOf
         [ UrlParser.map (Browse WithPeopleVotes) (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
         , UrlParser.map (Browse WithPokemonRankings) (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
+        , UrlParser.map (Browse WithCopyright) (s browsePathSegment </> subPageParser </> s showCopyrightPathSegment)
         , UrlParser.map (Browse Freely) (s browsePathSegment </> subPageParser)
         , UrlParser.map Search (s searchPathSegment </> string)
         ]

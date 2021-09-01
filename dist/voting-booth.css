@@ -52,6 +52,7 @@ button.user-button,
 .button.letter-button,
 .button.generation-button,
 .button.maintenance-button,
+.button.copyright-button,
 .button.home-button,
 .button.lock-button {
   height: 30px;
@@ -65,6 +66,7 @@ button.user-button,
 .button.letter-button,
 .button.generation-button,
 .button.maintenance-button,
+.button.copyright-button,
 .button.home-button,
 .button.lock-button {
   background-color: white;
@@ -90,7 +92,12 @@ button.user-button {
   background: white url(icons/maintenance.png) no-repeat center center; }
 
 .button.maintenance-button.maintenance-mode {
-  background-color: #e6c6e6; }
+  background-color: #c2d699; }
+
+.button.copyright-button {
+  background-image: url(icons/copyright.png);
+  background-repeat: no-repeat;
+  background-position: center center; }
 
 .button.home-button {
   background-image: url(icons/house.png);
@@ -122,6 +129,7 @@ button.user-button,
 .button.home-button,
 .button.lock-button,
 .button.maintenance-button,
+.button.copyright-button,
 .button.generation-button,
 .button.letter-button {
   width: 39px;
@@ -139,16 +147,21 @@ a.button.lock-button:hover,
 .button.generation-button:hover,
 .button.letter-button:hover,
 .button.maintenance-button:hover,
+.button.copyright-button:hover,
 .poketile .button:hover {
-  background-color: #f8f0f8; }
+  background-color: #ebf0e0; }
 
 button.user-button:active,
 a.button.show-voters:active,
 a.button.show-rankings:active,
 a.button.home-button:active,
 a.button.lock-button:active,
+a.button.generation-button:active,
+a.button.letter-button:active,
+a.button.maintenance-button:active,
+a.button.copyright-button:active,
 .poketile .button:active {
-  background-color: #f0daf0; }
+  background-color: #dfe9ca; }
 
 #user-name.current,
 button.user-button.current,
@@ -156,7 +169,7 @@ button.user-button.current,
 .button.generation-button.current,
 .button.generation-button.current.transparent,
 .button.generation-button.current.transparent:hover {
-  background-color: #e6c6e6;
+  background-color: #c2d699;
   opacity: 1; }
 
 .button.letter-button.disabled,
@@ -167,7 +180,7 @@ button.user-button.current,
 
 .button.letter-button.disabled.current,
 .button.generation-button.disabled.current {
-  background-color: #f0daf0; }
+  background-color: #dfe9ca; }
 
 .button.generation-button.transparent {
   opacity: 0.01; }
@@ -188,7 +201,7 @@ button.user-button.current,
   .button.generation-button.transparent {
     display: none; } }
 .button.generation-button.error {
-  background: #e6c6e6 url(images/loading-error.png) 0 0 repeat; }
+  background: #c2d699 url(images/loading-error.png) 0 0 repeat; }
 
 /**
  * CSS tooltips on buttons
@@ -374,11 +387,11 @@ button.user-button.current,
   border: 1px solid black;
   font-size: 14px; }
   #search-box:hover, #search-box:focus {
-    background-color: #f8f0f8; }
+    background-color: #ebf0e0; }
   #search-box:focus {
     outline: none; }
   #search-box.current {
-    background-color: #e6c6e6; }
+    background-color: #c2d699; }
 
 @media (max-width: 455px) {
   #search-box {
@@ -417,7 +430,7 @@ button.user-button.current,
   text-align: center;
   margin: 10px 10px 0 0; }
   .poketile.winner {
-    background-image: linear-gradient(135deg, #e6c6e6 17%, white 17%, white 83%, #e6c6e6 83%);
+    background-image: linear-gradient(135deg, #c2d699 17%, white 17%, white 83%, #c2d699 83%);
     /* diagonally equally segmented theme-white-theme */ }
   .poketile.winner::after {
     background: url(images/ribbon.png) no-repeat;
@@ -485,7 +498,7 @@ button.user-button.current,
     line-height: 26px;
     height: 26px; }
   .rating-nodes > span.highlight {
-    text-shadow: 0 0 12px #d02ad0;
+    text-shadow: 0 0 12px #9bd623;
     /*
     border-top: 2px solid black;
     border-bottom: 2px solid black;
@@ -579,7 +592,8 @@ button.user-button.current,
   opacity: 0.5; }
 
 .voters-table-wrapper,
-.rankings-table-wrapper {
+.rankings-table-wrapper,
+.copyright-table-wrapper {
   margin: 0 auto;
   border: 1px solid black;
   background-color: white;
@@ -594,7 +608,8 @@ button.user-button.current,
   overflow-y: auto; }
 
 .voters-table,
-.rankings-table {
+.rankings-table,
+.copyright-table {
   border-width: 1px 0;
   border-top-style: solid;
   border-bottom-style: solid;
@@ -604,10 +619,12 @@ button.user-button.current,
   margin: 20px auto;
   width: 80%; }
   .voters-table tr:nth-child(even),
-  .rankings-table tr:nth-child(even) {
+  .rankings-table tr:nth-child(even),
+  .copyright-table tr:nth-child(even) {
     background-color: #eee; }
   .voters-table td,
-  .rankings-table td {
+  .rankings-table td,
+  .copyright-table td {
     padding: 1px 10px;
     white-space: nowrap; }
 
@@ -622,13 +639,13 @@ button.user-button.current,
   line-height: 16px;
   width: 40px; }
 .rankings-table .elect-button.winner {
-  background-color: #e6c6e6; }
+  background-color: #c2d699; }
 .rankings-table .elect-button:hover {
-  background-color: #f8f0f8; }
+  background-color: #ebf0e0; }
 .rankings-table .elect-button.winner:hover {
-  background-color: #f0daf0; }
+  background-color: #dfe9ca; }
 .rankings-table tr.winner-rating {
-  color: #b768b7;
+  color: #7e9550;
   font-weight: bold; }
 
 .voters-table tr.complete {

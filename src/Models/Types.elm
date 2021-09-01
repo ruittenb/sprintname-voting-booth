@@ -32,6 +32,7 @@ type BrowseMode
     = Freely
     | WithPeopleVotes
     | WithPokemonRankings
+    | WithCopyright
 
 
 type Route

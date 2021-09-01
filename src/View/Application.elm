@@ -26,6 +26,7 @@ import Routing
         , createDefaultPath
         , createShowRankingsPath
         , createShowVotersPath
+        , createShowCopyrightPath
         )
 import Time exposing (Time, second)
 import View.Calculations
@@ -286,6 +287,23 @@ maintenanceButton remoteSettings isCurrentUserAdmin =
         placeHolder
 
 
+copyrightButton : Maybe SubPage -> Html Msg
+copyrightButton currentSubPage =
+    let 
+        showCopyrightHash =
+            currentSubPage
+            |> Maybe.map (\subPage -> createShowCopyrightPath subPage.generation subPage.letter)
+            |> Maybe.withDefault createDefaultPath
+    in
+    a 
+        [ classList
+            [ ( "button", True )
+            , ( "copyright-button", True )
+            ]
+            , href showCopyrightHash
+        ]
+        []
+
 homeButton : Html Msg
 homeButton =
     let
@@ -381,6 +399,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
             , href showRankingsHash
             ]
             [ text "Show Rankings" ]
+        , copyrightButton currentSubPage
         , homeButton
         , lockButton route currentPage isCurrentUserAdmin
         ]
@@ -499,6 +518,51 @@ votersTable state =
             span [] []
 
 
+copyrightTable : ApplicationState -> Html Msg
+copyrightTable state =
+    case state.currentRoute of
+        Browse WithCopyright _ ->
+            div
+                [ class "copyright-table-wrapper" ]
+                [ div
+                    [ class "copyright-table" ]
+                    [ p
+                        []
+                        [ text "Pokémon © 1995-2021 Nintendo/Creatures Inc./GAME FREAK inc. "
+                        , text "TM, ® and Pokémon character names are trademarks of Nintendo."
+                        ]
+                    , p
+                        []
+                        [ text "The Original Pokémon Wiki: "
+                        , a
+                            [ href "https://bulbapedia.bulbagarden.net/wiki/Main_Page"
+                            , target "_blank"
+                            ]
+                            [ text "Bulbapedia" ]
+                        ]
+                    , p
+                        []
+                        [ text "Fakemon presented here:"
+                        , br [] []
+                        , text "© ReallyDarkandWindie"
+                        , br [] []
+                        , a
+                            [ href "https://www.deviantart.com/reallydarkandwindie/gallery"
+                            , target "_blank"
+                            ] [ text "DeviantArt" ]
+                        , text " "
+                        , a
+                            [ href "https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki"
+                            , target "_blank"
+                            ] [ text "Fakemon Wiki" ]
+                        ]
+                    ]
+                ]
+
+        _ ->
+            span [] []
+
+
 tableMask : Route -> Html Msg
 tableMask route =
     let
@@ -514,6 +578,9 @@ tableMask route =
             maskDiv
 
         Browse WithPeopleVotes _ ->
+            maskDiv
+
+        Browse WithCopyright _ ->
             maskDiv
 
         _ ->
@@ -560,6 +627,8 @@ functionPane state =
             state
             currentPage
             isCurrentUserAdmin
+        , copyrightTable
+            state
         ]
 
 
