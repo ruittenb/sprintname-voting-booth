@@ -528,26 +528,29 @@ copyrightTable state =
                     [ class "copyright-table" ]
                     [ p
                         []
-                        [ text "Pokémon © 1995-2021 Nintendo/Creatures Inc./Game Freak Inc. "
+                        [ text "Pokémon © 1995-2021 Nintendo/ Creatures Inc./ Game Freak Inc. "
                         , text "Pokémon and Pokémon character names are trademarks of Nintendo."
                         ]
                     , p
                         []
-                        [ text "The Original Pokémon Wiki: "
+                        [ text "Pokémon descriptions from "
                         , a
                             [ href "https://bulbapedia.bulbagarden.net/wiki/Main_Page"
                             , target "_blank"
+                            , rel "noopener"
                             ]
                             [ text "Bulbapedia" ]
+                        , text ", The Original Pokémon Wiki"
                         ]
                     , p
                         []
-                        [ text "Fakemon presented here:"
+                        [ text "The Fakemon presented here are"
                         , br [] []
                         , text "© ReallyDarkandWindie "
                         , a
                             [ href "https://www.deviantart.com/reallydarkandwindie/gallery"
                             , target "_blank"
+                            , rel "noopener"
                             ] [ text "DeviantArt" ]
                         , br [] []
                         , text " Fakemon descriptions: "
@@ -556,6 +559,7 @@ copyrightTable state =
                         , a
                             [ href "https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki"
                             , target "_blank"
+                            , rel "noopener"
                             ] [ text "Fakemon Wiki" ]
                         ]
                     ]
