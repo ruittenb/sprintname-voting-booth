@@ -528,6 +528,18 @@ copyrightTable state =
                     [ class "copyright-table" ]
                     [ p
                         []
+                        [ text "Pokémon Sprint Name "
+                        , a
+                            [ href "https://github.com/ruittenb/sprintname-voting-booth"
+                            , target "_blank"
+                            , rel "noopener"
+                            ]
+                            [ text "Voting Booth" ]
+                        , br [] []
+                        , text " © 2017-2021 René Uittenbogaard"
+                        ]
+                    , p
+                        []
                         [ text "Pokémon © 1995-2021 Nintendo/ Creatures Inc./ Game Freak Inc. "
                         , text "Pokémon and Pokémon character names are trademarks of Nintendo."
                         ]

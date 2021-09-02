@@ -10,8 +10,8 @@ It consists of a simple Node.js web server and an Elm SPA.
 
 For development:
 
-- [Install fswatch](brew install fswatch)
-- [Install jq](brew install jq)
+- Install fswatch. `brew install fswatch`
+- Install jq. `brew install jq`
 
 Next, install the server dependencies, by running
 
@@ -57,8 +57,8 @@ make docker-start
 
 ## Sources:
 
-- [Pokémon](https://bulbapedia.bulbagarden.net/wiki/Main_Page).
-- Fakemon by ReallyDarkAndWindie
+- [Pokémon](https://bulbapedia.bulbagarden.net/wiki/Main_Page) © Nintendo
+- Fakemon © ReallyDarkAndWindie
   - [DeviantArt](https://www.deviantart.com/reallydarkandwindie/gallery)
   - [Wiki](https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki)
 
