@@ -1,5 +1,6 @@
 RDAW=rdaw
 THUMBSDIR = thumbs
+IMGSIZE=475x475
 PFULLSIZE := $(wildcard *.png)
 PTHUMBNAILS := $(addprefix $(THUMBSDIR)/,$(PFULLSIZE))
 RFULLSIZE := $(wildcard $(RDAW)/*.png)
@@ -26,11 +27,17 @@ $(THUMBSDIR)/%.png: %.png
 $(THUMBSDIR)/$(RDAW)/%.png: $(RDAW)/%.png
 	convert $< -resize 120x120 $@
 
-#.PHONY: to-475
-#to-475: ## resize all images to 475x475
-#	for i in *png; do convert $$i -resize 475x475 -background transparent -gravity center -extent 475x475 new-$$i; done
+.PHONY: resize-1
+resize-1: ## resize all images to 475x475
+	for i in $(RFULLSIZE); do \
+		echo considering "$$i..."; \
+		if ! identify "$$i" | grep -sq "$(IMGSIZE)"; then \
+			echo resizing "$$i..."; \
+			convert "$$i" -resize $(IMGSIZE) -background transparent -gravity center -extent $(IMGSIZE) $$i-new; \
+		fi; \
+	done
 
-.PHONY: replace-475
-replace-475:
-	for i in new*png; do mv $$i $${i#new-}; done
+.PHONY: resize-2
+resize-2:
+	for i in $(RDAW)/*.png-new; do mv $$i $${i%-new}; done
 

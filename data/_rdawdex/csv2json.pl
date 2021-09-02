@@ -8,8 +8,9 @@ use IO::Handle;
 use Try::Catch;
 use Text::CSV qw(csv);
 
-Readonly my $DATAFILE => 'fakemon.csv';
-Readonly my $URL      => 'https://darkandwindiefakemon.fandom.com/wiki/';
+Readonly my $DATAFILE  => 'rdawdex-gen2.csv';
+Readonly my $URL       => 'https://darkandwindiefakemon.fandom.com/wiki/';
+Readonly my $RDAWBLOCK => 2000;
 
 Readonly my $NUM    => 0;
 Readonly my $GEN    => 1;
@@ -31,8 +32,8 @@ try {
         my $num = 0 + $_->[$NUM];
         my $record = {
             description => $_->[$DESC],
-            generation => 0 + $_->[$GEN],
-            id => $num,
+            generation => $_->[$GEN],
+            id => $num + $RDAWBLOCK,
             letter => $_->[$LETTER],
             name => $_->[$NAME],
             number => $num,

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-num=0
+num=198
 subdir=desc
+test -d $subdir || mkdir $subdir
 
-cat names-gen1.txt | while read name; do
-	let num++
+cat names-gen2.txt | while read name; do
 	wget -c https://darkandwindiefakemon.fandom.com/wiki/$name -O - | \
 		awk '
 			/id="Pokédex_entry"/       { inside = 1 }
@@ -13,7 +13,8 @@ cat names-gen1.txt | while read name; do
 			inside == 2                { sub(/^<[^>]*>/, ""); buffer = buffer " " $0 }
 			END                        { print buffer }
 		' > $subdir/$(printf "%04d-" $num)$name
+	let num++
 done
 
-cat $subdir/* > total-desc.txt
+cat $subdir/* > total-desc-gen2.txt
 
