@@ -1,3 +1,6 @@
+/* theme lilac */
+/* theme olive */
+/* status elements, tooltips etc. */
 * {
   padding: 0;
   margin: 0; }
@@ -429,9 +432,14 @@ button.user-button.current,
   border: 1px solid black;
   text-align: center;
   margin: 10px 10px 0 0; }
+  .poketile a[href],
+  .poketile a[href]:visited {
+    color: #506030; }
+  .poketile a[href]:active {
+    color: #9bd623; }
   .poketile.winner {
-    background-image: linear-gradient(135deg, #c2d699 17%, white 17%, white 83%, #c2d699 83%);
-    /* diagonally equally segmented theme-white-theme */ }
+    /* diagonally equally segmented theme-white-theme */
+    background-image: linear-gradient(135deg, #c2d699 17%, white 17%, white 83%, #c2d699 83%); }
   .poketile.winner::after {
     background: url(images/ribbon.png) no-repeat;
     content: '';
@@ -660,5 +668,11 @@ button.user-button.current,
   color: #bbbb00; }
 .voters-table tr.absent {
   color: #ee0000; }
+
+.copyright-table a[href],
+.copyright-table a[href]:visited {
+  color: #7e9550; }
+.copyright-table a[href]:active {
+  color: #9bd623; }
 
 /* vim: set sw=4 ts=4 et list: */

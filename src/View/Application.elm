@@ -528,13 +528,12 @@ copyrightTable state =
                     [ class "copyright-table" ]
                     [ p
                         []
-                        [ text "Pokémon Sprint Name "
-                        , a
+                        [ a
                             [ href "https://github.com/ruittenb/sprintname-voting-booth"
                             , target "_blank"
                             , rel "noopener"
                             ]
-                            [ text "Voting Booth" ]
+                            [ text "Pokémon Sprint Name Voting Booth" ]
                         , br [] []
                         , text " © 2017-2021 René Uittenbogaard"
                         ]
