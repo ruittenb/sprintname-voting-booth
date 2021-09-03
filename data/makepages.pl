@@ -6,19 +6,20 @@ use POSIX qw(mktime strftime);
 
 use constant TWO_WEEKS => 60 * 60 * 24 * 14; # Get ready for a surprise!
 
-my ($sec, $min, $hour, $mday, $mon, $year) = (0, 0, 0, 30, 7, 122); # 2022-08-30
+my ($sec, $min, $hour, $mday, $mon, $year) = (0, 0, 0, 25, 6, 123); # 2023-07-04T00:00:00.000+02:00
 my $date = mktime($sec, $min, $hour, $mday, $mon, $year);
 
-my $id = 175;
+my $id = 199;
+my $generation = "ii";
 
 for ("A" .. "Z") {
-    next if /I/ || /Y/;
+    next if /U/;
 
 	my $datestr = strftime("%Y-%m-%dT00:00:00.000+02:00", localtime $date);
     print <<"    _end_";
       },
       {
-        "generation": "i",
+        "generation": "$generation",
         "id": $id,
         "letter": "$_",
         "open": true,
