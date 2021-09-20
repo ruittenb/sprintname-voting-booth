@@ -6217,7 +6217,7 @@
     ]
   },
   {
-    "description": "Through Primal Reversion and with nature's full power, it will take back its true form. It can cause magma to erupt and expand the landmass of the world.  Groudon is said to be the personification of the land itself. Legends tell of its many clashes against Kyogre, as each sought to gain the power of nature.",
+    "description": "Groudon is said to be the personification of the land itself. Legends tell of its many clashes against Kyogre, as each sought to gain the power of nature.  Through Primal Reversion and with nature's full power, it will take back its true form. It can cause magma to erupt and expand the landmass of the world.",
     "generation": "III",
     "id": 383,
     "letter": "G",
@@ -10818,7 +10818,23 @@
     "variants": [
       {
         "image": "670-red.png",
-        "vname": ""
+        "vname": "Red Flower"
+      },
+      {
+        "image": "670-orange.png",
+        "vname": "Orange Flower"
+      },
+      {
+        "image": "670-blue.png",
+        "vname": "Blue Flower"
+      },
+      {
+        "image": "670-yellow.png",
+        "vname": "Yellow Flower"
+      },
+      {
+        "image": "670-white.png",
+        "vname": "White Flower"
       }
     ]
   },
@@ -10833,7 +10849,23 @@
     "variants": [
       {
         "image": "671-red.png",
-        "vname": ""
+        "vname": "Red Flower"
+      },
+      {
+        "image": "671-orange.png",
+        "vname": "Orange Flower"
+      },
+      {
+        "image": "671-blue.png",
+        "vname": "Blue Flower"
+      },
+      {
+        "image": "671-yellow.png",
+        "vname": "Yellow Flower"
+      },
+      {
+        "image": "671-white.png",
+        "vname": "White Flower"
       }
     ]
   },
@@ -10909,6 +10941,42 @@
       {
         "image": "676.png",
         "vname": ""
+      },
+      {
+        "image": "676-heart.png",
+        "vname": "Heart Trim"
+      },
+      {
+        "image": "676-star.png",
+        "vname": "Star Trim"
+      },
+      {
+        "image": "676-diamond.png",
+        "vname": "Diamond Trim"
+      },
+      {
+        "image": "676-debutante.png",
+        "vname": "Debutante Trim"
+      },
+      {
+        "image": "676-matron.png",
+        "vname": "Matron Trim"
+      },
+      {
+        "image": "676-dandy.png",
+        "vname": "Dandy Trim"
+      },
+      {
+        "image": "676-la-reine.png",
+        "vname": "La Reine Trim"
+      },
+      {
+        "image": "676-kabuki.png",
+        "vname": "Kabuki Trim"
+      },
+      {
+        "image": "676-pharaoh.png",
+        "vname": "Pharaoh Trim"
       }
     ]
   },
@@ -12731,6 +12799,10 @@
       {
         "image": "791.png",
         "vname": ""
+      },
+      {
+        "image": "791-radiant-sun.png",
+        "vname": "Radiant Sun Phase"
       }
     ]
   },
@@ -12746,6 +12818,10 @@
       {
         "image": "792.png",
         "vname": ""
+      },
+      {
+        "image": "792-full-moon.png",
+        "vname": "Full Moon Phase"
       }
     ]
   },
@@ -12912,6 +12988,10 @@
       {
         "image": "802.png",
         "vname": ""
+      },
+      {
+        "image": "802-zenith.png",
+        "vname": "Zenith Form"
       }
     ]
   },
@@ -13617,6 +13697,14 @@
       {
         "image": "845.png",
         "vname": ""
+      },
+      {
+        "image": "845-gulping.png",
+        "vname": "Gulping"
+      },
+      {
+        "image": "845-gorging.png",
+        "vname": "Gorging"
       }
     ]
   },

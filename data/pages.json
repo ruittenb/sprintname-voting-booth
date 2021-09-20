@@ -1342,8 +1342,10 @@
     "generation": "VII",
     "id": 150,
     "letter": "W",
-    "open": true,
-    "startDate": "2021-09-14T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-09-14T00:00:00.000+02:00",
+    "winnerId": 746,
+    "winnerName": "Wishiwashi"
   },
   {
     "generation": "VII",
