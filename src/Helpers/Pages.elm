@@ -1,12 +1,12 @@
-module Helpers.Pages exposing (isPageLocked, getDefaultPageForToday, getCurrentPage, getWinner)
+module Helpers.Pages exposing (getCurrentPage, getDefaultPageForToday, getWinner, isPageLocked)
 
-import List
-import Maybe
 import Date exposing (Date)
 import Date.Extra exposing (toIsoString)
-import RemoteData exposing (WebData, RemoteData(..))
-import Models.Types exposing (..)
+import List
+import Maybe
 import Models.Pages exposing (..)
+import Models.Types exposing (..)
+import RemoteData exposing (RemoteData(..), WebData)
 
 
 getFirstOpenPage : RemotePages -> String -> Maybe Page
@@ -36,19 +36,25 @@ getDefaultPageForToday remotePages today =
         todayAsIsoString =
             toIsoString today
     in
-        getFirstOpenPage remotePages todayAsIsoString
+    getFirstOpenPage remotePages todayAsIsoString
+
+
+-- in Search and Default mode, the view is always locked.
+-- in Browse mode: consider whether the current page is open
 
 
 isPageLocked : Route -> Maybe Page -> Bool
 isPageLocked route maybePage =
     case route of
         Browse _ _ ->
-            -- in Browse mode: consider whether the current page is open
-            Maybe.map (.open >> not) maybePage
+            maybePage
+                |> Maybe.map (.open >> not)
                 |> Maybe.withDefault True
 
-        _ ->
-            -- in Search and Default mode, the view is always locked
+        Search _ _ ->
+            True
+
+        Default ->
             True
 
 
@@ -74,13 +80,13 @@ getWinner page =
     page
         |> Maybe.andThen
             (\actualPage ->
-                (Maybe.map2
-                    (\name pokemonId -> -- TODO replace this function with PokeWinner constructor?
+                Maybe.map2
+                    (\name pokemonId ->
+                        -- TODO replace this function with PokeWinner constructor?
                         { name = name
                         , pokemonId = pokemonId
                         }
                     )
                     actualPage.winnerName
                     actualPage.winnerId
-                )
             )

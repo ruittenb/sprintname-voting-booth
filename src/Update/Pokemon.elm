@@ -14,7 +14,7 @@ import Constants exposing (..)
 import Models exposing (..)
 import Models.Types exposing (..)
 import Models.Pokemon exposing (..)
-import Routing exposing (createBrowsePath)
+import Routing exposing (createBrowseFreelyPath)
 import Msgs exposing (Msg)
 import Ports exposing (preloadImages)
 import Helpers
@@ -108,8 +108,8 @@ updateOnLoadPokedex oldState pokedex =
             |> updateStatusMessage
 
 
-updateSearchPokemon : ApplicationState -> String -> ( ApplicationState, Cmd Msg )
-updateSearchPokemon oldState query =
+updateSearchPokemon : ApplicationState -> SearchMode -> String -> ( ApplicationState, Cmd Msg )
+updateSearchPokemon oldState newSearchMode query =
     let
         newSubPage =
             oldState.subPage
@@ -117,17 +117,17 @@ updateSearchPokemon oldState query =
         newRoute =
             if query == "" then
                 newSubPage
-                    |> Maybe.map (Browse Freely)
+                    |> Maybe.map (Browse BFreely)
                     |> Maybe.withDefault Default
             else
-                Search query
+                Search newSearchMode query
 
         newCmd =
             if query == "" then
                 newSubPage
                     |> Maybe.map
                         (\actualSubPage ->
-                            createBrowsePath actualSubPage.generation actualSubPage.letter
+                            createBrowseFreelyPath actualSubPage.generation actualSubPage.letter
                                 |> modifyUrl
                         )
                     |> Maybe.withDefault Cmd.none

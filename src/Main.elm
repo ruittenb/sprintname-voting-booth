@@ -28,7 +28,7 @@ import Ports
         )
 import RemoteData exposing (RemoteData(..))
 import Result
-import Routing exposing (createBrowseModePath, parseLocation)
+import Routing exposing (createBrowsePath, parseLocation)
 import Time exposing (millisecond, second)
 import Update exposing (update)
 import View exposing (view)
@@ -61,11 +61,11 @@ init credentials location =
                 Browse mode subPage ->
                     let
                         urlString =
-                            createBrowseModePath mode subPage.generation subPage.letter
+                            createBrowsePath mode subPage.generation subPage.letter
                     in
                     ( Just subPage, "", newUrl urlString )
 
-                Search query ->
+                Search _ query ->
                     ( Nothing, query, getTodayTimeCmd )
 
                 Default ->

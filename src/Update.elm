@@ -12,7 +12,7 @@ import Models exposing (..)
 import Models.Pages exposing (RemotePages)
 import Models.Types exposing (..)
 import Msgs exposing (Msg(..))
-import Routing exposing (createSearchPath, createBrowsePath, createDefaultPath)
+import Routing exposing (createSearchFreelyPath, createBrowseFreelyPath, createDefaultPath)
 import Commands exposing (andThenCmd, getTodayTimeCmd)
 import Commands.Database
     exposing
@@ -61,7 +61,7 @@ resolveDefaultPage currentRoute oldSubPage pages todayDate =
                             { generation = page.generation
                             , letter = page.letter
                             }
-                        , createBrowsePath page.generation page.letter
+                        , createBrowseFreelyPath page.generation page.letter
                         )
                     )
                 |> Maybe.withDefault
@@ -76,10 +76,10 @@ resolveDefaultPage currentRoute oldSubPage pages todayDate =
                     , newUrl hash
                     )
 
-            Search _ ->
+            Search _ _ ->
                 ( maybeDefaultSubPageForToday, Cmd.none )
 
-            _ ->
+            Browse _ _ ->
                 ( oldSubPage, Cmd.none )
 
 
@@ -256,31 +256,41 @@ update msg maybeHighlightedState =
                         , getTodayTimeCmd
                         )
 
-                    Search query ->
-                        updateSearchPokemon oldState query
+                    Search newSearchMode query ->
+                        updateSearchPokemon oldState newSearchMode query
 
-                    _ ->
+                    Browse _ _ ->
                         updateChangeGenerationAndLetter oldState newRoute
 
             CloseMaskClicked ->
                 let
-                    ( browsePath, browseSubPage ) =
-                        case oldState.subPage of
-                            Just subPage ->
-                                ( createBrowsePath subPage.generation subPage.letter
-                                , Browse Freely
+                    ( newPath, newRoute ) =
+                        case (oldState.currentRoute, oldState.subPage) of
+                            (Search _ query, _) ->
+                                ( createSearchFreelyPath query
+                                , Search SFreely query
+                                )
+
+                            (Browse _ _, Just subPage) ->
+                                ( createBrowseFreelyPath subPage.generation subPage.letter
+                                , Browse BFreely
                                     { generation = subPage.generation
                                     , letter = subPage.letter
                                     }
                                 )
 
-                            Nothing ->
+                            (Browse _ _, Nothing) ->
+                                ( createDefaultPath
+                                , Default
+                                )
+
+                            (Default, _) ->
                                 ( createDefaultPath
                                 , Default
                                 )
                 in
-                    ( { oldState | currentRoute = browseSubPage }
-                    , newUrl browsePath
+                    ( { oldState | currentRoute = newRoute }
+                    , newUrl newPath
                     )
 
             PageLockClicked page ->
@@ -296,8 +306,8 @@ update msg maybeHighlightedState =
                 updateChangeVariant oldState pokemonId direction
 
             SearchPokemon query ->
-                updateSearchPokemon oldState query
-                    |> andThenCmd (newUrl <| createSearchPath query)
+                updateSearchPokemon oldState SFreely query
+                    |> andThenCmd (createSearchFreelyPath query |> newUrl)
 
             DebounceSearchPokemon debMsg ->
                 Control.update

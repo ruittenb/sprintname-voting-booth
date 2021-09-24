@@ -2,12 +2,14 @@ module Routing
     exposing
         ( parseLocation
         , createDefaultPath
-        , createSearchPath
-        , createBrowseModePath
         , createBrowsePath
-        , createShowRankingsPath
-        , createShowVotersPath
-        , createShowCopyrightPath
+        , createBrowseFreelyPath
+        , createBrowseWithRankingsPath
+        , createBrowseWithVotersPath
+        , createBrowseWithCopyrightPath
+        , createSearchPath
+        , createSearchFreelyPath
+        , createSearchWithCopyrightPath
         )
 
 import Char
@@ -16,8 +18,11 @@ import Helpers exposing (andThen2)
 import Navigation exposing (Location)
 import UrlParser exposing (Parser, (</>), parseHash, custom, s, string)
 import Constants exposing (allLetters, allGenerations, genLetterUrlSeparator)
-import Models.Types exposing (Route(..), BrowseMode(..), SubPage)
+import Models.Types exposing (Route(..), BrowseMode(..), SearchMode(..), SubPage)
 
+defaultPathSegment : String
+defaultPathSegment =
+    "#/"
 
 searchPathSegment : String
 searchPathSegment =
@@ -43,50 +48,72 @@ showCopyrightPathSegment : String
 showCopyrightPathSegment =
     "show-copyright"
 
+
+-- Default path
+
 createDefaultPath : String
 createDefaultPath =
-    "#/"
+    defaultPathSegment
 
 
-createSearchPath : String -> String
-createSearchPath query =
-    "#/" ++ searchPathSegment ++ "/" ++ query
+-- Search paths
+
+createSearchFreelyPath : String -> String
+createSearchFreelyPath query =
+    defaultPathSegment ++ searchPathSegment ++ "/" ++ query
 
 
-createBrowsePath : String -> Char -> String
-createBrowsePath gen letter =
-    "#/" ++ browsePathSegment ++ "/" ++ gen ++ genLetterUrlSeparator ++ (String.fromChar letter)
+createSearchWithCopyrightPath : String -> String
+createSearchWithCopyrightPath query =
+    (createSearchFreelyPath query) ++ "/" ++ showCopyrightPathSegment
 
 
-createShowRankingsPath : String -> Char -> String
-createShowRankingsPath gen letter =
-    (createBrowsePath gen letter) ++ "/" ++ showRankingsPathSegment
+createSearchPath : SearchMode -> String -> String
+createSearchPath searchmode query =
+    case searchmode of
+        SWithCopyright ->
+            createSearchWithCopyrightPath query
+
+        SFreely ->
+            createSearchFreelyPath query
 
 
-createShowVotersPath : String -> Char -> String
-createShowVotersPath gen letter =
-    (createBrowsePath gen letter) ++ "/" ++ showVotersPathSegment
+-- Browse paths
+
+createBrowseFreelyPath : String -> Char -> String
+createBrowseFreelyPath gen letter =
+    defaultPathSegment ++ browsePathSegment ++ "/" ++ gen ++ genLetterUrlSeparator ++ (String.fromChar letter)
 
 
-createShowCopyrightPath : String -> Char -> String
-createShowCopyrightPath gen letter =
-    (createBrowsePath gen letter) ++ "/" ++ showCopyrightPathSegment
+createBrowseWithRankingsPath : String -> Char -> String
+createBrowseWithRankingsPath gen letter =
+    (createBrowseFreelyPath gen letter) ++ "/" ++ showRankingsPathSegment
 
 
-createBrowseModePath : BrowseMode -> String -> Char -> String
-createBrowseModePath mode gen letter =
-    case mode of
-        Freely ->
-            createBrowsePath gen letter
+createBrowseWithVotersPath : String -> Char -> String
+createBrowseWithVotersPath gen letter =
+    (createBrowseFreelyPath gen letter) ++ "/" ++ showVotersPathSegment
 
-        WithPeopleVotes ->
-            createShowVotersPath gen letter
 
-        WithPokemonRankings ->
-            createShowRankingsPath gen letter
+createBrowseWithCopyrightPath : String -> Char -> String
+createBrowseWithCopyrightPath gen letter =
+    (createBrowseFreelyPath gen letter) ++ "/" ++ showCopyrightPathSegment
 
-        WithCopyright ->
-            createShowCopyrightPath gen letter
+
+createBrowsePath : BrowseMode -> String -> Char -> String
+createBrowsePath browsemode gen letter =
+    case browsemode of
+        BWithPeopleVotes ->
+            createBrowseWithVotersPath gen letter
+
+        BWithPokemonRankings ->
+            createBrowseWithRankingsPath gen letter
+
+        BWithCopyright ->
+            createBrowseWithCopyrightPath gen letter
+
+        BFreely ->
+            createBrowseFreelyPath gen letter
 
 
 unwrap : a -> (SubPage -> a) -> Route -> a
@@ -146,11 +173,12 @@ subPageParser =
 routeParser : Parser (Route -> a) a
 routeParser =
     UrlParser.oneOf
-        [ UrlParser.map (Browse WithPeopleVotes) (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
-        , UrlParser.map (Browse WithPokemonRankings) (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
-        , UrlParser.map (Browse WithCopyright) (s browsePathSegment </> subPageParser </> s showCopyrightPathSegment)
-        , UrlParser.map (Browse Freely) (s browsePathSegment </> subPageParser)
-        , UrlParser.map Search (s searchPathSegment </> string)
+        [ UrlParser.map (Browse BWithPeopleVotes) (s browsePathSegment </> subPageParser </> s showVotersPathSegment)
+        , UrlParser.map (Browse BWithPokemonRankings) (s browsePathSegment </> subPageParser </> s showRankingsPathSegment)
+        , UrlParser.map (Browse BWithCopyright) (s browsePathSegment </> subPageParser </> s showCopyrightPathSegment)
+        , UrlParser.map (Browse BFreely) (s browsePathSegment </> subPageParser)
+        , UrlParser.map (Search SWithCopyright) (s searchPathSegment </> string </> s showCopyrightPathSegment)
+        , UrlParser.map (Search SFreely) (s searchPathSegment </> string)
         ]
 
 

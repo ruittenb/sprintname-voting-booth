@@ -20,25 +20,30 @@ type alias SubPage =
 {-|
 
     The currentRoute can be of type:
-    - Default: uninitialized because an invalid route was encountered (should redirect to Browse)
-    - Search : a string has been entered in the search box, search results are shown;
-    - Browse : generation and letter have been selected, a page of results is shown.
-      This type is subdivided into:
-      - WithPeopleVotes    : displays a mask and popup with user votes;
-      - WithPokemonRankings: displays a mask and popup with pokemon rankings;
-      - Freely             : free browsing (no mask or popup).
+    - Default                    : uninitialized because an invalid route was encountered (should redirect to BFreely)
+    - Browse BFreely             : generation and letter have been selected, a page of pokemon is shown;
+    - Browse BWithPeopleVotes    : browse mode with mask and popup with user votes;
+    - Browse BWithPokemonRankings: browse mode with mask and popup with pokemon rankings;
+    - Browse BWithCopyright      : browse mode with mask and popup with copyright messages;
+    - Search SFreely             : a string has been entered in the search box, search results are shown;
+    - Search SWithCopyright      : search mode with mask and popup with copyright messages.
 -}
+
 type BrowseMode
-    = Freely
-    | WithPeopleVotes
-    | WithPokemonRankings
-    | WithCopyright
+    = BFreely
+    | BWithPeopleVotes
+    | BWithPokemonRankings
+    | BWithCopyright
+
+type SearchMode
+    = SFreely
+    | SWithCopyright
 
 
 type Route
     = Default
-    | Search String
     | Browse BrowseMode SubPage
+    | Search SearchMode String
 
 
 type BrowseDirection
