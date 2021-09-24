@@ -22,11 +22,13 @@ import Msgs exposing (Msg(..))
 import RemoteData exposing (RemoteData(..), WebData)
 import Routing
     exposing
-        ( createBrowsePath
-        , createDefaultPath
-        , createShowRankingsPath
-        , createShowVotersPath
-        , createShowCopyrightPath
+        ( createDefaultPath
+        , createBrowseFreelyPath
+        , createBrowseWithRankingsPath
+        , createBrowseWithVotersPath
+        , createBrowseWithCopyrightPath
+        , createSearchFreelyPath
+        , createSearchWithCopyrightPath
         )
 import Time exposing (Time, second)
 import View.Calculations
@@ -67,7 +69,7 @@ searchBox currentRoute modelQuery =
     let
         searching =
             case currentRoute of
-                Search _ ->
+                Search _ _ ->
                     True
 
                 _ ->
@@ -109,7 +111,7 @@ generationButton currentRoute pokedex currentSubPage gen =
 
         hash =
             currentSubPage
-                |> Maybe.map (.letter >> createBrowsePath gen)
+                |> Maybe.map (.letter >> createBrowseFreelyPath gen)
                 |> Maybe.withDefault createDefaultPath
 
         disableButton =
@@ -174,7 +176,7 @@ letterButton currentRoute pokedex currentSubPage letter =
 
         hash =
             currentSubPage
-                |> Maybe.map (\subPage -> createBrowsePath subPage.generation letter)
+                |> Maybe.map (\subPage -> createBrowseFreelyPath subPage.generation letter)
                 |> Maybe.withDefault createDefaultPath
 
         pokeList =
@@ -287,12 +289,25 @@ maintenanceButton remoteSettings isCurrentUserAdmin =
         placeHolder
 
 
-copyrightButton : Maybe SubPage -> Html Msg
-copyrightButton currentSubPage =
+copyrightButton : Route -> Maybe SubPage -> Html Msg
+copyrightButton route currentSubPage =
     let 
+        subPageToHash =
+            (\subPage ->
+                case route of
+                    Search _ query ->
+                        createSearchWithCopyrightPath query
+
+                    Browse _ _ ->
+                        createBrowseWithCopyrightPath subPage.generation subPage.letter
+
+                    Default ->
+                        ""
+            )
+
         showCopyrightHash =
             currentSubPage
-            |> Maybe.map (\subPage -> createShowCopyrightPath subPage.generation subPage.letter)
+            |> Maybe.map subPageToHash
             |> Maybe.withDefault createDefaultPath
     in
     a 
@@ -326,7 +341,7 @@ lockButton currentRoute currentPage isCurrentUserAdmin =
 
         isRouteBrowse =
             case currentRoute of
-                Search _ ->
+                Search _ _ ->
                     False
 
                 _ ->
@@ -360,7 +375,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
     let
         calculationButtonElement =
             case route of
-                Search _ ->
+                Search _ _ ->
                     span
 
                 _ ->
@@ -372,12 +387,12 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
 
         showVotersHash =
             currentSubPage
-                |> Maybe.map (\subPage -> createShowVotersPath subPage.generation subPage.letter)
+                |> Maybe.map (\subPage -> createBrowseWithVotersPath subPage.generation subPage.letter)
                 |> Maybe.withDefault createDefaultPath
 
         showRankingsHash =
             currentSubPage
-                |> Maybe.map (\subPage -> createShowRankingsPath subPage.generation subPage.letter)
+                |> Maybe.map (\subPage -> createBrowseWithRankingsPath subPage.generation subPage.letter)
                 |> Maybe.withDefault createDefaultPath
     in
     div
@@ -399,7 +414,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
             , href showRankingsHash
             ]
             [ text "Rankings" ]
-        , copyrightButton currentSubPage
+        , copyrightButton route currentSubPage
         , homeButton
         , lockButton route currentPage isCurrentUserAdmin
         ]
@@ -408,7 +423,7 @@ calculationButtons route remotePages currentPage isCurrentUserAdmin currentSubPa
 rankingsTable : ApplicationState -> Maybe Page -> Bool -> Html Msg
 rankingsTable state currentPage isCurrentUserAdmin =
     case state.currentRoute of
-        Browse WithPokemonRankings _ ->
+        Browse BWithPokemonRankings _ ->
             let
                 rankingsToShow =
                     calculatePokemonVotes state
@@ -489,7 +504,7 @@ rankingsTable state currentPage isCurrentUserAdmin =
 votersTable : ApplicationState -> Html Msg
 votersTable state =
     case state.currentRoute of
-        Browse WithPeopleVotes _ ->
+        Browse BWithPeopleVotes _ ->
             let
                 votersToShow =
                     calculatePeopleVotes state
@@ -517,64 +532,71 @@ votersTable state =
         _ ->
             span [] []
 
+copyRightTableHtml : Html Msg
+copyRightTableHtml =
+    div
+        [ class "copyright-table-wrapper" ]
+        [ div
+            [ class "copyright-table" ]
+            [ p
+                []
+                [ a
+                    [ href "https://github.com/ruittenb/sprintname-voting-booth"
+                    , target "_blank"
+                    , rel "noopener"
+                    ]
+                    [ text "Pokémon Sprint Name Voting Booth" ]
+                , br [] []
+                , text " © 2017-2021 René Uittenbogaard"
+                ]
+            , p
+                []
+                [ text "Pokémon © 1995-2021 Nintendo/ Creatures Inc./ Game Freak Inc. "
+                , text "Pokémon and Pokémon character names are trademarks of Nintendo."
+                ]
+            , p
+                []
+                [ text "Pokémon descriptions from "
+                , a
+                    [ href "https://bulbapedia.bulbagarden.net/wiki/Main_Page"
+                    , target "_blank"
+                    , rel "noopener"
+                    ]
+                    [ text "Bulbapedia" ]
+                , text ", The Original Pokémon Wiki"
+                ]
+            , p
+                []
+                [ text "The Fakemon presented here are"
+                , br [] []
+                , text "© ReallyDarkandWindie "
+                , a
+                    [ href "https://www.deviantart.com/reallydarkandwindie/gallery"
+                    , target "_blank"
+                    , rel "noopener"
+                    ] [ text "DeviantArt" ]
+                , br [] []
+                , text " Fakemon descriptions: "
+                , img [ src "icons/creativecommons.png" ] []
+                , text " "
+                , a
+                    [ href "https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki"
+                    , target "_blank"
+                    , rel "noopener"
+                    ] [ text "Fakemon Wiki" ]
+                ]
+            ]
+        ]
+
 
 copyrightTable : ApplicationState -> Html Msg
 copyrightTable state =
     case state.currentRoute of
-        Browse WithCopyright _ ->
-            div
-                [ class "copyright-table-wrapper" ]
-                [ div
-                    [ class "copyright-table" ]
-                    [ p
-                        []
-                        [ a
-                            [ href "https://github.com/ruittenb/sprintname-voting-booth"
-                            , target "_blank"
-                            , rel "noopener"
-                            ]
-                            [ text "Pokémon Sprint Name Voting Booth" ]
-                        , br [] []
-                        , text " © 2017-2021 René Uittenbogaard"
-                        ]
-                    , p
-                        []
-                        [ text "Pokémon © 1995-2021 Nintendo/ Creatures Inc./ Game Freak Inc. "
-                        , text "Pokémon and Pokémon character names are trademarks of Nintendo."
-                        ]
-                    , p
-                        []
-                        [ text "Pokémon descriptions from "
-                        , a
-                            [ href "https://bulbapedia.bulbagarden.net/wiki/Main_Page"
-                            , target "_blank"
-                            , rel "noopener"
-                            ]
-                            [ text "Bulbapedia" ]
-                        , text ", The Original Pokémon Wiki"
-                        ]
-                    , p
-                        []
-                        [ text "The Fakemon presented here are"
-                        , br [] []
-                        , text "© ReallyDarkandWindie "
-                        , a
-                            [ href "https://www.deviantart.com/reallydarkandwindie/gallery"
-                            , target "_blank"
-                            , rel "noopener"
-                            ] [ text "DeviantArt" ]
-                        , br [] []
-                        , text " Fakemon descriptions: "
-                        , img [ src "icons/creativecommons.png" ] []
-                        , text " "
-                        , a
-                            [ href "https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki"
-                            , target "_blank"
-                            , rel "noopener"
-                            ] [ text "Fakemon Wiki" ]
-                        ]
-                    ]
-                ]
+        Browse BWithCopyright _ ->
+            copyRightTableHtml
+
+        Search SWithCopyright _ ->
+            copyRightTableHtml
 
         _ ->
             span [] []
@@ -583,7 +605,7 @@ copyrightTable state =
 tableMask : Route -> Html Msg
 tableMask route =
     let
-        maskDiv =
+        maskHtml =
             div
                 [ class "mask"
                 , onClick CloseMaskClicked
@@ -591,14 +613,17 @@ tableMask route =
                 []
     in
     case route of
-        Browse WithPokemonRankings _ ->
-            maskDiv
+        Browse BWithPokemonRankings _ ->
+            maskHtml
 
-        Browse WithPeopleVotes _ ->
-            maskDiv
+        Browse BWithPeopleVotes _ ->
+            maskHtml
 
-        Browse WithCopyright _ ->
-            maskDiv
+        Browse BWithCopyright _ ->
+            maskHtml
+
+        Search SWithCopyright _ ->
+            maskHtml
 
         _ ->
             span [] []

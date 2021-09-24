@@ -22,7 +22,7 @@ import Models.Pokemon exposing (..)
 import Models.Pages exposing (..)
 import Models.Ratings exposing (..)
 import Msgs exposing (Msg(..))
-import Routing exposing (createBrowsePath)
+import Routing exposing (createBrowseFreelyPath)
 
 
 emptyCanvas : List (Html Msg)
@@ -235,12 +235,12 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
             toString (-120 * (pokemon.currentVariant - 1)) ++ "px"
 
         hash =
-            createBrowsePath pokemon.generation pokemon.letter
+            createBrowseFreelyPath pokemon.generation pokemon.letter
 
         generationElement : String -> List (Html Msg)
         generationElement gen =
             case currentRoute of
-                Search _ ->
+                Search _ _ ->
                     [ a
                         [ href hash
                         , classList [ ( "button", True ) ]
@@ -250,7 +250,10 @@ pokemonTile currentRoute isLocked winner ratings currentUser highlightedUserId p
                     , text noBreakingSpace
                     ]
 
-                _ ->
+                Browse _ _ ->
+                    [ text "" ]
+
+                Default ->
                     [ text "" ]
 
         teamRating =
@@ -358,10 +361,10 @@ dateTitle currentRoute currentPage =
                         |> Maybe.withDefault ""
                         |> getDateTitle
 
-                Search _ ->
+                Search _ _ ->
                     "Search results:"
 
-                _ ->
+                Default ->
                     ""
     in
         h2 [ class "date-heading" ] [ text dateTitleString ]
@@ -376,7 +379,7 @@ pokemonCanvas state =
 
         pokeList =
             case state.currentRoute of
-                Search _ ->
+                Search _ _ ->
                     searchPokedexIfReady state.pokedex state.query
 
                 Browse _ _ ->
