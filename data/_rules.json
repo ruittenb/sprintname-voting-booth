@@ -1,7 +1,9 @@
 {
   "rules": {
+    ".read": true,
+    ".write": false,
     "settings": {
-      ".read": "true",
+      ".read": true,
       ".write": "
         auth != null /* user must be logged in */
         && root.child('users').child(auth.uid).child('admin').val() == true /* user must be admin */
@@ -9,11 +11,11 @@
       "
     },
     "pokedex": {
-      ".read": "true",
-      ".write": "false"
+      ".read": true,
+      ".write": false
     },
     "pages": {
-      ".read": "true",
+      ".read": true,
       "$page_id": {
         ".write": "
           root.child('settings').child('maintenanceMode').val() == false /* app not in maintenance mode */
@@ -36,7 +38,7 @@
       }
     },
     "users": {
-      ".read": "true",
+      ".read": true,
       "$user_id": {
         ".write": "
           root.child('settings').child('maintenanceMode').val() == false /* app not in maintenance mode */
