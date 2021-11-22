@@ -1351,29 +1351,37 @@
     "generation": "VII",
     "id": 151,
     "letter": "X",
-    "open": true,
-    "startDate": "2021-09-28T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-09-28T00:00:00.000+02:00",
+    "winnerId": 796,
+    "winnerName": "Xurkitree"
   },
   {
     "generation": "VII",
     "id": 152,
     "letter": "Y",
-    "open": true,
-    "startDate": "2021-10-12T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-10-12T00:00:00.000+02:00",
+    "winnerId": 734,
+    "winnerName": "Yungoos"
   },
   {
     "generation": "VII",
     "id": 153,
     "letter": "Z",
-    "open": true,
-    "startDate": "2021-10-26T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2021-10-26T00:00:00.000+02:00",
+    "winnerId": 807,
+    "winnerName": "Zeraora"
   },
   {
     "generation": "VIII",
     "id": 154,
     "letter": "A",
-    "open": true,
-    "startDate": "2021-11-09T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2021-11-09T00:00:00.000+01:00",
+    "winnerId": 842,
+    "winnerName": "Appletun"
   },
   {
     "generation": "VIII",
