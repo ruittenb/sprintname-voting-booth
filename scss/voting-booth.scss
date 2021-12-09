@@ -35,6 +35,14 @@ $red-light     : #ffbabc;
 $red           : #ee0000;
 $red-dark      : #a90f1b;
 
+/* As of Dart Sass 2.0.0, !global assignments won't be able to declare new variables. */
+$theme-light  : null;
+$theme-medium : null;
+$theme-main   : null;
+$theme-intense: null;
+$theme-dark   : null;
+$theme-link   : null;
+
 @if $theme == 'olive' {
     $theme-light   : $olive-light    !global;
     $theme-medium  : $olive-medium   !global;
