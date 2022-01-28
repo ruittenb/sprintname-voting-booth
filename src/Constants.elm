@@ -9,7 +9,7 @@ maintenanceApology =
 
 pokemonCopyright : String
 pokemonCopyright =
-    "© 2021 Pokémon. © 1995–2021 Nintendo/Creatures Inc./GAME FREAK inc. Pokémon and Pokémon character names are trademarks of Nintendo."
+    "Pokémon © 1995–2022 Nintendo/ Creatures Inc./ Game Freak Inc. Pokémon and Pokémon character names are trademarks of Nintendo."
 
 rdawCopyright : String
 rdawCopyright =

@@ -547,11 +547,11 @@ copyRightTableHtml =
                     ]
                     [ text "Pokémon Sprint Name Voting Booth" ]
                 , br [] []
-                , text " © 2017-2021 René Uittenbogaard"
+                , text " © 2017-2022 René Uittenbogaard"
                 ]
             , p
                 []
-                [ text "Pokémon © 1995-2021 Nintendo/ Creatures Inc./ Game Freak Inc. "
+                [ text "Pokémon © 1995-2022 Nintendo/ Creatures Inc./ Game Freak Inc. "
                 , text "Pokémon and Pokémon character names are trademarks of Nintendo."
                 ]
             , p
