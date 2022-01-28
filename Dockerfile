@@ -2,7 +2,7 @@
 ############################################################################
 # builder
 
-FROM node:10.12.0-alpine as builder
+FROM node:14-alpine as builder
 
 RUN mkdir /app
 WORKDIR /app
@@ -15,7 +15,7 @@ RUN apk add --update make bash && \
 ############################################################################
 # main
 
-FROM mhart/alpine-node:10
+FROM mhart/alpine-node:14
 
 WORKDIR /app
 COPY --from=builder /app /app
