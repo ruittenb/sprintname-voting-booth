@@ -989,6 +989,10 @@
       {
         "image": "058.png",
         "vname": ""
+      },
+      {
+        "image": "058-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -1004,6 +1008,10 @@
       {
         "image": "059.png",
         "vname": ""
+      },
+      {
+        "image": "059-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -1679,6 +1687,10 @@
       {
         "image": "100.png",
         "vname": ""
+      },
+      {
+        "image": "100-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -1694,6 +1706,10 @@
       {
         "image": "101.png",
         "vname": ""
+      },
+      {
+        "image": "101-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -2598,6 +2614,10 @@
       {
         "image": "157.png",
         "vname": ""
+      },
+      {
+        "image": "157-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -3528,6 +3548,10 @@
       {
         "image": "211.png",
         "vname": ""
+      },
+      {
+        "image": "211-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -3596,6 +3620,10 @@
       {
         "image": "215.png",
         "vname": ""
+      },
+      {
+        "image": "215-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -7843,7 +7871,11 @@
     "variants": [
       {
         "image": "483.png",
-        "vname": ""
+        "vname": "Altered Forme"
+      },
+      {
+        "image": "483-origin.png",
+        "vname": "Origin Forme"
       }
     ]
   },
@@ -7858,7 +7890,11 @@
     "variants": [
       {
         "image": "484.png",
-        "vname": ""
+        "vname": "Altered Forme"
+      },
+      {
+        "image": "484-origin.png",
+        "vname": "Origin Forme"
       }
     ]
   },
@@ -8152,6 +8188,10 @@
       {
         "image": "503.png",
         "vname": ""
+      },
+      {
+        "image": "503-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -8852,6 +8892,10 @@
       {
         "image": "549.png",
         "vname": ""
+      },
+      {
+        "image": "549-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -8871,6 +8915,10 @@
       {
         "image": "550-blue.png",
         "vname": "Blue-Striped"
+      },
+      {
+        "image": "550-white.png",
+        "vname": "White-Striped"
       }
     ]
   },
@@ -9206,6 +9254,10 @@
       {
         "image": "570.png",
         "vname": ""
+      },
+      {
+        "image": "570-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -9221,6 +9273,10 @@
       {
         "image": "571.png",
         "vname": ""
+      },
+      {
+        "image": "571-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -10118,6 +10174,10 @@
       {
         "image": "628.png",
         "vname": ""
+      },
+      {
+        "image": "628-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -11428,6 +11488,10 @@
       {
         "image": "705.png",
         "vname": ""
+      },
+      {
+        "image": "705-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -11443,6 +11507,10 @@
       {
         "image": "706.png",
         "vname": ""
+      },
+      {
+        "image": "706-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -11548,6 +11616,10 @@
       {
         "image": "713.png",
         "vname": ""
+      },
+      {
+        "image": "713-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -11736,6 +11808,10 @@
       {
         "image": "724.png",
         "vname": ""
+      },
+      {
+        "image": "724-hisuian.png",
+        "vname": "Hisuian"
       }
     ]
   },
@@ -14620,6 +14696,121 @@
         "description": "It's said that Calyrex and a Pokémon that had bonded with it ran all across the Galar region to bring green to the wastelands.  Legend says that by using its power to see all events from past to future, this Pokémon saved the creatures of a forest from a meteorite strike.",
         "image": "898-shadow-rider.png",
         "vname": "Shadow Rider"
+      }
+    ]
+  },
+  {
+    "description": "The black orbs shine with an uncanny light when the Pokémon is erecting invisible barriers. The fur shed from its beard retains heat well and is a highly useful material for winter clothing.",
+    "generation": "VIII",
+    "id": 899,
+    "letter": "W",
+    "name": "Wyrdeer",
+    "number": 899,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Wyrdeer_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "899.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "A violent creature that fells towering trees with its crude axes and shields itself with hard stone. If one should chance upon this Pokémon in the wilds, one's only recourse is to flee.",
+    "generation": "VIII",
+    "id": 900,
+    "letter": "K",
+    "name": "Kleavor",
+    "number": 900,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Kleavor_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "900.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "I believe it was Hisui’s swampy terrain that gave Ursaluna its burly physique and newfound capacity to manipulate peat at will.",
+    "generation": "VIII",
+    "id": 901,
+    "letter": "U",
+    "name": "Ursaluna",
+    "number": 901,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Ursaluna_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "901.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "Clads itself in the souls of comrades that perished before fulfilling their goals of journeying upstream. No other species throughout all Hisui’s rivers is Basculegion’s equal.",
+    "generation": "VIII",
+    "id": 902,
+    "letter": "B",
+    "name": "Basculegion",
+    "number": 902,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Basculegion_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "902-male.png",
+        "vname": "Male"
+      },
+      {
+        "image": "902-female.png",
+        "vname": "Female"
+      }
+    ]
+  },
+  {
+    "description": "Because of Sneasler’s virulent poison and daunting physical prowess, no other species could hope to best it on the frozen highlands. Preferring solitude, this species does not form packs.",
+    "generation": "VIII",
+    "id": 903,
+    "letter": "S",
+    "name": "Sneasler",
+    "number": 903,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sneasler_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "903.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "Its lancelike spikes and savage temperament have earned it the nickname “sea fiend.” It slurps up poison to nourish itself.",
+    "generation": "VIII",
+    "id": 904,
+    "letter": "O",
+    "name": "Overqwil",
+    "number": 904,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Overqwil_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "904.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "When it flies to this land from across the sea, the bitter winter comes to an end. According to legend, this Pokémon’s love gives rise to the budding of fresh life across Hisui.",
+    "generation": "VIII",
+    "id": 905,
+    "letter": "E",
+    "name": "Enamorus",
+    "number": 905,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Enamorus_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "description": "When it flies to this land from across the sea, the bitter winter comes to an end. According to legend, this Pokémon’s love gives rise to the budding of fresh life across Hisui.",
+        "image": "905-incarnate.png",
+        "vname": ""
+      },
+      {
+        "description": "A different guise from its feminine humanoid form. From the clouds, it descends upon those who treat any form of life with disrespect and metes out wrathful, ruthless punishment.",
+        "image": "905-therian.png",
+        "vname": ""
       }
     ]
   },
