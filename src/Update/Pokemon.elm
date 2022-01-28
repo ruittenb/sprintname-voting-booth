@@ -185,7 +185,7 @@ updateChangeGenerationAndLetter oldState newRoute =
 
 
 updateChangeVariant : ApplicationState -> Int -> BrowseDirection -> ( ApplicationState, Cmd Msg )
-updateChangeVariant oldState pokemonNumber direction =
+updateChangeVariant oldState pokemonId direction =
     let
         newState =
             oldState.pokedex
@@ -194,7 +194,7 @@ updateChangeVariant oldState pokemonNumber direction =
                     oldState
                     -- mapFunction
                     (\pokedex ->
-                        List.filter (.number >> (==) pokemonNumber) pokedex
+                        List.filter (.id >> (==) pokemonId) pokedex
                             |> List.head
                             |> Maybe.Extra.unwrap
                                 -- defaultValue
@@ -222,7 +222,7 @@ updateChangeVariant oldState pokemonNumber direction =
                                         newPokedex =
                                             List.map
                                                 (\p ->
-                                                    if p.number == pokemonNumber then
+                                                    if p.id == pokemonId then
                                                         newPokemon
                                                     else
                                                         p
