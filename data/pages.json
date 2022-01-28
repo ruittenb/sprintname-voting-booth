@@ -1387,36 +1387,46 @@
     "generation": "VIII",
     "id": 155,
     "letter": "B",
-    "open": true,
-    "startDate": "2021-11-23T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2021-11-23T00:00:00.000+01:00",
+    "winnerId": 847,
+    "winnerName": "Barraskewda"
   },
   {
     "generation": "VIII",
     "id": 156,
     "letter": "C",
-    "open": true,
-    "startDate": "2021-12-07T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2021-12-07T00:00:00.000+01:00",
+    "winnerId": 823,
+    "winnerName": "Corviknight"
   },
   {
     "generation": "VIII",
     "id": 157,
     "letter": "D",
-    "open": true,
-    "startDate": "2021-12-21T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2021-12-21T00:00:00.000+01:00",
+    "winnerId": 834,
+    "winnerName": "Drednaw"
   },
   {
     "generation": "VIII",
     "id": 158,
     "letter": "E",
-    "open": true,
-    "startDate": "2022-01-04T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2022-01-04T00:00:00.000+01:00",
+    "winnerId": 875,
+    "winnerName": "Eiscue"
   },
   {
     "generation": "VIII",
     "id": 159,
     "letter": "F",
-    "open": true,
-    "startDate": "2022-01-18T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2022-01-18T00:00:00.000+01:00",
+    "winnerId": 841,
+    "winnerName": "Flapple"
   },
   {
     "generation": "VIII",
