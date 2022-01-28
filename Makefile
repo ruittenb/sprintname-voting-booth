@@ -153,7 +153,7 @@ tag: ## create git tag, next in line (with 0.1 increments) and push to repo
 	git tag $(NEXT_TAG)
 	make version
 	git push
-	git push --tags
+	git push origin tag $(NEXT_TAG)
 
 .PHONY: rmtag
 rmtag: ## remove a tag erroneously created (current tag only)
