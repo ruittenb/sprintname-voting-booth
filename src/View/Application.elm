@@ -580,7 +580,7 @@ copyRightTableHtml =
                     ] [ text "DeviantArt" ]
                 , br [] []
                 , text " Fakemon descriptions: "
-                , img [ src "icons/creativecommons.png" ] []
+                , img [ src "icons/creativecommons.svg" ] []
                 , text " "
                 , a
                     [ href "https://darkandwindiefakemon.fandom.com/wiki/DarkandWindie_Fakemon_Wiki"
