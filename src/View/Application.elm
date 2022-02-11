@@ -317,7 +317,10 @@ copyrightButton route currentSubPage =
             ]
             , href showCopyrightHash
         ]
-        []
+        [
+            text "©"
+        ]
+
 
 homeButton : Html Msg
 homeButton =

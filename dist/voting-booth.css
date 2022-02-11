@@ -113,9 +113,8 @@ button.user-button {
 }
 
 .button.copyright-button {
-  background-image: url(icons/copyright.png);
-  background-repeat: no-repeat;
-  background-position: center center;
+  font-size: 20px;
+  color: #333;
 }
 
 .button.home-button {
