@@ -1880,6 +1880,153 @@
       "letter": "Z",
       "open": true,
       "startDate": "2024-06-25T00:00:00.000+02:00"
+    },
+    {
+      "generation": "iii",
+      "id": 224,
+      "letter": "A",
+      "open": true,
+      "startDate": "2024-07-09T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 225,
+      "letter": "B",
+      "open": true,
+      "startDate": "2024-07-23T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 226,
+      "letter": "C",
+      "open": true,
+      "startDate": "2024-08-06T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 227,
+      "letter": "D",
+      "open": true,
+      "startDate": "2024-08-20T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 228,
+      "letter": "E",
+      "open": true,
+      "startDate": "2024-09-03T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 229,
+      "letter": "F",
+      "open": true,
+      "startDate": "2024-09-17T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 230,
+      "letter": "G",
+      "open": true,
+      "startDate": "2024-10-01T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 231,
+      "letter": "H",
+      "open": true,
+      "startDate": "2024-10-15T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 232,
+      "letter": "J",
+      "open": true,
+      "startDate": "2024-10-28T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 233,
+      "letter": "K",
+      "open": true,
+      "startDate": "2024-11-11T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 234,
+      "letter": "L",
+      "open": true,
+      "startDate": "2024-11-25T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 235,
+      "letter": "M",
+      "open": true,
+      "startDate": "2024-12-09T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 236,
+      "letter": "N",
+      "open": true,
+      "startDate": "2024-12-23T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 237,
+      "letter": "O",
+      "open": true,
+      "startDate": "2025-01-06T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 238,
+      "letter": "P",
+      "open": true,
+      "startDate": "2025-01-20T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 239,
+      "letter": "R",
+      "open": true,
+      "startDate": "2025-02-03T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 240,
+      "letter": "S",
+      "open": true,
+      "startDate": "2025-02-17T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 241,
+      "letter": "T",
+      "open": true,
+      "startDate": "2025-03-03T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 242,
+      "letter": "W",
+      "open": true,
+      "startDate": "2025-03-17T00:00:00.000+0100"
+    },
+    {
+      "generation": "iii",
+      "id": 243,
+      "letter": "X",
+      "open": true,
+      "startDate": "2025-04-01T00:00:00.000+0200"
+    },
+    {
+      "generation": "iii",
+      "id": 244,
+      "letter": "Y",
+      "open": true,
+      "startDate": "2025-04-15T00:00:00.000+0200"
     }
   ],
   "pokedex": [
