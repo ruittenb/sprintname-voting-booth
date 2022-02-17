@@ -40,7 +40,7 @@ try {
             url => $URL . $_->[$NAME],
             variants => [
                 {
-                    image => sprintf("%04d", $num) . "-" . $_->[$IMAGE],
+                    image => sprintf("rdaw/%04d", $num) . "-" . $_->[$IMAGE],
                     vname => ""
                 },
             ]
