@@ -38,6 +38,6 @@ resize-1: ## resize all images to 475x475
 	done
 
 .PHONY: resize-2
-resize-2:
+resize-2: ## move new images into place of old ones
 	for i in $(RDAW)/*.png-new; do mv $$i $${i%-new}; done
 

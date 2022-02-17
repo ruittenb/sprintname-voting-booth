@@ -8,7 +8,7 @@ use IO::Handle;
 use Try::Catch;
 use Text::CSV qw(csv);
 
-Readonly my $DATAFILE  => 'rdawdex-gen2.csv';
+Readonly my $DATAFILE  => 'rdawdex-gen3.csv';
 Readonly my $URL       => 'https://darkandwindiefakemon.fandom.com/wiki/';
 Readonly my $RDAWBLOCK => 2000;
 
@@ -22,7 +22,7 @@ Readonly my $DESC   => 5;
 my @csvdata = ();
 my $parser = Text::CSV->new({ binary => 1 });
 open my $fh, "<:encoding(UTF-8)", $DATAFILE or die "Cannot read $DATAFILE: $!";
-while (my $row = $parser->getline ($fh)) {
+while (my $row = $parser->getline($fh)) {
     push @csvdata, $row;
 }
 my @records = ();
