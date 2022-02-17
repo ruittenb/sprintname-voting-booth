@@ -1432,15 +1432,19 @@
     "generation": "VIII",
     "id": 160,
     "letter": "G",
-    "open": true,
-    "startDate": "2022-02-01T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2022-02-01T00:00:00.000+01:00",
+    "winnerId": 810,
+    "winnerName": "Grookey"
   },
   {
     "generation": "VIII",
     "id": 161,
     "letter": "H",
-    "open": true,
-    "startDate": "2022-02-15T00:00:00.000+01:00"
+    "open": false,
+    "startDate": "2022-02-15T00:00:00.000+01:00",
+    "winnerId": 856,
+    "winnerName": "Hatenna"
   },
   {
     "generation": "VIII",

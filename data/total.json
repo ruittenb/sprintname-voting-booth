@@ -1433,15 +1433,19 @@
       "generation": "VIII",
       "id": 160,
       "letter": "G",
-      "open": true,
-      "startDate": "2022-02-01T00:00:00.000+01:00"
+      "open": false,
+      "startDate": "2022-02-01T00:00:00.000+01:00",
+      "winnerId": 810,
+      "winnerName": "Grookey"
     },
     {
       "generation": "VIII",
       "id": 161,
       "letter": "H",
-      "open": true,
-      "startDate": "2022-02-15T00:00:00.000+01:00"
+      "open": false,
+      "startDate": "2022-02-15T00:00:00.000+01:00",
+      "winnerId": 856,
+      "winnerName": "Hatenna"
     },
     {
       "generation": "VIII",
@@ -22838,10 +22842,1630 @@
           "vname": ""
         }
       ]
+    },
+    {
+      "variants": [
+        {
+          "image": "0410-Dinaut.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Dinaut",
+      "name": "Dinaut",
+      "number": 410,
+      "generation": "iii",
+      "id": 2410,
+      "letter": "D",
+      "description": "They crack coconuts and drink the fluid inside before using the shell as a helmet. If its coconut shell helmet is damaged, it loses its will to battle."
+    },
+    {
+      "name": "Conutor",
+      "number": 411,
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Conutor",
+      "variants": [
+        {
+          "image": "0411-Conutor.png",
+          "vname": ""
+        }
+      ],
+      "description": "They create armor by smashing coconut shells and using vines to connect it. The armor is strong enough to resist a cannonball.",
+      "letter": "C",
+      "generation": "iii",
+      "id": 2411
+    },
+    {
+      "letter": "E",
+      "description": "They create powerful armor using discarded coconut shells. Their tails have a single coconut at the end that is able to enlarge and smash with the force equivalent to a wrecking ball.",
+      "id": 2412,
+      "generation": "iii",
+      "number": 412,
+      "name": "Eradolor",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0412-Eradolor.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Eradolor"
+    },
+    {
+      "name": "Koalidi",
+      "number": 413,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0413-Koalidi.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Koalidi",
+      "description": "They always given their full effort in battle, not backing down until completely exhausted. The angrier they are, the stronger their flames are.",
+      "letter": "K",
+      "generation": "iii",
+      "id": 2413
+    },
+    {
+      "description": "If they have a weak trainer, they will be disobedient, prompting most trainers to release them. To torture its enemies, it will make a cold environment, and then burn them to give them an intense scalding feeling over their bodies.",
+      "letter": "F",
+      "generation": "iii",
+      "id": 2414,
+      "number": 414,
+      "name": "Frostoala",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0414-Frostoala.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Frostoala"
+    },
+    {
+      "variants": [
+        {
+          "image": "0415-Pyoreala.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Pyoreala",
+      "number": 415,
+      "name": "Pyoreala",
+      "id": 2415,
+      "generation": "iii",
+      "letter": "P",
+      "description": "It will only listen to a strong and experienced trainer, which is worth it because of its power. It half freezes an enemy and watches in amusement as they endure the cold shock before incinerating them with its flames."
+    },
+    {
+      "description": "They stay in damp areas, absorbing water into their humps through their hooves. The water stored in their humps gets heated by the pressure and releases steam that can be used to heal.",
+      "letter": "C",
+      "generation": "iii",
+      "id": 2416,
+      "number": 416,
+      "name": "Camodden",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Camodden",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0416-Camodden.png"
+        }
+      ]
+    },
+    {
+      "name": "Humoist",
+      "number": 417,
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Humoist",
+      "variants": [
+        {
+          "image": "0417-Humoist.png",
+          "vname": ""
+        }
+      ],
+      "letter": "H",
+      "description": "The crest on its head helps it navigate to vast water sources. It creates thick steam to hide itself and deliver fatal blows.",
+      "id": 2417,
+      "generation": "iii"
+    },
+    {
+      "id": 2418,
+      "generation": "iii",
+      "description": "It stores vast amounts of water in the pyramidal hump on its back, which is then immediately turned to steam. It was highly worshiped because of its activity and knowledge.",
+      "letter": "R",
+      "variants": [
+        {
+          "image": "0418-Rakudren.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Rakudren",
+      "number": 418,
+      "name": "Rakudren"
+    },
+    {
+      "description": "They reside in mountain burrows, avoiding predators such as Lynobca. It and Sorach are similar species, but it is much more scrappy and eager to fight.",
+      "letter": "N",
+      "id": 2419,
+      "generation": "iii",
+      "name": "Norvisc",
+      "number": 419,
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Norvisc",
+      "variants": [
+        {
+          "image": "0419-Norvisc.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "generation": "iii",
+      "id": 2420,
+      "description": "Their bodies and powerful and limber, giving them enough speed to land 30 blows in only one second. They are very prideful Pokemon who won't accept help from anyone or anything.",
+      "letter": "O",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Oferinch",
+      "variants": [
+        {
+          "image": "0420-Oferinch.png",
+          "vname": ""
+        }
+      ],
+      "name": "Oferinch",
+      "number": 420
+    },
+    {
+      "letter": "S",
+      "description": "These Pokemon are very durable and will take many hits. They are rivals with Norvisc.",
+      "generation": "iii",
+      "id": 2421,
+      "number": 421,
+      "name": "Sorach",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Sorach",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0421-Sorach.png"
+        }
+      ]
+    },
+    {
+      "name": "Deferinch",
+      "number": 422,
+      "variants": [
+        {
+          "image": "0422-Deferinch.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Deferinch",
+      "letter": "D",
+      "description": "These Pokemon never back down or give up, even when they've taken a critical amount of damage. They are extremely protective of their trainers and fellow teammates.",
+      "id": 2422,
+      "generation": "iii"
+    },
+    {
+      "letter": "H",
+      "description": "Flocks of them gather during sunsets in order to find mates. It is said that if a trainer owns a Hachubba, it will cause the trainer or the trainer's other Pokémon to fall in love with the first thing that they see.",
+      "generation": "iii",
+      "id": 2423,
+      "number": 423,
+      "name": "Hachubba",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Hachubba",
+      "variants": [
+        {
+          "image": "0423-Hachubba.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "id": 2424,
+      "generation": "iii",
+      "description": "They are known to sense passion and love between individuals. Getting pecked by an Amorver may cause someone to fall in love with the next person that they see.",
+      "letter": "A",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Amorver",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0424-Amorver.png"
+        }
+      ],
+      "number": 424,
+      "name": "Amorver"
+    },
+    {
+      "variants": [
+        {
+          "vname": "",
+          "image": "0425-Skwakiss.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Skwakiss",
+      "name": "Skwakiss",
+      "number": 425,
+      "id": 2425,
+      "generation": "iii",
+      "letter": "S",
+      "description": "Once a Skwakiss finds a mate, it stays with them until they die. Songs dedicated to this Pokemon are often played during weddings."
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Parazeed",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0426-Parazeed.png"
+        }
+      ],
+      "name": "Parazeed",
+      "number": 426,
+      "id": 2426,
+      "generation": "iii",
+      "letter": "P",
+      "description": "This Pokemon secretes a substance that can cause paralysis on contact. They hang from trees by their stems and absorb sunlight."
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Nervent",
+      "variants": [
+        {
+          "image": "0427-Nervent.png",
+          "vname": ""
+        }
+      ],
+      "name": "Nervent",
+      "number": 427,
+      "generation": "iii",
+      "id": 2427,
+      "letter": "N",
+      "description": "Eating one of its fruits can cause paralysis over the entire body. Groups of them sing during thunderstorms in order to gain electricity."
+    },
+    {
+      "number": 428,
+      "name": "Shimie",
+      "variants": [
+        {
+          "image": "0428-Shimie.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Shimie",
+      "letter": "S",
+      "description": "They remain motionless in their soft, transparent egg shells as they await evolution. The single antenna on its head allows it to read its surroundings.",
+      "generation": "iii",
+      "id": 2428
+    },
+    {
+      "variants": [
+        {
+          "vname": "",
+          "image": "0429-Lepismite.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Lepismite",
+      "name": "Lepismite",
+      "number": 429,
+      "id": 2429,
+      "generation": "iii",
+      "letter": "L",
+      "description": "They are technically eyeless, but their brains are so large that it gives the appearance of an eye. They bite and crawl around aimlessly, attempting to make their way around vast areas."
+    },
+    {
+      "id": 2430,
+      "generation": "iii",
+      "letter": "L",
+      "description": "They have a extremely high knowledge of its past life as well as the life of others. They have the power to resurrect dead people and Pokemon by adjusting their antennae.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0430-Lepasarch.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Lepasarch",
+      "number": 430,
+      "name": "Lepasarch"
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Purruf",
+      "variants": [
+        {
+          "image": "0431-Purruf.png",
+          "vname": ""
+        }
+      ],
+      "name": "Purruf",
+      "number": 431,
+      "generation": "iii",
+      "id": 2431,
+      "description": "They fight each other in order to strengthen themselves. They attack using sharp claws.",
+      "letter": "P"
+    },
+    {
+      "variants": [
+        {
+          "image": "0432-Rorec.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Rorec",
+      "number": 432,
+      "name": "Rorec",
+      "id": 2432,
+      "generation": "iii",
+      "description": "Their large bodies give them great defense. They can slice down a tree with one swipe of their claws.",
+      "letter": "R"
+    },
+    {
+      "name": "Pakina",
+      "number": 433,
+      "variants": [
+        {
+          "image": "0433-Pakina.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Pakina",
+      "letter": "P",
+      "description": "It can generate sparks by rubbing its fur together. It almost never realizes the kind of situation it is in, whether it be good or bad.",
+      "generation": "iii",
+      "id": 2433
+    },
+    {
+      "letter": "W",
+      "description": "The wool on its body is extremely dense and protects it from harsh attacks. By yanking its wool over its head, it is able to turn invisible and escape from bad situations.  There are many different patterns that a Woolish can have. Due to their rarity, some trainers find joy in finding and collecting all of them.",
+      "generation": "iii",
+      "id": 2434,
+      "number": 434,
+      "name": "Woolish",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Woolish",
+      "variants": [
+        {
+          "image": "0434-Woolish.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "generation": "iii",
+      "id": 2435,
+      "letter": "D",
+      "description": "Despite being fish, Desigill hate being in the water. They use their long whiskers as hands in order to dig through the ground.",
+      "variants": [
+        {
+          "image": "0435-Desigill.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Desigill",
+      "number": 435,
+      "name": "Desigill"
+    },
+    {
+      "generation": "iii",
+      "id": 2436,
+      "letter": "A",
+      "description": "They use their whiskers as claws in order to both attack and dig quickly. They frighten anyone entering their territory by using their sharp fins to slice through the ground from underground.",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Anhyvaunt",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0436-Anhyvaunt.png"
+        }
+      ],
+      "name": "Anhyvaunt",
+      "number": 436
+    },
+    {
+      "id": 2437,
+      "generation": "iii",
+      "letter": "Y",
+      "description": "They are very flexible, which allows them to move quickly and dodge attacks slowly, but efficiently. By stretching its limbs, it can increase its psychic power.",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Yogoth",
+      "variants": [
+        {
+          "image": "0437-Yogoth.png",
+          "vname": ""
+        }
+      ],
+      "number": 437,
+      "name": "Yogoth"
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Slowily",
+      "variants": [
+        {
+          "image": "0438-Slowily.png",
+          "vname": ""
+        }
+      ],
+      "name": "Slowily",
+      "number": 438,
+      "id": 2438,
+      "generation": "iii",
+      "description": "They slowly and carefully use tricks to help them win battles. Their psychic attacks are powerful, but because of its recklessness, they sometimes backfire.",
+      "letter": "S"
+    },
+    {
+      "letter": "S",
+      "description": "They sit in silence in order to harness their brain energy. It can blast away an entire forest if its psychic energy is at its highest peak.",
+      "generation": "iii",
+      "id": 2439,
+      "number": 439,
+      "name": "Sentioth",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Sentioth",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0439-Sentioth.png"
+        }
+      ]
+    },
+    {
+      "name": "Weavinid",
+      "number": 440,
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Weavinid",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0440-Weavinid.png"
+        }
+      ],
+      "letter": "W",
+      "description": "They weave marvelous webs that are said to keep peaceful dreams at bay. They trap unwanted dreams and nightmares in its web and devour them with their red fangs.",
+      "id": 2440,
+      "generation": "iii"
+    },
+    {
+      "name": "Drearch",
+      "number": 441,
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Drearch",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0441-Drearch.png"
+        }
+      ],
+      "letter": "D",
+      "description": "They devour bad dreams and create webs that give off powerful, calming energy. Because of their ability to devour bad dreams, some people like having Drearch stand by their beds.",
+      "generation": "iii",
+      "id": 2441
+    },
+    {
+      "id": 2442,
+      "generation": "iii",
+      "letter": "R",
+      "description": "They used to roll around on the sea floor, as their tail fins didn't allow them to swim that well. Their chests are extremely hard because of the rigid bones underneath.",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Relcalf",
+      "variants": [
+        {
+          "image": "0442-Relcalf.png",
+          "vname": ""
+        }
+      ],
+      "number": 442,
+      "name": "Relcalf"
+    },
+    {
+      "generation": "iii",
+      "id": 2443,
+      "description": "Thanks to the membrane on its tail, it was now able to swim somewhat better. They were hunted for their hard bones, which were used to create weapons and armor.",
+      "letter": "S",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Stellow",
+      "variants": [
+        {
+          "image": "0443-Stellow.png",
+          "vname": ""
+        }
+      ],
+      "number": 443,
+      "name": "Stellow"
+    },
+    {
+      "generation": "iii",
+      "id": 2444,
+      "description": "As soon as they are born, they sprint away in order to strengthen their legs. A newborn Aggor could run for five hours straight without getting tired. They were hunted into extinction. They are thought to be closely related to Zembera.",
+      "letter": "A",
+      "variants": [
+        {
+          "image": "0444-Aggor.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Aggor",
+      "number": 444,
+      "name": "Aggor"
+    },
+    {
+      "generation": "iii",
+      "id": 2445,
+      "description": "They almost never stop running because they love having their hearts beat fast. They were hunted for centuries.",
+      "letter": "S",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Semagrisso",
+      "variants": [
+        {
+          "image": "0445-Semagrisso.png",
+          "vname": ""
+        }
+      ],
+      "name": "Semagrisso",
+      "number": 445
+    },
+    {
+      "generation": "iii",
+      "id": 2446,
+      "description": "As soon as it is born, it is able to create its own food via photosynthesis using the leaf on its neck.  It is able to launch seeds, nuts, and small stones from its hooves.",
+      "letter": "B",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Bexer",
+      "variants": [
+        {
+          "image": "0446-Bexer.png",
+          "vname": ""
+        }
+      ],
+      "name": "Bexer",
+      "number": 446
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Bexile",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0447-Bexile.png"
+        }
+      ],
+      "number": 447,
+      "name": "Bexile",
+      "id": 2447,
+      "generation": "iii",
+      "letter": "B",
+      "description": "These Pokemon always live alone and spend time strengthening their antlers. If anything crosses into its mountainous territory, it will immediately headbutt them off of the mountain."
+    },
+    {
+      "name": "Luscmor",
+      "number": 448,
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Luscmor",
+      "variants": [
+        {
+          "image": "0448-Luscmor.png",
+          "vname": ""
+        }
+      ],
+      "letter": "L",
+      "description": "It was discovered at an abandoned campsite years ago. Its body is made of a sweet, sticky substance.",
+      "generation": "iii",
+      "id": 2448
+    },
+    {
+      "letter": "S",
+      "description": "Sloshweet leave a trail of sweet goo wherever they go. It has been discovered that Sloshweet's body is composed on water, honey, tree sap and sugar, but no one can truly pinpoint when or where it could have originated.",
+      "generation": "iii",
+      "id": 2449,
+      "number": 449,
+      "name": "Sloshweet",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Sloshweet",
+      "variants": [
+        {
+          "image": "0449-Sloshweet.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "letter": "G",
+      "description": "They are seen flying when rainbows are formed. They are able to run at high speeds when they are on land.",
+      "id": 2450,
+      "generation": "iii",
+      "name": "Greakwine",
+      "number": 450,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0450-Greakwine.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Greakwine"
+    },
+    {
+      "description": "They are said to be able to gallop across rainbows. They are highly regarded because of their beauty.",
+      "letter": "P",
+      "id": 2451,
+      "generation": "iii",
+      "name": "Pegasoar",
+      "number": 451,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0451-Pegasoar.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Pegasoar"
+    },
+    {
+      "id": 2452,
+      "generation": "iii",
+      "description": "These Pokemon are avoided because of their wretched tendencies. They wrap their long bodies around its victims, and like a snake, slowly compresses them until they suffocate.",
+      "letter": "B",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0452-Betenorn.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Betenorn",
+      "number": 452,
+      "name": "Betenorn"
+    },
+    {
+      "id": 2453,
+      "generation": "iii",
+      "letter": "D",
+      "description": "These Pokemon are known to separate their spirit from their bodies and possess humans so they may bring them to their lairs. They suffocate and devour helpless victims, and smiles as they do so.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0453-Dybetenor.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Dybetenor",
+      "number": 453,
+      "name": "Dybetenor"
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Lusiforus",
+      "variants": [
+        {
+          "image": "0454-Lusiforus.png",
+          "vname": ""
+        }
+      ],
+      "name": "Lusiforus",
+      "number": 454,
+      "generation": "iii",
+      "id": 2454,
+      "description": "Said to be a guardian of the underworld, they create portals and kidnap humans and Pokemon to devour them. They use their feelers to separate souls from the bodies of humans and Pokemon and destroy them.",
+      "letter": "L"
+    },
+    {
+      "description": "By building up enough pressure, it can launch its icy tusk like a harpoon. Their icy tusks can break easily, so they often avoid battles that they know they will lose.",
+      "letter": "W",
+      "id": 2455,
+      "generation": "iii",
+      "number": 455,
+      "name": "Whaleet",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Whaleet",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0455-Whaleet.png"
+        }
+      ]
+    },
+    {
+      "variants": [
+        {
+          "vname": "",
+          "image": "0456-Naryst.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Naryst",
+      "number": 456,
+      "name": "Naryst",
+      "id": 2456,
+      "generation": "iii",
+      "letter": "N",
+      "description": "Their icy tusks are powerful enough to destroy ice floes with ease. They are often targeted for ice crystals covering their bodies, as they are said to be unable to melt and can be used for jewelry."
+    },
+    {
+      "generation": "iii",
+      "id": 2457,
+      "description": "They are able to make themselves invisible thanks to the gem on their chests. They are often mistaken for ghosts when they float and disappear right before your eyes.",
+      "letter": "T",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0457-Trics.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Trics",
+      "number": 457,
+      "name": "Trics"
+    },
+    {
+      "id": 2458,
+      "generation": "iii",
+      "letter": "P",
+      "description": "They vanish into thin air because of the refracting light from their gem. They scare trainers and their Pokemon when in the water because of their large fins.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0458-Phokus.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Phokus",
+      "number": 458,
+      "name": "Phokus"
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Puprieve",
+      "variants": [
+        {
+          "image": "0459-Puprieve.png",
+          "vname": ""
+        }
+      ],
+      "name": "Puprieve",
+      "number": 459,
+      "id": 2459,
+      "generation": "iii",
+      "description": "Its long ears and excellent sense of smell allow it to retrieve many objects that may be hidden or missing. It loves to find Baneffus and play with them, even though the other Pokémon hate it.",
+      "letter": "P"
+    },
+    {
+      "variants": [
+        {
+          "vname": "",
+          "image": "0460-Baneffus.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Baneffus",
+      "name": "Baneffus",
+      "number": 460,
+      "id": 2460,
+      "generation": "iii",
+      "letter": "B",
+      "description": "After an old, toy ball was left alone for decades, passing spirits possessed it, but found themselves unable to escape, giving birth to Baneffus. The coat of light surrounding it is the result of the spirits' futile attempts to flee; squabbles among the spirits cause the shape of the barrier to change."
+    },
+    {
+      "generation": "iii",
+      "id": 2461,
+      "letter": "K",
+      "description": "They fire over a dozen of their spikes at their enemies, which immediately grow back. Getting stabbed by one of their quills will leave your skin deeply burned and your limbs paralyzed.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0461-Kwillord.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Kwillord",
+      "name": "Kwillord",
+      "number": 461
+    },
+    {
+      "variants": [
+        {
+          "image": "0462-Foresire.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Foresire",
+      "name": "Foresire",
+      "number": 462,
+      "id": 2462,
+      "generation": "iii",
+      "letter": "F",
+      "description": "These Pokemon were extremely popular in royal families. They inhabit forests and act as rulers."
+    },
+    {
+      "generation": "iii",
+      "id": 2463,
+      "description": "They sit underwater with the flower on its head on the surface in order to scare approaching trainers. They leak poison from their chest when they are threatened.",
+      "letter": "P",
+      "variants": [
+        {
+          "image": "0463-Paraka.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Paraka",
+      "number": 463,
+      "name": "Paraka"
+    },
+    {
+      "generation": "iii",
+      "id": 2464,
+      "letter": "K",
+      "description": "It is able to make one arm longer than the other by moving it through its body. One touch from them can make you sick for a month.",
+      "variants": [
+        {
+          "image": "0464-Kappote.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Kappote",
+      "number": 464,
+      "name": "Kappote"
+    },
+    {
+      "description": "They spray a toxic fluid from their wrists. They are known to be the cause of a massive epidemic that happened 10 years ago.",
+      "letter": "T",
+      "id": 2465,
+      "generation": "iii",
+      "name": "Toxappa",
+      "number": 465,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0465-Toxappa.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Toxappa"
+    },
+    {
+      "number": 466,
+      "name": "Agavaga",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Agavaga",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0466-Agavaga.png"
+        }
+      ],
+      "description": "This Pokemon was considered sacred in past centuries for its unique appearance and techniques when it was discovered battling in the desert. If threatened, it jumps up and launches its sharp leaves while twirling.",
+      "letter": "A",
+      "id": 2466,
+      "generation": "iii"
+    },
+    {
+      "id": 2467,
+      "generation": "iii",
+      "letter": "T",
+      "description": "They pretend to be average plants until they are approached. They fire iron spikes to protect themselves.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0467-Thornick.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Thornick",
+      "number": 467,
+      "name": "Thornick"
+    },
+    {
+      "description": "Their tackle is hard enough to knock out teeth. They often lick themselves when they are exhausted in order to keep themselves strong.",
+      "letter": "G",
+      "generation": "iii",
+      "id": 2468,
+      "name": "Gobslobber",
+      "number": 468,
+      "variants": [
+        {
+          "image": "0468-Gobslobber.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Gobslobber"
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Suckob",
+      "variants": [
+        {
+          "image": "0469-Suckob.png",
+          "vname": ""
+        }
+      ],
+      "number": 469,
+      "name": "Suckob",
+      "generation": "iii",
+      "id": 2469,
+      "description": "They spin at high speeds, giving off a sweet scent in order to calm those who smell it. They often bury their thin legs in the ground of caves and shoot themselves upwards to scare those who get close.",
+      "letter": "S"
+    },
+    {
+      "letter": "F",
+      "description": "The pebbles that levitate around them have a sweet, divine taste. It is able to launch the pebbles around it like bullets and make them explode on contact.",
+      "id": 2470,
+      "generation": "iii",
+      "number": 470,
+      "name": "Fizerok",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0470-Fizerok.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Fizerok"
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Gravizzon",
+      "variants": [
+        {
+          "image": "0471-Gravizzon.png",
+          "vname": ""
+        }
+      ],
+      "number": 471,
+      "name": "Gravizzon",
+      "generation": "iii",
+      "id": 2471,
+      "letter": "G",
+      "description": "It controls the pebbles around it so it is able to launch them like speeding bullets. It sometimes serves as a guardian and helper to candy makers who need more sweetness in their treats."
+    },
+    {
+      "name": "Flecto",
+      "number": 472,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0472-Flecto.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Flecto",
+      "letter": "F",
+      "description": "It terrorizes people by playing a terrible scene about them when they look into its face. They are known to be very mischievous.",
+      "id": 2472,
+      "generation": "iii"
+    },
+    {
+      "id": 2473,
+      "generation": "iii",
+      "description": "It creates a scary illusion of anyone who looks at it by transforming into them. It is said to be from a parallel universe.",
+      "letter": "G",
+      "variants": [
+        {
+          "image": "0473-Glassame.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Glassame",
+      "name": "Glassame",
+      "number": 473
+    },
+    {
+      "name": "Doppetom",
+      "number": 474,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0474-Doppetom.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Doppetom",
+      "description": "It is widely feared by everyone and anyone who has encountered it. Said to be from a parallel universe, it takes residence in homes, particularly those in which children are present, and once they are close enough, it takes the child, never to be seen again.",
+      "letter": "D",
+      "generation": "iii",
+      "id": 2474
+    },
+    {
+      "letter": "D",
+      "description": "Daiumbra absolutely despises humans and canine Pokémon, attacking them as soon as they see them. Staring at its white eyes leaves you paralyzed in fear. Its cry is reminiscent of human speech. It uses it to lure people close to it so that it can attack.",
+      "generation": "iii",
+      "id": 2475,
+      "name": "Daiumbra",
+      "number": 475,
+      "variants": [
+        {
+          "image": "0475-Daiumbra.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Daiumbra"
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Penite",
+      "variants": [
+        {
+          "image": "0476-Penite.png",
+          "vname": ""
+        }
+      ],
+      "name": "Penite",
+      "number": 476,
+      "id": 2476,
+      "generation": "iii",
+      "description": "There is a reason that trainers rarely seek out or use Penite: they see humans as prey. It takes a very brave soul to capture and train a Penite, but once its negative habits are broken, it becomes a very powerful ally. One must be extremely careful when traveling through their territory, especially during nights of a new moon. This is when they are the most active. There is a chance that you will not make it back out.",
+      "letter": "P"
+    },
+    {
+      "variants": [
+        {
+          "vname": "",
+          "image": "0477-Dreidull.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Dreidull",
+      "number": 477,
+      "name": "Dreidull",
+      "generation": "iii",
+      "id": 2477,
+      "letter": "D",
+      "description": "The markings on its body are said to be symbols of good luck and prosperity. The faster it rotates, the stronger its Psychic-type abilities become."
+    },
+    {
+      "description": "It slowly moves around as it tries to strengthen itself for evolution. Its shell protects it from most attacks.",
+      "letter": "S",
+      "id": 2478,
+      "generation": "iii",
+      "name": "Seborgo",
+      "number": 478,
+      "variants": [
+        {
+          "image": "0478-Seborgo.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Seborgo"
+    },
+    {
+      "letter": "B",
+      "description": "Its antennae help it locate faraway or invisible opponents. It is strong enough to throw a mountain.",
+      "id": 2479,
+      "generation": "iii",
+      "name": "Boragon",
+      "number": 479,
+      "variants": [
+        {
+          "image": "0479-Boragon.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Boragon"
+    },
+    {
+      "generation": "iii",
+      "id": 2480,
+      "description": "This Pokemon is able to snap a boat in half with its powerful jaws. They are very vicious and territorial, attacking anything and anyone that invades its territory.",
+      "letter": "A",
+      "variants": [
+        {
+          "image": "0480-Alikrokor.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Alikrokor",
+      "number": 480,
+      "name": "Alikrokor"
+    },
+    {
+      "description": "They will shred anything that comes into their territory into pieces. They have random bursts of anger and will attack anything that is nearby.",
+      "letter": "G",
+      "id": 2481,
+      "generation": "iii",
+      "name": "Gatorage",
+      "number": 481,
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Gatorage",
+      "variants": [
+        {
+          "image": "0481-Gatorage.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "id": 2482,
+      "generation": "iii",
+      "letter": "B",
+      "description": "They will randomly attack people in cities and towns. They use their sharp teeth and claws to dismember and mutilate their prey.",
+      "variants": [
+        {
+          "image": "0482-Barbaliga.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Barbaliga",
+      "name": "Barbaliga",
+      "number": 482
+    },
+    {
+      "generation": "iii",
+      "id": 2483,
+      "letter": "B",
+      "description": "They use their blue light to lure foolish people and Pokemon towards them. Once a victim is close enough, it wraps its arms around it, draining their life energy in order to make its light brighter.",
+      "variants": [
+        {
+          "image": "0483-Bulaka.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Bulaka",
+      "name": "Bulaka",
+      "number": 483
+    },
+    {
+      "letter": "S",
+      "description": "They extend their rope-like attachments to drain unsuspecting people and Pokemon to make their light glow brighter. It is rare, but in a desperate attempt to make their lights keep glowing, they will turn on their trainers.",
+      "id": 2484,
+      "generation": "iii",
+      "name": "Shadakue",
+      "number": 484,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0484-Shadakue.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Shadakue"
+    },
+    {
+      "id": 2485,
+      "generation": "iii",
+      "description": "They help trainers make correct decisions as they continue their journey. They always take time to decide what they want and sometimes pick up random objects without knowing it.",
+      "letter": "S",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Scampick",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0485-Scampick.png"
+        }
+      ],
+      "name": "Scampick",
+      "number": 485
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Crispup",
+      "variants": [
+        {
+          "image": "0486-Crispup.png",
+          "vname": ""
+        }
+      ],
+      "name": "Crispup",
+      "number": 486,
+      "generation": "iii",
+      "id": 2486,
+      "letter": "C",
+      "description": "Their fur is extremely crisp and flaky, resulting in crumb like features to flake off. They are very scared Pokemon and keep themselves in a fetal position."
+    },
+    {
+      "variants": [
+        {
+          "image": "0487-Barkrisp.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Barkrisp",
+      "number": 487,
+      "name": "Barkrisp",
+      "generation": "iii",
+      "id": 2487,
+      "letter": "B",
+      "description": "They have an extremely heightened sense of smell. Their skin can flake off when they have been critically damaged."
+    },
+    {
+      "generation": "iii",
+      "id": 2488,
+      "letter": "A",
+      "description": "They cover themselves with old umbrellas in order to protect themselves. When it is raining, they will happily leave their cover, but for any other reason, they will not leave.",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Amini",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0488-Amini.png"
+        }
+      ],
+      "number": 488,
+      "name": "Amini"
+    },
+    {
+      "letter": "M",
+      "description": "The cover it has helps moves slide off of it. They sometimes stand still in storms in order to get their fill of water.",
+      "id": 2489,
+      "generation": "iii",
+      "number": 489,
+      "name": "Monarme",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Monarme",
+      "variants": [
+        {
+          "image": "0489-Monarme.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "letter": "S",
+      "description": "Residing in old homes, they spend most of their time tidying up dust and cobwebs with their long, fluffy tails; if a human unknowingly enters its home, Softite will never let them leave. While they may seem relatively harmless, they have rather cruel tendencies, wrapping their voluminous tails around smaller Pokemon until they stop moving.",
+      "generation": "iii",
+      "id": 2490,
+      "number": 490,
+      "name": "Softite",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Softite",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0490-Softite.png"
+        }
+      ]
+    },
+    {
+      "variants": [
+        {
+          "image": "0491-Calfly.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Calfly",
+      "number": 491,
+      "name": "Calfly",
+      "generation": "iii",
+      "id": 2491,
+      "description": "Their bodies are full of air, which allows them to fly in any direction that it wants to. They are very docile Pokemon that will not mind letting others ride on its back.",
+      "letter": "C"
+    },
+    {
+      "generation": "iii",
+      "id": 2492,
+      "description": "Their fur makes them appear very fat and hairy, when they are actually very light. Its fur helps it deflect attacks extremely well and it is able to charge at extremely high speeds.",
+      "letter": "B",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Bisoar",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0492-Bisoar.png"
+        }
+      ],
+      "number": 492,
+      "name": "Bisoar"
+    },
+    {
+      "name": "Webbeak",
+      "number": 493,
+      "variants": [
+        {
+          "image": "0493-Webbeak.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Webbeak",
+      "description": "They splash water at fisherman that are in their territory for fun. They are able to fly underwater at high speeds.",
+      "letter": "W",
+      "generation": "iii",
+      "id": 2493
+    },
+    {
+      "id": 2494,
+      "generation": "iii",
+      "letter": "C",
+      "description": "They prank and anger fisherman by stealing their catches and tipping their boats. They are prone to losing feathers after emerging from water, but they grow back after a few days.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0494-Comoran.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Comoran",
+      "name": "Comoran",
+      "number": 494
+    },
+    {
+      "name": "Foliaffe",
+      "number": 495,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0495-Foliaffe.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Foliaffe",
+      "letter": "F",
+      "description": "For their first few weeks of life, they rely on sap secreted from trees and Groveck for sustenance.  The leaves that grow on their bodies are very bitter, but are happily eaten by Gelatyne.",
+      "id": 2495,
+      "generation": "iii"
+    },
+    {
+      "variants": [
+        {
+          "image": "0496-Groveck.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Groveck",
+      "name": "Groveck",
+      "number": 496,
+      "id": 2496,
+      "generation": "iii",
+      "letter": "G",
+      "description": "It can grow nutritious berries from its horns, neck, and tail. Smaller Pokémon are often seen hanging out in the leaves of its horns and neck.  During winter, all of their leaves fall off, leaving them completely bare and weak. They thrive during this time by licking sap off of each other's necks."
+    },
+    {
+      "generation": "iii",
+      "id": 2497,
+      "description": "Said to be from another planet, these Pokemon are researched by scientists fluently. They are able to make clones of themselves by flashing the lights in its body.",
+      "letter": "L",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Lunabbi",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0497-Lunabbi.png"
+        }
+      ],
+      "number": 497,
+      "name": "Lunabbi"
+    },
+    {
+      "generation": "iii",
+      "id": 2498,
+      "letter": "G",
+      "description": "Over their sorrowful phases, they now seek vengeance on those who treated them poorly. It knows the bad things trainers and Pokemon have done in the past and will hold it against them forever.",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Grovenge",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0498-Grovenge.png"
+        }
+      ],
+      "number": 498,
+      "name": "Grovenge"
+    },
+    {
+      "generation": "iii",
+      "id": 2499,
+      "letter": "F",
+      "description": "It is said to be the ghost of a man who was cremated while still alive. It will roll into enemies and burn them with its 200,000° flames, reducing them to ash.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0499-Flaemark.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Flaemark",
+      "name": "Flaemark",
+      "number": 499
+    },
+    {
+      "number": 500,
+      "name": "Hydrake",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0500-Hydrake.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Hydrake",
+      "letter": "H",
+      "description": "According to legends, this Pokémon and its evolved forms climbed up a waterfall and brought rain to a large area plagued with a drought. It tries its best not to be seen by humans.",
+      "id": 2500,
+      "generation": "iii"
+    },
+    {
+      "number": 501,
+      "name": "Kuname",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0501-Kuname.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Kuname",
+      "description": "Blending into its aquatic habitat makes it easier to catch prey and also avoid being captured. It can cause showers that lasts 40 days and 40 nights.",
+      "letter": "K",
+      "generation": "iii",
+      "id": 2501
+    },
+    {
+      "letter": "O",
+      "description": "Worshiped by many, it brings rain to those in desperate need. It is hardly ever seen because of its color.",
+      "id": 2502,
+      "generation": "iii",
+      "number": 502,
+      "name": "Omamigon",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0502-Omamigon.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Omamigon"
+    },
+    {
+      "id": 2503,
+      "generation": "iii",
+      "letter": "S",
+      "description": "Symbit are said to be symbols of good fortune, so being able to capture one is said to be a sign of a bright future. They meditate underwater for up to two hours every day in order to strengthen their bodies and minds.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0503-Symbit.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Symbit",
+      "number": 503,
+      "name": "Symbit"
+    },
+    {
+      "id": 2504,
+      "generation": "iii",
+      "description": "It is said that the markings on its chest glow bright when it is going to rain. Some legends state that this Pokemon is the reincarnation of a highly regarded monk.",
+      "letter": "D",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Darroak",
+      "variants": [
+        {
+          "image": "0504-Darroak.png",
+          "vname": ""
+        }
+      ],
+      "number": 504,
+      "name": "Darroak"
+    },
+    {
+      "description": "A snowball that was brought to life by a strange power, these Pokemon inhabit frigid areas. They are friendly Pokemon that will happily play with younger kids by creating snow.",
+      "letter": "F",
+      "generation": "iii",
+      "id": 2505,
+      "number": 505,
+      "name": "Frosnow",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Frosnow",
+      "variants": [
+        {
+          "image": "0505-Frosnow.png",
+          "vname": ""
+        }
+      ]
+    },
+    {
+      "variants": [
+        {
+          "image": "0506-Koserobo.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Koserobo",
+      "name": "Koserobo",
+      "number": 506,
+      "generation": "iii",
+      "id": 2506,
+      "letter": "K",
+      "description": "Influenced by the darkness it was raised in, this Pokemon is known for mischief. They steal from innocent civilians and Pokemon and will sometimes even steal from its own allies."
+    },
+    {
+      "description": "It is able to possess humans and do whatever they want to with their bodies, freezing their spirits in the process. Its slushy scarf can be placed over a victims mouth and nose in order to render them unconscious.",
+      "letter": "C",
+      "id": 2507,
+      "generation": "iii",
+      "number": 507,
+      "name": "Cursnow",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Cursnow",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0507-Cursnow.png"
+        }
+      ]
+    },
+    {
+      "letter": "T",
+      "description": "It stands still in vast, snowy areas, increasing its psychic power by staying at peace. The daylight helps its body gain more mental strength.",
+      "generation": "iii",
+      "id": 2508,
+      "name": "Thinkose",
+      "number": 508,
+      "variants": [
+        {
+          "vname": "",
+          "image": "0508-Thinkose.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Thinkose"
+    },
+    {
+      "number": 509,
+      "name": "Nipper",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Nipper",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0509-Nipper.png"
+        }
+      ],
+      "letter": "N",
+      "description": "It has a sensitive part of its head that hates being in the cold environments it lives in, so it covers it with its ear. It creates ice crystals by blowing its breath.",
+      "id": 2509,
+      "generation": "iii"
+    },
+    {
+      "description": "They freeze moisture in the air and make shards to attack its opponents. They can hang upside down from ceilings and drop icicles from above.",
+      "letter": "S",
+      "id": 2510,
+      "generation": "iii",
+      "number": 510,
+      "name": "Shivren",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Shivren",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0510-Shivren.png"
+        }
+      ]
+    },
+    {
+      "variants": [
+        {
+          "vname": "",
+          "image": "0511-Guivrelid.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Guivrelid",
+      "name": "Guivrelid",
+      "number": 511,
+      "id": 2511,
+      "generation": "iii",
+      "description": "They can make blizzards by flapping their wings, which have icy particles. Despite their hostile appearance, they are actually very respectable and kind.",
+      "letter": "G"
+    },
+    {
+      "letter": "K",
+      "description": "Born from the lava of a now dormant volcano, its entire body is as hot as the sun. When it is very angry, it will erupt lava from the retractable volcano on its back.",
+      "id": 2512,
+      "generation": "iii",
+      "number": 512,
+      "name": "Kazanogi",
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Kazanogi",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0512-Kazanogi.png"
+        }
+      ]
+    },
+    {
+      "generation": "iii",
+      "id": 2513,
+      "description": "Many fisherman and travelers have been lost due to this Pokemon. It whips up whirlpools, typhoons, and tsunamis in order to cause major damage in Kisek.",
+      "letter": "T",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0513-Taipho.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Taipho",
+      "number": 513,
+      "name": "Taipho"
+    },
+    {
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Jishuta",
+      "variants": [
+        {
+          "image": "0514-Jishuta.png",
+          "vname": ""
+        }
+      ],
+      "number": 514,
+      "name": "Jishuta",
+      "id": 2514,
+      "generation": "iii",
+      "letter": "J",
+      "description": "It resides deep underground and uses its large arms and legs to stir up earthquakes in order to destroy parts of Kisek. It never comes out of the ground unless it is disturbed."
+    },
+    {
+      "letter": "R",
+      "description": "It is often mistaken as a bad omen because of its grisly and rugged appearance, when it actually kind-hearted. Its nose is able to detect truth and deceit within multiple people and Pokémon.",
+      "id": 2515,
+      "generation": "iii",
+      "number": 515,
+      "name": "Ryinka",
+      "variants": [
+        {
+          "image": "0515-Ryinka.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Ryinka"
+    },
+    {
+      "generation": "iii",
+      "id": 2516,
+      "letter": "S",
+      "description": "It is highly praised because of its beautiful appearance, but it is actually a facade. It once taught the knowledge of deceit, treachery, and lying.",
+      "variants": [
+        {
+          "vname": "",
+          "image": "0516-Sakyura.png"
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Sakyura",
+      "name": "Sakyura",
+      "number": 516
+    },
+    {
+      "number": 517,
+      "name": "Kindichi",
+      "variants": [
+        {
+          "image": "0517-Kindichi.png",
+          "vname": ""
+        }
+      ],
+      "url": "https://darkandwindiefakemon.fandom.com/wiki/Kindichi",
+      "letter": "K",
+      "description": "It is known as a bringer of happiness and kindness. It appears during times of intense tragedy and hostility in order to calm the situation.",
+      "id": 2517,
+      "generation": "iii"
     }
   ],
   "settings": {
-    "maintenanceMode": false
+    "maintenanceMode": true
   },
   "users": {
     "andrew@proforto_nl": {
@@ -22877,7 +24501,7 @@
       "color": "#6169b3",
       "email": "dennis.hacquebord@proforto.nl",
       "id": 4,
-      "ratings": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002003003201030300003100301023010000012310000000020000000000021101000210000000030000020000000000000000200000000000000000200000020000303003323000030202023123000000020100332000021000000000000200020033032000002003330110201000000100100023012000100130000003210330000000000003003200020010210000320020000120033000112000300302000020000001302100030020321301020100200000300021000300231102000000101001000330000030000203130000200000213331000002001000120010000003003200002002013200010012130311020033203003023030030003200000230002021030000300003033200000001300301010202003102000000100300320000020300010011320023300000000000001000000001002030000000002000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "ratings": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002003003201030300003100301023010000012310000000020000000000021101000210000000030000020000000000000000200000000000000000200000020000303003323000030202023123000000020100332000021000000000000200020033032000002003330110201000000100100023012000100130000003210330000000000003003200020010210000320020000120033000112000300302000020000001302100030020321301020100200000300021000300231102000000101001000330000030000203130000200000213331000002001000120010000003003200002002013200010012130311020033203003023030030003200000230002021030000300003033200000001300301010202003102020300120300320230020300011011320023300000001321101330010201202033300000002000013000000002000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
       "userName": "Dennis"
     },
     "fahrettin_gungor@proforto_nl": {
@@ -22940,7 +24564,7 @@
       "color": "#4070ef",
       "email": "rene.uittenbogaard@proforto.nl",
       "id": 3,
-      "ratings": "3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001320023033020000010010300001010000103100000213010000022003020130000003202020023030330000200000100220200023210010010200030000030103302332331333120000023313002102020030330000001000000000010000000023221100101002130020310302000102203023230030000320011313320130002130000000030100100000301000000000200300002100000000300312000220000001000000030000120300200000020000331020000311032302110202030022300331300223303323220001003310003023133000000032000200130323221101330201112333300223110321000030103102013320023033000021200003333000300321002033100002332131302230002003013000030300000120000020002030020320000100000100000000000000011002030000000310003213310020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001030010000000000300300030000000000000000313000000000000000000000000000300020000000000001030010200000003000000020020000000000000001300102000000000000000000030200000000300000000200000000020001000020000000000000000000000000000000000000000000001000000000000000020000000000000000010000300000000000000000000000300000000000000000000000000000000000300000000000000000000000000000000013000002000030000002000000000000000",
+      "ratings": "3000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001320023033020000010010300001010000103100000213010000022003020130000003202020023030330000200000100220200023210010010200030000030103302332331333120000023313002102020030330000001000000000010000000023221100101002130020310302000102203023230030000320011313320130002130000000030100100000301000000000200300002100000000300312000220000001000000030000120300200000020000331020000311032302110202030022300331300223303323220001003310003023133000000032000200130323221101330201112333300223110321000030103102013320023033000021200003333000300321002033100002332131302230002003013232230330000120131022002330020320000103000101231210330331211202031000000310003212310020033201200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001030010000000000300300030000000000000000313200300000000200000000000000300020000000000001030010200000003000000020020000010000000001300102100000200000000000030200000001300000000200000310020001000020000000000000000000000000000000000000000000001000000000000000020000000000000000010000300000000000000000000000300000000000000000000000000000000000300000000000000000000000000000000013000002000030000002000000000000000",
       "userName": "René"
     },
     "rens_vleeming@proforto_nl": {
@@ -22976,7 +24600,7 @@
       "color": "#82bacc",
       "email": "tom.martens@proforto.nl",
       "id": 14,
-      "ratings": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003130000002000000000000000000000001200000000000000000000000002323000000230003003000330130103000000310002020000002300100033100000001300002010002023000000020100000310000000003030002330001200000000000000000000002001000001000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "ratings": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003130000002000000000000000000000001200000000000000000000000002323000000230003003000330130103000000310002020000002300100033100000001300002010002023003000020100000310000000003030002330001200000000312001000000002001000001000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
       "userName": "Tom M"
     },
     "tom_vermeer@proforto_nl": {
