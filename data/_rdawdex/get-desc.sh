@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-num=410
+num=518
+generation=4
+file=names-gen${generation}.txt
+
 subdir=desc
 test -d $subdir || mkdir $subdir
 
-cat names-gen3.txt | while read name; do
+cat "$file" | while read name; do
 	wget -c https://darkandwindiefakemon.fandom.com/wiki/$name -O - | \
 		awk '
 			/id="Pokédex_entry"/       { inside = 1 }
@@ -16,5 +19,5 @@ cat names-gen3.txt | while read name; do
 	let num++
 done
 
-cat $subdir/* > total-desc-gen3.txt
+cat $subdir/* > total-desc-gen${generation}.txt
 
