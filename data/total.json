@@ -17207,7 +17207,7 @@
         {
           "description": "The Eukawala in Cotue are much more aggressive, picking fights with any other Pokémon that crosses their path. They are mostly nocturnal, raiding the dens of sleeping Pokémon for food.",
           "image": "rdaw/0024-Eukawala-Cotue.png",
-          "vname": "Cotue"
+          "vname": "Coturian"
         }
       ]
     },
@@ -27043,12 +27043,12 @@
         {
           "description": "Their bodies are completely numb because their potent poison accidentally leaked into their skin cells.  There was a case in which an explorer was bitten by this Pokemon, and over time, his entire body became paralyzed.",
           "image": "rdaw/0679-Chironum.png",
-          "vname": "Chironum"
+          "vname": ""
         },
         {
           "description": "Hidden in the darkness of caves, this species of Chironum was thought to have gone extinct due to the destruction of their habitats.  It is said that getting bitten by this Pokemon will result in a loss of motor functions.",
           "image": "rdaw/0679-Chironum-Coturian.png",
-          "vname": ""
+          "vname": "Coturian"
         }
       ]
     },

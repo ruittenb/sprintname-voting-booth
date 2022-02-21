@@ -38,8 +38,8 @@ extract_image_urls() {
 
 reformat_image() {
     local filename="$1"
-    local webpname="${filename$.png}"
-    if !identify $filename | grep -q -s PNG; then
+    local webpname="${filename%.png}.webp"
+    if ! identify $filename | grep -q -s PNG; then
         echo Converting WEBP to PNG...
         mv $filename $webpname
         dwebp $webpname # saves *.png

@@ -8,7 +8,7 @@ use IO::Handle;
 use Try::Catch;
 use Text::CSV qw(csv);
 
-Readonly my $generation => 5;
+Readonly my $generation => 7;
 
 Readonly my $DATAFILE  => "rdawdex-gen${generation}.csv";
 Readonly my $URL       => 'https://darkandwindiefakemon.fandom.com/wiki/';
