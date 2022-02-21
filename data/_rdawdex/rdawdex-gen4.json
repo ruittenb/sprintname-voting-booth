@@ -1,207 +1,207 @@
 [
   {
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Cuberry",
-    "letter": "C",
-    "number": 518,
-    "name": "Cuberry",
-    "id": 2518,
     "description": "Its body gives off a sweet, fruity scent. They love to wander in gardens and eat the fruit they find, which will immediately grow back thanks to its nutrient filled saliva.",
+    "generation": "iv",
+    "id": 2518,
+    "letter": "C",
+    "name": "Cuberry",
+    "number": 518,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Cuberry",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0518-Cuberry.png"
+        "image": "rdaw/0518-Cuberry.png",
+        "vname": ""
       }
     ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0519-Berroar.png"
-      }
-    ],
     "description": "They help gardeners plant fruits by gnawing on them. Despite their hostile appearance, they are very gentle and will give off a sweet scent that is able to calm people down.",
+    "generation": "iv",
     "id": 2519,
+    "letter": "B",
     "name": "Berroar",
     "number": 519,
-    "letter": "B",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Berroar",
-    "generation": "iv"
+    "variants": [
+      {
+        "image": "rdaw/0519-Berroar.png",
+        "vname": ""
+      }
+    ]
   },
   {
+    "description": "Their roars are able to make fruits and vegetables grow faster. Their tails grow delicious berries that can grow back if they are removed.",
+    "generation": "iv",
+    "id": 2520,
+    "letter": "C",
     "name": "Chimerry",
     "number": 520,
-    "letter": "C",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Chimerry",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0520-Chimerry.png"
+        "image": "rdaw/0520-Chimerry.png",
+        "vname": ""
       }
-    ],
-    "description": "Their roars are able to make fruits and vegetables grow faster. Their tails grow delicious berries that can grow back if they are removed.",
-    "id": 2520
+    ]
   },
   {
     "description": "It grows angry and sad whenever it loses a battle, so it trains extremely hard. Their wings are full of magma, so whenever they flap them, there is nothing but hot air.",
+    "generation": "iv",
     "id": 2521,
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0521-Wyburn.png"
-      }
-    ],
     "letter": "W",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Wyburn",
     "name": "Wyburn",
-    "number": 521
-  },
-  {
-    "number": 522,
-    "name": "Vernace",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Vernace",
-    "generation": "iv",
-    "letter": "V",
+    "number": 521,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Wyburn",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0522-Vernace.png"
+        "image": "rdaw/0521-Wyburn.png",
+        "vname": ""
       }
-    ],
+    ]
+  },
+  {
+    "description": "Their wings are very blunt and able to give off extreme levels of heat. They train hard near active volcanoes to build up their strength.",
+    "generation": "iv",
     "id": 2522,
-    "description": "Their wings are very blunt and able to give off extreme levels of heat. They train hard near active volcanoes to build up their strength."
-  },
-  {
+    "letter": "V",
+    "name": "Vernace",
+    "number": 522,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Vernace",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0523-Lavyrn.png"
+        "image": "rdaw/0522-Vernace.png",
+        "vname": ""
       }
-    ],
-    "id": 2523,
+    ]
+  },
+  {
     "description": "Their wings are made out of lava, so they are able to melt anything that makes contact with them. They are able to blast out 257,000 degrees of flame from their maws.",
-    "number": 523,
-    "name": "Lavyrn",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Lavyrn",
     "generation": "iv",
-    "letter": "L"
+    "id": 2523,
+    "letter": "L",
+    "name": "Lavyrn",
+    "number": 523,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Lavyrn",
+    "variants": [
+      {
+        "image": "rdaw/0523-Lavyrn.png",
+        "vname": ""
+      }
+    ]
   },
   {
     "description": "If one of its feelers tears of, they immediately grow back. The colors of their feelers change depending on their emotions or health statuses.",
+    "generation": "iv",
     "id": 2524,
+    "letter": "G",
+    "name": "Glaucute",
+    "number": 524,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Glaucute",
     "variants": [
       {
         "image": "rdaw/0524-Glaucute.png",
         "vname": ""
       }
-    ],
-    "letter": "G",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Glaucute",
-    "name": "Glaucute",
-    "number": 524
+    ]
   },
   {
     "description": "They are able to regenerate body parts that are torn off during battle. Their feelers are very sensitive an react to even the slightest gesture.",
+    "generation": "iv",
     "id": 2525,
+    "letter": "Z",
+    "name": "Zaleidus",
+    "number": 525,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Zaleidus",
     "variants": [
       {
         "image": "rdaw/0525-Zaleidus.png",
         "vname": ""
       }
-    ],
-    "letter": "Z",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Zaleidus",
-    "name": "Zaleidus",
-    "number": 525
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0526-Glaureus.png"
-      }
-    ],
     "description": "Their feelers are able to sense the movement of water based on the air. Their bodies are large, but they are still able to get into the smallest crevice.",
+    "generation": "iv",
     "id": 2526,
+    "letter": "G",
     "name": "Glaureus",
     "number": 526,
-    "letter": "G",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Glaureus"
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Glaureus",
+    "variants": [
+      {
+        "image": "rdaw/0526-Glaureus.png",
+        "vname": ""
+      }
+    ]
   },
   {
-    "id": 2527,
     "description": "Their fur is very sweet, prompting them to lick them themselves more than usual. They are loved by children.",
+    "generation": "iv",
+    "id": 2527,
+    "letter": "P",
+    "name": "Pupuff",
+    "number": 527,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Pupuff",
     "variants": [
       {
         "image": "rdaw/0527-Pupuff.png",
         "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Pupuff",
-    "letter": "P",
-    "number": 527,
-    "name": "Pupuff"
+    ]
   },
   {
+    "description": "Their fur has an extremely sweet taste and is often shaved off as a snack. The fur grows back quickly, so Cottaste doesn't mind. They really love to swim, but their fur becomes much heavier and harder if they are out in water for too long. Their fur then has to be shaved off as a result.",
+    "generation": "iv",
+    "id": 2528,
+    "letter": "C",
     "name": "Cottaste",
     "number": 528,
-    "letter": "C",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Cottaste",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0528-Cottaste.png"
+        "image": "rdaw/0528-Cottaste.png",
+        "vname": ""
       }
-    ],
-    "description": "Their fur has an extremely sweet taste and is often shaved off as a snack. The fur grows back quickly, so Cottaste doesn't mind. They really love to swim, but their fur becomes much heavier and harder if they are out in water for too long. Their fur then has to be shaved off as a result.",
-    "id": 2528
+    ]
   },
   {
-    "number": 529,
-    "name": "Mimicaw",
+    "description": "Their special vocal chords allow them to mimic any sound that they hear, including human speech. Their tails allow them to adjust their tones.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mimicaw",
+    "id": 2529,
     "letter": "M",
+    "name": "Mimicaw",
+    "number": 529,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mimicaw",
     "variants": [
       {
         "image": "rdaw/0529-Mimicaw.png",
         "vname": ""
       }
-    ],
-    "id": 2529,
-    "description": "Their special vocal chords allow them to mimic any sound that they hear, including human speech. Their tails allow them to adjust their tones."
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0530-Vocalyre.png"
-      }
-    ],
     "description": "Their tails flash based on the notes that they sing. They can screech loud enough to break multiple windows.",
+    "generation": "iv",
     "id": 2530,
+    "letter": "V",
     "name": "Vocalyre",
     "number": 530,
-    "letter": "V",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Vocalyre",
-    "generation": "iv"
+    "variants": [
+      {
+        "image": "rdaw/0530-Vocalyre.png",
+        "vname": ""
+      }
+    ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Allyring",
-    "generation": "iv",
-    "letter": "A",
-    "number": 531,
-    "name": "Allyring",
-    "id": 2531,
     "description": "Their singing is considered a nuisance, as they sing for hours on end nonstop. They can mimic any sound that they hear almost perfectly.",
+    "generation": "iv",
+    "id": 2531,
+    "letter": "A",
+    "name": "Allyring",
+    "number": 531,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Allyring",
     "variants": [
       {
         "image": "rdaw/0531-Allyring.png",
@@ -210,238 +210,238 @@
     ]
   },
   {
+    "description": "They are extremely nervous Pokemon that shudder and shake whenever they move. They generate electricity thanks to special organs in their antennae.",
+    "generation": "iv",
+    "id": 2532,
+    "letter": "T",
     "name": "Thorunt",
     "number": 532,
-    "letter": "T",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Thorunt",
-    "generation": "iv",
     "variants": [
       {
         "image": "rdaw/0532-Thorunt.png",
         "vname": ""
       }
-    ],
-    "description": "They are extremely nervous Pokemon that shudder and shake whenever they move. They generate electricity thanks to special organs in their antennae.",
-    "id": 2532
+    ]
   },
   {
     "description": "They create long chains of electricity and throw them towards opponents. The two heads communicate through electrical pulses.",
+    "generation": "iv",
     "id": 2533,
+    "letter": "S",
+    "name": "Shocoon",
+    "number": 533,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Shocoon",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0533-Shocoon.png"
+        "image": "rdaw/0533-Shocoon.png",
+        "vname": ""
       }
-    ],
-    "letter": "S",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Shocoon",
-    "generation": "iv",
-    "name": "Shocoon",
-    "number": 533
+    ]
   },
   {
+    "description": "They absorb sunlight through their wings to help them generate electricity. Touching their abdomens result in high voltage shocks.",
+    "generation": "iv",
+    "id": 2534,
+    "letter": "E",
+    "name": "Electrifly",
+    "number": 534,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Electrifly",
     "variants": [
       {
         "image": "rdaw/0534-Electrifly.png",
         "vname": ""
       }
-    ],
-    "description": "They absorb sunlight through their wings to help them generate electricity. Touching their abdomens result in high voltage shocks.",
-    "id": 2534,
-    "name": "Electrifly",
-    "number": 534,
-    "letter": "E",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Electrifly"
+    ]
   },
   {
+    "description": "Their chubby bodies help them bounce back from rough hits. They make large underground tunnels that help them around faster.",
+    "generation": "iv",
+    "id": 2535,
+    "letter": "M",
+    "name": "Marmoby",
+    "number": 535,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Marmoby",
     "variants": [
       {
         "image": "rdaw/0535-Marmoby.png",
         "vname": ""
       }
-    ],
-    "description": "Their chubby bodies help them bounce back from rough hits. They make large underground tunnels that help them around faster.",
-    "id": 2535,
-    "name": "Marmoby",
-    "number": 535,
-    "letter": "M",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Marmoby"
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0536-Marmast.png"
-      }
-    ],
-    "id": 2536,
     "description": "Their large appetites help them maintain their chubby appearances. They are able to bounce back those who try to attack it physically.",
-    "number": 536,
+    "generation": "iv",
+    "id": 2536,
+    "letter": "M",
     "name": "Marmast",
-    "generation": "iv",
+    "number": 536,
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Marmast",
-    "letter": "M"
-  },
-  {
-    "letter": "D",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Doraji",
-    "generation": "iv",
-    "name": "Doraji",
-    "number": 537,
-    "description": "The branches they carry around grow toxic berries that splatter on contact. They throw the berries at those who bother them.",
-    "id": 2537,
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0537-Doraji.png"
+        "image": "rdaw/0536-Marmast.png",
+        "vname": ""
       }
     ]
   },
   {
-    "letter": "N",
+    "description": "The branches they carry around grow toxic berries that splatter on contact. They throw the berries at those who bother them.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Nindor",
-    "name": "Nindor",
-    "number": 538,
-    "description": "They move swiftly, avoiding any and all contact with others. They are very skilled in accuracy and will make sure that their poisonous ammo always hits its mark.",
-    "id": 2538,
+    "id": 2537,
+    "letter": "D",
+    "name": "Doraji",
+    "number": 537,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Doraji",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0538-Nindor.png"
+        "image": "rdaw/0537-Doraji.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "They move swiftly, avoiding any and all contact with others. They are very skilled in accuracy and will make sure that their poisonous ammo always hits its mark.",
+    "generation": "iv",
+    "id": 2538,
+    "letter": "N",
+    "name": "Nindor",
+    "number": 538,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Nindor",
+    "variants": [
+      {
+        "image": "rdaw/0538-Nindor.png",
+        "vname": ""
       }
     ]
   },
   {
     "description": "They hover above a sleeping victim's head and begin devouring their dreams, replacing them with nightmares. It produces bubbles from the horn on its head when it is eating a good dream.",
+    "generation": "iv",
     "id": 2539,
+    "letter": "C",
+    "name": "Calareama",
+    "number": 539,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Calareama",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0539-Calareama.png"
+        "image": "rdaw/0539-Calareama.png",
+        "vname": ""
       }
-    ],
-    "letter": "C",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Calareama",
-    "generation": "iv",
-    "name": "Calareama",
-    "number": 539
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0540-Ulureap.png"
-      }
-    ],
     "description": "By ingesting water, it produces bubbles that induce slumber upon bursting. It devours an unconscious victim's dreams in order to get more powerful. It constricts its prey with its leg tentacles and uses its beak to pierce their bodies and drain them of their bodily fluids.",
+    "generation": "iv",
     "id": 2540,
+    "letter": "U",
     "name": "Ulureap",
     "number": 540,
-    "letter": "U",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Ulureap",
-    "generation": "iv"
+    "variants": [
+      {
+        "image": "rdaw/0540-Ulureap.png",
+        "vname": ""
+      }
+    ]
   },
   {
     "description": "They startle those who enter its territory by swiftly flying around them. They sleep in clusters on the ceilings of caves. Its large ear-like wings allow it to fly up to 20 mph. They are very clumsy, though.",
+    "generation": "iv",
     "id": 2541,
+    "letter": "A",
+    "name": "Aerox",
+    "number": 541,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Aerox",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0541-Aerox.png"
+        "image": "rdaw/0541-Aerox.png",
+        "vname": ""
       }
-    ],
-    "letter": "A",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Aerox",
-    "name": "Aerox",
-    "number": 541
+    ]
   },
   {
-    "id": 2542,
     "description": "They hide in the darkness of caves and frighten intruders by blinking light from the mark on its chest. They are very shy and independent, choosing to live in caves to avoid contact with humans. Their strong, ear-like wings allow it to fly long distances without getting tired.",
+    "generation": "iv",
+    "id": 2542,
+    "letter": "K",
+    "name": "Kitsoar",
+    "number": 542,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Kitsoar",
     "variants": [
       {
         "image": "rdaw/0542-Kitsoar.png",
         "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Kitsoar",
-    "letter": "K",
-    "number": 542,
-    "name": "Kitsoar"
+    ]
   },
   {
     "description": "They pretend to be guides to travelers in caves, but they actually take them somewhere so that they are never seen again. By flashing their pink lights, they can take control of anyone's mind.",
+    "generation": "iv",
     "id": 2543,
+    "letter": "V",
+    "name": "Vixoar",
+    "number": 543,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Vixoar",
     "variants": [
       {
         "image": "rdaw/0543-Vixoar.png",
         "vname": ""
       }
-    ],
-    "letter": "V",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Vixoar",
-    "name": "Vixoar",
-    "number": 543
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0544-Moeboe.png"
-      }
-    ],
-    "id": 2544,
     "description": "These Pokemon reside in small ponds feeding on the tiny microorganisms on the floor. They multiply quickly when parts of them are torn apart.",
-    "number": 544,
+    "generation": "iv",
+    "id": 2544,
+    "letter": "M",
     "name": "Moeboe",
-    "generation": "iv",
+    "number": 544,
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Moeboe",
-    "letter": "M"
-  },
-  {
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Amoeblob",
-    "letter": "A",
-    "number": 545,
-    "name": "Amoeblob",
-    "id": 2545,
-    "description": "They multiple rapidly when chunks of them are dismembered. They are very tiny Pokemon that don't really have much significance.",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0545-Amoeblob.png"
+        "image": "rdaw/0544-Moeboe.png",
+        "vname": ""
       }
     ]
   },
   {
+    "description": "They multiple rapidly when chunks of them are dismembered. They are very tiny Pokemon that don't really have much significance.",
+    "generation": "iv",
+    "id": 2545,
+    "letter": "A",
+    "name": "Amoeblob",
+    "number": 545,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Amoeblob",
+    "variants": [
+      {
+        "image": "rdaw/0545-Amoeblob.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "Allowing them to crawl around in cheese makes the cheese much richer and tastier. This practice is banned in some regions. They are commonly used by doctors and nurses to clean out cuts in order to keep patients from getting infections.",
+    "generation": "iv",
+    "id": 2546,
+    "letter": "M",
+    "name": "Magga",
+    "number": 546,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Magga",
     "variants": [
       {
         "image": "rdaw/0546-Magga.png",
         "vname": ""
       }
-    ],
-    "id": 2546,
-    "description": "Allowing them to crawl around in cheese makes the cheese much richer and tastier. This practice is banned in some regions. They are commonly used by doctors and nurses to clean out cuts in order to keep patients from getting infections.",
-    "number": 546,
-    "name": "Magga",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Magga",
-    "letter": "M"
+    ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Abilifly",
-    "generation": "iv",
-    "letter": "A",
-    "number": 547,
-    "name": "Abilifly",
-    "id": 2547,
     "description": "They are often used to treat people with mental disorders by sprinkling powders from their wings. Abilifly are usually sentimental and will remember everyone that they have healed.",
+    "generation": "iv",
+    "id": 2547,
+    "letter": "A",
+    "name": "Abilifly",
+    "number": 547,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Abilifly",
     "variants": [
       {
         "image": "rdaw/0547-Abilifly.png",
@@ -450,178 +450,178 @@
     ]
   },
   {
-    "id": 2548,
     "description": "These Pokemon are often seen helping doctors and nurses with patients who are having trouble breathing. Using the sack on its back, it sprays a powder that can heal chest pains.",
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0548-Zafirlatus.png"
-      }
-    ],
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Zafirlatus",
     "generation": "iv",
+    "id": 2548,
     "letter": "Z",
+    "name": "Zafirlatus",
     "number": 548,
-    "name": "Zafirlatus"
-  },
-  {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Ughly",
-    "generation": "iv",
-    "letter": "U",
-    "number": 549,
-    "name": "Ughly",
-    "id": 2549,
-    "description": "They used their clubs to crack bones and rocks. Many of them still exist today, but they are hard to locate, as they are constantly on the move.",
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Zafirlatus",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0549-Ughly.png"
+        "image": "rdaw/0548-Zafirlatus.png",
+        "vname": ""
       }
     ]
   },
   {
-    "letter": "O",
+    "description": "They used their clubs to crack bones and rocks. Many of them still exist today, but they are hard to locate, as they are constantly on the move.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Oogone",
+    "id": 2549,
+    "letter": "U",
+    "name": "Ughly",
+    "number": 549,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Ughly",
+    "variants": [
+      {
+        "image": "rdaw/0549-Ughly.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "It was able to spear prey in the back by throwing its club, and bashed it repeatedly until it  stopped moving. It is hypothesized that some of them were able to survive and avoided going extinct, but evidence has yet to surface.",
+    "generation": "iv",
+    "id": 2550,
+    "letter": "O",
     "name": "Oogone",
     "number": 550,
-    "description": "It was able to spear prey in the back by throwing its club, and bashed it repeatedly until it  stopped moving. It is hypothesized that some of them were able to survive and avoided going extinct, but evidence has yet to surface.",
-    "id": 2550,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Oogone",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0550-Oogone.png"
+        "image": "rdaw/0550-Oogone.png",
+        "vname": ""
       }
     ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0551-Epidose.png"
-      }
-    ],
-    "id": 2551,
     "description": "They give off a poisonous gas that is used by both plague and witch doctors in order to heal certain symptoms. While the gas they give off can help cure diseases, their bodies are completely infected.",
-    "number": 551,
-    "name": "Epidose",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Epidose",
-    "letter": "E"
-  },
-  {
-    "number": 552,
-    "name": "Epidoc",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Epidoc",
+    "id": 2551,
     "letter": "E",
+    "name": "Epidose",
+    "number": 551,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Epidose",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0552-Epidoc.png"
+        "image": "rdaw/0551-Epidose.png",
+        "vname": ""
       }
-    ],
-    "id": 2552,
-    "description": "The gas that they release is very potent, but it is actually very helpful when it comes to curing diseases. Ironically, this Pokemon was the cause of a massive outbreak of disease in the Mirus Region long ago, and also served as the savior."
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0553-Sukstion.png"
-      }
-    ],
-    "id": 2553,
-    "description": "Using their hands and feet, they race to the tops of large buildings to determine who is the fastest. They are able to move and spy on others in silence.",
-    "number": 553,
-    "name": "Sukstion",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Sukstion",
+    "description": "The gas that they release is very potent, but it is actually very helpful when it comes to curing diseases. Ironically, this Pokemon was the cause of a massive outbreak of disease in the Mirus Region long ago, and also served as the savior.",
     "generation": "iv",
-    "letter": "S"
+    "id": 2552,
+    "letter": "E",
+    "name": "Epidoc",
+    "number": 552,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Epidoc",
+    "variants": [
+      {
+        "image": "rdaw/0552-Epidoc.png",
+        "vname": ""
+      }
+    ]
   },
   {
-    "id": 2554,
+    "description": "Using their hands and feet, they race to the tops of large buildings to determine who is the fastest. They are able to move and spy on others in silence.",
+    "generation": "iv",
+    "id": 2553,
+    "letter": "S",
+    "name": "Sukstion",
+    "number": 553,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Sukstion",
+    "variants": [
+      {
+        "image": "rdaw/0553-Sukstion.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
     "description": "Discovered in ancient ruins, this Pokemon was thought to be the bringer of rain during a drought. They bounce on their small feet in order to get around.",
+    "generation": "iv",
+    "id": 2554,
+    "letter": "C",
+    "name": "Claybo",
+    "number": 554,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Claybo",
     "variants": [
       {
         "image": "rdaw/0554-Claybo.png",
         "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Claybo",
-    "letter": "C",
-    "number": 554,
-    "name": "Claybo"
+    ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Nenclay",
-    "generation": "iv",
-    "letter": "N",
-    "number": 555,
-    "name": "Nenclay",
-    "id": 2555,
     "description": "They can detach their arms and legs and launch them as rockets using psychic energy. Their legs aren't attached to their bodies, so they use their minds to move them as if they are attached.",
+    "generation": "iv",
+    "id": 2555,
+    "letter": "N",
+    "name": "Nenclay",
+    "number": 555,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Nenclay",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0555-Nenclay.png"
+        "image": "rdaw/0555-Nenclay.png",
+        "vname": ""
       }
     ]
   },
   {
+    "description": "They wait motionlessly until someone approaches it, then it bursts into flames to frighten them. They will chase their victims into exhaustion and then burn them by tackling them.",
+    "generation": "iv",
+    "id": 2556,
+    "letter": "B",
+    "name": "Blazoom",
+    "number": 556,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Blazoom",
     "variants": [
       {
         "image": "rdaw/0556-Blazoom.png",
         "vname": ""
       }
-    ],
-    "description": "They wait motionlessly until someone approaches it, then it bursts into flames to frighten them. They will chase their victims into exhaustion and then burn them by tackling them.",
-    "id": 2556,
-    "name": "Blazoom",
-    "number": 556,
-    "letter": "B",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Blazoom",
-    "generation": "iv"
+    ]
   },
   {
+    "description": "They ignite the flames on their backs when they sense people near them. They will cause confusion and blindness if you stare in their flames, then they burn down the area around you while you're still inside.",
+    "generation": "iv",
+    "id": 2557,
+    "letter": "S",
+    "name": "Singero",
+    "number": 557,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Singero",
     "variants": [
       {
         "image": "rdaw/0557-Singero.png",
         "vname": ""
       }
-    ],
-    "id": 2557,
-    "description": "They ignite the flames on their backs when they sense people near them. They will cause confusion and blindness if you stare in their flames, then they burn down the area around you while you're still inside.",
-    "number": 557,
-    "name": "Singero",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Singero",
-    "generation": "iv",
-    "letter": "S"
+    ]
   },
   {
+    "description": "They stalk wary travelers, stepping right behind them to give them the sense of being followed. They stomp on sleeping trainers until they are unconscious before using their sharp teeth to devour their legs.",
+    "generation": "iv",
+    "id": 2558,
+    "letter": "T",
+    "name": "Tapphan",
+    "number": 558,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Tapphan",
     "variants": [
       {
         "image": "rdaw/0558-Tapphan.png",
         "vname": ""
       }
-    ],
-    "description": "They stalk wary travelers, stepping right behind them to give them the sense of being followed. They stomp on sleeping trainers until they are unconscious before using their sharp teeth to devour their legs.",
-    "id": 2558,
-    "name": "Tapphan",
-    "number": 558,
-    "letter": "T",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Tapphan"
+    ]
   },
   {
-    "letter": "S",
+    "description": "They frighten lost travelers by following them, causing their anxiety to rise tremendously. Using their ears, they are able to increase their volume by expanding them, producing a louder sound.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Stomphan",
+    "id": 2559,
+    "letter": "S",
     "name": "Stomphan",
     "number": 559,
-    "description": "They frighten lost travelers by following them, causing their anxiety to rise tremendously. Using their ears, they are able to increase their volume by expanding them, producing a louder sound.",
-    "id": 2559,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Stomphan",
     "variants": [
       {
         "image": "rdaw/0559-Stomphan.png",
@@ -630,58 +630,58 @@
     ]
   },
   {
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mizar",
-    "letter": "M",
-    "number": 560,
-    "name": "Mizar",
-    "id": 2560,
     "description": "The only account of this Pokemon's actual face being seen was 200 years ago. They have been known to damage boats and ships with their barbed tails, causing them to sink.",
+    "generation": "iv",
+    "id": 2560,
+    "letter": "M",
+    "name": "Mizar",
+    "number": 560,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mizar",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0560-Mizar.png"
+        "image": "rdaw/0560-Mizar.png",
+        "vname": ""
       }
     ]
   },
   {
+    "description": "They snatch up fisherman with their spiked tails and drag them into the depths of the sea. Its body is extremely large, so usually only their tails are seen.",
+    "generation": "iv",
+    "id": 2561,
+    "letter": "D",
+    "name": "Damoat",
+    "number": 561,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Damoat",
     "variants": [
       {
         "image": "rdaw/0561-Damoat.png",
         "vname": ""
       }
-    ],
-    "id": 2561,
-    "description": "They snatch up fisherman with their spiked tails and drag them into the depths of the sea. Its body is extremely large, so usually only their tails are seen.",
-    "number": 561,
-    "name": "Damoat",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Damoat",
-    "letter": "D"
+    ]
   },
   {
+    "description": "Discovered in a landfill, these Pokemon are very naive and unstable. They crash and attack anything that they see for no real reason...",
+    "generation": "iv",
+    "id": 2562,
+    "letter": "P",
+    "name": "Protok",
+    "number": 562,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Protok",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0562-Protok.png"
+        "image": "rdaw/0562-Protok.png",
+        "vname": ""
       }
-    ],
-    "id": 2562,
-    "description": "Discovered in a landfill, these Pokemon are very naive and unstable. They crash and attack anything that they see for no real reason...",
-    "number": 562,
-    "name": "Protok",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Protok",
-    "letter": "P"
+    ]
   },
   {
-    "letter": "Y",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Yanyin",
+    "description": "They have the power to become a dual-type Pokemon, but only if the types are weak or strong against each other. Their markings are able to show what type they are.",
     "generation": "iv",
+    "id": 2563,
+    "letter": "Y",
     "name": "Yanyin",
     "number": 563,
-    "description": "They have the power to become a dual-type Pokemon, but only if the types are weak or strong against each other. Their markings are able to show what type they are.",
-    "id": 2563,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Yanyin",
     "variants": [
       {
         "image": "rdaw/0563-Yanyin.png",
@@ -690,178 +690,178 @@
     ]
   },
   {
+    "description": "Once a thriving solution to a software issue, it has been modified by an inexperienced developer. They link up to others of their kind and are powerful enough to short circuit a supercomputer.",
+    "generation": "iv",
+    "id": 2564,
+    "letter": "V",
     "name": "Virubic3",
     "number": 564,
-    "letter": "V",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Virubic3",
     "variants": [
       {
         "image": "rdaw/0564-Virubic3.png",
         "vname": ""
       }
-    ],
-    "description": "Once a thriving solution to a software issue, it has been modified by an inexperienced developer. They link up to others of their kind and are powerful enough to short circuit a supercomputer.",
-    "id": 2564
+    ]
   },
   {
+    "description": "They reside in haunted houses as average pillows, but when they sense intruders, they come out of their dormant stage. Brought to life by the spirit of someone who was murdered via pillow, this Pokemon awkwardly seeks vengeance with poor results....",
+    "generation": "iv",
+    "id": 2565,
+    "letter": "G",
     "name": "Ghasoft",
     "number": 565,
-    "letter": "G",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Ghasoft",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0565-Ghasoft.png"
+        "image": "rdaw/0565-Ghasoft.png",
+        "vname": ""
       }
-    ],
-    "description": "They reside in haunted houses as average pillows, but when they sense intruders, they come out of their dormant stage. Brought to life by the spirit of someone who was murdered via pillow, this Pokemon awkwardly seeks vengeance with poor results....",
-    "id": 2565
+    ]
   },
   {
-    "id": 2566,
     "description": "The possessed being in its body has been trapped and has now moved to its tongue, adding to its ridiculous appearance. It is able to stun enemies with its tongue and swallow them, turning them into cotton for its body.",
+    "generation": "iv",
+    "id": 2566,
+    "letter": "S",
+    "name": "Sofdurr",
+    "number": 566,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Sofdurr",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0566-Sofdurr.png"
+        "image": "rdaw/0566-Sofdurr.png",
+        "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Sofdurr",
-    "letter": "S",
-    "number": 566,
-    "name": "Sofdurr"
+    ]
   },
   {
+    "description": "Their origins are linked to an explosion that occurred at a mint. They use their mental prowess to impress their trainers.",
+    "generation": "iv",
+    "id": 2567,
+    "letter": "P",
     "name": "Pennec",
     "number": 567,
-    "letter": "P",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Pennec",
     "variants": [
       {
         "image": "rdaw/0567-Pennec.png",
         "vname": ""
       }
-    ],
-    "description": "Their origins are linked to an explosion that occurred at a mint. They use their mental prowess to impress their trainers.",
-    "id": 2567
+    ]
   },
   {
-    "id": 2568,
     "description": "Their brains have linked together, unfortunately connecting their bodies in the process. Their combined brainpower is strong enough to blast away a stadium.",
+    "generation": "iv",
+    "id": 2568,
+    "letter": "D",
+    "name": "Daipen",
+    "number": 568,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Daipen",
     "variants": [
       {
         "image": "rdaw/0568-Daipen.png",
         "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Daipen",
-    "letter": "D",
-    "number": 568,
-    "name": "Daipen"
+    ]
   },
   {
+    "description": "Gnawing on a specific type of root gives them an extremely relaxed feeling that heightens their senses. They get extremely agitated if they are without their roots for too long.",
+    "generation": "iv",
+    "id": 2569,
+    "letter": "C",
+    "name": "Caapaw",
+    "number": 569,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Caapaw",
     "variants": [
       {
         "image": "rdaw/0569-Caapaw.png",
         "vname": ""
       }
-    ],
-    "description": "Gnawing on a specific type of root gives them an extremely relaxed feeling that heightens their senses. They get extremely agitated if they are without their roots for too long.",
-    "id": 2569,
-    "name": "Caapaw",
-    "number": 569,
-    "letter": "C",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Caapaw"
+    ]
   },
   {
-    "letter": "C",
+    "description": "They hate being away from their roots, so they always carry it in their mouths, limiting their hunting. If their roots are damaged or missing, they will not hesitate to attack anyone or anything they see.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Caaprowl",
+    "id": 2570,
+    "letter": "C",
     "name": "Caaprowl",
     "number": 570,
-    "description": "They hate being away from their roots, so they always carry it in their mouths, limiting their hunting. If their roots are damaged or missing, they will not hesitate to attack anyone or anything they see.",
-    "id": 2570,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Caaprowl",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0570-Caaprowl.png"
+        "image": "rdaw/0570-Caaprowl.png",
+        "vname": ""
       }
     ]
   },
   {
     "description": "The orbs on its back contain tiny seeds that can make trees grow faster. It is thought that these Pokemon produced special orbs on its back and the orbs were turned into the ornaments that we use today.",
+    "generation": "iv",
     "id": 2571,
+    "letter": "J",
+    "name": "Jingrub",
+    "number": 571,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Jingrub",
     "variants": [
       {
         "image": "rdaw/0571-Jingrub.png",
         "vname": ""
       }
-    ],
-    "letter": "J",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Jingrub",
-    "name": "Jingrub",
-    "number": 571
+    ]
   },
   {
+    "description": "These Pokemon are taken from their undersea homes in order to harvest the trees that grow from their backs. Their leaves are very colorful and can change color whenever they want.",
+    "generation": "iv",
+    "id": 2572,
+    "letter": "H",
+    "name": "Hollurm",
+    "number": 572,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Hollurm",
     "variants": [
       {
         "image": "rdaw/0572-Hollurm.png",
         "vname": ""
       }
-    ],
-    "description": "These Pokemon are taken from their undersea homes in order to harvest the trees that grow from their backs. Their leaves are very colorful and can change color whenever they want.",
-    "id": 2572,
-    "name": "Hollurm",
-    "number": 572,
-    "letter": "H",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Hollurm"
+    ]
   },
   {
+    "description": "One of the most peaceful Ghost-types, they reside in small lakes and rivers. They try not to bother humans and will sometimes simply float in one place.",
+    "generation": "iv",
+    "id": 2573,
+    "letter": "A",
     "name": "Angelug",
     "number": 573,
-    "letter": "A",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Angelug",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0573-Angelug.png"
-      }
-    ],
-    "description": "One of the most peaceful Ghost-types, they reside in small lakes and rivers. They try not to bother humans and will sometimes simply float in one place.",
-    "id": 2573
-  },
-  {
-    "letter": "H",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Halone",
-    "generation": "iv",
-    "name": "Halone",
-    "number": 574,
-    "description": "They aimlessly float about in ponds and the ocean. Their hearts give off majority of their power, so their small 'hands' are extremely powerful.",
-    "id": 2574,
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0574-Halone.png"
+        "image": "rdaw/0573-Angelug.png",
+        "vname": ""
       }
     ]
   },
   {
-    "letter": "D",
+    "description": "They aimlessly float about in ponds and the ocean. Their hearts give off majority of their power, so their small 'hands' are extremely powerful.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Dumboc",
+    "id": 2574,
+    "letter": "H",
+    "name": "Halone",
+    "number": 574,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Halone",
+    "variants": [
+      {
+        "image": "rdaw/0574-Halone.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "They use the ear-like flaps on the side of its head to fly in the air. They are able to squeeze into the smallest of crevasses thanks to their squishy bodies.",
+    "generation": "iv",
+    "id": 2575,
+    "letter": "D",
     "name": "Dumboc",
     "number": 575,
-    "description": "They use the ear-like flaps on the side of its head to fly in the air. They are able to squeeze into the smallest of crevasses thanks to their squishy bodies.",
-    "id": 2575,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Dumboc",
     "variants": [
       {
         "image": "rdaw/0575-Dumboc.png",
@@ -870,13 +870,13 @@
     ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Flapoct",
-    "generation": "iv",
-    "letter": "F",
-    "number": 576,
-    "name": "Flapoct",
-    "id": 2576,
     "description": "They use their flaps to glide and fly around in the air. They can rotate their bodies so fast that they can bore into concrete.",
+    "generation": "iv",
+    "id": 2576,
+    "letter": "F",
+    "name": "Flapoct",
+    "number": 576,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Flapoct",
     "variants": [
       {
         "image": "rdaw/0576-Flapoct.png",
@@ -885,103 +885,103 @@
     ]
   },
   {
+    "description": "Their bodies are made up of a gooey substance that makes them sluggish and unappealing. They ingest large amounts of water so they are able to survive on land.",
+    "generation": "iv",
+    "id": 2577,
+    "letter": "C",
+    "name": "Chroblob",
+    "number": 577,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Chroblob",
     "variants": [
       {
         "image": "rdaw/0577-Chroblob.png",
         "vname": ""
       }
-    ],
-    "description": "Their bodies are made up of a gooey substance that makes them sluggish and unappealing. They ingest large amounts of water so they are able to survive on land.",
-    "id": 2577,
-    "name": "Chroblob",
-    "number": 577,
-    "letter": "C",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Chroblob"
+    ]
   },
   {
     "description": "They absorb loud soundwaves into their bodies, which causes them to grow larger and larger. They have the power to freeze time, and whoever they want, in place.",
+    "generation": "iv",
     "id": 2578,
+    "letter": "C",
+    "name": "Chirplump",
+    "number": 578,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Chirplump",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0578-Chirplump.png"
+        "image": "rdaw/0578-Chirplump.png",
+        "vname": ""
       }
-    ],
-    "letter": "C",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Chirplump",
-    "generation": "iv",
-    "name": "Chirplump",
-    "number": 578
+    ]
   },
   {
-    "number": 579,
-    "name": "Seedling",
+    "description": "They bury themselves into the ground in order to allow their sprout to receive sunlight, They close and open their heads when they want to have fun and get water.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Seedling",
+    "id": 2579,
     "letter": "S",
+    "name": "Seedling",
+    "number": 579,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Seedling",
     "variants": [
       {
         "image": "rdaw/0579-Seedling.png",
         "vname": ""
       }
-    ],
-    "id": 2579,
-    "description": "They bury themselves into the ground in order to allow their sprout to receive sunlight, They close and open their heads when they want to have fun and get water."
+    ]
   },
   {
+    "description": "They dance when they are very healthy. They have been known to bathe in mountain springs and disappear at night.",
+    "generation": "iv",
+    "id": 2580,
+    "letter": "F",
+    "name": "Floraline",
+    "number": 580,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Floraline",
     "variants": [
       {
         "image": "rdaw/0580-Floraline.png",
         "vname": ""
       }
-    ],
-    "id": 2580,
-    "description": "They dance when they are very healthy. They have been known to bathe in mountain springs and disappear at night.",
-    "number": 580,
-    "name": "Floraline",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Floraline",
-    "generation": "iv",
-    "letter": "F"
+    ]
   },
   {
-    "number": 581,
-    "name": "Lasame",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Lasame",
+    "description": "These Pokemon love to hang around the necks of their trainers, acting as a living necklace. They like to swim in water and scare other Pokemon by clinging to their necks and legs.",
     "generation": "iv",
+    "id": 2581,
     "letter": "L",
+    "name": "Lasame",
+    "number": 581,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Lasame",
     "variants": [
       {
         "image": "rdaw/0581-Lasame.png",
         "vname": ""
       }
-    ],
-    "id": 2581,
-    "description": "These Pokemon love to hang around the necks of their trainers, acting as a living necklace. They like to swim in water and scare other Pokemon by clinging to their necks and legs."
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0582-Elephium.png"
-      }
-    ],
     "description": "These Pokemon are known for their playful nature and tackle other trainers and Pokemon out of joy. Their bodies are extremely tough, unable to be melted even by high temperature flames.",
+    "generation": "iv",
     "id": 2582,
+    "letter": "E",
     "name": "Elephium",
     "number": 582,
-    "letter": "E",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Elephium",
-    "generation": "iv"
+    "variants": [
+      {
+        "image": "rdaw/0582-Elephium.png",
+        "vname": ""
+      }
+    ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Bracaderm",
-    "generation": "iv",
-    "letter": "B",
-    "number": 583,
-    "name": "Bracaderm",
-    "id": 2583,
     "description": "They have been known to charge at each other in order to help build courage and strength. Their tusks are indestructible, so when they inevitably fall off, they are used as weapons.",
+    "generation": "iv",
+    "id": 2583,
+    "letter": "B",
+    "name": "Bracaderm",
+    "number": 583,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Bracaderm",
     "variants": [
       {
         "image": "rdaw/0583-Bracaderm.png",
@@ -990,58 +990,58 @@
     ]
   },
   {
+    "description": "They cannot really see that well, so they rely on the feelers on its nose to guide them around. They dig elaborate tunnel systems that are difficult to navigate through.",
+    "generation": "iv",
+    "id": 2584,
+    "letter": "R",
+    "name": "Radig",
+    "number": 584,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Radig",
     "variants": [
       {
         "image": "rdaw/0584-Radig.png",
         "vname": ""
       }
-    ],
-    "id": 2584,
-    "description": "They cannot really see that well, so they rely on the feelers on its nose to guide them around. They dig elaborate tunnel systems that are difficult to navigate through.",
-    "number": 584,
-    "name": "Radig",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Radig",
-    "generation": "iv",
-    "letter": "R"
+    ]
   },
   {
-    "id": 2585,
     "description": "Now completely blind, these Pokemon have to rely on their nose to navigate them places. They use their drill tails to make burrows to sleep in.",
+    "generation": "iv",
+    "id": 2585,
+    "letter": "B",
+    "name": "Burrole",
+    "number": 585,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Burrole",
     "variants": [
       {
         "image": "rdaw/0585-Burrole.png",
         "vname": ""
       }
-    ],
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Burrole",
-    "generation": "iv",
-    "letter": "B",
-    "number": 585,
-    "name": "Burrole"
+    ]
   },
   {
+    "description": "They are known to help construction workers dig holes for architecture. Their noses are very sensitive to smell, allowing them to navigate well despite their lack of sight.",
+    "generation": "iv",
+    "id": 2586,
+    "letter": "E",
     "name": "Excatun",
     "number": 586,
-    "letter": "E",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Excatun",
     "variants": [
       {
         "image": "rdaw/0586-Excatun.png",
         "vname": ""
       }
-    ],
-    "description": "They are known to help construction workers dig holes for architecture. Their noses are very sensitive to smell, allowing them to navigate well despite their lack of sight.",
-    "id": 2586
+    ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Teddwa",
-    "generation": "iv",
-    "letter": "T",
-    "number": 587,
-    "name": "Teddwa",
-    "id": 2587,
     "description": "Teddwa are almost never seen moving, but are easily able to move from place to place quickly. Oddly enough, they don't breathe or blink and are still able to survive in any environment.",
+    "generation": "iv",
+    "id": 2587,
+    "letter": "T",
+    "name": "Teddwa",
+    "number": 587,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Teddwa",
     "variants": [
       {
         "image": "rdaw/0587-Teddwa.png",
@@ -1050,88 +1050,88 @@
     ]
   },
   {
+    "description": "Zwursa are not known to eat or sleep, they simply stand in one place and stare out into the distance, as if they see something. They watch over homes and gardens, protecting them from thieves.",
+    "generation": "iv",
+    "id": 2588,
+    "letter": "Z",
+    "name": "Zwursa",
+    "number": 588,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Zwursa",
     "variants": [
       {
         "image": "rdaw/0588-Zwursa.png",
         "vname": ""
       }
-    ],
-    "description": "Zwursa are not known to eat or sleep, they simply stand in one place and stare out into the distance, as if they see something. They watch over homes and gardens, protecting them from thieves.",
-    "id": 2588,
-    "name": "Zwursa",
-    "number": 588,
-    "letter": "Z",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Zwursa",
-    "generation": "iv"
+    ]
   },
   {
-    "number": 589,
-    "name": "Monochrow",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Monochrow",
+    "description": "They have the power to change its settings in which it lives by giving off a saturating aura. Monochrow normally hate anything vivid and colorful, so they immediately try to attack anything too bright.",
     "generation": "iv",
+    "id": 2589,
     "letter": "M",
+    "name": "Monochrow",
+    "number": 589,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Monochrow",
     "variants": [
       {
         "image": "rdaw/0589-Monochrow.png",
         "vname": ""
       }
-    ],
-    "id": 2589,
-    "description": "They have the power to change its settings in which it lives by giving off a saturating aura. Monochrow normally hate anything vivid and colorful, so they immediately try to attack anything too bright."
+    ]
   },
   {
+    "description": "They are known to gather together at midnight and give off eerie cries similar to baby's scream. When faced with a colorful Pokemon as an opponent, they will not stop trying to defeat it, and will continue to attack until its owner recalls it.",
+    "generation": "iv",
+    "id": 2590,
+    "letter": "C",
+    "name": "Crowme",
+    "number": 590,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Crowme",
     "variants": [
       {
         "image": "rdaw/0590-Crowme.png",
         "vname": ""
       }
-    ],
-    "id": 2590,
-    "description": "They are known to gather together at midnight and give off eerie cries similar to baby's scream. When faced with a colorful Pokemon as an opponent, they will not stop trying to defeat it, and will continue to attack until its owner recalls it.",
-    "number": 590,
-    "name": "Crowme",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Crowme",
-    "letter": "C"
+    ]
   },
   {
-    "letter": "T",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Tephlare",
+    "description": "Tephlare have the power to sense the past and future by staring into fire. Their brains are somewhat larger than average, making their senses and obedience better.",
     "generation": "iv",
+    "id": 2591,
+    "letter": "T",
     "name": "Tephlare",
     "number": 591,
-    "description": "Tephlare have the power to sense the past and future by staring into fire. Their brains are somewhat larger than average, making their senses and obedience better.",
-    "id": 2591,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Tephlare",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0591-Tephlare.png"
+        "image": "rdaw/0591-Tephlare.png",
+        "vname": ""
       }
     ]
   },
   {
-    "id": 2592,
     "description": "Highly intelligent, these Pokemon are able to directly communicate with others via telepathy. Abhorring high activity, these Pokemon often seclude themselves in dark caves away from large groups.",
+    "generation": "iv",
+    "id": 2592,
+    "letter": "E",
+    "name": "Esphlare",
+    "number": 592,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Esphlare",
     "variants": [
       {
         "image": "rdaw/0592-Esphlare.png",
         "vname": ""
       }
-    ],
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Esphlare",
-    "generation": "iv",
-    "letter": "E",
-    "number": 592,
-    "name": "Esphlare"
+    ]
   },
   {
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Shrecho",
-    "letter": "S",
-    "number": 593,
-    "name": "Shrecho",
-    "id": 2593,
     "description": "The spirits of singers, they screech nonstop once they have a captive audience. By bringing their arms closer to their mouths, they can amplify their voices.",
+    "generation": "iv",
+    "id": 2593,
+    "letter": "S",
+    "name": "Shrecho",
+    "number": 593,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Shrecho",
     "variants": [
       {
         "image": "rdaw/0593-Shrecho.png",
@@ -1140,13 +1140,13 @@
     ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Elflet",
-    "generation": "iv",
-    "letter": "E",
-    "number": 594,
-    "name": "Elflet",
-    "id": 2594,
     "description": "They work nonstop until they finish something. If they see someone hurt, they use their bells to heal them.",
+    "generation": "iv",
+    "id": 2594,
+    "letter": "E",
+    "name": "Elflet",
+    "number": 594,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Elflet",
     "variants": [
       {
         "image": "rdaw/0594-Elflet.png",
@@ -1155,13 +1155,13 @@
     ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Santoho",
-    "generation": "iv",
-    "letter": "S",
-    "number": 595,
-    "name": "Santoho",
-    "id": 2595,
     "description": "By jingling the bells around their neck, they increase their power. Each one orders ten Elflet to work on a specific task.",
+    "generation": "iv",
+    "id": 2595,
+    "letter": "S",
+    "name": "Santoho",
+    "number": 595,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Santoho",
     "variants": [
       {
         "image": "rdaw/0595-Santoho.png",
@@ -1170,223 +1170,223 @@
     ]
   },
   {
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Breezent",
-    "letter": "B",
-    "number": 596,
-    "name": "Breezent",
-    "id": 2596,
     "description": "Breezent can give off a variety of scents that can be either good or bad depending on its mood. To protect themselves, they surround their bodies in a cloud of scented smoke that it produces from its mouth.",
+    "generation": "iv",
+    "id": 2596,
+    "letter": "B",
+    "name": "Breezent",
+    "number": 596,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Breezent",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0596-Breezent.png"
+        "image": "rdaw/0596-Breezent.png",
+        "vname": ""
       }
     ]
   },
   {
     "description": "There are twelve different types of Stonfant, each with its own special gemstone embedded in its body. It is supposedly stated that if you catch a Stonfant that has your birthstone, you will have luck in your birth month.",
+    "generation": "iv",
     "id": 2597,
+    "letter": "S",
+    "name": "Stonfant",
+    "number": 597,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Stonfant",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0597-Stonfant.png"
+        "image": "rdaw/0597-Stonfant.png",
+        "vname": ""
       }
-    ],
-    "letter": "S",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Stonfant",
-    "generation": "iv",
-    "name": "Stonfant",
-    "number": 597
+    ]
   },
   {
-    "id": 2598,
     "description": "They can deliver devastating blows from their disjointed arms when they are agitated. Multiple forms of this Pokemon are sought out by collectors.",
+    "generation": "iv",
+    "id": 2598,
+    "letter": "S",
+    "name": "Stonite",
+    "number": 598,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Stonite",
     "variants": [
       {
         "image": "rdaw/0598-Stonite.png",
         "vname": ""
       }
-    ],
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Stonite",
-    "generation": "iv",
-    "letter": "S",
-    "number": 598,
-    "name": "Stonite"
+    ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mannid",
-    "generation": "iv",
-    "letter": "M",
-    "number": 599,
-    "name": "Mannid",
-    "id": 2599,
     "description": "Mannid are highly obedient and will remain loyal to their trainers, no matter what they do. They are not comfortable in the wild, so they always choose to stay with people in cities and towns.",
+    "generation": "iv",
+    "id": 2599,
+    "letter": "M",
+    "name": "Mannid",
+    "number": 599,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mannid",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0599-Mannid.png"
+        "image": "rdaw/0599-Mannid.png",
+        "vname": ""
       }
     ]
   },
   {
-    "number": 600,
-    "name": "Knowlor",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Knowlor",
+    "description": "When resting, their wings are sometimes mistaken for real books. These Pokemon's brains are very advanced; they are able to share their knowledge via telepathy.",
     "generation": "iv",
+    "id": 2600,
     "letter": "K",
+    "name": "Knowlor",
+    "number": 600,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Knowlor",
     "variants": [
       {
         "image": "rdaw/0600-Knowlor.png",
         "vname": ""
       }
-    ],
-    "id": 2600,
-    "description": "When resting, their wings are sometimes mistaken for real books. These Pokemon's brains are very advanced; they are able to share their knowledge via telepathy."
+    ]
   },
   {
+    "description": "They spend most of their lives in small caves located in mountains. They are small, but very strong, being able to destroy boulders with a single tackle.",
+    "generation": "iv",
+    "id": 2601,
+    "letter": "B",
     "name": "Bobynx",
     "number": 601,
-    "letter": "B",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Bobynx",
     "variants": [
       {
         "image": "rdaw/0601-Bobynx.png",
         "vname": ""
       }
-    ],
-    "description": "They spend most of their lives in small caves located in mountains. They are small, but very strong, being able to destroy boulders with a single tackle.",
-    "id": 2601
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0602-Soxite.png"
-      }
-    ],
     "description": "They spend their times in haunted houses, pretending to be simple toys. They are able to quickly rearrange items in homes and in the wild in order to either scare or confuse people.",
+    "generation": "iv",
     "id": 2602,
+    "letter": "S",
     "name": "Soxite",
     "number": 602,
-    "letter": "S",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Soxite"
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Soxite",
+    "variants": [
+      {
+        "image": "rdaw/0602-Soxite.png",
+        "vname": ""
+      }
+    ]
   },
   {
+    "description": "Their flowers on their heads give off a stench that can make anyone miserable. Many trainers avoid this Pokemon at all costs.",
+    "generation": "iv",
+    "id": 2603,
+    "letter": "H",
     "name": "Haunee",
     "number": 603,
-    "letter": "H",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Haunee",
-    "generation": "iv",
     "variants": [
       {
         "image": "rdaw/0603-Haunee.png",
         "vname": ""
       }
-    ],
-    "description": "Their flowers on their heads give off a stench that can make anyone miserable. Many trainers avoid this Pokemon at all costs.",
-    "id": 2603
+    ]
   },
   {
-    "id": 2604,
     "description": "They have been known to attack anyone and anything that invades their territory. They mark their territories by spraying a fruity liquid from their mouths.",
+    "generation": "iv",
+    "id": 2604,
+    "letter": "P",
+    "name": "Pityka",
+    "number": 604,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Pityka",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0604-Pityka.png"
+        "image": "rdaw/0604-Pityka.png",
+        "vname": ""
       }
-    ],
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Pityka",
-    "generation": "iv",
-    "letter": "P",
-    "number": 604,
-    "name": "Pityka"
+    ]
   },
   {
+    "description": "They sleep with their spikes out as a defense against possible attacks. Its piercing glare paralyzes smaller insects, which it then feasts upon.",
+    "generation": "iv",
+    "id": 2605,
+    "letter": "F",
+    "name": "Fruitang",
+    "number": 605,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Fruitang",
     "variants": [
       {
         "image": "rdaw/0605-Fruitang.png",
         "vname": ""
       }
-    ],
-    "description": "They sleep with their spikes out as a defense against possible attacks. Its piercing glare paralyzes smaller insects, which it then feasts upon.",
-    "id": 2605,
-    "name": "Fruitang",
-    "number": 605,
-    "letter": "F",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Fruitang"
+    ]
   },
   {
+    "description": "They waste no time in attacking anything and everything that gets on its bad side. With their sharp claws, they shred their enemies to pieces.",
+    "generation": "iv",
+    "id": 2606,
+    "letter": "T",
     "name": "Thoragon",
     "number": 606,
-    "letter": "T",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Thoragon",
-    "generation": "iv",
     "variants": [
       {
         "image": "rdaw/0606-Thoragon.png",
         "vname": ""
       }
-    ],
-    "description": "They waste no time in attacking anything and everything that gets on its bad side. With their sharp claws, they shred their enemies to pieces.",
-    "id": 2606
+    ]
   },
   {
-    "id": 2607,
     "description": "Disguising themselves as harmless plants makes it easier for them to catch prey. They use their sweet odor to lure victims in before snaring them with vines.",
+    "generation": "iv",
+    "id": 2607,
+    "letter": "D",
+    "name": "Drackap",
+    "number": 607,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Drackap",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0607-Drackap.png"
+        "image": "rdaw/0607-Drackap.png",
+        "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Drackap",
-    "letter": "D",
-    "number": 607,
-    "name": "Drackap"
+    ]
   },
   {
     "description": "They scatter spores from their tails in order to put  their prey to sleep before eating them. Their spiky seeds are fired rapidly into the ground, causing more Drackap to emerge.",
+    "generation": "iv",
     "id": 2608,
+    "letter": "P",
+    "name": "Podraco",
+    "number": 608,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Podraco",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0608-Podraco.png"
+        "image": "rdaw/0608-Podraco.png",
+        "vname": ""
       }
-    ],
-    "letter": "P",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Podraco",
-    "name": "Podraco",
-    "number": 608
+    ]
   },
   {
+    "description": "They explode when they are frightened or excited about something. They are usually found on the nights of holidays.",
+    "generation": "iv",
+    "id": 2609,
+    "letter": "A",
+    "name": "Achenwy",
+    "number": 609,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Achenwy",
     "variants": [
       {
         "image": "rdaw/0609-Achenwy.png",
         "vname": ""
       }
-    ],
-    "description": "They explode when they are frightened or excited about something. They are usually found on the nights of holidays.",
-    "id": 2609,
-    "name": "Achenwy",
-    "number": 609,
-    "letter": "A",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Achenwy",
-    "generation": "iv"
+    ]
   },
   {
-    "letter": "P",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Powdus",
+    "description": "These whimsical Pokemon float around large castles and mansions, spreading a special powder. The powder emitted from its body is said to allow people to fly for short periods of time.",
     "generation": "iv",
+    "id": 2610,
+    "letter": "P",
     "name": "Powdus",
     "number": 610,
-    "description": "These whimsical Pokemon float around large castles and mansions, spreading a special powder. The powder emitted from its body is said to allow people to fly for short periods of time.",
-    "id": 2610,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Powdus",
     "variants": [
       {
         "image": "rdaw/0610-Powdus.png",
@@ -1395,118 +1395,118 @@
     ]
   },
   {
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Maginax",
-    "letter": "M",
-    "number": 611,
-    "name": "Maginax",
-    "id": 2611,
     "description": "It has been said that these Pokemon were born when a volcano erupted more than 300 million years ago. Their spines were filled with magma that erupted into lava when they were excited.",
+    "generation": "iv",
+    "id": 2611,
+    "letter": "M",
+    "name": "Maginax",
+    "number": 611,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Maginax",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0611-Maginax.png"
+        "image": "rdaw/0611-Maginax.png",
+        "vname": ""
       }
     ]
   },
   {
-    "id": 2612,
     "description": "They are said to be connected to volcanic eruptions that happened during the times that they were alive. When they were threatened, their backs erupted, scaring off their enemies.",
+    "generation": "iv",
+    "id": 2612,
+    "letter": "V",
+    "name": "Volcaniax",
+    "number": 612,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Volcaniax",
     "variants": [
       {
         "image": "rdaw/0612-Volcaniax.png",
         "vname": ""
       }
-    ],
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Volcaniax",
-    "generation": "iv",
-    "letter": "V",
-    "number": 612,
-    "name": "Volcaniax"
+    ]
   },
   {
+    "description": "Their fangs are made of ice, so they are very fragile and crack easily. By biting something, they are able to make it icy, but they may also break a tooth.",
+    "generation": "iv",
+    "id": 2613,
+    "letter": "T",
     "name": "Tokub",
     "number": 613,
-    "letter": "T",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Tokub",
     "variants": [
       {
         "image": "rdaw/0613-Tokub.png",
         "vname": ""
       }
-    ],
-    "description": "Their fangs are made of ice, so they are very fragile and crack easily. By biting something, they are able to make it icy, but they may also break a tooth.",
-    "id": 2613
+    ]
   },
   {
+    "description": "Their fangs are much more stronger, so they do not break as easily as they used to. Their fangs are very sharp and can pierce the bones of their prey in one go.",
+    "generation": "iv",
+    "id": 2614,
+    "letter": "F",
+    "name": "Frostear",
+    "number": 614,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Frostear",
     "variants": [
       {
         "image": "rdaw/0614-Frostear.png",
         "vname": ""
       }
-    ],
-    "description": "Their fangs are much more stronger, so they do not break as easily as they used to. Their fangs are very sharp and can pierce the bones of their prey in one go.",
-    "id": 2614,
-    "name": "Frostear",
-    "number": 614,
-    "letter": "F",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Frostear"
+    ]
   },
   {
-    "letter": "M",
+    "description": "They move swiftly and silently, delivering devastating blows to the chests and head of their opponents. The spirits of mummified children, they roam around abandoned tombs.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mummite",
+    "id": 2615,
+    "letter": "M",
     "name": "Mummite",
     "number": 615,
-    "description": "They move swiftly and silently, delivering devastating blows to the chests and head of their opponents. The spirits of mummified children, they roam around abandoned tombs.",
-    "id": 2615,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mummite",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0615-Mummite.png"
+        "image": "rdaw/0615-Mummite.png",
+        "vname": ""
       }
     ]
   },
   {
+    "description": "If their bandages are removed, their 'bodies' fall apart. They disappear and reappear without making a sound, allowing them to sneak up on unsuspecting Pokemon and steal their life force.",
+    "generation": "iv",
+    "id": 2616,
+    "letter": "M",
     "name": "Mumman",
     "number": 616,
-    "letter": "M",
-    "generation": "iv",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Mumman",
     "variants": [
       {
         "image": "rdaw/0616-Mumman.png",
         "vname": ""
       }
-    ],
-    "description": "If their bandages are removed, their 'bodies' fall apart. They disappear and reappear without making a sound, allowing them to sneak up on unsuspecting Pokemon and steal their life force.",
-    "id": 2616
+    ]
   },
   {
     "description": "They work together to trick people into using them for decorations, then drain the life energy of anyone who comes near. Their blue lights can have a hypnotic effect on those who stare.",
+    "generation": "iv",
     "id": 2617,
+    "letter": "P",
+    "name": "Phlikur",
+    "number": 617,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Phlikur",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0617-Phlikur.png"
+        "image": "rdaw/0617-Phlikur.png",
+        "vname": ""
       }
-    ],
-    "letter": "P",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Phlikur",
-    "generation": "iv",
-    "name": "Phlikur",
-    "number": 617
+    ]
   },
   {
-    "letter": "B",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Bokshel",
+    "description": "They take residence in abandoned boxes and keep traveling with them as a shell. It is a very sensitive Pokemon that always cries and hides under its box shell when it feels threatened.",
     "generation": "iv",
+    "id": 2618,
+    "letter": "B",
     "name": "Bokshel",
     "number": 618,
-    "description": "They take residence in abandoned boxes and keep traveling with them as a shell. It is a very sensitive Pokemon that always cries and hides under its box shell when it feels threatened.",
-    "id": 2618,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Bokshel",
     "variants": [
       {
         "image": "rdaw/0618-Bokshel.png",
@@ -1515,103 +1515,103 @@
     ]
   },
   {
-    "letter": "H",
+    "description": "Their bodies have now combined with the box they had when they were Bokshels. Sharp blades extend from their shell when they feel that they are threatened.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Hermirt",
+    "id": 2619,
+    "letter": "H",
     "name": "Hermirt",
     "number": 619,
-    "description": "Their bodies have now combined with the box they had when they were Bokshels. Sharp blades extend from their shell when they feel that they are threatened.",
-    "id": 2619,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Hermirt",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0619-Hermirt.png"
+        "image": "rdaw/0619-Hermirt.png",
+        "vname": ""
       }
     ]
   },
   {
     "description": "Their bodies are extremely toxic, so trainers are advised to always be careful when handling this Pokemon. They melt into puddles when they are frightened.",
+    "generation": "iv",
     "id": 2620,
+    "letter": "Y",
+    "name": "Yrucrem",
+    "number": 620,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Yrucrem",
     "variants": [
       {
         "image": "rdaw/0620-Yrucrem.png",
         "vname": ""
       }
-    ],
-    "letter": "Y",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Yrucrem",
-    "generation": "iv",
-    "name": "Yrucrem",
-    "number": 620
+    ]
   },
   {
-    "number": 621,
-    "name": "Mercurath",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mercurath",
+    "description": "They are able to shift their bodies into different forms in order to get into the most toughest of places. They can blast poisonous liquid from their right arms as a defense mechanism.",
     "generation": "iv",
+    "id": 2621,
     "letter": "M",
+    "name": "Mercurath",
+    "number": 621,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Mercurath",
     "variants": [
       {
         "image": "rdaw/0621-Mercurath.png",
         "vname": ""
       }
-    ],
-    "id": 2621,
-    "description": "They are able to shift their bodies into different forms in order to get into the most toughest of places. They can blast poisonous liquid from their right arms as a defense mechanism."
+    ]
   },
   {
     "description": "They have been known to launch themselves at beach-goers for no reason other than to cause mischief. Clammince can spin themselves at high speeds, allowing their blades to slash through tough structures. They make themselves dizzy in the process, though...",
+    "generation": "iv",
     "id": 2622,
+    "letter": "C",
+    "name": "Clammince",
+    "number": 622,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Clammince",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0622-Clammince.png"
+        "image": "rdaw/0622-Clammince.png",
+        "vname": ""
       }
-    ],
-    "letter": "C",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Clammince",
-    "name": "Clammince",
-    "number": 622
+    ]
   },
   {
-    "number": 623,
-    "name": "Escargum",
+    "description": "These Pokemon are usually found slowly slinking down trees and across grass. Their bodies are made of a sticky substance that is similar to gum.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Escargum",
+    "id": 2623,
     "letter": "E",
+    "name": "Escargum",
+    "number": 623,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Escargum",
     "variants": [
       {
         "image": "rdaw/0623-Escargum.png",
         "vname": ""
       }
-    ],
-    "id": 2623,
-    "description": "These Pokemon are usually found slowly slinking down trees and across grass. Their bodies are made of a sticky substance that is similar to gum."
+    ]
   },
   {
-    "id": 2624,
     "description": "The females carry gumball shaped eggs in their 'shells' in order to get them to safety. They sometimes end up getting stuck on hard surfaces because of their bodies' stickiness.",
+    "generation": "iv",
+    "id": 2624,
+    "letter": "G",
+    "name": "Gumnail",
+    "number": 624,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Gumnail",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0624-Gumnail.png"
+        "image": "rdaw/0624-Gumnail.png",
+        "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Gumnail",
-    "letter": "G",
-    "number": 624,
-    "name": "Gumnail"
+    ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Fuzzie",
-    "generation": "iv",
-    "letter": "F",
-    "number": 625,
-    "name": "Fuzzie",
-    "id": 2625,
     "description": "Its unique genetic structure allows it to evolve into Pokemon of all types. Its fur captures and absorbs different particles that help it adapt to its surroundings.",
+    "generation": "iv",
+    "id": 2625,
+    "letter": "F",
+    "name": "Fuzzie",
+    "number": 625,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Fuzzie",
     "variants": [
       {
         "image": "rdaw/0625-Fuzzie.png",
@@ -1620,178 +1620,178 @@
     ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0626-Shrubur.png"
-      }
-    ],
-    "id": 2626,
     "description": "There are Shrubur that have different flowers and sometimes fruit growing from their tails. When it appears, it can make multiple flowers bloom.",
-    "number": 626,
+    "generation": "iv",
+    "id": 2626,
+    "letter": "S",
     "name": "Shrubur",
-    "generation": "iv",
+    "number": 626,
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Shrubur",
-    "letter": "S"
-  },
-  {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Ignerate",
-    "generation": "iv",
-    "letter": "I",
-    "number": 627,
-    "name": "Ignerate",
-    "id": 2627,
-    "description": "They are able to zip around in the form of a fireball to frighten passersby. Their fur is naturally white, but turns reddish-orange when they are older.",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0627-Ignerate.png"
+        "image": "rdaw/0626-Shrubur.png",
+        "vname": ""
       }
     ]
   },
   {
+    "description": "They are able to zip around in the form of a fireball to frighten passersby. Their fur is naturally white, but turns reddish-orange when they are older.",
+    "generation": "iv",
+    "id": 2627,
+    "letter": "I",
+    "name": "Ignerate",
+    "number": 627,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Ignerate",
+    "variants": [
+      {
+        "image": "rdaw/0627-Ignerate.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "They absorb and deliver electricity from their opponents in battle using their palms and soles. They cackle maniacally when they prepare to launch a powerful attack.",
+    "generation": "iv",
+    "id": 2628,
+    "letter": "P",
+    "name": "Paralite",
+    "number": 628,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Paralite",
     "variants": [
       {
         "image": "rdaw/0628-Paralite.png",
         "vname": ""
       }
-    ],
-    "description": "They absorb and deliver electricity from their opponents in battle using their palms and soles. They cackle maniacally when they prepare to launch a powerful attack.",
-    "id": 2628,
-    "name": "Paralite",
-    "number": 628,
-    "letter": "P",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Paralite"
+    ]
   },
   {
     "description": "Jewel makers use their beads, which contain toxins, to make necklaces and earrings. Their tongues are long and sharp, allowing them to deliver a dose of venom instantly into the body with a single lick.",
+    "generation": "iv",
     "id": 2629,
+    "letter": "H",
+    "name": "Helodra",
+    "number": 629,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Helodra",
     "variants": [
       {
         "image": "rdaw/0629-Helodra.png",
         "vname": ""
       }
-    ],
-    "letter": "H",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Helodra",
-    "generation": "iv",
-    "name": "Helodra",
-    "number": 629
+    ]
   },
   {
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Beadread",
-    "generation": "iv",
-    "letter": "B",
-    "number": 630,
-    "name": "Beadread",
-    "id": 2630,
     "description": "Beadread's beads are full of toxins that can paralyze the muscles in one's body. Jewelry makers seek out these Pokemon for the beads that grow naturally on their bodies, despite them being very dangerous.",
+    "generation": "iv",
+    "id": 2630,
+    "letter": "B",
+    "name": "Beadread",
+    "number": 630,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Beadread",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0630-Beadread.png"
+        "image": "rdaw/0630-Beadread.png",
+        "vname": ""
       }
     ]
   },
   {
+    "description": "Their beads are very toxic, but also very valuable, which prompts jewel makers to risk their lives to get them. There have been lawsuits filed against the jewelers who knowingly made products from their toxic beads.",
+    "generation": "iv",
+    "id": 2631,
+    "letter": "D",
+    "name": "Dermadon",
+    "number": 631,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Dermadon",
     "variants": [
       {
         "image": "rdaw/0631-Dermadon.png",
         "vname": ""
       }
-    ],
-    "id": 2631,
-    "description": "Their beads are very toxic, but also very valuable, which prompts jewel makers to risk their lives to get them. There have been lawsuits filed against the jewelers who knowingly made products from their toxic beads.",
-    "number": 631,
-    "name": "Dermadon",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Dermadon",
-    "generation": "iv",
-    "letter": "D"
+    ]
   },
   {
-    "id": 2632,
     "description": "Their bodies are unable to melt because of the insulation in their skeleton. Their droppings are thought to be extremely valuable, as they are thought to be made of solid gold.",
+    "generation": "iv",
+    "id": 2632,
+    "letter": "R",
+    "name": "Rusizzle",
+    "number": 632,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Rusizzle",
     "variants": [
       {
         "image": "rdaw/0632-Rusizzle.png",
         "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Rusizzle",
-    "letter": "R",
-    "number": 632,
-    "name": "Rusizzle"
+    ]
   },
   {
+    "description": "They can grow and shrink as they please, enlarging the size of anyone that enters it. They sometimes devour those that get too close to it, leaving the bones that are seen inside.",
+    "generation": "iv",
+    "id": 2633,
+    "letter": "P",
+    "name": "Pyrex",
+    "number": 633,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Pyrex",
     "variants": [
       {
         "image": "rdaw/0633-Pyrex.png",
         "vname": ""
       }
-    ],
-    "description": "They can grow and shrink as they please, enlarging the size of anyone that enters it. They sometimes devour those that get too close to it, leaving the bones that are seen inside.",
-    "id": 2633,
-    "name": "Pyrex",
-    "number": 633,
-    "letter": "P",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Pyrex"
+    ]
   },
   {
     "description": "These Pokemon's claws exert a force of 200 lbs. They use their claws to crack open the shells of nuts in order to feed.",
+    "generation": "iv",
     "id": 2634,
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0634-Chompace.png"
-      }
-    ],
     "letter": "C",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Chompace",
     "name": "Chompace",
-    "number": 634
-  },
-  {
+    "number": 634,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Chompace",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0635-Caragai.png"
-      }
-    ],
-    "description": "Their claws are strong enough to crush a train. They are often mistaken as open coconuts, which prompts passersby to reach for them, resulting in a loss of an appendage on some occasions.",
-    "id": 2635,
-    "name": "Caragai",
-    "number": 635,
-    "letter": "C",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Caragai"
-  },
-  {
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Ascomini",
-    "letter": "A",
-    "number": 636,
-    "name": "Ascomini",
-    "id": 2636,
-    "description": "They travel in groups and charge into cities, taking whatever they want. Ascomini's tail blades get dull very easily, so they often sharpen them by scraping them against each other's tails.",
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0636-Ascomini.png"
+        "image": "rdaw/0634-Chompace.png",
+        "vname": ""
       }
     ]
   },
   {
-    "letter": "S",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Scandrake",
+    "description": "Their claws are strong enough to crush a train. They are often mistaken as open coconuts, which prompts passersby to reach for them, resulting in a loss of an appendage on some occasions.",
     "generation": "iv",
+    "id": 2635,
+    "letter": "C",
+    "name": "Caragai",
+    "number": 635,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Caragai",
+    "variants": [
+      {
+        "image": "rdaw/0635-Caragai.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "They travel in groups and charge into cities, taking whatever they want. Ascomini's tail blades get dull very easily, so they often sharpen them by scraping them against each other's tails.",
+    "generation": "iv",
+    "id": 2636,
+    "letter": "A",
+    "name": "Ascomini",
+    "number": 636,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Ascomini",
+    "variants": [
+      {
+        "image": "rdaw/0636-Ascomini.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "A Scandrake's tail can slice through the toughest of metals, so when the blades fall off, they are collected and used as actual weapons. They are known to destroy and pillage towns in large groups.",
+    "generation": "iv",
+    "id": 2637,
+    "letter": "S",
     "name": "Scandrake",
     "number": 637,
-    "description": "A Scandrake's tail can slice through the toughest of metals, so when the blades fall off, they are collected and used as actual weapons. They are known to destroy and pillage towns in large groups.",
-    "id": 2637,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Scandrake",
     "variants": [
       {
         "image": "rdaw/0637-Scandrake.png",
@@ -1800,153 +1800,153 @@
     ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0638-Vikodon.png"
-      }
-    ],
     "description": "They use their ax tails professionally, using precise strikes to fight off enemies. Their fur helps them survive in cold temperatures.",
+    "generation": "iv",
     "id": 2638,
+    "letter": "V",
     "name": "Vikodon",
     "number": 638,
-    "letter": "V",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Vikodon",
-    "generation": "iv"
-  },
-  {
-    "id": 2639,
-    "description": "Found near active volcanoes, these Pokemon feed off of the embers inside. Their flying technique is unique based on how much experience they have.",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0639-Rodanador.png"
+        "image": "rdaw/0638-Vikodon.png",
+        "vname": ""
       }
-    ],
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Rodanador",
-    "letter": "R",
-    "number": 639,
-    "name": "Rodanador"
+    ]
   },
   {
+    "description": "Found near active volcanoes, these Pokemon feed off of the embers inside. Their flying technique is unique based on how much experience they have.",
+    "generation": "iv",
+    "id": 2639,
+    "letter": "R",
+    "name": "Rodanador",
+    "number": 639,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Rodanador",
+    "variants": [
+      {
+        "image": "rdaw/0639-Rodanador.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "They live inside active volcanoes, absorbing the heat into their bodies. It is said that a Danidor is close to evolving when a volcano erupts.",
+    "generation": "iv",
+    "id": 2640,
+    "letter": "D",
     "name": "Danidor",
     "number": 640,
-    "letter": "D",
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Danidor",
-    "generation": "iv",
     "variants": [
       {
         "image": "rdaw/0640-Danidor.png",
         "vname": ""
       }
-    ],
-    "description": "They live inside active volcanoes, absorbing the heat into their bodies. It is said that a Danidor is close to evolving when a volcano erupts.",
-    "id": 2640
+    ]
   },
   {
+    "description": "They blast intense flames at their enemies, incinerating them in seconds. They can cause intense heatwaves with a single flap of their wings.",
+    "generation": "iv",
+    "id": 2641,
+    "letter": "T",
+    "name": "Taidon",
+    "number": 641,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Taidon",
     "variants": [
       {
         "image": "rdaw/0641-Taidon.png",
         "vname": ""
       }
-    ],
-    "description": "They blast intense flames at their enemies, incinerating them in seconds. They can cause intense heatwaves with a single flap of their wings.",
-    "id": 2641,
-    "name": "Taidon",
-    "number": 641,
-    "letter": "T",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Taidon"
+    ]
   },
   {
     "description": "After a long war, this Pokemon helped the Mirus Region with a roar that brought a shower of gold. Out of the three beasts, it is shown to be the most courageous and modest.",
+    "generation": "iv",
     "id": 2642,
+    "letter": "E",
+    "name": "Emasei",
+    "number": 642,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Emasei",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0642-Emasei.png"
+        "image": "rdaw/0642-Emasei.png",
+        "vname": ""
       }
-    ],
-    "letter": "E",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Emasei",
-    "name": "Emasei",
-    "number": 642
+    ]
   },
   {
-    "letter": "G",
+    "description": "Known to be the most rambunctious of the beasts, Gundrukae forces different scents onto different pieces of land. The exotic odor of its fur made it irresistible, making it the most sought after of the three beasts.",
     "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Gundrukae",
+    "id": 2643,
+    "letter": "G",
     "name": "Gundrukae",
     "number": 643,
-    "description": "Known to be the most rambunctious of the beasts, Gundrukae forces different scents onto different pieces of land. The exotic odor of its fur made it irresistible, making it the most sought after of the three beasts.",
-    "id": 2643,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Gundrukae",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0643-Gundrukae.png"
+        "image": "rdaw/0643-Gundrukae.png",
+        "vname": ""
       }
     ]
   },
   {
     "description": "This shyest of the beasts, it remained hidden as it aided the people of the Mirus Region after the war. They give off a strong odor that is used to signify the approaching holidays, as well as cure all internal injuries.",
+    "generation": "iv",
     "id": 2644,
+    "letter": "P",
+    "name": "Paraja",
+    "number": 644,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Paraja",
     "variants": [
       {
         "image": "rdaw/0644-Paraja.png",
         "vname": ""
       }
-    ],
-    "letter": "P",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Paraja",
-    "name": "Paraja",
-    "number": 644
+    ]
   },
   {
-    "variants": [
-      {
-        "vname": "",
-        "image": "rdaw/0645-Dianetha.png"
-      }
-    ],
     "description": "It is said to symbolize feminine beauty and knowledge, and will appear when there is lack of confidence. Their beautiful fluff is able to give knowledge to anyone who touches it, but this has not been confirmed.",
+    "generation": "iv",
     "id": 2645,
+    "letter": "D",
     "name": "Dianetha",
     "number": 645,
-    "letter": "D",
-    "generation": "iv",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Dianetha"
-  },
-  {
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Dianetha",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0646-Dynamos.png"
+        "image": "rdaw/0645-Dianetha.png",
+        "vname": ""
       }
-    ],
-    "id": 2646,
+    ]
+  },
+  {
     "description": "Representing masculine strength, this Pokemon was said to have stop an earthquake from destroying Mirus by holding the splitting plates. One punch from it is said to collapse an entire mountain.",
-    "number": 646,
-    "name": "Dynamos",
-    "url": "https://darkandwindiefakemon.fandom.com/wiki/Dynamos",
     "generation": "iv",
-    "letter": "D"
-  },
-  {
+    "id": 2646,
+    "letter": "D",
+    "name": "Dynamos",
+    "number": 646,
+    "url": "https://darkandwindiefakemon.fandom.com/wiki/Dynamos",
     "variants": [
       {
-        "vname": "",
-        "image": "rdaw/0647-Rufure.png"
+        "image": "rdaw/0646-Dynamos.png",
+        "vname": ""
       }
-    ],
-    "id": 2647,
+    ]
+  },
+  {
     "description": "It lives inside of the Earth's core, absorbing the heat into its body in order to become stronger. There was once a cult that dedicated their time to digging to the Earth's core in order to catch this Pokemon, but nearly all of the members perished.",
-    "number": 647,
-    "name": "Rufure",
     "generation": "iv",
+    "id": 2647,
+    "letter": "R",
+    "name": "Rufure",
+    "number": 647,
     "url": "https://darkandwindiefakemon.fandom.com/wiki/Rufure",
-    "letter": "R"
+    "variants": [
+      {
+        "image": "rdaw/0647-Rufure.png",
+        "vname": ""
+      }
+    ]
   }
 ]
