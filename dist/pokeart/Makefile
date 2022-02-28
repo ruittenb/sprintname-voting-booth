@@ -27,17 +27,13 @@ $(THUMBSDIR)/%.png: %.png
 $(THUMBSDIR)/$(RDAW)/%.png: $(RDAW)/%.png
 	convert $< -resize 120x120 $@
 
-.PHONY: resize-rdaw-1
-resize-rdaw-1: ## resize all rdaw images to 475x475
-	for i in $(RFULLSIZE); do \
-		echo considering "$$i..."; \
-		if ! identify "$$i" | grep -sq "$(IMGSIZE)"; then \
+.PHONY: resize-rdaw
+resize-rdaw: ## resize all rdaw images to 475x475
+	identify $(RFULLSIZE) | \
+		grep -sq -v "$(IMGSIZE)" | \
+		while read i; do \
 			echo resizing "$$i..."; \
 			convert "$$i" -resize $(IMGSIZE) -background transparent -gravity center -extent $(IMGSIZE) $$i-new; \
-		fi; \
-	done
-
-.PHONY: resize-rdaw-2
-resize-rdaw-2: ## move new images into place of old ones
-	for i in $(RDAW)/*.png-new; do mv $$i $${i%-new}; done
+			mv $$i-new $$i; \
+		done
 
