@@ -14,3 +14,7 @@ download: ## Download the Fakemon images and descriptions from the ReallyDarkAnd
 .PHONY: combine
 combine: ## Combine images and descriptions into a json file
 	./combine.sh $(GEN)
+
+.PHONY: csv2json
+csv2json: ## Convert exported Google Sheet for appending to pokedex.json
+	./csv2json.pl $(GEN) | jq -S . > rdawdex-gen$(GEN).json

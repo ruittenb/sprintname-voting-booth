@@ -30,10 +30,11 @@ $(THUMBSDIR)/$(RDAW)/%.png: $(RDAW)/%.png
 .PHONY: resize-rdaw
 resize-rdaw: ## resize all rdaw images to 475x475
 	identify $(RFULLSIZE) | \
-		grep -sq -v "$(IMGSIZE)" | \
+		grep -v "$(IMGSIZE)" | \
+		awk '{ print $$1 }' | \
 		while read i; do \
 			echo resizing "$$i..."; \
-			convert "$$i" -resize $(IMGSIZE) -background transparent -gravity center -extent $(IMGSIZE) $$i-new; \
+			convert "$$i" -resize $(IMGSIZE) -background transparent -gravity center -extent $(IMGSIZE) $$i-new && \
 			mv $$i-new $$i; \
 		done
 
