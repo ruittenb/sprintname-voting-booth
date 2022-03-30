@@ -281,12 +281,12 @@ button.user-button.current,
 }
 
 /**
- * Hide the generation 0 button if it would be on one line (looking empty).
+ * Hide the generation 0 button if it is the only one on a line (which would look empty).
  * The scrollbar width messes this up, because its width is browser-dependent
  * and its presence is dependent on the length of the page.
  * Therefore, allow for a big margin of error.
  */
-@media (min-width: 360px) and (max-width: 423px) {
+@media (min-width: 398px) and (max-width: 443px) {
     .button.generation-button.transparent {
         display: none;
     }
@@ -412,7 +412,7 @@ button.user-button.current,
 #user-name {
     display: inline-block;
     height: 30px;
-    width: 254px;
+    width: 297px;
     margin-right: 4px;
     margin-bottom: 4px;
     float: left;
