@@ -27,7 +27,7 @@ maxStars =
 
 pokeGenerations : List String
 pokeGenerations =
-    [ "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "O" ]
+    [ "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "O" ]
 
 
 rdawGenerations : List String
