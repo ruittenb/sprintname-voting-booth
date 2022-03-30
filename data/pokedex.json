@@ -14815,6 +14815,51 @@
     ]
   },
   {
+    "description": "",
+    "generation": "IX",
+    "id": 906,
+    "letter": "S",
+    "name": "Sprigatito",
+    "number": 906,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Sprigatito_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "906.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": "IX",
+    "id": 909,
+    "letter": "F",
+    "name": "Fuecoco",
+    "number": 909,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Fuecoco_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "909.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
+    "description": "",
+    "generation": "IX",
+    "id": 912,
+    "letter": "Q",
+    "name": "Quaxly",
+    "number": 912,
+    "url": "https://bulbapedia.bulbagarden.net/wiki/Quaxly_(Pok%C3%A9mon)",
+    "variants": [
+      {
+        "image": "912.png",
+        "vname": ""
+      }
+    ]
+  },
+  {
     "description": "Cuboo cherishes the bamboo stalk it carries dearly; if it loses it, it grows extremely depressed. It uses the bamboo as a weapon, as well as a food source, whacking opponents with it before taking a bite from it moments later.",
     "generation": "i",
     "id": 2001,
