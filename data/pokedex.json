@@ -10799,8 +10799,84 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Vivillon_(Pok%C3%A9mon)",
     "variants": [
       {
-        "image": "666.png",
-        "vname": ""
+        "image": "666-meadow.png",
+        "vname": "Meadow"
+      },
+      {
+        "image": "666-archipelago.png",
+        "vname": "Archipelago"
+      },
+      {
+        "image": "666-continental.png",
+        "vname": "Continental"
+      },
+      {
+        "image": "666-elegant.png",
+        "vname": "Elegant"
+      },
+      {
+        "image": "666-fancy.png",
+        "vname": "Fancy"
+      },
+      {
+        "image": "666-garden.png",
+        "vname": "Garden"
+      },
+      {
+        "image": "666-high-plains.png",
+        "vname": "High Plains"
+      },
+      {
+        "image": "666-icy-snow.png",
+        "vname": "Icy Snow"
+      },
+      {
+        "image": "666-jungle.png",
+        "vname": "Jungle"
+      },
+      {
+        "image": "666-marine.png",
+        "vname": "Marine"
+      },
+      {
+        "image": "666-modern.png",
+        "vname": "Modern"
+      },
+      {
+        "image": "666-monsoon.png",
+        "vname": "Monsoon"
+      },
+      {
+        "image": "666-ocean.png",
+        "vname": "Ocean"
+      },
+      {
+        "image": "666-pokeball.png",
+        "vname": "Pokeball"
+      },
+      {
+        "image": "666-polar.png",
+        "vname": "Polar"
+      },
+      {
+        "image": "666-river.png",
+        "vname": "River"
+      },
+      {
+        "image": "666-sandstorm.png",
+        "vname": "Sandstorm"
+      },
+      {
+        "image": "666-savanna.png",
+        "vname": "Savanna"
+      },
+      {
+        "image": "666-sun.png",
+        "vname": "Sun"
+      },
+      {
+        "image": "666-tundra.png ",
+        "vname": "Tundra"
       }
     ]
   },
@@ -13052,7 +13128,13 @@
     "variants": [
       {
         "image": "801.png",
-        "vname": ""
+        "vname": "",
+        "description": "Its mechanized body is merely a vessel. Its true self is its Soul-Heart, an artificial soul. It synchronizes its consciousness with others to understand their feelings. This faculty makes it useful for taking care of people."
+      },
+      {
+        "image": "801-original-color.png",
+        "vname": "Original Color",
+        "description": "This beautiful form reflects Magearna's appearance when first presented to a king's daughter 500 years ago. This gorgeous Magearna looks as it did at the time of its invention. Its luxurious decoration pleased the king's daughter."
       }
     ]
   },
@@ -14541,8 +14623,8 @@
       },
       {
         "description": "As a result of Rose's meddling, Eternatus absorbed all the energy in the Galar region. It's now in a state of power overload.  Infinite amounts of energy pour from this Pokémon's enlarged core, warping the surrounding space-time.",
-        "image": "890-externamax.png",
-        "vname": "Externamax"
+        "image": "890-eternamax.png",
+        "vname": "Eternamax"
       }
     ]
   },
