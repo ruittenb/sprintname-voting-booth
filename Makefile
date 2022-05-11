@@ -1,7 +1,6 @@
 ############################################################################
 ## variables
 
-#export PATH:=$(PATH):$(shell npm bin) # TODO yarn bin directory
 SHELL:=bash
 
 SCSS_FILES=$(wildcard scss/*.scss)
@@ -69,7 +68,7 @@ install: ## Install all dependencies
 	$(MAKE) elm-install
 
 elm-stuff: elm-package.json
-	npx elm package install
+	yarn dlx elm package install
 	touch $@
 
 .PHONY: elm-install
@@ -77,7 +76,7 @@ elm-install: elm-stuff ## Install all elm dependencies
 
 .PHONY: build-elm
 build-elm: ## Compile elm files to javascript
-	npx elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
+	yarn dlx elm-make $(ELM_SOURCE)/Main.elm --yes --output $(JS_SOURCE)/Elm.js
 
 .PHONY: build-bundle
 build-bundle: ## Bundle javascript files
