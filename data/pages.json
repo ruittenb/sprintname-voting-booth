@@ -1477,70 +1477,88 @@
     "generation": "VIII",
     "id": 165,
     "letter": "N",
-    "open": true,
-    "startDate": "2022-04-12T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-04-12T00:00:00.000+02:00",
+    "winnerId": 827,
+    "winnerName": "Nickit"
   },
   {
     "generation": "VIII",
     "id": 166,
     "letter": "O",
-    "open": true,
-    "startDate": "2022-04-26T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-04-26T00:00:00.000+02:00",
+    "winnerId": 862,
+    "winnerName": "Obstagoon"
   },
   {
     "generation": "VIII",
     "id": 167,
     "letter": "P",
-    "open": true,
-    "startDate": "2022-05-10T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-05-10T00:00:00.000+02:00",
+    "winnerId": 863,
+    "winnerName": "Perrserker"
   },
   {
     "generation": "VIII",
     "id": 168,
     "letter": "R",
-    "open": true,
-    "startDate": "2022-05-24T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-05-24T00:00:00.000+02:00",
+    "winnerId": 812,
+    "winnerName": "Rillaboom"
   },
   {
     "generation": "VIII",
     "id": 169,
     "letter": "S",
-    "open": true,
-    "startDate": "2022-06-07T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-06-07T00:00:00.000+02:00",
+    "winnerId": 865,
+    "winnerName": "Sirfetch'd"
   },
   {
     "generation": "VIII",
     "id": 170,
     "letter": "T",
-    "open": true,
-    "startDate": "2022-06-21T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-06-21T00:00:00.000+02:00",
+    "winnerId": 828,
+    "winnerName": "Thievul"
   },
   {
     "generation": "VIII",
     "id": 171,
     "letter": "U",
-    "open": true,
-    "startDate": "2022-07-05T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-07-05T00:00:00.000+02:00",
+    "winnerId": 892,
+    "winnerName": "Urshifu"
   },
   {
     "generation": "VIII",
     "id": 172,
     "letter": "W",
-    "open": true,
-    "startDate": "2022-07-19T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-07-19T00:00:00.000+02:00",
+    "winnerId": 831,
+    "winnerName": "Wooloo"
   },
   {
     "generation": "VIII",
     "id": 173,
     "letter": "Y",
-    "open": true,
-    "startDate": "2022-08-02T00:00:00.000+02:00"
+    "open": false,
+    "startDate": "2022-08-02T00:00:00.000+02:00",
+    "winnerId": 835,
+    "winnerName": "Yamper"
   },
   {
     "generation": "VIII",
     "id": 174,
     "letter": "Z",
-    "open": true,
+    "open": false,
     "startDate": "2022-08-16T00:00:00.000+02:00"
   },
   {

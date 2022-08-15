@@ -13127,14 +13127,14 @@
     "url": "https://bulbapedia.bulbagarden.net/wiki/Magearna_(Pok%C3%A9mon)",
     "variants": [
       {
+        "description": "Its mechanized body is merely a vessel. Its true self is its Soul-Heart, an artificial soul. It synchronizes its consciousness with others to understand their feelings. This faculty makes it useful for taking care of people.",
         "image": "801.png",
-        "vname": "",
-        "description": "Its mechanized body is merely a vessel. Its true self is its Soul-Heart, an artificial soul. It synchronizes its consciousness with others to understand their feelings. This faculty makes it useful for taking care of people."
+        "vname": ""
       },
       {
+        "description": "This beautiful form reflects Magearna's appearance when first presented to a king's daughter 500 years ago. This gorgeous Magearna looks as it did at the time of its invention. Its luxurious decoration pleased the king's daughter.",
         "image": "801-original-color.png",
-        "vname": "Original Color",
-        "description": "This beautiful form reflects Magearna's appearance when first presented to a king's daughter 500 years ago. This gorgeous Magearna looks as it did at the time of its invention. Its luxurious decoration pleased the king's daughter."
+        "vname": "Original Color"
       }
     ]
   },
