@@ -35,7 +35,7 @@
     "envify": "^4.1.0",
     "express": "^4.16.4",
     "firebase": "^5.11.1",
-    "firebase-admin": "^6.5.1",
+    "firebase-admin": "^11.0.1",
     "graceful-fs": "^4.2.3",
     "hoek": "^6.0.1",
     "jsonwebtoken": "^8.3.0",
