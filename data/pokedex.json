@@ -351,7 +351,7 @@
       },
       {
         "image": "019-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -370,7 +370,7 @@
       },
       {
         "image": "020-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -468,7 +468,7 @@
       },
       {
         "image": "026-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -487,7 +487,7 @@
       },
       {
         "image": "027-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -506,7 +506,7 @@
       },
       {
         "image": "028-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -645,7 +645,7 @@
       },
       {
         "image": "037-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -664,7 +664,7 @@
       },
       {
         "image": "038-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -848,7 +848,7 @@
       },
       {
         "image": "050-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -867,7 +867,7 @@
       },
       {
         "image": "051-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -886,7 +886,7 @@
       },
       {
         "image": "052-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       },
       {
         "image": "052-galarian.png",
@@ -913,7 +913,7 @@
       },
       {
         "image": "053-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -1248,7 +1248,7 @@
       },
       {
         "image": "074-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -1267,7 +1267,7 @@
       },
       {
         "image": "075-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -1286,7 +1286,7 @@
       },
       {
         "image": "076-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -1509,7 +1509,7 @@
       },
       {
         "image": "089-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -1743,7 +1743,7 @@
       },
       {
         "image": "103-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -1777,7 +1777,7 @@
       },
       {
         "image": "105-alola.png",
-        "vname": "Alola Form"
+        "vname": "Alolan"
       }
     ]
   },
@@ -3177,6 +3177,10 @@
       {
         "image": "194.png",
         "vname": ""
+      },
+      {
+        "image": "194-paldean.png",
+        "vname": "Paldean"
       }
     ]
   },
